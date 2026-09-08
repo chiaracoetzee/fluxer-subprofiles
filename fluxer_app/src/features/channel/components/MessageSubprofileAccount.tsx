@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 import {useContextMenuHoverState} from '@app/features/app/hooks/useContextMenuHoverState';
-import {CrosspostCommunityPopout} from '@app/features/channel/components/CrosspostCommunityPopout';
 import {useMaybeMessageViewContext} from '@app/features/channel/components/MessageViewContext';
 import {PreloadableUserPopout} from '@app/features/channel/components/PreloadableUserPopout';
 import type {Guild} from '@app/features/guild/models/Guild';
@@ -18,8 +17,9 @@ import {clsx} from 'clsx';
 import {observer} from 'mobx-react-lite';
 import type React from 'react';
 import {useCallback, useRef} from 'react';
+import { MessageAvatar } from './MessageAvatar';
 
-export const MessageUsername = observer(
+export const MessageSubprofileAccount = observer(
 	({
 		user,
 		message,
@@ -39,12 +39,10 @@ export const MessageUsername = observer(
 		previewName?: string;
 	}) => {
 		const usernameRef = useRef<HTMLSpanElement | null>(null);
-		const contextMenuOpen = useContextMenuHoverState(usernameRef);
-		const subprofileName = message.subprofile?.name;
-		const subprofileColor =
-			message.subprofile?.color != null ? ColorUtils.int2rgb(message.subprofile.color) : undefined;
-		const displayName = previewName || subprofileName || NicknameUtils.getNickname(user, guild?.id, message.channelId);
-		const color = previewColor || subprofileColor || member?.getColorString();
+		//const contextMenuOpen = useContextMenuHoverState(usernameRef);
+		// const displayName = previewName || NicknameUtils.getNickname(user, guild?.id, message.channelId);
+		const displayName = NicknameUtils.getNickname(user, guild?.id, message.channelId);
+		// const color = previewColor || member?.getColorString();
 		const onPopoutToggle = useMaybeMessageViewContext()?.onPopoutToggle;
 		const handlePopoutOpen = useCallback(() => onPopoutToggle?.(true), [onPopoutToggle]);
 		const handlePopoutClose = useCallback(() => onPopoutToggle?.(false), [onPopoutToggle]);
@@ -55,38 +53,9 @@ export const MessageUsername = observer(
 			(e.currentTarget as HTMLElement).click();
 		}, []);
 		const keyboardModeEnabled = KeyboardMode.keyboardModeEnabled;
-		const usernameNode = (
-			<FocusRing data-flx="channel.message-username.focus-ring">
-				{/* biome-ignore lint/a11y/noStaticElementInteractions: the username span is only keyboard-interactive in keyboard mode (role="button"/tabIndex set conditionally); pointer/popout/context-menu interactions are handled by the wrapping PreloadableUserPopout. */}
-				<span
-					className={clsx(className, contextMenuOpen && styles.contextMenuUnderline)}
-					style={{color}}
-					data-user-id={user.id}
-					data-guild-id={guild?.id}
-					tabIndex={keyboardModeEnabled ? 0 : undefined}
-					role={keyboardModeEnabled ? 'button' : undefined}
-					ref={usernameRef}
-					onKeyDown={handleKeyDown}
-					data-flx="channel.message-username.context-menu-underline.key-down"
-				>
-					{displayName}
-				</span>
-			</FocusRing>
-		);
-		if (message.isCrosspostCopy) {
-			return (
-				<CrosspostCommunityPopout
-					message={message}
-					onPopoutOpen={handlePopoutOpen}
-					onPopoutClose={handlePopoutClose}
-					data-flx="channel.message-username.crosspost-community-popout"
-				>
-					{usernameNode}
-				</CrosspostCommunityPopout>
-			);
-		}
-		return (
-		<PreloadableUserPopout
+		return (message.subprofile && <>
+			<span className={styles.messageAuthorSubprofileMarker}> via </span>
+			<PreloadableUserPopout
 				user={user}
 				isWebhook={message.webhookId != null}
 				webhookId={message.webhookId ?? undefined}
@@ -100,8 +69,32 @@ export const MessageUsername = observer(
 				onPopoutClose={handlePopoutClose}
 				data-flx="channel.message-username.preloadable-user-popout"
 			>
-				{usernameNode}
+				<FocusRing data-flx="channel.message-username-original.focus-ring">
+					{/* biome-ignore lint/a11y/noStaticElementInteractions: the username span is only keyboard-interactive in keyboard mode (role="button"/tabIndex set conditionally); pointer/popout/context-menu interactions are handled by the wrapping PreloadableUserPopout. */}
+					<span
+						data-user-id={user.id}
+						data-guild-id={guild?.id}
+						tabIndex={keyboardModeEnabled ? 0 : undefined}
+						role={keyboardModeEnabled ? 'button' : undefined}
+						ref={usernameRef}
+						onKeyDown={handleKeyDown}
+						data-flx="channel.message-username.context-menu-underline.key-down"
+						aria-label={displayName}
+					>
+						<MessageAvatar
+							user={user}
+							message={message}
+							guildId={guild?.id}
+							size={16}
+							className={clsx(styles.messageAvatarCompact, styles.messageSubprofileMainAvatar)}
+							isHovering={/*isHovering*/ false}
+							isPreview={/*!!previewContext*/ false}
+							ignoreSubprofile={true}
+							data-flx="channel.user-message.message-avatar-subprofile-main-account"
+						/>
+					</span>
+				</FocusRing>
 			</PreloadableUserPopout>
-		);
+		</>);
 	},
 );
