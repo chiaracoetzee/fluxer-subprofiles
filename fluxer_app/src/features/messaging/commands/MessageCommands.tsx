@@ -69,6 +69,7 @@ import type {
 	MessageStickerItem,
 	Message as WireMessage,
 } from '@fluxer/schema/src/domains/message/MessageResponseSchemas';
+import type {MessageSubprofileRequest} from '@fluxer/schema/src/domains/subprofile/SubprofileSchemas';
 import * as SnowflakeUtils from '@fluxer/snowflake/src/SnowflakeUtils';
 import type {I18n} from '@lingui/core';
 import {msg} from '@lingui/core/macro';
@@ -317,6 +318,7 @@ interface SendMessageParams {
 	favoriteMemeId?: string;
 	stickers?: Array<MessageStickerItem>;
 	tts?: boolean;
+	subprofile?: MessageSubprofileRequest | null;
 }
 
 export function jumpToLiveEdge(channelId: string, limit = MAX_MESSAGES_PER_CHANNEL): void {
@@ -614,6 +616,7 @@ export async function send(channelId: string, params: SendMessageParams): Promis
 		favoriteMemeId: params.favoriteMemeId,
 		stickers: params.stickers,
 		tts: params.tts,
+		subprofile: params.subprofile,
 	};
 	if (params.hasAttachments) {
 		logger.debug(`Sending attachment message immediately for channel ${channelId}`);
@@ -724,17 +727,21 @@ export async function edit(
 	flags?: number,
 	allowedMentions?: AllowedMentions,
 	attachments?: Array<ApiMessageEditAttachmentMetadata>,
+	subprofile?: MessageSubprofileRequest | null,
 ): Promise<WireMessage | null> {
 	logger.debug(`Editing message ${messageId} in channel ${channelId}`);
 	try {
 		const response = await http.patch<WireMessage>(Endpoints.CHANNEL_MESSAGE(channelId, messageId), {
-			body: buildMessageEditRequest({content, flags, allowedMentions, attachments}),
+			body: buildMessageEditRequest({content, flags, allowedMentions, attachments, subprofile}),
 			mode: 'auto-retry',
 			retries: MESSAGE_EDIT_MAX_RETRIES,
 			timeoutMs: MESSAGE_EDIT_TIMEOUT_MS,
 			suppressContentBlockedModal: true,
 		});
 		logger.debug(`Message edited successfully: ${messageId} in channel ${channelId}`);
+		if (response.body) {
+			Messages.handleMessageUpdate({message: response.body});
+		}
 		return response.body ?? null;
 	} catch (error) {
 		logger.error(`Message edit failed: ${messageId} in channel ${channelId}`, error);

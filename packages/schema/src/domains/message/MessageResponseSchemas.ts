@@ -9,6 +9,10 @@ import {
 import {ChannelResponse} from '@fluxer/schema/src/domains/channel/ChannelSchemas';
 import type {GuildMemberData} from '@fluxer/schema/src/domains/guild/GuildMemberSchemas';
 import {type MessageEmbed, MessageEmbedResponse} from '@fluxer/schema/src/domains/message/EmbedSchemas';
+import {
+	type MessageSubprofileResponse,
+	MessageSubprofileResponseSchema,
+} from '@fluxer/schema/src/domains/subprofile/SubprofileSchemas';
 import {type UserPartial, UserPartialResponse} from '@fluxer/schema/src/domains/user/UserResponseSchemas';
 import {MessageReferenceTypeSchema, MessageTypeSchema} from '@fluxer/schema/src/primitives/MessageValidators';
 import {
@@ -17,6 +21,8 @@ import {
 	NonNegativeSafeIntegerType,
 	SnowflakeStringType,
 } from '@fluxer/schema/src/primitives/SchemaPrimitives';
+export {MessageSubprofileResponseSchema, type MessageSubprofileResponse};
+
 import {z} from 'zod';
 
 export const MessageAttachmentResponse = z.object({
@@ -154,6 +160,7 @@ const MessageBaseResponseSchema = z.object({
 	message_snapshots: z.array(MessageSnapshotResponse).nullish().describe('Snapshots of forwarded messages'),
 	nonce: z.string().nullish().describe('A client-provided value for message deduplication'),
 	call: MessageCallResponse.nullish().describe('Call information if this message represents a call'),
+	subprofile: MessageSubprofileResponseSchema.nullish().describe('Optional subprofile persona information'),
 });
 
 type MessageBaseResponse = z.infer<typeof MessageBaseResponseSchema>;
@@ -356,4 +363,5 @@ export interface Message {
 	readonly blocked?: boolean;
 	readonly _allowedMentions?: AllowedMentions;
 	readonly _favoriteMemeId?: string;
+	readonly subprofile?: MessageSubprofileResponse | null;
 }

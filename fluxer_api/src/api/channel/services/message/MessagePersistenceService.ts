@@ -23,6 +23,7 @@ import type {
 	MessageEmbed,
 	MessageReference,
 	MessageStickerItem,
+	MessageSubprofileRow,
 } from '../../../database/types/MessageTypes';
 import type {IGuildRepositoryAggregate} from '../../../guild/repositories/IGuildRepositoryAggregate';
 import type {EmbedService} from '../../../infrastructure/EmbedService';
@@ -108,6 +109,7 @@ interface CreateMessageParams {
 	};
 	allowEmbeds?: boolean;
 	dmNsfwContext?: DmNsfwContext;
+	subprofile?: MessageSubprofileRow | null;
 }
 
 export class MessagePersistenceService {
@@ -235,6 +237,7 @@ export class MessagePersistenceService {
 			call: null,
 			has_reaction: false,
 			version: 1,
+			subprofile: params.subprofile ?? null,
 		};
 		const message = await this.channelRepository.messages.upsertMessage(messageRowData, null);
 		const enqueueDeferredEmbeds = await this.runPostPersistenceOperations({
@@ -410,6 +413,21 @@ export class MessagePersistenceService {
 			const preservedFlags = message.flags & ~SENDABLE_MESSAGE_FLAGS;
 			const newFlags = data.flags & SENDABLE_MESSAGE_FLAGS;
 			updatedRowData.flags = preservedFlags | newFlags;
+			hasChanges = true;
+		}
+		if (data.subprofile !== undefined) {
+			updatedRowData.subprofile = data.subprofile
+				? {
+						id: data.subprofile.id,
+						name: data.subprofile.name,
+						avatar: data.subprofile.avatar ?? null,
+						avatar_color: data.subprofile.avatar_color ?? null,
+						system_name: data.subprofile.system_name ?? null,
+						pronouns: data.subprofile.pronouns ?? null,
+						color: data.subprofile.color ?? null,
+						bio: data.subprofile.bio ?? null,
+					}
+				: null;
 			hasChanges = true;
 		}
 		if (data.attachments !== undefined) {

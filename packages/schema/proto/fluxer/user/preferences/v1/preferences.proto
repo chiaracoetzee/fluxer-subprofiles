@@ -50,6 +50,10 @@ message SyncedPreferences {
   ChatInputSettings chat_input = 112;
   optional bool save_camera_uploads_to_device = 113;
 
+  repeated Persona personas = 120;
+  optional string active_persona_id = 121;
+  optional bool autoproxy_latched = 122;
+  optional string autoproxy_mode = 123;
 }
 
 message SpellcheckSettings {
@@ -259,4 +263,23 @@ enum MfaMethod {
 
 message ChatInputSettings {
   optional bool convert_emoticons = 1;
+}
+
+message ProxyTag {
+  optional string prefix = 1;
+  optional string suffix = 2;
+}
+
+message Persona {
+  string id = 1;
+  string name = 2;
+  optional string avatar_url = 3;
+  repeated ProxyTag proxy_tags = 4;
+  optional string system_name = 5;
+  optional string pronouns = 6;
+  optional uint32 color = 7;
+  optional bool auto_proxy_disabled = 8;
+  optional uint32 use_count = 9;
+  optional int64 last_used_at_ms = 10;
+  optional string bio = 11;
 }

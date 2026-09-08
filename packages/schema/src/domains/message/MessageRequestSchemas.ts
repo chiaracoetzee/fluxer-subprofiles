@@ -8,6 +8,7 @@ import {
 	ClientUploadedAttachmentRequest,
 } from '@fluxer/schema/src/domains/message/AttachmentSchemas';
 import {AllowedMentionsRequest, MessageReferenceRequest} from '@fluxer/schema/src/domains/message/SharedMessageSchemas';
+import {MessageSubprofileRequestSchema} from '@fluxer/schema/src/domains/subprofile/SubprofileSchemas';
 import {createQueryIntegerType, DateTimeType} from '@fluxer/schema/src/primitives/QueryValidators';
 import {
 	ColorType,
@@ -347,6 +348,7 @@ export const MessageRequestSchema = z
 		favorite_meme_id: SnowflakeType.nullish().describe('ID of a favorite meme to attach'),
 		sticker_ids: z.array(SnowflakeType).max(3).nullish().describe('Array of sticker IDs to include (max 3)'),
 		tts: z.boolean().optional().describe('Whether this is a text-to-speech message'),
+		subprofile: MessageSubprofileRequestSchema.nullish().describe('Optional subprofile persona information'),
 	})
 	.partial();
 
@@ -366,6 +368,7 @@ export const MessageUpdateRequestSchema = MessageRequestSchema.pick({
 	content: true,
 	embeds: true,
 	allowed_mentions: true,
+	subprofile: true,
 }).extend({
 	flags: createBitflagInt32Type(
 		MessageFlags,

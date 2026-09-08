@@ -32,6 +32,7 @@ import {resolveTypedEmojiShortcodes} from '@app/features/messaging/utils/TypedEm
 import Permission from '@app/features/permissions/state/Permission';
 import {Logger} from '@app/features/platform/utils/AppLogger';
 import Presence from '@app/features/presence/state/Presence';
+import {SubprofileStore} from '@app/features/subprofile/state/SubprofileStore';
 import {TypingUtils} from '@app/features/typing/utils/TypingUtils';
 import * as FormUtils from '@app/lib/forms';
 import {Permissions} from '@fluxer/constants/src/ChannelConstants';
@@ -504,12 +505,15 @@ export const useTextareaSubmit = ({
 				return;
 			}
 			finishMobileEdit();
+			const editMatch = SubprofileStore.matchEditMessage(resolvedContent, editingMessage.subprofile);
 			void MessageCommands.edit(
 				channelId,
 				editingMessage.id,
-				resolvedContent,
+				editMatch.finalContent,
 				undefined,
 				editingMessage._allowedMentions,
+				undefined,
+				editMatch.subprofile,
 			);
 			return;
 		}
@@ -521,12 +525,15 @@ export const useTextareaSubmit = ({
 			if (lastMessage) {
 				const newContent = ReplaceCommandUtils.executeReplaceCommand(lastMessage.content, replaceCommand);
 				if (newContent !== lastMessage.content) {
+					const replaceEditMatch = SubprofileStore.matchEditMessage(newContent, lastMessage.subprofile);
 					MessageCommands.edit(
 						lastMessage.channelId,
 						lastMessage.id,
-						newContent,
+						replaceEditMatch.finalContent,
 						undefined,
 						lastMessage._allowedMentions,
+						undefined,
+						replaceEditMatch.subprofile,
 					);
 				}
 			}

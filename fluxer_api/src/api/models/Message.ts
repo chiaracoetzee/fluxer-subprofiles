@@ -2,7 +2,7 @@
 
 import type {MessageTypeValue} from '@fluxer/constants/src/ChannelConstants';
 import type {ChannelID, MessageID, RoleID, UserID, WebhookID} from '../BrandedTypes';
-import type {MessageRow} from '../database/types/MessageTypes';
+import type {MessageRow, MessageSubprofileRow} from '../database/types/MessageTypes';
 import {Attachment} from './Attachment';
 import {CallInfo} from './CallInfo';
 import {Embed} from './Embed';
@@ -35,6 +35,7 @@ export class Message {
 	readonly call: CallInfo | null;
 	readonly hasReaction: boolean | null;
 	readonly version: number;
+	readonly subprofile: MessageSubprofileRow | null;
 
 	constructor(row: MessageRow) {
 		this.channelId = row.channel_id;
@@ -67,6 +68,7 @@ export class Message {
 		this.call = row.call ? new CallInfo(row.call) : null;
 		this.hasReaction = row.has_reaction ?? null;
 		this.version = row.version;
+		this.subprofile = row.subprofile ?? null;
 	}
 
 	toRow(): MessageRow {
@@ -96,6 +98,7 @@ export class Message {
 			call: this.call?.toMessageCall() ?? null,
 			has_reaction: this.hasReaction ?? null,
 			version: this.version,
+			subprofile: this.subprofile,
 		};
 	}
 }
