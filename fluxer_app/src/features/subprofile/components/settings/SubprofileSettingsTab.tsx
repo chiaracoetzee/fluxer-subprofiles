@@ -10,12 +10,13 @@ import {type SegmentedTab, SegmentedTabs} from '@app/features/ui/segmented_tabs/
 import {AvatarUploader} from '@app/features/user/components/modals/tabs/my_profile_tab/AvatarUploader';
 import Users from '@app/features/user/state/Users';
 import type {Persona} from '@fluxer/schema/src/gen/fluxer/user/preferences/v1/preferences_pb';
-import {Info, LockSimple, LockSimpleOpen, PencilSimple, Plus, Trash} from '@phosphor-icons/react';
+import {Info, LockSimple, LockSimpleOpen, PencilSimple, Plus, Trash, UploadSimple} from '@phosphor-icons/react';
 import {clsx} from 'clsx';
 import {observer} from 'mobx-react-lite';
 import type React from 'react';
 import {useState} from 'react';
 import {type AutoproxyMode, SubprofileStore} from '../../state/SubprofileStore';
+import {openPluralKitImportModal} from '../modals/PluralKitImportModal';
 import styles from './SubprofileSettingsTab.module.css';
 
 const AUTOPROXY_TABS: Array<SegmentedTab<AutoproxyMode>> = [
@@ -393,10 +394,16 @@ export const SubprofileSettingsTab: React.FC = observer(() => {
 						linkable={false}
 						actions={
 							!isEditing && (
-								<button type="button" className={styles.primaryButton} onClick={handleStartAdd}>
-									<Plus size={16} style={{marginRight: 6, verticalAlign: 'text-bottom'}} />
-									Add Subprofile
-								</button>
+								<div style={{display: 'flex', gap: 8}}>
+									<button type="button" className={styles.secondaryButton} onClick={openPluralKitImportModal}>
+										<UploadSimple size={16} style={{marginRight: 6, verticalAlign: 'text-bottom'}} />
+										Import from PluralKit
+									</button>
+									<button type="button" className={styles.primaryButton} onClick={handleStartAdd}>
+										<Plus size={16} style={{marginRight: 6, verticalAlign: 'text-bottom'}} />
+										Add Subprofile
+									</button>
+								</div>
 							)
 						}
 					>
