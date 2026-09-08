@@ -3,7 +3,11 @@
 import type {Channel} from '@app/features/channel/models/Channel';
 import type {Message} from '@app/features/messaging/models/MessagingMessage';
 import type {ChannelMessages} from '@app/features/messaging/state/ChannelMessages';
-import {ChannelStreamType, createChannelStream} from '@app/features/messaging/utils/MessageGroupingUtils';
+import {
+	ChannelStreamType,
+	createChannelStream,
+	isNewMessageGroup,
+} from '@app/features/messaging/utils/MessageGroupingUtils';
 import {describe, expect, it, vi} from 'vitest';
 
 vi.mock('@app/features/auth/state/Authentication', () => ({default: {currentUserId: 'me'}}));
@@ -133,5 +137,43 @@ describe('createChannelStream unread divider', () => {
 		const messages = [message(ID.first, 0), message(ID.second, 1, true), message(ID.third, 2)];
 		expect(countUnreadMarkers(buildStream(messages, ID.second))).toBe(1);
 		expect(countUnreadMarkers(buildStream([message(ID.first, 0), message(ID.second, 1)], ID.second))).toBe(1);
+	});
+});
+
+describe('isNewMessageGroup with subprofiles', () => {
+	it('groups consecutive messages from root account', () => {
+		const m1 = message(ID.first, 0);
+		const m2 = message(ID.second, 1);
+		expect(isNewMessageGroup(channel, m1, m2)).toBe(false);
+	});
+
+	it('starts new group when transitioning from root account to subprofile', () => {
+		const m1 = message(ID.first, 0);
+		const m2 = message(ID.second, 1);
+		(m2 as any).subprofile = {id: 'alice', name: 'Alice'};
+		expect(isNewMessageGroup(channel, m1, m2)).toBe(true);
+	});
+
+	it('groups consecutive messages from the same subprofile', () => {
+		const m1 = message(ID.first, 0);
+		(m1 as any).subprofile = {id: 'alice', name: 'Alice'};
+		const m2 = message(ID.second, 1);
+		(m2 as any).subprofile = {id: 'alice', name: 'Alice'};
+		expect(isNewMessageGroup(channel, m1, m2)).toBe(false);
+	});
+
+	it('starts new group when transitioning from one subprofile to another', () => {
+		const m1 = message(ID.first, 0);
+		(m1 as any).subprofile = {id: 'alice', name: 'Alice'};
+		const m2 = message(ID.second, 1);
+		(m2 as any).subprofile = {id: 'bob', name: 'Bob'};
+		expect(isNewMessageGroup(channel, m1, m2)).toBe(true);
+	});
+
+	it('starts new group when transitioning from subprofile back to root account', () => {
+		const m1 = message(ID.first, 0);
+		(m1 as any).subprofile = {id: 'alice', name: 'Alice'};
+		const m2 = message(ID.second, 1);
+		expect(isNewMessageGroup(channel, m1, m2)).toBe(true);
 	});
 });
