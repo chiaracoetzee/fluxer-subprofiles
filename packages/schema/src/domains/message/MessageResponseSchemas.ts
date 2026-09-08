@@ -10,6 +10,10 @@ import {ChannelResponse, ThreadChannelResponse} from '@fluxer/schema/src/domains
 import {ThreadMemberResponse} from '@fluxer/schema/src/domains/channel/ThreadSchemas';
 import type {GuildMemberData} from '@fluxer/schema/src/domains/guild/GuildMemberSchemas';
 import {type MessageEmbed, MessageEmbedResponse} from '@fluxer/schema/src/domains/message/EmbedSchemas';
+import {
+	type MessageSubprofileResponse,
+	MessageSubprofileResponseSchema,
+} from '@fluxer/schema/src/domains/subprofile/SubprofileSchemas';
 import {type UserPartial, UserPartialResponse} from '@fluxer/schema/src/domains/user/UserResponseSchemas';
 import {MessageReferenceTypeSchema, MessageTypeSchema} from '@fluxer/schema/src/primitives/MessageValidators';
 import {
@@ -18,6 +22,8 @@ import {
 	NonNegativeSafeIntegerType,
 	SnowflakeStringType,
 } from '@fluxer/schema/src/primitives/SchemaPrimitives';
+export {MessageSubprofileResponseSchema, type MessageSubprofileResponse};
+
 import {z} from 'zod';
 
 export const MessageAttachmentResponse = z.object({
@@ -161,6 +167,7 @@ const MessageBaseResponseSchema = z.object({
 		.lazy(() => ThreadChannelResponse)
 		.optional()
 		.describe('The thread started from this message, when the viewer can see threads'),
+	subprofile: MessageSubprofileResponseSchema.nullish().describe('Optional subprofile persona information'),
 });
 
 type MessageBaseResponse = z.infer<typeof MessageBaseResponseSchema>;
@@ -364,6 +371,7 @@ export interface Message {
 	readonly blocked?: boolean;
 	readonly _allowedMentions?: AllowedMentions;
 	readonly _favoriteMemeId?: string;
+	readonly subprofile?: MessageSubprofileResponse | null;
 }
 
 export const MessagePurgeResponse = z.object({deleted_count: z.number().int().nonnegative()});

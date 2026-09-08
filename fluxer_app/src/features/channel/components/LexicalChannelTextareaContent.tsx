@@ -106,6 +106,7 @@ import {
 } from '@app/features/messaging/utils/TypedEmojiShortcodeUtils';
 import {ComponentBus} from '@app/features/platform/utils/ComponentBus';
 import {useSlowmode} from '@app/features/slowmode/hooks/useSlowmode';
+import {SubprofileComposerPill} from '@app/features/subprofile/components/SubprofileComposerPill';
 import {openCreateThread} from '@app/features/threads/commands/ThreadNavigation';
 import ActiveComposer from '@app/features/threads/state/ActiveComposer';
 import {canStartThreadIn} from '@app/features/threads/utils/ThreadActionRules';
@@ -1394,6 +1395,7 @@ export const LexicalChannelTextareaContent = observer(
 										ref={plusButtonRef}
 										data-flx="channel.lexical-channel-textarea-content.plus-button-above-backdrop.clear-slash-command"
 									/>
+									<SubprofileComposerPill channelId={channel.id} />
 								</flx-channel-textarea-upload-column>
 							)}
 							<flx-channel-textarea-content
