@@ -35,6 +35,7 @@ import {
 import {retryFailedMessage} from '@app/features/messaging/utils/MessageRetryUtils';
 import {NodeType} from '@app/features/messaging/utils/markdown/parser/Enums';
 import {SpoilerSyncProvider} from '@app/features/messaging/utils/SpoilerUtils';
+import {SubprofileStore} from '@app/features/subprofile/state/SubprofileStore';
 import {compactMarkdownProps} from '@app/features/theme/layout/MessageLayoutAttributes';
 import markupStyles from '@app/features/theme/styles/Markup.module.css';
 import styles from '@app/features/theme/styles/Message.module.css';
@@ -220,13 +221,23 @@ export const UserMessage = observer(() => {
 				return;
 			}
 			finishEditing();
-			void MessageCommands.edit(channel.id, message.id, content, undefined, message._allowedMentions);
+			const editMatch = SubprofileStore.matchEditMessage(content, message.subprofile);
+			void MessageCommands.edit(
+				channel.id,
+				message.id,
+				editMatch.finalContent,
+				undefined,
+				message._allowedMentions,
+				undefined,
+				editMatch.subprofile,
+			);
 		},
 		[
 			channel.id,
 			handleDelete,
 			message,
 			message.id,
+			message.subprofile,
 			message.messageSnapshots,
 			message._allowedMentions,
 			message.content,
