@@ -89,7 +89,7 @@ export const MessageUsername = observer(
 			);
 		}
 		return (
-			<PreloadableUserPopout
+		<PreloadableUserPopout
 				user={user}
 				isWebhook={message.webhookId != null}
 				webhookId={message.webhookId ?? undefined}
