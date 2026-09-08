@@ -96,6 +96,7 @@ const AvatarComponent = React.forwardRef<HTMLDivElement, AvatarProps>(
 		]);
 		const hoverAvatarUrl = useMemo(() => {
 			if (customHoverAvatarUrl !== undefined) return customHoverAvatarUrl;
+			if (customAvatarUrl !== undefined) return customAvatarUrl;
 			if (systemAvatarUrl !== null) return systemAvatarUrl;
 			if (guildId && hasGuildMemberAvatarSource) {
 				return AvatarUtils.getGuildMemberDisplayAvatarURL({
@@ -110,6 +111,7 @@ const AvatarComponent = React.forwardRef<HTMLDivElement, AvatarProps>(
 			return AvatarUtils.getUserAvatarURL({id: userId, avatar: userAvatar}, true, mediaSize);
 		}, [
 			customHoverAvatarUrl,
+			customAvatarUrl,
 			guildId,
 			hasGuildMemberAvatarSource,
 			memberAvatar,
