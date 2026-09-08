@@ -51,6 +51,7 @@ import {ArrowsClockwiseIcon, BellSlashIcon, EyeIcon, WarningCircleIcon} from '@p
 import {clsx} from 'clsx';
 import {observer} from 'mobx-react-lite';
 import {type MouseEvent, useCallback, useMemo} from 'react';
+import { MessageSubprofileAccount } from './MessageSubprofileAccount';
 
 const JUMP_TO_MESSAGE_FROM_SENT_DESCRIPTOR = msg({
 	message: 'Jump to message from {displayName}, sent {formattedDate}',
@@ -571,6 +572,18 @@ export const UserMessage = observer(() => {
 										data-flx="channel.user-message.message-timeout-indicator"
 									/>
 									<MessageUsername
+										user={author}
+										message={message}
+										guild={guild}
+										member={member ?? undefined}
+										className={styles.messageUsername}
+										isPreview={!!previewContext}
+										previewColor={previewOverrides?.usernameColor}
+										previewName={previewOverrides?.displayName}
+										data-flx="channel.user-message.message-username--2"
+									/>
+									{/* TODO: via + user icon here */}
+									<MessageSubprofileAccount
 										user={author}
 										message={message}
 										guild={guild}
