@@ -418,6 +418,17 @@ describe('ReactionStateMachine: complex scenarios', () => {
 		m = add(m, FIRE, ALICE);
 		expect(getRecord(m, FIRE)!.count).toBe(1);
 	});
+	it('preserves reaction count when another user removes their reaction', () => {
+		let m = add(emptyMap(), FIRE, ME, true);
+		m = add(m, FIRE, ALICE, false);
+		expect(getRecord(m, FIRE)!.count).toBe(2);
+		expect(getRecord(m, FIRE)!.me).toBe(true);
+
+		m = remove(m, FIRE, ALICE, false);
+		expect(getRecord(m, FIRE)!.count).toBe(1);
+		expect(getRecord(m, FIRE)!.me).toBe(true);
+		expect(getRecord(m, FIRE)!.removedReactors.has(ALICE)).toBe(true);
+	});
 });
 
 describe('ReactionStateMachine: XState transition surface', () => {

@@ -132,7 +132,7 @@ function hydrateMessage(
 	}
 	const current = channelMessages.get(wire.id);
 	if (!current || channelMessages.cached || shouldUseIncoming(current, raw)) {
-		return new Message(wire, {missingReactions});
+		return new Message(wire, {missingReactions, skipReactionHydration: true});
 	}
 	return current;
 }
