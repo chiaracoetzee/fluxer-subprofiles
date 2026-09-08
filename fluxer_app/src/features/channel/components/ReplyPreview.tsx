@@ -12,6 +12,7 @@ import {goToMessage} from '@app/features/messaging/utils/MessageNavigator';
 import LocalUserSpamOverride from '@app/features/moderation/state/LocalUserSpamOverride';
 import markupStyles from '@app/features/theme/styles/Markup.module.css';
 import styles from '@app/features/theme/styles/Message.module.css';
+import * as ColorUtils from '@app/features/theme/utils/ColorUtils';
 import {Avatar} from '@app/features/ui/components/Avatar';
 import FocusRing from '@app/features/ui/focus_ring/FocusRing';
 import * as NicknameUtils from '@app/features/user/utils/NicknameUtils';
@@ -162,6 +163,18 @@ export const ReplyPreview = observer(
 				</div>
 			);
 		}
+		const repliedName =
+			referencedMessage.subprofile?.name ||
+			NicknameUtils.getNickname(referencedMessage.author, resolvedGuildId);
+		const repliedColor =
+			(referencedMessage.subprofile?.color != null
+				? ColorUtils.int2rgb(referencedMessage.subprofile.color)
+				: undefined) ??
+			GuildMembers.getMember(
+				resolvedGuildId ?? '',
+				referencedMessage.author.id,
+			)?.getColorString();
+
 		return (
 			<div
 				className={clsx(styles.repliedMessage, messageDisplayCompact && styles.repliedMessageCompact)}
@@ -181,6 +194,7 @@ export const ReplyPreview = observer(
 					>
 						<Avatar
 							user={referencedMessage.author}
+							avatarUrl={referencedMessage.subprofile?.avatar ?? undefined}
 							size={16}
 							className={styles.repliedAvatar}
 							guildId={resolvedGuildId}
@@ -213,17 +227,14 @@ export const ReplyPreview = observer(
 						className={styles.repliedUsername}
 						style={
 							{
-								'--replied-username-color': GuildMembers.getMember(
-									resolvedGuildId ?? '',
-									referencedMessage.author.id,
-								)?.getColorString(),
+								'--replied-username-color': repliedColor,
 							} as CSSProperties
 						}
 						data-user-id={referencedMessage.author.id}
 						data-guild-id={resolvedGuildId}
 						data-flx="channel.reply-preview.replied-username"
 					>
-						{`${message.mentions.some((mention) => mention.id === referencedMessage.author.id) ? '@' : ''}${NicknameUtils.getNickname(referencedMessage.author, resolvedGuildId)}`}
+						{`${message.mentions.some((mention) => mention.id === referencedMessage.author.id) ? '@' : ''}${repliedName}`}
 					</span>
 				</PreloadableUserPopout>
 				<FocusRing offset={-2} data-flx="channel.reply-preview.focus-ring">
