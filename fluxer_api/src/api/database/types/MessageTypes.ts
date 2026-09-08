@@ -149,6 +149,18 @@ export interface MessageRow {
 	call: Nullish<MessageCall>;
 	has_reaction: Nullish<boolean>;
 	version: number;
+	subprofile?: Nullish<MessageSubprofileRow>;
+}
+
+export interface MessageSubprofileRow {
+	id: string;
+	name: string;
+	avatar?: Nullish<string>;
+	avatar_color?: Nullish<number>;
+	system_name?: Nullish<string>;
+	pronouns?: Nullish<string>;
+	color?: Nullish<number>;
+	bio?: Nullish<string>;
 }
 
 export const MESSAGE_COLUMNS = [
@@ -176,6 +188,7 @@ export const MESSAGE_COLUMNS = [
 	'call',
 	'has_reaction',
 	'version',
+	'subprofile',
 ] as const satisfies ReadonlyArray<keyof MessageRow>;
 
 export interface ChannelPinRow {

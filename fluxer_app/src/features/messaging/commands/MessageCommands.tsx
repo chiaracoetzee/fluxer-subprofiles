@@ -87,6 +87,10 @@ import {msg} from '@lingui/core/macro';
 import {useLingui} from '@lingui/react/macro';
 import {observer} from 'mobx-react-lite';
 
+// Fork imports.
+
+import type {MessageSubprofileRequest} from '@fluxer/schema/src/domains/subprofile/SubprofileSchemas';
+
 const ARE_YOU_SURE_YOU_WANT_TO_DELETE_THIS_DESCRIPTOR = msg({
 	message: "Delete this message? Can't be undone.",
 	comment: 'Error message in the messaging commands. Keep the tone plain and specific.',
@@ -357,6 +361,7 @@ interface SendMessageParams {
 	favoriteMemeId?: string;
 	stickers?: Array<MessageStickerItem>;
 	tts?: boolean;
+	subprofile?: MessageSubprofileRequest | null;
 }
 
 export function jumpToLiveEdge(channelId: string, limit = MAX_MESSAGES_PER_CHANNEL): void {
@@ -622,6 +627,7 @@ export async function send(channelId: string, params: SendMessageParams): Promis
 		favoriteMemeId: params.favoriteMemeId,
 		stickers: params.stickers,
 		tts: params.tts,
+		subprofile: params.subprofile,
 	};
 	if (params.hasAttachments) {
 		logger.debug(`Sending attachment message immediately for channel ${channelId}`);
@@ -758,18 +764,22 @@ export async function edit(
 	flags?: number,
 	allowedMentions?: AllowedMentions,
 	attachments?: Array<ApiMessageEditAttachmentMetadata>,
+	subprofile?: MessageSubprofileRequest | null,
 ): Promise<WireMessage | null> {
 	logger.debug(`Editing message ${messageId} in channel ${channelId}`);
 	const isPublished = Messages.getMessage(channelId, messageId)?.isCrossposted === true;
 	try {
 		const response = await http.patch<WireMessage>(Endpoints.CHANNEL_MESSAGE(channelId, messageId), {
-			body: buildMessageEditRequest({content, flags, allowedMentions, attachments}),
+			body: buildMessageEditRequest({content, flags, allowedMentions, attachments, subprofile}),
 			mode: isPublished ? 'strict' : 'auto-retry',
 			retries: MESSAGE_EDIT_MAX_RETRIES,
 			timeoutMs: MESSAGE_EDIT_TIMEOUT_MS,
 			suppressContentBlockedModal: true,
 		});
 		logger.debug(`Message edited successfully: ${messageId} in channel ${channelId}`);
+		if (response.body) {
+			Messages.handleMessageUpdate({message: response.body});
+		}
 		return response.body ?? null;
 	} catch (error) {
 		logger.error(`Message edit failed: ${messageId} in channel ${channelId}`, error);
