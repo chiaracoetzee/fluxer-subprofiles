@@ -128,6 +128,10 @@ import {observer} from 'mobx-react-lite';
 import type React from 'react';
 import {useCallback, useEffect, useId, useLayoutEffect, useMemo, useRef, useState} from 'react';
 
+// Fork imports.
+
+import {SubprofileComposerPill} from '@app/features/subprofile/components/SubprofileComposerPill';
+
 const PLUS_MENU_DOUBLE_CLICK_MS = 500;
 const MESSAGE_SCROLLER_SELECTOR = '[data-flx="channel.messages.scroller"][data-fluxer-scroll-container="true"]';
 const MESSAGE_SCROLLER_BOTTOM_THRESHOLD = 16;
@@ -1394,6 +1398,7 @@ export const LexicalChannelTextareaContent = observer(
 										ref={plusButtonRef}
 										data-flx="channel.lexical-channel-textarea-content.plus-button-above-backdrop.clear-slash-command"
 									/>
+									<SubprofileComposerPill channelId={channel.id} />
 								</flx-channel-textarea-upload-column>
 							)}
 							<flx-channel-textarea-content

@@ -17,6 +17,10 @@ import type {MessagePreviewContext} from '@fluxer/constants/src/ChannelConstants
 import {observer} from 'mobx-react-lite';
 import {useMemo} from 'react';
 
+// Fork imports.
+
+import {SubprofileTag} from '@app/features/subprofile/components/SubprofileTag';
+
 interface MessageAuthorInfoProps {
 	message: Message;
 	author: User;
@@ -119,6 +123,7 @@ export const MessageAuthorInfo = observer((props: MessageAuthorInfoProps) => {
 									data-flx="channel.message-author-info.user-tag-offset--op1"
 								/>
 							)}
+							{message.subprofile && <SubprofileTag subprofile={message.subprofile} rootUser={author} />}
 						</span>
 						<TimestampWithTooltip
 							date={message.timestamp}
