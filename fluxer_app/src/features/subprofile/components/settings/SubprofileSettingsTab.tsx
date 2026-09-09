@@ -18,6 +18,7 @@ import {useState} from 'react';
 import {type AutoproxyMode, SubprofileStore} from '../../state/SubprofileStore';
 import {openPluralKitImportModal} from '../modals/PluralKitImportModal';
 import styles from './SubprofileSettingsTab.module.css';
+import { Button } from '@app/features/ui/button/Button';
 
 const AUTOPROXY_TABS: Array<SegmentedTab<AutoproxyMode>> = [
 	{id: 'off', label: 'Off'},
@@ -229,10 +230,10 @@ export const SubprofileSettingsTab: React.FC = observer(() => {
 					>
 						<div className={styles.sectionHeader}>
 							<div>
-								<div className={styles.sectionTitle}>Autoproxy Mode</div>
-								<div className={styles.sectionDescription}>
+								<h4 className={styles.sectionTitle}>Autoproxy Mode</h4>
+								<p className={styles.sectionDescription}>
 									Choose how untagged messages and proxy prefixes interact with your active subprofile.
-								</div>
+								</p>
 							</div>
 						</div>
 						<div className={styles.modeControlWrapper}>
@@ -395,14 +396,14 @@ export const SubprofileSettingsTab: React.FC = observer(() => {
 						actions={
 							!isEditing && (
 								<div style={{display: 'flex', gap: 8}}>
-									<button type="button" className={styles.secondaryButton} onClick={openPluralKitImportModal}>
+									<Button variant="secondary" onClick={openPluralKitImportModal}>
 										<UploadSimple size={16} style={{marginRight: 6, verticalAlign: 'text-bottom'}} />
 										Import from PluralKit
-									</button>
-									<button type="button" className={styles.primaryButton} onClick={handleStartAdd}>
+									</Button>
+									<Button variant="primary" onClick={handleStartAdd}>
 										<Plus size={16} style={{marginRight: 6, verticalAlign: 'text-bottom'}} />
 										Add Subprofile
-									</button>
+									</Button>
 								</div>
 							)
 						}
@@ -444,11 +445,10 @@ export const SubprofileSettingsTab: React.FC = observer(() => {
 												</div>
 											</div>
 											<div className={styles.cardActions}>
-												<button
-													type="button"
-													className={styles.actionButton}
+												<Button
+													variant="secondary"
 													onClick={() => handleToggleActive(persona.id)}
-													title={isThisActive ? 'Unlatch active persona' : 'Latch this persona'}
+													aria-label={isThisActive ? 'Unlatch active persona' : 'Latch this persona'}
 												>
 													{isThisActive ? (
 														<>
@@ -459,23 +459,21 @@ export const SubprofileSettingsTab: React.FC = observer(() => {
 															<LockSimpleOpen size={14} /> Latch
 														</>
 													)}
-												</button>
-												<button
-													type="button"
-													className={styles.actionButton}
+												</Button>
+												<Button
+													variant="secondary"
 													onClick={() => handleStartEdit(persona)}
-													title="Edit persona"
+													aria-label="Edit persona"
 												>
 													<PencilSimple size={14} /> Edit
-												</button>
-												<button
-													type="button"
-													className={clsx(styles.actionButton, styles.deleteButton)}
+												</Button>
+												<Button
+													variant="danger"
 													onClick={() => handleDeletePersona(persona.id)}
-													title="Delete persona"
+													aria-label="Delete persona"
 												>
 													<Trash size={14} /> Delete
-												</button>
+												</Button>
 											</div>
 										</div>
 									);
