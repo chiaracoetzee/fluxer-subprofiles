@@ -24,15 +24,13 @@ export const MessageSubprofileAccount = observer(
 		guild,
 		member,
 		className,
-		previewColor,
-		previewName,
 	}: {
 		user: User;
 		message: Message;
 		guild?: Guild;
 		member?: GuildMember;
-		className: string;
-		isPreview: boolean;
+		className?: string;
+		isPreview?: boolean;
 		previewColor?: string;
 		previewName?: string;
 	}) => {
@@ -87,7 +85,7 @@ export const MessageSubprofileAccount = observer(
 									message={message}
 									guildId={guild?.id}
 									size={16}
-									className={clsx(styles.messageAvatarCompact, styles.messageSubprofileMainAvatar)}
+									className={clsx(styles.messageAvatarCompact, styles.messageSubprofileMainAvatar, className)}
 									isHovering={/*isHovering*/ false}
 									isPreview={/*!!previewContext*/ false}
 									ignoreSubprofile={true}
