@@ -596,17 +596,14 @@ export const UserMessage = observer(() => {
 										previewName={previewOverrides?.displayName}
 										data-flx="channel.user-message.message-username--2"
 									/>
-									{/* TODO: via + user icon here */}
 									<MessagePersonaAccount
 										user={author}
 										message={message}
 										guild={guild}
 										member={member ?? undefined}
-										className={styles.messageUsername}
 										isPreview={!!previewContext}
 										previewColor={previewOverrides?.usernameColor}
 										previewName={previewOverrides?.displayName}
-										data-flx="channel.user-message.message-username--2"
 									/>
 									{author.bot && (
 										<UserTag
@@ -706,6 +703,15 @@ export const UserMessage = observer(() => {
 									previewColor={previewOverrides?.usernameColor}
 									previewName={previewOverrides?.displayName}
 									data-flx="channel.user-message.message-username--3"
+								/>
+								<MessagePersonaAccount
+									user={author}
+									message={message}
+									guild={guild}
+									member={member ?? undefined}
+									isPreview={!!previewContext}
+									previewColor={previewOverrides?.usernameColor}
+									previewName={previewOverrides?.displayName}
 								/>
 								{author.bot && (
 									<UserTag
