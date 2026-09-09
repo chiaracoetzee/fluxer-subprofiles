@@ -89,6 +89,7 @@ import {observer} from 'mobx-react-lite';
 
 // Fork imports.
 
+import MessageChangePersona from '../state/MessageChangePersona';
 import type {MessageSubprofileRequest} from '@fluxer/schema/src/domains/persona/PersonaSchemas';
 
 const ARE_YOU_SURE_YOU_WANT_TO_DELETE_THIS_DESCRIPTOR = msg({
@@ -1014,6 +1015,10 @@ export function startEdit(channelId: string, messageId: string, initialContent: 
 	const draftContent = Accessibility.preserveEditDraft ? MessageEdit.getDraftContent(messageId) : null;
 	const contentToUse = draftContent ?? initialContent;
 	MessageEdit.startEditing(channelId, messageId, contentToUse);
+}
+
+export function changePersona(channelId: string, messageId: string): void {
+	MessageChangePersona.startChangePersona(channelId, messageId);
 }
 
 export function stopEdit(channelId: string): void {
