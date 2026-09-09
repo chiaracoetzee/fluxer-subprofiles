@@ -24,7 +24,7 @@ import {
 import {
 	type MessageSubprofileResponse,
 	MessageSubprofileResponseSchema,
-} from '@fluxer/schema/src/domains/subprofile/SubprofileSchemas';
+} from '@fluxer/schema/src/domains/persona/PersonaSchemas';
 export {MessageSubprofileResponseSchema, type MessageSubprofileResponse};
 
 import {z} from 'zod';
