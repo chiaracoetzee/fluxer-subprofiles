@@ -8,21 +8,21 @@ import {LockSimple} from '@phosphor-icons/react';
 import {clsx} from 'clsx';
 import {observer} from 'mobx-react-lite';
 import type React from 'react';
-import {SubprofileStore} from '../state/SubprofileStore';
-import styles from './SubprofileComposerPill.module.css';
-import {SubprofilePickerSheet} from './SubprofilePickerSheet';
+import {PersonaStore} from '../state/PersonaStore';
+import styles from './PersonaComposerPill.module.css';
+import {PersonaPickerSheet} from './PersonaPickerSheet';
 
-interface SubprofileComposerPillProps {
+interface PersonaComposerPillProps {
 	channelId?: string;
 	className?: string;
 }
 
-export const SubprofileComposerPill: React.FC<SubprofileComposerPillProps> = observer(({className}) => {
+export const PersonaComposerPill: React.FC<PersonaComposerPillProps> = observer(({className}) => {
 	const currentUser = Users.getCurrentUser();
-	const personas = SubprofileStore.personas;
-	const activePersona = SubprofileStore.activePersona;
-	const isLatched = SubprofileStore.autoproxyLatched && Boolean(activePersona);
-	const mode = SubprofileStore.autoproxyMode;
+	const personas = PersonaStore.personas;
+	const activePersona = PersonaStore.activePersona;
+	const isLatched = PersonaStore.isPersonaLatched && Boolean(activePersona);
+	const mode = PersonaStore.activePersonaMode;
 
 	// Hide if user has no personas configured
 	if (!currentUser || personas.length === 0) {
@@ -33,17 +33,17 @@ export const SubprofileComposerPill: React.FC<SubprofileComposerPillProps> = obs
 	const modeLabel = mode === 'last' ? 'Last Used' : mode === 'manual' ? 'Manual' : 'Off';
 	const tooltipText =
 		isLatched && activePersona
-			? `${activePersona.name} (${modeLabel}) - Click to switch subprofile`
-			: `Sending as @${currentUser.username} (Off) - Click to switch subprofile`;
+			? `${activePersona.name} (${modeLabel}) - Click to switch persona`
+			: `Sending as @${currentUser.username} (Off) - Click to switch persona`;
 
 	return (
-		<div className={clsx(styles.pillContainer, className)} data-flx="subprofile.composer-pill">
+		<div className={clsx(styles.pillContainer, className)} data-flx="persona.composer-pill">
 			<Popout
 				position="top-start"
 				offsetMainAxis={8}
 				tooltip={tooltipText}
 				tooltipPosition="top"
-				render={({onClose}) => <SubprofilePickerSheet onClose={onClose} />}
+				render={({onClose}) => <PersonaPickerSheet onClose={onClose} />}
 			>
 				<FocusRing offset={-2}>
 					<button
@@ -63,3 +63,5 @@ export const SubprofileComposerPill: React.FC<SubprofileComposerPillProps> = obs
 		</div>
 	);
 });
+
+export const SubprofileComposerPill = PersonaComposerPill;
