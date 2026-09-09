@@ -17,7 +17,7 @@ import type React from 'react';
 import {useCallback, useRef} from 'react';
 import { MessageAvatar } from './MessageAvatar';
 
-export const MessageSubprofileAccount = observer(
+export const MessagePersonaAccount = observer(
 	({
 		user,
 		message,
@@ -94,3 +94,5 @@ export const MessageSubprofileAccount = observer(
 		</>);
 	},
 );
+
+export const MessageSubprofileAccount = MessagePersonaAccount;
