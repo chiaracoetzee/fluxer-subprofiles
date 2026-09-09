@@ -73,8 +73,8 @@ export type ParsedCommand =
 			query: string;
 	  }
 	| {
-			type: 'subprofile';
-			subprofile: string;
+			type: 'persona';
+			persona: string;
 	  }
 	| {
 			type: 'unknown';
@@ -165,16 +165,12 @@ export function parseCommand(content: string): ParsedCommand {
 			return {type, query};
 		}
 	}
-	if (trimmed === '/subprofile' || trimmed === '/persona') {
-		return {type: 'subprofile', subprofile: ''};
-	}
-	if (trimmed.startsWith('/subprofile ')) {
-		const subprofile = trimmed.slice(12).trim();
-		return {type: 'subprofile', subprofile};
+	if (trimmed === '/persona') {
+		return {type: 'persona', persona: ''};
 	}
 	if (trimmed.startsWith('/persona ')) {
-		const subprofile = trimmed.slice(9).trim();
-		return {type: 'subprofile', subprofile};
+		const persona = trimmed.slice(9).trim();
+		return {type: 'persona', persona};
 	}
 	return {type: 'unknown'};
 }
@@ -213,7 +209,8 @@ export function isCommand(content: string): boolean {
 		trimmed.startsWith('/sticker ') ||
 		trimmed === '/gif' ||
 		trimmed.startsWith('/gif ') ||
-		trimmed.startsWith('/subprofile ') ||
+		trimmed === '/persona' ||
+		trimmed.startsWith('/persona ') ||
 		(trimmed.startsWith('_') && trimmed.endsWith('_') && trimmed.length > 2)
 	);
 }
@@ -376,8 +373,8 @@ export async function executeCommand(
 		case 'gif': {
 			throw new Error(`Select a ${command.type} result before submitting the command`);
 		}
-		case 'subprofile': {
-			if (!command.subprofile) {
+		case 'persona': {
+			if (!command.persona) {
 				const systemMessage = createSystemMessage(
 					channelId,
 					'Persona deselected.',
@@ -385,13 +382,13 @@ export async function executeCommand(
 				PersonaStore.setActivePersona(null);
 				MessageCommands.createOptimistic(channelId, systemMessage.toJSON());
 			} else {
-				const persona = PersonaStore.personas.find((v) => v.id === command.subprofile);
+				const persona = PersonaStore.personas.find((v) => v.id === command.persona);
 				if (persona) {
 					const systemMessage = createSystemMessage(
 						channelId,
 						`Persona "${persona.name}" selected.`,
 					);
-					PersonaStore.setActivePersona(command.subprofile);
+					PersonaStore.setActivePersona(command.persona);
 					MessageCommands.createOptimistic(channelId, systemMessage.toJSON());
 				}
 			}

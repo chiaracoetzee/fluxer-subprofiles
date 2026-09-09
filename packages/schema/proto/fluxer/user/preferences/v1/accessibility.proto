@@ -32,7 +32,7 @@ message AccessibilitySettings {
   optional bool show_memes_button = 22;
   optional bool show_stickers_button = 23;
   optional bool show_emoji_button = 24;
-	optional bool show_subprofiles_button = 2221;
+  optional bool show_personas_button = 2221;
 
   optional bool show_media_favorite_button = 25;
   optional bool show_media_download_button = 26;
