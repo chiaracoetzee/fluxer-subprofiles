@@ -12,7 +12,6 @@ import {goToMessage} from '@app/features/messaging/utils/MessageNavigator';
 import LocalUserSpamOverride from '@app/features/moderation/state/LocalUserSpamOverride';
 import markupStyles from '@app/features/theme/styles/Markup.module.css';
 import styles from '@app/features/theme/styles/Message.module.css';
-import * as ColorUtils from '@app/features/theme/utils/ColorUtils';
 import {Avatar} from '@app/features/ui/components/Avatar';
 import FocusRing from '@app/features/ui/focus_ring/FocusRing';
 import * as NicknameUtils from '@app/features/user/utils/NicknameUtils';
@@ -166,14 +165,10 @@ export const ReplyPreview = observer(
 		const repliedName =
 			referencedMessage.subprofile?.name ||
 			NicknameUtils.getNickname(referencedMessage.author, resolvedGuildId);
-		const repliedColor =
-			(referencedMessage.subprofile?.color != null
-				? ColorUtils.int2rgb(referencedMessage.subprofile.color)
-				: undefined) ??
-			GuildMembers.getMember(
-				resolvedGuildId ?? '',
-				referencedMessage.author.id,
-			)?.getColorString();
+		const repliedColor = GuildMembers.getMember(
+			resolvedGuildId ?? '',
+			referencedMessage.author.id,
+		)?.getColorString();
 
 		return (
 			<div
