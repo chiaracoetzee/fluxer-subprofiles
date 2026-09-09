@@ -265,7 +265,7 @@ export const PluralKitImportModal: React.FC<PluralKitImportModalProps> = observe
 									}
 								}}
 							>
-								<UploadSimple size={36} style={{color: 'var(--brand-experiment)'}} />
+								<UploadSimple size={36} style={{color: 'var(--brand-primary)'}} />
 								<div className={styles.dropzoneText}>
 									{fileName ? fileName : 'Choose a PluralKit export (.json) or drag & drop'}
 								</div>
@@ -385,7 +385,7 @@ export const PluralKitImportModal: React.FC<PluralKitImportModalProps> = observe
 					{step === 'completed' && (
 						<>
 							<div className={styles.successBox}>
-								<CheckCircle size={36} style={{color: 'var(--status-positive)', marginBottom: 8}} />
+								<CheckCircle size={36} style={{color: 'var(--accent-success)', marginBottom: 8}} />
 								<div className={styles.successTitle}>Import Complete!</div>
 								<div className={styles.successDesc}>
 									Successfully imported {importResults.successCount} subprofile(s) into your account. All avatar images
@@ -407,7 +407,7 @@ export const PluralKitImportModal: React.FC<PluralKitImportModalProps> = observe
 											<div key={idx} className={styles.warningItem}>
 												<div className={styles.warningItemName}>
 													{w.displayName}{' '}
-													<span style={{fontWeight: 400, color: 'var(--text-muted)'}}>(Prefix: {w.prefix})</span>
+													<span style={{fontWeight: 400, color: 'var(--text-primary-muted)'}}>(Prefix: {w.prefix})</span>
 												</div>
 												<div className={styles.warningItemDetail}>{w.reason}</div>
 											</div>
