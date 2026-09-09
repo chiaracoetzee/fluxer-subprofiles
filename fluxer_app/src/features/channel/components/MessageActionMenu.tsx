@@ -74,9 +74,8 @@ import {useCallback, useEffect, useMemo, useState} from 'react';
 // Fork imports.
 
 import {CHANGE_PERSONA_DESCRIPTOR} from '@app/features/i18n/utils/CommonMessageDescriptors';
-import {PersonaStore, SubprofileStore} from '@app/features/persona/state/PersonaStore';
+import {PersonaStore} from '@app/features/persona/state/PersonaStore';
 import {ChangePersonasIcon} from '@app/features/ui/action_menu/ContextMenuIcons';
-import {UsersIcon} from '@phosphor-icons/react';
 
 const MESSAGE_DEBUG_DESCRIPTOR = msg({
 	message: 'Message debug',
