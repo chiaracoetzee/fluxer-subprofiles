@@ -22,14 +22,18 @@ const ACTIVE_PERSONA_TABS: Array<SegmentedTab<ActivePersonaMode>> = [
 
 interface PersonaPickerSheetProps {
 	onClose: () => void;
+	selectedPersonaId?: string;
+	showModes?: boolean;
+	onSelectPersona: (id: string) => void;
+	onSelectAccount: () => void;
 }
 
-export const PersonaPickerSheet: React.FC<PersonaPickerSheetProps> = observer(({onClose}) => {
+export const PersonaPickerSheet: React.FC<PersonaPickerSheetProps> = observer(({onClose, selectedPersonaId, showModes = false, onSelectPersona, onSelectAccount}) => {
 	const [query, setQuery] = useState('');
 	const currentUser = Users.getCurrentUser();
 	const personas = PersonaStore.personas;
-	const activePersonaId = PersonaStore.activePersonaId;
-	const isLatched = PersonaStore.isPersonaLatched;
+	const activePersonaId = selectedPersonaId || (selectedPersonaId === "" ? null : PersonaStore.activePersonaId);
+	const isLatched = selectedPersonaId ? true : PersonaStore.isPersonaLatched;
 	const activePersonaMode = PersonaStore.activePersonaMode;
 	const rankedPersonas = PersonaStore.rankedPersonas;
 
@@ -52,12 +56,12 @@ export const PersonaPickerSheet: React.FC<PersonaPickerSheetProps> = observer(({
 	}, [rankedPersonas, query]);
 
 	const handleSelectPersona = (id: string) => {
-		void PersonaStore.setActivePersona(id, true);
+		onSelectPersona(id);
 		onClose();
 	};
 
 	const handleResetToRoot = () => {
-		void PersonaStore.unlatch();
+		onSelectAccount();
 		onClose();
 	};
 
@@ -81,7 +85,7 @@ export const PersonaPickerSheet: React.FC<PersonaPickerSheetProps> = observer(({
 				</div>
 			</div>
 
-			<div className={styles.modeTabsWrapper}>
+			{showModes && <div className={styles.modeTabsWrapper}>
 				<SegmentedTabs<ActivePersonaMode>
 					className={styles.segmentedTabs}
 					tabs={ACTIVE_PERSONA_TABS}
@@ -91,7 +95,7 @@ export const PersonaPickerSheet: React.FC<PersonaPickerSheetProps> = observer(({
 					}}
 					ariaLabel="Active persona mode"
 				/>
-			</div>
+			</div>}
 
 			<div className={styles.listScrollArea}>
 				{/* Reset to Root Account */}
