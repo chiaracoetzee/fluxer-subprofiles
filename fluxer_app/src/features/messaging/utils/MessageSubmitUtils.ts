@@ -15,7 +15,7 @@ import type {
 	MessageReference,
 	MessageStickerItem,
 } from '@fluxer/schema/src/domains/message/MessageResponseSchemas';
-import type {MessageSubprofileRequest} from '@fluxer/schema/src/domains/subprofile/SubprofileSchemas';
+import type {MessageSubprofileRequest} from '@fluxer/schema/src/domains/persona/PersonaSchemas';
 
 interface MessageSubmitData {
 	content: string;

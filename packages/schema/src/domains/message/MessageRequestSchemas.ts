@@ -8,7 +8,7 @@ import {
 	ClientUploadedAttachmentRequest,
 } from '@fluxer/schema/src/domains/message/AttachmentSchemas';
 import {AllowedMentionsRequest, MessageReferenceRequest} from '@fluxer/schema/src/domains/message/SharedMessageSchemas';
-import {MessageSubprofileRequestSchema} from '@fluxer/schema/src/domains/subprofile/SubprofileSchemas';
+import {MessageSubprofileRequestSchema} from '@fluxer/schema/src/domains/persona/PersonaSchemas';
 import {createQueryIntegerType, DateTimeType} from '@fluxer/schema/src/primitives/QueryValidators';
 import {
 	ColorType,
