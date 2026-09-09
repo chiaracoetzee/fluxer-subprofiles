@@ -18,16 +18,15 @@ import {
 	NonNegativeSafeIntegerType,
 	SnowflakeStringType,
 } from '@fluxer/schema/src/primitives/SchemaPrimitives';
+import {z} from 'zod';
 
 // Fork imports.
 
 import {
 	type MessageSubprofileResponse,
 	MessageSubprofileResponseSchema,
-} from '@fluxer/schema/src/domains/subprofile/SubprofileSchemas';
+} from '@fluxer/schema/src/domains/persona/PersonaSchemas';
 export {MessageSubprofileResponseSchema, type MessageSubprofileResponse};
-
-import {z} from 'zod';
 
 export const MessageAttachmentResponse = z.object({
 	id: SnowflakeStringType.describe('The unique identifier for this attachment'),
