@@ -49,8 +49,9 @@ export const MessagePersonaAccount = observer(
 			(e.currentTarget as HTMLElement).click();
 		}, []);
 		const keyboardModeEnabled = KeyboardMode.keyboardModeEnabled;
-		return (message.subprofile && <>
-			<span className={styles.messageAuthorSubprofileMarker}> via </span>
+		if (!message.subprofile) return null;
+
+		return (
 			<PreloadableUserPopout
 				user={user}
 				isWebhook={message.webhookId != null}
@@ -91,7 +92,7 @@ export const MessagePersonaAccount = observer(
 					</span>
 				</FocusRing>
 			</PreloadableUserPopout>
-		</>);
+		);
 	},
 );
 
