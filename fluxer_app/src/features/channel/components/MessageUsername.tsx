@@ -8,7 +8,6 @@ import {isKeyboardActivationKey} from '@app/features/input/utils/KeyboardUtils';
 import type {GuildMember} from '@app/features/member/models/GuildMember';
 import type {Message} from '@app/features/messaging/models/MessagingMessage';
 import styles from '@app/features/theme/styles/Message.module.css';
-import * as ColorUtils from '@app/features/theme/utils/ColorUtils';
 import FocusRing from '@app/features/ui/focus_ring/FocusRing';
 import KeyboardMode from '@app/features/ui/state/KeyboardMode';
 import type {User} from '@app/features/user/models/User';
@@ -40,10 +39,8 @@ export const MessageUsername = observer(
 		const usernameRef = useRef<HTMLSpanElement | null>(null);
 		const contextMenuOpen = useContextMenuHoverState(usernameRef);
 		const subprofileName = message.subprofile?.name;
-		const subprofileColor =
-			message.subprofile?.color != null ? ColorUtils.int2rgb(message.subprofile.color) : undefined;
 		const displayName = previewName || subprofileName || NicknameUtils.getNickname(user, guild?.id, message.channelId);
-		const color = previewColor || subprofileColor || member?.getColorString();
+		const color = previewColor || member?.getColorString();
 		const onPopoutToggle = useMaybeMessageViewContext()?.onPopoutToggle;
 		const handlePopoutOpen = useCallback(() => onPopoutToggle?.(true), [onPopoutToggle]);
 		const handlePopoutClose = useCallback(() => onPopoutToggle?.(false), [onPopoutToggle]);
