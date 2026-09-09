@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 import {BAN_DELETE_MESSAGE_OPTIONS} from '@app/features/moderation/constants/BanDeleteMessageOptions';
+import { SubprofileStore } from '@app/features/subprofile/state/SubprofileStore';
 import {Permissions} from '@fluxer/constants/src/ChannelConstants';
 import {msg} from '@lingui/core/macro';
 import {useLingui} from '@lingui/react/macro';
@@ -319,6 +320,25 @@ export function useCommands(): Array<Command> {
 						required: true,
 						allowEmpty: false,
 						choices: EMPTY_COMMAND_CHOICES,
+					},
+				],
+			},
+			{
+				type: 'action',
+				name: '/subprofile',
+				description: "Switch the latched subprofile", //i18n._(CHANGE_YOUR_NICKNAME_IN_THIS_COMMUNITY_DESCRIPTOR),
+				requiresGuild: false,
+				options: [
+					{
+						name: 'subprofile',
+						description: "The subprofile to latch.", //i18n._(COMMAND_NICKNAME_OPTION_DESCRIPTOR),
+						type: 'choice',
+						required: false,
+						allowEmpty: true,
+						choices: SubprofileStore.rankedPersonas.map((v) => ({
+							name: v.name,
+							value: v.id
+						})),
 					},
 				],
 			},

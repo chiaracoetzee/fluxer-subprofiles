@@ -12,6 +12,7 @@ import {
 	DEFAULT_BAN_DELETE_MESSAGE_SECONDS,
 } from '@app/features/moderation/constants/BanDeleteMessageOptions';
 import {Logger} from '@app/features/platform/utils/AppLogger';
+import { SubprofileStore } from '@app/features/subprofile/state/SubprofileStore';
 import {User} from '@app/features/user/models/User';
 import Users from '@app/features/user/state/Users';
 import * as NicknameUtils from '@app/features/user/utils/NicknameUtils';
@@ -71,6 +72,10 @@ export type ParsedCommand =
 	| {
 			type: 'saved' | 'sticker' | 'gif';
 			query: string;
+	  }
+	| {
+			type: 'subprofile';
+			subprofile: string;
 	  }
 	| {
 			type: 'unknown';
@@ -161,6 +166,13 @@ export function parseCommand(content: string): ParsedCommand {
 			return {type, query};
 		}
 	}
+	if (trimmed === '/subprofile') {
+		return {type: 'subprofile', subprofile: ''};
+	}
+	if (trimmed.startsWith('/subprofile ')) {
+		const subprofile = trimmed.slice(12).trim();
+		return {type: 'subprofile', subprofile};
+	}
 	return {type: 'unknown'};
 }
 
@@ -198,6 +210,7 @@ export function isCommand(content: string): boolean {
 		trimmed.startsWith('/sticker ') ||
 		trimmed === '/gif' ||
 		trimmed.startsWith('/gif ') ||
+		trimmed.startsWith('/subprofile ') ||
 		(trimmed.startsWith('_') && trimmed.endsWith('_') && trimmed.length > 2)
 	);
 }
@@ -360,6 +373,24 @@ export async function executeCommand(
 		case 'gif': {
 			throw new Error(`Select a ${command.type} result before submitting the command`);
 		}
+		case 'subprofile':
+			console.debug("test");
+			if (!command.subprofile) {
+				const systemMessage = createSystemMessage(
+					channelId,
+					"Subprofile deselected."
+				);
+				SubprofileStore.setActivePersona(null);
+				MessageCommands.createOptimistic(channelId, systemMessage.toJSON());
+			} else if (SubprofileStore.personas.find((v) => v.id === command.subprofile)) {
+				const systemMessage = createSystemMessage(
+					channelId,
+					"Subprofile selected."
+				);
+				SubprofileStore.setActivePersona(command.subprofile);
+				MessageCommands.createOptimistic(channelId, systemMessage.toJSON());
+			}
+			break;
 		default:
 			break;
 	}
