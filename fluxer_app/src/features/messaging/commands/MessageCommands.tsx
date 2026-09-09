@@ -85,6 +85,7 @@ import type {MessageSubprofileRequest} from '@fluxer/schema/src/domains/persona/
 import * as SnowflakeUtils from '@fluxer/snowflake/src/SnowflakeUtils';
 import type {I18n} from '@lingui/core';
 import {msg} from '@lingui/core/macro';
+import MessageChangePersona from '../state/MessageChangePersona';
 import {useLingui} from '@lingui/react/macro';
 import {observer} from 'mobx-react-lite';
 
@@ -1011,6 +1012,10 @@ export function startEdit(channelId: string, messageId: string, initialContent: 
 	const draftContent = Accessibility.preserveEditDraft ? MessageEdit.getDraftContent(messageId) : null;
 	const contentToUse = draftContent ?? initialContent;
 	MessageEdit.startEditing(channelId, messageId, contentToUse);
+}
+
+export function changePersona(channelId: string, messageId: string): void {
+	MessageChangePersona.startChangePersona(channelId, messageId);
 }
 
 export function stopEdit(channelId: string): void {
