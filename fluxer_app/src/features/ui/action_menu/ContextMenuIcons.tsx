@@ -82,6 +82,7 @@ import {
 	UserListIcon,
 	UserMinusIcon,
 	UserPlusIcon,
+	UserSwitchIcon,
 	UsersIcon,
 	VideoCameraIcon,
 	VideoCameraSlashIcon,
@@ -389,6 +390,13 @@ export const EditMessageIcon: React.FC<IconProps> = observer(({size = 16}) => (
 		size={remFromPx(size)}
 		weight="fill"
 		data-flx="ui.action-menu.context-menu-icons.edit-message-icon.pencil-simple-icon"
+	/>
+));
+export const ChangePersonasIcon: React.FC<IconProps> = observer(({size = 16}) => (
+	<UserSwitchIcon
+		size={remFromPx(size)}
+		weight="fill"
+		data-flx="ui.action-menu.context-menu-icons.change-personas-icon.user-switch-icon"
 	/>
 ));
 export const CopyMessageTextIcon: React.FC<IconProps> = observer(({size = 16}) => (
