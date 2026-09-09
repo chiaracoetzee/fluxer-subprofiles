@@ -35,7 +35,7 @@ import {
 import {retryFailedMessage} from '@app/features/messaging/utils/MessageRetryUtils';
 import {NodeType} from '@app/features/messaging/utils/markdown/parser/Enums';
 import {SpoilerSyncProvider} from '@app/features/messaging/utils/SpoilerUtils';
-import {SubprofileStore} from '@app/features/subprofile/state/SubprofileStore';
+import {PersonaStore} from '@app/features/persona/state/PersonaStore';
 import {compactMarkdownProps} from '@app/features/theme/layout/MessageLayoutAttributes';
 import markupStyles from '@app/features/theme/styles/Markup.module.css';
 import styles from '@app/features/theme/styles/Message.module.css';
@@ -53,7 +53,7 @@ import {ArrowsClockwiseIcon, BellSlashIcon, EyeIcon, WarningCircleIcon} from '@p
 import {clsx} from 'clsx';
 import {observer} from 'mobx-react-lite';
 import {type MouseEvent, useCallback, useMemo} from 'react';
-import { MessageSubprofileAccount } from './MessageSubprofileAccount';
+import { MessagePersonaAccount } from './MessagePersonaAccount';
 
 const JUMP_TO_MESSAGE_FROM_SENT_DESCRIPTOR = msg({
 	message: 'Jump to message from {displayName}, sent {formattedDate}',
@@ -222,7 +222,7 @@ export const UserMessage = observer(() => {
 				return;
 			}
 			finishEditing();
-			const editMatch = SubprofileStore.matchEditMessage(content, message.subprofile);
+			const editMatch = PersonaStore.matchEditMessage(content, message.subprofile);
 			void MessageCommands.edit(
 				channel.id,
 				message.id,
@@ -585,7 +585,7 @@ export const UserMessage = observer(() => {
 										data-flx="channel.user-message.message-username--2"
 									/>
 									{/* TODO: via + user icon here */}
-									<MessageSubprofileAccount
+									<MessagePersonaAccount
 										user={author}
 										message={message}
 										guild={guild}
