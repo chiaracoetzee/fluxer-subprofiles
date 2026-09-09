@@ -13,7 +13,7 @@ import {ComponentBus} from '@app/features/platform/utils/ComponentBus';
 import * as SlowmodeCommands from '@app/features/slowmode/commands/SlowmodeCommands';
 import {SlowmodeRateLimitedModal} from '@app/features/slowmode/components/alerts/SlowmodeRateLimitedModal';
 import Slowmode from '@app/features/slowmode/state/Slowmode';
-import {SubprofileStore} from '@app/features/subprofile/state/SubprofileStore';
+import {PersonaStore} from '@app/features/persona/state/PersonaStore';
 import {TypingUtils} from '@app/features/typing/utils/TypingUtils';
 import {modal, push as pushModal} from '@app/features/ui/commands/ModalCommands';
 import Users from '@app/features/user/state/Users';
@@ -102,14 +102,14 @@ export const useMessageSubmission = ({channel, referencedMessage, replyingMessag
 			if (!canSubmitMessage(content, hasNonTextContent)) return false;
 			if (isBlockedBySlowmode(channel)) return false;
 
-			const cmdResult = SubprofileStore.handleInChatCommand(content);
+			const cmdResult = PersonaStore.handleInChatCommand(content);
 			if (cmdResult.handled) {
 				TypingUtils.clear(channel.id);
 				DraftCommands.deleteDraft(channel.id);
 				return true;
 			}
 
-			const matchResult = SubprofileStore.matchOutgoingMessage(content);
+			const matchResult = PersonaStore.matchOutgoingMessage(content);
 			const finalContent = matchResult.matched || matchResult.wasEscaped ? matchResult.strippedContent : content;
 			if (finalContent.length === 0 && !hasAttachments && !favoriteMemeIdOrStickers) {
 				TypingUtils.clear(channel.id);
