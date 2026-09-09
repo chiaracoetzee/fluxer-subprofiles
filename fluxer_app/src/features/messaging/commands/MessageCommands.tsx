@@ -72,6 +72,7 @@ import type {MessageSubprofileRequest} from '@fluxer/schema/src/domains/persona/
 import * as SnowflakeUtils from '@fluxer/snowflake/src/SnowflakeUtils';
 import type {I18n} from '@lingui/core';
 import {msg} from '@lingui/core/macro';
+import MessageChangePersona from '../state/MessageChangePersona';
 
 const ARE_YOU_SURE_YOU_WANT_TO_DELETE_THIS_DESCRIPTOR = msg({
 	message: "Delete this message? Can't be undone.",
@@ -808,6 +809,10 @@ export function startEdit(channelId: string, messageId: string, initialContent: 
 	const draftContent = Accessibility.preserveEditDraft ? MessageEdit.getDraftContent(messageId) : null;
 	const contentToUse = draftContent ?? initialContent;
 	MessageEdit.startEditing(channelId, messageId, contentToUse);
+}
+
+export function changePersona(channelId: string, messageId: string): void {
+	MessageChangePersona.startChangePersona(channelId, messageId);
 }
 
 export function stopEdit(channelId: string): void {
