@@ -39,6 +39,12 @@ import {clsx} from 'clsx';
 import {observer} from 'mobx-react-lite';
 import type React from 'react';
 import {useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState} from 'react';
+import MessageChangePersona from '@app/features/messaging/state/MessageChangePersona';
+import * as PopoutCommands from '@app/features/ui/commands/PopoutCommands';
+import { PopoutKeyContext, usePopoutKey } from '@app/features/ui/popover';
+import { PersonaPickerSheet } from '@app/features/persona/components/PersonaPickerSheet';
+import { PersonaStore } from '@app/features/persona/state/PersonaStore';
+import { Toast } from '@app/features/ui/toast/Toast';
 
 const ATTACHMENT_DESCRIPTOR = msg({
 	message: 'attachment',
@@ -312,6 +318,7 @@ export type MessageBehaviorOverrides = Partial<{
 	messageGroupSpacing: number;
 	messageDisplayCompact: boolean;
 	isEditing: boolean;
+	isChangingPersona: boolean;
 	isReplying: boolean;
 	isHighlight: boolean;
 	forceUnknownMessageType: boolean;
@@ -380,6 +387,7 @@ export const Message: React.FC<MessageProps> = observer((props) => {
 		compact ?? behaviorOverrides?.messageDisplayCompact ?? UserSettings.getMessageDisplayCompact();
 	const prefersReducedMotion = Accessibility.useReducedMotion;
 	const isEditing = behaviorOverrides?.isEditing ?? MessageEdit.isEditing(message.channelId, message.id);
+	const isChangingPersona = behaviorOverrides?.isChangingPersona ?? MessageChangePersona.isChangingPersona(message.channelId, message.id);
 	const isReplying = behaviorOverrides?.isReplying ?? MessageReply.isReplying(message.channelId, message.id);
 	const isHighlight = behaviorOverrides?.isHighlight ?? MessageReply.isHighlight(message.id);
 	const forceUnknownMessageType =
@@ -932,6 +940,53 @@ export const Message: React.FC<MessageProps> = observer((props) => {
 		}),
 		[shouldApplySpacing, previewContext, messageGroupSpacing],
 	);
+	const personaPickerPopoutKey = `persona_picker-${message.id}`;
+	useEffect(() => {
+		if (isChangingPersona) {
+			PopoutCommands.open({
+				key: personaPickerPopoutKey,
+				position: 'bottom-start',
+				offsetMainAxis: 4,
+				offsetCrossAxis: 4,
+				target: messageRef.current!,
+				render: ({ popoutKey, onClose }) => {
+					return <PersonaPickerSheet
+						key={popoutKey}
+						onClose={onClose}
+						showModes={false}
+						onSelectPersona={(id) => {
+							//void PersonaStore.setActivePersona(id, true);
+							// TODO: edit the message to use the selected persona
+							const persona = PersonaStore.personas.find((v) => v.id === id);
+							if (!persona) return;
+							MessageChangePersona.changePersona(channel, message, {
+								id: persona.id,
+								name: persona.name,
+								avatar: persona.avatarUrl,
+								avatar_color: persona.color,
+								color: persona.color,
+								system_name: persona.systemName,
+								bio: persona.bio,
+								pronouns: persona.pronouns
+							});
+							PersonaStore.recordPersonaUse(persona.id);
+						}}
+						onSelectAccount={() => {
+							//void PersonaStore.unlatch();
+							// TODO: edit the message to remove the persona from the message
+							MessageChangePersona.changePersona(channel, message, null);
+						}}
+						selectedPersonaId={message.subprofile?.id || ""}
+					/>
+				},
+				onClose: () => {
+					MessageChangePersona.stopChangingPersona(channel.id, message.id);
+				}
+			})
+		} else {
+			PopoutCommands.close(personaPickerPopoutKey);
+		}
+	}, [isChangingPersona]);
 	return (
 		<>
 			<FocusRing data-flx="channel.message.focus-ring">
