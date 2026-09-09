@@ -43,7 +43,16 @@ export const PersonaComposerPill: React.FC<PersonaComposerPillProps> = observer(
 				offsetMainAxis={8}
 				tooltip={tooltipText}
 				tooltipPosition="top"
-				render={({onClose}) => <PersonaPickerSheet onClose={onClose} />}
+				render={({onClose}) => <PersonaPickerSheet
+					onClose={onClose}
+					showModes={true}
+					onSelectPersona={(id) => {
+						void PersonaStore.setActivePersona(id, true);
+					}}
+					onSelectAccount={() => {
+						void PersonaStore.unlatch();
+					}}
+				/>}
 			>
 				<FocusRing offset={-2}>
 					<button

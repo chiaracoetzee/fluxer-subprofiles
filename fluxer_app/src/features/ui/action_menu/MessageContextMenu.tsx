@@ -492,6 +492,7 @@ export const MessageContextMenu: React.FC<MessageContextMenuProps> = observer(
 		const viewReactionsItem = itemById.get(ids.viewReactions);
 		const removeAllReactionsItem = itemById.get(ids.removeAllReactions);
 		const editItem = itemById.get(ids.edit);
+		const changePersonaItem = itemById.get(ids.changePersona);
 		const replyItem = itemById.get(ids.reply);
 		const forwardItem = itemById.get(ids.forward);
 		const copyMessageItem = itemById.get(ids.copyMessage);
@@ -576,10 +577,11 @@ export const MessageContextMenu: React.FC<MessageContextMenuProps> = observer(
 			);
 		};
 		const renderInteractionGroup = () => {
-			if (!editItem && !replyItem && !forwardItem) return null;
+			if (!editItem && !changePersonaItem && !replyItem && !forwardItem) return null;
 			return (
 				<MenuGroup data-flx="ui.action-menu.message-context-menu.render-interaction-group.menu-group">
 					{editItem && renderDataMenuItem(editItem, 'edit')}
+					{changePersonaItem && renderDataMenuItem(changePersonaItem, 'change-persona')}
 					{replyItem && renderDataMenuItem(replyItem, 'reply')}
 					{forwardItem && renderDataMenuItem(forwardItem, 'forward')}
 				</MenuGroup>
