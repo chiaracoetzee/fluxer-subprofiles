@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-import SubprofileSettingsTab from '@app/features/subprofile/components/settings/SubprofileSettingsTab';
+import PersonaSettingsTab from '@app/features/persona/components/settings/PersonaSettingsTab';
 import {AccessibilityTab} from '@app/features/user/components/modals/tabs/AccessibilityTab';
 import AccountSecurityTab from '@app/features/user/components/modals/tabs/AccountSecurityTab';
 import AdvancedSettingsTab from '@app/features/user/components/modals/tabs/AdvancedSettingsTab';
@@ -24,7 +24,8 @@ import type React from 'react';
 
 const DESKTOP_TAB_COMPONENTS: Partial<Record<UserSettingsTabType, React.ComponentType<Record<string, unknown>>>> = {
 	my_profile: MyProfileTab,
-	subprofiles: SubprofileSettingsTab,
+	personas: PersonaSettingsTab,
+	subprofiles: PersonaSettingsTab,
 	account_security: AccountSecurityTab,
 	plutonium: PlutoniumTab,
 	gift_inventory: GiftInventoryTab,
