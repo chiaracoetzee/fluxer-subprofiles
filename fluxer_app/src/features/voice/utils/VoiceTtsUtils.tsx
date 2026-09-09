@@ -438,7 +438,7 @@ function handleIncomingTtsMessage(message: Message): void {
 	if (!author) {
 		return;
 	}
-	const authorName = NicknameUtils.getNickname(author, channel.guildId ?? null);
+	const authorName = message.subprofile?.name || NicknameUtils.getNickname(author, channel.guildId ?? null);
 	if (!message.content.trim()) {
 		const description = describeNonTextContent(message, localI18n);
 		if (!description) {
@@ -455,9 +455,14 @@ function handleIncomingTtsMessage(message: Message): void {
 		const refMessageId = message.message_reference.message_id;
 		const ref = MessageReferences.getMessageReference(refChannelId, refMessageId);
 		if (ref.state === MessageReferenceState.LOADED) {
-			const replyAuthor = Users.getUser(ref.message.author.id);
-			if (replyAuthor) {
-				replyAuthorName = NicknameUtils.getNickname(replyAuthor, channel.guildId ?? null);
+			const replyPersonaName = ref.message.subprofile?.name;
+			if (replyPersonaName) {
+				replyAuthorName = replyPersonaName;
+			} else {
+				const replyAuthor = Users.getUser(ref.message.author.id);
+				if (replyAuthor) {
+					replyAuthorName = NicknameUtils.getNickname(replyAuthor, channel.guildId ?? null);
+				}
 			}
 		}
 	}
