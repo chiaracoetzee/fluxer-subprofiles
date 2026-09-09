@@ -12,7 +12,7 @@ import {type MessageEmbed, MessageEmbedResponse} from '@fluxer/schema/src/domain
 import {
 	type MessageSubprofileResponse,
 	MessageSubprofileResponseSchema,
-} from '@fluxer/schema/src/domains/subprofile/SubprofileSchemas';
+} from '@fluxer/schema/src/domains/persona/PersonaSchemas';
 import {type UserPartial, UserPartialResponse} from '@fluxer/schema/src/domains/user/UserResponseSchemas';
 import {MessageReferenceTypeSchema, MessageTypeSchema} from '@fluxer/schema/src/primitives/MessageValidators';
 import {

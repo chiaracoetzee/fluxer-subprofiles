@@ -32,7 +32,7 @@ import {resolveTypedEmojiShortcodes} from '@app/features/messaging/utils/TypedEm
 import Permission from '@app/features/permissions/state/Permission';
 import {Logger} from '@app/features/platform/utils/AppLogger';
 import Presence from '@app/features/presence/state/Presence';
-import {SubprofileStore} from '@app/features/subprofile/state/SubprofileStore';
+import {PersonaStore} from '@app/features/persona/state/PersonaStore';
 import {TypingUtils} from '@app/features/typing/utils/TypingUtils';
 import * as FormUtils from '@app/lib/forms';
 import {Permissions} from '@fluxer/constants/src/ChannelConstants';
@@ -505,7 +505,7 @@ export const useTextareaSubmit = ({
 				return;
 			}
 			finishMobileEdit();
-			const editMatch = SubprofileStore.matchEditMessage(resolvedContent, editingMessage.subprofile);
+			const editMatch = PersonaStore.matchEditMessage(resolvedContent, editingMessage.subprofile);
 			void MessageCommands.edit(
 				channelId,
 				editingMessage.id,
@@ -525,7 +525,7 @@ export const useTextareaSubmit = ({
 			if (lastMessage) {
 				const newContent = ReplaceCommandUtils.executeReplaceCommand(lastMessage.content, replaceCommand);
 				if (newContent !== lastMessage.content) {
-					const replaceEditMatch = SubprofileStore.matchEditMessage(newContent, lastMessage.subprofile);
+					const replaceEditMatch = PersonaStore.matchEditMessage(newContent, lastMessage.subprofile);
 					MessageCommands.edit(
 						lastMessage.channelId,
 						lastMessage.id,

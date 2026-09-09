@@ -11,27 +11,27 @@ import {clsx} from 'clsx';
 import {observer} from 'mobx-react-lite';
 import type React from 'react';
 import {useMemo, useState} from 'react';
-import {type AutoproxyMode, SubprofileStore} from '../state/SubprofileStore';
-import styles from './SubprofilePickerSheet.module.css';
+import {type ActivePersonaMode, PersonaStore} from '../state/PersonaStore';
+import styles from './PersonaPickerSheet.module.css';
 
-const AUTOPROXY_TABS: Array<SegmentedTab<AutoproxyMode>> = [
+const ACTIVE_PERSONA_TABS: Array<SegmentedTab<ActivePersonaMode>> = [
 	{id: 'off', label: 'Off'},
 	{id: 'manual', label: 'Manual'},
 	{id: 'last', label: 'Last Used'},
 ];
 
-interface SubprofilePickerSheetProps {
+interface PersonaPickerSheetProps {
 	onClose: () => void;
 }
 
-export const SubprofilePickerSheet: React.FC<SubprofilePickerSheetProps> = observer(({onClose}) => {
+export const PersonaPickerSheet: React.FC<PersonaPickerSheetProps> = observer(({onClose}) => {
 	const [query, setQuery] = useState('');
 	const currentUser = Users.getCurrentUser();
-	const personas = SubprofileStore.personas;
-	const activePersonaId = SubprofileStore.activePersonaId;
-	const isLatched = SubprofileStore.autoproxyLatched;
-	const autoproxyMode = SubprofileStore.autoproxyMode;
-	const rankedPersonas = SubprofileStore.rankedPersonas;
+	const personas = PersonaStore.personas;
+	const activePersonaId = PersonaStore.activePersonaId;
+	const isLatched = PersonaStore.isPersonaLatched;
+	const activePersonaMode = PersonaStore.activePersonaMode;
+	const rankedPersonas = PersonaStore.rankedPersonas;
 
 	const filteredPersonas = useMemo(() => {
 		const trimmed = query.trim().toLowerCase();
@@ -40,7 +40,7 @@ export const SubprofilePickerSheet: React.FC<SubprofilePickerSheetProps> = obser
 			if (p.name.toLowerCase().includes(trimmed)) return true;
 			if (p.systemName?.toLowerCase().includes(trimmed)) return true;
 			if (p.pronouns?.toLowerCase().includes(trimmed)) return true;
-			return (p.proxyTags ?? []).some(
+			return (p.personaTags ?? []).some(
 				(tag) => tag.prefix?.toLowerCase().includes(trimmed) || tag.suffix?.toLowerCase().includes(trimmed),
 			);
 		});
@@ -52,22 +52,22 @@ export const SubprofilePickerSheet: React.FC<SubprofilePickerSheetProps> = obser
 	}, [rankedPersonas, query]);
 
 	const handleSelectPersona = (id: string) => {
-		void SubprofileStore.setActivePersona(id, true);
+		void PersonaStore.setActivePersona(id, true);
 		onClose();
 	};
 
 	const handleResetToRoot = () => {
-		void SubprofileStore.unlatch();
+		void PersonaStore.unlatch();
 		onClose();
 	};
 
 	const handleOpenSettings = () => {
-		ModalCommands.push(modal(() => <UserSettingsModal initialTab="subprofiles" />));
+		ModalCommands.push(modal(() => <UserSettingsModal initialTab="personas" />));
 		onClose();
 	};
 
 	return (
-		<div className={styles.sheetContainer} data-flx="subprofile.picker-sheet">
+		<div className={styles.sheetContainer} data-flx="persona.picker-sheet">
 			<div className={styles.searchHeader}>
 				<div className={styles.searchInputWrapper}>
 					<MagnifyingGlass className={styles.searchIcon} size={16} weight="bold" />
@@ -82,13 +82,14 @@ export const SubprofilePickerSheet: React.FC<SubprofilePickerSheetProps> = obser
 			</div>
 
 			<div className={styles.modeTabsWrapper}>
-				<SegmentedTabs<AutoproxyMode>
-					tabs={AUTOPROXY_TABS}
-					selectedTab={autoproxyMode}
+				<SegmentedTabs<ActivePersonaMode>
+					className={styles.segmentedTabs}
+					tabs={ACTIVE_PERSONA_TABS}
+					selectedTab={activePersonaMode}
 					onTabChange={(mode) => {
-						void SubprofileStore.setAutoproxyMode(mode);
+						void PersonaStore.setActivePersonaMode(mode);
 					}}
-					ariaLabel="Autoproxy mode"
+					ariaLabel="Active persona mode"
 				/>
 			</div>
 
@@ -112,16 +113,16 @@ export const SubprofilePickerSheet: React.FC<SubprofilePickerSheetProps> = obser
 							<div className={styles.personaPrimaryRow}>
 								<span className={styles.personaName}>{currentUser.username}</span>
 							</div>
-							<span className={styles.personaPronouns}>Root Account (Unlatched)</span>
+							<span className={styles.personaPronouns}>Root Account (Default)</span>
 						</div>
 						{!isLatched || !activePersonaId ? <Check size={16} weight="bold" className={styles.activeCheck} /> : null}
 					</div>
 				)}
 
-				{/* Recent Fronters Shelf */}
+				{/* Recent Personas Shelf */}
 				{recentShelfPersonas.length > 0 && (
 					<>
-						<div className={styles.sectionTitle}>Recent Fronters</div>
+						<div className={styles.sectionTitle}>Recent Personas</div>
 						<div className={styles.recentShelf}>
 							{recentShelfPersonas.map((p) => (
 								<div
@@ -159,7 +160,7 @@ export const SubprofilePickerSheet: React.FC<SubprofilePickerSheetProps> = obser
 				) : (
 					filteredPersonas.map((p) => {
 						const isThisActive = isLatched && activePersonaId === p.id;
-						const primaryTag = p.proxyTags?.[0];
+						const primaryTag = p.personaTags?.[0];
 						const tagString = primaryTag ? `${primaryTag.prefix ?? ''}text${primaryTag.suffix ?? ''}` : undefined;
 
 						return (
@@ -197,9 +198,11 @@ export const SubprofilePickerSheet: React.FC<SubprofilePickerSheetProps> = obser
 			<div className={styles.footer}>
 				<button type="button" className={styles.settingsLink} onClick={handleOpenSettings}>
 					<Gear size={14} />
-					<span>Manage Subprofiles</span>
+					<span>Manage Personas</span>
 				</button>
 			</div>
 		</div>
 	);
 });
+
+export const SubprofilePickerSheet = PersonaPickerSheet;
