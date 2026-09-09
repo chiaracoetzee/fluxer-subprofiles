@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 import type { Channel } from '@app/features/channel/models/Channel';
-import TextareaSelection from '@app/features/messaging/state/TextareaSelection';
 import {comparer, makeAutoObservable, reaction} from 'mobx';
 import type { Message } from '../models/MessagingMessage';
 import * as MessageCommands from '../commands/MessageCommands';
