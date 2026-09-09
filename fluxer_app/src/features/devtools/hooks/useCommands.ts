@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 import {BAN_DELETE_MESSAGE_OPTIONS} from '@app/features/moderation/constants/BanDeleteMessageOptions';
-import { SubprofileStore } from '@app/features/subprofile/state/SubprofileStore';
+import {PersonaStore} from '@app/features/persona/state/PersonaStore';
 import {Permissions} from '@fluxer/constants/src/ChannelConstants';
 import {msg} from '@lingui/core/macro';
 import {useLingui} from '@lingui/react/macro';
@@ -325,19 +325,38 @@ export function useCommands(): Array<Command> {
 			},
 			{
 				type: 'action',
+				name: '/persona',
+				description: 'Switch the active persona',
+				requiresGuild: false,
+				options: [
+					{
+						name: 'persona',
+						description: 'The persona to select.',
+						type: 'choice',
+						required: false,
+						allowEmpty: true,
+						choices: PersonaStore.rankedPersonas.map((v) => ({
+							name: v.name,
+							value: v.id,
+						})),
+					},
+				],
+			},
+			{
+				type: 'action',
 				name: '/subprofile',
-				description: "Switch the latched subprofile", //i18n._(CHANGE_YOUR_NICKNAME_IN_THIS_COMMUNITY_DESCRIPTOR),
+				description: 'Switch the active persona (alias for /persona)',
 				requiresGuild: false,
 				options: [
 					{
 						name: 'subprofile',
-						description: "The subprofile to latch.", //i18n._(COMMAND_NICKNAME_OPTION_DESCRIPTOR),
+						description: 'The persona to select.',
 						type: 'choice',
 						required: false,
 						allowEmpty: true,
-						choices: SubprofileStore.rankedPersonas.map((v) => ({
+						choices: PersonaStore.rankedPersonas.map((v) => ({
 							name: v.name,
-							value: v.id
+							value: v.id,
 						})),
 					},
 				],

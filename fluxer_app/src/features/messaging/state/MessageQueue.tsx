@@ -52,7 +52,7 @@ import type {
 	MessageReference,
 	MessageStickerItem,
 } from '@fluxer/schema/src/domains/message/MessageResponseSchemas';
-import type {MessageSubprofileRequest} from '@fluxer/schema/src/domains/subprofile/SubprofileSchemas';
+import type {MessageSubprofileRequest} from '@fluxer/schema/src/domains/persona/PersonaSchemas';
 import type {I18n} from '@lingui/core';
 import {msg} from '@lingui/core/macro';
 import {reaction} from 'mobx';
