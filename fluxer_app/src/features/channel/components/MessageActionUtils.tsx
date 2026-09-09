@@ -17,6 +17,7 @@ import * as ReactionCommands from '@app/features/messaging/commands/ReactionComm
 import * as SavedMessageCommands from '@app/features/messaging/commands/SavedMessageCommands';
 import {ForwardModal, type ForwardModalSuccess} from '@app/features/messaging/components/modals/ForwardModal';
 import type {Message} from '@app/features/messaging/models/MessagingMessage';
+import MessageChangePersona from '@app/features/messaging/state/MessageChangePersona';
 import MessageEdit from '@app/features/messaging/state/MessageEdit';
 import MessageReply from '@app/features/messaging/state/MessageReply';
 import Messages from '@app/features/messaging/state/MessagingMessages';
@@ -294,6 +295,7 @@ export interface MessageActionHandlers {
 	handleReply: (event?: React.MouseEvent | React.KeyboardEvent) => void;
 	handlePinMessage: (event?: React.MouseEvent | React.KeyboardEvent) => void;
 	handleEditMessage: () => void;
+	handleChangePersona: () => void;
 	handleRetryMessage: () => void;
 	handleFailedMessageDelete: () => void;
 	handleForward: () => void;
@@ -367,6 +369,10 @@ export function createMessageActionHandlers(
 		startMessageEdit(message);
 		onClose?.();
 	};
+	const handleChangePersona = () => {
+		MessageChangePersona.startChangePersona(message.channelId, message.id);
+		onClose?.();
+	}
 	const handleRetryMessage = () => {
 		retryFailedMessage(message);
 		onClose?.();
@@ -403,6 +409,7 @@ export function createMessageActionHandlers(
 		handleReply,
 		handlePinMessage,
 		handleEditMessage,
+		handleChangePersona,
 		handleRetryMessage,
 		handleFailedMessageDelete,
 		handleForward,
