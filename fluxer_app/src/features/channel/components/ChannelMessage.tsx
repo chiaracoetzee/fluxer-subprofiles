@@ -41,10 +41,8 @@ import type React from 'react';
 import {useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState} from 'react';
 import MessageChangePersona from '@app/features/messaging/state/MessageChangePersona';
 import * as PopoutCommands from '@app/features/ui/commands/PopoutCommands';
-import { PopoutKeyContext, usePopoutKey } from '@app/features/ui/popover';
 import { PersonaPickerSheet } from '@app/features/persona/components/PersonaPickerSheet';
 import { PersonaStore } from '@app/features/persona/state/PersonaStore';
-import { Toast } from '@app/features/ui/toast/Toast';
 
 const ATTACHMENT_DESCRIPTOR = msg({
 	message: 'attachment',
