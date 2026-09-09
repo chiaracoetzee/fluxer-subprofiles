@@ -12,7 +12,7 @@ import {clsx} from 'clsx';
 import {observer} from 'mobx-react-lite';
 import type React from 'react';
 import {useRef, useState} from 'react';
-import {SubprofileStore} from '../../state/SubprofileStore';
+import {PersonaStore} from '../../state/PersonaStore';
 import styles from './PluralKitImportModal.module.css';
 
 let importIdCounter = 0;
@@ -23,100 +23,96 @@ interface PKProxyTag {
 }
 
 interface PKMember {
-	id?: string;
-	name?: string;
+	id: string;
+	name: string;
 	display_name?: string | null;
-	color?: string | null;
-	pronouns?: string | null;
 	avatar_url?: string | null;
 	webhook_avatar_url?: string | null;
+	color?: string | null;
+	pronouns?: string | null;
 	description?: string | null;
 	proxy_tags?: Array<PKProxyTag>;
 }
 
-interface PKExport {
-	version?: number;
-	name?: string;
-	tag?: string;
+interface PKSystemExport {
+	id?: string;
+	name?: string | null;
+	description?: string | null;
+	tag?: string | null;
+	avatar_url?: string | null;
 	members?: Array<PKMember>;
 }
 
 interface ImportWarning {
 	displayName: string;
-	prefix: string;
+	prefix?: string;
 	reason: string;
 }
 
-interface PluralKitImportModalProps {
-	onClose: () => void;
-}
-
-type Step = 'select' | 'importing' | 'completed';
-type ImportMode = 'replace' | 'append';
-
-export const PluralKitImportModal: React.FC<PluralKitImportModalProps> = observer(({onClose}) => {
-	const existingCount = SubprofileStore.personas.length;
-
-	const [step, setStep] = useState<Step>('select');
+export const PluralKitImportModal: React.FC<{onClose: () => void}> = observer(({onClose}) => {
+	const [step, setStep] = useState<'select' | 'importing' | 'completed'>('select');
+	const [fileName, setFileName] = useState<string | null>(null);
 	const [fileError, setFileError] = useState<string | null>(null);
-	const [pkData, setPkData] = useState<PKExport | null>(null);
-	const [fileName, setFileName] = useState<string>('');
-	const [importMode, setImportMode] = useState<ImportMode>(existingCount > 0 ? 'replace' : 'append');
+	const [pkData, setPkData] = useState<PKSystemExport | null>(null);
 	const [systemTagOverride, setSystemTagOverride] = useState<string>('');
-
-	const [progress, setProgress] = useState({
+	const [importMode, setImportMode] = useState<'replace' | 'append'>('replace');
+	const [progress, setProgress] = useState<{current: number; total: number; currentName: string; percent: number}>({
 		current: 0,
 		total: 0,
 		currentName: '',
 		percent: 0,
 	});
-
 	const [importResults, setImportResults] = useState<{
 		successCount: number;
 		warnings: Array<ImportWarning>;
 	}>({successCount: 0, warnings: []});
 
 	const fileInputRef = useRef<HTMLInputElement | null>(null);
+	const existingCount = PersonaStore.personas.length;
 
 	const handleFileChosen = (file: File) => {
 		setFileError(null);
 		setFileName(file.name);
+
 		const reader = new FileReader();
 		reader.onload = (e) => {
 			try {
 				const content = e.target?.result as string;
-				const parsed = JSON.parse(content) as PKExport;
-				if (!parsed || !Array.isArray(parsed.members)) {
-					setFileError('Invalid file: PluralKit export must contain a "members" list.');
-					setPkData(null);
+				const parsed = JSON.parse(content) as PKSystemExport;
+
+				if (!parsed || typeof parsed !== 'object') {
+					setFileError('The chosen file is not a valid JSON object.');
 					return;
 				}
+
+				if (!Array.isArray(parsed.members)) {
+					setFileError('No "members" array found in this export file.');
+					return;
+				}
+
 				setPkData(parsed);
-				setSystemTagOverride(parsed.tag?.trim() || parsed.name?.trim() || '');
+				if (parsed.tag) {
+					setSystemTagOverride(parsed.tag);
+				}
 			} catch (err: unknown) {
-				const msg = err instanceof Error ? err.message : 'Invalid JSON file';
-				setFileError(`Failed to read file: ${msg}`);
-				setPkData(null);
+				setFileError('Failed to parse JSON file. Please ensure it is a valid PluralKit export.');
 			}
 		};
 		reader.onerror = () => {
 			setFileError('Failed to read the selected file.');
-			setPkData(null);
 		};
 		reader.readAsText(file);
 	};
 
-	const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
+	const handleDrop = (e: React.DragEvent) => {
 		e.preventDefault();
-		e.stopPropagation();
 		if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
 			handleFileChosen(e.dataTransfer.files[0]);
 		}
 	};
 
-	const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
+	const handleDragOver = (e: React.DragEvent) => {
 		e.preventDefault();
-		e.stopPropagation();
 	};
 
 	const handleStartImport = async () => {
@@ -130,20 +126,13 @@ export const PluralKitImportModal: React.FC<PluralKitImportModalProps> = observe
 
 		for (let i = 0; i < total; i++) {
 			const member = members[i];
-			const displayName =
-				member.display_name && member.display_name.trim().length > 0
-					? member.display_name.trim()
-					: member.name && member.name.trim().length > 0
-						? member.name.trim()
-						: '';
-
-			const primaryPrefix = member.proxy_tags?.[0]?.prefix?.trim() || '(none)';
+			const displayName = (member.name || member.display_name || '').trim();
+			const primaryPrefix = member.proxy_tags?.[0]?.prefix?.trim() || undefined;
 
 			if (!displayName) {
 				warnings.push({
-					displayName: member.id ? `Member [${member.id}]` : '(Unnamed entry)',
-					prefix: primaryPrefix,
-					reason: 'Skipped: Entry has neither display name nor name.',
+					displayName: `Member #${i + 1}`,
+					reason: 'Skipped member because they have no name configured.',
 				});
 				setProgress({
 					current: i + 1,
@@ -166,7 +155,7 @@ export const PluralKitImportModal: React.FC<PluralKitImportModalProps> = observe
 
 			if (remoteAvatarUrl) {
 				try {
-					const res = await http.post<{avatar_url: string; message?: string}>(Endpoints.USER_SUBPROFILE_IMPORT_AVATAR, {
+					const res = await http.post<{avatar_url: string; message?: string}>(Endpoints.USER_PERSONA_IMPORT_AVATAR, {
 						body: {url: remoteAvatarUrl},
 					});
 					if (res.ok && res.body?.avatar_url) {
@@ -177,7 +166,7 @@ export const PluralKitImportModal: React.FC<PluralKitImportModalProps> = observe
 						warnings.push({
 							displayName,
 							prefix: primaryPrefix,
-							reason: `Avatar image failed to download: ${failureReason}. Subprofile was imported without an avatar.`,
+							reason: `Avatar image failed to download: ${failureReason}. Persona was imported without an avatar.`,
 						});
 					}
 				} catch (err: unknown) {
@@ -185,7 +174,7 @@ export const PluralKitImportModal: React.FC<PluralKitImportModalProps> = observe
 					warnings.push({
 						displayName,
 						prefix: primaryPrefix,
-						reason: `Avatar download failed: ${errorMsg}. Subprofile was imported without an avatar.`,
+						reason: `Avatar download failed: ${errorMsg}. Persona was imported without an avatar.`,
 					});
 				}
 			}
@@ -199,10 +188,10 @@ export const PluralKitImportModal: React.FC<PluralKitImportModalProps> = observe
 				}
 			}
 
-			const proxyTags = (member.proxy_tags ?? [])
+			const personaTags = (member.proxy_tags ?? [])
 				.filter((t) => t.prefix?.trim() || t.suffix?.trim())
 				.map((t) => ({
-					$typeName: 'fluxer.user.preferences.v1.ProxyTag' as const,
+					$typeName: 'fluxer.user.preferences.v1.PersonaTag' as const,
 					prefix: t.prefix?.trim() || undefined,
 					suffix: t.suffix?.trim() || undefined,
 				}));
@@ -217,19 +206,19 @@ export const PluralKitImportModal: React.FC<PluralKitImportModalProps> = observe
 				pronouns: member.pronouns?.trim() || undefined,
 				color: colorInt,
 				bio: member.description?.trim() || undefined,
-				autoProxyDisabled: false,
+				autoTagDisabled: false,
 				useCount: 0,
 				lastUsedAtMs: 0n,
-				proxyTags,
+				personaTags,
 			};
 
 			importedPersonas.push(persona);
 		}
 
 		if (importMode === 'replace') {
-			await SubprofileStore.replaceAllPersonas(importedPersonas);
+			await PersonaStore.replaceAllPersonas(importedPersonas);
 		} else {
-			await SubprofileStore.appendPersonas(importedPersonas);
+			await PersonaStore.appendPersonas(importedPersonas);
 		}
 
 		setImportResults({
@@ -240,7 +229,7 @@ export const PluralKitImportModal: React.FC<PluralKitImportModalProps> = observe
 	};
 
 	const modalTitle =
-		step === 'select' ? 'Import from PluralKit' : step === 'importing' ? 'Importing Subprofiles...' : 'Import Complete';
+		step === 'select' ? 'Import from PluralKit' : step === 'importing' ? 'Importing Personas...' : 'Import Complete';
 
 	return (
 		<Modal.Root size="medium" onClose={step === 'importing' ? () => {} : onClose}>
@@ -334,10 +323,10 @@ export const PluralKitImportModal: React.FC<PluralKitImportModalProps> = observe
 														style={{marginTop: 3}}
 													/>
 													<div>
-														<div className={styles.radioTitle}>Replace all existing subprofiles</div>
+														<div className={styles.radioTitle}>Replace all existing personas</div>
 														<div className={styles.radioDesc}>
-															Erase all {existingCount} existing subprofile(s) and replace them completely with the
-															imported profiles.
+															Erase all {existingCount} existing persona(s) and replace them completely with the
+															imported personas.
 														</div>
 													</div>
 												</label>
@@ -354,8 +343,8 @@ export const PluralKitImportModal: React.FC<PluralKitImportModalProps> = observe
 													<div>
 														<div className={styles.radioTitle}>Keep existing and add new</div>
 														<div className={styles.radioDesc}>
-															Keep your {existingCount} current subprofile(s) and add all {pkData.members?.length ?? 0}{' '}
-															imported profiles alongside them as new entries.
+															Keep your {existingCount} current persona(s) and add all {pkData.members?.length ?? 0}{' '}
+															imported personas alongside them as new entries.
 														</div>
 													</div>
 												</label>
@@ -388,7 +377,7 @@ export const PluralKitImportModal: React.FC<PluralKitImportModalProps> = observe
 								<CheckCircle size={36} style={{color: 'var(--accent-success)', marginBottom: 8}} />
 								<div className={styles.successTitle}>Import Complete!</div>
 								<div className={styles.successDesc}>
-									Successfully imported {importResults.successCount} subprofile(s) into your account. All avatar images
+									Successfully imported {importResults.successCount} persona(s) into your account. All avatar images
 									are safely stored on your local server.
 								</div>
 							</div>
