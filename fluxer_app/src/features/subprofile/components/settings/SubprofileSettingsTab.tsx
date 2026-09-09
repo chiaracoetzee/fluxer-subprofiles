@@ -296,7 +296,7 @@ export const SubprofileSettingsTab: React.FC = observer(() => {
 										<input
 											type="text"
 											className={styles.textInput}
-											placeholder="#5865F2"
+											placeholder="#4641D9"
 											maxLength={7}
 											value={formData.color}
 											onChange={(e) => setFormData({...formData, color: e.target.value})}
@@ -338,9 +338,9 @@ export const SubprofileSettingsTab: React.FC = observer(() => {
 										style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4}}
 									>
 										<div className={styles.formLabel}>Proxy Tags (Prefix & Suffix)</div>
-										<button type="button" className={styles.actionButton} onClick={handleAddTagRow}>
-											<Plus size={14} /> Add Tag Pair
-										</button>
+										<Button variant="secondary" small leftIcon={<Plus size={14} />} onClick={handleAddTagRow}>
+											Add Tag Pair
+										</Button>
 									</div>
 									{formData.proxyTags.map((tag, idx) => (
 										<div key={idx} className={styles.tagRow}>
@@ -351,7 +351,7 @@ export const SubprofileSettingsTab: React.FC = observer(() => {
 												value={tag.prefix}
 												onChange={(e) => handleTagChange(idx, 'prefix', e.target.value)}
 											/>
-											<span style={{color: 'var(--text-muted)'}}>text</span>
+											<span style={{color: 'var(--text-primary-muted)'}}>text</span>
 											<input
 												type="text"
 												className={styles.tagInput}
@@ -360,30 +360,30 @@ export const SubprofileSettingsTab: React.FC = observer(() => {
 												onChange={(e) => handleTagChange(idx, 'suffix', e.target.value)}
 											/>
 											{formData.proxyTags.length > 1 && (
-												<button
-													type="button"
-													className={clsx(styles.actionButton, styles.deleteButton)}
+												<Button
+													variant="danger"
+													small
+													square
+													icon={<Trash size={14} />}
 													onClick={() => handleRemoveTagRow(idx)}
-												>
-													<Trash size={14} />
-												</button>
+													aria-label="Remove tag pair"
+												/>
 											)}
 										</div>
 									))}
 								</div>
 							</div>
 							<div className={styles.editorActions}>
-								<button type="button" className={styles.secondaryButton} onClick={handleCancelEdit}>
+								<Button variant="secondary" onClick={handleCancelEdit}>
 									Cancel
-								</button>
-								<button
-									type="button"
-									className={styles.primaryButton}
+								</Button>
+								<Button
+									variant="primary"
 									disabled={!formData.name.trim() || isUploadingAvatar}
 									onClick={handleSaveForm}
 								>
 									{isUploadingAvatar ? 'Uploading avatar...' : 'Save Subprofile'}
-								</button>
+								</Button>
 							</div>
 						</div>
 					)}
