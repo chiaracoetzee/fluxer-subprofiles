@@ -37,7 +37,7 @@ import type {Message} from '@app/features/messaging/models/MessagingMessage';
 import SavedMessages from '@app/features/messaging/state/SavedMessages';
 import {openReportMessageModal} from '@app/features/moderation/utils/ReportActionUtils';
 import Permission from '@app/features/permissions/state/Permission';
-import { PersonaStore, SubprofileStore } from '@app/features/persona/state/PersonaStore';
+import { PersonaStore } from '@app/features/persona/state/PersonaStore';
 import {
 	AddReactionIcon,
 	BookmarkIcon,
@@ -69,7 +69,6 @@ import TtsUtils from '@app/features/voice/utils/VoiceTtsUtils';
 import {MessageStates, Permissions} from '@fluxer/constants/src/ChannelConstants';
 import {msg} from '@lingui/core/macro';
 import {useLingui} from '@lingui/react/macro';
-import { UsersIcon } from '@phosphor-icons/react';
 import {useCallback, useEffect, useMemo, useState} from 'react';
 
 const MESSAGE_DEBUG_DESCRIPTOR = msg({
