@@ -89,7 +89,7 @@ import {observer} from 'mobx-react-lite';
 
 // Fork imports.
 
-import type {MessageSubprofileRequest} from '@fluxer/schema/src/domains/subprofile/SubprofileSchemas';
+import type {MessageSubprofileRequest} from '@fluxer/schema/src/domains/persona/PersonaSchemas';
 
 const ARE_YOU_SURE_YOU_WANT_TO_DELETE_THIS_DESCRIPTOR = msg({
 	message: "Delete this message? Can't be undone.",

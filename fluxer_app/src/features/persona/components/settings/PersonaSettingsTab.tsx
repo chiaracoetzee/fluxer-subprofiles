@@ -15,22 +15,22 @@ import {clsx} from 'clsx';
 import {observer} from 'mobx-react-lite';
 import type React from 'react';
 import {useState} from 'react';
-import {type AutoproxyMode, SubprofileStore} from '../../state/SubprofileStore';
+import {type ActivePersonaMode, PersonaStore} from '../../state/PersonaStore';
 import {openPluralKitImportModal} from '../modals/PluralKitImportModal';
-import styles from './SubprofileSettingsTab.module.css';
+import styles from './PersonaSettingsTab.module.css';
 import { Button } from '@app/features/ui/button/Button';
 
-const AUTOPROXY_TABS: Array<SegmentedTab<AutoproxyMode>> = [
+const ACTIVE_PERSONA_TABS: Array<SegmentedTab<ActivePersonaMode>> = [
 	{id: 'off', label: 'Off'},
 	{id: 'manual', label: 'Manual'},
 	{id: 'last', label: 'Last Used'},
 ];
 
-const AUTOPROXY_DESCRIPTIONS: Record<AutoproxyMode, string> = {
-	off: 'Untagged messages always send from your root account. Subprofiles only speak when you type their proxy tags (e.g. [text]).',
+const ACTIVE_PERSONA_DESCRIPTIONS: Record<ActivePersonaMode, string> = {
+	off: 'Untagged messages always send from your root account. Personas only speak when you type their tags (e.g. [text]).',
 	manual:
-		'Untagged messages send as your chosen subprofile. Typing another subprofile’s proxy tags will only send that single message and won’t switch who is active.',
-	last: 'Untagged messages send as the subprofile that spoke most recently. Whenever anyone uses a proxy tag, they automatically become the active subprofile.',
+		'Untagged messages send as your chosen persona. Typing another persona’s tags will only send that single message and won’t switch who is active.',
+	last: 'Untagged messages send as the persona that spoke most recently. Whenever anyone uses a persona tag, they automatically become the active persona.',
 };
 
 interface PersonaFormState {
@@ -41,7 +41,7 @@ interface PersonaFormState {
 	avatarUrl: string;
 	color: string;
 	bio: string;
-	proxyTags: Array<{prefix: string; suffix: string}>;
+	tags: Array<{prefix: string; suffix: string}>;
 }
 
 const emptyFormState = (): PersonaFormState => ({
@@ -51,14 +51,14 @@ const emptyFormState = (): PersonaFormState => ({
 	avatarUrl: '',
 	color: '',
 	bio: '',
-	proxyTags: [{prefix: '', suffix: ''}],
+	tags: [{prefix: '', suffix: ''}],
 });
 
-export const SubprofileSettingsTab: React.FC = observer(() => {
+export const PersonaSettingsTab: React.FC = observer(() => {
 	const currentUser = Users.getCurrentUser();
-	const personas = SubprofileStore.personas;
-	const activePersonaId = SubprofileStore.activePersonaId;
-	const isLatched = SubprofileStore.autoproxyLatched;
+	const personas = PersonaStore.personas;
+	const activePersonaId = PersonaStore.activePersonaId;
+	const isLatched = PersonaStore.isPersonaLatched;
 
 	const [isEditing, setIsEditing] = useState(false);
 	const [formData, setFormData] = useState<PersonaFormState>(emptyFormState());
@@ -68,7 +68,7 @@ export const SubprofileSettingsTab: React.FC = observer(() => {
 		setFormData((prev) => ({...prev, avatarUrl: base64}));
 		setIsUploadingAvatar(true);
 		try {
-			const res = await http.post<{avatar_url: string}>(Endpoints.USER_SUBPROFILE_AVATAR, {
+			const res = await http.post<{avatar_url: string}>(Endpoints.USER_PERSONA_AVATAR, {
 				body: {avatar: base64},
 			});
 			if (res.ok && res.body?.avatar_url) {
@@ -107,9 +107,9 @@ export const SubprofileSettingsTab: React.FC = observer(() => {
 			avatarUrl: persona.avatarUrl ?? '',
 			color: persona.color != null ? `#${persona.color.toString(16).padStart(6, '0')}` : '',
 			bio: persona.bio ?? '',
-			proxyTags:
-				(persona.proxyTags ?? []).length > 0
-					? (persona.proxyTags ?? []).map((t) => ({prefix: t.prefix ?? '', suffix: t.suffix ?? ''}))
+			tags:
+				(persona.personaTags ?? []).length > 0
+					? (persona.personaTags ?? []).map((t) => ({prefix: t.prefix ?? '', suffix: t.suffix ?? ''}))
 					: [{prefix: '', suffix: ''}],
 		});
 		setIsEditing(true);
@@ -141,33 +141,33 @@ export const SubprofileSettingsTab: React.FC = observer(() => {
 			}
 		}
 
-		const validTags = formData.proxyTags
+		const validTags = formData.tags
 			.map((t) => ({prefix: t.prefix.trim() || undefined, suffix: t.suffix.trim() || undefined}))
 			.filter((t) => t.prefix || t.suffix);
 
 		if (formData.id) {
-			await SubprofileStore.updatePersona(formData.id, {
+			await PersonaStore.updatePersona(formData.id, {
 				name: trimmedName,
 				systemName: formData.systemName.trim() || undefined,
 				pronouns: formData.pronouns.trim() || undefined,
 				avatarUrl: formData.avatarUrl.trim() || undefined,
 				color: parsedColor ?? undefined,
 				bio: formData.bio.trim() || undefined,
-				proxyTags: validTags.map((t) => ({
-					$typeName: 'fluxer.user.preferences.v1.ProxyTag',
+				personaTags: validTags.map((t) => ({
+					$typeName: 'fluxer.user.preferences.v1.PersonaTag',
 					prefix: t.prefix,
 					suffix: t.suffix,
 				})),
 			});
 		} else {
-			await SubprofileStore.addPersona({
+			await PersonaStore.addPersona({
 				name: trimmedName,
 				system_name: formData.systemName.trim() || null,
 				pronouns: formData.pronouns.trim() || null,
 				avatar_url: formData.avatarUrl.trim() || null,
 				color: parsedColor,
 				bio: formData.bio.trim() || null,
-				proxy_tags: validTags,
+				persona_tags: validTags,
 			});
 		}
 
@@ -177,77 +177,77 @@ export const SubprofileSettingsTab: React.FC = observer(() => {
 
 	const handleDeletePersona = async (id: string) => {
 		if (confirm('Are you sure you want to delete this persona?')) {
-			await SubprofileStore.deletePersona(id);
+			await PersonaStore.deletePersona(id);
 		}
 	};
 
-	const autoproxyMode = SubprofileStore.autoproxyMode;
+	const activePersonaMode = PersonaStore.activePersonaMode;
 
-	const handleModeChange = async (mode: AutoproxyMode) => {
-		await SubprofileStore.setAutoproxyMode(mode);
+	const handleModeChange = async (mode: ActivePersonaMode) => {
+		await PersonaStore.setActivePersonaMode(mode);
 	};
 
 	const handleToggleActive = async (personaId: string) => {
 		if (activePersonaId === personaId && isLatched) {
-			await SubprofileStore.unlatch();
+			await PersonaStore.unlatch();
 		} else {
-			await SubprofileStore.setActivePersona(personaId, true);
+			await PersonaStore.setActivePersona(personaId, true);
 		}
 	};
 
 	const handleAddTagRow = () => {
 		setFormData((prev) => ({
 			...prev,
-			proxyTags: [...prev.proxyTags, {prefix: '', suffix: ''}],
+			tags: [...prev.tags, {prefix: '', suffix: ''}],
 		}));
 	};
 
 	const handleRemoveTagRow = (index: number) => {
 		setFormData((prev) => ({
 			...prev,
-			proxyTags: prev.proxyTags.filter((_, i) => i !== index),
+			tags: prev.tags.filter((_, i) => i !== index),
 		}));
 	};
 
 	const handleTagChange = (index: number, field: 'prefix' | 'suffix', value: string) => {
 		setFormData((prev) => {
-			const updated = [...prev.proxyTags];
+			const updated = [...prev.tags];
 			updated[index] = {...updated[index], [field]: value};
-			return {...prev, proxyTags: updated};
+			return {...prev, tags: updated};
 		});
 	};
 
 	return (
-		<SettingsTabContainer data-flx="user.subprofiles-settings-tab.container">
-			<SettingsTabContent data-flx="user.subprofiles-settings-tab.content">
+		<SettingsTabContainer data-flx="user.personas-settings-tab.container">
+			<SettingsTabContent data-flx="user.personas-settings-tab.content">
 				<div className={styles.container}>
 					{/* Header section */}
 					<SettingsSection
-						id="subprofiles_general"
-						title="Subprofiles & Personas"
-						description="Configure native subprofiles and personas for plural systems or multiple identities. Messages sent with your proxy tags or while latched will display under the chosen persona while keeping your account verifiable for safety."
+						id="personas_general"
+						title="Personas"
+						description="Send messages with distinct names and avatars. Personas can represent plural system members, roleplay characters, or any other identity."
 						linkable={false}
 					>
 						<div className={styles.sectionHeader}>
 							<div>
-								<h4 className={styles.sectionTitle}>Autoproxy Mode</h4>
+								<h4 className={styles.sectionTitle}>Active Persona Mode</h4>
 								<p className={styles.sectionDescription}>
-									Choose how untagged messages and proxy prefixes interact with your active subprofile.
+									Choose how untagged messages and persona tags interact with your active persona.
 								</p>
 							</div>
 						</div>
 						<div className={styles.modeControlWrapper}>
-							<SegmentedTabs<AutoproxyMode>
-								tabs={AUTOPROXY_TABS}
-								selectedTab={autoproxyMode}
+							<SegmentedTabs<ActivePersonaMode>
+								tabs={ACTIVE_PERSONA_TABS}
+								selectedTab={activePersonaMode}
 								onTabChange={(mode) => {
 									void handleModeChange(mode);
 								}}
-								ariaLabel="Autoproxy mode"
+								ariaLabel="Active persona mode"
 							/>
 							<div className={styles.modeHelperText}>
 								<Info size={16} weight="bold" className={styles.modeHelperIcon} />
-								<span>{AUTOPROXY_DESCRIPTIONS[autoproxyMode]}</span>
+								<span>{ACTIVE_PERSONA_DESCRIPTIONS[activePersonaMode]}</span>
 							</div>
 						</div>
 					</SettingsSection>
@@ -255,7 +255,7 @@ export const SubprofileSettingsTab: React.FC = observer(() => {
 					{/* Editor Form */}
 					{isEditing && (
 						<div className={styles.editorCard}>
-							<div className={styles.editorTitle}>{formData.id ? 'Edit Subprofile' : 'New Subprofile'}</div>
+							<div className={styles.editorTitle}>{formData.id ? 'Edit Persona' : 'New Persona'}</div>
 							<div className={styles.formGrid}>
 								<div className={styles.formField}>
 									<div className={styles.formLabel}>Name *</div>
@@ -337,12 +337,12 @@ export const SubprofileSettingsTab: React.FC = observer(() => {
 									<div
 										style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4}}
 									>
-										<div className={styles.formLabel}>Proxy Tags (Prefix & Suffix)</div>
+										<div className={styles.formLabel}>Persona Tags (Prefix & Suffix)</div>
 										<Button variant="secondary" small leftIcon={<Plus size={14} />} onClick={handleAddTagRow}>
 											Add Tag Pair
 										</Button>
 									</div>
-									{formData.proxyTags.map((tag, idx) => (
+									{formData.tags.map((tag, idx) => (
 										<div key={idx} className={styles.tagRow}>
 											<input
 												type="text"
@@ -359,7 +359,7 @@ export const SubprofileSettingsTab: React.FC = observer(() => {
 												value={tag.suffix}
 												onChange={(e) => handleTagChange(idx, 'suffix', e.target.value)}
 											/>
-											{formData.proxyTags.length > 1 && (
+											{formData.tags.length > 1 && (
 												<Button
 													variant="danger"
 													small
@@ -382,7 +382,7 @@ export const SubprofileSettingsTab: React.FC = observer(() => {
 									disabled={!formData.name.trim() || isUploadingAvatar}
 									onClick={handleSaveForm}
 								>
-									{isUploadingAvatar ? 'Uploading avatar...' : 'Save Subprofile'}
+									{isUploadingAvatar ? 'Uploading avatar...' : 'Save Persona'}
 								</Button>
 							</div>
 						</div>
@@ -390,19 +390,25 @@ export const SubprofileSettingsTab: React.FC = observer(() => {
 
 					{/* Personas List */}
 					<SettingsSection
-						id="subprofiles_list"
+						id="personas_list"
 						title={`Configured Personas (${personas.length})`}
 						linkable={false}
 						actions={
 							!isEditing && (
 								<div style={{display: 'flex', gap: 8}}>
-									<Button variant="secondary" onClick={openPluralKitImportModal}>
-										<UploadSimple size={16} style={{marginRight: 6, verticalAlign: 'text-bottom'}} />
+									<Button
+										variant="secondary"
+										leftIcon={<UploadSimple size={16} />}
+										onClick={openPluralKitImportModal}
+									>
 										Import from PluralKit
 									</Button>
-									<Button variant="primary" onClick={handleStartAdd}>
-										<Plus size={16} style={{marginRight: 6, verticalAlign: 'text-bottom'}} />
-										Add Subprofile
+									<Button
+										variant="primary"
+										leftIcon={<Plus size={16} />}
+										onClick={handleStartAdd}
+									>
+										Add Persona
 									</Button>
 								</div>
 							)
@@ -410,7 +416,7 @@ export const SubprofileSettingsTab: React.FC = observer(() => {
 					>
 						{personas.length === 0 && !isEditing ? (
 							<div className={styles.emptyState}>
-								No subprofiles created yet. Click "Add Subprofile" to create your first persona!
+								No personas created yet. Click "Add Persona" to create your first persona!
 							</div>
 						) : (
 							<div className={styles.cardList}>
@@ -436,7 +442,7 @@ export const SubprofileSettingsTab: React.FC = observer(() => {
 													)}
 												</div>
 												<div className={styles.cardSecondaryRow}>
-													{(persona.proxyTags ?? []).map((t, idx) => (
+													{(persona.personaTags ?? []).map((t, idx) => (
 														<span key={idx} className={styles.tagPill}>
 															{t.prefix ?? ''}text{t.suffix ?? ''}
 														</span>
@@ -448,31 +454,32 @@ export const SubprofileSettingsTab: React.FC = observer(() => {
 												<Button
 													variant="secondary"
 													onClick={() => handleToggleActive(persona.id)}
-													aria-label={isThisActive ? 'Unlatch active persona' : 'Latch this persona'}
+													leftIcon={
+														isThisActive ? (
+															<LockSimple size={14} color="var(--brand-primary)" />
+														) : (
+															<LockSimpleOpen size={14} />
+														)
+													}
+													aria-label={isThisActive ? 'Deactivate persona' : 'Set as active persona'}
 												>
-													{isThisActive ? (
-														<>
-															<LockSimple size={14} color="var(--brand-primary)" /> Latched
-														</>
-													) : (
-														<>
-															<LockSimpleOpen size={14} /> Latch
-														</>
-													)}
+													{isThisActive ? 'Active' : 'Set Active'}
 												</Button>
 												<Button
 													variant="secondary"
+													leftIcon={<PencilSimple size={14} />}
 													onClick={() => handleStartEdit(persona)}
 													aria-label="Edit persona"
 												>
-													<PencilSimple size={14} /> Edit
+													Edit
 												</Button>
 												<Button
 													variant="danger"
+													leftIcon={<Trash size={14} />}
 													onClick={() => handleDeletePersona(persona.id)}
 													aria-label="Delete persona"
 												>
-													<Trash size={14} /> Delete
+													Delete
 												</Button>
 											</div>
 										</div>
@@ -486,4 +493,5 @@ export const SubprofileSettingsTab: React.FC = observer(() => {
 		</SettingsTabContainer>
 	);
 });
-export default SubprofileSettingsTab;
+export default PersonaSettingsTab;
+export const SubprofileSettingsTab = PersonaSettingsTab;
