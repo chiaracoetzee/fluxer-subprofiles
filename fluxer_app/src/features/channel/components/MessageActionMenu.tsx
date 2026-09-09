@@ -17,6 +17,7 @@ import type {FlatEmoji} from '@app/features/emoji/types/EmojiTypes';
 import {
 	ADD_REACTION_DESCRIPTOR,
 	BOOKMARK_MESSAGE_DESCRIPTOR,
+	CHANGE_PERSONA_DESCRIPTOR,
 	COPY_MESSAGE_ID_DESCRIPTOR,
 	COPY_MESSAGE_LINK_DESCRIPTOR,
 	DELETE_MESSAGE_DESCRIPTOR,
@@ -35,9 +36,11 @@ import type {Message} from '@app/features/messaging/models/MessagingMessage';
 import SavedMessages from '@app/features/messaging/state/SavedMessages';
 import {openReportMessageModal} from '@app/features/moderation/utils/ReportActionUtils';
 import Permission from '@app/features/permissions/state/Permission';
+import { PersonaStore, SubprofileStore } from '@app/features/persona/state/PersonaStore';
 import {
 	AddReactionIcon,
 	BookmarkIcon,
+	ChangePersonasIcon,
 	CopyIdIcon,
 	CopyLinkIcon,
 	CopyMessageTextIcon,
@@ -65,6 +68,7 @@ import TtsUtils from '@app/features/voice/utils/VoiceTtsUtils';
 import {MessageStates, Permissions} from '@fluxer/constants/src/ChannelConstants';
 import {msg} from '@lingui/core/macro';
 import {useLingui} from '@lingui/react/macro';
+import { UsersIcon } from '@phosphor-icons/react';
 import {useCallback, useEffect, useMemo, useState} from 'react';
 
 const MESSAGE_DEBUG_DESCRIPTOR = msg({
@@ -121,6 +125,7 @@ export const messageActionMenuItemIds = {
 	reply: 'reply',
 	forward: 'forward',
 	edit: 'edit',
+	changePersona: 'change_persona',
 	pinMessage: 'message_pin',
 	bookmarkMessage: 'message_bookmark',
 	suppressEmbeds: 'suppress_embeds',
@@ -299,6 +304,13 @@ export const useMessageActionMenuData = (
 					label: i18n._(EDIT_MESSAGE_DESCRIPTOR),
 					onClick: handlers.handleEditMessage,
 					shortcut: <KeybindHint action="message_edit" data-flx="channel.message-action-menu.groups.keybind-hint--5" />,
+				});
+				if (PersonaStore.personas.length) interactionActions.push({
+					id: messageActionMenuItemIds.changePersona,
+					icon: <ChangePersonasIcon size={20} data-flx="channel.message-action-menu.groups.change-personas-icon" />,
+					label: i18n._(CHANGE_PERSONA_DESCRIPTOR),
+					onClick: handlers.handleChangePersona,
+					//shortcut: <KeybindHint action="message_change_persona" data-flx="channel.message-action-menu.groups.keybind-hint--change-persona" />
 				});
 			}
 			if (message.isUserMessage() && permissions?.canPinMessage) {
