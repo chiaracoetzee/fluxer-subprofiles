@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-import {useContextMenuHoverState} from '@app/features/app/hooks/useContextMenuHoverState';
 import {useMaybeMessageViewContext} from '@app/features/channel/components/MessageViewContext';
 import {PreloadableUserPopout} from '@app/features/channel/components/PreloadableUserPopout';
 import type {Guild} from '@app/features/guild/models/Guild';
@@ -8,7 +7,6 @@ import {isKeyboardActivationKey} from '@app/features/input/utils/KeyboardUtils';
 import type {GuildMember} from '@app/features/member/models/GuildMember';
 import type {Message} from '@app/features/messaging/models/MessagingMessage';
 import styles from '@app/features/theme/styles/Message.module.css';
-import * as ColorUtils from '@app/features/theme/utils/ColorUtils';
 import FocusRing from '@app/features/ui/focus_ring/FocusRing';
 import KeyboardMode from '@app/features/ui/state/KeyboardMode';
 import type {User} from '@app/features/user/models/User';
@@ -26,15 +24,13 @@ export const MessageSubprofileAccount = observer(
 		guild,
 		member,
 		className,
-		previewColor,
-		previewName,
 	}: {
 		user: User;
 		message: Message;
 		guild?: Guild;
 		member?: GuildMember;
-		className: string;
-		isPreview: boolean;
+		className?: string;
+		isPreview?: boolean;
 		previewColor?: string;
 		previewName?: string;
 	}) => {
@@ -86,7 +82,7 @@ export const MessageSubprofileAccount = observer(
 							message={message}
 							guildId={guild?.id}
 							size={16}
-							className={clsx(styles.messageAvatarCompact, styles.messageSubprofileMainAvatar)}
+							className={clsx(styles.messageAvatarCompact, styles.messageSubprofileMainAvatar, className)}
 							isHovering={/*isHovering*/ false}
 							isPreview={/*!!previewContext*/ false}
 							ignoreSubprofile={true}
