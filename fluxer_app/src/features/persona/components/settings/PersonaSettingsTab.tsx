@@ -19,6 +19,7 @@ import {type ActivePersonaMode, PersonaStore} from '../../state/PersonaStore';
 import {openPluralKitImportModal} from '../modals/PluralKitImportModal';
 import styles from './PersonaSettingsTab.module.css';
 import { Button } from '@app/features/ui/button/Button';
+import {ColorPickerField} from '@app/features/ui/components/form/ColorPickerField';
 
 const ACTIVE_PERSONA_TABS: Array<SegmentedTab<ActivePersonaMode>> = [
 	{id: 'off', label: 'Off'},
@@ -39,7 +40,7 @@ interface PersonaFormState {
 	systemName: string;
 	pronouns: string;
 	avatarUrl: string;
-	color: string;
+	color: number | null;
 	bio: string;
 	tags: Array<{prefix: string; suffix: string}>;
 }
@@ -49,7 +50,7 @@ const emptyFormState = (): PersonaFormState => ({
 	systemName: '',
 	pronouns: '',
 	avatarUrl: '',
-	color: '',
+	color: null,
 	bio: '',
 	tags: [{prefix: '', suffix: ''}],
 });
@@ -105,7 +106,7 @@ export const PersonaSettingsTab: React.FC = observer(() => {
 			systemName: persona.systemName ?? '',
 			pronouns: persona.pronouns ?? '',
 			avatarUrl: persona.avatarUrl ?? '',
-			color: persona.color != null ? `#${persona.color.toString(16).padStart(6, '0')}` : '',
+			color: persona.color ?? null,
 			bio: persona.bio ?? '',
 			tags:
 				(persona.personaTags ?? []).length > 0
@@ -132,14 +133,7 @@ export const PersonaSettingsTab: React.FC = observer(() => {
 		const trimmedName = formData.name.trim();
 		if (!trimmedName) return;
 
-		let parsedColor: number | null = null;
-		if (formData.color.trim()) {
-			const cleanHex = formData.color.replace('#', '').trim();
-			const parsed = Number.parseInt(cleanHex, 16);
-			if (!Number.isNaN(parsed)) {
-				parsedColor = parsed;
-			}
-		}
+		const parsedColor = formData.color;
 
 		const validTags = formData.tags
 			.map((t) => ({prefix: t.prefix.trim() || undefined, suffix: t.suffix.trim() || undefined}))
@@ -291,21 +285,14 @@ export const PersonaSettingsTab: React.FC = observer(() => {
 									/>
 								</div>
 								<div className={styles.formField}>
-									<div className={styles.formLabel}>Color (Hex)</div>
-									<div style={{display: 'flex', gap: 8, alignItems: 'center'}}>
-										<input
-											type="text"
-											className={styles.textInput}
-											placeholder="#4641D9"
-											maxLength={7}
-											value={formData.color}
-											onChange={(e) => setFormData({...formData, color: e.target.value})}
-											style={{flex: 1}}
-										/>
-										{formData.color && (
-											<div className={styles.colorPreview} style={{backgroundColor: formData.color}} />
-										)}
-									</div>
+									<div className={styles.formLabel}>Color</div>
+									<ColorPickerField
+										value={formData.color ?? 0}
+										onChange={(color) => setFormData((prev) => ({...prev, color: color === 0 ? null : color}))}
+										onReset={() => setFormData((prev) => ({...prev, color: null}))}
+										hideHelperText={true}
+										data-flx="user.persona-settings-tab.color-picker-field"
+									/>
 								</div>
 								<div className={styles.formField} style={{gridColumn: '1 / -1'}}>
 									<div className={styles.formLabel}>Avatar</div>
@@ -430,7 +417,7 @@ export const PersonaSettingsTab: React.FC = observer(() => {
 													<span className={styles.cardName}>{persona.name}</span>
 													{persona.systemName && <span className={styles.cardSystemTag}>[{persona.systemName}]</span>}
 													{persona.pronouns && <span className={styles.cardPronouns}>({persona.pronouns})</span>}
-													{persona.color != null && (
+													{persona.color != null && persona.color !== 0 && (
 														<div
 															className={styles.colorPreview}
 															style={{
