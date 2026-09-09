@@ -52,8 +52,6 @@ import MessageChangePersona from '@app/features/messaging/state/MessageChangePer
 import {PersonaPickerSheet} from '@app/features/persona/components/PersonaPickerSheet';
 import {PersonaStore} from '@app/features/persona/state/PersonaStore';
 import * as PopoutCommands from '@app/features/ui/commands/PopoutCommands';
-import {PopoutKeyContext, usePopoutKey} from '@app/features/ui/popover';
-import {Toast} from '@app/features/ui/toast/Toast';
 
 const ATTACHMENT_DESCRIPTOR = msg({
 	message: 'attachment',
