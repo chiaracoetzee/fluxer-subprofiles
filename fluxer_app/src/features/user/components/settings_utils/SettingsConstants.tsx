@@ -220,12 +220,6 @@ const ALL_TABS_DESCRIPTORS: Array<SettingsTabDescriptor> = [
 		icon: UserIcon,
 	},
 	{
-		type: 'subprofiles',
-		category: 'user_settings',
-		label: SUBPROFILES_DESCRIPTOR,
-		icon: UsersIcon,
-	},
-	{
 		type: 'account_security',
 		category: 'user_settings',
 		label: ACCOUNT_SECURITY_DESCRIPTOR,
@@ -260,6 +254,12 @@ const ALL_TABS_DESCRIPTORS: Array<SettingsTabDescriptor> = [
 		category: 'user_settings',
 		label: LINKED_DEVICES_DESCRIPTOR,
 		icon: DevicesIcon,
+	},
+	{
+		type: 'subprofiles',
+		category: 'user_settings',
+		label: SUBPROFILES_DESCRIPTOR,
+		icon: UsersIcon,
 	},
 	{
 		type: 'plutonium',
