@@ -4,6 +4,7 @@ import type {Channel} from '@app/features/channel/models/Channel';
 import * as DraftCommands from '@app/features/messaging/commands/DraftCommands';
 import * as MessageCommands from '@app/features/messaging/commands/MessageCommands';
 import {Message} from '@app/features/messaging/models/MessagingMessage';
+import {CloudUpload} from '@app/features/messaging/upload/CloudUpload';
 import * as MessageSubmitUtils from '@app/features/messaging/utils/MessageSubmitUtils';
 import {formatUploadingAttachmentSummary} from '@app/features/messaging/utils/UploadingAttachmentLabelUtils';
 import Permission from '@app/features/permissions/state/Permission';
@@ -101,9 +102,11 @@ export const useMessageSubmission = ({channel, referencedMessage, replyingMessag
 				return true;
 			}
 
-			const matchResult = PersonaStore.matchOutgoingMessage(content);
+			const hasPendingAttachments =
+				hasAttachments || CloudUpload.getTextareaAttachments(channel.id).length > 0;
+			const matchResult = PersonaStore.matchOutgoingMessage(content, hasPendingAttachments);
 			const finalContent = matchResult.matched || matchResult.wasEscaped ? matchResult.strippedContent : content;
-			if (finalContent.length === 0 && !hasAttachments && !favoriteMemeIdOrStickers) {
+			if (finalContent.length === 0 && !hasPendingAttachments && !favoriteMemeIdOrStickers) {
 				TypingUtils.clear(channel.id);
 				DraftCommands.deleteDraft(channel.id);
 				return true;
