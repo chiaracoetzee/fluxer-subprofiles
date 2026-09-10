@@ -5,6 +5,7 @@ import {comparer, makeAutoObservable, reaction} from 'mobx';
 import type { Message } from '../models/MessagingMessage';
 import * as MessageCommands from '../commands/MessageCommands';
 import type { MessageSubprofileRequest } from '@fluxer/schema/src/domains/persona/PersonaSchemas.js';
+import { buildExistingAttachmentEditReferences } from '../utils/MessageEditContentUtils';
 
 class MessageChangePersona {
 	private editingMessageIds: Record<string, string> = {};
@@ -48,7 +49,7 @@ class MessageChangePersona {
 			message.content,
 			undefined,
 			message._allowedMentions,
-			undefined,
+			message.attachments?.length ? buildExistingAttachmentEditReferences(message) : undefined,
 			subprofile,
 		);
 	}
