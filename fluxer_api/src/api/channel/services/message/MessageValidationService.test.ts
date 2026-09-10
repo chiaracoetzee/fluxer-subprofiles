@@ -99,4 +99,53 @@ describe('MessageValidationService.validateMessageContent', () => {
 			MAX_MESSAGE_LENGTH_PREMIUM,
 		);
 	});
+
+	it('allows empty content when updating a message with existing attachments', () => {
+		const service = createValidationService();
+		const existingMessage = {attachments: [{filename: 'image.png'}]} as never;
+		expect(() =>
+			service.validateMessageContent({content: ''} as never, null, {
+				isUpdate: true,
+				existingMessage,
+			}),
+		).not.toThrow();
+	});
+
+	it('allows updating subprofile even when content is empty', () => {
+		const service = createValidationService();
+		expect(() =>
+			service.validateMessageContent(
+				{
+					content: '',
+					subprofile: {id: 'p1', name: 'Alice'},
+				} as never,
+				null,
+				{isUpdate: true},
+			),
+		).not.toThrow();
+	});
+
+	it('allows updating subprofile only without content or attachments', () => {
+		const service = createValidationService();
+		expect(() =>
+			service.validateMessageContent(
+				{
+					subprofile: {id: 'p1', name: 'Alice'},
+				} as never,
+				null,
+				{isUpdate: true},
+			),
+		).not.toThrow();
+	});
+
+	it('still rejects empty content when updating a message without attachments, embeds, flags, or subprofile', () => {
+		const service = createValidationService();
+		expect(() =>
+			service.validateMessageContent(
+				{content: ''} as never,
+				null,
+				{isUpdate: true, existingMessage: {attachments: [], embeds: []} as never},
+			),
+		).toThrow(CannotSendEmptyMessageError);
+	});
 });

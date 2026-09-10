@@ -220,14 +220,17 @@ export const UserMessage = observer(() => {
 				return;
 			}
 			finishEditing();
-			const editMatch = PersonaStore.matchEditMessage(content, message.subprofile);
+			const editMatch = PersonaStore.matchEditMessage(content, message.subprofile, {
+				hasAttachments: canSubmitEmptyMessageEdit(message),
+				originalContent: message.content,
+			});
 			void MessageCommands.edit(
 				channel.id,
 				message.id,
 				editMatch.finalContent,
 				undefined,
 				message._allowedMentions,
-				undefined,
+				canSubmitEmptyMessageEdit(message) ? buildExistingAttachmentEditReferences(message) : undefined,
 				editMatch.subprofile,
 			);
 		},
