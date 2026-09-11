@@ -5,6 +5,7 @@ import type {ApiContext} from '@app/api/ApiContext';
 import {AdminService} from '@app/api/admin/AdminService';
 import {AuthRequestService} from '@app/api/auth/AuthRequestService';
 import {DesktopHandoffService} from '@app/api/auth/services/DesktopHandoffService';
+import {PersonaService} from '@app/api/persona/PersonaService';
 import {SsoService} from '@app/api/auth/services/SsoService';
 import type {IBlueskyOAuthService} from '@app/api/bluesky/IBlueskyOAuthService';
 import {Config} from '@app/api/Config';
@@ -94,6 +95,7 @@ import {
 	getLimitConfigService,
 	getOAuth2TokenRepository,
 	getPasswordChangeRepository,
+	getPersonaRepository,
 	getPremiumStateReconciliationQueueService,
 	getPurgeQueue,
 	getRateLimitService,
@@ -223,6 +225,7 @@ class RequestServices implements RequestScopedServices {
 	private cachedStreamService: StreamService | undefined;
 	private cachedFavoriteMemeService: FavoriteMemeService | undefined;
 	private cachedFavoriteMemeRequestService: FavoriteMemeRequestService | undefined;
+	private cachedPersonaService: PersonaService | undefined;
 	private cachedSingleCommunityService: SingleCommunityService | undefined;
 	private cachedEmailChangeService: EmailChangeService | undefined;
 	private cachedMfaBackupCodesChallengeService: MfaBackupCodesChallengeService | undefined;
@@ -671,6 +674,15 @@ class RequestServices implements RequestScopedServices {
 	get favoriteMemeRequestService(): FavoriteMemeRequestService {
 		this.cachedFavoriteMemeRequestService ??= new FavoriteMemeRequestService(this.favoriteMemeService);
 		return this.cachedFavoriteMemeRequestService;
+	}
+
+	get personaService(): PersonaService {
+		this.cachedPersonaService ??= new PersonaService({
+			personaRepository: getPersonaRepository(),
+			userAccountLookupService: this.userService.accountService.lookupService,
+			gatewayService: this.gatewayService,
+		});
+		return this.cachedPersonaService;
 	}
 
 	get emailChangeService(): EmailChangeService {
