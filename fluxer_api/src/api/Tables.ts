@@ -340,6 +340,7 @@ import {
 	type UserSettingsRow,
 	type UsersPendingDeletionRow,
 } from '@app/api/database/types/UserTypes';
+import {PERSONA_COLUMNS, type PersonaRow} from '@app/api/database/types/PersonaTypes';
 import {ATTACHMENT_DECAY_COLUMNS, type AttachmentDecayRow} from '@app/api/types/AttachmentDecayTypes';
 import {seconds} from 'itty-time';
 
@@ -437,6 +438,12 @@ export const UserConnections = defineTable<UserConnectionStorageRow, 'user_id' |
 	name: 'user_connections',
 	columns: USER_CONNECTION_STORAGE_COLUMNS,
 	primaryKey: ['user_id', 'connection_type', 'connection_id'],
+	partitionKey: ['user_id'],
+});
+export const Personas = defineTable<PersonaRow, 'user_id' | 'persona_id', 'user_id'>({
+	name: 'personas',
+	columns: PERSONA_COLUMNS,
+	primaryKey: ['user_id', 'persona_id'],
 	partitionKey: ['user_id'],
 });
 export const Notes = defineTable<NoteRow, 'source_user_id' | 'target_user_id'>({
