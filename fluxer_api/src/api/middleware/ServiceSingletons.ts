@@ -28,6 +28,7 @@ import {createNatsGifProvider} from '@app/api/gif/NatsGifProvider';
 import {GuildAuditLogService} from '@app/api/guild/GuildAuditLogService';
 import {GuildDiscoveryRepository} from '@app/api/guild/repositories/GuildDiscoveryRepository';
 import {GuildRepository} from '@app/api/guild/repositories/GuildRepository';
+import {PersonaRepository} from '@app/api/persona/PersonaRepository';
 import {GuildDiscoveryService} from '@app/api/guild/services/GuildDiscoveryService';
 import {AssetDeletionQueue} from '@app/api/infrastructure/AssetDeletionQueue';
 import {AvatarService} from '@app/api/infrastructure/AvatarService';
@@ -107,6 +108,7 @@ import {createSmsProvider} from '@pkgs/sms/src/providers/SmsProviderFactory';
 import {SmsService} from '@pkgs/sms/src/SmsService';
 import type {IVirusScanService} from '@pkgs/virus_scan/src/IVirusScanService';
 
+
 export const getUserRepository = singleton(() => new UserRepository(getKVClient()));
 export const getGuildRepository = singleton(() => new GuildRepository());
 export const getChannelRepository = singleton(() => new ChannelRepository());
@@ -114,6 +116,7 @@ export const getInviteRepository = singleton(() => new InviteRepository());
 export const getWebhookRepository = singleton(() => new WebhookRepository());
 export const getReadStateRepository = singleton(() => new ReadStateRepository());
 export const getFavoriteMemeRepository = singleton(() => new FavoriteMemeRepository());
+export const getPersonaRepository = singleton(() => new PersonaRepository());
 export const getConnectionRepository = singleton(() => new ConnectionRepository());
 export const getReportRepository = singleton(() => new ReportRepository());
 export const getAdminRepository = singleton(() => new AdminRepository());
