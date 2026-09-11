@@ -48,6 +48,7 @@ import {ApplicationService} from '../oauth/ApplicationService';
 import {OAuth2ApplicationsRequestService} from '../oauth/OAuth2ApplicationsRequestService';
 import {OAuth2RequestService} from '../oauth/OAuth2RequestService';
 import {OAuth2Service} from '../oauth/OAuth2Service';
+import {PersonaService} from '../persona/PersonaService';
 import {ReportRequestService} from '../report/ReportRequestService';
 import {ReportService} from '../report/ReportService';
 import type {IAccountPolicyEvaluator} from '../risk/AccountPolicyEvaluator';
@@ -147,6 +148,7 @@ import {
 	getNcmecSubmissionService,
 	getOAuth2TokenRepository,
 	getPasswordChangeRepository,
+	getPersonaRepository,
 	getPremiumStateReconciliationQueueService,
 	getPurgeQueue,
 	getRateLimitService,
@@ -377,6 +379,7 @@ class RequestServices implements RequestScopedServices {
 	private cachedStreamService: StreamService | undefined;
 	private cachedFavoriteMemeService: FavoriteMemeService | undefined;
 	private cachedFavoriteMemeRequestService: FavoriteMemeRequestService | undefined;
+	private cachedPersonaService: PersonaService | undefined;
 	private cachedSingleCommunityService: SingleCommunityService | undefined;
 	private cachedEmailChangeService: EmailChangeService | undefined;
 	private cachedMfaBackupCodesChallengeService: MfaBackupCodesChallengeService | undefined;
@@ -809,6 +812,15 @@ class RequestServices implements RequestScopedServices {
 	get favoriteMemeRequestService(): FavoriteMemeRequestService {
 		this.cachedFavoriteMemeRequestService ??= new FavoriteMemeRequestService(this.favoriteMemeService);
 		return this.cachedFavoriteMemeRequestService;
+	}
+
+	get personaService(): PersonaService {
+		this.cachedPersonaService ??= new PersonaService({
+			personaRepository: getPersonaRepository(),
+			userAccountLookupService: this.userService.accountService.lookupService,
+			gatewayService: this.gatewayService,
+		});
+		return this.cachedPersonaService;
 	}
 
 	get emailChangeService(): EmailChangeService {
