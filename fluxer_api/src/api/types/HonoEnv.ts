@@ -52,6 +52,7 @@ import type {OAuth2RequestService} from '@app/api/oauth/OAuth2RequestService';
 import type {OAuth2Service} from '@app/api/oauth/OAuth2Service';
 import type {IApplicationRepository} from '@app/api/oauth/repositories/IApplicationRepository';
 import type {IOAuth2TokenRepository} from '@app/api/oauth/repositories/IOAuth2TokenRepository';
+import type {PersonaService} from '@app/api/persona/PersonaService';
 import type {ReadStateRequestService} from '@app/api/read_state/ReadStateRequestService';
 import type {ReadStateService} from '@app/api/read_state/ReadStateService';
 import type {ReportRequestService} from '@app/api/report/ReportRequestService';
@@ -86,6 +87,7 @@ import type {IRateLimitService} from '@pkgs/rate_limit/src/IRateLimitService';
 import type {IWorkerService} from '@pkgs/worker/src/contracts/IWorkerService';
 import type {Hono} from 'hono';
 import type {ZodType} from 'zod';
+
 
 export interface HonoEnv {
 	Variables: {
@@ -156,6 +158,7 @@ export interface HonoEnv {
 		userActivityBuffer: UserActivityBuffer;
 		reportService: ReportService;
 		reportRequestService: ReportRequestService;
+		personaService: PersonaService;
 		contactChangeLogService: UserContactChangeLogService;
 		ncmecSubmissionService: NcmecSubmissionService;
 		requestCache: RequestCache;
