@@ -88,6 +88,10 @@ import type {IWorkerService} from '@pkgs/worker/src/contracts/IWorkerService';
 import type {Hono} from 'hono';
 import type {ZodType} from 'zod';
 
+// Fork imports.
+
+import type {PersonaService} from '@app/api/persona/PersonaService';
+
 export interface HonoEnv {
 	Variables: {
 		apiContext: ApiContext;
@@ -158,6 +162,7 @@ export interface HonoEnv {
 		userActivityBuffer: UserActivityBuffer;
 		reportService: ReportService;
 		reportRequestService: ReportRequestService;
+		personaService: PersonaService;
 		contactChangeLogService: UserContactChangeLogService;
 		requestCache: RequestCache;
 		rpcService: RpcService;
