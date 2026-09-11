@@ -335,6 +335,7 @@ import {
 	type UserSettingsRow,
 	type UsersPendingDeletionRow,
 } from './database/types/UserTypes';
+import {PERSONA_COLUMNS, type PersonaRow} from './database/types/PersonaTypes';
 import {ATTACHMENT_DECAY_COLUMNS, type AttachmentDecayRow} from './types/AttachmentDecayTypes';
 
 export const Users = defineTable<UserRow, 'user_id'>({
@@ -431,6 +432,12 @@ export const UserConnections = defineTable<UserConnectionRow, 'user_id' | 'conne
 	name: 'user_connections',
 	columns: USER_CONNECTION_COLUMNS,
 	primaryKey: ['user_id', 'connection_type', 'connection_id'],
+	partitionKey: ['user_id'],
+});
+export const Personas = defineTable<PersonaRow, 'user_id' | 'persona_id', 'user_id'>({
+	name: 'personas',
+	columns: PERSONA_COLUMNS,
+	primaryKey: ['user_id', 'persona_id'],
 	partitionKey: ['user_id'],
 });
 export const Notes = defineTable<NoteRow, 'source_user_id' | 'target_user_id'>({

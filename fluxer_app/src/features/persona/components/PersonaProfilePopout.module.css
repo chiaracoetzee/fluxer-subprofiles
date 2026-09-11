@@ -35,7 +35,9 @@
 	font-family: inherit;
 	box-sizing: border-box;
 	gap: 0.5rem;
-	transition: background-color 0.15s ease, border-color 0.15s ease;
+	transition:
+		background-color 0.15s ease,
+		border-color 0.15s ease;
 }
 
 :global(:where(html.window-focused, html.unfocused-fully-interactive):not(.window-focus-activation-guard))
@@ -71,4 +73,3 @@
 	width: 1rem;
 	height: 1rem;
 }
-

@@ -31,6 +31,7 @@ import SavedMessages from '@app/features/messaging/state/SavedMessages';
 import MentionFeed from '@app/features/notification/state/MentionFeed';
 import Permission from '@app/features/permissions/state/Permission';
 import {Logger} from '@app/features/platform/utils/AppLogger';
+import * as PersonaCommands from '@app/features/persona/commands/PersonaCommands';
 import * as PremiumCommands from '@app/features/premium/commands/PremiumCommands';
 import Presence from '@app/features/presence/state/Presence';
 import ReadStates, {type GatewayReadState} from '@app/features/read_state/state/ReadStates';
@@ -147,6 +148,9 @@ function handleReadyInternal(data: ReadyPayload, context: GatewayHandlerContext)
 	Authentication.handleGatewayReady({user: data.user});
 	void PremiumCommands.refreshPremiumState().catch((error) => {
 		logger.warn('Failed to refresh premium state after READY', error);
+	});
+	void PersonaCommands.fetchPersonas().catch((error) => {
+		logger.warn('Failed to fetch personas after READY', error);
 	});
 	Guilds.handleGatewayReady({guilds});
 	UserSettings.handleGatewayReady(data.user_settings);
