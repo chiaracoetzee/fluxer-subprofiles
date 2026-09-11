@@ -35,6 +35,7 @@ import NavigationSideEffects from '@app/features/navigation/state/NavigationSide
 import MentionFeed from '@app/features/notification/state/MentionFeed';
 import Permission from '@app/features/permissions/state/Permission';
 import {Logger} from '@app/features/platform/utils/AppLogger';
+import * as PersonaCommands from '@app/features/persona/commands/PersonaCommands';
 import Presence from '@app/features/presence/state/Presence';
 import ReadStates, {type GatewayReadState} from '@app/features/read_state/state/ReadStates';
 import type {RelationshipWire} from '@app/features/relationship/models/Relationship';
@@ -152,6 +153,9 @@ function handleReadyInternal(data: ReadyPayload, context: GatewayHandlerContext,
 	Users.handleGatewayReady(accountKey, data.user);
 	Users.cacheUsers(data.users ?? []);
 	syncAccountUserData(accountKey, data.user);
+	void PersonaCommands.fetchPersonas().catch((error) => {
+		logger.warn('Failed to fetch personas after READY', error);
+	});
 	Authentication.handleGatewayReady({user: data.user});
 	Guilds.handleGatewayReady({guilds});
 	UserSettings.handleGatewayReady(data.user_settings);
