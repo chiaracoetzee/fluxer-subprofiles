@@ -25,6 +25,7 @@ import {getCacheService} from '../middleware/ServiceSingletons';
 import {OAuth2ApplicationsController} from '../oauth/OAuth2ApplicationsController';
 import {OAuth2Controller} from '../oauth/OAuth2Controller';
 import {OpenAPIController} from '../openapi/OpenAPIController';
+import {PersonaController} from '../persona/PersonaController';
 import {PremiumController} from '../premium/PremiumController';
 import {ReadStateController} from '../read_state/ReadStateController';
 import {ReportController} from '../report/ReportController';
@@ -66,6 +67,7 @@ export function registerControllers(routes: HonoApp, config: APIConfig): void {
 		TestHarnessController(routes);
 	}
 	UserController(routes);
+	PersonaController(routes);
 	if (config.sms.enabled) {
 		registerInboundSmsWebhook(routes);
 	}
