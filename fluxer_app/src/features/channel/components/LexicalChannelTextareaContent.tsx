@@ -393,6 +393,7 @@ export const LexicalChannelTextareaContent = observer(
 					handle.clear();
 				}
 				setValue('');
+				setWireValue('');
 				clearSegments();
 				return true;
 			},
@@ -1400,7 +1401,9 @@ export const LexicalChannelTextareaContent = observer(
 										ref={plusButtonRef}
 										data-flx="channel.lexical-channel-textarea-content.plus-button-above-backdrop.clear-slash-command"
 									/>
-									{showPersonasButton && <PersonaComposerPill channelId={channel.id} />}
+									{showPersonasButton && (
+										<PersonaComposerPill channelId={channel.id} text={wireValue} hasAttachments={hasAttachments} />
+									)}
 								</flx-channel-textarea-upload-column>
 							)}
 							<flx-channel-textarea-content
