@@ -98,9 +98,9 @@ import {
 	resolveTypedEmojiShortcodes,
 	resolveTypedEmojiToken,
 } from '@app/features/messaging/utils/TypedEmojiShortcodeUtils';
+import {PersonaComposerPill} from '@app/features/persona/components/PersonaComposerPill';
 import {ComponentBus} from '@app/features/platform/utils/ComponentBus';
 import {useSlowmode} from '@app/features/slowmode/hooks/useSlowmode';
-import {PersonaComposerPill} from '@app/features/persona/components/PersonaComposerPill';
 import * as ContextMenuCommands from '@app/features/ui/commands/ContextMenuCommands';
 import * as ModalCommands from '@app/features/ui/commands/ModalCommands';
 import {modal} from '@app/features/ui/commands/ModalCommands';
@@ -348,6 +348,7 @@ export const LexicalChannelTextareaContent = observer(
 					handle.clear();
 				}
 				setValue('');
+				setWireValue('');
 				clearSegments();
 				return true;
 			},
@@ -1328,7 +1329,9 @@ export const LexicalChannelTextareaContent = observer(
 									ref={plusButtonRef}
 									data-flx="channel.lexical-channel-textarea-content.plus-button-above-backdrop.clear-slash-command"
 								/>
-								{showPersonasButton && <PersonaComposerPill channelId={channel.id} />}
+								{showPersonasButton && (
+									<PersonaComposerPill channelId={channel.id} text={wireValue} hasAttachments={hasAttachments} />
+								)}
 							</flx-channel-textarea-upload-column>
 							<flx-channel-textarea-content
 								ref={contentAreaRef}
