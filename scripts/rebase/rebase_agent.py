@@ -2,204 +2,132 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 """
-Automated Git Conflict Resolution Agent powered by Gemini 2.5 Flash.
-Inspects Git merge conflict markers during an active rebase, provides hyperspecific
-context to Gemini, applies the resolution, and continues the rebase.
+Autonomous Antigravity Rebase Agent powered by Gemini 3.8 Flash.
+Operates across the full repository with complete toolset access
+(run_command, view_file, edit_file, search_dir, find_file) to inspect
+codebase context, resolve merge conflicts, and verify test suites.
 """
 
+import asyncio
 import os
-import re
 import subprocess
 import sys
 
-try:
-    from google import genai
-except ImportError:
-    print("Error: 'google-genai' SDK is not installed. Run: pip install google-genai", file=sys.stderr)
-    sys.exit(1)
+from google.antigravity import Agent, CapabilitiesConfig, LocalAgentConfig
+from google.antigravity.hooks import policy
 
 
-def run_cmd(cmd: list[str], check: bool = True) -> str:
-    """Execute a shell command and return trimmed stdout."""
+def run_cmd(cmd: list[str], check: bool = False) -> str:
+    """Run a shell command and return trimmed output."""
     res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, check=check)
     return res.stdout.strip()
 
 
-def get_conflicted_files() -> list[str]:
-    """Get list of unmerged files with active conflict markers."""
-    output = run_cmd(["git", "diff", "--name-only", "--diff-filter=U"], check=False)
-    if not output:
-        return []
-    return [line.strip() for line in output.splitlines() if line.strip()]
+def get_conflict_summary() -> str:
+    """Extract active rebase and git status conflict details."""
+    unmerged = run_cmd(["git", "diff", "--name-only", "--diff-filter=U"])
+    git_status = run_cmd(["git", "status", "--short"])
+    upstream_head = run_cmd(["git", "log", "-1", "--format=%h: %s", "HEAD"])
+    feature_head = run_cmd(["git", "log", "-1", "--format=%h: %s", "REBASE_HEAD"])
 
-
-def is_rebase_in_progress() -> bool:
-    """Check whether git rebase is currently active."""
-    git_dir = run_cmd(["git", "rev-parse", "--git-dir"], check=False)
-    if not git_dir:
-        return False
-    return os.path.exists(os.path.join(git_dir, "rebase-merge")) or os.path.exists(
-        os.path.join(git_dir, "rebase-apply")
+    return (
+        f"Unmerged/Conflicted Files:\n{unmerged or 'None detected'}\n\n"
+        f"Git Status:\n{git_status}\n\n"
+        f"Upstream Commit (HEAD): {upstream_head or 'Unknown'}\n"
+        f"Our Feature Commit (REBASE_HEAD): {feature_head or 'Unknown'}\n"
     )
 
 
-def strip_markdown_fences(content: str) -> str:
-    """Strip triple-backtick markdown fences if returned by the LLM."""
-    trimmed = content.strip()
-    # Match ```optional_lang\n ... \n```
-    match = re.match(r"^```[a-zA-Z0-9_-]*\n(.*)\n```$", trimmed, re.DOTALL)
-    if match:
-        return match.group(1).rstrip() + "\n"
-    return trimmed + "\n" if not trimmed.endswith("\n") else trimmed
-
-
-def resolve_file_conflict(client: genai.Client, filepath: str, model_id: str = "gemini-2.5-flash") -> None:
-    """Read a conflicted file, send hyperspecific context to Gemini, and overwrite with resolution."""
-    print(f"\n[AI Agent] Resolving conflict in: {filepath}")
-
-    if not os.path.exists(filepath):
-        print(f"[AI Agent] Warning: File {filepath} does not exist on disk. Skipping.")
-        return
-
-    with open(filepath, "r", encoding="utf-8", errors="replace") as f:
-        conflicted_content = f.read()
-
-    if "<<<<<<<" not in conflicted_content:
-        print(f"[AI Agent] No conflict markers found in {filepath}. Staging file.")
-        run_cmd(["git", "add", filepath])
-        return
-
-    # Gather commit context for better semantic resolution
-    upstream_commit = run_cmd(["git", "log", "-1", "--format=%h: %s", "HEAD"], check=False)
-    feature_commit = run_cmd(["git", "log", "-1", "--format=%h: %s", "REBASE_HEAD"], check=False)
-
-    prompt = f"""You are an expert full-stack TypeScript/Rust software engineer resolving Git merge conflicts for the Fluxer repository.
-
-We are rebasing our feature branch (`features/subprofiles`, implementing subprofiles/personas) onto `upstream/main`.
-
-FILE TO RESOLVE: {filepath}
-
-UPSTREAM COMMIT CONTEXT:
-{upstream_commit or 'Latest upstream changes'}
-
-OUR FEATURE COMMIT CONTEXT:
-{feature_commit or 'Subprofiles / Personas implementation'}
-
-RULES FOR CONFLICT RESOLUTION:
-1. PRESERVE all subprofile/persona functionality, models, endpoints, store methods, and unit tests introduced on our branch.
-2. ADOPT upstream architectural changes, refactors, dependencies, and upstream bug fixes cleanly without deleting our subprofile code.
-3. CAREFULLY MERGE imports: combine imported symbols from both upstream and feature branch; do not remove symbols needed by either side.
-4. REMOVE all conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`).
-5. OUTPUT REQUIREMENT: Return ONLY the complete, resolved file content. Do NOT wrap in markdown fences (no ``` or ```typescript). Do NOT include conversational explanations. Return raw valid code only.
-
-CONFLICTED FILE CONTENT:
-{conflicted_content}
-"""
-
-    response = client.models.generate_content(
-        model=model_id,
-        contents=prompt,
-    )
-
-    resolved_text = response.text
-    if not resolved_text:
-        raise RuntimeError(f"Gemini returned empty response for {filepath}")
-
-    clean_content = strip_markdown_fences(resolved_text)
-
-    # Sanity check: Ensure conflict markers were eliminated
-    if "<<<<<<<" in clean_content or ">>>>>>>" in clean_content:
-        raise ValueError(f"Gemini response for {filepath} still contains unresolved conflict markers!")
-
-    with open(filepath, "w", encoding="utf-8") as f:
-        f.write(clean_content)
-
-    # Stage the resolved file
-    run_cmd(["git", "add", filepath])
-    print(f"[AI Agent] Successfully resolved and staged: {filepath}")
-
-
-def run_self_test(client: genai.Client, model_id: str = "gemini-2.5-flash") -> None:
-    """Verify Gemini API connectivity with a mock conflict snippet."""
-    print("[AI Agent] Running API connectivity self-test...")
-    test_conflict = """import { A } from './a';
-<<<<<<< HEAD
-import { B } from './b';
-=======
-import { C } from './c';
->>>>>>> subprofiles
-export const test = 1;"""
-
-    prompt = f"""Resolve this merge conflict cleanly by combining imports. Return only raw code without markdown backticks:
-{test_conflict}"""
-
-    response = client.models.generate_content(
-        model=model_id,
-        contents=prompt,
-    )
-    result = strip_markdown_fences(response.text or "")
-    if "import { B }" in result and "import { C }" in result and "<<<<<<<" not in result:
-        print("[AI Agent] Self-test PASSED! Gemini 2.5 Flash resolved test conflict successfully.")
-    else:
-        print(f"[AI Agent] Self-test warning: unexpected output:\n{result}")
-
-
-def main() -> None:
+async def main():
     api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:
         print("Error: GEMINI_API_KEY environment variable is not set.", file=sys.stderr)
         sys.exit(1)
 
-    client = genai.Client(api_key=api_key)
-
+    # If --self-test flag is passed, verify connectivity with Gemini 3.8 Flash
     if "--self-test" in sys.argv:
-        run_self_test(client)
-        sys.exit(0)
-
-    if not is_rebase_in_progress() and not get_conflicted_files():
-        print("[AI Agent] No active rebase or conflicts detected. Nothing to do.")
-        sys.exit(0)
-
-    max_steps = 20
-    step = 0
-
-    while is_rebase_in_progress() or get_conflicted_files():
-        step += 1
-        if step > max_steps:
-            raise RuntimeError(f"Rebase agent exceeded maximum iterations ({max_steps}). Aborting.")
-
-        conflicts = get_conflicted_files()
-        print(f"[AI Agent] Rebase step {step}: found {len(conflicts)} conflicted files.")
-
-        for filepath in conflicts:
-            resolve_file_conflict(client, filepath)
-
-        # Attempt to continue rebase
-        print("[AI Agent] Running: git -c core.editor=true rebase --continue")
-        res = subprocess.run(
-            ["git", "-c", "core.editor=true", "rebase", "--continue"],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            text=True,
+        print("[Antigravity Agent] Running API connectivity self-test with Gemini 3.8 Flash...")
+        test_config = LocalAgentConfig(
+            system_instructions="You are an autonomous AI test assistant.",
+            capabilities=CapabilitiesConfig(),
+            policies=[policy.allow_all()],
+            api_key=api_key,
         )
+        async with Agent(test_config) as test_agent:
+            resp = await test_agent.chat("Respond with 'Antigravity Gemini 3.8 Flash is online and ready.'")
+            tokens = []
+            async for token in resp:
+                tokens.append(token)
+                sys.stdout.write(token)
+                sys.stdout.flush()
+            print()
+        print("[Antigravity Agent] Self-test succeeded!")
+        return
 
-        if res.returncode == 0:
-            print("[AI Agent] Rebase step completed successfully.")
-            if not is_rebase_in_progress():
-                print("[AI Agent] Entire rebase has finished cleanly!")
-                break
-        else:
-            remaining = get_conflicted_files()
-            if remaining:
-                print(f"[AI Agent] Next commit has conflicts in {len(remaining)} files. Continuing loop...")
-            else:
-                print(f"[AI Agent] Git rebase --continue error:\n{res.stderr}")
-                if "No changes" in res.stderr or "apply empty" in res.stderr:
-                    print("[AI Agent] Skipping empty commit: git rebase --skip")
-                    run_cmd(["git", "rebase", "--skip"])
-                else:
-                    raise RuntimeError(f"Git rebase --continue failed: {res.stderr}")
+    repo_dir = os.getcwd()
+    conflict_summary = get_conflict_summary()
+
+    system_instructions = (
+        "You are an expert autonomous software engineer and Git conflict resolution agent for the Fluxer codebase, "
+        "powered by Gemini 3.8 Flash.\n\n"
+        "A git rebase of `features/subprofiles` (our branch implementing persona subprofiles) against `upstream/main` "
+        "is currently in progress and encountered conflicts or requires test verification.\n\n"
+        "YOU HAVE ACCESS TO THE ENTIRE REPOSITORY AND FULL SYSTEM TOOLS:\n"
+        "- run_command: Run shell commands (e.g. `git status`, `git diff`, `git log`, `pnpm vitest run ...`, `git add <file>`, `git rebase --continue`)\n"
+        "- view_file: Read any file in the workspace to understand context, surrounding types, or upstream changes\n"
+        "- edit_file / replace_file_content: Modify files to resolve conflict markers cleanly\n"
+        "- search_dir / grep_search: Search across the entire codebase for symbols, imports, or definitions\n"
+        "- find_file: Locate files across packages\n\n"
+        "OBJECTIVES & RULES:\n"
+        "1. PRESERVE ALL SUBPROFILE FEATURES: Keep all persona models, schemas, store methods, UI components, and unit tests.\n"
+        "2. CLEANLY ADOPT UPSTREAM: Incorporate upstream refactors, new utilities, dependency updates, and bug fixes.\n"
+        "3. RESOLVE CONFLICTS: Read conflicted files, inspect surrounding context, remove conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`), "
+        "and stage resolved files with `git add`.\n"
+        "4. CONTINUE REBASE: Use `git -c core.editor=true rebase --continue` to advance through commits until the rebase is finished.\n"
+        "5. RUN TESTS & FIX REGRESSIONS: Run test suites (`pnpm vitest run packages/schema/src/domains/persona/`, `pnpm --filter @fluxer/app test src/features/persona/`, `pnpm --filter @fluxer/api test src/api/persona/tests/`). "
+        "If tests fail, inspect the failures, view related files across the repo, fix the code, and re-run tests until green.\n"
+        "6. Finish your task when the rebase is complete and all test suites pass."
+    )
+
+    prompt = (
+        f"Please resolve the current Git rebase conflicts and ensure the test suite passes.\n\n"
+        f"Initial Repository Context:\n"
+        f"{conflict_summary}\n\n"
+        f"Begin by inspecting the conflicted files with your tools, checking their surrounding context and imports, "
+        f"resolving the conflicts, continuing the rebase, and running the tests to verify everything passes."
+    )
+
+    print("[Antigravity Agent] Initializing full autonomous Antigravity agent with Gemini 3.8 Flash...")
+    config = LocalAgentConfig(
+        system_instructions=system_instructions,
+        capabilities=CapabilitiesConfig(),
+        policies=[policy.allow_all()],
+        workspaces=[repo_dir],
+        api_key=api_key,
+    )
+
+    async with Agent(config) as agent:
+        print("[Antigravity Agent] Agent active. Sending rebase resolution task...")
+        response = await agent.chat(prompt)
+
+        async for token in response:
+            sys.stdout.write(token)
+            sys.stdout.flush()
+        print("\n[Antigravity Agent] Agent session finished.")
+
+    # Post-check: Verify rebase finished cleanly
+    git_dir = run_cmd(["git", "rev-parse", "--git-dir"])
+    rebase_merge = os.path.join(git_dir, "rebase-merge")
+    rebase_apply = os.path.join(git_dir, "rebase-apply")
+    if os.path.exists(rebase_merge) or os.path.exists(rebase_apply):
+        raise RuntimeError("Rebase is still in progress after agent execution!")
+
+    unmerged = run_cmd(["git", "diff", "--name-only", "--diff-filter=U"])
+    if unmerged:
+        raise RuntimeError(f"Unmerged files still remain: {unmerged}")
+
+    print("[Antigravity Agent] All rebase steps completed cleanly!")
 
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())
