@@ -851,7 +851,11 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 											<div className={styles.cardDetails}>
 												<div className={styles.cardPrimaryRow}>
 													<span className={styles.cardName}>{persona.name}</span>
-													{persona.pronouns && <span className={styles.cardPronouns}>({persona.pronouns})</span>}
+													{persona.pronouns && (
+														<span className={styles.cardPronouns} title={persona.pronouns}>
+															({persona.pronouns})
+														</span>
+													)}
 													{persona.color != null && persona.color !== 0 && (
 														<div
 															className={styles.colorPreview}
