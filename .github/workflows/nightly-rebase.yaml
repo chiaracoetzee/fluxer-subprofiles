@@ -169,8 +169,6 @@ jobs:
       - name: Pre-build & generate workspace assets
         if: steps.check_upstream.outputs.skip_rebase != 'true'
         run: |
-          echo "Pre-generating config..."
-          pnpm --filter @fluxer/config generate
           echo "Pre-compiling app wasm parser..."
           pnpm --filter fluxer_app wasm:codegen
           echo "Pre-compiling i18n locales..."
