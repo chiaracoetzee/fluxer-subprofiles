@@ -141,11 +141,10 @@ describe('MessageValidationService.validateMessageContent', () => {
 	it('still rejects empty content when updating a message without attachments, embeds, flags, or subprofile', () => {
 		const service = createValidationService();
 		expect(() =>
-			service.validateMessageContent(
-				{content: ''} as never,
-				null,
-				{isUpdate: true, existingMessage: {attachments: [], embeds: []} as never},
-			),
+			service.validateMessageContent({content: ''} as never, null, {
+				isUpdate: true,
+				existingMessage: {attachments: [], embeds: []} as never,
+			}),
 		).toThrow(CannotSendEmptyMessageError);
 	});
 });

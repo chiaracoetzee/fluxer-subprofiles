@@ -35,7 +35,7 @@ vi.mock('@app/features/user/state/Users', () => ({
 export const mockHydrateMessageReactions = vi.fn();
 vi.mock('@app/features/messaging/state/MessageReactions', () => ({
 	default: {
-		hydrateMessageReactions: (...args: unknown[]) => mockHydrateMessageReactions(...args),
+		hydrateMessageReactions: (...args: Array<unknown>) => mockHydrateMessageReactions(...args),
 		replaceMessageReactions: () => {},
 		getMessageReactions: () => [],
 	},
@@ -44,6 +44,7 @@ vi.mock('@app/features/messaging/state/MessageReactions', () => ({
 installVoiceMenuTestBootstrap();
 
 const {Message} = await import('@app/features/messaging/models/MessagingMessage');
+
 import type {Message as WireMessage} from '@fluxer/schema/src/domains/message/MessageResponseSchemas';
 
 function createWireMessage(overrides?: Partial<WireMessage>): WireMessage {
@@ -181,4 +182,57 @@ describe('MessagingMessage Persona Preservation', () => {
 		expect(replyMsg.referencedMessage?.subprofile?.avatar).toBe('https://example.com/bob.png');
 		expect(replyMsg.referencedMessage?.subprofile?.color).toBe(0xff8800);
 	});
+
+	it('initializes display_tag_text and display_tag_icon correctly on subprofile', () => {
+		const wire = createWireMessage({
+			subprofile: {
+				id: 'sub-alice',
+				name: 'Alice',
+				avatar: 'https://example.com/alice.png',
+				display_tag_text: 'TEST SYSTEM',
+				display_tag_icon: 'https://example.com/icon.png',
+				system_name: 'TEST SYSTEM',
+				pronouns: 'she/her',
+				color: 0xff0000,
+				bio: 'Curiouser and curiouser',
+			},
+		});
+		const msg = new Message(wire, {skipUserCache: true});
+		expect(msg.subprofile?.display_tag_text).toBe('TEST SYSTEM');
+		expect(msg.subprofile?.display_tag_icon).toBe('https://example.com/icon.png');
+	});
+
+	it('distinguishes messages with different display tags in equals()', () => {
+		const wire1 = createWireMessage({
+			subprofile: {
+				id: 'sub-alice',
+				name: 'Alice',
+				avatar: 'https://example.com/alice.png',
+				display_tag_text: 'TAG ONE',
+				display_tag_icon: null,
+				system_name: 'TAG ONE',
+				pronouns: null,
+				color: null,
+				bio: null,
+			},
+		});
+		const wire2 = createWireMessage({
+			subprofile: {
+				id: 'sub-alice',
+				name: 'Alice',
+				avatar: 'https://example.com/alice.png',
+				display_tag_text: 'TAG TWO',
+				display_tag_icon: null,
+				system_name: 'TAG TWO',
+				pronouns: null,
+				color: null,
+				bio: null,
+			},
+		});
+
+		const msg1 = new Message(wire1, {skipUserCache: true});
+		const msg2 = new Message(wire2, {skipUserCache: true});
+		expect(msg1.equals(msg2)).toBe(false);
+	});
 });
+
