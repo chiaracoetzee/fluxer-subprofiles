@@ -6,6 +6,7 @@ Autonomous Antigravity Rebase Agent powered by Gemini 3.8 Flash.
 Operates across the full repository with complete toolset access
 (run_command, view_file, edit_file, search_dir, find_file) to inspect
 codebase context, resolve merge conflicts, and verify test suites.
+Gracefully escalates with diagnostic explanations if human intervention is needed.
 """
 
 import asyncio
@@ -15,6 +16,8 @@ import sys
 
 from google.antigravity import Agent, CapabilitiesConfig, LocalAgentConfig
 from google.antigravity.hooks import policy
+
+ESCALATION_FILE = "/tmp/rebase_escalation_reason.md"
 
 
 def run_cmd(cmd: list[str], check: bool = False) -> str:
@@ -85,8 +88,20 @@ async def main():
         "and stage resolved files with `git add`.\n"
         "4. CONTINUE REBASE: Use `git -c core.editor=true rebase --continue` to advance through commits until the rebase is finished.\n"
         "5. RUN TESTS & FIX REGRESSIONS: Run test suites (`pnpm vitest run packages/schema/src/domains/persona/`, `pnpm --filter @fluxer/app test src/features/persona/`, `pnpm --filter @fluxer/api test src/api/persona/tests/`). "
-        "If tests fail, inspect the failures, view related files across the repo, fix the code, and re-run tests until green.\n"
-        "6. Finish your task when the rebase is complete and all test suites pass."
+        "If tests fail, inspect the failures, view related files across the repo, fix the code, and re-run tests until green.\n\n"
+        "6. HUMAN INTERVENTION ESCALATION CRITERIA:\n"
+        "If you determine that a conflict or regression CANNOT be safely resolved autonomously—for example:\n"
+        "   - Upstream has fundamentally rewritten or removed a core architectural subsystem that subprofiles depend on,\n"
+        "   - Conflicting changes require a product design or business decision that cannot be inferred from code,\n"
+        "   - Resolving the conflict would require guessing intent or dropping valid subprofile logic,\n"
+        "   - Repeated test failures persist after targeted debugging attempts,\n"
+        "DO NOT GUESS OR FORCE UNVERIFIED CODE. You are explicitly authorized and expected to escalate:\n"
+        "   a) Write a clear diagnostic markdown explanation to `/tmp/rebase_escalation_reason.md` specifying:\n"
+        "      - What files or architectural components are blocked,\n"
+        "      - The exact nature of the conflict or breaking change,\n"
+        "      - The specific decision or action recommended for the human developer.\n"
+        "   b) State clearly in your response: '[ESCALATION REQUIRED: <brief summary>]'.\n"
+        "   c) Exit without completing the rebase so the automated system safely aborts and alerts the developer."
     )
 
     prompt = (
@@ -94,7 +109,8 @@ async def main():
         f"Initial Repository Context:\n"
         f"{conflict_summary}\n\n"
         f"Begin by inspecting the conflicted files with your tools, checking their surrounding context and imports, "
-        f"resolving the conflicts, continuing the rebase, and running the tests to verify everything passes."
+        f"resolving the conflicts, continuing the rebase, and running the tests to verify everything passes.\n"
+        f"If human intervention is required, write your diagnostic report to `/tmp/rebase_escalation_reason.md` and exit."
     )
 
     print("[Antigravity Agent] Initializing full autonomous Antigravity agent with Gemini 3.8 Flash...")
@@ -106,14 +122,32 @@ async def main():
         api_key=api_key,
     )
 
+    full_output = []
     async with Agent(config) as agent:
         print("[Antigravity Agent] Agent active. Sending rebase resolution task...")
         response = await agent.chat(prompt)
 
         async for token in response:
+            full_output.append(token)
             sys.stdout.write(token)
             sys.stdout.flush()
         print("\n[Antigravity Agent] Agent session finished.")
+
+    all_text = "".join(full_output)
+
+    # Check for human escalation
+    if os.path.exists(ESCALATION_FILE):
+        with open(ESCALATION_FILE, "r", encoding="utf-8") as f:
+            reason = f.read().strip()
+        print(f"\n[Antigravity Agent] Human intervention requested:\n{reason}\n", file=sys.stderr)
+        sys.exit(1)
+
+    if "[ESCALATION REQUIRED" in all_text:
+        reason = all_text.split("[ESCALATION REQUIRED", 1)[1].split("]", 1)[0].strip(": ")
+        with open(ESCALATION_FILE, "w", encoding="utf-8") as f:
+            f.write(f"**Reason for Escalation:**\n{reason}\n")
+        print(f"\n[Antigravity Agent] Escalation flagged: {reason}\n", file=sys.stderr)
+        sys.exit(1)
 
     # Post-check: Verify rebase finished cleanly
     git_dir = run_cmd(["git", "rev-parse", "--git-dir"])
