@@ -3,9 +3,9 @@ name: Nightly Rebase & AI Conflict Resolver
 
 on:
   schedule:
-    # Live test run at 9:45 AM Pacific Time
-    - cron: '45 9 * * *'
-      timezone: 'America/Los_Angeles'
+    # Live test runs in pure UTC (PDT is UTC-7: 16:55 UTC = 9:55 AM PDT, 17:00 UTC = 10:00 AM PDT)
+    - cron: '55 16 * * *'
+    - cron: '0 17 * * *'
   workflow_dispatch:
     inputs:
       dry_run:
