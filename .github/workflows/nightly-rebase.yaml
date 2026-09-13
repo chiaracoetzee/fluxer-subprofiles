@@ -136,9 +136,9 @@ jobs:
         if: steps.check_upstream.outputs.skip_rebase != 'true'
         run: |
           echo "Running baseline test verification on features/subprofiles before rebase..."
-          pnpm vitest run packages/schema/src/domains/persona/
-          pnpm --filter @fluxer/app vitest run src/features/persona/ src/features/notification/
-          pnpm --filter @fluxer/api vitest run src/api/persona/tests/
+          pnpm --filter @fluxer/schema test src/domains/persona/
+          pnpm --filter fluxer_app test src/features/persona/ src/features/messaging/models/MessagingMessagePersona.test.ts
+          pnpm --filter fluxer_api test src/api/persona/tests/ src/api/channel/tests/MessagePersona.test.ts src/api/user/tests/PersonaAvatarUpload.test.ts
 
       - name: Attempt Git Rebase against upstream/main
         id: attempt_rebase
@@ -169,9 +169,9 @@ jobs:
         if: steps.check_upstream.outputs.skip_rebase != 'true'
         run: |
           echo "Running Schema and Persona test suites..."
-          pnpm vitest run packages/schema/src/domains/persona/
-          pnpm --filter @fluxer/app vitest run src/features/persona/ src/features/notification/
-          pnpm --filter @fluxer/api vitest run src/api/persona/tests/
+          pnpm --filter @fluxer/schema test src/domains/persona/
+          pnpm --filter fluxer_app test src/features/persona/ src/features/messaging/models/MessagingMessagePersona.test.ts
+          pnpm --filter fluxer_api test src/api/persona/tests/ src/api/channel/tests/MessagePersona.test.ts src/api/user/tests/PersonaAvatarUpload.test.ts
 
       - name: Push Rebased Branch
         if: steps.check_upstream.outputs.skip_rebase != 'true' && (github.event_name == 'schedule' || inputs.dry_run == false)

@@ -210,7 +210,7 @@ async def main():
         "and stage resolved files with `git add`.\n"
         "   - TIP: If Protobuf generated files (e.g. in `packages/schema/src/gen/`) conflict, you can cleanly regenerate them at any point using: `pnpm --filter @fluxer/schema generate`.\n"
         "4. CONTINUE REBASE: Use `git -c core.editor=true rebase --continue` to advance through commits until the rebase is finished.\n"
-        "5. RUN TESTS & FIX REGRESSIONS: Run test suites (`pnpm vitest run packages/schema/src/domains/persona/`, `pnpm --filter @fluxer/app test src/features/persona/`, `pnpm --filter @fluxer/api test src/api/persona/tests/`). "
+        "5. RUN TESTS & FIX REGRESSIONS: Run test suites (`pnpm --filter @fluxer/schema test src/domains/persona/`, `pnpm --filter fluxer_app test src/features/persona/`, `pnpm --filter fluxer_api test src/api/persona/tests/`). "
         "If tests fail, inspect the failures, view related files across the repo, fix the code, and re-run tests until green.\n\n"
         "6. HUMAN INTERVENTION ESCALATION CRITERIA:\n"
         "If you determine that a conflict or regression CANNOT be safely resolved autonomously—for example:\n"
