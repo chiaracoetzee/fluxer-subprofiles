@@ -178,13 +178,21 @@ jobs:
           EOF
           )
 
-          gh label create "needs-rebase" --color "d73a4a" --description "Rebase conflicts require human intervention" 2>/dev/null || true
+          gh repo set-default "${{ github.repository }}" 2>/dev/null || true
+
+          gh label create "needs-rebase" --repo "${{ github.repository }}" --color "d73a4a" --description "Rebase conflicts require human intervention" 2>/dev/null || true
 
           gh issue create \
+            --repo "${{ github.repository }}" \
             --title "⚠️ Nightly Rebase Failed: Human Intervention Required ($(date +'%Y-%m-%d'))" \
             --body "$ISSUE_BODY" \
             --assignee chiaracoetzee \
-            --label "needs-rebase" || echo "Issue creation skipped or failed."
+            --label "needs-rebase" 2>/dev/null || \
+          gh issue create \
+            --repo "${{ github.repository }}" \
+            --title "⚠️ Nightly Rebase Failed: Human Intervention Required ($(date +'%Y-%m-%d'))" \
+            --body "$ISSUE_BODY" \
+            --assignee chiaracoetzee
 
       - name: Upload AI Agent Logs & Artifacts
         if: always()

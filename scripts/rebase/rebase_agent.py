@@ -33,7 +33,7 @@ from google.antigravity.hooks import policy
 
 ESCALATION_FILE = "/tmp/rebase_escalation_reason.md"
 LOG_SAVE_DIR = "/tmp/antigravity_logs"
-CONVERSATION_ID = "fluxer-rebase-session"
+CONVERSATION_ID = "fluxer-rebase-automation-session"
 TIMEOUT_SECONDS = 600  # 10 minute internal timeout
 
 
