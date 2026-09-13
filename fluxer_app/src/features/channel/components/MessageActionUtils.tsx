@@ -399,7 +399,7 @@ export function createMessageActionHandlers(
 	const handleChangePersona = () => {
 		MessageChangePersona.startChangePersona(message.channelId, message.id);
 		onClose?.();
-	}
+	};
 	const handleRetryMessage = () => {
 		retryFailedMessage(message);
 		onClose?.();
