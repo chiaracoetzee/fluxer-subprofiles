@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+import {ConfirmModal} from '@app/features/app/components/dialogs/ConfirmModal';
 import * as Modal from '@app/features/app/components/dialogs/Modal';
 import {Endpoints} from '@app/features/app/constants/Endpoints';
 import {http} from '@app/features/platform/transport/RestTransport';
@@ -7,6 +8,7 @@ import {Button} from '@app/features/ui/button/Button';
 import * as ModalCommands from '@app/features/ui/commands/ModalCommands';
 import * as ToastCommands from '@app/features/ui/commands/ToastCommands';
 import type {PersonaCreateRequest} from '@fluxer/schema/src/domains/persona/PersonaApiSchemas';
+import {Trans} from '@lingui/react/macro';
 import {CheckCircle, UploadSimple, Warning} from '@phosphor-icons/react';
 import {clsx} from 'clsx';
 import {observer} from 'mobx-react-lite';
@@ -54,7 +56,7 @@ export const PluralKitImportModal: React.FC<{onClose: () => void}> = observer(({
 	const [fileError, setFileError] = useState<string | null>(null);
 	const [pkData, setPkData] = useState<PKSystemExport | null>(null);
 	const [systemTagOverride, setSystemTagOverride] = useState<string>('');
-	const [importMode, setImportMode] = useState<'replace' | 'append'>('replace');
+	const [importMode, setImportMode] = useState<'replace' | 'append'>('append');
 	const [progress, setProgress] = useState<{current: number; total: number; currentName: string; percent: number}>({
 		current: 0,
 		total: 0,
@@ -114,7 +116,7 @@ export const PluralKitImportModal: React.FC<{onClose: () => void}> = observer(({
 		e.preventDefault();
 	};
 
-	const handleStartImport = async () => {
+	const executeImport = async () => {
 		if (!pkData || !pkData.members || pkData.members.length === 0) return;
 
 		setStep('importing');
@@ -234,6 +236,34 @@ export const PluralKitImportModal: React.FC<{onClose: () => void}> = observer(({
 		}
 	};
 
+	const handleStartImport = () => {
+		if (!pkData || !pkData.members || pkData.members.length === 0) return;
+
+		if (importMode === 'replace' && existingCount > 0) {
+			ModalCommands.push(
+				ModalCommands.modal(() => (
+					<ConfirmModal
+						title={<Trans>Replace All Personas</Trans>}
+						description={
+							<Trans>
+								Are you sure you want to replace all <strong>{existingCount}</strong> existing persona(s)? This will
+								permanently delete them from your account and cannot be undone.
+							</Trans>
+						}
+						primaryText={<Trans>Replace All</Trans>}
+						primaryVariant="danger"
+						onPrimary={async () => {
+							await executeImport();
+						}}
+					/>
+				)),
+			);
+			return;
+		}
+
+		void executeImport();
+	};
+
 	const modalTitle =
 		step === 'select' ? 'Import from PluralKit' : step === 'importing' ? 'Importing Personas...' : 'Import Complete';
 
@@ -319,24 +349,6 @@ export const PluralKitImportModal: React.FC<{onClose: () => void}> = observer(({
 											<div className={styles.formLabel}>Import Strategy</div>
 											<div className={styles.optionsGroup}>
 												<label
-													className={clsx(styles.radioOption, importMode === 'replace' && styles.radioOptionSelected)}
-												>
-													<input
-														type="radio"
-														name="importMode"
-														checked={importMode === 'replace'}
-														onChange={() => setImportMode('replace')}
-														style={{marginTop: 3}}
-													/>
-													<div>
-														<div className={styles.radioTitle}>Replace all existing personas</div>
-														<div className={styles.radioDesc}>
-															Erase all {existingCount} existing persona(s) and replace them completely with the
-															imported personas.
-														</div>
-													</div>
-												</label>
-												<label
 													className={clsx(styles.radioOption, importMode === 'append' && styles.radioOptionSelected)}
 												>
 													<input
@@ -347,10 +359,35 @@ export const PluralKitImportModal: React.FC<{onClose: () => void}> = observer(({
 														style={{marginTop: 3}}
 													/>
 													<div>
-														<div className={styles.radioTitle}>Keep existing and add new</div>
+														<div className={styles.radioTitle}>Keep existing and add new (Recommended)</div>
 														<div className={styles.radioDesc}>
 															Keep your {existingCount} current persona(s) and add all {pkData.members?.length ?? 0}{' '}
 															imported personas alongside them as new entries.
+														</div>
+													</div>
+												</label>
+												<label
+													className={clsx(
+														styles.radioOption,
+														styles.radioOptionDanger,
+														importMode === 'replace' && styles.radioOptionDangerSelected,
+													)}
+												>
+													<input
+														type="radio"
+														name="importMode"
+														checked={importMode === 'replace'}
+														onChange={() => setImportMode('replace')}
+														style={{marginTop: 3}}
+													/>
+													<div>
+														<div className={styles.radioTitleDanger}>
+															<Warning size={16} weight="fill" className={styles.dangerIcon} />
+															<span>Replace all existing personas (Destructive)</span>
+														</div>
+														<div className={styles.radioDesc}>
+															Permanently delete all {existingCount} existing persona(s) and replace them completely
+															with the imported personas.
 														</div>
 													</div>
 												</label>
