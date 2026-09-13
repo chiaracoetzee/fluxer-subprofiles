@@ -162,24 +162,15 @@ async def main():
         endpoint=model_endpoint,
     )
 
-    # Prune capabilities to ONLY essential git & code tools to drastically reduce token payload and prevent 429s
-    capabilities = CapabilitiesConfig(
-        enabled_tools=[
-            BuiltinTools.RUN_COMMAND,
-            BuiltinTools.VIEW_FILE,
-            BuiltinTools.EDIT_FILE,
-            BuiltinTools.SEARCH_DIR,
-            BuiltinTools.FIND_FILE,
-        ],
-        enable_subagents=False,
-    )
+    # Full autonomous Antigravity agent capabilities
+    capabilities = CapabilitiesConfig()
 
     # If --self-test flag is passed, verify connectivity with Gemini 3.8 Flash
     if "--self-test" in sys.argv:
         print("[Antigravity Agent] Running API connectivity self-test with Gemini 3.8 Flash...")
         test_config = LocalAgentConfig(
             system_instructions="You are an autonomous AI test assistant. Reply concisely.",
-            capabilities=CapabilitiesConfig(enabled_tools=[BuiltinTools.RUN_COMMAND], enable_subagents=False),
+            capabilities=CapabilitiesConfig(),
             policies=[policy.allow_all()],
             api_key=api_key,
             model=model_target,
@@ -204,12 +195,12 @@ async def main():
         "powered by Gemini 3.8 Flash.\n\n"
         "A git rebase of `features/subprofiles` (our branch implementing persona subprofiles) against `upstream/main` "
         "is currently in progress and encountered conflicts or requires test verification.\n\n"
-        "YOU HAVE ACCESS TO ESSENTIAL CODEBASE TOOLS:\n"
+        "YOU HAVE ACCESS TO THE ENTIRE REPOSITORY AND FULL SYSTEM TOOLS:\n"
         "- run_command: Run shell commands (e.g. `git status`, `git diff`, `git log`, `pnpm vitest run ...`, `git add <file>`, `git rebase --continue`)\n"
         "- view_file: Read any file in the workspace to understand context, surrounding types, or upstream changes\n"
         "- edit_file: Modify files to resolve conflict markers cleanly\n"
-        "- search_dir: Search across the entire codebase for symbols, imports, or definitions\n"
-        "- find_file: Locate files across packages\n\n"
+        "- write_to_file: Create or rewrite files if needed\n"
+        "- search_dir & find_file: Search symbols or locate files across packages\n\n"
         "CRITICAL TOOL-USE DIRECTIVE:\n"
         "- You MUST begin your very first response by calling a tool (e.g. `run_command` to inspect git status or diff, or `view_file` to view the conflicted files). Never return an empty message or empty candidate without tool calls.\n\n"
         "OBJECTIVES & RULES:\n"
@@ -217,6 +208,7 @@ async def main():
         "2. CLEANLY ADOPT UPSTREAM: Incorporate upstream refactors, new utilities, dependency updates, and bug fixes.\n"
         "3. RESOLVE CONFLICTS: Read conflicted files, inspect surrounding context, remove conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`), "
         "and stage resolved files with `git add`.\n"
+        "   - TIP: If Protobuf generated files (e.g. in `packages/schema/src/gen/`) conflict, you can cleanly regenerate them at any point using: `pnpm --filter @fluxer/schema generate`.\n"
         "4. CONTINUE REBASE: Use `git -c core.editor=true rebase --continue` to advance through commits until the rebase is finished.\n"
         "5. RUN TESTS & FIX REGRESSIONS: Run test suites (`pnpm vitest run packages/schema/src/domains/persona/`, `pnpm --filter @fluxer/app test src/features/persona/`, `pnpm --filter @fluxer/api test src/api/persona/tests/`). "
         "If tests fail, inspect the failures, view related files across the repo, fix the code, and re-run tests until green.\n\n"
@@ -255,7 +247,7 @@ async def main():
         ),
     )
 
-    print("[Antigravity Agent] Initializing streamlined autonomous Antigravity agent with Gemini 3.8 Flash...")
+    print("[Antigravity Agent] Initializing full autonomous Antigravity agent with Gemini 3.8 Flash...")
     config = LocalAgentConfig(
         system_instructions=system_instructions,
         capabilities=capabilities,
