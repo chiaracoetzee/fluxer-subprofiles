@@ -170,15 +170,15 @@ jobs:
         if: steps.check_upstream.outputs.skip_rebase != 'true'
         run: |
           echo "Pre-compiling app wasm parser..."
-          pnpm --filter fluxer_app wasm:codegen
+          pnpm --filter fluxer_app run --if-present wasm:codegen
           echo "Pre-compiling i18n locales..."
-          pnpm --filter fluxer_app lingui:compile
+          pnpm --filter fluxer_app run --if-present lingui:compile
           echo "Pre-generating UI masks, message layout, theme variables, and CSS types..."
-          pnpm --filter fluxer_app generate:masks
-          pnpm --filter fluxer_app generate:colors
-          pnpm --filter fluxer_app generate:message-layout
-          pnpm --filter fluxer_app generate:theme-variables
-          pnpm --filter fluxer_app generate:css-types
+          pnpm --filter fluxer_app run --if-present generate:masks
+          pnpm --filter fluxer_app run --if-present generate:colors
+          pnpm --filter fluxer_app run --if-present generate:message-layout
+          pnpm --filter fluxer_app run --if-present generate:theme-variables
+          pnpm --filter fluxer_app run --if-present generate:css-types
 
       - name: Run Baseline Pre-Rebase Test Gate
         if: steps.check_upstream.outputs.skip_rebase != 'true'
