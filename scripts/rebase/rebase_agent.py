@@ -26,8 +26,8 @@ from google.antigravity import (
     ModelTarget,
     ModelType,
     RetryConfig,
-    SessionContinuationMode,
     ThinkingLevel,
+    types,
 )
 from google.antigravity.hooks import policy
 
@@ -181,7 +181,7 @@ async def main():
         model=model_target,
         save_dir=LOG_SAVE_DIR,
         conversation_id=CONVERSATION_ID,
-        session_continuation_mode=SessionContinuationMode.CREATE_OR_RESUME,
+        session_continuation_mode=types.SessionContinuationMode.CREATE_OR_RESUME,
         retry_config=retry_config,
     )
 
