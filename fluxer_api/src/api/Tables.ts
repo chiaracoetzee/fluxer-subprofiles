@@ -247,6 +247,7 @@ import {
 	VISIONARY_SLOT_COLUMNS,
 	type VisionarySlotRow,
 } from './database/types/PaymentTypes';
+import {PERSONA_COLUMNS, type PersonaRow} from './database/types/PersonaTypes';
 import {
 	DSA_REPORT_EMAIL_VERIFICATION_COLUMNS,
 	DSA_REPORT_TICKET_COLUMNS,
@@ -337,7 +338,6 @@ import {
 	type UserSettingsRow,
 	type UsersPendingDeletionRow,
 } from './database/types/UserTypes';
-import {PERSONA_COLUMNS, type PersonaRow} from './database/types/PersonaTypes';
 import {ATTACHMENT_DECAY_COLUMNS, type AttachmentDecayRow} from './types/AttachmentDecayTypes';
 
 export const Users = defineTable<UserRow, 'user_id'>({
