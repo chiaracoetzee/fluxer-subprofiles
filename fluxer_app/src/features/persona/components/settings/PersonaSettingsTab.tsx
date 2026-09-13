@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+import {ConfirmModal} from '@app/features/app/components/dialogs/ConfirmModal';
 import {SettingsSection} from '@app/features/app/components/dialogs/shared/SettingsSection';
 import {SettingsTabContainer, SettingsTabContent} from '@app/features/app/components/dialogs/shared/SettingsTabLayout';
 import {
@@ -29,7 +30,7 @@ import {AvatarUploader} from '@app/features/user/components/modals/tabs/my_profi
 import Users from '@app/features/user/state/Users';
 import * as AvatarUtils from '@app/features/user/utils/AvatarUtils';
 import type {PersonaVisibility} from '@fluxer/schema/src/domains/persona/PersonaApiSchemas';
-import {useLingui} from '@lingui/react/macro';
+import {Trans, useLingui} from '@lingui/react/macro';
 import {
 	GlobeSimple,
 	Info,
@@ -384,21 +385,39 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 		}
 	};
 
-	const handleDeletePersona = async (id: string) => {
-		if (confirm('Are you sure you want to delete this persona?')) {
-			try {
-				await PersonaCommands.deletePersona(id);
-				ToastCommands.createToast({
-					type: 'success',
-					children: 'Persona deleted',
-				});
-			} catch {
-				ToastCommands.createToast({
-					type: 'error',
-					children: 'Failed to delete persona',
-				});
-			}
-		}
+	const handleDeletePersona = (persona: Persona) => {
+		ModalCommands.push(
+			modal(() => (
+				<ConfirmModal
+					title={<Trans>Delete Persona</Trans>}
+					description={
+						<Trans>
+							Are you sure you want to delete <strong>{persona.name}</strong>? This action cannot be undone.
+						</Trans>
+					}
+					primaryText={<Trans>Delete</Trans>}
+					primaryVariant="danger"
+					onPrimary={async () => {
+						try {
+							await PersonaCommands.deletePersona(persona.id);
+							if (formData.id === persona.id) {
+								setIsEditing(false);
+								setFormData(emptyFormState());
+							}
+							ToastCommands.createToast({
+								type: 'success',
+								children: 'Persona deleted',
+							});
+						} catch {
+							ToastCommands.createToast({
+								type: 'error',
+								children: 'Failed to delete persona',
+							});
+						}
+					}}
+				/>
+			)),
+		);
 	};
 
 	const activePersonaMode = PersonaStore.activePersonaMode;
@@ -618,11 +637,11 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 								</div>
 								<div className={styles.formField} style={{gridColumn: '1 / -1'}}>
 									<div className={styles.formLabel}>Bio</div>
-									<input
-										type="text"
-										className={styles.textInput}
-										placeholder="Short description..."
-										maxLength={2048}
+									<textarea
+										className={styles.textareaInput}
+										placeholder="Tell us about this persona..."
+										maxLength={4096}
+										rows={4}
 										value={formData.bio}
 										onChange={(e) => setFormData({...formData, bio: e.target.value})}
 									/>
@@ -788,7 +807,7 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 												<Button
 													variant="danger"
 													leftIcon={<Trash size={14} />}
-													onClick={() => handleDeletePersona(persona.id)}
+													onClick={() => handleDeletePersona(persona)}
 													aria-label="Delete persona"
 												>
 													Delete
