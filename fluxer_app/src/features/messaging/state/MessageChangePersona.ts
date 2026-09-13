@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-import type { Channel } from '@app/features/channel/models/Channel';
+import type {Channel} from '@app/features/channel/models/Channel';
+import type {MessageSubprofileRequest} from '@fluxer/schema/src/domains/persona/PersonaSchemas.js';
 import {comparer, makeAutoObservable, reaction} from 'mobx';
-import type { Message } from '../models/MessagingMessage';
 import * as MessageCommands from '../commands/MessageCommands';
-import type { MessageSubprofileRequest } from '@fluxer/schema/src/domains/persona/PersonaSchemas.js';
-import { buildExistingAttachmentEditReferences } from '../utils/MessageEditContentUtils';
+import type {Message} from '../models/MessagingMessage';
+import {buildExistingAttachmentEditReferences} from '../utils/MessageEditContentUtils';
 
 class MessageChangePersona {
 	private editingMessageIds: Record<string, string> = {};
