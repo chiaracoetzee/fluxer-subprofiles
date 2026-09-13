@@ -13,7 +13,7 @@ on:
         default: true
         type: boolean
       force_test_agent:
-        description: 'Run self-test on Gemini 2.5 Flash API connectivity'
+        description: 'Run self-test on Gemini 3.8 Flash API connectivity'
         required: false
         default: false
         type: boolean
@@ -38,6 +38,7 @@ jobs:
           mkdir -p /tmp/rebase_tools
           cp automation-tools/scripts/rebase/rebase_agent.py /tmp/rebase_tools/
           chmod +x /tmp/rebase_tools/rebase_agent.py
+          rm -rf automation-tools
 
       - name: Set up Python for AI Resolver
         uses: actions/setup-python@v5
@@ -108,10 +109,11 @@ jobs:
 
       - name: Stage 1 - Gemini Flash Conflict Resolution
         if: steps.attempt_rebase.outputs.has_conflicts == 'true'
+        timeout-minutes: 15
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
-          echo "Invoking Gemini 2.5 Flash Rebase Agent..."
+          echo "Invoking Gemini 3.8 Flash Rebase Agent..."
           python /tmp/rebase_tools/rebase_agent.py
 
       - name: Set up pnpm
@@ -147,7 +149,7 @@ jobs:
           echo "Successfully rebased and pushed features/subprofiles."
 
       - name: Stage 2 - Escalate to Human Developer on Failure
-        if: failure() && steps.check_upstream.outputs.skip_rebase != 'true'
+        if: (failure() || cancelled()) && steps.check_upstream.outputs.skip_rebase != 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -157,7 +159,7 @@ jobs:
           if [ -f /tmp/rebase_escalation_reason.md ]; then
             ESCALATION_CONTENT=$(cat /tmp/rebase_escalation_reason.md)
           else
-            ESCALATION_CONTENT="The AI agent encountered conflicts or test failures that could not be resolved automatically."
+            ESCALATION_CONTENT="The AI agent encountered conflicts, rate limits, or test failures that could not be resolved automatically."
           fi
 
           ISSUE_BODY=$(cat <<EOF
@@ -176,8 +178,20 @@ jobs:
           EOF
           )
 
+          gh label create "needs-rebase" --color "d73a4a" --description "Rebase conflicts require human intervention" 2>/dev/null || true
+
           gh issue create \
             --title "⚠️ Nightly Rebase Failed: Human Intervention Required ($(date +'%Y-%m-%d'))" \
             --body "$ISSUE_BODY" \
             --assignee chiaracoetzee \
             --label "needs-rebase" || echo "Issue creation skipped or failed."
+
+      - name: Upload AI Agent Logs & Artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rebase-agent-logs
+          path: |
+            /tmp/antigravity_logs
+            /tmp/rebase_tools
+            /tmp/rebase_escalation_reason.md
