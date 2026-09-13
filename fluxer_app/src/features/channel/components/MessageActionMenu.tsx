@@ -37,7 +37,7 @@ import type {Message} from '@app/features/messaging/models/MessagingMessage';
 import SavedMessages from '@app/features/messaging/state/SavedMessages';
 import {openReportMessageModal} from '@app/features/moderation/utils/ReportActionUtils';
 import Permission from '@app/features/permissions/state/Permission';
-import { PersonaStore } from '@app/features/persona/state/PersonaStore';
+import {PersonaStore} from '@app/features/persona/state/PersonaStore';
 import {
 	AddReactionIcon,
 	BookmarkIcon,
@@ -306,13 +306,14 @@ export const useMessageActionMenuData = (
 					onClick: handlers.handleEditMessage,
 					shortcut: <KeybindHint action="message_edit" data-flx="channel.message-action-menu.groups.keybind-hint--5" />,
 				});
-				if (PersonaStore.personas.length) interactionActions.push({
-					id: messageActionMenuItemIds.changePersona,
-					icon: <ChangePersonasIcon size={20} data-flx="channel.message-action-menu.groups.change-personas-icon" />,
-					label: i18n._(CHANGE_PERSONA_DESCRIPTOR),
-					onClick: handlers.handleChangePersona,
-					//shortcut: <KeybindHint action="message_change_persona" data-flx="channel.message-action-menu.groups.keybind-hint--change-persona" />
-				});
+				if (PersonaStore.personas.length)
+					interactionActions.push({
+						id: messageActionMenuItemIds.changePersona,
+						icon: <ChangePersonasIcon size={20} data-flx="channel.message-action-menu.groups.change-personas-icon" />,
+						label: i18n._(CHANGE_PERSONA_DESCRIPTOR),
+						onClick: handlers.handleChangePersona,
+						//shortcut: <KeybindHint action="message_change_persona" data-flx="channel.message-action-menu.groups.keybind-hint--change-persona" />
+					});
 			}
 			if (message.isUserMessage() && permissions?.canPinMessage) {
 				managementActions.push({
