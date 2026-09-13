@@ -17,7 +17,9 @@ vi.mock('@app/features/user/utils/AvatarUtils', () => ({
 	getUserAvatarURL: vi.fn().mockReturnValue('https://cdn.fluxer.app/avatars/user-fallback.png'),
 	getUserNotificationAvatarURL: vi.fn().mockReturnValue('https://cdn.fluxer.app/avatars/user-native-fallback.png'),
 	getGuildMemberDisplayAvatarURL: vi.fn().mockReturnValue('https://cdn.fluxer.app/avatars/member-fallback.png'),
-	getGuildMemberNotificationAvatarURL: vi.fn().mockReturnValue('https://cdn.fluxer.app/avatars/member-native-fallback.png'),
+	getGuildMemberNotificationAvatarURL: vi
+		.fn()
+		.mockReturnValue('https://cdn.fluxer.app/avatars/member-native-fallback.png'),
 }));
 
 describe('getNotificationIconURL', () => {
