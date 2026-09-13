@@ -17,11 +17,15 @@ on:
         required: false
         default: false
         type: boolean
+      verify_push_permissions:
+        description: 'Test remote write & workflow push permissions on a scratch branch'
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: write
   issues: write
-  workflows: write
 
 jobs:
   nightly-rebase:
@@ -63,7 +67,7 @@ jobs:
         with:
           ref: features/subprofiles
           fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.WORKFLOW_TOKEN || secrets.GH_PAT || secrets.GITHUB_TOKEN }}
 
       - name: Configure Git Identity & Remotes
         run: |
@@ -85,6 +89,44 @@ jobs:
           else
             echo "skip_rebase=false" >> "$GITHUB_OUTPUT"
           fi
+
+      - name: Verify Git & Workflow Push Permissions
+        if: inputs.verify_push_permissions == true && steps.check_upstream.outputs.skip_rebase != 'true'
+        run: |
+          echo "Verifying remote write and workflow permissions on a temporary scratch branch..."
+          TEST_BRANCH="tmp/write-check-${{ github.run_id }}-${{ github.run_attempt }}"
+          git checkout -b "$TEST_BRANCH"
+
+          # Create a dummy commit that modifies .github/workflows to explicitly test workflow scope
+          mkdir -p .github/workflows
+          echo "# Permission test at $(date)" > .github/workflows/.perm-test.tmp
+          git add .github/workflows/.perm-test.tmp
+          git commit -m "ci: verify workflow write permissions [skip ci]"
+
+          set +e
+          PUSH_OUT=$(git push origin "$TEST_BRANCH" 2>&1)
+          PUSH_STATUS=$?
+          set -e
+
+          if [ $PUSH_STATUS -ne 0 ]; then
+            echo "::error::Push test failed! The token lacks permission to push workflow files."
+            echo "::error::Output: $PUSH_OUT"
+            echo ""
+            echo "--------------------------------------------------------------------------------"
+            echo "❌ ERROR: Cannot push commits that touch workflow files without 'workflow' scope."
+            echo "Please create a Personal Access Token (PAT) with 'repo' and 'workflow' scopes"
+            echo "and add it as a repository secret named 'WORKFLOW_TOKEN'."
+            echo "--------------------------------------------------------------------------------"
+            git checkout -
+            git branch -D "$TEST_BRANCH"
+            exit 1
+          fi
+
+          # Clean up remote test branch and local branch
+          git push origin --delete "$TEST_BRANCH"
+          git checkout -
+          git branch -D "$TEST_BRANCH"
+          echo "✅ Git write and workflow permissions verified successfully!"
 
       - name: Push safety snapshot tag
         if: steps.check_upstream.outputs.skip_rebase != 'true' && (github.event_name == 'schedule' || inputs.dry_run == false)
@@ -183,7 +225,7 @@ jobs:
       - name: Stage 2 - Escalate to Human Developer on Failure
         if: (failure() || cancelled()) && steps.check_upstream.outputs.skip_rebase != 'true'
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.WORKFLOW_TOKEN || secrets.GH_PAT || secrets.GITHUB_TOKEN }}
         run: |
           git rebase --abort 2>/dev/null || true
           
