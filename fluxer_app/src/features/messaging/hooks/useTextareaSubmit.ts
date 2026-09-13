@@ -30,9 +30,9 @@ import {hasVisibleMessageContent} from '@app/features/messaging/utils/MessageReq
 import * as ReplaceCommandUtils from '@app/features/messaging/utils/ReplaceCommandUtils';
 import {resolveTypedEmojiShortcodes} from '@app/features/messaging/utils/TypedEmojiShortcodeUtils';
 import Permission from '@app/features/permissions/state/Permission';
+import {PersonaStore} from '@app/features/persona/state/PersonaStore';
 import {Logger} from '@app/features/platform/utils/AppLogger';
 import Presence from '@app/features/presence/state/Presence';
-import {PersonaStore} from '@app/features/persona/state/PersonaStore';
 import {TypingUtils} from '@app/features/typing/utils/TypingUtils';
 import * as FormUtils from '@app/lib/forms';
 import {Permissions} from '@fluxer/constants/src/ChannelConstants';

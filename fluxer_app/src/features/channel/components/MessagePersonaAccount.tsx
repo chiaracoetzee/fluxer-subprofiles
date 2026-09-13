@@ -15,7 +15,7 @@ import {clsx} from 'clsx';
 import {observer} from 'mobx-react-lite';
 import type React from 'react';
 import {useCallback, useRef} from 'react';
-import { MessageAvatar } from './MessageAvatar';
+import {MessageAvatar} from './MessageAvatar';
 
 export const MessagePersonaAccount = observer(
 	({
@@ -24,6 +24,7 @@ export const MessagePersonaAccount = observer(
 		guild,
 		member,
 		className,
+		customIconUrl,
 	}: {
 		user: User;
 		message: Message;
@@ -33,6 +34,7 @@ export const MessagePersonaAccount = observer(
 		isPreview?: boolean;
 		previewColor?: string;
 		previewName?: string;
+		customIconUrl?: string | null;
 	}) => {
 		const usernameRef = useRef<HTMLSpanElement | null>(null);
 		//const contextMenuOpen = useContextMenuHoverState(usernameRef);
@@ -69,6 +71,7 @@ export const MessagePersonaAccount = observer(
 			>
 				<FocusRing data-flx="channel.message-username-original.focus-ring">
 					{/* biome-ignore lint/a11y/noStaticElementInteractions: the username span is only keyboard-interactive in keyboard mode (role="button"/tabIndex set conditionally); pointer/popout/context-menu interactions are handled by the wrapping PreloadableUserPopout. */}
+					{/* biome-ignore lint/a11y/useAriaPropsSupportedByRole: the username span role is conditionally button */}
 					<span
 						data-user-id={user.id}
 						data-guild-id={guild?.id}
@@ -79,17 +82,27 @@ export const MessagePersonaAccount = observer(
 						data-flx="channel.message-username.context-menu-underline.key-down"
 						aria-label={displayName}
 					>
-						<MessageAvatar
-							user={user}
-							message={message}
-							guildId={guild?.id}
-							size={16}
-							className={clsx(styles.messageAvatarCompact, styles.messageSubprofileMainAvatar, className)}
-							isHovering={/*isHovering*/ false}
-							isPreview={/*!!previewContext*/ false}
-							ignoreSubprofile={true}
-							data-flx="channel.user-message.message-avatar-subprofile-main-account"
-						/>
+						{customIconUrl ? (
+							<img
+								src={customIconUrl}
+								alt=""
+								className={clsx(styles.messageAvatarCompact, styles.messageSubprofileMainAvatar, className)}
+								style={{width: 16, height: 16, borderRadius: '50%', objectFit: 'cover'}}
+								data-flx="channel.user-message.message-avatar-subprofile-custom-icon"
+							/>
+						) : (
+							<MessageAvatar
+								user={user}
+								message={message}
+								guildId={guild?.id}
+								size={16}
+								className={clsx(styles.messageAvatarCompact, styles.messageSubprofileMainAvatar, className)}
+								isHovering={/*isHovering*/ false}
+								isPreview={/*!!previewContext*/ false}
+								ignoreSubprofile={true}
+								data-flx="channel.user-message.message-avatar-subprofile-main-account"
+							/>
+						)}
 					</span>
 				</FocusRing>
 			</PreloadableUserPopout>

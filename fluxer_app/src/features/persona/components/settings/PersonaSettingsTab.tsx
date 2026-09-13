@@ -2,9 +2,24 @@
 
 import {SettingsSection} from '@app/features/app/components/dialogs/shared/SettingsSection';
 import {SettingsTabContainer, SettingsTabContent} from '@app/features/app/components/dialogs/shared/SettingsTabLayout';
+import {
+	AVATAR_RECOMMENDED_SIZE_LABEL,
+	IMAGE_MAX_SIZE_LABEL,
+	STATIC_IMAGE_FORMATS,
+} from '@app/features/app/config/I18nDisplayConstants';
 import {Endpoints} from '@app/features/app/constants/Endpoints';
+import {AssetCropModal, AssetType} from '@app/features/expressions/components/modals/AssetCropModal';
+import {openAssetSourceModal} from '@app/features/expressions/components/modals/AssetSourceModal';
+import {isAnimatedFile} from '@app/features/expressions/utils/AnimatedImageUtils';
+import {getAcceptString} from '@app/features/expressions/utils/AssetFormatCopy';
+import {formatImageUploadRecommendedHint} from '@app/features/expressions/utils/AssetUploadHintCopy';
+import {downloadGifAsImageFile} from '@app/features/expressions/utils/GifFileDownload';
+import {isSvgFile, readImageFileAsUploadDataUrl} from '@app/features/expressions/utils/ImageUploadFileUtils';
+import {openFilePicker} from '@app/features/messaging/utils/FilePickerUtils';
 import {http} from '@app/features/platform/transport/RestTransport';
 import {Button} from '@app/features/ui/button/Button';
+import * as ModalCommands from '@app/features/ui/commands/ModalCommands';
+import {modal} from '@app/features/ui/commands/ModalCommands';
 import * as ToastCommands from '@app/features/ui/commands/ToastCommands';
 import {Avatar} from '@app/features/ui/components/Avatar';
 import {ColorPickerField} from '@app/features/ui/components/form/ColorPickerField';
@@ -12,7 +27,9 @@ import {type SegmentedTab, SegmentedTabs} from '@app/features/ui/segmented_tabs/
 import {Tooltip} from '@app/features/ui/tooltip/Tooltip';
 import {AvatarUploader} from '@app/features/user/components/modals/tabs/my_profile_tab/AvatarUploader';
 import Users from '@app/features/user/state/Users';
+import * as AvatarUtils from '@app/features/user/utils/AvatarUtils';
 import type {PersonaVisibility} from '@fluxer/schema/src/domains/persona/PersonaApiSchemas';
+import {useLingui} from '@lingui/react/macro';
 import {
 	GlobeSimple,
 	Info,
@@ -26,10 +43,11 @@ import {
 import {clsx} from 'clsx';
 import {observer} from 'mobx-react-lite';
 import type React from 'react';
-import {useEffect, useRef, useState} from 'react';
+import {useCallback, useEffect, useRef, useState} from 'react';
 import * as PersonaCommands from '../../commands/PersonaCommands';
 import {type ActivePersonaMode, type Persona, PersonaStore} from '../../state/PersonaStore';
 import {openPluralKitImportModal} from '../modals/PluralKitImportModal';
+import {PersonaTag} from '../PersonaTag';
 import styles from './PersonaSettingsTab.module.css';
 
 const ACTIVE_PERSONA_TABS: Array<SegmentedTab<ActivePersonaMode>> = [
@@ -62,7 +80,6 @@ const VISIBILITY_DESCRIPTIONS: Record<PersonaVisibility, string> = {
 interface PersonaFormState {
 	id?: string;
 	name: string;
-	systemName: string;
 	pronouns: string;
 	avatarUrl: string;
 	accentColor: number | null;
@@ -73,7 +90,6 @@ interface PersonaFormState {
 
 const emptyFormState = (): PersonaFormState => ({
 	name: '',
-	systemName: '',
 	pronouns: '',
 	avatarUrl: '',
 	accentColor: null,
@@ -87,6 +103,7 @@ export interface PersonaSettingsTabProps {
 }
 
 export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({initialSubtab}) => {
+	const {i18n} = useLingui();
 	const currentUser = Users.getCurrentUser();
 	const personas = PersonaStore.personas;
 	const activePersonaId = PersonaStore.activePersonaId;
@@ -95,6 +112,143 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 	const [isEditing, setIsEditing] = useState(false);
 	const [formData, setFormData] = useState<PersonaFormState>(emptyFormState());
 	const [isUploadingAvatar, setIsUploadingAvatar] = useState(false);
+
+	const [tagText, setTagText] = useState(PersonaStore.displayTagText);
+	const [tagIcon, setTagIcon] = useState(PersonaStore.displayTagIcon);
+	const [isUploadingTagIcon, setIsUploadingTagIcon] = useState(false);
+
+	useEffect(() => {
+		setTagText(PersonaStore.displayTagText);
+	}, [PersonaStore.displayTagText]);
+
+	useEffect(() => {
+		setTagIcon(PersonaStore.displayTagIcon);
+	}, [PersonaStore.displayTagIcon]);
+
+	const handleTagTextChange = (value: string) => {
+		setTagText(value);
+		void PersonaStore.setDisplayTag(value, tagIcon);
+	};
+
+	const handleTagIconUpload = useCallback(
+		async (base64: string) => {
+			setIsUploadingTagIcon(true);
+			try {
+				const res = await http.post<{avatar_url: string}>(Endpoints.USER_PERSONA_AVATAR, {
+					body: {avatar: base64},
+				});
+				if (res.ok && res.body?.avatar_url) {
+					const newIcon = res.body.avatar_url;
+					setTagIcon(newIcon);
+					await PersonaStore.setDisplayTag(tagText, newIcon);
+					ToastCommands.createToast({
+						type: 'success',
+						children: 'Display tag icon updated',
+					});
+				} else {
+					ToastCommands.createToast({
+						type: 'error',
+						children: 'Failed to upload icon to server',
+					});
+				}
+			} catch {
+				ToastCommands.createToast({
+					type: 'error',
+					children: 'Failed to upload icon to server',
+				});
+			} finally {
+				setIsUploadingTagIcon(false);
+			}
+		},
+		[tagText],
+	);
+
+	const handleClearTagIcon = useCallback(async () => {
+		setTagIcon(null);
+		await PersonaStore.setDisplayTag(tagText, null);
+		ToastCommands.createToast({
+			type: 'success',
+			children: 'Display tag icon removed',
+		});
+	}, [tagText]);
+
+	const processTagIconFile = useCallback(
+		async (file: File) => {
+			if (file.size > 10 * 1024 * 1024) {
+				ToastCommands.createToast({
+					type: 'error',
+					children: 'Icon file is too large. Choose an image smaller than 10MB.',
+				});
+				return;
+			}
+			const svg = isSvgFile(file);
+			const animated = svg ? false : await isAnimatedFile(file);
+			const base64 = svg ? await readImageFileAsUploadDataUrl(file) : await AvatarUtils.fileToBase64(file);
+			if (animated || svg) {
+				await handleTagIconUpload(base64);
+				return;
+			}
+			ModalCommands.push(
+				modal(() => (
+					<AssetCropModal
+						assetType={AssetType.AVATAR}
+						imageUrl={base64}
+						sourceMimeType={file.type}
+						onCropComplete={(croppedBlob) => {
+							const reader = new FileReader();
+							reader.onload = () => {
+								const croppedBase64 = reader.result as string;
+								void handleTagIconUpload(croppedBase64);
+							};
+							reader.readAsDataURL(croppedBlob);
+						}}
+						onSkip={() => {
+							void handleTagIconUpload(base64);
+						}}
+						data-flx="user.persona-settings-tab.tag-icon.asset-crop-modal"
+					/>
+				)),
+			);
+		},
+		[handleTagIconUpload],
+	);
+
+	const handleOpenTagIconUpload = useCallback(() => {
+		openAssetSourceModal({
+			title: 'Tag Icon',
+			uploadHint: formatImageUploadRecommendedHint(i18n, {
+				formats: STATIC_IMAGE_FORMATS,
+				maxSize: IMAGE_MAX_SIZE_LABEL,
+				recommendedSize: AVATAR_RECOMMENDED_SIZE_LABEL,
+			}),
+			onPickUpload: async () => {
+				try {
+					const [file] = await openFilePicker({accept: getAcceptString('avatar')});
+					if (!file) return;
+					await processTagIconFile(file);
+				} catch {
+					ToastCommands.createToast({
+						type: 'error',
+						children: 'Failed to select icon image',
+					});
+				}
+			},
+			onSelectGif: (gif) => {
+				void (async () => {
+					try {
+						const file = await downloadGifAsImageFile(gif);
+						await processTagIconFile(file);
+					} catch {
+						ToastCommands.createToast({
+							type: 'error',
+							children: 'Failed to select GIF icon',
+						});
+					}
+				})();
+			},
+			showGifOption: true,
+		});
+	}, [i18n, processTagIconFile]);
 
 	const handleAvatarUpload = async (base64: string) => {
 		setFormData((prev) => ({...prev, avatarUrl: base64}));
@@ -134,7 +288,6 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 		setFormData({
 			id: persona.id,
 			name: persona.name,
-			systemName: persona.system_name ?? persona.systemName ?? '',
 			pronouns: persona.pronouns ?? '',
 			avatarUrl: persona.avatar_url ?? persona.avatarUrl ?? '',
 			accentColor: persona.color ?? null,
@@ -194,7 +347,6 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 			if (formData.id) {
 				await PersonaCommands.updatePersona(formData.id, {
 					name: trimmedName,
-					system_name: formData.systemName.trim() || null,
 					pronouns: formData.pronouns.trim() || null,
 					avatar_url: formData.avatarUrl.trim() || null,
 					color: parsedColor,
@@ -209,7 +361,6 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 			} else {
 				await PersonaCommands.createPersona({
 					name: trimmedName,
-					system_name: formData.systemName.trim() || null,
 					pronouns: formData.pronouns.trim() || null,
 					avatar_url: formData.avatarUrl.trim() || null,
 					color: parsedColor,
@@ -319,6 +470,96 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 								<span>{ACTIVE_PERSONA_DESCRIPTIONS[activePersonaMode]}</span>
 							</div>
 						</div>
+
+						{/* Display Tag section */}
+						<div className={styles.sectionHeader} style={{marginTop: 24}}>
+							<div>
+								<h4 className={styles.sectionTitle}>Display Tag</h4>
+								<p className={styles.sectionDescription}>
+									Display tag will appear next to all persona names in messages. If no display tag is set, your account
+									profile picture will be shown.
+								</p>
+							</div>
+						</div>
+						<div className={styles.displayTagControlWrapper}>
+							<div className={styles.displayTagInputs}>
+								<div className={styles.displayTagTextField}>
+									<div className={styles.formLabel}>Tag Text</div>
+									<input
+										type="text"
+										className={styles.textInput}
+										placeholder="e.g. Wonderland"
+										maxLength={32}
+										value={tagText}
+										onChange={(e) => handleTagTextChange(e.target.value)}
+									/>
+								</div>
+								<div className={styles.displayTagIconField}>
+									<div className={styles.formLabel}>Tag Icon</div>
+									<div className={styles.tagIconRow}>
+										{tagIcon ? (
+											<>
+												<img src={tagIcon} alt="Tag Icon" className={styles.tagIconImage} />
+												<Button
+													variant="secondary"
+													small={true}
+													onClick={handleOpenTagIconUpload}
+													disabled={isUploadingTagIcon}
+												>
+													Change icon
+												</Button>
+												<Button
+													variant="secondary"
+													small={true}
+													onClick={handleClearTagIcon}
+													disabled={isUploadingTagIcon}
+												>
+													Remove icon
+												</Button>
+											</>
+										) : (
+											<Button
+												variant="primary"
+												small={true}
+												onClick={handleOpenTagIconUpload}
+												disabled={isUploadingTagIcon}
+											>
+												Upload icon
+											</Button>
+										)}
+									</div>
+								</div>
+							</div>
+							{/* Live Preview Card */}
+							<div className={styles.previewContainer}>
+								<div className={styles.previewLabel}>Preview</div>
+								<div className={styles.previewCard}>
+									{currentUser && <Avatar user={currentUser} size={40} className={styles.previewAvatar} />}
+									<div className={styles.previewMessageContent}>
+										<div className={styles.previewHeader}>
+											<span className={styles.previewName}>Alice</span>
+											{currentUser && (
+												<PersonaTag
+													subprofile={{
+														id: 'preview',
+														name: 'Alice',
+														display_tag_text: tagText.trim(),
+														display_tag_icon: tagIcon,
+													}}
+													rootUser={currentUser}
+												/>
+											)}
+											<span className={styles.previewTimestamp}>— Today at 12:00 PM</span>
+										</div>
+										<div className={styles.previewBody}>
+											{tagText.trim() || tagIcon
+												? 'This is a preview of how your display tag will look in chat.'
+												: 'No display tag configured. Messages will show your account profile picture.'}
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</SettingsSection>
 
 					{/* Editor Form */}
@@ -335,17 +576,6 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 										maxLength={100}
 										value={formData.name}
 										onChange={(e) => setFormData({...formData, name: e.target.value})}
-									/>
-								</div>
-								<div className={styles.formField}>
-									<div className={styles.formLabel}>System Tag</div>
-									<input
-										type="text"
-										className={styles.textInput}
-										placeholder="e.g. Wonderland System"
-										maxLength={100}
-										value={formData.systemName}
-										onChange={(e) => setFormData({...formData, systemName: e.target.value})}
 									/>
 								</div>
 								<div className={styles.formField}>
@@ -497,7 +727,6 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 											<div className={styles.cardDetails}>
 												<div className={styles.cardPrimaryRow}>
 													<span className={styles.cardName}>{persona.name}</span>
-													{persona.systemName && <span className={styles.cardSystemTag}>[{persona.systemName}]</span>}
 													{persona.pronouns && <span className={styles.cardPronouns}>({persona.pronouns})</span>}
 													{persona.color != null && persona.color !== 0 && (
 														<div

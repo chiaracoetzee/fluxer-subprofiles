@@ -236,8 +236,7 @@ export function UserAccountController(app: HonoApp) {
 			statusCode: 200,
 			security: ['bearerToken', 'sessionToken'],
 			tags: ['Users'],
-			description:
-				'Uploads and processes an avatar image for a persona, hosting it on the instance CDN/storage.',
+			description: 'Uploads and processes an avatar image for a persona, hosting it on the instance CDN/storage.',
 		}),
 		handlePersonaAvatarUpload,
 	);

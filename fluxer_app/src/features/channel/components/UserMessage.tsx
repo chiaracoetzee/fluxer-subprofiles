@@ -33,6 +33,7 @@ import {
 import {retryFailedMessage} from '@app/features/messaging/utils/MessageRetryUtils';
 import {NodeType} from '@app/features/messaging/utils/markdown/parser/Enums';
 import {SpoilerSyncProvider} from '@app/features/messaging/utils/SpoilerUtils';
+import {PersonaTag} from '@app/features/persona/components/PersonaTag';
 import {PersonaStore} from '@app/features/persona/state/PersonaStore';
 import {compactMarkdownProps} from '@app/features/theme/layout/MessageLayoutAttributes';
 import markupStyles from '@app/features/theme/styles/Markup.module.css';
@@ -51,7 +52,6 @@ import {ArrowsClockwiseIcon, BellSlashIcon, EyeIcon, WarningCircleIcon} from '@p
 import {clsx} from 'clsx';
 import {observer} from 'mobx-react-lite';
 import {type MouseEvent, useCallback, useMemo} from 'react';
-import { MessagePersonaAccount } from './MessagePersonaAccount';
 
 const JUMP_TO_MESSAGE_FROM_SENT_DESCRIPTOR = msg({
 	message: 'Jump to message from {displayName}, sent {formattedDate}',
@@ -585,15 +585,15 @@ export const UserMessage = observer(() => {
 										previewName={previewOverrides?.displayName}
 										data-flx="channel.user-message.message-username--2"
 									/>
-									<MessagePersonaAccount
-										user={author}
-										message={message}
-										guild={guild}
-										member={member ?? undefined}
-										isPreview={!!previewContext}
-										previewColor={previewOverrides?.usernameColor}
-										previewName={previewOverrides?.displayName}
-									/>
+									{message.subprofile && (
+										<PersonaTag
+											subprofile={message.subprofile}
+											rootUser={author}
+											message={message}
+											guild={guild}
+											member={member ?? undefined}
+										/>
+									)}
 									{author.bot && (
 										<UserTag
 											className={styles.userTagOffset}
@@ -693,15 +693,15 @@ export const UserMessage = observer(() => {
 									previewName={previewOverrides?.displayName}
 									data-flx="channel.user-message.message-username--3"
 								/>
-								<MessagePersonaAccount
-									user={author}
-									message={message}
-									guild={guild}
-									member={member ?? undefined}
-									isPreview={!!previewContext}
-									previewColor={previewOverrides?.usernameColor}
-									previewName={previewOverrides?.displayName}
-								/>
+								{message.subprofile && (
+									<PersonaTag
+										subprofile={message.subprofile}
+										rootUser={author}
+										message={message}
+										guild={guild}
+										member={member ?? undefined}
+									/>
+								)}
 								{author.bot && (
 									<UserTag
 										className={styles.userTagOffset}

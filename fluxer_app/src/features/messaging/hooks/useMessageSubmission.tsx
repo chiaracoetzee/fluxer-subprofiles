@@ -8,11 +8,11 @@ import {CloudUpload} from '@app/features/messaging/upload/CloudUpload';
 import * as MessageSubmitUtils from '@app/features/messaging/utils/MessageSubmitUtils';
 import {formatUploadingAttachmentSummary} from '@app/features/messaging/utils/UploadingAttachmentLabelUtils';
 import Permission from '@app/features/permissions/state/Permission';
+import {PersonaStore} from '@app/features/persona/state/PersonaStore';
 import {ComponentBus} from '@app/features/platform/utils/ComponentBus';
 import * as SlowmodeCommands from '@app/features/slowmode/commands/SlowmodeCommands';
 import {SlowmodeRateLimitedModal} from '@app/features/slowmode/components/alerts/SlowmodeRateLimitedModal';
 import Slowmode from '@app/features/slowmode/state/Slowmode';
-import {PersonaStore} from '@app/features/persona/state/PersonaStore';
 import {TypingUtils} from '@app/features/typing/utils/TypingUtils';
 import {modal, push as pushModal} from '@app/features/ui/commands/ModalCommands';
 import Users from '@app/features/user/state/Users';
@@ -102,8 +102,7 @@ export const useMessageSubmission = ({channel, referencedMessage, replyingMessag
 				return true;
 			}
 
-			const hasPendingAttachments =
-				hasAttachments || CloudUpload.getTextareaAttachments(channel.id).length > 0;
+			const hasPendingAttachments = hasAttachments || CloudUpload.getTextareaAttachments(channel.id).length > 0;
 			const matchResult = PersonaStore.matchOutgoingMessage(content, hasPendingAttachments);
 			const finalContent = matchResult.matched || matchResult.wasEscaped ? matchResult.strippedContent : content;
 			if (finalContent.length === 0 && !hasPendingAttachments && !favoriteMemeIdOrStickers) {
@@ -111,6 +110,8 @@ export const useMessageSubmission = ({channel, referencedMessage, replyingMessag
 				DraftCommands.deleteDraft(channel.id);
 				return true;
 			}
+			const displayTagText = PersonaStore.displayTagText;
+			const displayTagIcon = PersonaStore.displayTagIcon;
 			const subprofile =
 				matchResult.matched && matchResult.persona
 					? {
@@ -118,7 +119,9 @@ export const useMessageSubmission = ({channel, referencedMessage, replyingMessag
 							name: matchResult.persona.name,
 							avatar: matchResult.persona.avatar_url ?? null,
 							avatar_color: matchResult.persona.color ?? null,
-							system_name: matchResult.persona.system_name ?? null,
+							display_tag_text: displayTagText || null,
+							display_tag_icon: displayTagIcon || null,
+							system_name: displayTagText || null,
 							pronouns: matchResult.persona.pronouns ?? null,
 							color: matchResult.persona.color ?? null,
 						}
