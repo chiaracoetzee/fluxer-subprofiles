@@ -163,12 +163,8 @@ export const ReplyPreview = observer(
 			);
 		}
 		const repliedName =
-			referencedMessage.subprofile?.name ||
-			NicknameUtils.getNickname(referencedMessage.author, resolvedGuildId);
-		const repliedColor = GuildMembers.getMember(
-			resolvedGuildId ?? '',
-			referencedMessage.author.id,
-		)?.getColorString();
+			referencedMessage.subprofile?.name || NicknameUtils.getNickname(referencedMessage.author, resolvedGuildId);
+		const repliedColor = GuildMembers.getMember(resolvedGuildId ?? '', referencedMessage.author.id)?.getColorString();
 
 		return (
 			<div

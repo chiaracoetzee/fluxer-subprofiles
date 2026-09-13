@@ -2,12 +2,6 @@
 
 import {handleChannelCreate} from '@app/features/channel/events/ChannelCreate';
 import {handleChannelDelete} from '@app/features/channel/events/ChannelDelete';
-import {
-	handleUserPersonaCreate,
-	handleUserPersonaDelete,
-	handleUserPersonasUpdate,
-	handleUserPersonaUpdate,
-} from '@app/features/persona/events/PersonaEvents';
 import {handleChannelPinsAck} from '@app/features/channel/events/ChannelPinsAck';
 import {handleChannelPinsUpdate} from '@app/features/channel/events/ChannelPinsUpdate';
 import {handleChannelRecipientAdd} from '@app/features/channel/events/ChannelRecipientAdd';
@@ -55,6 +49,12 @@ import {handleRecentMentionDelete} from '@app/features/messaging/events/RecentMe
 import {handleSavedMessageCreate} from '@app/features/messaging/events/SavedMessageCreate';
 import {handleSavedMessageDelete} from '@app/features/messaging/events/SavedMessageDelete';
 import {handleTypingStart} from '@app/features/messaging/events/TypingStart';
+import {
+	handleUserPersonaCreate,
+	handleUserPersonaDelete,
+	handleUserPersonasUpdate,
+	handleUserPersonaUpdate,
+} from '@app/features/persona/events/PersonaEvents';
 import {handlePresenceUpdate} from '@app/features/presence/events/PresenceUpdate';
 import {handlePresenceUpdateBulk} from '@app/features/presence/events/PresenceUpdateBulk';
 import {handleRelationshipAdd} from '@app/features/relationship/events/RelationshipAdd';
