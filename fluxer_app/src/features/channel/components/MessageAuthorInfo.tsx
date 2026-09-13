@@ -120,7 +120,15 @@ export const MessageAuthorInfo = observer((props: MessageAuthorInfoProps) => {
 									data-flx="channel.message-author-info.user-tag-offset--op1"
 								/>
 							)}
-							{message.subprofile && <PersonaTag subprofile={message.subprofile} rootUser={author} />}
+							{message.subprofile && (
+								<PersonaTag
+									subprofile={message.subprofile}
+									rootUser={author}
+									message={message}
+									guild={guild}
+									member={member}
+								/>
+							)}
 						</span>
 						<TimestampWithTooltip
 							date={message.timestamp}
