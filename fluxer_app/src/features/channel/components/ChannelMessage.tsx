@@ -12,6 +12,7 @@ import DeveloperOptions from '@app/features/devtools/state/DeveloperOptions';
 import {parse} from '@app/features/messaging/components/markdown/renderers';
 import {MarkdownContext} from '@app/features/messaging/components/markdown/renderers/RendererTypes';
 import type {Message as MessageModel} from '@app/features/messaging/models/MessagingMessage';
+import MessageChangePersona from '@app/features/messaging/state/MessageChangePersona';
 import MessageEdit from '@app/features/messaging/state/MessageEdit';
 import MessageFocus from '@app/features/messaging/state/MessageFocus';
 import MessageReply from '@app/features/messaging/state/MessageReply';
@@ -19,11 +20,14 @@ import {getMessageComponent} from '@app/features/messaging/utils/MessageComponen
 import {renderAstToPlaintext} from '@app/features/messaging/utils/markdown/Plaintext';
 import {NodeType} from '@app/features/messaging/utils/markdown/parser/Enums';
 import {SystemMessageUtils} from '@app/features/messaging/utils/SystemMessageUtils';
+import {PersonaPickerSheet} from '@app/features/persona/components/PersonaPickerSheet';
+import {PersonaStore} from '@app/features/persona/state/PersonaStore';
 import {subscribeWindowFocus} from '@app/features/platform/utils/WindowFocusBroadcast';
 import * as ReadStateCommands from '@app/features/read_state/commands/ReadStateCommands';
 import styles from '@app/features/theme/styles/Message.module.css';
 import {MessageContextMenu} from '@app/features/ui/action_menu/MessageContextMenu';
 import * as ContextMenuCommands from '@app/features/ui/commands/ContextMenuCommands';
+import * as PopoutCommands from '@app/features/ui/commands/PopoutCommands';
 import FocusRing from '@app/features/ui/focus_ring/FocusRing';
 import KeyboardMode from '@app/features/ui/state/KeyboardMode';
 import MobileLayout from '@app/features/ui/state/MobileLayout';
@@ -39,10 +43,6 @@ import {clsx} from 'clsx';
 import {observer} from 'mobx-react-lite';
 import type React from 'react';
 import {useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState} from 'react';
-import MessageChangePersona from '@app/features/messaging/state/MessageChangePersona';
-import * as PopoutCommands from '@app/features/ui/commands/PopoutCommands';
-import { PersonaPickerSheet } from '@app/features/persona/components/PersonaPickerSheet';
-import { PersonaStore } from '@app/features/persona/state/PersonaStore';
 
 const ATTACHMENT_DESCRIPTOR = msg({
 	message: 'attachment',
@@ -385,7 +385,8 @@ export const Message: React.FC<MessageProps> = observer((props) => {
 		compact ?? behaviorOverrides?.messageDisplayCompact ?? UserSettings.getMessageDisplayCompact();
 	const prefersReducedMotion = Accessibility.useReducedMotion;
 	const isEditing = behaviorOverrides?.isEditing ?? MessageEdit.isEditing(message.channelId, message.id);
-	const isChangingPersona = behaviorOverrides?.isChangingPersona ?? MessageChangePersona.isChangingPersona(message.channelId, message.id);
+	const isChangingPersona =
+		behaviorOverrides?.isChangingPersona ?? MessageChangePersona.isChangingPersona(message.channelId, message.id);
 	const isReplying = behaviorOverrides?.isReplying ?? MessageReply.isReplying(message.channelId, message.id);
 	const isHighlight = behaviorOverrides?.isHighlight ?? MessageReply.isHighlight(message.id);
 	const forceUnknownMessageType =
@@ -947,40 +948,42 @@ export const Message: React.FC<MessageProps> = observer((props) => {
 				offsetMainAxis: 4,
 				offsetCrossAxis: 4,
 				target: messageRef.current!,
-				render: ({ popoutKey, onClose }) => {
-					return <PersonaPickerSheet
-						key={popoutKey}
-						onClose={onClose}
-						showModes={false}
-						onSelectPersona={(id) => {
-							//void PersonaStore.setActivePersona(id, true);
-							// TODO: edit the message to use the selected persona
-							const persona = PersonaStore.personas.find((v) => v.id === id);
-							if (!persona) return;
-							MessageChangePersona.changePersona(channel, message, {
-								id: persona.id,
-								name: persona.name,
-								avatar: persona.avatarUrl,
-								avatar_color: persona.color,
-								color: persona.color,
-								system_name: persona.systemName,
-								bio: persona.bio,
-								pronouns: persona.pronouns
-							});
-							PersonaStore.recordPersonaUse(persona.id);
-						}}
-						onSelectAccount={() => {
-							//void PersonaStore.unlatch();
-							// TODO: edit the message to remove the persona from the message
-							MessageChangePersona.changePersona(channel, message, null);
-						}}
-						selectedPersonaId={message.subprofile?.id || ""}
-					/>
+				render: ({popoutKey, onClose}) => {
+					return (
+						<PersonaPickerSheet
+							key={popoutKey}
+							onClose={onClose}
+							showModes={false}
+							onSelectPersona={(id) => {
+								//void PersonaStore.setActivePersona(id, true);
+								// TODO: edit the message to use the selected persona
+								const persona = PersonaStore.personas.find((v) => v.id === id);
+								if (!persona) return;
+								MessageChangePersona.changePersona(channel, message, {
+									id: persona.id,
+									name: persona.name,
+									avatar: persona.avatarUrl,
+									avatar_color: persona.color,
+									color: persona.color,
+									system_name: persona.systemName,
+									bio: persona.bio,
+									pronouns: persona.pronouns,
+								});
+								PersonaStore.recordPersonaUse(persona.id);
+							}}
+							onSelectAccount={() => {
+								//void PersonaStore.unlatch();
+								// TODO: edit the message to remove the persona from the message
+								MessageChangePersona.changePersona(channel, message, null);
+							}}
+							selectedPersonaId={message.subprofile?.id || ''}
+						/>
+					);
 				},
 				onClose: () => {
 					MessageChangePersona.stopChangingPersona(channel.id, message.id);
-				}
-			})
+				},
+			});
 		} else {
 			PopoutCommands.close(personaPickerPopoutKey);
 		}
