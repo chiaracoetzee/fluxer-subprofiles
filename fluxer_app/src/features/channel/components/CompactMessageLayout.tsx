@@ -9,6 +9,7 @@ import {TimestampWithTooltip} from '@app/features/channel/components/TimestampWi
 import type {Guild} from '@app/features/guild/models/Guild';
 import type {GuildMember} from '@app/features/member/models/GuildMember';
 import type {Message} from '@app/features/messaging/models/MessagingMessage';
+import {PersonaTag} from '@app/features/persona/components/PersonaTag';
 import {compactMessagePrefixProps} from '@app/features/theme/layout/MessageLayoutAttributes';
 import {getRemScaleForDocument} from '@app/features/theme/layout/RemFromPx';
 import styles from '@app/features/theme/styles/Message.module.css';
@@ -217,6 +218,15 @@ export function CompactAuthorPrefix({
 					previewName={previewOverrides?.displayName}
 					data-flx="channel.compact-message-layout.compact-author-prefix.message-username"
 				/>
+				{message.subprofile && (
+					<PersonaTag
+						subprofile={message.subprofile}
+						rootUser={author}
+						message={message}
+						guild={guild}
+						member={member}
+					/>
+				)}
 			</span>
 			<span className={styles.copyOnly} data-flx="channel.compact-message-layout.compact-author-prefix.copy-only--2">
 				:{' '}
