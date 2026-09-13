@@ -2,6 +2,8 @@
 
 import {CustomStatusDisplay} from '@app/features/app/components/shared/custom_status_display/CustomStatusDisplay';
 import {UserTag} from '@app/features/channel/components/ChannelUserTag';
+import {useTextOverflow} from '@app/features/ui/hooks/useTextOverflow';
+import {Tooltip} from '@app/features/ui/tooltip/Tooltip';
 import userProfileModalStyles from '@app/features/user/components/modals/UserProfileModal.module.css';
 import type {UserInfoProps} from '@app/features/user/components/modals/user_profile_modal/UserProfileModalShared';
 import {LimitedProfileNotice} from '@app/features/user/components/popouts/LimitedProfileNotice';
@@ -17,12 +19,42 @@ import {Trans} from '@lingui/react/macro';
 import {clsx} from 'clsx';
 import {observer} from 'mobx-react-lite';
 import type React from 'react';
+import {useRef} from 'react';
 
 export const UserInfo: React.FC<UserInfoProps> = observer(({user, profile, guildId, showProfileDataWarning}) => {
 	const membership = resolveProfileGuildMembership(profile);
 	const displayName = getProfileMembershipDisplayName(user, membership, guildId);
 	const effectiveProfile = profile?.getEffectiveProfile() ?? null;
 	const shouldAutoplayProfileAnimations = useAutoplayExpandedProfileAnimations();
+
+	const pronouns = effectiveProfile?.pronouns;
+	const pronounsRef = useRef<HTMLDivElement>(null);
+	const isPronounsOverflowing = useTextOverflow(pronounsRef, {
+		content: pronouns ?? '',
+		measureTextRange: true,
+	});
+
+	const pronounsElement = (
+		<div
+			ref={pronounsRef}
+			className={userProfileModalStyles.pronouns}
+			data-flx="user.user-profile-modal.user-info.div--9"
+		>
+			<span className={userProfileModalStyles.srOnly} data-flx="user.user-profile-modal.user-info.span--2">
+				<Trans>Pronouns: </Trans>
+			</span>
+			{pronouns}
+		</div>
+	);
+
+	const pronounsContent =
+		isPronounsOverflowing && pronouns ? (
+			<Tooltip text={pronouns} data-flx="user.user-profile-modal.user-info.pronouns-tooltip">
+				{pronounsElement}
+			</Tooltip>
+		) : (
+			pronounsElement
+		);
 	return (
 		<div className={userProfileModalStyles.userInfo} data-flx="user.user-profile-modal.user-info.div">
 			<div
@@ -73,14 +105,7 @@ export const UserInfo: React.FC<UserInfoProps> = observer(({user, profile, guild
 							/>
 						</div>
 					</div>
-					{effectiveProfile?.pronouns && (
-						<div className={userProfileModalStyles.pronouns} data-flx="user.user-profile-modal.user-info.div--9">
-							<span className={userProfileModalStyles.srOnly} data-flx="user.user-profile-modal.user-info.span--2">
-								<Trans>Pronouns: </Trans>
-							</span>
-							{effectiveProfile.pronouns}
-						</div>
-					)}
+					{pronouns && pronounsContent}
 					<div className={userProfileModalStyles.customStatusRow} data-flx="user.user-profile-modal.user-info.div--10">
 						<CustomStatusDisplay
 							userId={user.id}
