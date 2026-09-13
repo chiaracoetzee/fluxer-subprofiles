@@ -275,6 +275,9 @@ async def main():
         turn = 0
         while turn < max_turns:
             turn += 1
+            if turn > 1:
+                print("[Antigravity Agent] Pausing 5s between turns for rate-limit safety...", file=sys.stderr)
+                await asyncio.sleep(5)
             curr_prompt = prompt if turn == 1 else "Please continue advancing the rebase and verifying tests until completely finished."
             try:
                 print(f"[Antigravity Agent] Active resolution turn {turn}/{max_turns}...")

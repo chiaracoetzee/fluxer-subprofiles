@@ -54,6 +54,8 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
           python /tmp/rebase_tools/rebase_agent.py --self-test
+          echo "Resting 10s to ensure clean quota before rebase..."
+          sleep 10
 
       - name: Checkout features/subprofiles
         uses: actions/checkout@v4
