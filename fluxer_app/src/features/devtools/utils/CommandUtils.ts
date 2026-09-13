@@ -7,11 +7,12 @@ import * as GuildMemberCommands from '@app/features/member/commands/GuildMemberC
 import GuildMembers from '@app/features/member/state/GuildMembers';
 import * as MessageCommands from '@app/features/messaging/commands/MessageCommands';
 import {Message} from '@app/features/messaging/models/MessagingMessage';
-import {BAN_DELETE_MESSAGE_SECONDS_CHOICE_VALUES,
+import {
+	BAN_DELETE_MESSAGE_SECONDS_CHOICE_VALUES,
 	DEFAULT_BAN_DELETE_MESSAGE_SECONDS,
 } from '@app/features/moderation/constants/BanDeleteMessageOptions';
-import {Logger} from '@app/features/platform/utils/AppLogger';
 import {PersonaStore} from '@app/features/persona/state/PersonaStore';
+import {Logger} from '@app/features/platform/utils/AppLogger';
 import {User} from '@app/features/user/models/User';
 import Users from '@app/features/user/state/Users';
 import * as NicknameUtils from '@app/features/user/utils/NicknameUtils';
@@ -375,19 +376,13 @@ export async function executeCommand(
 		}
 		case 'persona': {
 			if (!command.persona) {
-				const systemMessage = createSystemMessage(
-					channelId,
-					'Persona deselected.',
-				);
+				const systemMessage = createSystemMessage(channelId, 'Persona deselected.');
 				PersonaStore.setActivePersona(null);
 				MessageCommands.createOptimistic(channelId, systemMessage.toJSON());
 			} else {
 				const persona = PersonaStore.personas.find((v) => v.id === command.persona);
 				if (persona) {
-					const systemMessage = createSystemMessage(
-						channelId,
-						`Persona "${persona.name}" selected.`,
-					);
+					const systemMessage = createSystemMessage(channelId, `Persona "${persona.name}" selected.`);
 					PersonaStore.setActivePersona(command.persona);
 					MessageCommands.createOptimistic(channelId, systemMessage.toJSON());
 				}
