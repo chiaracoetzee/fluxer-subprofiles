@@ -60,7 +60,7 @@ import {type MouseEvent, useCallback, useMemo} from 'react';
 
 // Fork imports.
 
-import {MessagePersonaAccount} from './MessagePersonaAccount';
+import {PersonaTag} from '@app/features/persona/components/PersonaTag';
 import {PersonaStore} from '@app/features/persona/state/PersonaStore';
 
 const JUMP_TO_MESSAGE_FROM_SENT_DESCRIPTOR = msg({
@@ -628,15 +628,15 @@ export const UserMessage = observer(() => {
 										previewName={previewOverrides?.displayName}
 										data-flx="channel.user-message.message-username--2"
 									/>
-									<MessagePersonaAccount
-										user={author}
-										message={message}
-										guild={guild}
-										member={member ?? undefined}
-										isPreview={!!previewContext}
-										previewColor={previewOverrides?.usernameColor}
-										previewName={previewOverrides?.displayName}
-									/>
+									{message.subprofile && (
+										<PersonaTag
+											subprofile={message.subprofile}
+											rootUser={author}
+											message={message}
+											guild={guild}
+											member={member ?? undefined}
+										/>
+									)}
 									{(author.bot || message.isCrosspostCopy) && (
 										<UserTag
 											className={styles.userTagOffset}
@@ -744,15 +744,15 @@ export const UserMessage = observer(() => {
 									previewName={previewOverrides?.displayName}
 									data-flx="channel.user-message.message-username--3"
 								/>
-								<MessagePersonaAccount
-									user={author}
-									message={message}
-									guild={guild}
-									member={member ?? undefined}
-									isPreview={!!previewContext}
-									previewColor={previewOverrides?.usernameColor}
-									previewName={previewOverrides?.displayName}
-								/>
+								{message.subprofile && (
+									<PersonaTag
+										subprofile={message.subprofile}
+										rootUser={author}
+										message={message}
+										guild={guild}
+										member={member ?? undefined}
+									/>
+								)}
 								{(author.bot || message.isCrosspostCopy) && (
 									<UserTag
 										className={styles.userTagOffset}
