@@ -1,0 +1,168 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+name: Nightly Rebase & AI Conflict Resolver
+
+on:
+  schedule:
+    # 4:00 AM PDT (11:00 UTC) / 3:00 AM PST (12:00 UTC)
+    - cron: '0 11 * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (rebase and run tests, but do NOT push to remote)'
+        required: true
+        default: true
+        type: boolean
+      force_test_agent:
+        description: 'Run self-test on Gemini 2.5 Flash API connectivity'
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  nightly-rebase:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout automation tools
+        uses: actions/checkout@v4
+        with:
+          path: automation-tools
+
+      - name: Cache rebase agent script
+        run: |
+          mkdir -p /tmp/rebase_tools
+          cp automation-tools/scripts/rebase/rebase_agent.py /tmp/rebase_tools/
+          chmod +x /tmp/rebase_tools/rebase_agent.py
+
+      - name: Set up Python for AI Resolver
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Google GenAI SDK
+        run: pip install google-genai
+
+      - name: Verify Gemini Flash API Connectivity
+        if: ${{ inputs.force_test_agent == true }}
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python /tmp/rebase_tools/rebase_agent.py --self-test
+
+      - name: Checkout features/subprofiles
+        uses: actions/checkout@v4
+        with:
+          ref: features/subprofiles
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure Git Identity & Remotes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git remote add upstream https://github.com/fluxerapp/fluxer.git || git remote set-url upstream https://github.com/fluxerapp/fluxer.git
+          git fetch upstream main
+          git fetch origin features/subprofiles
+
+      - name: Check for upstream changes
+        id: check_upstream
+        run: |
+          COMMITS_BEHIND=$(git rev-list HEAD..upstream/main --count)
+          echo "Commits behind upstream/main: $COMMITS_BEHIND"
+          echo "commits_behind=$COMMITS_BEHIND" >> "$GITHUB_OUTPUT"
+          if [ "$COMMITS_BEHIND" -eq 0 ] && [ "${{ inputs.force_test_agent }}" != "true" ]; then
+            echo "Branch is already up to date with upstream/main. Nothing to rebase."
+            echo "skip_rebase=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip_rebase=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Push safety snapshot tag
+        if: steps.check_upstream.outputs.skip_rebase != 'true' && (github.event_name == 'schedule' || inputs.dry_run == false)
+        run: |
+          BACKUP_TAG="backup/subprofiles-$(date +'%Y%m%d-%H%M%S')"
+          echo "Creating safety tag $BACKUP_TAG..."
+          git tag "$BACKUP_TAG"
+          git push origin "$BACKUP_TAG"
+          echo "backup_tag=$BACKUP_TAG" >> "$GITHUB_ENV"
+
+      - name: Attempt Git Rebase against upstream/main
+        id: attempt_rebase
+        if: steps.check_upstream.outputs.skip_rebase != 'true'
+        run: |
+          set +e
+          git rebase upstream/main
+          REBASE_EXIT=$?
+          if [ $REBASE_EXIT -ne 0 ]; then
+            echo "Conflicts detected during rebase."
+            echo "has_conflicts=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Clean rebase! No conflicts encountered."
+            echo "has_conflicts=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Stage 1 - Gemini Flash Conflict Resolution
+        if: steps.attempt_rebase.outputs.has_conflicts == 'true'
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          echo "Invoking Gemini 2.5 Flash Rebase Agent..."
+          python /tmp/rebase_tools/rebase_agent.py
+
+      - name: Set up pnpm
+        if: steps.check_upstream.outputs.skip_rebase != 'true'
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Set up Node.js
+        if: steps.check_upstream.outputs.skip_rebase != 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        if: steps.check_upstream.outputs.skip_rebase != 'true'
+        run: pnpm install --frozen-lockfile
+
+      - name: Run Test Verification Gate
+        id: test_gate
+        if: steps.check_upstream.outputs.skip_rebase != 'true'
+        run: |
+          echo "Running Schema and Persona test suites..."
+          pnpm vitest run packages/schema/src/domains/persona/
+          pnpm --filter @fluxer/app vitest run src/features/persona/ src/features/notification/
+          pnpm --filter @fluxer/api vitest run src/api/persona/tests/
+
+      - name: Push Rebased Branch
+        if: steps.check_upstream.outputs.skip_rebase != 'true' && (github.event_name == 'schedule' || inputs.dry_run == false)
+        run: |
+          git push --force-with-lease origin features/subprofiles
+          echo "Successfully rebased and pushed features/subprofiles."
+
+      - name: Stage 2 - Escalate to Human Developer on Failure
+        if: failure() && steps.check_upstream.outputs.skip_rebase != 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git rebase --abort 2>/dev/null || true
+          CONFLICT_FILES=$(git diff --name-only --diff-filter=U 2>/dev/null || echo "See action run logs")
+          gh issue create \
+            --title "⚠️ Nightly Rebase Failed: Human Intervention Required ($(date +'%Y-%m-%d'))" \
+            --body "Hey @chiaracoetzee! 👋
+
+          The automated nightly rebase of \`features/subprofiles\` against \`upstream/main\` encountered conflicts or test failures that the AI agent could not safely resolve.
+
+          ### Details
+          - **Workflow Run**: [View GitHub Actions Run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+          - **Safety Backup Tag**: \`${{ env.backup_tag || 'None created' }}\`
+
+          The rebase has been aborted to protect your branch. Your remote branch has **not** been modified." \
+            --assignee chiaracoetzee \
+            --label "needs-rebase" || echo "Issue creation skipped or failed."
