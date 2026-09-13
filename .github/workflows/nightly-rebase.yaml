@@ -97,10 +97,10 @@ jobs:
           TEST_BRANCH="tmp/write-check-${{ github.run_id }}-${{ github.run_attempt }}"
           git checkout -b "$TEST_BRANCH"
 
-          # Create a dummy commit that modifies .github/workflows to explicitly test workflow scope
+          # Create a dummy commit that modifies a workflow file to explicitly test workflow scope
           mkdir -p .github/workflows
-          echo "# Permission test at $(date)" > .github/workflows/.perm-test.tmp
-          git add .github/workflows/.perm-test.tmp
+          echo "# Permission test at $(date)" > .github/workflows/permission-check.yaml
+          git add .github/workflows/permission-check.yaml
           git commit -m "ci: verify workflow write permissions [skip ci]"
 
           set +e
