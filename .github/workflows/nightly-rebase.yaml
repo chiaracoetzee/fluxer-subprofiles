@@ -3,8 +3,8 @@ name: Nightly Rebase & AI Conflict Resolver
 
 on:
   schedule:
-    # Temporary test run at 8:50 AM Pacific Time
-    - cron: '50 8 * * *'
+    # Live test run at 9:45 AM Pacific Time
+    - cron: '45 9 * * *'
       timezone: 'America/Los_Angeles'
   workflow_dispatch:
     inputs:
