@@ -99,6 +99,21 @@ const emptyFormState = (): PersonaFormState => ({
 	tags: [{prefix: '', suffix: ''}],
 });
 
+function normalizeTag(tag: {prefix?: string | null; suffix?: string | null}) {
+	return {
+		prefix: (tag.prefix ?? '').trim(),
+		suffix: (tag.suffix ?? '').trim(),
+	};
+}
+
+function getTagKey(tag: {prefix: string; suffix: string}) {
+	return `${tag.prefix}:::${tag.suffix}`;
+}
+
+function formatTagDisplay(tag: {prefix: string; suffix: string}) {
+	return `${tag.prefix || ''}text${tag.suffix || ''}`;
+}
+
 export interface PersonaSettingsTabProps {
 	initialSubtab?: string;
 }
@@ -113,6 +128,39 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 	const [isEditing, setIsEditing] = useState(false);
 	const [formData, setFormData] = useState<PersonaFormState>(emptyFormState());
 	const [isUploadingAvatar, setIsUploadingAvatar] = useState(false);
+
+	const getTagRowError = (idx: number): string | null => {
+		const currentTag = normalizeTag(formData.tags[idx]);
+		if (!currentTag.prefix && !currentTag.suffix) {
+			return null;
+		}
+		const currentKey = getTagKey(currentTag);
+
+		// 1. Check duplicates within current form tags
+		for (let i = 0; i < formData.tags.length; i++) {
+			if (i === idx) continue;
+			const other = normalizeTag(formData.tags[i]);
+			if ((other.prefix || other.suffix) && getTagKey(other) === currentKey) {
+				return 'Duplicate tag pair on this persona';
+			}
+		}
+
+		// 2. Check collisions across other personas
+		for (const p of personas) {
+			if (formData.id && p.id === formData.id) continue;
+			const otherTags = p.persona_tags ?? p.personaTags ?? [];
+			for (const ot of otherTags) {
+				const normOther = normalizeTag(ot);
+				if ((normOther.prefix || normOther.suffix) && getTagKey(normOther) === currentKey) {
+					return `Tag pair already in use by persona "${p.name}"`;
+				}
+			}
+		}
+
+		return null;
+	};
+
+	const hasTagErrors = formData.tags.some((_, idx) => Boolean(getTagRowError(idx)));
 
 	const [tagText, setTagText] = useState(PersonaStore.displayTagText);
 	const [tagIcon, setTagIcon] = useState(PersonaStore.displayTagIcon);
@@ -344,6 +392,49 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 			.map((t) => ({prefix: t.prefix.trim() || undefined, suffix: t.suffix.trim() || undefined}))
 			.filter((t) => t.prefix || t.suffix);
 
+		if (validTags.length > 5) {
+			ToastCommands.createToast({
+				type: 'error',
+				children: 'A persona can have at most 5 tags',
+			});
+			return;
+		}
+
+		// Check duplicates within this persona
+		const seenTags = new Set<string>();
+		for (const tag of validTags) {
+			const norm = {prefix: tag.prefix ?? '', suffix: tag.suffix ?? ''};
+			const key = getTagKey(norm);
+			if (seenTags.has(key)) {
+				ToastCommands.createToast({
+					type: 'error',
+					children: `Duplicate tag pair '${formatTagDisplay(norm)}' cannot be listed multiple times on the same persona`,
+				});
+				return;
+			}
+			seenTags.add(key);
+		}
+
+		// Check collisions across other personas
+		for (const tag of validTags) {
+			const norm = {prefix: tag.prefix ?? '', suffix: tag.suffix ?? ''};
+			const key = getTagKey(norm);
+			for (const p of personas) {
+				if (formData.id && p.id === formData.id) continue;
+				const otherTags = p.persona_tags ?? p.personaTags ?? [];
+				for (const ot of otherTags) {
+					const otherNorm = normalizeTag(ot);
+					if ((otherNorm.prefix || otherNorm.suffix) && getTagKey(otherNorm) === key) {
+						ToastCommands.createToast({
+							type: 'error',
+							children: `Tag pair '${formatTagDisplay(otherNorm)}' is already in use by persona '${p.name}'`,
+						});
+						return;
+					}
+				}
+			}
+		}
+
 		try {
 			if (formData.id) {
 				await PersonaCommands.updatePersona(formData.id, {
@@ -377,10 +468,11 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 
 			setIsEditing(false);
 			setFormData(emptyFormState());
-		} catch {
+		} catch (err: unknown) {
+			const message = err instanceof Error ? err.message : 'Failed to save persona';
 			ToastCommands.createToast({
 				type: 'error',
-				children: 'Failed to save persona',
+				children: message,
 			});
 		}
 	};
@@ -435,6 +527,7 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 	};
 
 	const handleAddTagRow = () => {
+		if (formData.tags.length >= 5) return;
 		setFormData((prev) => ({
 			...prev,
 			tags: [...prev.tags, {prefix: '', suffix: ''}],
@@ -664,39 +757,51 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 										style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4}}
 									>
 										<div className={styles.formLabel}>Persona Tags (Prefix & Suffix)</div>
-										<Button variant="secondary" small leftIcon={<Plus size={14} />} onClick={handleAddTagRow}>
-											Add Tag Pair
+										<Button
+											variant="secondary"
+											small
+											leftIcon={<Plus size={14} />}
+											onClick={handleAddTagRow}
+											disabled={formData.tags.length >= 5}
+										>
+											Add Tag Pair ({formData.tags.length}/5)
 										</Button>
 									</div>
-									{formData.tags.map((tag, idx) => (
-										<div key={idx} className={styles.tagRow}>
-											<input
-												type="text"
-												className={styles.tagInput}
-												placeholder="Prefix (e.g. [)"
-												value={tag.prefix}
-												onChange={(e) => handleTagChange(idx, 'prefix', e.target.value)}
-											/>
-											<span style={{color: 'var(--text-primary-muted)'}}>text</span>
-											<input
-												type="text"
-												className={styles.tagInput}
-												placeholder="Suffix (e.g. ])"
-												value={tag.suffix}
-												onChange={(e) => handleTagChange(idx, 'suffix', e.target.value)}
-											/>
-											{formData.tags.length > 1 && (
-												<Button
-													variant="danger"
-													small
-													square
-													icon={<Trash size={14} />}
-													onClick={() => handleRemoveTagRow(idx)}
-													aria-label="Remove tag pair"
-												/>
-											)}
-										</div>
-									))}
+									{formData.tags.map((tag, idx) => {
+										const tagError = getTagRowError(idx);
+										return (
+											<div key={idx} style={{marginBottom: 6}}>
+												<div className={styles.tagRow} style={{marginBottom: tagError ? 2 : 0}}>
+													<input
+														type="text"
+														className={`${styles.tagInput} ${tagError ? styles.tagInputError : ''}`}
+														placeholder="Prefix (e.g. [)"
+														value={tag.prefix}
+														onChange={(e) => handleTagChange(idx, 'prefix', e.target.value)}
+													/>
+													<span style={{color: 'var(--text-primary-muted)'}}>text</span>
+													<input
+														type="text"
+														className={`${styles.tagInput} ${tagError ? styles.tagInputError : ''}`}
+														placeholder="Suffix (e.g. ])"
+														value={tag.suffix}
+														onChange={(e) => handleTagChange(idx, 'suffix', e.target.value)}
+													/>
+													{formData.tags.length > 1 && (
+														<Button
+															variant="danger"
+															small
+															square
+															icon={<Trash size={14} />}
+															onClick={() => handleRemoveTagRow(idx)}
+															aria-label="Remove tag pair"
+														/>
+													)}
+												</div>
+												{tagError && <div className={styles.tagErrorText}>{tagError}</div>}
+											</div>
+										);
+									})}
 								</div>
 							</div>
 							<div className={styles.editorActions}>
@@ -705,7 +810,7 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 								</Button>
 								<Button
 									variant="primary"
-									disabled={!formData.name.trim() || isUploadingAvatar}
+									disabled={!formData.name.trim() || isUploadingAvatar || hasTagErrors}
 									onClick={handleSaveForm}
 								>
 									{isUploadingAvatar ? 'Uploading avatar...' : 'Save Persona'}
