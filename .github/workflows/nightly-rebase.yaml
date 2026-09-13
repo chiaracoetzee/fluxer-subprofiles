@@ -200,6 +200,7 @@ jobs:
         with:
           name: rebase-agent-logs
           path: |
-            /tmp/antigravity_logs
-            /tmp/rebase_tools
+            /tmp/rebase_transcript.md
             /tmp/rebase_escalation_reason.md
+            /tmp/antigravity_data
+            /tmp/rebase_tools

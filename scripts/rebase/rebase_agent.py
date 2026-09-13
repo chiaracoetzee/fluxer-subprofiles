@@ -3,13 +3,15 @@
 
 """
 Autonomous Antigravity Rebase Agent powered by Gemini 3.8 Flash.
-Operates across the full repository with complete toolset access
+Operates across the repository with essential git conflict tools
 (run_command, view_file, edit_file, search_dir, find_file) to inspect
 codebase context, resolve merge conflicts, and verify test suites.
-Gracefully escalates with diagnostic explanations if human intervention is needed.
+Generates human-readable Markdown transcripts and logs all actions.
 """
 
 import asyncio
+from datetime import datetime, timezone
+import json
 import os
 import re
 import subprocess
@@ -17,6 +19,7 @@ import sys
 
 from google.antigravity import (
     Agent,
+    BuiltinTools,
     CapabilitiesConfig,
     GeminiAPIEndpoint,
     GeminiModelOptions,
@@ -32,9 +35,44 @@ from google.antigravity import (
 from google.antigravity.hooks import policy
 
 ESCALATION_FILE = "/tmp/rebase_escalation_reason.md"
-LOG_SAVE_DIR = "/tmp/antigravity_logs"
+MD_TRANSCRIPT_FILE = "/tmp/rebase_transcript.md"
+APP_DATA_DIR = "/tmp/antigravity_data"
+LOG_SAVE_DIR = "/tmp/antigravity_data/sessions"
 CONVERSATION_ID = "fluxer-rebase-automation-session"
 TIMEOUT_SECONDS = 600  # 10 minute internal timeout
+
+
+class MarkdownLogger:
+    """Logs the agent session to a human-readable Markdown document."""
+
+    def __init__(self, filepath: str = MD_TRANSCRIPT_FILE):
+        self.filepath = filepath
+        now_str = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
+        self.write_raw(
+            f"# 🤖 Antigravity Rebase Agent Session Transcript\n\n"
+            f"- **Timestamp**: {now_str}\n"
+            f"- **Model**: Gemini 3.8 Flash (`gemini-3.8-flash`)\n"
+            f"- **Conversation ID**: `{CONVERSATION_ID}`\n\n"
+            f"---\n\n"
+        )
+
+    def write_raw(self, content: str):
+        with open(self.filepath, "a", encoding="utf-8") as f:
+            f.write(content)
+
+    def log_section(self, title: str, body: str):
+        self.write_raw(f"### {title}\n\n{body}\n\n")
+
+    def log_turn(self, turn_num: int, prompt: str, output: str):
+        self.write_raw(
+            f"## 🔄 Turn {turn_num}\n\n"
+            f"#### User Prompt\n```text\n{prompt}\n```\n\n"
+            f"#### Agent Response\n{output or '*(No text emitted)*'}\n\n"
+            f"---\n\n"
+        )
+
+
+logger = MarkdownLogger()
 
 
 def run_cmd(cmd: list[str], check: bool = False) -> str:
@@ -45,12 +83,10 @@ def run_cmd(cmd: list[str], check: bool = False) -> str:
 
 def extract_retry_delay(error_msg: str, default: float = 22.0, buffer: float = 3.0) -> float:
     """Extracts the exact retry cooldown requested by Google's API, with a safety buffer."""
-    # 1. Match 'Please retry in 18.799194076s'
     m1 = re.search(r"retry in ([0-9]+(?:\.[0-9]+)?)\s*s", error_msg, re.IGNORECASE)
     if m1:
         return float(m1.group(1)) + buffer
 
-    # 2. Match 'retryDelay:16s'
     m2 = re.search(r"retryDelay:([0-9]+(?:\.[0-9]+)?)\s*s", error_msg, re.IGNORECASE)
     if m2:
         return float(m2.group(1)) + buffer
@@ -73,13 +109,49 @@ def get_conflict_summary() -> str:
     )
 
 
+def export_jsonl_transcripts():
+    """Converts any raw JSONL transcripts produced by the Go harness into clean Markdown."""
+    try:
+        brain_dir = os.path.join(APP_DATA_DIR, "brain", CONVERSATION_ID, ".system_generated", "logs")
+        jsonl_path = os.path.join(brain_dir, "transcript.jsonl")
+        if not os.path.exists(jsonl_path):
+            return
+
+        out_path = os.path.join(APP_DATA_DIR, "detailed_jsonl_transcript.md")
+        with open(jsonl_path, "r", encoding="utf-8") as f, open(out_path, "w", encoding="utf-8") as out:
+            out.write("# 📋 Detailed Step-by-Step Trajectory Transcript\n\n")
+            for line in f:
+                if not line.strip():
+                    continue
+                try:
+                    step = json.loads(line)
+                    step_type = step.get("type", "UNKNOWN")
+                    source = step.get("source", "")
+                    content = step.get("content", "")
+                    tool_calls = step.get("tool_calls", [])
+
+                    out.write(f"### Step {step.get('step_index', '?')} [{source} - {step_type}]\n")
+                    if content:
+                        out.write(f"{content}\n\n")
+                    if tool_calls:
+                        out.write("**Tool Calls:**\n```json\n" + json.dumps(tool_calls, indent=2) + "\n```\n\n")
+                except Exception:
+                    continue
+        print(f"[Antigravity Agent] Detailed trajectory exported to {out_path}")
+    except Exception as e:
+        print(f"[Antigravity Agent] Note: could not export jsonl transcript: {e}", file=sys.stderr)
+
+
 async def main():
     api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:
         print("Error: GEMINI_API_KEY environment variable is not set.", file=sys.stderr)
         sys.exit(1)
 
-    # Configure Gemini 3.8 Flash model target with low thinking level to prevent empty candidate responses
+    os.makedirs(APP_DATA_DIR, exist_ok=True)
+    os.makedirs(LOG_SAVE_DIR, exist_ok=True)
+
+    # Configure Gemini 3.8 Flash model target with low thinking level to eliminate empty candidate errors
     model_endpoint = GeminiAPIEndpoint(
         api_key=api_key,
         options=GeminiModelOptions(thinking_level=ThinkingLevel.LOW),
@@ -90,12 +162,24 @@ async def main():
         endpoint=model_endpoint,
     )
 
+    # Prune capabilities to ONLY essential git & code tools to drastically reduce token payload and prevent 429s
+    capabilities = CapabilitiesConfig(
+        enabled_tools=[
+            BuiltinTools.RUN_COMMAND,
+            BuiltinTools.VIEW_FILE,
+            BuiltinTools.EDIT_FILE,
+            BuiltinTools.SEARCH_DIR,
+            BuiltinTools.FIND_FILE,
+        ],
+        enable_subagents=False,
+    )
+
     # If --self-test flag is passed, verify connectivity with Gemini 3.8 Flash
     if "--self-test" in sys.argv:
         print("[Antigravity Agent] Running API connectivity self-test with Gemini 3.8 Flash...")
         test_config = LocalAgentConfig(
             system_instructions="You are an autonomous AI test assistant. Reply concisely.",
-            capabilities=CapabilitiesConfig(),
+            capabilities=CapabilitiesConfig(enabled_tools=[BuiltinTools.RUN_COMMAND], enable_subagents=False),
             policies=[policy.allow_all()],
             api_key=api_key,
             model=model_target,
@@ -113,13 +197,14 @@ async def main():
 
     repo_dir = os.getcwd()
     conflict_summary = get_conflict_summary()
+    logger.log_section("Initial Conflict & Repository State", f"```text\n{conflict_summary}\n```")
 
     system_instructions = (
         "You are an expert autonomous software engineer and Git conflict resolution agent for the Fluxer codebase, "
         "powered by Gemini 3.8 Flash.\n\n"
         "A git rebase of `features/subprofiles` (our branch implementing persona subprofiles) against `upstream/main` "
         "is currently in progress and encountered conflicts or requires test verification.\n\n"
-        "YOU HAVE ACCESS TO THE ENTIRE REPOSITORY AND FULL SYSTEM TOOLS:\n"
+        "YOU HAVE ACCESS TO ESSENTIAL CODEBASE TOOLS:\n"
         "- run_command: Run shell commands (e.g. `git status`, `git diff`, `git log`, `pnpm vitest run ...`, `git add <file>`, `git rebase --continue`)\n"
         "- view_file: Read any file in the workspace to understand context, surrounding types, or upstream changes\n"
         "- edit_file: Modify files to resolve conflict markers cleanly\n"
@@ -159,7 +244,6 @@ async def main():
         f"If human intervention is required, write your diagnostic report to `/tmp/rebase_escalation_reason.md` and exit."
     )
 
-    os.makedirs(LOG_SAVE_DIR, exist_ok=True)
     retry_config = RetryConfig(
         api_retry=ModelAPIRetryConfig(
             max_retries=2,
@@ -171,14 +255,15 @@ async def main():
         ),
     )
 
-    print("[Antigravity Agent] Initializing full autonomous Antigravity agent with Gemini 3.8 Flash...")
+    print("[Antigravity Agent] Initializing streamlined autonomous Antigravity agent with Gemini 3.8 Flash...")
     config = LocalAgentConfig(
         system_instructions=system_instructions,
-        capabilities=CapabilitiesConfig(),
+        capabilities=capabilities,
         policies=[policy.allow_all()],
         workspaces=[repo_dir],
         api_key=api_key,
         model=model_target,
+        app_data_dir=APP_DATA_DIR,
         save_dir=LOG_SAVE_DIR,
         conversation_id=CONVERSATION_ID,
         session_continuation_mode=types.SessionContinuationMode.CREATE_OR_RESUME,
@@ -190,11 +275,11 @@ async def main():
         turn = 0
         while turn < max_turns:
             turn += 1
+            curr_prompt = prompt if turn == 1 else "Please continue advancing the rebase and verifying tests until completely finished."
             try:
                 print(f"[Antigravity Agent] Active resolution turn {turn}/{max_turns}...")
                 full_output = []
                 async with Agent(config) as agent:
-                    curr_prompt = prompt if turn == 1 else "Please continue advancing the rebase and verifying tests until completely finished."
                     response = await agent.chat(curr_prompt)
 
                     async for token in response:
@@ -203,19 +288,22 @@ async def main():
                         sys.stdout.flush()
                     print("\n[Antigravity Agent] Turn finished.")
 
-                all_text = "".join(full_output)
+                turn_text = "".join(full_output)
+                logger.log_turn(turn, curr_prompt, turn_text)
 
                 # Check for human escalation
                 if os.path.exists(ESCALATION_FILE):
                     with open(ESCALATION_FILE, "r", encoding="utf-8") as f:
                         reason = f.read().strip()
+                    logger.log_section("⚠️ Human Escalation Triggered", reason)
                     print(f"\n[Antigravity Agent] Human intervention requested:\n{reason}\n", file=sys.stderr)
                     sys.exit(1)
 
-                if "[ESCALATION REQUIRED" in all_text:
-                    reason = all_text.split("[ESCALATION REQUIRED", 1)[1].split("]", 1)[0].strip(": ")
+                if "[ESCALATION REQUIRED" in turn_text:
+                    reason = turn_text.split("[ESCALATION REQUIRED", 1)[1].split("]", 1)[0].strip(": ")
                     with open(ESCALATION_FILE, "w", encoding="utf-8") as f:
                         f.write(f"**Reason for Escalation:**\n{reason}\n")
+                    logger.log_section("⚠️ Human Escalation Triggered", reason)
                     print(f"\n[Antigravity Agent] Escalation flagged: {reason}\n", file=sys.stderr)
                     sys.exit(1)
 
@@ -226,6 +314,7 @@ async def main():
                 if not os.path.exists(rebase_merge) and not os.path.exists(rebase_apply):
                     unmerged = run_cmd(["git", "diff", "--name-only", "--diff-filter=U"])
                     if not unmerged:
+                        logger.log_section("✅ Success", "All rebase commits and tests completed cleanly!")
                         print("[Antigravity Agent] All rebase steps completed cleanly!")
                         return
                     else:
@@ -235,24 +324,27 @@ async def main():
 
             except Exception as e:
                 err_str = str(e)
-                print(f"\n[Antigravity Agent] Execution error encountered: {err_str}", file=sys.stderr)
+                print(f"\n[Antigravity Agent] Execution notice: {err_str}", file=sys.stderr)
 
                 # Dynamic Google API 429 cooldown handling
                 if "429" in err_str or "RESOURCE_EXHAUSTED" in err_str or "Quota exceeded" in err_str:
                     delay = extract_retry_delay(err_str, default=22.0, buffer=3.0)
-                    print(
-                        f"[Antigravity Agent] Google rate limit 429 encountered: requested wait detected. "
-                        f"Sleeping {delay:.1f}s before resuming session...",
-                        file=sys.stderr,
+                    msg = (
+                        f"Google rate limit (429) encountered. Cooldown window active; "
+                        f"sleeping {delay:.1f}s before resuming session..."
                     )
+                    logger.log_section("⏳ Rate Limit Backoff", msg)
+                    print(f"[Antigravity Agent] {msg}", file=sys.stderr)
                     await asyncio.sleep(delay)
                     continue
 
                 if turn < max_turns:
-                    print("[Antigravity Agent] Transient error encountered. Retrying turn in 5s...", file=sys.stderr)
+                    logger.log_section("⚠️ Turn Notice", f"Encountered: `{err_str}`. Retrying in 5s...")
+                    print("[Antigravity Agent] Retrying turn in 5s...", file=sys.stderr)
                     await asyncio.sleep(5)
                     continue
                 else:
+                    logger.log_section("❌ Fatal Failure", f"Max turns exceeded: `{err_str}`")
                     raise
 
         raise RuntimeError("Agent exceeded maximum allowed turns without finishing the rebase.")
@@ -266,10 +358,13 @@ async def main():
             f"The autonomous rebase agent exceeded the runtime limit of {TIMEOUT_SECONDS // 60} minutes "
             "without completing all rebase commits or tests. Escalating to human developer."
         )
+        logger.log_section("⏰ Timeout Reached", timeout_msg)
         print(f"\n[Antigravity Agent] {timeout_msg}\n", file=sys.stderr)
         with open(ESCALATION_FILE, "w", encoding="utf-8") as f:
             f.write(timeout_msg)
         sys.exit(1)
+    finally:
+        export_jsonl_transcripts()
 
 
 if __name__ == "__main__":
