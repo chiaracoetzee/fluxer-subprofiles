@@ -191,7 +191,11 @@ export const PersonaPickerSheet: React.FC<PersonaPickerSheetProps> = observer(
 											{p.systemName && <span className={styles.tagBadge}>[{p.systemName}]</span>}
 										</div>
 										<div className={styles.personaPrimaryRow}>
-											{p.pronouns && <span className={styles.personaPronouns}>{p.pronouns}</span>}
+											{p.pronouns && (
+												<span className={styles.personaPronouns} title={p.pronouns}>
+													{p.pronouns}
+												</span>
+											)}
 											{tagString && <span className={styles.tagBadge}>{tagString}</span>}
 										</div>
 									</div>
