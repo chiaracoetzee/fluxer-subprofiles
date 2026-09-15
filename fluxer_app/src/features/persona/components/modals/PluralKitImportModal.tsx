@@ -3,7 +3,6 @@
 import {ConfirmModal} from '@app/features/app/components/dialogs/ConfirmModal';
 import * as Modal from '@app/features/app/components/dialogs/Modal';
 import {Endpoints} from '@app/features/app/constants/Endpoints';
-import {http} from '@app/features/platform/transport/RestTransport';
 import SessionManager from '@app/features/platform/state/AuthSession';
 import {Button} from '@app/features/ui/button/Button';
 import * as ModalCommands from '@app/features/ui/commands/ModalCommands';
