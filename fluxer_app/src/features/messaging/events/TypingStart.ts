@@ -5,17 +5,22 @@ import GuildMembers from '@app/features/member/state/GuildMembers';
 import TypingIndicator from '@app/features/typing/state/TypingIndicator';
 import type {GuildMemberData} from '@fluxer/schema/src/domains/guild/GuildMemberSchemas';
 
+// Fork imports.
+
+import type {MessageSubprofileResponse} from '@fluxer/schema/src/domains/persona/PersonaSchemas';
+
 interface TypingStartPayload {
 	channel_id: string;
 	user_id: string;
 	timestamp: number;
 	guild_id?: string;
 	member?: GuildMemberData;
+	subprofile?: MessageSubprofileResponse | null;
 }
 
 export function handleTypingStart(data: TypingStartPayload, _context: GatewayHandlerContext): void {
 	if (data.guild_id && data.member) {
 		GuildMembers.hydrateIfMissing(data.guild_id, data.member);
 	}
-	TypingIndicator.startRemoteTyping(data.channel_id, data.user_id);
+	TypingIndicator.startRemoteTyping(data.channel_id, data.user_id, data.subprofile);
 }
