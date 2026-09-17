@@ -8,7 +8,8 @@ import {Button} from '@app/features/ui/button/Button';
 import * as ModalCommands from '@app/features/ui/commands/ModalCommands';
 import * as ToastCommands from '@app/features/ui/commands/ToastCommands';
 import type {PersonaCreateRequest} from '@fluxer/schema/src/domains/persona/PersonaApiSchemas';
-import {Trans} from '@lingui/react/macro';
+import {msg} from '@lingui/core/macro';
+import {Trans, useLingui} from '@lingui/react/macro';
 import {CheckCircle, UploadSimple, Warning} from '@phosphor-icons/react';
 import {clsx} from 'clsx';
 import {observer} from 'mobx-react-lite';
@@ -17,6 +18,55 @@ import {useRef, useState} from 'react';
 import * as PersonaCommands from '../../commands/PersonaCommands';
 import {PersonaStore} from '../../state/PersonaStore';
 import styles from './PluralKitImportModal.module.css';
+
+const FILE_INVALID_JSON_DESCRIPTOR = msg({
+	message: 'The chosen file is not a valid JSON object.',
+	comment: 'Error message when uploaded file is not valid JSON',
+});
+const FILE_NO_MEMBERS_DESCRIPTOR = msg({
+	message: 'No "members" array found in this export file.',
+	comment: 'Error message when PluralKit export lacks members array',
+});
+const FILE_PARSE_FAILED_DESCRIPTOR = msg({
+	message: 'Failed to parse JSON file. Please ensure it is a valid PluralKit export.',
+	comment: 'Error message when parsing PluralKit JSON fails',
+});
+const FILE_READ_FAILED_DESCRIPTOR = msg({
+	message: 'Failed to read the selected file.',
+	comment: 'Error message when reading uploaded file fails',
+});
+const PREPARING_BATCH_DESCRIPTOR = msg({
+	message: 'Preparing avatar batch download...',
+	comment: 'Progress status when preparing avatar batch download',
+});
+const AVATARS_DOWNLOADED_LABEL = msg({
+	message: 'avatars downloaded',
+	comment: 'Progress label for avatar downloads',
+});
+const PERSONAS_PREPARED_LABEL = msg({
+	message: 'personas prepared',
+	comment: 'Progress label for prepared personas',
+});
+const SAVING_PERSONAS_STATUS = msg({
+	message: 'Saving personas...',
+	comment: 'Progress status when saving personas',
+});
+const SAVING_PERSONAS_LABEL = msg({
+	message: 'saving personas',
+	comment: 'Progress label when saving personas',
+});
+const SKIPPED_NO_NAME_DESCRIPTOR = msg({
+	message: 'Skipped member because they have no name configured.',
+	comment: 'Import warning when member has no name',
+});
+const FAILED_TO_IMPORT_DESCRIPTOR = msg({
+	message: 'Failed to import personas',
+	comment: 'Toast error message on persona import failure',
+});
+const SYSTEM_TAG_PLACEHOLDER_DESCRIPTOR = msg({
+	message: 'Optional system badge, e.g. ⚞Seraphim⚟',
+	comment: 'Placeholder for system badge in import modal',
+});
 
 interface PKProxyTag {
 	prefix?: string | null;
@@ -51,6 +101,7 @@ interface ImportWarning {
 }
 
 export const PluralKitImportModal: React.FC<{onClose: () => void}> = observer(({onClose}) => {
+	const {i18n} = useLingui();
 	const [step, setStep] = useState<'select' | 'importing' | 'completed'>('select');
 	const [fileName, setFileName] = useState<string | null>(null);
 	const [fileError, setFileError] = useState<string | null>(null);
@@ -68,7 +119,7 @@ export const PluralKitImportModal: React.FC<{onClose: () => void}> = observer(({
 		total: 0,
 		currentName: '',
 		percent: 0,
-		label: 'avatars downloaded',
+		label: undefined,
 	});
 	const [importResults, setImportResults] = useState<{
 		successCount: number;
@@ -89,12 +140,12 @@ export const PluralKitImportModal: React.FC<{onClose: () => void}> = observer(({
 				const parsed = JSON.parse(content) as PKSystemExport;
 
 				if (!parsed || typeof parsed !== 'object') {
-					setFileError('The chosen file is not a valid JSON object.');
+					setFileError(i18n._(FILE_INVALID_JSON_DESCRIPTOR));
 					return;
 				}
 
 				if (!Array.isArray(parsed.members)) {
-					setFileError('No "members" array found in this export file.');
+					setFileError(i18n._(FILE_NO_MEMBERS_DESCRIPTOR));
 					return;
 				}
 
@@ -103,11 +154,11 @@ export const PluralKitImportModal: React.FC<{onClose: () => void}> = observer(({
 					setSystemTagOverride(parsed.tag);
 				}
 			} catch (_err: unknown) {
-				setFileError('Failed to parse JSON file. Please ensure it is a valid PluralKit export.');
+				setFileError(i18n._(FILE_PARSE_FAILED_DESCRIPTOR));
 			}
 		};
 		reader.onerror = () => {
-			setFileError('Failed to read the selected file.');
+			setFileError(i18n._(FILE_READ_FAILED_DESCRIPTOR));
 		};
 		reader.readAsText(file);
 	};
@@ -144,9 +195,9 @@ export const PluralKitImportModal: React.FC<{onClose: () => void}> = observer(({
 			setProgress({
 				current: 0,
 				total: totalAvatars,
-				currentName: 'Preparing avatar batch download...',
+				currentName: i18n._(PREPARING_BATCH_DESCRIPTOR),
 				percent: 0,
-				label: 'avatars downloaded',
+				label: i18n._(AVATARS_DOWNLOADED_LABEL),
 			});
 
 			const BATCH_LIMIT = 500;
@@ -202,9 +253,15 @@ export const PluralKitImportModal: React.FC<{onClose: () => void}> = observer(({
 										setProgress({
 											current: completedOverall,
 											total: totalAvatars,
-											currentName: `Downloading avatar ${completedOverall} of ${totalAvatars}...`,
+											currentName: i18n._(
+												msg({
+													message: 'Downloading avatar {current} of {total}...',
+													comment: 'Progress status during avatar download',
+												}),
+												{current: completedOverall, total: totalAvatars},
+											),
 											percent: Math.round((completedOverall / totalAvatars) * 100),
-											label: 'avatars downloaded',
+											label: i18n._(AVATARS_DOWNLOADED_LABEL),
 										});
 									} else if (event.type === 'complete' && event.results) {
 										for (const [url, r] of Object.entries(
@@ -258,8 +315,14 @@ export const PluralKitImportModal: React.FC<{onClose: () => void}> = observer(({
 
 			if (!displayName) {
 				warnings.push({
-					displayName: `Member #${i + 1}`,
-					reason: 'Skipped member because they have no name configured.',
+					displayName: i18n._(
+						msg({
+							message: 'Member #{index}',
+							comment: 'Placeholder name for unnamed member in import',
+						}),
+						{index: i + 1},
+					),
+					reason: i18n._(SKIPPED_NO_NAME_DESCRIPTOR),
 				});
 				continue;
 			}
@@ -267,9 +330,15 @@ export const PluralKitImportModal: React.FC<{onClose: () => void}> = observer(({
 			setProgress({
 				current: i + 1,
 				total: totalMembers,
-				currentName: `Configuring ${displayName}...`,
+				currentName: i18n._(
+					msg({
+						message: 'Configuring {name}...',
+						comment: 'Progress status for configuring persona',
+					}),
+					{name: displayName},
+				),
 				percent: Math.round(((i + 1) / totalMembers) * 100),
-				label: 'personas prepared',
+				label: i18n._(PERSONAS_PREPARED_LABEL),
 			});
 
 			const remoteAvatarUrl = (member.avatar_url || member.webhook_avatar_url || '').trim();
@@ -282,7 +351,13 @@ export const PluralKitImportModal: React.FC<{onClose: () => void}> = observer(({
 					warnings.push({
 						displayName,
 						prefix: primaryPrefix,
-						reason: `Avatar image failed to download: ${avatarErrors.get(remoteAvatarUrl)}. Persona was imported without an avatar.`,
+						reason: i18n._(
+							msg({
+								message: 'Avatar image failed to download: {error}. Persona was imported without an avatar.',
+								comment: 'Import warning when avatar fails to download',
+							}),
+							{error: avatarErrors.get(remoteAvatarUrl) ?? 'Error'},
+						),
 					});
 				}
 			}
@@ -332,9 +407,9 @@ export const PluralKitImportModal: React.FC<{onClose: () => void}> = observer(({
 			setProgress({
 				current: totalMembers,
 				total: totalMembers,
-				currentName: 'Saving personas...',
+				currentName: i18n._(SAVING_PERSONAS_STATUS),
 				percent: 100,
-				label: 'saving personas',
+				label: i18n._(SAVING_PERSONAS_LABEL),
 			});
 			await PersonaCommands.importPersonas(importedPersonas);
 
@@ -344,7 +419,7 @@ export const PluralKitImportModal: React.FC<{onClose: () => void}> = observer(({
 			});
 			setStep('completed');
 		} catch (err: unknown) {
-			const message = err instanceof Error ? err.message : 'Failed to import personas';
+			const message = err instanceof Error ? err.message : i18n._(FAILED_TO_IMPORT_DESCRIPTOR);
 			ToastCommands.error(message);
 			setStep('select');
 		}
@@ -379,7 +454,26 @@ export const PluralKitImportModal: React.FC<{onClose: () => void}> = observer(({
 	};
 
 	const modalTitle =
-		step === 'select' ? 'Import from PluralKit' : step === 'importing' ? 'Importing Personas...' : 'Import Complete';
+		step === 'select'
+			? i18n._(
+					msg({
+						message: 'Import from PluralKit',
+						comment: 'Modal title for PluralKit import step select',
+					}),
+			  )
+			: step === 'importing'
+			? i18n._(
+					msg({
+						message: 'Importing Personas...',
+						comment: 'Modal title for PluralKit import step importing',
+					}),
+			  )
+			: i18n._(
+					msg({
+						message: 'Import Complete',
+						comment: 'Modal title for PluralKit import step completed',
+					}),
+			  );
 
 	return (
 		<Modal.Root size="medium" onClose={step === 'importing' ? () => {} : onClose}>
@@ -406,9 +500,11 @@ export const PluralKitImportModal: React.FC<{onClose: () => void}> = observer(({
 							>
 								<UploadSimple size={36} style={{color: 'var(--brand-primary)'}} />
 								<div className={styles.dropzoneText}>
-									{fileName ? fileName : 'Choose a PluralKit export (.json) or drag & drop'}
+									{fileName ? fileName : <Trans>Choose a PluralKit export (.json) or drag & drop</Trans>}
 								</div>
-								<div className={styles.dropzoneSubtext}>Supports PluralKit system export files</div>
+								<div className={styles.dropzoneSubtext}>
+									<Trans>Supports PluralKit system export files</Trans>
+								</div>
 								<input
 									ref={fileInputRef}
 									type="file"
@@ -427,19 +523,28 @@ export const PluralKitImportModal: React.FC<{onClose: () => void}> = observer(({
 							{pkData && (
 								<>
 									<div className={styles.summaryBox}>
-										<div className={styles.summaryTitle}>Export Summary</div>
+										<div className={styles.summaryTitle}>
+											<Trans>Export Summary</Trans>
+										</div>
 										<div className={styles.summaryRow}>
-											<span className={styles.summaryLabel}>Detected System Name / Tag</span>
+											<span className={styles.summaryLabel}>
+												<Trans>Detected System Name / Tag</Trans>
+											</span>
 											<span className={styles.summaryValue}>
-												{pkData.name || 'None'} {pkData.tag ? `(${pkData.tag})` : ''}
+												{pkData.name || i18n._(msg({message: 'None', comment: 'None value'}))}{' '}
+												{pkData.tag ? `(${pkData.tag})` : ''}
 											</span>
 										</div>
 										<div className={styles.summaryRow}>
-											<span className={styles.summaryLabel}>Total Members</span>
+											<span className={styles.summaryLabel}>
+												<Trans>Total Members</Trans>
+											</span>
 											<span className={styles.summaryValue}>{pkData.members?.length ?? 0}</span>
 										</div>
 										<div className={styles.summaryRow}>
-											<span className={styles.summaryLabel}>Members with Avatars</span>
+											<span className={styles.summaryLabel}>
+												<Trans>Members with Avatars</Trans>
+											</span>
 											<span className={styles.summaryValue}>
 												{pkData.members?.filter((m) => Boolean(m.avatar_url || m.webhook_avatar_url)).length ?? 0}
 											</span>
@@ -447,20 +552,24 @@ export const PluralKitImportModal: React.FC<{onClose: () => void}> = observer(({
 									</div>
 
 									<div className={styles.formField}>
-										<div className={styles.formLabel}>System Tag (Applied to imported personas)</div>
+										<div className={styles.formLabel}>
+											<Trans>System Tag (Applied to imported personas)</Trans>
+										</div>
 										<input
 											type="text"
 											className={styles.textInput}
 											value={systemTagOverride}
 											onChange={(e) => setSystemTagOverride(e.target.value)}
-											placeholder="Optional system badge, e.g. ⚞Seraphim⚟"
+											placeholder={i18n._(SYSTEM_TAG_PLACEHOLDER_DESCRIPTOR)}
 											maxLength={100}
 										/>
 									</div>
 
 									{existingCount > 0 && (
 										<div className={styles.formField}>
-											<div className={styles.formLabel}>Import Strategy</div>
+											<div className={styles.formLabel}>
+												<Trans>Import Strategy</Trans>
+											</div>
 											<div className={styles.optionsGroup}>
 												<label
 													className={clsx(styles.radioOption, importMode === 'append' && styles.radioOptionSelected)}
@@ -473,10 +582,14 @@ export const PluralKitImportModal: React.FC<{onClose: () => void}> = observer(({
 														style={{marginTop: 3}}
 													/>
 													<div>
-														<div className={styles.radioTitle}>Keep existing and add new (Recommended)</div>
+														<div className={styles.radioTitle}>
+															<Trans>Keep existing and add new (Recommended)</Trans>
+														</div>
 														<div className={styles.radioDesc}>
-															Keep your {existingCount} current persona(s) and add all {pkData.members?.length ?? 0}{' '}
-															imported personas alongside them as new entries.
+															<Trans>
+																Keep your {existingCount} current persona(s) and add all{' '}
+																{pkData.members?.length ?? 0} imported personas alongside them as new entries.
+															</Trans>
 														</div>
 													</div>
 												</label>
@@ -497,11 +610,15 @@ export const PluralKitImportModal: React.FC<{onClose: () => void}> = observer(({
 													<div>
 														<div className={styles.radioTitleDanger}>
 															<Warning size={16} weight="fill" className={styles.dangerIcon} />
-															<span>Replace all existing personas (Destructive)</span>
+															<span>
+																<Trans>Replace all existing personas (Destructive)</Trans>
+															</span>
 														</div>
 														<div className={styles.radioDesc}>
-															Permanently delete all {existingCount} existing persona(s) and replace them completely
-															with the imported personas.
+															<Trans>
+																Permanently delete all {existingCount} existing persona(s) and replace them completely
+																with the imported personas.
+															</Trans>
 														</div>
 													</div>
 												</label>
@@ -516,12 +633,16 @@ export const PluralKitImportModal: React.FC<{onClose: () => void}> = observer(({
 					{/* STEP 2: IMPORTING PROGRESS */}
 					{step === 'importing' && (
 						<div style={{padding: '16px 0'}}>
-							<div className={styles.progressCurrentName}>Processing: {progress.currentName}</div>
+							<div className={styles.progressCurrentName}>
+								<Trans>Processing: {progress.currentName}</Trans>
+							</div>
 							<div className={styles.progressBarContainer}>
 								<div className={styles.progressBarFill} style={{width: `${progress.percent}%`}} />
 							</div>
 							<div className={styles.progressDetail}>
-								{progress.current} of {progress.total} {progress.label ?? 'items'} ({progress.percent}%)
+								<Trans>
+									{progress.current} of {progress.total} {progress.label ?? 'items'} ({progress.percent}%)
+								</Trans>
 							</div>
 						</div>
 					)}
@@ -531,10 +652,14 @@ export const PluralKitImportModal: React.FC<{onClose: () => void}> = observer(({
 						<>
 							<div className={styles.successBox}>
 								<CheckCircle size={36} style={{color: 'var(--accent-success)', marginBottom: 8}} />
-								<div className={styles.successTitle}>Import Complete!</div>
+								<div className={styles.successTitle}>
+									<Trans>Import Complete!</Trans>
+								</div>
 								<div className={styles.successDesc}>
-									Successfully imported {importResults.successCount} persona(s) into your account. All avatar images are
-									safely stored on your local server.
+									<Trans>
+										Successfully imported {importResults.successCount} persona(s) into your account. All avatar images are
+										safely stored on your local server.
+									</Trans>
 								</div>
 							</div>
 
@@ -543,8 +668,7 @@ export const PluralKitImportModal: React.FC<{onClose: () => void}> = observer(({
 									<div className={styles.warningHeader}>
 										<Warning size={18} />
 										<span>
-											{importResults.warnings.length} notice
-											{importResults.warnings.length > 1 ? 's' : ''} during import
+											<Trans>{importResults.warnings.length} notice(s) during import</Trans>
 										</span>
 									</div>
 									<div className={styles.warningList}>
@@ -553,7 +677,7 @@ export const PluralKitImportModal: React.FC<{onClose: () => void}> = observer(({
 												<div className={styles.warningItemName}>
 													{w.displayName}{' '}
 													<span style={{fontWeight: 400, color: 'var(--text-primary-muted)'}}>
-														(Prefix: {w.prefix})
+														<Trans>(Prefix: {w.prefix})</Trans>
 													</span>
 												</div>
 												<div className={styles.warningItemDetail}>{w.reason}</div>
@@ -571,27 +695,27 @@ export const PluralKitImportModal: React.FC<{onClose: () => void}> = observer(({
 				{step === 'select' && (
 					<>
 						<Button variant="secondary" onClick={onClose}>
-							Cancel
+							<Trans>Cancel</Trans>
 						</Button>
 						<Button
 							variant="primary"
 							disabled={!pkData || !pkData.members || pkData.members.length === 0}
 							onClick={handleStartImport}
 						>
-							Start Import
+							<Trans>Start Import</Trans>
 						</Button>
 					</>
 				)}
 
 				{step === 'importing' && (
 					<Button variant="secondary" disabled>
-						Importing...
+						<Trans>Importing...</Trans>
 					</Button>
 				)}
 
 				{step === 'completed' && (
 					<Button variant="primary" onClick={onClose}>
-						Done
+						<Trans>Done</Trans>
 					</Button>
 				)}
 			</Modal.Footer>

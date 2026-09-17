@@ -6,6 +6,9 @@ import {Avatar} from '@app/features/ui/components/Avatar';
 import {type SegmentedTab, SegmentedTabs} from '@app/features/ui/segmented_tabs/SegmentedTabs';
 import {UserSettingsModal} from '@app/features/user/components/modals/UserSettingsModal';
 import Users from '@app/features/user/state/Users';
+import type {I18n} from '@lingui/core';
+import {msg} from '@lingui/core/macro';
+import {Trans, useLingui} from '@lingui/react/macro';
 import {Check, Gear, MagnifyingGlass} from '@phosphor-icons/react';
 import {clsx} from 'clsx';
 import {observer} from 'mobx-react-lite';
@@ -15,10 +18,31 @@ import {fetchPersonas} from '../commands/PersonaCommands';
 import {type ActivePersonaMode, PersonaStore} from '../state/PersonaStore';
 import styles from './PersonaPickerSheet.module.css';
 
-const ACTIVE_PERSONA_TABS: Array<SegmentedTab<ActivePersonaMode>> = [
-	{id: 'off', label: 'Off'},
-	{id: 'manual', label: 'Manual'},
-	{id: 'last', label: 'Last Used'},
+const MODE_OFF_DESCRIPTOR = msg({
+	message: 'Off',
+	comment: 'Active persona mode off',
+});
+const MODE_MANUAL_DESCRIPTOR = msg({
+	message: 'Manual',
+	comment: 'Active persona mode manual',
+});
+const MODE_LAST_DESCRIPTOR = msg({
+	message: 'Last Used',
+	comment: 'Active persona mode last used',
+});
+const SEARCH_PERSONAS_PLACEHOLDER_DESCRIPTOR = msg({
+	message: 'Search personas, tags, pronouns...',
+	comment: 'Search placeholder in persona picker sheet',
+});
+const ACTIVE_PERSONA_MODE_ARIA_DESCRIPTOR = msg({
+	message: 'Active persona mode',
+	comment: 'Aria label for active persona mode tabs',
+});
+
+const getActivePersonaTabs = (i18n: I18n): Array<SegmentedTab<ActivePersonaMode>> => [
+	{id: 'off', label: i18n._(MODE_OFF_DESCRIPTOR)},
+	{id: 'manual', label: i18n._(MODE_MANUAL_DESCRIPTOR)},
+	{id: 'last', label: i18n._(MODE_LAST_DESCRIPTOR)},
 ];
 
 interface PersonaPickerSheetProps {
@@ -31,6 +55,9 @@ interface PersonaPickerSheetProps {
 
 export const PersonaPickerSheet: React.FC<PersonaPickerSheetProps> = observer(
 	({onClose, selectedPersonaId, showModes = false, onSelectPersona, onSelectAccount}) => {
+		const {i18n} = useLingui();
+		const activePersonaTabs = useMemo(() => getActivePersonaTabs(i18n), [i18n]);
+
 		useEffect(() => {
 			void fetchPersonas();
 		}, []);
@@ -84,7 +111,7 @@ export const PersonaPickerSheet: React.FC<PersonaPickerSheetProps> = observer(
 						<input
 							type="text"
 							className={styles.searchInput}
-							placeholder="Search personas, tags, pronouns..."
+							placeholder={i18n._(SEARCH_PERSONAS_PLACEHOLDER_DESCRIPTOR)}
 							value={query}
 							onChange={(e) => setQuery(e.target.value)}
 						/>
@@ -95,12 +122,12 @@ export const PersonaPickerSheet: React.FC<PersonaPickerSheetProps> = observer(
 					<div className={styles.modeTabsWrapper}>
 						<SegmentedTabs<ActivePersonaMode>
 							className={styles.segmentedTabs}
-							tabs={ACTIVE_PERSONA_TABS}
+							tabs={activePersonaTabs}
 							selectedTab={activePersonaMode}
 							onTabChange={(mode) => {
 								void PersonaStore.setActivePersonaMode(mode);
 							}}
-							ariaLabel="Active persona mode"
+							ariaLabel={i18n._(ACTIVE_PERSONA_MODE_ARIA_DESCRIPTOR)}
 						/>
 					</div>
 				)}
@@ -125,7 +152,9 @@ export const PersonaPickerSheet: React.FC<PersonaPickerSheetProps> = observer(
 								<div className={styles.personaPrimaryRow}>
 									<span className={styles.personaName}>{currentUser.username}</span>
 								</div>
-								<span className={styles.personaPronouns}>Root Account (Default)</span>
+								<span className={styles.personaPronouns}>
+									<Trans>Root Account (Default)</Trans>
+								</span>
 							</div>
 							{!isLatched || !activePersonaId ? <Check size={16} weight="bold" className={styles.activeCheck} /> : null}
 						</div>
@@ -134,7 +163,9 @@ export const PersonaPickerSheet: React.FC<PersonaPickerSheetProps> = observer(
 					{/* Recent Personas Shelf */}
 					{recentShelfPersonas.length > 0 && (
 						<>
-							<div className={styles.sectionTitle}>Recent Personas</div>
+							<div className={styles.sectionTitle}>
+								<Trans>Recent Personas</Trans>
+							</div>
 							<div className={styles.recentShelf}>
 								{recentShelfPersonas.map((p) => (
 									<div
@@ -160,14 +191,16 @@ export const PersonaPickerSheet: React.FC<PersonaPickerSheetProps> = observer(
 
 					{/* Full Persona List */}
 					<div className={styles.sectionTitle}>
-						{query.trim() ? `Search Results (${filteredPersonas.length})` : 'All Personas'}
+						{query.trim() ? <Trans>Search Results ({filteredPersonas.length})</Trans> : <Trans>All Personas</Trans>}
 					</div>
 
 					{filteredPersonas.length === 0 ? (
 						<div className={styles.emptyNotice}>
-							{personas.length === 0
-								? 'No personas configured yet. Create one in Settings.'
-								: 'No matching personas found.'}
+							{personas.length === 0 ? (
+								<Trans>No personas configured yet. Create one in Settings.</Trans>
+							) : (
+								<Trans>No matching personas found.</Trans>
+							)}
 						</div>
 					) : (
 						filteredPersonas.map((p) => {
@@ -214,8 +247,11 @@ export const PersonaPickerSheet: React.FC<PersonaPickerSheetProps> = observer(
 				<div className={styles.footer}>
 					<button type="button" className={styles.settingsLink} onClick={handleOpenSettings}>
 						<Gear size={14} />
-						<span>Manage Personas</span>
+						<span>
+							<Trans>Manage Personas</Trans>
+						</span>
 					</button>
+
 				</div>
 			</div>
 		);
