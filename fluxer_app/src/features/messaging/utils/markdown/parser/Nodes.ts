@@ -140,6 +140,7 @@ export type MentionType =
 	| {
 			kind: 'User';
 			id: string;
+			personaId?: string;
 	  }
 	| {
 			kind: 'Channel';

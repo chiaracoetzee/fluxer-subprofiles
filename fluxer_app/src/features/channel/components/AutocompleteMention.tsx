@@ -4,11 +4,13 @@ import {AutocompleteItem} from '@app/features/channel/components/AutocompleteIte
 import styles from '@app/features/channel/components/AutocompleteMention.module.css';
 import {
 	type AutocompleteMentionMemberOption,
+	type AutocompleteMentionPersonaOption,
 	type AutocompleteMentionRoleOption,
 	type AutocompleteMentionUserOption,
 	type AutocompleteOption,
 	type AutocompleteSpecialMentionOption,
 	isMentionMember,
+	isMentionPersona,
 	isMentionRole,
 	isMentionUser,
 	isSpecialMention,
@@ -17,7 +19,11 @@ import Guilds from '@app/features/guild/state/Guilds';
 import {useParams} from '@app/features/platform/components/router/RouterReact';
 import * as ColorUtils from '@app/features/theme/utils/ColorUtils';
 import {openRoleContextMenu} from '@app/features/ui/action_menu/RoleContextMenu';
+import {Avatar} from '@app/features/ui/components/Avatar';
+import {BaseAvatar} from '@app/features/ui/components/BaseAvatar';
 import {StatusAwareAvatar} from '@app/features/ui/components/StatusAwareAvatar';
+import Users from '@app/features/user/state/Users';
+import * as AvatarUtils from '@app/features/user/utils/AvatarUtils';
 import * as DisplayNameUtils from '@app/features/user/utils/DisplayNameUtils';
 import {msg} from '@lingui/core/macro';
 import {useLingui} from '@lingui/react/macro';
@@ -86,6 +92,7 @@ export const AutocompleteMention = observer(function AutocompleteMention({
 	const nicknameGuildId = guild == null ? null : guild.id;
 	const members = options.filter(isMentionMember);
 	const users = options.filter(isMentionUser);
+	const personas = options.filter(isMentionPersona);
 	const roles = options.filter(isMentionRole);
 	const specialMentions = options.filter(isSpecialMention);
 	const renderMember = (option: AutocompleteMentionMemberOption, index: number) => (
@@ -136,8 +143,46 @@ export const AutocompleteMention = observer(function AutocompleteMention({
 			/>
 		);
 	};
-	const renderSpecialMention = (option: AutocompleteSpecialMentionOption, index: number) => {
+	const renderPersona = (option: AutocompleteMentionPersonaOption, index: number) => {
 		const currentIndex = members.length + users.length + index;
+		const user = Users.getUser(option.persona.owner_user_id);
+		return (
+			<AutocompleteItem
+				key={`persona-${option.persona.id}`}
+				id={resolveOptionId(getOptionId, currentIndex)}
+				icon={
+					user != null ? (
+						<Avatar
+							user={user}
+							size={24}
+							avatarUrl={option.persona.avatar_url}
+							showOffline={false}
+							disableStatusTooltip={true}
+							data-flx="channel.autocomplete-mention.persona-avatar"
+						/>
+					) : (
+						<BaseAvatar
+							size={24}
+							avatarUrl={option.persona.avatar_url || AvatarUtils.getDefaultAvatarURL(option.persona.id)}
+							disableStatusTooltip={true}
+							data-flx="channel.autocomplete-mention.persona-avatar"
+						/>
+					)
+				}
+				name={option.persona.name}
+				description={`@${option.persona.owner_username}`}
+				isKeyboardSelected={currentIndex === keyboardFocusIndex}
+				isHovered={currentIndex === hoverIndex}
+				onSelect={() => onSelect(option)}
+				onMouseEnter={() => onMouseEnter(currentIndex)}
+				onMouseLeave={onMouseLeave}
+				innerRef={resolveRowRef(rowRefs, currentIndex)}
+				data-flx="channel.autocomplete-mention.autocomplete-item.persona"
+			/>
+		);
+	};
+	const renderSpecialMention = (option: AutocompleteSpecialMentionOption, index: number) => {
+		const currentIndex = members.length + users.length + personas.length + index;
 		return (
 			<AutocompleteItem
 				key={option.kind}
@@ -159,7 +204,7 @@ export const AutocompleteMention = observer(function AutocompleteMention({
 		);
 	};
 	const renderRole = (option: AutocompleteMentionRoleOption, index: number) => {
-		const currentIndex = members.length + users.length + specialMentions.length + index;
+		const currentIndex = members.length + users.length + personas.length + specialMentions.length + index;
 		const roleColor =
 			option.role.color === 0 || Number.isNaN(option.role.color) ? undefined : ColorUtils.int2rgb(option.role.color);
 		return (
@@ -183,13 +228,11 @@ export const AutocompleteMention = observer(function AutocompleteMention({
 			/>
 		);
 	};
-	let hasRowsAfterMembers = users.length > 0;
-	if (!hasRowsAfterMembers) {
-		hasRowsAfterMembers = specialMentions.length > 0;
-	}
-	if (!hasRowsAfterMembers) {
-		hasRowsAfterMembers = roles.length > 0;
-	}
+	const hasRowsAfterMembers =
+		users.length > 0 || personas.length > 0 || specialMentions.length > 0 || roles.length > 0;
+	const hasRowsAfterUsers = personas.length > 0 || specialMentions.length > 0 || roles.length > 0;
+	const hasRowsAfterPersonas = specialMentions.length > 0 || roles.length > 0;
+	const hasRowsAfterSpecial = roles.length > 0;
 	return (
 		<>
 			{members.length > 0 && (
@@ -201,13 +244,19 @@ export const AutocompleteMention = observer(function AutocompleteMention({
 			{users.length > 0 && (
 				<>
 					{users.map(renderUser)}
-					{(specialMentions.length > 0 || roles.length > 0) && renderDivider()}
+					{hasRowsAfterUsers && renderDivider()}
+				</>
+			)}
+			{personas.length > 0 && (
+				<>
+					{personas.map(renderPersona)}
+					{hasRowsAfterPersonas && renderDivider()}
 				</>
 			)}
 			{specialMentions.length > 0 && (
 				<>
 					{specialMentions.map(renderSpecialMention)}
-					{roles.length > 0 && renderDivider()}
+					{hasRowsAfterSpecial && renderDivider()}
 				</>
 			)}
 			{roles.map(renderRole)}

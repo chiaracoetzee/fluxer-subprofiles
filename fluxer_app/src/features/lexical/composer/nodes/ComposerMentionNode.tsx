@@ -137,6 +137,11 @@ export class ComposerMentionNode extends DecoratorNode<JSX.Element> {
 		return {element};
 	}
 
+	getPersonaId(): string | null {
+		const match = PERSONA_WIRE_RE.exec(this.__wire);
+		return match ? match[2] : null;
+	}
+
 	override getTextContent(): string {
 		return this.getLatest().__display;
 	}
@@ -205,6 +210,8 @@ export class ComposerMentionNode extends DecoratorNode<JSX.Element> {
 							mentionType={this.__mentionType}
 							mentionId={this.__mentionId}
 							display={this.__display}
+							wire={this.__wire}
+							personaId={this.getPersonaId() ?? undefined}
 							data-flx="lexical.composer.nodes.composer-mention-node.composer-mention-pill"
 						/>
 					)}
@@ -213,6 +220,8 @@ export class ComposerMentionNode extends DecoratorNode<JSX.Element> {
 		);
 	}
 }
+
+const PERSONA_WIRE_RE = /^<@!?(\d+):([a-zA-Z0-9_-]+)>$/;
 
 function mentionPresentationStyle(presentation: ComposerMentionPresentationFormat): CSSProperties | undefined {
 	if (presentation === ComposerMentionPresentation.none) {
