@@ -3,6 +3,8 @@
 import {decideComposerTyping} from '@app/features/typing/rolling/RollingComposerTypingGate';
 import RollingTypingSender from '@app/features/typing/rolling/RollingTypingSender';
 
+import type {MessageSubprofileRequest} from '@fluxer/schema/src/domains/persona/PersonaSchemas';
+
 interface ComposerTypingInput {
 	channelId: string;
 	value: string;
@@ -10,6 +12,7 @@ interface ComposerTypingInput {
 	enabled: boolean;
 	typingEnabled: boolean;
 	isEditingMessageInComposer: boolean;
+	subprofile?: MessageSubprofileRequest | null;
 }
 
 class TypingManager {
@@ -21,7 +24,7 @@ class TypingManager {
 			enabled: input.enabled && input.typingEnabled,
 		});
 		if (decision === 'start') {
-			RollingTypingSender.startTyping(input.channelId);
+			RollingTypingSender.startTyping(input.channelId, input.subprofile);
 		} else if (decision === 'stop') {
 			RollingTypingSender.stopTyping(input.channelId);
 		}
