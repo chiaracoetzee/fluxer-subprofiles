@@ -17,7 +17,7 @@ on:
       dry_run:
         description: 'Dry run (rebase and run tests, but do NOT push to remote)'
         required: true
-        default: true
+        default: false
         type: boolean
       force_test_agent:
         description: 'Run self-test on Gemini 3.8 Flash API connectivity'
@@ -136,7 +136,7 @@ jobs:
           echo "✅ Git write and workflow permissions verified successfully!"
 
       - name: Push safety snapshot tag
-        if: steps.check_upstream.outputs.skip_rebase != 'true' && (github.event_name == 'schedule' || inputs.dry_run == false)
+        if: steps.check_upstream.outputs.skip_rebase != 'true' && (github.event_name == 'schedule' || inputs.dry_run == false || inputs.dry_run == 'false')
         run: |
           BACKUP_TAG="backup/subprofiles-$(date +'%Y%m%d-%H%M%S')"
           echo "Creating safety tag $BACKUP_TAG..."
@@ -222,7 +222,7 @@ jobs:
           pnpm --filter fluxer_api test src/api/persona/tests/ src/api/channel/tests/MessagePersona.test.ts src/api/user/tests/PersonaAvatarUpload.test.ts
 
       - name: Push Rebased Branch
-        if: steps.check_upstream.outputs.skip_rebase != 'true' && (github.event_name == 'schedule' || inputs.dry_run == false)
+        if: steps.check_upstream.outputs.skip_rebase != 'true' && (github.event_name == 'schedule' || inputs.dry_run == false || inputs.dry_run == 'false')
         run: |
           git push --force-with-lease origin features/subprofiles
           echo "Successfully rebased and pushed features/subprofiles."
