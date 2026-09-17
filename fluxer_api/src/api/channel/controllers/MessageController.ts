@@ -36,6 +36,7 @@ import {CrosspostSourceResponse} from '@fluxer/schema/src/domains/message/Crossp
 import {
 	BulkDeleteMessagesRequest,
 	BulkMessageFetchRequest,
+	IndicateTypingRequestSchema,
 	MessageAckRequest,
 	MessageRequestSchema,
 	MessagesQuery,
@@ -509,6 +510,7 @@ export function MessageController(app: HonoApp) {
 		RateLimitMiddleware(RateLimitConfigs.CHANNEL_TYPING),
 		LoginRequired,
 		Validator('param', ChannelIdParam),
+		Validator('json', IndicateTypingRequestSchema),
 		OpenAPI({
 			operationId: 'indicate_typing',
 			summary: 'Indicate typing activity',
@@ -523,8 +525,14 @@ export function MessageController(app: HonoApp) {
 			const user = ctx.get('user');
 			const viewer = viewerFromCtx(ctx);
 			const channelId = createChannelID(ctx.req.valid('param').channel_id);
+			const body = ctx.req.valid('json');
 			const channelService = ctx.get('channelService');
-			const auth = await channelService.interactions.startTyping({viewer, userId: user.id, channelId});
+			const auth = await channelService.interactions.startTyping({
+				viewer,
+				userId: user.id,
+				channelId,
+				subprofile: body?.subprofile,
+			});
 			const cooldown = await channelService.getTypingCooldown({user, viewer, auth});
 			return cooldown ? ctx.json(cooldown, 200) : ctx.body(null, 204);
 		},
