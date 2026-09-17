@@ -14,7 +14,7 @@ msgstr ""
 "Plural-Forms: \n"
 "X-Generator: @lingui/cli\n"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:857
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:858
 msgid "— Today at 12:00 PM"
 msgstr "— Aujourd'hui à 12:00"
 
@@ -960,7 +960,7 @@ msgstr "{count, plural, one {# message bloqué} other {# messages bloqués}}"
 msgid "{count, plural, one {# community found} other {# communities found}}"
 msgstr "{count, plural, one {# communauté trouvée} other {# communautés trouvées}}"
 
-#: src/features/app/components/layout/GuildsLayout.tsx:1954
+#: src/features/app/components/layout/GuildsLayout.tsx:1953
 msgid "{count, plural, one {# community is temporarily unavailable due to a flux capacitor malfunction.} other {# communities are temporarily unavailable due to a flux capacitor malfunction.}}"
 msgstr "{count, plural, one {# communauté est temporairement indisponible en raison d'un dysfonctionnement du condensateur de flux.} other {# communautés sont temporairement indisponibles en raison d'un dysfonctionnement du condensateur de flux.}}"
 
@@ -1427,13 +1427,18 @@ msgstr "{itemLabel}, bientôt disponible"
 msgid "{kilobits} kbps"
 msgstr "{kilobits} kbps"
 
+#. Error modal body shown when a non-croppable community image has dimensions that do not fit the target asset. {label} names the image field.
+#: src/features/guild/components/modals/guild_tabs/guild_overview_tab/hooks/useGuildImageAssetField.tsx:72
+msgid "{label} dimensions do not match this asset. Choose a different image or upload a static image you can crop."
+msgstr "Les dimensions de {label} ne correspondent pas à cette ressource. Choisissez une autre image ou importez une image statique que vous pouvez recadrer."
+
 #. Error modal body shown when a community image upload exceeds the size limit. {label} names the image field and {maxSizeLabel} is a formatted file size.
-#: src/features/guild/components/modals/guild_tabs/guild_overview_tab/hooks/useGuildImageAssetField.tsx:33
+#: src/features/guild/components/modals/guild_tabs/guild_overview_tab/hooks/useGuildImageAssetField.tsx:44
 msgid "{label} file is too large. Choose a file smaller than {maxSizeLabel}."
 msgstr "Le fichier {label} est trop volumineux. Choisissez un fichier de taille inférieure à {maxSizeLabel}."
 
 #. Error modal body shown when a community image field does not allow animation. {label} names the image field.
-#: src/features/guild/components/modals/guild_tabs/guild_overview_tab/hooks/useGuildImageAssetField.tsx:38
+#: src/features/guild/components/modals/guild_tabs/guild_overview_tab/hooks/useGuildImageAssetField.tsx:49
 msgid "{label} images cannot be animated. Use a static image."
 msgstr "Les images {label} ne peuvent pas être animées. Utilisez une image statique."
 
@@ -1719,26 +1724,6 @@ msgstr "{productName} a détecté une attaque potentielle dans cette communauté
 msgid "{productName} detected a potential raid, so new users can't join right now."
 msgstr "{productName} a détecté une attaque potentielle. Les nouveaux utilisateurs ne peuvent donc pas rejoindre la communauté pour le moment."
 
-#. Banner in a web app installed on iPhone, iPad or Mac. productName is the app name. host is the new domain, for example fluxer.com. Home Screen and Dock are Apple names.
-#: src/features/app/components/layout/app_layout/nagbars/DomainMovedNagbar.tsx:38
-msgid "{productName} has moved to {host}. Add it to your Home Screen or Dock, then sign in with this app."
-msgstr "{productName} a déménagé sur {host}. Ajoutez-le à votre écran d’accueil ou à votre Dock, puis connectez-vous avec cette application."
-
-#. Banner in an installed web app on other browsers. productName is the app name. host is the new domain, for example fluxer.com.
-#: src/features/app/components/layout/app_layout/nagbars/DomainMovedNagbar.tsx:43
-msgid "{productName} has moved to {host}. Install it from your browser, then sign in with this app."
-msgstr "{productName} a déménagé sur {host}. Installez-le depuis votre navigateur, puis connectez-vous avec cette application."
-
-#. Banner in an installed desktop web app after the account moved to the new domain. productName is the app name. host is the new domain, for example fluxer.com.
-#: src/features/app/components/layout/app_layout/nagbars/DomainMovedNagbar.tsx:28
-msgid "{productName} has moved to {host}. Install the new app and you will already be signed in."
-msgstr "{productName} a déménagé sur {host}. Installez la nouvelle application et vous serez déjà connecté."
-
-#. Banner in an installed Android web app. productName is the app name. host is the new domain, for example fluxer.com.
-#: src/features/app/components/layout/app_layout/nagbars/DomainMovedNagbar.tsx:33
-msgid "{productName} has moved to {host}. Open it in your browser to install the new app."
-msgstr "{productName} a déménagé sur {host}. Ouvrez-le dans votre navigateur pour installer la nouvelle application."
-
 #. Profile membership label showing when the user account was created.
 #: src/features/user/components/popouts/UserProfileShared.tsx:53
 msgid "{productName} member since"
@@ -1778,16 +1763,6 @@ msgstr "{productName} a besoin d'accéder à votre microphone pour afficher vos 
 #: src/features/permissions/system/components/MediaPermissionBlockedModal.tsx:44
 msgid "{productName} needs screen recording access. Allow screen recording in your operating system privacy settings and restart the app."
 msgstr "{productName} a besoin d'accéder à l'enregistrement d'écran. Autorisez l'enregistrement d'écran dans les paramètres de confidentialité de votre système d'exploitation et redémarrez l'application."
-
-#. Intro in the modal that explains how to install the app from its new domain. productName is the app name. host is the new domain, for example fluxer.com.
-#: src/features/app/domain_migration/DomainMovedStepsModal.tsx:22
-msgid "{productName} now lives at {host}. Install it from there, then sign in with this app."
-msgstr "{productName} est maintenant disponible sur {host}. Installez-le à partir de là, puis connectez-vous avec cette application."
-
-#. Intro in the modal that explains how to install the app from its new domain when the account already moved. productName is the app name. host is the new domain, for example fluxer.com.
-#: src/features/app/domain_migration/DomainMovedStepsModal.tsx:27
-msgid "{productName} now lives at {host}. Install it from there."
-msgstr "{productName} est maintenant disponible sur {host}. Installez-le à partir de là."
 
 #. Short badge title in the user profile badges popout. Preserve {productName}; it is inserted by code. English locales use Title Case for official badge titles; other locales should use natural local capitalization.
 #: src/features/user/components/popouts/UserProfileBadges.tsx:31
@@ -2004,7 +1979,7 @@ msgid "{unreadCount, plural, one {# new} other {# new}} since {shortTime}"
 msgstr "{unreadCount, plural, one {# nouveau} many {# nouveaux} other {# nouveaux}} depuis {shortTime}"
 
 #. Badge text on a quick switcher row when the channel has unread messages. unreadCount is the integer count.
-#: src/features/search/utils/QuickSwitcherModalUtils.tsx:70
+#: src/features/search/utils/QuickSwitcherModalUtils.tsx:69
 msgid "{unreadCount, plural, one {# unread} other {# unread}}"
 msgstr "{unreadCount, plural, one {# non lu} many {# non lus} other {# non lus}}"
 
@@ -2171,7 +2146,7 @@ msgid "1 hour"
 msgstr "1 heure"
 
 #. Badge text on a quick switcher row when the channel has exactly one mention.
-#: src/features/search/utils/QuickSwitcherModalUtils.tsx:66
+#: src/features/search/utils/QuickSwitcherModalUtils.tsx:65
 msgid "1 mention"
 msgstr "1 mention"
 
@@ -2397,8 +2372,8 @@ msgstr "6 mois"
 
 #. Placeholder for the MFA login one-time password field.
 #. Short label in the authentication sudo verification modal. Keep the tone plain and specific.
-#: src/features/auth/components/modals/SudoVerificationModal.tsx:65
-#: src/features/auth/flow/MfaScreen.tsx:23
+#: src/features/auth/components/modals/SudoVerificationModal.tsx:58
+#: src/features/auth/flow/MfaScreen.tsx:22
 msgid "6-digit code"
 msgstr "Code à 6 chiffres"
 
@@ -2518,7 +2493,7 @@ msgid "a poll"
 msgstr "un sondage"
 
 #. OAuth authorize page error shown when the bot scope requires a redirect_uri that is missing. Technical message; keep "redirect_uri" and "bot" untranslated.
-#: src/features/auth/components/pages/oauth_authorize_page/state/useAuthorizeFlow.ts:54
+#: src/features/auth/components/pages/oauth_authorize_page/state/useAuthorizeFlow.ts:53
 msgid "A redirect_uri is required when the bot scope is not the only scope."
 msgstr "Le paramètre redirect_uri est requis lorsque bot n’est pas la seule portée demandée."
 
@@ -2601,7 +2576,7 @@ msgstr "Accentuation"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label in the accent color picker. Keep it concise.
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:908
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:909
 #: src/features/user/components/modals/tabs/my_profile_tab/AccentColorPicker.tsx:12
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:153
 msgid "Accent color"
@@ -2677,7 +2652,7 @@ msgid "Account & premium overrides"
 msgstr "Personnalisation de l’état du compte et de l’abonnement premium"
 
 #. Security settings section for third-party app access and signed-in devices.
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:89
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:88
 msgid "Account access"
 msgstr "Accès au compte"
 
@@ -2796,7 +2771,7 @@ msgstr "Actions"
 #. Subscription status badge meaning the paid subscription is active.
 #: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:445
 #: src/features/channel/components/channel_header_components/developer_tools/DeveloperToolsShared.ts:37
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1130
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1131
 #: src/features/user/components/settings_utils/search_index/DevicesIndex.ts:19
 msgid "Active"
 msgstr "Actif"
@@ -2856,7 +2831,7 @@ msgstr "Actif en ce moment"
 msgid "Active persona mode"
 msgstr "Mode de persona actif"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:745
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:746
 msgid "Active Persona Mode"
 msgstr "Mode de persona actif"
 
@@ -2899,7 +2874,7 @@ msgid "Activity sharing"
 msgstr "Partage d’activité"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:478
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:465
 #: src/features/user/components/settings_utils/section_registry/VoiceVideoSections.ts:102
 msgid "Activity threshold"
 msgstr "Seuil d'activité"
@@ -2934,7 +2909,7 @@ msgid "Add a bot to a community with requested permissions"
 msgstr "Ajouter un bot à une communauté avec les permissions demandées"
 
 #. Placeholder text in the optional comment field of the forward modal.
-#: src/features/messaging/components/modals/ForwardModal.tsx:96
+#: src/features/messaging/components/modals/ForwardModal.tsx:99
 msgid "Add a comment (optional)"
 msgstr "Ajouter un commentaire (facultatif)"
 
@@ -2995,7 +2970,7 @@ msgid "Add a YouTube Data API key to enrich YouTube links."
 msgstr "Ajoutez une clé API YouTube Data pour enrichir les liens YouTube."
 
 #. Short label in the authentication browser login handoff modal. Keep the tone plain and specific.
-#: src/features/auth/flow/BrowserLoginHandoffModal.tsx:22
+#: src/features/auth/flow/BrowserLoginHandoffModal.tsx:21
 msgid "Add account"
 msgstr "Ajouter un compte"
 
@@ -3021,7 +2996,7 @@ msgstr "Ajoutez un compte pour continuer."
 msgid "Add an email and password to your account first."
 msgstr "Ajoutez d'abord un e-mail et un mot de passe à votre compte."
 
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:309
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:296
 msgid "Add an extra layer of security to your account"
 msgstr "Ajoutez une couche de sécurité supplémentaire à votre compte"
 
@@ -3137,12 +3112,12 @@ msgid "Add override"
 msgstr "Ajouter des permissions spécifiques"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:452
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:439
 #: src/features/user/components/settings_utils/search_index/AccountSecurityIndex.ts:130
 msgid "Add passkey"
 msgstr "Ajouter une clé d'accès"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1046
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1047
 msgid "Add Persona"
 msgstr "Ajouter une persona"
 
@@ -3217,7 +3192,7 @@ msgid "Add stream"
 msgstr "Ajouter une diffusion"
 
 #. placeholder {0}: formData.tags.length
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:979
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:980
 msgid "Add Tag Pair ({0}/5)"
 msgstr "Ajouter une paire de balises ({0}/5)"
 
@@ -3350,11 +3325,11 @@ msgstr "Ajouté aux favoris"
 msgid "Added to saved media"
 msgstr "Ajouté aux médias enregistrés"
 
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:508
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:495
 msgid "Added: {createdDate}"
 msgstr "Ajouté : {createdDate}"
 
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:504
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:491
 msgid "Added: {createdDate} • last used: {lastUsedDate}"
 msgstr "Ajouté : {createdDate} • dernière utilisation : {lastUsedDate}"
 
@@ -3649,11 +3624,11 @@ msgstr "Autoriser {everyoneMention} et {hereMention}"
 msgid "Allow {PRODUCT_NAME} to access your camera in {MACOS_SYSTEM_SETTINGS_NAME} → {MACOS_PRIVACY_AND_SECURITY_SETTINGS_NAME} → {MACOS_CAMERA_PERMISSION_NAME}."
 msgstr "Autorisez {PRODUCT_NAME} à accéder à votre caméra dans {MACOS_SYSTEM_SETTINGS_NAME} → {MACOS_PRIVACY_AND_SECURITY_SETTINGS_NAME} → {MACOS_CAMERA_PERMISSION_NAME}."
 
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:535
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:533
 msgid "Allow {PRODUCT_NAME} to access your microphone in {MACOS_SYSTEM_SETTINGS_NAME} → {MACOS_PRIVACY_AND_SECURITY_SETTINGS_NAME} → {MACOS_MICROPHONE_PERMISSION_NAME}."
 msgstr "Autorisez {PRODUCT_NAME} à accéder à votre micro dans {MACOS_SYSTEM_SETTINGS_NAME} → {MACOS_PRIVACY_AND_SECURITY_SETTINGS_NAME} → {MACOS_MICROPHONE_PERMISSION_NAME}."
 
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:540
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:538
 msgid "Allow {PRODUCT_NAME} to access your microphone. Check your browser's address bar or settings."
 msgstr "Autorisez {PRODUCT_NAME} à accéder à votre microphone. Vérifiez la barre d'adresse ou les paramètres de votre navigateur."
 
@@ -3756,7 +3731,7 @@ msgstr "Autoriser les membres sans la permission {readMessageHistoryPermissionLa
 msgid "Allow mentions for this role"
 msgstr "Autoriser les mentions pour ce rôle"
 
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:560
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:558
 msgid "Allow microphone"
 msgstr "Autoriser l’accès au micro"
 
@@ -4025,21 +4000,25 @@ msgstr "et {remainingCount} de plus"
 msgid "Animate on interaction"
 msgstr "Animer lors de l'interaction"
 
+#: src/features/expressions/utils/AnimatedAvifModalUtils.tsx:26
+msgid "Animated {AVIF_FORMAT_LABEL} files aren't supported. Upload a static {AVIF_FORMAT_LABEL} file instead."
+msgstr "Les fichiers {AVIF_FORMAT_LABEL} animés ne sont pas pris en charge. Veuillez plutôt importer un fichier {AVIF_FORMAT_LABEL} statique."
+
 #. Modal title shown when an animated AVIF upload is rejected by the client.
-#: src/features/expressions/utils/AnimatedAvifModalUtils.tsx:10
+#: src/features/expressions/utils/AnimatedAvifModalUtils.tsx:11
 msgid "Animated {avifFormatLabel} not supported"
 msgstr "Le format animé {avifFormatLabel} n'est pas pris en charge"
 
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:192
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:206
 msgid "Animated avatars ({ANIMATED_AVATAR_FORMATS}) are exclusively available to {PREMIUM_PRODUCT_NAME} subscribers."
 msgstr "Les avatars animés ({ANIMATED_AVATAR_FORMATS}) sont réservés aux abonnés {PREMIUM_PRODUCT_NAME}."
 
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:226
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:240
 msgid "Animated avatars ({ANIMATED_AVATAR_FORMATS}) are not available on this instance. Upload a static image instead."
 msgstr "Les avatars animés ({ANIMATED_AVATAR_FORMATS}) ne sont pas disponibles sur cette instance. Importez une image statique."
 
 #. Extra note in the avatar asset upload source modal. Preserve {animatedAvatarFormats} and {premiumProductName}; they are inserted by code.
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:102
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:115
 msgid "Animated avatars ({animatedAvatarFormats}) require {premiumProductName}."
 msgstr "Les avatars animés ({animatedAvatarFormats}) nécessitent {premiumProductName}."
 
@@ -4049,12 +4028,12 @@ msgid "Animated avatars & profile banners"
 msgstr "Avatars animés et bannières de profil"
 
 #. Error message in the avatar uploader.
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:86
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:91
 msgid "Animated avatars not available"
 msgstr "Avatars animés non disponibles"
 
 #. Label in the avatar uploader. Preserve {premiumProductName}; it is inserted by code. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:81
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:86
 msgid "Animated avatars require {premiumProductName}"
 msgstr "Les avatars animés nécessitent {premiumProductName}"
 
@@ -4125,7 +4104,7 @@ msgid "Animated image preview"
 msgstr "Aperçu de l'image animée"
 
 #. Confirmation modal body shown before using a non-croppable animated community image.
-#: src/features/guild/components/modals/guild_tabs/guild_overview_tab/hooks/useGuildImageAssetField.tsx:43
+#: src/features/guild/components/modals/guild_tabs/guild_overview_tab/hooks/useGuildImageAssetField.tsx:54
 msgid "Animated images are not supported for this asset."
 msgstr "Les images animées ne sont pas prises en charge pour cet élément."
 
@@ -4467,11 +4446,6 @@ msgstr "Approbation requise"
 msgid "Approve"
 msgstr "Approuver"
 
-#. Hint under the sign-in option on fluxer.com that pairs a newly installed app with the old installed app. productName is the app name.
-#: src/features/auth/flow/AuthLoginLayout.tsx:74
-msgid "Approve this app from the {productName} app you already use. No password needed."
-msgstr "Approuvez cette application depuis l'application {productName} que vous utilisez déjà. Aucun mot de passe requis."
-
 #. Discovery application status badge in the community Discovery settings tab. The community has been approved and is listed.
 #: src/features/guild/components/modals/guild_tabs/GuildDiscoveryTab.tsx:45
 msgid "Approved"
@@ -4502,7 +4476,7 @@ msgid "Are you sure you want to delete <0>{0}</0>?"
 msgstr "Voulez-vous vraiment supprimer <0>{0}</0> ?"
 
 #. placeholder {0}: persona.name
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:665
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:666
 msgid "Are you sure you want to delete <0>{0}</0>? This action cannot be undone."
 msgstr "Voulez-vous vraiment supprimer <0>{0}</0> ? Cette action est irréversible."
 
@@ -4544,7 +4518,7 @@ msgid "Are you sure you want to delete the category \"{categoryName}\"? This can
 msgstr "Voulez-vous vraiment supprimer la catégorie « {categoryName} » ? Cette action est irréversible."
 
 #. placeholder {0}: passkey.name
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:240
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:227
 msgid "Are you sure you want to delete the passkey <0>{0}</0>?"
 msgstr "Voulez-vous vraiment supprimer la clé d'accès <0>{0}</0> ?"
 
@@ -4556,7 +4530,7 @@ msgstr "Voulez-vous vraiment supprimer cette pièce jointe ? Cette action est ir
 msgid "Are you sure you want to delete this community? This action cannot be undone. All channels, messages, and settings will be permanently deleted."
 msgstr "Voulez-vous vraiment supprimer cette communauté ? Cette action est irréversible. Tous les salons, messages et paramètres seront définitivement supprimés."
 
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:248
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:235
 msgid "Are you sure you want to delete this passkey?"
 msgstr "Voulez-vous vraiment supprimer cette clé d'accès ?"
 
@@ -4640,7 +4614,7 @@ msgid "Ask before starting calls"
 msgstr "Demander confirmation avant de lancer des appels"
 
 #. Settings search entry description. One-line summary of what the settings search entry controls.
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:462
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:449
 #: src/features/user/components/settings_utils/search_index/AccountSecurityIndex.ts:154
 msgid "Ask for a passkey after your password when you sign in"
 msgstr "Demander une clé d'accès après votre mot de passe lors de la connexion"
@@ -4918,14 +4892,14 @@ msgstr "Authentification"
 msgid "Authenticator"
 msgstr "Authentificateur"
 
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:321
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:308
 msgid "Authenticator app"
 msgstr "Application d'authentification"
 
 #. Label for the MFA login one-time password field from an authenticator app or backup code.
 #. Short label in the authentication sudo verification modal. Keep the tone plain and specific.
-#: src/features/auth/components/modals/SudoVerificationModal.tsx:61
-#: src/features/auth/flow/MfaScreen.tsx:19
+#: src/features/auth/components/modals/SudoVerificationModal.tsx:54
+#: src/features/auth/flow/MfaScreen.tsx:18
 msgid "Authenticator code"
 msgstr "Code d'authentification"
 
@@ -4950,7 +4924,7 @@ msgid "Authorization failed"
 msgstr "Échec de l'autorisation"
 
 #. OAuth authorize page generic error toast shown when the authorize request fails unexpectedly.
-#: src/features/auth/components/pages/oauth_authorize_page/state/useAuthorizeFlow.ts:75
+#: src/features/auth/components/pages/oauth_authorize_page/state/useAuthorizeFlow.ts:74
 msgid "Authorization failed. Try again."
 msgstr "Échec de l'autorisation. Réessayez."
 
@@ -4995,7 +4969,7 @@ msgstr "Applications autorisées"
 #. Settings section label for OAuth applications authorized by the user.
 #. User settings tab for OAuth or connected apps authorized by the user.
 #: src/features/user/components/modals/tabs/account_security_tab/AccountManagementModals.tsx:17
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:97
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:96
 #: src/features/user/components/modals/tabs/AuthorizedAppsTab.tsx:507
 #: src/features/user/components/settings_utils/search_index/AuthorizedAppsIndex.ts:10
 #: src/features/user/components/settings_utils/section_registry/AccountSecuritySections.ts:151
@@ -5040,7 +5014,7 @@ msgstr "Détection automatique de la langue"
 
 #. Short label in the voice tab. Keep it concise.
 #: src/features/user/components/modals/tabs/UserVoiceTab.tsx:116
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:465
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:452
 msgid "Auto-set activity threshold"
 msgstr "Définir automatiquement le seuil d'activité"
 
@@ -5219,17 +5193,17 @@ msgstr "Disponible dans l'application de bureau."
 #. Accessible label for an avatar image.
 #. Form label for a webhook avatar image.
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:922
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:923
 #: src/features/ui/components/BaseAvatar.tsx:18
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:345
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:393
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:373
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:421
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:13
 #: src/features/webhook/components/WebhookListItem.tsx:252
 msgid "Avatar"
 msgstr "Avatar"
 
 #. Error message in the avatar uploader. Preserve {imageMaxSizeLabel}; it is inserted by code.
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:77
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:82
 msgid "Avatar file is too large. Choose a file smaller than {imageMaxSizeLabel}."
 msgstr "Le fichier de l'avatar est trop volumineux. Choisissez un fichier de taille inférieure à {imageMaxSizeLabel}."
 
@@ -5244,7 +5218,7 @@ msgid "Avatar is too large — pick one under {imageMaxSizeLabel}."
 msgstr "Le fichier de l’avatar est trop volumineux. Choisissez-en un de moins de {imageMaxSizeLabel}."
 
 #. Short label in the avatar uploader. Keep it concise.
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:90
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:103
 msgid "Avatar mode selection"
 msgstr "Sélection du mode d'avatar"
 
@@ -5291,11 +5265,11 @@ msgstr "Absent(e) pour le moment"
 #: src/features/auth/flow/IpAuthorizationScreen.tsx:155
 #: src/features/channel/components/channel_header/shared.ts:27
 #: src/features/connection/components/modals/AddConnectionModal.tsx:397
-#: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:164
+#: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:165
 #: src/features/guild/components/modals/add_guild_modal/GuildJoinForm.tsx:59
-#: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:355
-#: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:376
-#: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:396
+#: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:356
+#: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:377
+#: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:397
 #: src/features/moderation/components/report_modal/IARModal.tsx:86
 #: src/features/moderation/components/report/ReportStepDetails.tsx:312
 #: src/features/user/components/modals/PhoneAddModal.tsx:420
@@ -5420,8 +5394,8 @@ msgstr "Retour arrière"
 
 #. Label and placeholder for the MFA login field when the only code the account can use is a backup code.
 #. Label and placeholder for the code field in the authentication sudo verification modal when the only code the account can use is a backup code.
-#: src/features/auth/components/modals/SudoVerificationModal.tsx:69
-#: src/features/auth/flow/MfaScreen.tsx:39
+#: src/features/auth/components/modals/SudoVerificationModal.tsx:62
+#: src/features/auth/flow/MfaScreen.tsx:38
 msgid "Backup code"
 msgstr "Code de secours"
 
@@ -5429,7 +5403,7 @@ msgstr "Code de secours"
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/auth/components/modals/BackupCodesModal.tsx:18
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:391
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:378
 #: src/features/user/components/settings_utils/search_index/AccountSecurityIndex.ts:74
 #: src/features/user/components/settings_utils/section_registry/AccountSecuritySections.ts:68
 msgid "Backup codes"
@@ -5532,19 +5506,19 @@ msgstr "Utilisateurs bannis"
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildBannerUploadField.tsx:28
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildBannerUploadField.tsx:125
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:292
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:342
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:280
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:330
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:37
 msgid "Banner"
 msgstr "Bannière"
 
 #. Error message in the banner uploader. Preserve {imageMaxSizeLabel}; it is inserted by code. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:84
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:81
 msgid "Banner file is too large. Choose a file smaller than {imageMaxSizeLabel}."
 msgstr "Le fichier de la bannière est trop volumineux. Choisissez un fichier de taille inférieure à {imageMaxSizeLabel}."
 
 #. Button or menu action label in the banner uploader. Keep it concise. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:89
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:86
 msgid "Banner mode selection"
 msgstr "Sélection du mode de la bannière"
 
@@ -5642,7 +5616,7 @@ msgstr "Raccourcis clavier"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:939
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:940
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:129
 #: src/features/user/components/settings_utils/section_registry/PrivacySafetySections.ts:156
 msgid "Bio"
@@ -5940,7 +5914,7 @@ msgid "Bot permissions"
 msgstr "Permissions du bot"
 
 #. OAuth authorize page error shown when the permissions query parameter is a negative integer.
-#: src/features/auth/components/pages/oauth_authorize_page/state/useAuthorizeFlow.ts:67
+#: src/features/auth/components/pages/oauth_authorize_page/state/useAuthorizeFlow.ts:66
 msgid "Bot permissions cannot be negative."
 msgstr "La valeur des permissions du bot ne peut pas être négative."
 
@@ -6212,8 +6186,8 @@ msgstr "Achetez un cadeau {premiumProductName} depuis l'onglet {premiumProductNa
 msgid "Buy gift"
 msgstr "Offrir"
 
-#: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:338
-#: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:654
+#: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:339
+#: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:655
 msgid "By creating a community, you agree to follow and uphold the <0>{PRODUCT_NAME} community guidelines</0>."
 msgstr "En créant une communauté, vous acceptez de suivre et de respecter les <0>règles de la communauté {PRODUCT_NAME}</0>."
 
@@ -6443,10 +6417,10 @@ msgstr "Impossible d’envoyer des fichiers ici"
 #: src/features/auth/components/modals/ClaimAccountModal.tsx:216
 #: src/features/auth/components/modals/ClaimAccountModal.tsx:232
 #: src/features/auth/components/modals/DeviceRevokeModal.tsx:72
-#: src/features/auth/components/modals/PasskeyNameModal.tsx:138
+#: src/features/auth/components/modals/PasskeyNameModal.tsx:80
 #: src/features/auth/components/modals/PasskeyPinModal.tsx:104
-#: src/features/auth/components/modals/SudoVerificationModal.tsx:328
-#: src/features/auth/flow/BrowserLoginHandoffModal.tsx:164
+#: src/features/auth/components/modals/SudoVerificationModal.tsx:278
+#: src/features/auth/flow/BrowserLoginHandoffModal.tsx:140
 #: src/features/channel/components/bottomsheets/CreateDMBottomSheet.tsx:137
 #: src/features/channel/components/MentionEveryonePopout.tsx:177
 #: src/features/channel/components/modals/ChannelDeleteModal.tsx:53
@@ -6465,14 +6439,14 @@ msgstr "Impossible d’envoyer des fichiers ici"
 #: src/features/messaging/components/modals/AttachmentEditModal.tsx:133
 #: src/features/messaging/components/modals/EditAltTextModal.tsx:190
 #: src/features/messaging/components/modals/ExternalLinkWarningModal.tsx:111
-#: src/features/messaging/components/modals/ForwardModal.tsx:591
-#: src/features/messaging/components/modals/ImageCropModal.tsx:1025
+#: src/features/messaging/components/modals/ForwardModal.tsx:650
+#: src/features/messaging/components/modals/ImageCropModal.tsx:944
 #: src/features/messaging/components/modals/MessageHistoryThresholdModal.tsx:107
 #: src/features/moderation/components/modals/BanMemberModal.tsx:262
 #: src/features/moderation/components/modals/RemoveTimeoutModal.tsx:70
 #: src/features/moderation/components/modals/TimeoutMemberModal.tsx:126
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:698
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1021
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1022
 #: src/features/theme/components/modals/ThemeAcceptModal.tsx:173
 #: src/features/user/components/modals/EmailChangeModal.tsx:278
 #: src/features/user/components/modals/EmailChangeModal.tsx:289
@@ -6721,9 +6695,9 @@ msgid "Centered"
 msgstr "Centré"
 
 #. Title of the modal where the user picks an avatar source (file upload or GIF provider). Keep it concise.
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:98
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:367
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:403
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:111
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:395
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:431
 msgid "Change avatar"
 msgstr "Changer d'avatar"
 
@@ -6734,9 +6708,9 @@ msgstr "Changer l'arrière-plan"
 #. Title of the modal where the user picks a banner source (file upload or GIF provider). Keep it concise.
 #. Title of the modal where the user picks a community banner source (file upload or GIF provider). Keep it concise.
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildBannerUploadField.tsx:43
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:97
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:315
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:354
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:94
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:303
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:342
 msgid "Change banner"
 msgstr "Changer la bannière"
 
@@ -6775,15 +6749,15 @@ msgstr "Modifier le surnom du groupe"
 #. Title of the modal where the user picks a group icon source. Keep it concise. Keep the tone plain and specific.
 #. Title of the modal where the user picks an imported-template community icon source. Keep it concise. Keep the tone plain and specific.
 #: src/features/channel/components/modals/EditGroupBottomSheet.tsx:88
-#: src/features/channel/components/modals/EditGroupBottomSheet.tsx:328
+#: src/features/channel/components/modals/EditGroupBottomSheet.tsx:329
 #: src/features/channel/components/modals/EditGroupModal.tsx:85
-#: src/features/channel/components/modals/EditGroupModal.tsx:283
+#: src/features/channel/components/modals/EditGroupModal.tsx:284
 #: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:63
-#: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:304
+#: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:305
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:86
-#: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:625
+#: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:626
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildIconUploadField.tsx:35
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:811
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:812
 msgid "Change icon"
 msgstr "Changer l'icône"
 
@@ -7140,7 +7114,7 @@ msgid "Channel"
 msgstr "Salon"
 
 #. Fallback name for an unnamed channel in the forward modal destination list. Preserve {id}; it is inserted by code.
-#: src/features/app/components/dialogs/shared/UseForwardDestinations.ts:78
+#: src/features/app/components/dialogs/shared/UseForwardDestinations.ts:87
 msgid "Channel {id}"
 msgstr "Salon {id}"
 
@@ -7203,7 +7177,7 @@ msgstr "Sections des détails du salon"
 
 #. Toast confirming the channel ID was copied to the clipboard.
 #. Toast confirming the channel ID was copied to the clipboard.
-#: src/features/ui/action_menu/items/ChannelMenuData.tsx:108
+#: src/features/ui/action_menu/items/ChannelMenuData.tsx:106
 #: src/features/ui/action_menu/items/dm_menu_data/shared.ts:37
 msgid "Channel ID copied"
 msgstr "ID du salon copié"
@@ -7221,7 +7195,7 @@ msgid "channel link"
 msgstr "lien de salon"
 
 #. Toast confirming the channel link was copied to the clipboard.
-#: src/features/ui/action_menu/items/ChannelMenuData.tsx:100
+#: src/features/ui/action_menu/items/ChannelMenuData.tsx:98
 msgid "Channel link copied"
 msgstr "Lien du salon copié"
 
@@ -7588,14 +7562,9 @@ msgid "Choose background"
 msgstr "Choisir un arrière-plan"
 
 #. OAuth authorize page error shown when a bot invite request provides both guild_id and channel_id. Keep the parameter names literal.
-#: src/features/auth/components/pages/oauth_authorize_page/state/useAuthorizeFlow.ts:87
+#: src/features/auth/components/pages/oauth_authorize_page/state/useAuthorizeFlow.ts:86
 msgid "Choose either guild_id or channel_id, not both."
 msgstr "Choisissez guild_id ou channel_id, pas les deux."
-
-#. Second install step on a Mac. File and Add to Dock are the names of the Safari menu items, use the names macOS shows in this language.
-#: src/features/app/domain_migration/DomainMovedStepsModal.tsx:46
-msgid "Choose File, then Add to Dock."
-msgstr "Choisissez Fichier, puis Ajouter au Dock."
 
 #. Subtitle in the create-DM modal. Keep it short and calm.
 #: src/features/channel/utils/CreateDMModalUtils.tsx:39
@@ -7632,7 +7601,7 @@ msgstr "Choisir comment les GIF favoris marqués d'une étoile sont stockés"
 msgid "Choose how times are displayed throughout the app"
 msgstr "Choisissez le format d’affichage des heures dans l’application"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:748
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:749
 msgid "Choose how untagged messages and persona tags interact with your active persona."
 msgstr "Choisissez comment les messages sans balise et les balises de persona interagissent avec votre persona active."
 
@@ -7795,8 +7764,8 @@ msgstr "Récupérer le cadeau"
 #: src/features/auth/components/modals/ClaimAccountModal.tsx:41
 #: src/features/channel/components/direct_message/AddFriendForm.tsx:62
 #: src/features/channel/utils/CreateDMModalUtils.tsx:43
-#: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:213
-#: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:439
+#: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:214
+#: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:440
 #: src/features/user/components/modals/tabs/GiftInventoryTab.tsx:343
 msgid "Claim your account"
 msgstr "Finalisez votre inscription"
@@ -7810,7 +7779,7 @@ msgstr "Finalisez votre inscription et vérifiez votre adresse e-mail pour envoy
 msgid "Claim your account by adding an email and password. We will send a verification code to confirm your email before finishing."
 msgstr "Finalisez votre inscription en ajoutant une adresse e-mail et un mot de passe à votre compte. Nous vous enverrons un code pour vérifier votre adresse e-mail avant de terminer."
 
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:290
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:277
 msgid "Claim your account to access security features like two-factor authentication and passkeys."
 msgstr "Finalisez votre inscription pour accéder aux fonctionnalités de sécurité comme l’authentification à deux facteurs et les clés d’accès."
 
@@ -8255,11 +8224,9 @@ msgstr "Fermer dans la barre de menus"
 msgid "Close to tray"
 msgstr "Fermer vers la zone de notification"
 
-#. Button in the passkey pop-up window that closes it after an error.
 #. Button label in a popped-out voice window titlebar that closes the popped-out window.
 #. Short label in the app layout native titlebar.
 #: src/features/app/components/layout/NativeWindowControls.tsx:25
-#: src/features/auth/passkey_bridge/PasskeyBridgeScreen.tsx:31
 #: src/features/voice/components/popout/PopoutTitlebar.tsx:26
 msgid "Close window"
 msgstr "Fermer la fenêtre"
@@ -8352,7 +8319,7 @@ msgstr "bloc de code"
 msgid "Code blocks"
 msgstr "Blocs de code"
 
-#: src/features/auth/flow/HandoffCodeDisplay.tsx:110
+#: src/features/auth/flow/HandoffCodeDisplay.tsx:102
 msgid "Code expired"
 msgstr "Code expiré"
 
@@ -8522,17 +8489,17 @@ msgid "Commands"
 msgstr "Commandes"
 
 #. Helper text in the forward modal explaining why the optional comment field is disabled when at least one selected target has slowmode active.
-#: src/features/messaging/components/modals/ForwardModal.tsx:68
+#: src/features/messaging/components/modals/ForwardModal.tsx:71
 msgid "Comments are disabled because one or more selected channels have slowmode on. The comment would be blocked by slowmode right after the forward."
 msgstr "Les commentaires sont désactivés car un ou plusieurs des salons sélectionnés ont le mode lent activé. Le commentaire serait bloqué par le mode lent juste après le transfert."
 
 #. Helper text in the forward modal explaining why the optional comment field is disabled for a single selected channel with slowmode.
-#: src/features/messaging/components/modals/ForwardModal.tsx:62
+#: src/features/messaging/components/modals/ForwardModal.tsx:65
 msgid "Comments are disabled because slowmode is on in {forwardChannelDisplayName}. The comment would be blocked by slowmode right after the forward."
 msgstr "Les commentaires sont désactivés, car le mode lent est activé dans {forwardChannelDisplayName}. Le commentaire serait bloqué par le mode lent juste après le transfert."
 
 #. Tooltip on the disabled comment field in the forward modal when slowmode blocks comments.
-#: src/features/messaging/components/modals/ForwardModal.tsx:92
+#: src/features/messaging/components/modals/ForwardModal.tsx:95
 msgid "Comments are unavailable while slowmode is on."
 msgstr "Les commentaires ne sont pas disponibles lorsque le mode lent est activé."
 
@@ -8646,8 +8613,8 @@ msgstr "Cette communauté facilite le harcèlement collectif ou les abus ciblés
 msgid "Community filter"
 msgstr "Filtrer les communautés"
 
-#: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:271
-#: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:592
+#: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:272
+#: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:593
 msgid "Community icon"
 msgstr "Icône de la communauté"
 
@@ -8688,7 +8655,7 @@ msgid "Community message notifications"
 msgstr "Notifications des messages de communauté"
 
 #. Developer control label for the community MFA requirement banner.
-#: src/features/devtools/components/NagbarControls.ts:81
+#: src/features/devtools/components/NagbarControls.ts:76
 msgid "Community MFA requirement nagbar"
 msgstr "Bannière d’exigence MFA de la communauté"
 
@@ -8891,11 +8858,6 @@ msgstr "Boutons de la zone de rédaction"
 msgid "Composer focus"
 msgstr "Focus de la zone de rédaction"
 
-#. Progress label on the save button while a cropped animated image is compressed. Keep it concise.
-#: src/features/messaging/components/modals/ImageCropModal.tsx:67
-msgid "Compressing"
-msgstr "Compression en cours"
-
 #. Button label that opens a dedicated advanced settings modal for configuring screen-share encoder controls.
 #. Button label that opens a dedicated advanced settings modal.
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:164
@@ -9060,7 +9022,7 @@ msgstr "Connectez une caméra ou un appareil de capture virtuel, puis réessayez
 msgid "Connect a display, then try again."
 msgstr "Connectez un écran, puis réessayez."
 
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:545
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:543
 msgid "Connect a microphone and try again."
 msgstr "Connectez un microphone et réessayez."
 
@@ -9319,11 +9281,6 @@ msgstr "Continuer"
 msgid "Continue to checkout"
 msgstr "Continuer vers le paiement"
 
-#. Body of the passkey pop-up window when adding a new passkey. host is a web address such as fluxer.com.
-#: src/features/auth/passkey_bridge/PasskeyBridgeScreen.tsx:27
-msgid "Continue to create a passkey for {host}"
-msgstr "Continuer pour créer une clé d'accès pour {host}"
-
 #. Button or menu action label in the report action utils helper. Keep it concise. Keep the tone plain and specific.
 #: src/features/moderation/utils/ReportActionUtils.tsx:37
 msgid "Continue to report community"
@@ -9334,7 +9291,7 @@ msgstr "Poursuivre le signalement de la communauté"
 msgid "Continue to report user"
 msgstr "Poursuivre le signalement de l’utilisateur"
 
-#: src/features/auth/components/modals/SudoVerificationModal.tsx:287
+#: src/features/auth/components/modals/SudoVerificationModal.tsx:245
 msgid "Continue with passkey"
 msgstr "Continuer avec une clé d'accès"
 
@@ -9342,11 +9299,6 @@ msgstr "Continuer avec une clé d'accès"
 #: src/features/auth/flow/AuthSsoPanel.tsx:21
 msgid "Continue with SSO"
 msgstr "Continuer avec l'authentification unique"
-
-#. Body of the passkey pop-up window when signing in or confirming identity. host is a web address such as fluxer.com.
-#: src/features/auth/passkey_bridge/PasskeyBridgeScreen.tsx:22
-msgid "Continue with your passkey to sign in to {host}"
-msgstr "Continuer avec votre clé d'accès pour vous connecter à {host}"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/section_registry/AccessibilitySections.ts:31
@@ -9423,7 +9375,7 @@ msgid "Coordinates raids, brigading, or harassment against people or communities
 msgstr "Coordonne des raids, des attaques collectives ou du harcèlement contre des personnes ou des communautés."
 
 #. Generic short status label confirming a value was copied to the clipboard.
-#: src/features/auth/flow/HandoffCodeDisplay.tsx:165
+#: src/features/auth/flow/HandoffCodeDisplay.tsx:157
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:381
 msgid "Copied"
 msgstr "Copié"
@@ -9520,12 +9472,12 @@ msgstr "Copier l'identifiant du salon"
 #. Action that copies a deep link to the selected channel.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #: src/features/input/state/input_keybind/shared.ts:205
-#: src/features/ui/action_menu/items/ChannelMenuData.tsx:132
+#: src/features/ui/action_menu/items/ChannelMenuData.tsx:130
 msgid "Copy channel link"
 msgstr "Copier le lien du salon"
 
 #. Action label that copies a code block to the clipboard.
-#: src/features/auth/flow/HandoffCodeDisplay.tsx:165
+#: src/features/auth/flow/HandoffCodeDisplay.tsx:157
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:393
 msgid "Copy code"
 msgstr "Copier le code"
@@ -9936,7 +9888,7 @@ msgid "Couldn't create this sticker"
 msgstr "Impossible de créer ce sticker"
 
 #. Title of the error modal shown when image cropping fails.
-#: src/features/messaging/components/modals/ImageCropModal.tsx:32
+#: src/features/messaging/components/modals/ImageCropModal.tsx:28
 msgid "Couldn't crop image"
 msgstr "Impossible de recadrer l’image"
 
@@ -9946,7 +9898,7 @@ msgid "Couldn't delete application"
 msgstr "Impossible de supprimer l’application"
 
 #. Title of the error modal shown when removing a registered passkey fails.
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:39
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:38
 msgid "Couldn't delete passkey"
 msgstr "Impossible de supprimer la clé d’accès"
 
@@ -9988,7 +9940,7 @@ msgid "Couldn't download the desktop update"
 msgstr "Impossible de télécharger la mise à jour de l’application de bureau"
 
 #. Title of the error modal shown when duplicating a channel fails.
-#: src/features/ui/action_menu/items/ChannelMenuData.tsx:140
+#: src/features/ui/action_menu/items/ChannelMenuData.tsx:138
 msgid "Couldn't duplicate this channel"
 msgstr "Impossible de dupliquer ce salon"
 
@@ -10078,7 +10030,7 @@ msgid "Couldn't open the billing portal"
 msgstr "Impossible d'ouvrir le portail de facturation"
 
 #. Title of the error modal shown when pinning a DM or group DM fails.
-#: src/features/ui/action_menu/items/ChannelMenuData.tsx:120
+#: src/features/ui/action_menu/items/ChannelMenuData.tsx:118
 msgid "Couldn't pin this conversation"
 msgstr "Impossible d’épingler cette conversation"
 
@@ -10257,7 +10209,7 @@ msgid "Couldn't unblock user"
 msgstr "Impossible de débloquer l’utilisateur"
 
 #. Title of the error modal shown when unpinning a DM or group DM fails.
-#: src/features/ui/action_menu/items/ChannelMenuData.tsx:124
+#: src/features/ui/action_menu/items/ChannelMenuData.tsx:122
 msgid "Couldn't unpin this conversation"
 msgstr "Impossible de désépingler cette conversation"
 
@@ -10287,7 +10239,7 @@ msgid "Couldn't update mention suppression bypass"
 msgstr "Impossible de mettre à jour le contournement de la suppression des mentions"
 
 #. Title of the error modal shown when the passkey two-factor setting could not be saved.
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:85
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:84
 msgid "Couldn't update passkey two-factor authentication"
 msgstr "Impossible de mettre à jour l'authentification à deux facteurs par clé d'accès"
 
@@ -10312,19 +10264,14 @@ msgid "Couldn't update voice activity sharing right now"
 msgstr "Impossible de mettre à jour le partage d'activité vocale pour le moment"
 
 #. Title of the error modal shown when uploading a profile avatar fails.
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:94
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:107
 msgid "Couldn't upload avatar"
 msgstr "Impossible d’envoyer l’avatar"
 
 #. Title of the error modal shown when uploading a profile banner fails.
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:93
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:90
 msgid "Couldn't upload banner"
 msgstr "Impossible d’envoyer la bannière"
-
-#. Error shown when the pop-up window used for password manager passkeys does not finish.
-#: src/features/auth/utils/PasskeyBridge.ts:29
-msgid "Couldn't use your passkey in the pop-up window. Try again."
-msgstr "Impossible d'utiliser votre clé d'accès dans la fenêtre contextuelle. Réessayez."
 
 #. Desktop handoff flow error shown when verifying the pairing code fails for an unexpected reason.
 #: src/features/auth/flow/auth_login_core/useDesktopHandoffFlow.ts:14
@@ -10337,7 +10284,7 @@ msgid "Couldn't verify the connection"
 msgstr "Impossible de vérifier la connexion"
 
 #. Sudo (re-auth) modal toast error shown when passkey verification fails. Keep plain.
-#: src/features/auth/components/modals/SudoVerificationModal.tsx:36
+#: src/features/auth/components/modals/SudoVerificationModal.tsx:29
 msgid "Couldn't verify with passkey. Try again."
 msgstr "Impossible de vérifier avec la clé d'accès. Veuillez réessayer."
 
@@ -10388,7 +10335,7 @@ msgstr "Créer et partager"
 msgid "Create a community"
 msgstr "Créer une communauté"
 
-#: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:256
+#: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:257
 msgid "Create a community for you and your friends to chat."
 msgstr "Créez une communauté pour discuter avec vos amis."
 
@@ -10647,7 +10594,7 @@ msgid "Crop invite background"
 msgstr "Recadrer l'arrière-plan de l'invitation"
 
 #. Short label in the image crop modal. Keep it concise.
-#: src/features/messaging/components/modals/ImageCropModal.tsx:24
+#: src/features/messaging/components/modals/ImageCropModal.tsx:20
 msgid "Crop preview"
 msgstr "Aperçu du recadrage"
 
@@ -10658,15 +10605,30 @@ msgstr "Recadrer la bannière de profil"
 
 #. Error modal body shown when a cropped community image still exceeds the size limit. {maxSizeLabel} is a formatted file size.
 #. Error modal body shown when a cropped image still exceeds the size limit. {maxSizeLabel} is a formatted file size.
-#: src/features/guild/components/modals/guild_tabs/guild_overview_tab/hooks/useGuildImageAssetField.tsx:47
-#: src/features/messaging/components/modals/ImageCropModal.tsx:36
+#: src/features/guild/components/modals/guild_tabs/guild_overview_tab/hooks/useGuildImageAssetField.tsx:67
+#: src/features/messaging/components/modals/ImageCropModal.tsx:32
 msgid "Cropped image is too large. Choose a smaller area or a smaller file (max {maxSizeLabel})."
 msgstr "L'image recadrée est trop grande. Choisissez une zone plus petite ou un fichier plus petit (max. {maxSizeLabel})."
 
-#. Progress label on the save button while animated image frames are cropped. {percent} is a whole number. Keep it concise.
-#: src/features/messaging/components/modals/ImageCropModal.tsx:62
-msgid "Cropping {percent}%"
-msgstr "Recadrage de {percent}%"
+#. Confirmation modal body shown before using an animated community image without cropping. {formatLabel} is the image format name.
+#: src/features/guild/components/modals/guild_tabs/guild_overview_tab/hooks/useGuildImageAssetField.tsx:58
+msgid "Cropping animated {formatLabel} files isn't supported yet. The original image will be used."
+msgstr "Le recadrage des fichiers {formatLabel} animés n'est pas encore pris en charge. L'image originale sera utilisée."
+
+#. Description text in the avatar uploader. Preserve {formatLabel}; it is inserted by code.
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:95
+msgid "Cropping animated {formatLabel} files isn't supported yet. The original upload will be used."
+msgstr "Le recadrage des fichiers {formatLabel} animés n'est pas encore pris en charge. Le fichier original sera utilisé."
+
+#. Confirmation modal body shown before using an animated community image with an unknown format.
+#: src/features/guild/components/modals/guild_tabs/guild_overview_tab/hooks/useGuildImageAssetField.tsx:63
+msgid "Cropping animated files isn't supported yet. The original image will be used."
+msgstr "Le recadrage des fichiers animés n'est pas encore pris en charge. L'image d'origine sera utilisée."
+
+#. Description text in the avatar uploader when the animated image format is unknown.
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:99
+msgid "Cropping animated files isn't supported yet. The original upload will be used."
+msgstr "Le recadrage des fichiers animés n'est pas encore pris en charge. Le fichier d'origine sera utilisé."
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/section_registry/AppearanceSections.ts:86
@@ -10721,12 +10683,12 @@ msgid "Current uses:"
 msgstr "Utilisations actuelles :"
 
 #. Developer nagbar status: the banner is dismissed in the current real state.
-#: src/features/devtools/components/NagbarControls.ts:114
+#: src/features/devtools/components/NagbarControls.ts:109
 msgid "Currently dismissed"
 msgstr "Actuellement ignoré"
 
 #. Developer nagbar status: the banner is showing in the current real state.
-#: src/features/devtools/components/NagbarControls.ts:118
+#: src/features/devtools/components/NagbarControls.ts:113
 msgid "Currently showing"
 msgstr "Affiché actuellement"
 
@@ -11428,11 +11390,11 @@ msgstr "Delaware"
 #: src/features/emoji/components/stickers/StickerGridItem.tsx:35
 #: src/features/messaging/commands/MessageCommands.tsx:81
 #: src/features/moderation/components/report_modal/IARModalCopy.ts:109
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:669
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1146
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:670
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1147
 #: src/features/platform/utils/DesktopLocaleBridge.ts:76
 #: src/features/theme_studio/sections/LibrarySection.tsx:514
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:530
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:517
 #: src/features/user/components/modals/tabs/component_gallery_tab/ComponentGalleryTabButtonsTab.tsx:117
 #: src/features/user/components/modals/tabs/component_gallery_tab/ComponentGalleryTabButtonsTab.tsx:290
 #: src/features/user/components/modals/tabs/component_gallery_tab/index.tsx:238
@@ -11466,7 +11428,7 @@ msgstr "Supprimer « {stickerName} » ? Cette action est irréversible."
 #. Channel details bottom sheet label or action (channel type, settings, toast, confirmation, or notification option).
 #. Confirm dialog body before deleting a channel.
 #: src/features/channel/components/bottomsheets/channel_details_bottom_sheet/ChannelDetailsBottomSheetShared.ts:107
-#: src/features/ui/action_menu/items/ChannelMenuData.tsx:104
+#: src/features/ui/action_menu/items/ChannelMenuData.tsx:102
 msgid "Delete {channelLabel}? Can't be undone."
 msgstr "Supprimer {channelLabel} ? Cette action est irréversible."
 
@@ -11605,7 +11567,7 @@ msgid "Delete other members' messages. Pinning is controlled separately."
 msgstr "Supprimer les messages des autres membres. L'épinglage est géré séparément."
 
 #. Security settings: confirmation modal title and primary button for removing a registered passkey. Destructive action; keep plain and direct.
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:34
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:33
 msgid "Delete passkey"
 msgstr "Supprimer la clé d'accès"
 
@@ -11614,7 +11576,7 @@ msgstr "Supprimer la clé d'accès"
 msgid "Delete persona"
 msgstr "Supprimer la persona"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:663
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:664
 msgid "Delete Persona"
 msgstr "Supprimer la persona"
 
@@ -12096,7 +12058,7 @@ msgstr "Appareil :"
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Tab label in the screen-share picker. Lists cameras and virtual capture devices.
 #. User settings tab for managing devices linked to the current account.
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:105
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:104
 #: src/features/user/components/modals/tabs/DevicesTab.tsx:530
 #: src/features/user/components/settings_utils/search_index/DevicesIndex.ts:11
 #: src/features/user/components/settings_utils/section_registry/AppearanceSections.ts:82
@@ -12207,7 +12169,7 @@ msgstr "Envoi direct actif"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Short footer action in the screen-share picker that disables screen-share preview frame uploads.
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:355
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:342
 #: src/features/user/components/settings_utils/search_index/AccountSecurityIndex.ts:158
 #: src/features/voice/components/modals/ScreenSharePickerModal.tsx:279
 msgid "Disable"
@@ -12577,7 +12539,7 @@ msgstr "Nom affiché (facultatif)"
 msgid "Display scaling"
 msgstr "Mise à l'échelle de l'affichage"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:771
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:772
 msgid "Display Tag"
 msgstr "Badge d'affichage"
 
@@ -12591,7 +12553,7 @@ msgstr "Icône du badge d'affichage supprimée"
 msgid "Display tag icon updated"
 msgstr "Icône du badge d'affichage mise à jour"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:774
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:775
 msgid "Display tag will appear next to all persona names in messages. If no display tag is set, your account profile picture will be shown."
 msgstr "Le badge d'affichage apparaîtra à côté du nom de toutes vos personas dans les messages. Si aucun badge n'est configuré, votre photo de profil de compte sera affichée."
 
@@ -12760,11 +12722,6 @@ msgstr "Ne bloque pas la personne. Vous pourrez rouvrir la conversation plus tar
 msgid "Domain"
 msgstr "Domaine"
 
-#. Developer or debug surface, keep terse and technical. Label in the developer Nagbar controls panel for the banner telling installed web apps that the app has moved to a new domain.
-#: src/features/devtools/components/NagbarControls.ts:76
-msgid "Domain moved nagbar"
-msgstr "Barre de notification de domaine déplacé"
-
 #. Label in the inbox commands.
 #: src/features/inbox/commands/InboxCommands.tsx:27
 #: src/features/voice/components/modals/HideOwnCameraConfirmModal.tsx:59
@@ -12788,8 +12745,8 @@ msgstr "Vous n'avez pas de compte ?"
 
 #. Short label in the avatar uploader. Keep it concise.
 #. Short label in the banner uploader. Keep it concise. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:69
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:63
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:74
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:60
 msgid "Don't show"
 msgstr "Ne pas afficher"
 
@@ -13108,7 +13065,7 @@ msgstr "Dupliquer"
 #. Action that creates a copy of the selected channel.
 #. Short label in the channel duplicate modal. Keep it concise.
 #: src/features/channel/components/modals/ChannelDuplicateModal.tsx:28
-#: src/features/ui/action_menu/items/ChannelMenuData.tsx:136
+#: src/features/ui/action_menu/items/ChannelMenuData.tsx:134
 msgid "Duplicate channel"
 msgstr "Dupliquer le salon"
 
@@ -13143,7 +13100,7 @@ msgid "e.g. she/her"
 msgstr "ex. elle / iel"
 
 #. Placeholder or example text in the authentication passkey name modal. Keep the tone plain and specific.
-#: src/features/auth/components/modals/PasskeyNameModal.tsx:35
+#: src/features/auth/components/modals/PasskeyNameModal.tsx:27
 msgid "e.g., YubiKey, iPhone, work computer"
 msgstr "ex. : YubiKey, iPhone, ordinateur professionnel"
 
@@ -13172,7 +13129,7 @@ msgstr "Annulation de l’écho"
 #. Button or menu action label in the search engines tab. Keep it concise.
 #. Top-level native menu bar title (Edit menu, holds cut/copy/paste).
 #: src/features/emoji/components/stickers/StickerGridItem.tsx:43
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1138
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1139
 #: src/features/platform/utils/DesktopLocaleBridge.ts:47
 #: src/features/user/components/modals/tabs/chat_settings_tab/SearchEnginesTab.tsx:35
 #: src/features/user/components/modals/tabs/LinkedAccountsTab.tsx:51
@@ -13231,7 +13188,7 @@ msgstr "Modifier la catégorie"
 #. Action that opens the edit-channel modal.
 #. Channel details bottom sheet label or action (channel type, settings, toast, confirmation, or notification option).
 #: src/features/channel/components/bottomsheets/channel_details_bottom_sheet/ChannelDetailsBottomSheetShared.ts:162
-#: src/features/ui/action_menu/items/ChannelMenuData.tsx:148
+#: src/features/ui/action_menu/items/ChannelMenuData.tsx:146
 #: src/features/ui/action_menu/items/ChannelMenuItems.tsx:75
 msgid "Edit channel"
 msgstr "Modifier le salon"
@@ -13321,7 +13278,7 @@ msgstr "Modifier les permissions spécifiques aux rôles et aux membres dans ce 
 msgid "Edit persona"
 msgstr "Modifier la persona"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:877
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:878
 msgid "Edit Persona"
 msgstr "Modifier la persona"
 
@@ -13705,7 +13662,7 @@ msgstr "Favoris vides"
 #: src/features/app/components/layout/app_layout/nagbars/LinuxInputAccessNagbar.tsx:32
 #: src/features/app/components/layout/GuildLayout.tsx:54
 #: src/features/invite/components/DisableInvitesButton.tsx:27
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:373
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:360
 #: src/features/user/components/modals/tabs/components/LinuxInputAccessSection.tsx:23
 msgid "Enable"
 msgstr "Activer"
@@ -14186,12 +14143,12 @@ msgid "Enter new email"
 msgstr "Saisir la nouvelle adresse e-mail"
 
 #. MFA code entry instructions shown when the account uses passkeys as its second factor.
-#: src/features/auth/flow/MfaScreen.tsx:43
+#: src/features/auth/flow/MfaScreen.tsx:42
 msgid "Enter one of your backup codes if you can't use your passkey."
 msgstr "Saisissez l'un de vos codes de secours si vous ne pouvez pas utiliser votre clé d'accès."
 
 #. Body text in the authentication sudo verification modal, shown when the only code the account can enter is a backup code. Keep the tone plain and specific.
-#: src/features/auth/components/modals/SudoVerificationModal.tsx:48
+#: src/features/auth/components/modals/SudoVerificationModal.tsx:41
 msgid "Enter one of your backup codes."
 msgstr "Saisissez l'un de vos codes de secours."
 
@@ -14211,7 +14168,7 @@ msgid "Enter text"
 msgstr "Saisir du texte"
 
 #. MFA code entry instructions. digitCount is the expected authenticator-code length.
-#: src/features/auth/flow/MfaScreen.tsx:31
+#: src/features/auth/flow/MfaScreen.tsx:30
 msgid "Enter the {digitCount}-digit code from your authenticator app or a backup code."
 msgstr "Saisissez le code à {digitCount} chiffres de votre application d'authentification ou un code de secours."
 
@@ -14245,7 +14202,7 @@ msgid "Enter the code before continuing."
 msgstr "Saisissez le code avant de continuer."
 
 #. Body text in the authentication sudo verification modal. Keep the tone plain and specific.
-#: src/features/auth/components/modals/SudoVerificationModal.tsx:44
+#: src/features/auth/components/modals/SudoVerificationModal.tsx:37
 msgid "Enter the code from your authenticator app."
 msgstr "Saisissez le code de votre application d'authentification."
 
@@ -14298,13 +14255,9 @@ msgstr "Entrez le code PIN de votre clé de sécurité pour continuer."
 msgid "Enter the SMS code"
 msgstr "Saisissez le code SMS"
 
-#: src/features/auth/flow/HandoffCodeDisplay.tsx:132
+#: src/features/auth/flow/HandoffCodeDisplay.tsx:124
 msgid "Enter this code in your browser to complete sign-in."
 msgstr "Saisissez ce code dans votre navigateur pour terminer la connexion."
-
-#: src/features/auth/flow/BrowserLoginHandoffModal.tsx:142
-msgid "Enter this code in your old {PRODUCT_NAME} app to complete sign-in."
-msgstr "Entrez ce code dans votre ancienne application {PRODUCT_NAME} pour terminer la connexion."
 
 #: src/features/channel/components/EditingMessageInput.tsx:358
 msgid "Enter to <0><1>save</1></0>"
@@ -14329,7 +14282,7 @@ msgid "Enter your name"
 msgstr "Saisissez votre nom"
 
 #. Body text in the authentication sudo verification modal. Keep the tone plain and specific.
-#: src/features/auth/components/modals/SudoVerificationModal.tsx:40
+#: src/features/auth/components/modals/SudoVerificationModal.tsx:33
 msgid "Enter your password."
 msgstr "Saisissez votre mot de passe."
 
@@ -14687,7 +14640,7 @@ msgstr "Expire le {absolute} ({relativeText})"
 msgid "Expires between {earliest} and {latest}"
 msgstr "Expire entre {earliest} et {latest}"
 
-#: src/features/auth/flow/HandoffCodeDisplay.tsx:150
+#: src/features/auth/flow/HandoffCodeDisplay.tsx:142
 msgid "Expires in {remaining}s"
 msgstr "Expire dans {remaining} s"
 
@@ -15110,7 +15063,7 @@ msgid "Failed to start SSO"
 msgstr "Échec du démarrage de l'authentification unique (SSO)"
 
 #. Login flow error shown when switching to a saved account fails.
-#: src/features/auth/flow/AuthLoginLayout.tsx:58
+#: src/features/auth/flow/AuthLoginLayout.tsx:51
 msgid "Failed to switch account"
 msgstr "Échec du changement de compte"
 
@@ -15697,17 +15650,17 @@ msgstr "Pour moi"
 msgid "For this check, you send us a text message instead of receiving one from us."
 msgstr "Pour cette vérification, vous nous envoyez un SMS au lieu d’en recevoir un de notre part."
 
-#: src/features/auth/components/modals/SudoVerificationModal.tsx:225
+#: src/features/auth/components/modals/SudoVerificationModal.tsx:183
 msgid "For your security, please confirm it's you to continue."
 msgstr "Pour votre sécurité, veuillez confirmer votre identité pour continuer."
 
 #. Developer nagbar override status: the banner is forced to hide.
-#: src/features/devtools/components/NagbarControls.ts:102
+#: src/features/devtools/components/NagbarControls.ts:97
 msgid "Force disabled"
 msgstr "Désactivé de force"
 
 #. Developer nagbar override status: the banner is forced to show.
-#: src/features/devtools/components/NagbarControls.ts:98
+#: src/features/devtools/components/NagbarControls.ts:93
 msgid "Force enabled"
 msgstr "Activé de force"
 
@@ -15824,7 +15777,7 @@ msgstr "Mot de passe oublié"
 
 #. Authentication link label that opens password recovery.
 #: src/features/auth/components/pages/ForgotPasswordPage.tsx:71
-#: src/features/auth/flow/AuthLoginLayout.tsx:70
+#: src/features/auth/flow/AuthLoginLayout.tsx:63
 msgid "Forgot your password?"
 msgstr "Mot de passe oublié ?"
 
@@ -15855,7 +15808,7 @@ msgstr "Transférer le média"
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Title of the forward message modal.
 #: src/features/input/state/input_keybind/shared.ts:25
-#: src/features/messaging/components/modals/ForwardModal.tsx:83
+#: src/features/messaging/components/modals/ForwardModal.tsx:86
 msgid "Forward message"
 msgstr "Transférer le message"
 
@@ -15990,7 +15943,7 @@ msgstr "Bot convivial"
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/channel/components/direct_message/DirectMessageList.tsx:555
 #: src/features/connection/components/modals/EditConnectionModal.tsx:86
-#: src/features/search/utils/QuickSwitcherModalUtils.tsx:50
+#: src/features/search/utils/QuickSwitcherModalUtils.tsx:49
 #: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:63
 #: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:89
 msgid "Friends"
@@ -16249,11 +16202,11 @@ msgstr "Générez un lien partageable ou copiez votre CSS personnalisé combiné
 msgid "Generate invite link"
 msgstr "Générer un lien d'invitation"
 
-#: src/features/auth/flow/HandoffCodeDisplay.tsx:117
+#: src/features/auth/flow/HandoffCodeDisplay.tsx:109
 msgid "Generate new code"
 msgstr "Générer un nouveau code"
 
-#: src/features/auth/flow/HandoffCodeDisplay.tsx:78
+#: src/features/auth/flow/HandoffCodeDisplay.tsx:70
 msgid "Generating code…"
 msgstr "Génération du code…"
 
@@ -16328,11 +16281,6 @@ msgstr "Téléchargez l’application de bureau {productName} pour utiliser « A
 #: src/features/voice/components/modals/screen_share_picker_modal/DesktopDownloadCta.tsx:20
 msgid "Get the desktop app"
 msgstr "Télécharger l’application de bureau"
-
-#. Title of the modal that explains how to install the app from its new domain. productName is the app name.
-#: src/features/app/domain_migration/DomainMovedStepsModal.tsx:18
-msgid "Get the new {productName} app"
-msgstr "Obtenez la nouvelle application {productName}"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Type label for GIF media.
@@ -16639,7 +16587,7 @@ msgid "Go to home"
 msgstr "Aller à l'accueil"
 
 #. Short label in the quick switcher state. Keep it concise.
-#: src/features/search/state/QuickSwitcher.tsx:45
+#: src/features/search/state/QuickSwitcher.tsx:39
 msgid "Go to message"
 msgstr "Aller au message"
 
@@ -16830,8 +16778,8 @@ msgstr "Les avatars des MP de groupe utilisent les mêmes masques de statut que 
 msgid "Group DMs"
 msgstr "MP de groupe"
 
-#: src/features/channel/components/modals/EditGroupBottomSheet.tsx:289
-#: src/features/channel/components/modals/EditGroupModal.tsx:247
+#: src/features/channel/components/modals/EditGroupBottomSheet.tsx:290
+#: src/features/channel/components/modals/EditGroupModal.tsx:248
 msgid "Group icon"
 msgstr "Icône du groupe"
 
@@ -16846,6 +16794,11 @@ msgstr "Invitations de groupe"
 #: src/features/search/state/QuickSwitcherCandidateBuilder.ts:43
 msgid "Group message"
 msgstr "Message de groupe"
+
+#. Quick switcher section header for group DM results.
+#: src/features/search/state/QuickSwitcherResultConverters.ts:26
+msgid "Group messages"
+msgstr "Messages de groupe"
 
 #. Field label for the group name input in the mobile edit group sheet.
 #. Short label in the edit group modal. Keep it concise.
@@ -16889,8 +16842,8 @@ msgstr "Paramètres du groupe"
 msgid "Group typing states"
 msgstr "États de saisie du groupe"
 
-#: src/features/channel/components/modals/EditGroupBottomSheet.tsx:231
-#: src/features/channel/components/modals/EditGroupModal.tsx:222
+#: src/features/channel/components/modals/EditGroupBottomSheet.tsx:232
+#: src/features/channel/components/modals/EditGroupModal.tsx:223
 msgid "Group updated"
 msgstr "Groupe mis à jour"
 
@@ -17068,7 +17021,7 @@ msgstr "Cœur"
 msgid "Hebrew"
 msgstr "Hébreu"
 
-#: src/features/messaging/components/modals/ImageCropModal.tsx:958
+#: src/features/messaging/components/modals/ImageCropModal.tsx:872
 msgid "Height"
 msgstr "Hauteur"
 
@@ -17780,7 +17733,7 @@ msgstr "Image copiée dans le presse-papiers"
 #. Error modal title shown when a template-import community icon upload cannot be accepted or processed.
 #: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:59
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:155
-#: src/features/guild/components/modals/guild_tabs/guild_overview_tab/hooks/useGuildImageAssetField.tsx:52
+#: src/features/guild/components/modals/guild_tabs/guild_overview_tab/hooks/useGuildImageAssetField.tsx:78
 msgid "Image couldn't be used"
 msgstr "Impossible d'utiliser l'image"
 
@@ -17906,7 +17859,7 @@ msgstr "Importer un dossier"
 
 #. Modal title for PluralKit import step select
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:459
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1043
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1044
 msgid "Import from PluralKit"
 msgstr "Importer depuis PluralKit"
 
@@ -18354,16 +18307,6 @@ msgstr "Insérer un emoji"
 msgid "Install {productName} for the full source picker and smoother screen-sharing controls."
 msgstr "Installez {productName} pour profiter de toutes les options de sélection de source et de commandes de partage d'écran plus fluides."
 
-#. Second install step on other devices. Refers to the install option in the browser menu.
-#: src/features/app/domain_migration/DomainMovedStepsModal.tsx:51
-msgid "Install it from your browser menu."
-msgstr "Installez-le depuis le menu de votre navigateur."
-
-#. Button on the domain moved banner that installs the app from the new domain.
-#: src/features/app/components/layout/app_layout/nagbars/DomainMovedNagbar.tsx:48
-msgid "Install the new app"
-msgstr "Installer la nouvelle application"
-
 #. Label for the installed desktop version in the Linux update modal.
 #: src/features/updater/commands/UpdaterModalCommands.tsx:136
 msgid "Installed"
@@ -18450,7 +18393,7 @@ msgid "Invalid authorization request"
 msgstr "Requête d'autorisation non valide"
 
 #. OAuth authorize page error shown when the permissions query parameter is not a valid integer.
-#: src/features/auth/components/pages/oauth_authorize_page/state/useAuthorizeFlow.ts:63
+#: src/features/auth/components/pages/oauth_authorize_page/state/useAuthorizeFlow.ts:62
 msgid "Invalid bot permissions."
 msgstr "Permissions du bot non valides."
 
@@ -18491,7 +18434,7 @@ msgid "Invalid or expired code. Try again."
 msgstr "Code invalide ou expiré. Veuillez réessayer."
 
 #. Short label in the authentication authorize flow. Keep the tone plain and specific.
-#: src/features/auth/components/pages/oauth_authorize_page/state/useAuthorizeFlow.ts:79
+#: src/features/auth/components/pages/oauth_authorize_page/state/useAuthorizeFlow.ts:78
 msgid "Invalid redirect_uri"
 msgstr "Paramètre redirect_uri non valide"
 
@@ -19677,11 +19620,6 @@ msgstr "Lien"
 msgid "Link (mature)"
 msgstr "Lien (pour adultes)"
 
-#. Button on the domain moved banner that opens the code entry used to sign in a new app. Must match the translation used in the "Sign in with your old {productName} app" instructions.
-#: src/features/app/components/layout/app_layout/nagbars/DomainMovedNagbar.tsx:60
-msgid "Link a new device"
-msgstr "Lier un nouvel appareil"
-
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/search_index/ApplicationsIndex.ts:96
 msgid "Link builder"
@@ -20002,7 +19940,7 @@ msgid "Look and feel"
 msgstr "Apparence"
 
 #. placeholder {0}: externalProcessor.name
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:654
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:652
 msgid "Looks like you're using {0}. Stacking {PRODUCT_NAME}'s processing on top can cause pumping or distortion. Direct input passes your audio through untouched."
 msgstr "Il semble que vous utilisiez {0}. Empiler le traitement de {PRODUCT_NAME} par-dessus peut provoquer des pompages ou des distorsions. L'entrée directe transmet votre audio sans modification."
 
@@ -20132,8 +20070,8 @@ msgstr "Logiciels malveillants ou liens dangereux"
 msgid "Malware, credential theft, or harmful files."
 msgstr "Logiciels malveillants, vol d'identifiants ou fichiers nuisibles."
 
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:574
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:609
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:561
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:596
 msgid "Manage"
 msgstr "Gérer"
 
@@ -20148,7 +20086,7 @@ msgid "Manage and create your personas"
 msgstr "Gérez et créez vos personas"
 
 #. Security settings section description for account access controls.
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:93
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:92
 msgid "Manage apps and devices with access to your account"
 msgstr "Gérez les applications et les appareils qui ont accès à votre compte"
 
@@ -21079,7 +21017,7 @@ msgstr "Les paramètres d'affichage des messages ne sont disponibles que sur ord
 msgid "Message editing"
 msgstr "Modification des messages"
 
-#: src/features/messaging/components/modals/ForwardModal.tsx:309
+#: src/features/messaging/components/modals/ForwardModal.tsx:371
 msgid "Message forwarded"
 msgstr "Message transféré"
 
@@ -21128,7 +21066,7 @@ msgstr "Boutons de saisie de message"
 
 #. Error modal title in the forward modal when the optional comment exceeds the message length limit.
 #. Form validation error indicating the message exceeds the allowed length.
-#: src/features/messaging/components/modals/ForwardModal.tsx:54
+#: src/features/messaging/components/modals/ForwardModal.tsx:57
 #: src/features/ui/character_counter/CharacterCountMessages.ts:16
 msgid "Message is too long"
 msgstr "Message trop long"
@@ -21427,7 +21365,7 @@ msgid "Miscellaneous"
 msgstr "Divers"
 
 #. Short label in the authentication authorize flow. Keep the tone plain and specific.
-#: src/features/auth/components/pages/oauth_authorize_page/state/useAuthorizeFlow.ts:37
+#: src/features/auth/components/pages/oauth_authorize_page/state/useAuthorizeFlow.ts:36
 msgid "Missing client_id"
 msgstr "client_id manquant"
 
@@ -21761,7 +21699,7 @@ msgid "Move members"
 msgstr "Déplacer des membres"
 
 #. Favorites menu submenu label that moves the favorited channel into another favorites category.
-#: src/features/ui/action_menu/FavoritesChannelContextMenu.tsx:57
+#: src/features/ui/action_menu/FavoritesChannelContextMenu.tsx:53
 msgid "Move to"
 msgstr "Déplacer vers"
 
@@ -22216,7 +22154,7 @@ msgstr "Forçages des bandeaux de notification"
 msgid "Name"
 msgstr "Nom"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:882
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:883
 msgid "Name *"
 msgstr "Nom *"
 
@@ -22248,12 +22186,12 @@ msgid "Name must be at least 2 characters"
 msgstr "Le nom doit contenir au moins 2 caractères"
 
 #. Short label in the authentication passkey name modal. Keep the tone plain and specific.
-#: src/features/auth/components/modals/PasskeyNameModal.tsx:27
+#: src/features/auth/components/modals/PasskeyNameModal.tsx:19
 msgid "Name passkey"
 msgstr "Nommer la clé d'accès"
 
 #. Accessible form label in the authentication passkey name modal. Keep the tone plain and specific.
-#: src/features/auth/components/modals/PasskeyNameModal.tsx:23
+#: src/features/auth/components/modals/PasskeyNameModal.tsx:15
 msgid "Name passkey form"
 msgstr "Formulaire pour nommer la clé d’accès"
 
@@ -22522,7 +22460,7 @@ msgstr "Nouveau microphone"
 msgid "New password"
 msgstr "Nouveau mot de passe"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:877
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:878
 msgid "New Persona"
 msgstr "Nouvelle persona"
 
@@ -22776,7 +22714,7 @@ msgstr "Aucune modification à enregistrer"
 msgid "No channels available"
 msgstr "Aucun salon disponible"
 
-#: src/features/messaging/components/modals/ForwardModal.tsx:383
+#: src/features/messaging/components/modals/ForwardModal.tsx:445
 #: src/features/search/components/search/ChannelFilterSheet.tsx:120
 msgid "No channels found"
 msgstr "Aucun salon trouvé"
@@ -22824,7 +22762,7 @@ msgstr "Aucune description."
 msgid "No desktop update is available."
 msgstr "Aucune mise à jour de l’application de bureau n’est disponible."
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:864
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:865
 msgid "No display tag configured. Messages will show your account profile picture."
 msgstr "Aucun badge d'affichage configuré. Les messages afficheront la photo de profil de votre compte."
 
@@ -22961,7 +22899,7 @@ msgstr "Aucune persona correspondante trouvée."
 msgid "No mentions yet"
 msgstr "Aucune mention pour l'instant"
 
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:530
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:528
 msgid "No microphone found"
 msgstr "Aucun microphone détecté"
 
@@ -23016,7 +22954,7 @@ msgstr "Pas encore de mots personnels."
 msgid "No personas configured yet. Create one in Settings."
 msgstr "Aucune persona configurée pour l'instant. Créez-en une dans les Paramètres."
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1054
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1055
 msgid "No personas created yet. Click \"Add Persona\" to create your first persona!"
 msgstr "Aucune persona créée pour le moment. Cliquez sur « Ajouter une persona » pour créer votre première persona !"
 
@@ -23235,7 +23173,7 @@ msgstr "Aucun utilisateur trouvé"
 msgid "No verification is required."
 msgstr "Aucune vérification n'est requise."
 
-#: src/features/auth/components/modals/SudoVerificationModal.tsx:231
+#: src/features/auth/components/modals/SudoVerificationModal.tsx:189
 msgid "No verification methods available"
 msgstr "Aucune méthode de vérification disponible"
 
@@ -23841,16 +23779,6 @@ msgstr "Ouvrir {contextName}"
 msgid "Open {displayName}"
 msgstr "Ouvrir {displayName}"
 
-#. First install step on Apple devices. host is the new domain, for example fluxer.com. Safari is the browser.
-#: src/features/app/domain_migration/DomainMovedStepsModal.tsx:32
-msgid "Open {host} in Safari."
-msgstr "Ouvrez {host} dans Safari."
-
-#. First install step on other devices. host is the new domain, for example fluxer.com.
-#: src/features/app/domain_migration/DomainMovedStepsModal.tsx:37
-msgid "Open {host} in your browser."
-msgstr "Ouvrez {host} dans votre navigateur."
-
 #. Accessible label for an inline settings deep-link pill. labelText is the resolved settings tab and section breadcrumb.
 #: src/features/messaging/components/markdown/renderers/LinkRenderer.tsx:109
 msgid "Open {labelText} in settings"
@@ -23870,11 +23798,6 @@ msgstr "Ouvrez « {macosSystemSettingsName} » → « {macosPrivacyAndSecurit
 #: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:27
 msgid "Open {productName}"
 msgstr "Ouvrir {productName}"
-
-#. Button on the domain moved banner that opens the new domain in the browser. productName is the app name.
-#: src/features/app/components/layout/app_layout/nagbars/DomainMovedNagbar.tsx:52
-msgid "Open {productName} in your browser"
-msgstr "Ouvrir {productName} dans votre navigateur"
 
 #. Button or menu action label in the channel and chat gif picker grid item. Keep it concise. Preserve {title}; it is inserted by code.
 #: src/features/channel/components/pickers/gif/GifPickerGridItem.tsx:37
@@ -23949,7 +23872,7 @@ msgstr "Ouvrir les options de la bannière"
 msgid "Open bookmarks"
 msgstr "Ouvrir les messages enregistrés"
 
-#: src/features/auth/flow/BrowserLoginHandoffModal.tsx:178
+#: src/features/auth/flow/BrowserLoginHandoffModal.tsx:153
 msgid "Open browser"
 msgstr "Ouvrir le navigateur"
 
@@ -23977,7 +23900,7 @@ msgstr "Ouvrir les détails du salon {channelName}"
 #. Context-menu action that opens a voice channel's embedded chat view without connecting to voice.
 #. Tooltip and accessible label for the chat icon shown beside a voice channel in the channel list.
 #: src/features/app/components/layout/ChannelItem.tsx:128
-#: src/features/ui/action_menu/items/ChannelMenuData.tsx:152
+#: src/features/ui/action_menu/items/ChannelMenuData.tsx:150
 msgid "Open chat"
 msgstr "Ouvrir le chat"
 
@@ -24053,7 +23976,7 @@ msgid "Open emoji in browser"
 msgstr "Ouvrir l'emoji dans le navigateur"
 
 #. Accessible label for the emoji picker trigger button in the forward modal comment field.
-#: src/features/messaging/components/modals/ForwardModal.tsx:100
+#: src/features/messaging/components/modals/ForwardModal.tsx:103
 #: src/features/user/components/modals/tabs/my_profile_tab/BioEditor.tsx:27
 msgid "Open emoji picker"
 msgstr "Ouvrir le sélecteur d'emojis"
@@ -24123,7 +24046,7 @@ msgid "Open in browser"
 msgstr "Ouvrir dans le navigateur"
 
 #. Favorites menu action that opens the favorited channel in the community it belongs to.
-#: src/features/ui/action_menu/FavoritesChannelContextMenu.tsx:53
+#: src/features/ui/action_menu/FavoritesChannelContextMenu.tsx:49
 msgid "Open in community"
 msgstr "Ouvrir dans la communauté"
 
@@ -24226,7 +24149,7 @@ msgstr "Ouvrir la conversation privée avec le système"
 msgid "Open system picker"
 msgstr "Ouvrir le sélecteur système"
 
-#: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:527
+#: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:528
 msgid "Open template JSON"
 msgstr "Ouvrir le modèle JSON"
 
@@ -24240,23 +24163,13 @@ msgstr "Ouvrir la boîte de dialogue de bannissement pour cette communauté."
 msgid "Open the context menu"
 msgstr "Ouvrir le menu contextuel"
 
-#: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:510
+#: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:511
 msgid "Open the link below in your browser, then copy the entire JSON response and paste it into the box."
 msgstr "Ouvrez le lien ci-dessous dans votre navigateur, puis copiez l'intégralité de la réponse JSON et collez-la dans le champ."
 
 #: src/features/user/components/modals/tabs/component_gallery_tab/SelectionsTab.tsx:163
 msgid "Open the menu and choose an option."
 msgstr "Ouvrez le menu et choisissez une option."
-
-#. Third install step. "Sign in with your old {productName} app" and "Link a new device" are button labels and must match their translations. productName is the app name.
-#: src/features/app/domain_migration/DomainMovedStepsModal.tsx:55
-msgid "Open the new app and choose Sign in with your old {productName} app. Then choose Link a new device here and enter the code it shows."
-msgstr "Ouvrez la nouvelle application et choisissez « Se connecter avec votre ancienne application {productName} ». Ensuite, choisissez « Lier un nouvel appareil » ici et saisissez le code qui s'affiche."
-
-#. Third install step in a desktop browser that already moved the account to the new domain.
-#: src/features/app/domain_migration/DomainMovedStepsModal.tsx:62
-msgid "Open the new app. You are already signed in."
-msgstr "Ouvrez la nouvelle application. Vous êtes déjà connecté."
 
 #. Tip explaining the keyboard shortcut for opening the shortcuts list.
 #: src/features/input/components/modals/KeyboardModeIntroModal.tsx:42
@@ -24277,11 +24190,6 @@ msgstr "Ouvrir la fenêtre contextuelle du studio de thèmes"
 #: src/features/user/components/modals/tabs/appearance_tab/theme/ThemeTabContent.tsx:78
 msgid "Open theme studio…"
 msgstr "Ouvrir le studio de thèmes…"
-
-#. Error in the passkey pop-up window when someone opens its address directly. productName is the app name.
-#: src/features/auth/passkey_bridge/PasskeyBridgeScreen.tsx:35
-msgid "Open this window from {productName} to use your passkey."
-msgstr "Ouvrez cette fenêtre depuis {productName} pour utiliser votre clé d'accès."
 
 #. Short label in the app layout user area. Preserve {displayName}; it is inserted by code.
 #: src/features/app/components/layout/UserArea.tsx:71
@@ -24313,7 +24221,7 @@ msgstr "Ouvrir la discussion vocale"
 msgid "Open voice & video settings"
 msgstr "Ouvrir les paramètres audio et vidéo"
 
-#: src/features/auth/flow/BrowserLoginHandoffModal.tsx:131
+#: src/features/auth/flow/BrowserLoginHandoffModal.tsx:113
 msgid "Open your browser, sign in, then enter the code below to link your account."
 msgstr "Ouvrez votre navigateur, connectez-vous, puis saisissez le code ci-dessous pour associer votre compte."
 
@@ -24321,10 +24229,6 @@ msgstr "Ouvrez votre navigateur, connectez-vous, puis saisissez le code ci-desso
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:450
 msgid "Open your messages"
 msgstr "Ouvrez vos messages"
-
-#: src/features/auth/flow/BrowserLoginHandoffModal.tsx:129
-msgid "Open your old {PRODUCT_NAME} app and choose Link a new device, then enter the code below."
-msgstr "Ouvrez votre ancienne application {PRODUCT_NAME} et choisissez « Lier un nouvel appareil », puis saisissez le code ci-dessous."
 
 #: src/features/user/components/modals/PhoneAddModal.tsx:327
 msgid "Open your phone's messaging app and create a new text message."
@@ -24403,7 +24307,7 @@ msgid "Options"
 msgstr "Options"
 
 #. Small separator between alternative shortcut keycaps in the keyboard mode intro modal.
-#: src/features/auth/flow/auth_login_core/AuthLoginPasskeyActions.tsx:16
+#: src/features/auth/flow/auth_login_core/AuthLoginPasskeyActions.tsx:15
 #: src/features/connection/components/modals/AddConnectionModal.tsx:318
 #: src/features/input/components/modals/KeyboardModeIntroModal.tsx:30
 msgid "or"
@@ -24685,20 +24589,20 @@ msgid "Passkey"
 msgstr "Clé d'accès"
 
 #. Short label in the authentication passkey name modal. Keep the tone plain and specific.
-#: src/features/auth/components/modals/PasskeyNameModal.tsx:31
+#: src/features/auth/components/modals/PasskeyNameModal.tsx:23
 msgid "Passkey name"
 msgstr "Nom de la clé d'accès"
 
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:422
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:409
 #: src/features/user/components/settings_utils/search_index/AccountSecurityIndex.ts:90
 #: src/features/user/components/settings_utils/section_registry/AccountSecuritySections.ts:88
 msgid "Passkeys"
 msgstr "Clés d'accès"
 
 #. Sudo (re-auth) modal body shown on unsigned macOS desktop bundles where passkeys cannot work. Direct the user to install the signed client.
-#: src/features/auth/components/modals/SudoVerificationModal.tsx:30
+#: src/features/auth/components/modals/SudoVerificationModal.tsx:23
 msgid "Passkeys require a signed macOS bundle with a valid application identifier. Install the signed desktop client and retry."
 msgstr "Les clés d'accès nécessitent un paquet macOS signé avec un identifiant d'application valide. Installez le client de bureau signé et réessayez."
 
@@ -24714,11 +24618,6 @@ msgstr "Mot de passe"
 #: src/features/user/components/modals/PasswordChangeModal.tsx:138
 msgid "Password changed"
 msgstr "Mot de passe modifié"
-
-#. Shown after a passkey prompt fails, above the button that retries the passkey prompt in a pop-up window on the old web address.
-#: src/features/auth/components/PasswordManagerPasskeyAction.tsx:16
-msgid "Password managers may not offer your passkey on this web address. Try it in a pop-up window on the old address instead."
-msgstr "Les gestionnaires de mots de passe ne proposent peut-être pas votre clé d'accès à cette adresse web. Essayez-la plutôt dans une fenêtre contextuelle sur l'ancienne adresse."
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
@@ -24780,7 +24679,7 @@ msgstr "7 derniers jours"
 msgid "Paste"
 msgstr "Coller"
 
-#: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:482
+#: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:483
 msgid "Paste a {theOtherPlatform} template URL to import its structure into a new community."
 msgstr "Collez une URL de modèle {theOtherPlatform} pour importer sa structure dans une nouvelle communauté."
 
@@ -24926,10 +24825,12 @@ msgid "Pennsylvania"
 msgstr "Pennsylvanie"
 
 #. Community settings sidebar category grouping members, invites, and bans.
+#. Quick switcher section header for user results.
 #. Quick switcher section header listing user candidates.
 #. Unicode emoji category label.
 #: src/features/expressions/utils/UnicodeEmojis.ts:22
-#: src/features/search/utils/QuickSwitcherModalUtils.tsx:54
+#: src/features/search/state/QuickSwitcherResultConverters.ts:22
+#: src/features/search/utils/QuickSwitcherModalUtils.tsx:53
 #: src/features/user/components/settings_utils/GuildSettingsConstants.ts:261
 msgid "People"
 msgstr "Personnes"
@@ -25066,7 +24967,7 @@ msgstr "Persona créée"
 msgid "Persona deleted"
 msgstr "Persona supprimée"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:970
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:971
 msgid "Persona Tags (Prefix & Suffix)"
 msgstr "Balises de persona (Préfixe et Suffixe)"
 
@@ -25344,7 +25245,7 @@ msgstr "Groupe épinglé"
 
 #. Toast confirming a group DM was pinned in the sidebar.
 #. Toast confirming a group DM was pinned in the sidebar.
-#: src/features/ui/action_menu/items/ChannelMenuData.tsx:112
+#: src/features/ui/action_menu/items/ChannelMenuData.tsx:110
 #: src/features/ui/action_menu/items/dm_menu_data/shared.ts:13
 msgid "Pinned group DM"
 msgstr "Conversation de groupe épinglée"
@@ -25683,11 +25584,6 @@ msgstr "Type d'abonnement premium"
 msgid "Premium until date"
 msgstr "Date de fin Premium"
 
-#. Progress label on the save button while an animated image crop starts. Keep it concise.
-#: src/features/messaging/components/modals/ImageCropModal.tsx:58
-msgid "Preparing"
-msgstr "Préparation"
-
 #. Progress status when preparing avatar batch download
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:38
 msgid "Preparing avatar batch download..."
@@ -25746,7 +25642,7 @@ msgstr "Empêcher les membres d'envoyer des messages, de réagir et de rejoindre
 
 #: src/features/expressions/components/modals/sticker_form/StickerPreview.tsx:21
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildInviteSplashSettingsField.tsx:45
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:838
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:839
 #: src/features/user/components/modals/tabs/EmbedDebuggerTab.tsx:276
 msgid "Preview"
 msgstr "Aperçu"
@@ -25848,11 +25744,6 @@ msgstr "7 derniers jours"
 #: src/features/messaging/components/modals/media_modal/shared.ts:137
 msgid "Previous attachment"
 msgstr "Pièce jointe précédente"
-
-#. Quick switcher section header above the channels the user visited most recently.
-#: src/features/search/state/QuickSwitcherResultGenerators.ts:50
-msgid "Previous channels"
-msgstr "Salons précédents"
 
 #. Message-history-deletion option when banning a member. Deletes the member's messages from the last hour.
 #: src/features/moderation/constants/BanDeleteMessageOptions.ts:21
@@ -26020,22 +25911,22 @@ msgstr "Profil"
 msgid "Profile badge"
 msgstr "Badge de profil"
 
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:166
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:163
 msgid "Profile banners are a {PREMIUM_PRODUCT_NAME} feature. Get {PREMIUM_PRODUCT_NAME} to add a banner to your profile."
 msgstr "Les bannières de profil sont une fonctionnalité {PREMIUM_PRODUCT_NAME}. Obtenez {PREMIUM_PRODUCT_NAME} pour ajouter une bannière à votre profil."
 
 #. Profile banner uploader notice shown when the instance configuration disables profile banners.
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:71
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:68
 msgid "Profile banners are not enabled on this instance."
 msgstr "Les bannières de profil ne sont pas activées sur cette instance."
 
 #. Label in the banner uploader. Preserve {premiumProductName}; it is inserted by code. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:79
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:76
 msgid "Profile banners require {premiumProductName}"
 msgstr "Les bannières de profil nécessitent {premiumProductName}"
 
 #. Profile banner uploader notice shown when profile banners require premium.
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:67
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:64
 msgid "Profile banners require {premiumProductName}."
 msgstr "Les bannières de profil nécessitent {premiumProductName}."
 
@@ -26169,7 +26060,7 @@ msgstr "Demander la confirmation pour les nouveaux périphériques audio."
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:895
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:896
 #: src/features/user/components/modals/tabs/MyProfileTab.tsx:142
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:177
 #: src/features/user/components/settings_utils/section_registry/PrivacySafetySections.ts:160
@@ -26382,7 +26273,7 @@ msgstr "Appuyer pour parler"
 msgid "Push-to-talk (limited)"
 msgstr "Appuyer pour parler (limité)"
 
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:681
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:674
 msgid "Push-to-talk is ignored in direct input. Switch to focused voice or custom to use it."
 msgstr "« Appuyer pour parler » est ignoré en mode « Entrée directe ». Passez en mode « Optimisé pour la voix » ou « Personnalisé » pour l’utiliser."
 
@@ -26899,7 +26790,7 @@ msgstr "La régénération invalidera le jeton actuel. Mettez à jour tout code 
 msgid "Register"
 msgstr "S'inscrire"
 
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:435
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:422
 msgid "Registered passkeys"
 msgstr "Clés d'accès enregistrées"
 
@@ -27099,8 +26990,8 @@ msgstr "Supprimer la pièce jointe"
 msgid "Remove authenticator app"
 msgstr "Supprimer l'application d'authentification"
 
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:377
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:413
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:405
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:441
 msgid "Remove avatar"
 msgstr "Supprimer l'avatar"
 
@@ -27109,8 +27000,8 @@ msgstr "Supprimer l'avatar"
 msgid "Remove background"
 msgstr "Supprimer l'arrière-plan"
 
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:326
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:365
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:314
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:353
 msgid "Remove banner"
 msgstr "Supprimer la bannière"
 
@@ -27173,11 +27064,11 @@ msgstr "Retirer de l’affichage permanent"
 msgid "Remove from URL-only GIF favorites"
 msgstr "Supprimer des favoris GIF enregistrés par URL"
 
-#: src/features/channel/components/modals/EditGroupBottomSheet.tsx:337
-#: src/features/channel/components/modals/EditGroupModal.tsx:292
-#: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:313
-#: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:634
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:819
+#: src/features/channel/components/modals/EditGroupBottomSheet.tsx:338
+#: src/features/channel/components/modals/EditGroupModal.tsx:293
+#: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:314
+#: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:635
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:820
 msgid "Remove icon"
 msgstr "Supprimer l'icône"
 
@@ -27477,7 +27368,7 @@ msgstr "Retirer des permissions peut limiter les fonctionnalités du bot."
 msgid "Removing the timeout will allow <0>{targetUserTag}</0> to send messages, react, and join voice channels again."
 msgstr "Lever la restriction temporaire permettra à <0>{targetUserTag}</0> d’envoyer des messages, de réagir et de rejoindre à nouveau les salons vocaux."
 
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:522
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:509
 msgid "Rename"
 msgstr "Renommer"
 
@@ -27730,7 +27621,7 @@ msgid "Require 2FA for moderation actions"
 msgstr "Exiger la 2FA pour les actions de modération"
 
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:461
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:448
 #: src/features/user/components/settings_utils/search_index/AccountSecurityIndex.ts:138
 msgid "Require a passkey as your second factor"
 msgstr "Exiger une clé d'accès comme deuxième facteur"
@@ -27897,7 +27788,7 @@ msgstr "Renvoyé"
 #: src/features/app/components/dialogs/shared/UnsavedChangesBannerContent.tsx:51
 #: src/features/app/components/floating/ColorPickerPopover.tsx:190
 #: src/features/input/components/KeybindRecorder.tsx:459
-#: src/features/messaging/components/modals/ImageCropModal.tsx:1022
+#: src/features/messaging/components/modals/ImageCropModal.tsx:936
 msgid "Reset"
 msgstr "Réinitialiser"
 
@@ -28383,7 +28274,7 @@ msgid "Review and confirm"
 msgstr "Vérifier et confirmer"
 
 #. Security settings row description for authorized apps.
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:101
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:100
 msgid "Review apps that can access your account."
 msgstr "Consultez les applications autorisées à accéder à votre compte."
 
@@ -28398,7 +28289,7 @@ msgid "Review past purchases and refund options"
 msgstr "Consulter les achats passés et les options de remboursement"
 
 #. Security settings row description for linked devices.
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:109
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:108
 msgid "Review signed-in devices and sign out of sessions you don't recognize."
 msgstr "Consultez les appareils connectés et fermez les sessions que vous ne reconnaissez pas."
 
@@ -28644,7 +28535,7 @@ msgstr "Compte principal (par défaut)"
 
 #. Short label in the image crop modal. Keep it concise.
 #. Tooltip on the media viewer button that rotates the current media item 90 degrees clockwise.
-#: src/features/messaging/components/modals/ImageCropModal.tsx:28
+#: src/features/messaging/components/modals/ImageCropModal.tsx:24
 #: src/features/messaging/components/modals/media_modal/shared.ts:93
 msgid "Rotate clockwise"
 msgstr "Pivoter dans le sens des aiguilles d'une montre"
@@ -28722,9 +28613,9 @@ msgstr "Saturation"
 #. Button or menu action label in the rename channel modal. Keep it concise.
 #. Save button in the community-folder settings modal footer.
 #: src/features/app/components/dialogs/shared/MobileSettingsComponents.tsx:113
-#: src/features/auth/components/modals/PasskeyNameModal.tsx:146
-#: src/features/channel/components/modals/EditGroupBottomSheet.tsx:366
-#: src/features/channel/components/modals/EditGroupModal.tsx:322
+#: src/features/auth/components/modals/PasskeyNameModal.tsx:87
+#: src/features/channel/components/modals/EditGroupBottomSheet.tsx:367
+#: src/features/channel/components/modals/EditGroupModal.tsx:323
 #: src/features/channel/components/modals/RenameChannelModal.tsx:28
 #: src/features/connection/components/modals/EditConnectionModal.tsx:108
 #: src/features/emoji/components/emojis/EmojiListItem.tsx:328
@@ -28793,7 +28684,7 @@ msgstr "Enregistrer les GIF favoris en tant que médias enregistrés"
 msgid "Save icon"
 msgstr "Enregistrer l'icône"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1028
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1029
 msgid "Save Persona"
 msgstr "Enregistrer la persona"
 
@@ -28951,7 +28842,7 @@ msgid "Screen share encoder controls"
 msgstr "Commandes de l’encodeur de partage d’écran"
 
 #. Title of a modal shown when an active screen share stops unexpectedly.
-#: src/features/voice/engine/v2/VoiceEngineV2AppScreenShareExecutionAdapter.tsx:119
+#: src/features/voice/engine/v2/VoiceEngineV2AppScreenShareExecutionAdapter.tsx:120
 msgctxt "screen-share"
 msgid "Screen share ended"
 msgstr "Partage d’écran terminé"
@@ -29143,9 +29034,9 @@ msgstr "Aperçu lors du déplacement dans la vidéo"
 #: src/features/channel/components/bottomsheets/ChannelSearchBottomSheet.tsx:854
 #: src/features/channel/components/channel_header/shared.ts:47
 #: src/features/channel/components/shared/PickerSearchInput.tsx:21
-#: src/features/messaging/components/modals/ForwardModal.tsx:87
+#: src/features/messaging/components/modals/ForwardModal.tsx:90
 #: src/features/search/components/modals/SearchProviderPickerModal.tsx:43
-#: src/features/search/utils/QuickSwitcherModalUtils.tsx:46
+#: src/features/search/utils/QuickSwitcherModalUtils.tsx:45
 #: src/features/theme_studio/ui/StudioSearchInput.tsx:16
 #: src/features/user/components/modals/tabs/component_gallery_tab/ComponentGalleryTabInputsTab.tsx:38
 msgid "Search"
@@ -29431,37 +29322,12 @@ msgstr "Rechercher…"
 msgid "Searching"
 msgstr "Recherche en cours"
 
-#. Quick switcher header shown while the query starts with @ outside a community, or with @@.
-#: src/features/search/state/QuickSwitcherResultGenerators.ts:70
-msgid "Searching all users"
-msgstr "Recherche de tous les utilisateurs"
-
-#. Quick switcher header shown while the query starts with * and only communities are searched.
-#: src/features/search/state/QuickSwitcherResultGenerators.ts:66
-msgid "Searching communities"
-msgstr "Recherche de communautés"
-
 #. Loading state in the desktop quick switcher while fetching people results. Trailing ellipsis is intentional.
 #. Loading state shown while the quick switcher fetches matching people. Trailing ellipsis is intentional.
 #: src/features/search/components/bottomsheets/QuickSwitcherBottomSheet.tsx:44
 #: src/features/search/components/quick_switcher/QuickSwitcherModal.tsx:62
 msgid "Searching for people..."
 msgstr "Recherche de personnes..."
-
-#. Quick switcher header shown while the query starts with @ inside a community. communityName is the community name.
-#: src/features/search/state/QuickSwitcherResultGenerators.ts:74
-msgid "Searching friends and members of {communityName}"
-msgstr "Recherche d'amis et de membres de {communityName}"
-
-#. Quick switcher header shown while the query starts with # and only text channels are searched.
-#: src/features/search/state/QuickSwitcherResultGenerators.ts:58
-msgid "Searching text channels"
-msgstr "Recherche des salons textuels"
-
-#. Quick switcher header shown while the query starts with ! and only voice channels are searched.
-#: src/features/search/state/QuickSwitcherResultGenerators.ts:62
-msgid "Searching voice channels"
-msgstr "Recherche des salons vocaux"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/search_index/AccountSecurityIndex.ts:142
@@ -29532,7 +29398,7 @@ msgctxt "security-settings-section"
 msgid "Security"
 msgstr "Sécurité"
 
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:288
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:275
 msgid "Security features"
 msgstr "Fonctionnalités de sécurité"
 
@@ -29544,7 +29410,7 @@ msgid "Security key"
 msgstr "Clé de sécurité"
 
 #. MFA action button for authenticating with a hardware security key or passkey.
-#: src/features/auth/flow/MfaScreen.tsx:27
+#: src/features/auth/flow/MfaScreen.tsx:26
 msgid "Security key / passkey"
 msgstr "Clé de sécurité / clé d’accès"
 
@@ -29707,8 +29573,8 @@ msgid "Select text"
 msgstr "Sélectionner le texte"
 
 #: src/features/auth/flow/DesktopHandoffAccountSelector.tsx:69
-msgid "Select the account you want to sign in with on your new device."
-msgstr "Sélectionnez le compte avec lequel vous souhaitez vous connecter sur votre nouvel appareil."
+msgid "Select the account you want to sign in with on the desktop app."
+msgstr "Sélectionnez le compte avec lequel vous souhaitez vous connecter sur l'application de bureau."
 
 #. Aria label for the voice processing radio group in the voice settings tab. Keep it concise.
 #: src/features/user/components/modals/tabs/UserVoiceTab.tsx:120
@@ -29815,7 +29681,7 @@ msgid "Send"
 msgstr "Envoyer"
 
 #. Primary button label in the forward message modal. selectedCount is the number of selected destinations; selectionLimit is the maximum allowed.
-#: src/features/messaging/components/modals/ForwardModal.tsx:104
+#: src/features/messaging/components/modals/ForwardModal.tsx:107
 msgid "Send ({selectedCount}/{selectionLimit})"
 msgstr "Envoyer ({selectedCount}/{selectionLimit})"
 
@@ -30030,7 +29896,7 @@ msgstr "L'envoi d'un SMS à ce numéro de téléphone est trop coûteux pour {PR
 msgid "Sending an SMS to this phone number is too expensive for {PRODUCT_NAME}, so we need you to send us an SMS instead. We know this isn't ideal. You can also contact <0>{SUPPORT_EMAIL}</0> to have us lift this requirement from your account."
 msgstr "L'envoi d'un SMS à ce numéro de téléphone est trop coûteux pour {PRODUCT_NAME}. Nous avons donc besoin que vous nous envoyiez un SMS à la place. Nous savons que ce n'est pas idéal. Vous pouvez également contacter <0>{SUPPORT_EMAIL}</0> pour que nous levions cette exigence de votre compte."
 
-#. Tooltip when sending as a persona matched by proxy tag
+#. Tooltip when sending as a persona matched by persona tag
 #: src/features/persona/components/PersonaComposerPill.tsx:29
 msgid "Sending as {name} (Matched by tag) - Click to switch persona"
 msgstr "Envoi en tant que {name} (Associé par balise) - Cliquer pour changer de persona"
@@ -30046,7 +29912,7 @@ msgid "Sending malware or dangerous links"
 msgstr "Envoi de logiciels malveillants ou de liens dangereux"
 
 #. Short label under a destination row in the forward modal, shown when the community has messaging disabled.
-#: src/features/app/components/dialogs/shared/UseForwardDestinations.ts:54
+#: src/features/app/components/dialogs/shared/UseForwardDestinations.ts:63
 msgid "Sending messages is disabled in this community"
 msgstr "L'envoi de messages est désactivé dans cette communauté"
 
@@ -30135,7 +30001,7 @@ msgid "Session"
 msgstr "Session"
 
 #. Login layout banner shown when the session for a specific account has expired. Account identifier is interpolated.
-#: src/features/auth/flow/AuthLoginLayout.tsx:53
+#: src/features/auth/flow/AuthLoginLayout.tsx:46
 msgid "Session expired for {identifier}. Sign in again."
 msgstr "Votre session pour {identifier} a expiré. Veuillez vous reconnecter."
 
@@ -30164,7 +30030,7 @@ msgstr "Définir un statut personnalisé"
 msgid "Set a member list position for the role"
 msgstr "A défini une position dans la liste des membres pour ce rôle"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1130
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1131
 msgid "Set Active"
 msgstr "Définir comme active"
 
@@ -30627,7 +30493,7 @@ msgid "Shortcuts are paused while recording."
 msgstr "Les raccourcis sont suspendus pendant l’enregistrement."
 
 #. Body of the error modal shown when the forward modal comment exceeds the message length limit.
-#: src/features/messaging/components/modals/ForwardModal.tsx:58
+#: src/features/messaging/components/modals/ForwardModal.tsx:61
 msgid "Shorten the message and try again."
 msgstr "Raccourcissez le message et réessayez."
 
@@ -30678,7 +30544,7 @@ msgid "Show a red badge on the app icon when you have unread messages"
 msgstr "Afficher un badge rouge sur l'icône de l'app en cas de messages non lus"
 
 #. Label in the banner uploader. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:75
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:72
 msgid "Show accent color only, ignoring your global profile"
 msgstr "Afficher uniquement la couleur d'accentuation, en ignorant votre profil global"
 
@@ -30747,7 +30613,7 @@ msgid "Show custom emojis in expression autocomplete"
 msgstr "Afficher les emojis personnalisés dans la saisie semi-automatique des expressions"
 
 #. Label in the avatar uploader.
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:73
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:78
 msgid "Show default avatar, ignoring your global profile"
 msgstr "Afficher l'avatar par défaut, en ignorant votre profil global"
 
@@ -30873,11 +30739,6 @@ msgstr "Afficher 3 au maximum (badge +5)"
 #: src/features/user/components/modals/tabs/component_gallery_tab/IndicatorsTab.tsx:495
 msgid "Show max 5 (+5 badge)"
 msgstr "Afficher 5 au maximum (badge +5)"
-
-#. Button on the domain moved banner that opens the install steps.
-#: src/features/app/components/layout/app_layout/nagbars/DomainMovedNagbar.tsx:56
-msgid "Show me how"
-msgstr "Montrez-moi comment"
 
 #. Plus menu submenu toggle that shows the saved media (memes) button next to the textarea.
 #. Short label for an advanced message input preference.
@@ -31098,12 +30959,12 @@ msgid "Show unread indicator on muted channels"
 msgstr "Afficher l'indicateur de messages non lus sur les salons mis en sourdine"
 
 #. Label in the avatar uploader.
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:57
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:62
 msgid "Show your global profile avatar in this community"
 msgstr "Afficher votre avatar de profil global dans cette communauté"
 
 #. Label in the banner uploader. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:51
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:48
 msgid "Show your global profile banner in this community"
 msgstr "Afficher votre bannière de profil global dans cette communauté"
 
@@ -31156,19 +31017,14 @@ msgid "Sign in to claim your gift"
 msgstr "Connectez-vous pour récupérer votre cadeau"
 
 #. Passkey sign-in action that opens the browser flow from the desktop app.
-#: src/features/auth/flow/auth_login_core/AuthLoginPasskeyActions.tsx:69
-#: src/features/auth/flow/AuthLoginLayout.tsx:79
+#: src/features/auth/flow/auth_login_core/AuthLoginPasskeyActions.tsx:64
+#: src/features/auth/flow/AuthLoginLayout.tsx:67
 msgid "Sign in via browser"
 msgstr "Se connecter via le navigateur"
 
-#: src/features/auth/flow/auth_login_core/AuthLoginPasskeyActions.tsx:68
+#: src/features/auth/flow/auth_login_core/AuthLoginPasskeyActions.tsx:63
 msgid "Sign in with a passkey"
 msgstr "Se connecter avec une clé d'accès"
-
-#. Sign-in option and modal title on fluxer.com that pairs a newly installed app with the old installed app still signed in on the previous domain. productName is the app name.
-#: src/features/auth/flow/BrowserLoginHandoffModal.tsx:27
-msgid "Sign in with your old {productName} app"
-msgstr "Se connecter avec votre ancienne application {productName}"
 
 #. Description shown when sign-in is restricted to the configured SSO provider.
 #: src/features/auth/flow/AuthSsoPanel.tsx:17
@@ -31236,7 +31092,7 @@ msgid "Sign-in details"
 msgstr "Informations de connexion"
 
 #. Accessible label for the stepped sign-in panel.
-#: src/features/auth/flow/AuthLoginLayout.tsx:62
+#: src/features/auth/flow/AuthLoginLayout.tsx:55
 msgid "Sign-in flow"
 msgstr "Parcours de connexion"
 
@@ -31380,7 +31236,7 @@ msgstr "Passer"
 msgid "Skip \"Mark all as read\" confirmation"
 msgstr "Passer la confirmation « Tout marquer comme lu »"
 
-#: src/features/messaging/components/modals/ImageCropModal.tsx:1034
+#: src/features/messaging/components/modals/ImageCropModal.tsx:953
 msgid "Skip cropping"
 msgstr "Ignorer le recadrage"
 
@@ -31511,7 +31367,7 @@ msgid "Slowmode"
 msgstr "Mode lent"
 
 #. Short label under a destination row in the forward modal while slowmode blocks sending. Preserve {remaining}; it is inserted by code.
-#: src/features/app/components/dialogs/shared/UseForwardDestinations.ts:73
+#: src/features/app/components/dialogs/shared/UseForwardDestinations.ts:82
 msgid "Slowmode · wait {remaining}"
 msgstr "Mode lent · attendez {remaining}"
 
@@ -31709,7 +31565,7 @@ msgstr "Certains utilisateurs ne peuvent pas être ajoutés"
 #. Generic error modal title for an unexpected failure.
 #. Generic error toast title.
 #: src/features/auth/flow/HandoffApprovalFlow.tsx:248
-#: src/features/auth/flow/HandoffCodeDisplay.tsx:90
+#: src/features/auth/flow/HandoffCodeDisplay.tsx:82
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:274
 #: src/lib/forms/index.tsx:18
 msgid "Something went wrong"
@@ -31826,8 +31682,8 @@ msgstr "Une erreur est survenue."
 #: src/features/emoji/components/emojis/EmojiListItem.tsx:129
 #: src/features/theme/components/modals/ShareThemeModal.tsx:51
 #: src/features/ui/action_menu/items/CallMenuItems.tsx:45
-#: src/features/ui/action_menu/items/ChannelMenuData.tsx:128
-#: src/features/ui/action_menu/items/ChannelMenuData.tsx:144
+#: src/features/ui/action_menu/items/ChannelMenuData.tsx:126
+#: src/features/ui/action_menu/items/ChannelMenuData.tsx:142
 msgid "Something went wrong. Please try again in a moment."
 msgstr "Une erreur est survenue. Veuillez réessayer dans un instant."
 
@@ -32298,7 +32154,7 @@ msgstr "Recommencer"
 msgid "Start recording"
 msgstr "Démarrer l’enregistrement"
 
-#: src/features/search/components/quick_switcher/QuickSwitcherModal.tsx:592
+#: src/features/search/components/quick_switcher/QuickSwitcherModal.tsx:586
 msgid "Start searches with <0>{peoplePrefix}</0> <1>{textChannelPrefix}</1> <2>{voiceChannelPrefix}</2> <3>{communityPrefix}</3> to narrow down results."
 msgstr "Commencez vos recherches avec <0>{peoplePrefix}</0> <1>{textChannelPrefix}</1> <2>{voiceChannelPrefix}</2> <3>{communityPrefix}</3> pour affiner les résultats."
 
@@ -32615,7 +32471,7 @@ msgid "Stop trusting all links?"
 msgstr "Arrêter de faire confiance à tous les liens ?"
 
 #. Security settings: confirmation modal title for turning off passkey-based two-factor authentication.
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:65
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:64
 msgid "Stop using passkeys for two-factor authentication?"
 msgstr "Ne plus utiliser de clés d'accès pour l'authentification à deux facteurs ?"
 
@@ -33029,7 +32885,7 @@ msgstr "Passer à la mise en page confortable"
 msgid "Switch to dense layout"
 msgstr "Passer à la mise en page dense"
 
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:649
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:647
 msgid "Switch to direct input"
 msgstr "Passer en mode Entrée directe"
 
@@ -33337,7 +33193,7 @@ msgstr "Tableaux"
 msgid "Tag"
 msgstr "Tag"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:799
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:800
 msgid "Tag Icon"
 msgstr "Icône de badge"
 
@@ -33346,7 +33202,7 @@ msgstr "Icône de badge"
 msgid "Tag pair already in use by persona \"{name}\""
 msgstr "Paire de balises déjà utilisée par la persona « {name} »"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:786
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:787
 msgid "Tag Text"
 msgstr "Texte du badge"
 
@@ -33402,11 +33258,6 @@ msgstr "Parler dans ce salon vocal. Sans cette permission, le micro des membres 
 msgid "Talk in voice channels. Without this permission, members stay muted until someone with the \"Mute members\" permission unmutes them."
 msgstr "Parler dans les salons vocaux. Sans cette permission, le micro des membres reste coupé jusqu’à ce qu’une personne disposant de la permission « Couper le micro des membres » le réactive."
 
-#. Second install step on iPhone and iPad. Share and Add to Home Screen are the names of the Safari menu items, use the names iOS shows in this language.
-#: src/features/app/domain_migration/DomainMovedStepsModal.tsx:41
-msgid "Tap Share, then Add to Home Screen."
-msgstr "Touchez Partager, puis Sur l’écran d’accueil."
-
 #. Label in the note edit sheet.
 #: src/features/user/components/modals/NoteEditSheet.tsx:21
 msgid "Tap to add a note"
@@ -33444,7 +33295,7 @@ msgstr "Transfert vers une autre région vocale en cours..."
 msgid "Tell us about this persona..."
 msgstr "Présentez cette persona…"
 
-#: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:559
+#: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:560
 msgid "Template"
 msgstr "Modèle"
 
@@ -33574,8 +33425,10 @@ msgstr "Salon textuel"
 msgid "Text channel names"
 msgstr "Noms des salons textuels"
 
+#. Quick switcher section header for text channel results.
 #. Quick switcher section header listing text channel candidates.
-#: src/features/search/utils/QuickSwitcherModalUtils.tsx:58
+#: src/features/search/state/QuickSwitcherResultConverters.ts:30
+#: src/features/search/utils/QuickSwitcherModalUtils.tsx:57
 msgid "Text channels"
 msgstr "Salons textuels"
 
@@ -33934,12 +33787,12 @@ msgid "The phone check is set aside. One email step is left."
 msgstr "La vérification du téléphone est mise de côté. Il reste une étape par e-mail."
 
 #. OAuth authorize page error shown when the redirect_uri is not registered for this OAuth app.
-#: src/features/auth/components/pages/oauth_authorize_page/state/useAuthorizeFlow.ts:59
+#: src/features/auth/components/pages/oauth_authorize_page/state/useAuthorizeFlow.ts:58
 msgid "The provided redirect_uri is not registered for this application."
 msgstr "L'URI de redirection fournie n'est pas enregistrée pour cette application."
 
 #. Body text in the authentication authorize flow. Keep the tone plain and specific.
-#: src/features/auth/components/pages/oauth_authorize_page/state/useAuthorizeFlow.ts:50
+#: src/features/auth/components/pages/oauth_authorize_page/state/useAuthorizeFlow.ts:49
 msgid "The provided redirect_uri must use HTTP or HTTPS."
 msgstr "L'URI de redirection fournie doit utiliser HTTP ou HTTPS."
 
@@ -33949,7 +33802,7 @@ msgid "The role granted {permissions}"
 msgstr "Le rôle accordait {permissions}"
 
 #. Body of a modal shown when a browser screen share track ends outside the app, for example from the browser sharing controls.
-#: src/features/voice/engine/v2/VoiceEngineV2AppScreenShareExecutionAdapter.tsx:124
+#: src/features/voice/engine/v2/VoiceEngineV2AppScreenShareExecutionAdapter.tsx:125
 msgctxt "screen-share"
 msgid "The screen share source stopped sending video, so your screen share was stopped."
 msgstr "La source de partage d’écran a cessé d’envoyer des vidéos, votre partage d’écran a donc été arrêté."
@@ -34166,13 +34019,8 @@ msgstr "Ce compte ne peut pas être bloqué."
 msgid "This action cannot be undone. All associated data, including the bot user, will be permanently deleted."
 msgstr "Cette action est irréversible. Toutes les données associées, y compris l'utilisateur du bot, seront définitivement supprimées."
 
-#. Error modal body shown when an animated image has too many frames or pixels to crop in the browser.
-#: src/features/messaging/components/modals/ImageCropModal.tsx:41
-msgid "This animation is too long or too large to crop. Try a shorter or smaller file."
-msgstr "Cette animation est trop longue ou trop volumineuse pour être rognée. Essayez un fichier plus court ou plus petit."
-
 #. Short label in the authentication authorize flow. Keep the tone plain and specific.
-#: src/features/auth/components/pages/oauth_authorize_page/state/useAuthorizeFlow.ts:83
+#: src/features/auth/components/pages/oauth_authorize_page/state/useAuthorizeFlow.ts:82
 msgid "This application"
 msgstr "Cette application"
 
@@ -34182,7 +34030,7 @@ msgid "This attachment has expired"
 msgstr "Cette pièce jointe a expiré"
 
 #. OAuth authorize page error shown when a private bot cannot be added by non-owners.
-#: src/features/auth/components/pages/oauth_authorize_page/state/useAuthorizeFlow.ts:71
+#: src/features/auth/components/pages/oauth_authorize_page/state/useAuthorizeFlow.ts:70
 msgid "This bot is not public and cannot be added by other users."
 msgstr "Ce bot n'est pas public et ne peut pas être ajouté par d'autres utilisateurs."
 
@@ -34190,22 +34038,10 @@ msgstr "Ce bot n'est pas public et ne peut pas être ajouté par d'autres utilis
 msgid "This bot requests the administrator permission. Only grant it if you fully trust the developer. Ask them to request fewer permissions instead. Close this page if unsure."
 msgstr "Ce bot demande la permission d'administrateur. Ne l'accordez que si vous faites entièrement confiance au développeur. Demandez-lui plutôt de demander moins de permissions. Fermez cette page en cas de doute."
 
-#. Error modal body shown when the browser cannot decode animated AVIF for cropping. {avifFormatLabel} is the AVIF format name.
-#. Modal body shown when an animated AVIF upload is rejected because this browser cannot crop it.
-#: src/features/expressions/utils/AnimatedAvifModalUtils.tsx:14
-#: src/features/messaging/components/modals/ImageCropModal.tsx:49
-msgid "This browser can't crop animated {avifFormatLabel} files. Upload a GIF or WebP instead."
-msgstr "Ce navigateur ne peut pas recadrer les fichiers {avifFormatLabel} animés. Téléchargez plutôt un GIF ou un WebP."
-
 #. Console warning line explaining that the browser console is meant for developers.
 #: src/features/devtools/utils/SelfXssNotice.ts:16
 msgid "This browser console is a developer tool."
 msgstr "Cette console de navigateur est un outil de développement."
-
-#. Error modal body shown when WebAssembly is unavailable, which animated image cropping needs.
-#: src/features/messaging/components/modals/ImageCropModal.tsx:54
-msgid "This browser has WebAssembly turned off, so animated images can't be cropped."
-msgstr "Ce navigateur a WebAssembly désactivé, les images animées ne peuvent donc pas être recadrées."
 
 #. Pre-join indicator shown beneath the Join button on a DM or group DM call where every connected participant supports E2EE.
 #: src/features/voice/utils/VoiceMessageDescriptors.ts:320
@@ -34484,14 +34320,9 @@ msgstr "Ce groupe contient trop de personnes"
 msgid "This group is full. Remove someone before adding more people."
 msgstr "Ce groupe est plein. Retirez un membre avant d’ajouter d’autres personnes."
 
-#: src/features/auth/flow/HandoffCodeDisplay.tsx:113
+#: src/features/auth/flow/HandoffCodeDisplay.tsx:105
 msgid "This handoff code has expired. Generate a new one to continue."
 msgstr "Ce code de transfert a expiré. Générez-en un nouveau pour continuer."
-
-#. Error modal body shown when an animated image fails to decode during cropping.
-#: src/features/messaging/components/modals/ImageCropModal.tsx:45
-msgid "This image couldn't be read. It may be damaged."
-msgstr "Cette image n'a pas pu être lue. Elle est peut-être endommagée."
 
 #. Desktop updater modal body for managed package builds such as Flatpak. productName is the app name.
 #: src/features/updater/commands/UpdaterModalCommands.tsx:75
@@ -34532,7 +34363,7 @@ msgstr "Ceci est un emoji personnalisé d'une communauté."
 msgid "This is a custom sticker from a community."
 msgstr "Ceci est un sticker personnalisé d'une communauté."
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:862
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:863
 msgid "This is a preview of how your display tag will look in chat."
 msgstr "Voici un aperçu de l'affichage de votre badge dans la discussion."
 
@@ -34605,11 +34436,11 @@ msgstr "Ceci est la description de la deuxième option"
 msgid "This is the third option description"
 msgstr "Ceci est la description de la troisième option"
 
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:261
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:248
 msgid "This is your last passkey and passkeys are your second factor. Deleting it turns off two-factor authentication for your account, and your current backup codes will stop working."
 msgstr "C'est votre dernière clé d'accès, et les clés d'accès sont votre deuxième facteur. La supprimer désactivera l'authentification à deux facteurs pour votre compte, et vos codes de secours actuels cesseront de fonctionner."
 
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:256
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:243
 msgid "This is your last passkey. Once it's gone you won't be able to use a passkey as your second factor."
 msgstr "C'est votre dernière clé d'accès. Une fois qu'elle sera supprimée, vous ne pourrez plus utiliser de clé d'accès comme deuxième facteur."
 
@@ -34675,7 +34506,7 @@ msgid "This member isn't connected to voice anymore."
 msgstr "Ce membre n’est plus connecté à la discussion vocale."
 
 #. Forward dialog error shown when the forwarded message contains age-restricted media and the target channel is not age-restricted.
-#: src/features/app/components/dialogs/shared/UseForwardDestinations.ts:68
+#: src/features/app/components/dialogs/shared/UseForwardDestinations.ts:77
 msgid "This message can only be forwarded to age-restricted channels"
 msgstr "Ce message ne peut être transféré qu'aux chaînes soumises à restriction d'âge."
 
@@ -34723,16 +34554,6 @@ msgstr "Le son est désactivé pour ce participant"
 #: src/features/voice/utils/VoiceMessageDescriptors.ts:65
 msgid "This participant was deafened by moderators"
 msgstr "Les modérateurs ont désactivé le son de ce participant"
-
-#. Error in the passkey pop-up window when the request it received is not valid.
-#: src/features/auth/passkey_bridge/PasskeyBridgeScreen.tsx:39
-msgid "This passkey request could not be verified. Close this window and try again."
-msgstr "Cette demande de clé d'accès n'a pas pu être vérifiée. Fermez cette fenêtre et réessayez."
-
-#. Error in the passkey pop-up window after five minutes without finishing.
-#: src/features/auth/passkey_bridge/PasskeyBridgeScreen.tsx:43
-msgid "This passkey request timed out. Close this window and try again."
-msgstr "Cette demande de clé d'accès a expiré. Fermez cette fenêtre et réessayez."
 
 #. Required-action form error when the backend rejects a phone number.
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:530
@@ -35621,7 +35442,7 @@ msgid "Try searching for something like \"theme\", \"notifications\", or \"priva
 msgstr "Essayez de rechercher « thème », « notifications » ou « confidentialité »"
 
 #. Secondary MFA action that switches from code entry to passkey or security-key authentication.
-#: src/features/auth/flow/MfaScreen.tsx:35
+#: src/features/auth/flow/MfaScreen.tsx:34
 msgid "Try security key / passkey instead"
 msgstr "Essayer plutôt une clé de sécurité / clé d'accès"
 
@@ -35662,7 +35483,7 @@ msgstr "Turc"
 #. Button label that turns off streaming privacy.
 #. Security settings: confirm button for turning off passkey-based two-factor authentication.
 #: src/features/app/components/layout/app_layout/nagbars/StreamerModeNagbar.tsx:16
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:81
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:80
 msgid "Turn off"
 msgstr "Désactiver"
 
@@ -35719,7 +35540,7 @@ msgid "Turn off streaming privacy before viewing login or account security detai
 msgstr "Désactivez la confidentialité de la diffusion avant de consulter les informations de connexion ou de sécurité du compte."
 
 #. Security settings: confirm button for turning on passkey-based two-factor authentication.
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:61
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:60
 msgid "Turn on"
 msgstr "Activer"
 
@@ -35862,7 +35683,7 @@ msgstr "Authentification à deux facteurs désactivée"
 msgid "Two-factor authentication enabled"
 msgstr "Authentification à deux facteurs activée"
 
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:328
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:315
 msgid "Two-factor authentication is enabled"
 msgstr "L'authentification à deux facteurs est activée"
 
@@ -36225,7 +36046,7 @@ msgid "Unknown"
 msgstr "Inconnu"
 
 #. OAuth authorize page error shown when the application, session, or request is invalid.
-#: src/features/auth/components/pages/oauth_authorize_page/state/useAuthorizeFlow.ts:46
+#: src/features/auth/components/pages/oauth_authorize_page/state/useAuthorizeFlow.ts:45
 msgid "Unknown application, expired session, or invalid authorization request."
 msgstr "Application inconnue, session expirée ou requête d'autorisation invalide."
 
@@ -36577,7 +36398,7 @@ msgstr "Groupe désépinglé"
 
 #. Toast confirming a group DM was unpinned in the sidebar.
 #. Toast confirming a group DM was unpinned in the sidebar.
-#: src/features/ui/action_menu/items/ChannelMenuData.tsx:116
+#: src/features/ui/action_menu/items/ChannelMenuData.tsx:114
 #: src/features/ui/action_menu/items/dm_menu_data/shared.ts:25
 msgid "Unpinned group DM"
 msgstr "MP de groupe désépinglé"
@@ -36624,11 +36445,6 @@ msgstr "Personnalisation des badges d’éléments non lus"
 #: src/features/user/components/settings_utils/search_index/AdvancedSettingsIndex.ts:10
 msgid "Unread badges"
 msgstr "Badges de messages non lus"
-
-#. Quick switcher section header above the unread channels of the current community.
-#: src/features/search/state/QuickSwitcherResultGenerators.ts:54
-msgid "Unread channels"
-msgstr "Salons non lus"
 
 #. Short label in the visual tab. Keep it concise.
 #: src/features/user/components/modals/tabs/accessibility_tab/VisualTab.tsx:29
@@ -36856,12 +36672,12 @@ msgid "Upload"
 msgstr "Importer"
 
 #. Button or menu action label in the avatar uploader. Keep it concise.
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:65
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:70
 msgid "Upload a custom avatar for this community"
 msgstr "Importer un avatar personnalisé pour cette communauté"
 
 #. Button or menu action label in the banner uploader. Keep it concise. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:59
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:56
 msgid "Upload a custom banner for this community"
 msgstr "Importer une bannière personnalisée pour cette communauté"
 
@@ -36933,12 +36749,12 @@ msgstr "Envoyer des fichiers et des médias dans les messages."
 msgid "Upload files and media in this channel."
 msgstr "Envoyer des fichiers et des médias dans ce salon."
 
-#: src/features/channel/components/modals/EditGroupBottomSheet.tsx:328
-#: src/features/channel/components/modals/EditGroupModal.tsx:283
-#: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:304
-#: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:625
+#: src/features/channel/components/modals/EditGroupBottomSheet.tsx:329
+#: src/features/channel/components/modals/EditGroupModal.tsx:284
+#: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:305
+#: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:626
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildIconUploadField.tsx:130
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:829
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:830
 msgid "Upload icon"
 msgstr "Importer une icône"
 
@@ -37023,7 +36839,7 @@ msgstr "Uniquement les fichiers vidéo importés"
 msgid "Uploading {count, plural, one {# file} other {# files}}"
 msgstr "Envoi de {count, plural, one {# fichier} other {# fichiers}}"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1028
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1029
 msgid "Uploading avatar..."
 msgstr "Téléversement de l'avatar…"
 
@@ -37116,11 +36932,6 @@ msgstr "Utilisez une fenêtre dédiée pour définir une date limite d'historiqu
 msgid "Use a different email address and verify it with a code."
 msgstr "Utilisez une autre adresse e-mail et vérifiez-la avec un code."
 
-#. Button that runs the passkey prompt in a small pop-up window on the old web address, so password manager extensions can find passkeys saved there.
-#: src/features/auth/components/PasswordManagerPasskeyAction.tsx:11
-msgid "Use a password manager passkey"
-msgstr "Utiliser une clé d'accès de gestionnaire de mots de passe"
-
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
 #: src/features/channel/components/channel_header_components/developer_tools/NagbarControls.ts:9
 msgid "Use actual"
@@ -37141,7 +36952,7 @@ msgstr "Utiliser la valeur réelle"
 msgid "Use alternative method"
 msgstr "Utiliser une autre méthode"
 
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:330
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:317
 msgid "Use an authenticator app to generate codes for two-factor authentication"
 msgstr "Utiliser une application d’authentification pour générer les codes de l’authentification à deux facteurs"
 
@@ -37189,8 +37000,8 @@ msgstr "Utiliser le thème charbon (surfaces noir de jais)"
 
 #. Short label in the avatar uploader. Keep it concise.
 #. Short label in the banner uploader. Keep it concise. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:61
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:55
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:66
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:52
 msgid "Use custom image"
 msgstr "Utiliser une image personnalisée"
 
@@ -37250,8 +37061,8 @@ msgstr "Utilisez les filtres ou saisissez des mots-clés pour trouver des messag
 
 #. Short label in the avatar uploader. Keep it concise.
 #. Short label in the banner uploader. Keep it concise. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:53
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:47
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:58
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:44
 msgid "Use global profile"
 msgstr "Utiliser le profil global"
 
@@ -37313,12 +37124,12 @@ msgid "Use only if it clearly breaks {productName}'s rules and doesn't fit above
 msgstr "À utiliser uniquement si le contenu enfreint clairement les règles de {productName} et ne correspond pas aux catégories ci-dessus."
 
 #. Security settings: confirmation modal title for turning on passkey-based two-factor authentication.
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:52
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:51
 msgid "Use passkeys for two-factor authentication?"
 msgstr "Utiliser des clés d'accès pour l'authentification à deux facteurs ?"
 
 #. Settings search entry description. One-line summary of what the settings search entry controls.
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:423
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:410
 #: src/features/user/components/settings_utils/search_index/AccountSecurityIndex.ts:134
 msgid "Use passkeys to sign in without a password"
 msgstr "Utiliser des clés d'accès pour se connecter sans mot de passe"
@@ -37422,11 +37233,6 @@ msgstr "Utiliser l'activité vocale"
 #: src/features/user/components/modals/tabs/LanguageTab.tsx:94
 msgid "Use your operating system's spellchecker when available. Otherwise, use {productName}'s in-app dictionaries."
 msgstr "Utilisez le correcteur orthographique de votre système d'exploitation si disponible. Sinon, utilisez les dictionnaires intégrés de {productName}."
-
-#. Heading of the small pop-up window that runs a passkey prompt for the new web address.
-#: src/features/auth/passkey_bridge/PasskeyBridgeScreen.tsx:18
-msgid "Use your passkey"
-msgstr "Utilisez votre clé d'accès"
 
 #. Description text in the entrance sound section.
 #: src/features/user/components/modals/tabs/components/EntranceSoundSection.tsx:66
@@ -37647,27 +37453,27 @@ msgid "Uses:"
 msgstr "Utilisations :"
 
 #. Developer nagbar status: banner follows real account state.
-#: src/features/devtools/components/NagbarControls.ts:106
+#: src/features/devtools/components/NagbarControls.ts:101
 msgid "Using actual account state"
 msgstr "Utilise l'état réel du compte"
 
 #. Developer nagbar status: banner follows real gift inventory state.
-#: src/features/devtools/components/NagbarControls.ts:126
+#: src/features/devtools/components/NagbarControls.ts:121
 msgid "Using actual gift inventory state"
 msgstr "Utilisation de l’état réel de l’inventaire des cadeaux"
 
 #. Developer nagbar status: banner follows real premium subscription state.
-#: src/features/devtools/components/NagbarControls.ts:122
+#: src/features/devtools/components/NagbarControls.ts:117
 msgid "Using actual premium state"
 msgstr "Utilise l'état réel de l'abonnement premium"
 
 #. Developer nagbar status: banner follows the real app state.
-#: src/features/devtools/components/NagbarControls.ts:130
+#: src/features/devtools/components/NagbarControls.ts:125
 msgid "Using actual state"
 msgstr "Utilise l'état réel"
 
 #. Developer nagbar status: banner follows real email verification state.
-#: src/features/devtools/components/NagbarControls.ts:110
+#: src/features/devtools/components/NagbarControls.ts:105
 msgid "Using actual verification state"
 msgstr "Utilisation de l'état de vérification réel"
 
@@ -37784,7 +37590,7 @@ msgstr "E-mail de vérification envoyé. Vérifiez votre boîte de réception."
 msgid "Verification expired"
 msgstr "Vérification expirée"
 
-#: src/features/auth/components/modals/SudoVerificationModal.tsx:74
+#: src/features/auth/components/modals/SudoVerificationModal.tsx:67
 #: src/features/auth/components/pages/VerifyEmailPage.tsx:108
 #: src/features/premium/components/pages/PremiumCallbackPage.tsx:241
 msgid "Verification failed"
@@ -37825,12 +37631,12 @@ msgid "Verify email"
 msgstr "Vérifier l'e-mail"
 
 #. Accessible form label in the authentication sudo verification modal. Keep the tone plain and specific.
-#: src/features/auth/components/modals/SudoVerificationModal.tsx:53
+#: src/features/auth/components/modals/SudoVerificationModal.tsx:46
 msgid "Verify identity form"
 msgstr "Formulaire de vérification d'identité"
 
 #. Short label in the authentication sudo verification modal. Keep the tone plain and specific.
-#: src/features/auth/components/modals/SudoVerificationModal.tsx:57
+#: src/features/auth/components/modals/SudoVerificationModal.tsx:50
 msgid "Verify it's you"
 msgstr "Vérifiez que c'est bien vous"
 
@@ -37873,12 +37679,12 @@ msgid "Verify your email address to send friend requests."
 msgstr "Vérifiez votre adresse e-mail pour envoyer des demandes d'ami."
 
 #. Security settings warning shown when an unverified account cannot register a new passkey.
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:48
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:47
 msgid "Verify your email before adding a passkey."
 msgstr "Vérifiez votre adresse e-mail avant d'ajouter une clé d'accès."
 
 #. Security settings warning shown when an unverified account cannot enable authenticator-app two-factor authentication.
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:43
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:42
 msgid "Verify your email before adding an authenticator app."
 msgstr "Vérifiez votre adresse e-mail avant d'ajouter une application d'authentification."
 
@@ -38170,7 +37976,7 @@ msgstr "Voir et gérer les utilisateurs bannis."
 msgid "View and manage every webhook configured across your community."
 msgstr "Afficher et gérer tous les webhooks configurés pour votre communauté."
 
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:397
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:384
 msgid "View and manage your backup codes for account recovery"
 msgstr "Afficher et gérer vos codes de secours pour la récupération de compte"
 
@@ -38204,7 +38010,7 @@ msgstr "Voir le salon"
 msgid "View channel members"
 msgstr "Voir les membres du salon"
 
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:415
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:402
 msgid "View codes"
 msgstr "Afficher les codes"
 
@@ -38372,7 +38178,7 @@ msgid "Virginia"
 msgstr "Virginie"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:952
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:953
 #: src/features/user/components/settings_utils/section_registry/AccessibilitySections.ts:39
 msgid "Visibility"
 msgstr "Visibilité"
@@ -38558,8 +38364,10 @@ msgstr "Salon vocal plein"
 msgid "Voice channel join behavior"
 msgstr "Comportement lors de la connexion aux salons vocaux"
 
+#. Quick switcher section header for voice channel results.
 #. Quick switcher section header listing voice channel candidates.
-#: src/features/search/utils/QuickSwitcherModalUtils.tsx:62
+#: src/features/search/state/QuickSwitcherResultConverters.ts:34
+#: src/features/search/utils/QuickSwitcherModalUtils.tsx:61
 msgid "Voice channels"
 msgstr "Salons vocaux"
 
@@ -38623,7 +38431,7 @@ msgid "Voice participants"
 msgstr "Participants à l'appel"
 
 #. Voice settings radio group label for microphone processing profile.
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:644
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:642
 #: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:55
 msgid "Voice processing"
 msgstr "Traitement de la voix"
@@ -38736,17 +38544,17 @@ msgstr "Veuillez patienter"
 msgid "Waiting for connection..."
 msgstr "En attente de connexion…"
 
-#: src/features/auth/components/modals/SudoVerificationModal.tsx:274
+#: src/features/auth/components/modals/SudoVerificationModal.tsx:232
 msgid "Waiting for passkey…"
 msgstr "En attente de la clé d’accès…"
 
 #. Inline notice in the forward modal when slowmode is active in the selected target channel. forwardChannelDisplayName is the channel name.
-#: src/features/messaging/components/modals/ForwardModal.tsx:74
+#: src/features/messaging/components/modals/ForwardModal.tsx:77
 msgid "Waiting for slowmode in {forwardChannelDisplayName} to expire."
 msgstr "En attente de l'expiration du mode lent dans {forwardChannelDisplayName}."
 
 #. Inline notice in the forward modal when slowmode is active in one or more selected target channels.
-#: src/features/messaging/components/modals/ForwardModal.tsx:79
+#: src/features/messaging/components/modals/ForwardModal.tsx:82
 msgid "Waiting for slowmode in one or more selected channels to expire."
 msgstr "En attente de l'expiration du mode lent dans un ou plusieurs salons sélectionnés."
 
@@ -38945,7 +38753,7 @@ msgstr "Nous avons redimensionné et compressé ce sticker en 320 × 320 pixels,
 msgid "We sent a code to {email}."
 msgstr "Nous avons envoyé un code à {email}."
 
-#: src/features/auth/flow/BrowserLoginHandoffModal.tsx:152
+#: src/features/auth/flow/BrowserLoginHandoffModal.tsx:128
 msgid "We will prefill {prefillEmail} once browser sign-in opens."
 msgstr "Nous allons préremplir {prefillEmail} une fois que la connexion par navigateur s'ouvrira."
 
@@ -39145,7 +38953,7 @@ msgid "Website previews"
 msgstr "Aperçus des sites web"
 
 #. Heading on the standard sign-in form.
-#: src/features/auth/flow/AuthLoginLayout.tsx:66
+#: src/features/auth/flow/AuthLoginLayout.tsx:59
 msgid "Welcome back"
 msgstr "Bon retour"
 
@@ -39481,7 +39289,7 @@ msgctxt "us-state"
 msgid "Wisconsin"
 msgstr "Wisconsin"
 
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:201
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:215
 msgid "With {PREMIUM_PRODUCT_NAME}, you can use animated avatars ({ANIMATED_AVATAR_FORMATS}) and profile banners, customize your tag, and unlock many other {PREMIUM_PRODUCT_NAME} perks."
 msgstr "Avec {PREMIUM_PRODUCT_NAME}, vous pouvez utiliser des avatars animés ({ANIMATED_AVATAR_FORMATS}), des bannières de profil, personnaliser votre tag et débloquer de nombreux autres avantages {PREMIUM_PRODUCT_NAME}."
 
@@ -40089,12 +39897,12 @@ msgid "You need access to your current email to change it from here. Use phone v
 msgstr "Vous devez avoir accès à votre adresse e-mail actuelle pour la modifier d'ici. Utilisez la vérification par téléphone si disponible ou contactez l'assistance."
 
 #. Forward dialog error shown when the forwarded message has attachments and the user lacks Attach Files in the target channel.
-#: src/features/app/components/dialogs/shared/UseForwardDestinations.ts:63
+#: src/features/app/components/dialogs/shared/UseForwardDestinations.ts:72
 msgid "You need the \"{attachFilesPermissionLabel}\" permission to attach files in this channel"
 msgstr "Vous devez disposer de la permission « {attachFilesPermissionLabel} » pour joindre des fichiers dans ce salon"
 
 #. Forward dialog error shown when the forwarded message contains embeds and the user lacks Embed Links in the target channel.
-#: src/features/app/components/dialogs/shared/UseForwardDestinations.ts:58
+#: src/features/app/components/dialogs/shared/UseForwardDestinations.ts:67
 msgid "You need the \"{embedLinksPermissionLabel}\" permission to embed links in this channel"
 msgstr "Vous devez disposer de la permission « {embedLinksPermissionLabel} » pour intégrer des liens dans ce salon"
 
@@ -40131,8 +39939,8 @@ msgstr "Vous devez disposer de la permission « {permissionLabel} » pour utilis
 msgid "You need the \"{permissionLabel}\" permission to use stickers from other communities here."
 msgstr "Vous devez disposer de la permission « {permissionLabel} » pour utiliser ici les stickers d’autres communautés."
 
-#: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:207
-#: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:433
+#: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:208
+#: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:434
 msgid "You need to claim your account before you can create a community."
 msgstr "Vous devez finaliser votre inscription avant de pouvoir créer une communauté."
 
@@ -40153,8 +39961,8 @@ msgstr "Vous devez finaliser votre inscription pour envoyer des messages dans ce
 msgid "You need to verify a phone number to send messages in this community."
 msgstr "Vous devez vérifier un numéro de téléphone pour envoyer des messages dans cette communauté."
 
-#: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:232
-#: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:458
+#: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:233
+#: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:459
 msgid "You need to verify your email address before you can create a community."
 msgstr "Vous devez vérifier votre adresse e-mail avant de pouvoir créer une communauté."
 
@@ -40212,7 +40020,7 @@ msgid "You will still need to finish the email step."
 msgstr "Vous devrez toujours terminer l'étape de l'e-mail."
 
 #. Security settings: confirmation modal body for turning off passkey-based two-factor authentication when the account also has an authenticator app.
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:75
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:74
 msgid "You won't be asked for a passkey after your password anymore. Your authenticator app stays as your second factor."
 msgstr "Votre clé d'accès ne vous sera plus demandée après votre mot de passe. Votre application d'authentification restera votre deuxième facteur."
 
@@ -40231,7 +40039,7 @@ msgid "You'll have to sign back in on all signed-out devices"
 msgstr "Vous devrez vous reconnecter sur tous les appareils déconnectés"
 
 #. Security settings: confirmation modal body for turning on passkey-based two-factor authentication.
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:56
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:55
 msgid "You'll need one of your passkeys to sign in on a new device. If you lose every passkey you can be locked out of your account. Backup codes will be saved for you so you still have a way in."
 msgstr "Vous aurez besoin de l'une de vos clés d'accès pour vous connecter sur un nouvel appareil. Si vous perdez toutes vos clés d'accès, vous risquez de perdre définitivement l'accès à votre compte. Des codes de secours seront enregistrés pour vous, afin qu'il vous reste un moyen d'accéder à votre compte."
 
@@ -40488,7 +40296,7 @@ msgid "Your {premiumProductName} subscription has expired. You have lost all {pr
 msgstr "Votre abonnement {premiumProductName} a expiré. Vous avez perdu tous les avantages {premiumProductName}. Réactivez votre abonnement pour retrouver l'accès."
 
 #. OAuth authorize page error shown when the session expired mid-authorization. Keep plain. Preserve {productName}; it is inserted by code.
-#: src/features/auth/components/pages/oauth_authorize_page/state/useAuthorizeFlow.ts:41
+#: src/features/auth/components/pages/oauth_authorize_page/state/useAuthorizeFlow.ts:40
 msgid "Your {productName} session expired. Sign in again to continue authorizing this application."
 msgstr "Votre session {productName} a expiré. Connectez-vous à nouveau pour continuer à autoriser cette application."
 
@@ -40523,12 +40331,12 @@ msgstr "Votre compte est trop récent pour envoyer des messages dans cette commu
 msgid "Your account request is pending approval. You can sign in after an admin approves it."
 msgstr "Votre demande de compte est en attente d’approbation. Vous pourrez vous connecter lorsqu’un admin l’aura approuvée."
 
-#: src/features/auth/components/modals/SudoVerificationModal.tsx:237
+#: src/features/auth/components/modals/SudoVerificationModal.tsx:195
 msgid "Your account requires multi-factor authentication, but no supported methods are set up on this device. Sign in on a device with your authenticator app or security key, or contact support."
 msgstr "Votre compte nécessite une authentification multifacteur, mais aucune méthode prise en charge n'est configurée sur cet appareil. Connectez-vous sur un appareil doté de votre application d'authentification ou de votre clé de sécurité, ou contactez l'assistance."
 
 #. Security settings: confirmation modal body for turning off passkey-based two-factor authentication when passkeys are the only second factor on the account.
-#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:69
+#: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:68
 msgid "Your account will no longer be protected by two-factor authentication when you sign in with your password. You'll also lose elevated permissions in servers that require two-factor authentication."
 msgstr "Votre compte ne sera plus protégé par l'authentification à deux facteurs lorsque vous vous connecterez avec votre mot de passe. Vous perdrez également vos permissions élevées dans les communautés qui exigent l'authentification à deux facteurs."
 
@@ -40545,16 +40353,6 @@ msgstr "Votre action n'a pas pu être effectuée, car elle a été signalée par
 #: src/features/guild/components/modals/guild_tabs/GuildDiscoveryTab.tsx:409
 msgid "Your application is pending review. You can still update your listing details or withdraw the application."
 msgstr "Votre candidature est en attente d’examen. Vous pouvez encore modifier les détails de votre fiche ou retirer votre candidature."
-
-#. Error shown when the browser blocks the pop-up window used for password manager passkeys.
-#: src/features/auth/utils/PasskeyBridge.ts:25
-msgid "Your browser blocked the passkey pop-up window. Allow pop-ups for this site and try again."
-msgstr "Votre navigateur a bloqué la fenêtre contextuelle de la clé d'accès. Autorisez les fenêtres contextuelles pour ce site et réessayez."
-
-#. Error shown when a passkey prompt fails because the browser cannot use the passkey on this web address. Keep plain.
-#: src/features/auth/utils/WebAuthnUtils.ts:18
-msgid "Your browser does not support passkeys on this domain. Update your browser, or sign in with your password and two-factor code."
-msgstr "Votre navigateur ne prend pas en charge les clés d'accès sur ce domaine. Mettez à jour votre navigateur, ou connectez-vous avec votre mot de passe et votre code à deux facteurs."
 
 #. Body of the browser-audio-required modal explaining why the user must click before audio can play.
 #: src/features/voice/components/modals/AudioPlaybackPermissionModal.tsx:12
@@ -40574,11 +40372,11 @@ msgstr "Votre carte est éligible. Redirection vers la page de paiement en cours
 msgid "Your carrier says this number isn't in service. Check it and try again, or contact support if it's correct."
 msgstr "Votre opérateur indique que ce numéro n’est pas en service. Vérifiez-le et réessayez, ou contactez l’assistance si le numéro est correct."
 
-#: src/features/auth/flow/HandoffCodeDisplay.tsx:136
+#: src/features/auth/flow/HandoffCodeDisplay.tsx:128
 msgid "Your code"
 msgstr "Votre code"
 
-#: src/features/auth/flow/HandoffCodeDisplay.tsx:129
+#: src/features/auth/flow/HandoffCodeDisplay.tsx:121
 msgid "Your code is ready"
 msgstr "Votre code est prêt"
 
@@ -40787,7 +40585,7 @@ msgid "Your saved {savedResolution} at {savedFrameRate} FPS needs {premiumProduc
 msgstr "Votre {savedResolution} à {savedFrameRate} FPS nécessite {premiumProductName}, les partages utilisent donc {resolution} à {frameRate} FPS."
 
 #. Body of a modal shown when the video codec the browser negotiated for an active screen share is outside the codecs the app allows and no allowed codec could be published, which forces the share to stop.
-#: src/features/voice/engine/v2/VoiceEngineV2AppScreenShareExecutionAdapter.tsx:130
+#: src/features/voice/engine/v2/VoiceEngineV2AppScreenShareExecutionAdapter.tsx:131
 msgctxt "screen-share"
 msgid "Your screen share could not be published with a compatible video codec, so it was stopped. Try sharing again."
 msgstr "Votre partage d'écran n'a pas pu être publié avec un codec vidéo compatible, il a donc été arrêté. Essayez de partager à nouveau."
@@ -40886,7 +40684,7 @@ msgid "Your vanity URL has been set to {inviteEndpoint}/{vanitySlug}"
 msgstr "Votre URL personnalisée a été définie sur {inviteEndpoint}/{vanitySlug}"
 
 #. Body of a modal shown when the local video encoder produces no frames for an active screen share, which forces the share to stop.
-#: src/features/voice/engine/v2/VoiceEngineV2AppScreenShareExecutionAdapter.tsx:137
+#: src/features/voice/engine/v2/VoiceEngineV2AppScreenShareExecutionAdapter.tsx:138
 msgctxt "screen-share"
 msgid "Your video encoder stopped encoding frames, so your screen share was stopped. Try sharing again."
 msgstr "Votre encodeur vidéo a cessé d'encoder des images, votre partage d'écran a donc été arrêté. Essayez de partager à nouveau."
@@ -40907,7 +40705,7 @@ msgid "YubiKey"
 msgstr "YubiKey"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/messaging/components/modals/ImageCropModal.tsx:917
+#: src/features/messaging/components/modals/ImageCropModal.tsx:831
 #: src/features/user/components/settings_utils/section_registry/AppearanceSections.ts:182
 msgid "Zoom"
 msgstr "Zoom"
