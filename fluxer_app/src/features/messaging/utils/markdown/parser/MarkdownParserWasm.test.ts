@@ -104,3 +104,36 @@ describe('markdown parser wasm default-presentation emoji', () => {
 		});
 	});
 });
+
+describe('markdown parser wasm user and persona mentions', () => {
+	it('parses ordinary user mention without personaId', () => {
+		expect(parseMarkdownAstWithWasm('<@123456789>', ParserFlags.ALLOW_USER_MENTIONS)).toEqual({
+			nodes: [
+				{
+					type: 'Mention',
+					kind: {
+						kind: 'User',
+						id: '123456789',
+						personaId: undefined,
+					},
+				},
+			],
+		});
+	});
+
+	it('parses user mention with personaId', () => {
+		expect(parseMarkdownAstWithWasm('<@123456789:987654321>', ParserFlags.ALLOW_USER_MENTIONS)).toEqual({
+			nodes: [
+				{
+					type: 'Mention',
+					kind: {
+						kind: 'User',
+						id: '123456789',
+						personaId: '987654321',
+					},
+				},
+			],
+		});
+	});
+});
+

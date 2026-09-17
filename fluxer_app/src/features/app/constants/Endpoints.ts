@@ -78,6 +78,7 @@ export const Endpoints = {
 	CHANNEL_WEBHOOKS: (channelId: string) => `/channels/${channelId}/webhooks`,
 	CHANNEL_RTC_REGIONS: (channelId: string) => `/channels/${channelId}/rtc-regions`,
 	CHANNEL_SLOWMODE: (channelId: string) => `/channels/${channelId}/slowmode`,
+	CHANNEL_PERSONA_MENTIONS: (channelId: string) => `/channels/${channelId}/persona-mentions`,
 	CHANNEL_CALL: (channelId: string) => `/channels/${channelId}/call`,
 	CHANNEL_CALL_RING: (channelId: string) => `/channels/${channelId}/call/ring`,
 	CHANNEL_CALL_STOP_RINGING: (channelId: string) => `/channels/${channelId}/call/stop-ringing`,
