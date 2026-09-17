@@ -3,6 +3,7 @@
 import {CallController} from '@app/api/channel/controllers/CallController';
 import {ChannelController} from '@app/api/channel/controllers/ChannelController';
 import {ChannelFollowController} from '@app/api/channel/controllers/ChannelFollowController';
+import {ChannelPersonaMentionController} from '@app/api/channel/controllers/ChannelPersonaMentionController';
 import {ForumController} from '@app/api/channel/controllers/ForumController';
 import {MessageController} from '@app/api/channel/controllers/MessageController';
 import {MessageInteractionController} from '@app/api/channel/controllers/MessageInteractionController';
@@ -14,6 +15,7 @@ import type {HonoApp} from '@app/api/types/HonoEnv';
 export function registerChannelControllers(app: HonoApp) {
 	ChannelController(app);
 	ChannelFollowController(app);
+	ChannelPersonaMentionController(app);
 	MessageInteractionController(app);
 	MessageController(app);
 	CallController(app);
