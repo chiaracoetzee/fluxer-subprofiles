@@ -14,6 +14,11 @@ msgstr ""
 "Plural-Forms: \n"
 "X-Generator: @lingui/cli\n"
 
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:858
+msgid "— Today at 12:00 PM"
+msgstr "— Today at 12:00 PM"
+
+
 #. Description text in the messages tab.
 #: src/features/user/components/modals/tabs/appearance_tab/MessagesTab.tsx:52
 msgid "... turn dense mode on. Nice!"
@@ -22,7 +27,7 @@ msgstr "... เปิดโหมดกระชับแล้ว เยี่�
 #. Button or menu action label in the channel and chat user message. Keep it concise.
 #. Suffix after the message text in the forward modal preview when the forwarded message was edited.
 #: src/features/channel/components/MessageAttachments.tsx:375
-#: src/features/channel/components/UserMessage.tsx:62
+#: src/features/channel/components/UserMessage.tsx:64
 #: src/features/messaging/components/modals/ForwardMessagePreview.tsx:26
 msgid "(edited)"
 msgstr "(แก้ไขแล้ว)"
@@ -31,6 +36,12 @@ msgstr "(แก้ไขแล้ว)"
 #: src/features/user/components/modals/UserProfileMobileSheet.tsx:903
 msgid "(only visible to you)"
 msgstr "(คุณเท่านั้นที่เห็น)"
+
+#. placeholder {0}: w.prefix
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:680
+msgid "(Prefix: {0})"
+msgstr "(Prefix: {0})"
+
 
 #. Short label in the keybinds tab. Keep it concise.
 #: src/features/user/components/modals/tabs/keybinds_tab/CustomKeybindsList.tsx:26
@@ -45,6 +56,21 @@ msgstr "(คุณ)"
 #: src/features/discovery/discovery/DiscoveryGuildCard.tsx:184
 msgid "{0, plural, one {# member} other {# members}}"
 msgstr "{0, plural, one {สมาชิก # คน} other {สมาชิก # คน}}"
+
+#. placeholder {0}: importResults.warnings.length
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:671
+msgid "{0} notice(s) during import"
+msgstr "{0} notice(s) during import"
+
+
+#. placeholder {0}: progress.current
+#. placeholder {1}: progress.total
+#. placeholder {2}: progress.label ?? 'items'
+#. placeholder {3}: progress.percent
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:643
+msgid "{0} of {1} {2} ({3}%)"
+msgstr "{0} of {1} {2} ({3}%)"
+
 
 #. Screen reader announcement in the composer when two people are typing. {a} and {b} are their display names.
 #: src/features/typing/rolling/RollingTypingText.tsx:19
@@ -1423,7 +1449,7 @@ msgid "{length, plural, one {# app} other {# apps}}"
 msgstr "{length, plural, other {# แอป}}"
 
 #. Screen-reader fragment listing multiple attachments on a message. length is the count.
-#: src/features/channel/components/ChannelMessage.tsx:48
+#: src/features/channel/components/ChannelMessage.tsx:52
 msgid "{length, plural, one {# attachment} other {# attachments}}"
 msgstr "{length, plural, other {ไฟล์แนบ # รายการ}}"
 
@@ -1433,12 +1459,12 @@ msgid "{length, plural, one {# channel} other {# channels}}"
 msgstr "{length, plural, other {# ช่อง}}"
 
 #. Screen-reader fragment listing multiple embeds on a message. length is the count.
-#: src/features/channel/components/ChannelMessage.tsx:66
+#: src/features/channel/components/ChannelMessage.tsx:70
 msgid "{length, plural, one {# embed} other {# embeds}}"
 msgstr "{length, plural, other {เนื้อหาที่ฝัง # รายการ}}"
 
 #. Screen-reader fragment listing multiple stickers on a message. length is the count.
-#: src/features/channel/components/ChannelMessage.tsx:57
+#: src/features/channel/components/ChannelMessage.tsx:61
 msgid "{length, plural, one {# sticker} other {# stickers}}"
 msgstr "{length, plural, other {สติกเกอร์ # รายการ}}"
 
@@ -1471,7 +1497,7 @@ msgid "{memberCount} {rawMemberCount, plural, one {member} other {members}}"
 msgstr "{memberCount} {rawMemberCount, plural, one {คน} other {คน}}"
 
 #. Generic aria-label for an unread-mentions badge. Preserve {mentionCount}.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:800
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:804
 msgid "{mentionCount, plural, one {# mention} other {# mentions}}"
 msgstr "{mentionCount, plural, other {การกล่าวถึง # ครั้ง}}"
 
@@ -1507,6 +1533,12 @@ msgstr "{minutes, plural, one {ลิงก์เชิญของคุณจ�
 #: src/features/channel/components/channel_header_components/developer_tools/DeveloperOptionLabels.ts:44
 msgid "{months, plural, one {# month} other {# months}}"
 msgstr "{months, plural, one {# เดือน} other {# เดือน}}"
+
+#. Tooltip when sending as a latched persona
+#: src/features/persona/components/PersonaComposerPill.tsx:33
+msgid "{name} ({mode}) - Click to switch persona"
+msgstr "{name} ({mode}) - Click to switch persona"
+
 
 #. Default name for a role created by duplicating another role in the community roles settings tab. {name} is the source role name; translate the whole label so "copy" can move or inflect as the language needs.
 #: src/features/guild/components/modals/guild_tabs/GuildRolesTab.tsx:52
@@ -1916,7 +1948,7 @@ msgid "{tokenGroupCount, plural, one {# group} other {# groups}}"
 msgstr "{tokenGroupCount, plural, one {# กลุ่ม} other {# กลุ่ม}}"
 
 #. Result count header in the channel search results panel. Plural cases describe the result count.
-#: src/features/channel/components/channel_search_results/ChannelSearchResultsShared.tsx:41
+#: src/features/channel/components/channel_search_results/ChannelSearchResultsShared.tsx:42
 msgid "{total, plural, one {# result} other {# results}}"
 msgstr "{total, plural, one {ผลลัพธ์ # รายการ} other {ผลลัพธ์ # รายการ}}"
 
@@ -2558,6 +2590,7 @@ msgstr "สีเน้น"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label in the accent color picker. Keep it concise.
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:909
 #: src/features/user/components/modals/tabs/my_profile_tab/AccentColorPicker.tsx:12
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:153
 msgid "Accent color"
@@ -2609,7 +2642,7 @@ msgstr "เข้าถึงข้อมูลโปรไฟล์พื้น
 #. User settings tab for accessibility preferences (visual, motion, screen reader, etc.).
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedSettingsCategories.ts:14
 #: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:93
-#: src/features/user/components/settings_utils/SettingsConstants.tsx:61
+#: src/features/user/components/settings_utils/SettingsConstants.tsx:62
 msgid "Accessibility"
 msgstr "การช่วยสำหรับการเข้าถึง"
 
@@ -2623,7 +2656,7 @@ msgstr "พื้นที่ประกาศสำหรับโปรแก
 #. User settings tab for account login, password, MFA, and security.
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedSettingsCategories.ts:11
 #: src/features/user/components/settings_utils/section_registry/AccountSecuritySections.ts:132
-#: src/features/user/components/settings_utils/SettingsConstants.tsx:90
+#: src/features/user/components/settings_utils/SettingsConstants.tsx:95
 msgid "Account"
 msgstr "บัญชี"
 
@@ -2682,6 +2715,12 @@ msgstr "บัญชีใหม่เกินไป"
 #: src/features/invite/commands/InviteCommands.tsx:34
 msgid "Account verification required"
 msgstr "ต้องยืนยันบัญชี"
+
+#. Tooltip showing root account username
+#: src/features/persona/components/PersonaTag.tsx:88
+msgid "Account: @{username}"
+msgstr "Account: @{username}"
+
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/search_index/LinkedAccountsIndex.ts:20
@@ -2747,6 +2786,7 @@ msgstr "การดำเนินการ"
 #. Subscription status badge meaning the paid subscription is active.
 #: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:445
 #: src/features/channel/components/channel_header_components/developer_tools/DeveloperToolsShared.ts:37
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1131
 #: src/features/user/components/settings_utils/search_index/DevicesIndex.ts:19
 msgid "Active"
 msgstr "ใช้งานอยู่"
@@ -2791,13 +2831,26 @@ msgstr "ผู้สมัครสมาชิกรายเดือนที
 #. Short label in the appearance tab. Keep it concise.
 #. Short label in the inline. Keep it concise.
 #. Status label indicating a user is currently active.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:744
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:748
 #: src/features/user/components/modals/tabs/appearance_tab/AppearanceTabInline.tsx:43
 #: src/features/user/components/modals/tabs/AppearanceTab.tsx:51
 #: src/features/user/components/settings_utils/section_registry/AppearanceSections.ts:430
 #: src/features/user/components/settings_utils/section_registry/PrivacySafetySections.ts:289
 msgid "Active now"
 msgstr "กำลังใช้งานอยู่"
+
+#. Aria label for active persona mode tabs
+#. Aria label for active persona mode tabs
+#: src/features/persona/components/PersonaPickerSheet.tsx:37
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:117
+msgid "Active persona mode"
+msgstr "Active persona mode"
+
+
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:746
+msgid "Active Persona Mode"
+msgstr "Active Persona Mode"
+
 
 #. Developer premium-state scenario label.
 #: src/features/devtools/components/PremiumScenarioOptions.ts:36
@@ -3081,6 +3134,11 @@ msgstr "เพิ่มการตั้งค่าเฉพาะ"
 msgid "Add passkey"
 msgstr "เพิ่มพาสคีย์"
 
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1047
+msgid "Add Persona"
+msgstr "Add Persona"
+
+
 #. Generic action label that opens the reaction picker for a message.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:522
@@ -3150,6 +3208,12 @@ msgstr "เพิ่มสติกเกอร์"
 #: src/features/voice/components/voice_participant_tile/WatchStreamOverlay.tsx:14
 msgid "Add stream"
 msgstr "เพิ่มสตรีม"
+
+#. placeholder {0}: formData.tags.length
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:980
+msgid "Add Tag Pair ({0}/5)"
+msgstr "Add Tag Pair ({0}/5)"
+
 
 #. Description for configuring an optional setup wizard integration now.
 #: src/features/app/components/setup/SetupWizardSteps.tsx:926
@@ -3359,7 +3423,7 @@ msgstr "ผู้ดูแลระบบหยุดคำเชิญชั่
 #. User settings tab for power-user and experimental application preferences.
 #: src/features/channel/components/modals/channel_tabs/ChannelOverviewTab.tsx:344
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/index.tsx:28
-#: src/features/user/components/settings_utils/SettingsConstants.tsx:140
+#: src/features/user/components/settings_utils/SettingsConstants.tsx:145
 #: src/features/voice/components/voice_connection_status/VoiceDetailsPopout.tsx:60
 msgid "Advanced"
 msgstr "ขั้นสูง"
@@ -3549,6 +3613,11 @@ msgstr "ทุกภาษา"
 #: src/features/user/components/modals/tabs/accessibility_tab/VisualTab.tsx:21
 msgid "All messages"
 msgstr "ข้อความทั้งหมด"
+
+#: src/features/persona/components/PersonaPickerSheet.tsx:194
+msgid "All Personas"
+msgstr "All Personas"
+
 
 #: src/features/user/components/modals/tabs/component_gallery_tab/IndicatorsTab.tsx:227
 msgid "All status types"
@@ -3795,7 +3864,7 @@ msgid "Already set to cancel"
 msgstr "ตั้งค่าให้ยกเลิกไว้แล้ว"
 
 #. Toggle-switch label in the moderator delete-message confirmation dialog. When enabled, the message is reported (category: other) before being deleted. {productName} is the product name (e.g., Fluxer).
-#: src/features/messaging/commands/MessageCommands.tsx:83
+#: src/features/messaging/commands/MessageCommands.tsx:85
 msgid "Also report this message to the {productName} Safety Team"
 msgstr "รายงานข้อความนี้ไปยังทีมความปลอดภัยของ {productName} ด้วย"
 
@@ -3908,7 +3977,7 @@ msgid "An error occurred while searching"
 msgstr "เกิดข้อผิดพลาดขณะค้นหา"
 
 #. Fallback error message shown when the channel search request fails for an unknown reason.
-#: src/features/channel/components/channel_search_results/ChannelSearchResultsShared.tsx:57
+#: src/features/channel/components/channel_search_results/ChannelSearchResultsShared.tsx:58
 msgid "An error occurred while searching."
 msgstr "เกิดข้อผิดพลาดขณะค้นหา"
 
@@ -4259,7 +4328,7 @@ msgstr "ป้ายไอคอนแอป"
 msgid "App language: {format}"
 msgstr "รูปแบบเวลาตามภาษาของแอป: {format}"
 
-#: src/features/user/components/settings_utils/SettingsConstants.tsx:204
+#: src/features/user/components/settings_utils/SettingsConstants.tsx:209
 msgid "App settings"
 msgstr "การตั้งค่าแอป"
 
@@ -4279,29 +4348,29 @@ msgid "App zoom"
 msgstr "ซูมแอป"
 
 #. Setting label for the global UI zoom level.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:776
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:780
 msgid "App zoom level"
 msgstr "ระดับการซูมของแอป"
 
 #. Advanced settings category tag.
 #. User settings tab for app appearance and layout options.
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedSettingsCategories.ts:13
-#: src/features/user/components/settings_utils/SettingsConstants.tsx:111
+#: src/features/user/components/settings_utils/SettingsConstants.tsx:116
 msgid "Appearance"
 msgstr "รูปลักษณ์"
 
 #. Slash-command description for /tableflip. Appends a kaomoji to the user's message.
-#: src/features/devtools/hooks/useCommands.ts:13
+#: src/features/devtools/hooks/useCommands.ts:14
 msgid "Appends (╯°□°)╯︵ ┻━┻ to your message."
 msgstr "เพิ่ม (╯°□°)╯︵ ┻━┻ ต่อท้ายข้อความของคุณ"
 
 #. Slash-command description for /shrug. Appends a kaomoji to the user's message.
-#: src/features/devtools/hooks/useCommands.ts:9
+#: src/features/devtools/hooks/useCommands.ts:10
 msgid "Appends ¯\\_(ツ)_/¯ to your message."
 msgstr "เพิ่ม ¯\\_(ツ)_/¯ ต่อท้ายข้อความของคุณ"
 
 #. Slash-command description for /unflip. Appends a kaomoji to the user's message.
-#: src/features/devtools/hooks/useCommands.ts:17
+#: src/features/devtools/hooks/useCommands.ts:18
 msgid "Appends ┬─┬ ノ( ゜-゜ノ) to your message."
 msgstr "เพิ่ม ┬─┬ ノ( ゜-゜ノ) ต่อท้ายข้อความของคุณ"
 
@@ -4361,7 +4430,7 @@ msgstr "อัปเดตแอปพลิเคชันแล้ว"
 #: src/features/user/components/modals/tabs/applications_tab/index.tsx:129
 #: src/features/user/components/settings_utils/search_index/SharedDescriptors.ts:29
 #: src/features/user/components/settings_utils/section_registry/GeneralSettingsSections.ts:66
-#: src/features/user/components/settings_utils/SettingsConstants.tsx:65
+#: src/features/user/components/settings_utils/SettingsConstants.tsx:66
 #: src/features/voice/components/modals/ScreenSharePickerModal.tsx:184
 msgid "Applications"
 msgstr "แอปพลิเคชัน"
@@ -4389,7 +4458,7 @@ msgid "Apply theme"
 msgstr "ใช้ธีม"
 
 #. Short confirmation button label in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:148
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:152
 msgid "Apply to all communities"
 msgstr "ใช้กับทุกคอมมูนิตี้"
 
@@ -4430,6 +4499,12 @@ msgstr "คุณแน่ใจหรือไม่ว่าต้องกา
 #: src/features/user/components/modals/tabs/applications_tab/ApplicationDetail.tsx:407
 msgid "Are you sure you want to delete <0>{0}</0>?"
 msgstr "คุณแน่ใจหรือไม่ว่าต้องการลบ <0>{0}</0>"
+
+#. placeholder {0}: persona.name
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:666
+msgid "Are you sure you want to delete <0>{0}</0>? This action cannot be undone."
+msgstr "Are you sure you want to delete <0>{0}</0>? This action cannot be undone."
+
 
 #. Destructive confirmation for deleting a channel category.
 #. Destructive confirmation for deleting a channel.
@@ -4501,6 +4576,11 @@ msgstr "คุณแน่ใจหรือไม่ว่าต้องกา
 #: src/features/user/components/modals/tabs/chat_settings_tab/SearchEnginesTab.tsx:230
 msgid "Are you sure you want to remove <0>{engineName}</0>?"
 msgstr "คุณแน่ใจหรือไม่ว่าต้องการลบ <0>{engineName}</0>"
+
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:437
+msgid "Are you sure you want to replace all <0>{existingCount}</0> existing persona(s)? This will permanently delete them from your account and cannot be undone."
+msgstr "Are you sure you want to replace all <0>{existingCount}</0> existing persona(s)? This will permanently delete them from your account and cannot be undone."
+
 
 #. Confirm dialog message for the destructive reset action. Tone stays plain.
 #: src/features/platform/utils/DesktopLocaleBridge.ts:178
@@ -4580,7 +4660,7 @@ msgid "Attach files"
 msgstr "แนบไฟล์"
 
 #. Screen-reader fragment listing one attachment on a message. Lowercase because it appears inside a longer sentence.
-#: src/features/channel/components/ChannelMessage.tsx:43
+#: src/features/channel/components/ChannelMessage.tsx:47
 msgid "attachment"
 msgstr "ไฟล์แนบ"
 
@@ -4910,7 +4990,7 @@ msgstr "แอปพลิเคชันที่ได้รับอนุญ
 #: src/features/user/components/settings_utils/search_index/AuthorizedAppsIndex.ts:10
 #: src/features/user/components/settings_utils/section_registry/AccountSecuritySections.ts:151
 #: src/features/user/components/settings_utils/section_registry/GeneralSettingsSections.ts:26
-#: src/features/user/components/settings_utils/SettingsConstants.tsx:102
+#: src/features/user/components/settings_utils/SettingsConstants.tsx:107
 msgid "Authorized apps"
 msgstr "แอปที่ได้รับอนุญาต"
 
@@ -5129,6 +5209,7 @@ msgstr "ใช้งานได้ในแอปเดสก์ท็อป"
 #. Accessible label for an avatar image.
 #. Form label for a webhook avatar image.
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:923
 #: src/features/ui/components/BaseAvatar.tsx:18
 #: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:373
 #: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:421
@@ -5141,6 +5222,12 @@ msgstr "รูปโปรไฟล์"
 #: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:82
 msgid "Avatar file is too large. Choose a file smaller than {imageMaxSizeLabel}."
 msgstr "ไฟล์รูปโปรไฟล์มีขนาดใหญ่เกินไป โปรดเลือกไฟล์ที่มีขนาดเล็กกว่า {imageMaxSizeLabel}"
+
+#. Import warning when avatar fails to download
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:355
+msgid "Avatar image failed to download: {error}. Persona was imported without an avatar."
+msgstr "Avatar image failed to download: {error}. Persona was imported without an avatar."
+
 
 #. Webhook avatar upload error. IMAGE_MAX_SIZE_LABEL is a formatted file-size limit.
 #: src/features/webhook/components/WebhookListItem.tsx:39
@@ -5166,6 +5253,12 @@ msgstr "รูปโปรไฟล์, แท็ก และรายละเ
 msgid "Avatars"
 msgstr "รูปโปรไฟล์"
 
+#. Progress label for avatar downloads
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:42
+msgid "avatars downloaded"
+msgstr "avatars downloaded"
+
+
 #. Field label in the voice connection status popout. Shows the average RTT in ms over the recent window.
 #: src/features/voice/components/voice_connection_status/shared.ts:50
 msgid "Average ping:"
@@ -5177,7 +5270,7 @@ msgid "Away"
 msgstr "ไม่อยู่"
 
 #. Short label in the app constants.
-#: src/features/app/constants/AppConstants.ts:49
+#: src/features/app/constants/AppConstants.ts:57
 msgid "Away right now"
 msgstr "ไม่อยู่ตอนนี้"
 
@@ -5355,7 +5448,7 @@ msgid "Ban {tag}"
 msgstr "แบน {tag}"
 
 #. Slash-command description for /ban. Bans a member from the current community (moderation action).
-#: src/features/devtools/hooks/useCommands.ts:43
+#: src/features/devtools/hooks/useCommands.ts:44
 msgid "Ban a member from this community."
 msgstr "แบนสมาชิกออกจากคอมมูนิตี้นี้"
 
@@ -5511,7 +5604,7 @@ msgstr "ระหว่าง 1 ถึง 32 ตัวอักษร"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/search_index/PlutoniumIndex.ts:27
-#: src/features/user/components/settings_utils/SettingsConstants.tsx:202
+#: src/features/user/components/settings_utils/SettingsConstants.tsx:207
 msgid "Billing"
 msgstr "การเรียกเก็บเงิน"
 
@@ -5539,6 +5632,7 @@ msgstr "การกำหนดปุ่มลัด"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:940
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:129
 #: src/features/user/components/settings_utils/section_registry/PrivacySafetySections.ts:156
 msgid "Bio"
@@ -5656,7 +5750,7 @@ msgstr "ระงับไม่ให้สมาชิกส่งข้อค
 #: src/features/user/components/settings_utils/search_index/BlockedUsersIndex.ts:6
 #: src/features/user/components/settings_utils/section_registry/AccountSecuritySections.ts:155
 #: src/features/user/components/settings_utils/section_registry/GeneralSettingsSections.ts:18
-#: src/features/user/components/settings_utils/SettingsConstants.tsx:53
+#: src/features/user/components/settings_utils/SettingsConstants.tsx:54
 msgid "Blocked users"
 msgstr "ผู้ใช้ที่ถูกบล็อก"
 
@@ -6064,7 +6158,7 @@ msgid "Bullying, threats, hate, violence, raids, or content that pushes self-har
 msgstr "การกลั่นแกล้ง การข่มขู่ ความเกลียดชัง ความรุนแรง การโจมตี หรือเนื้อหาที่ส่งเสริมการทำร้ายตนเอง"
 
 #. Short label in the app constants.
-#: src/features/app/constants/AppConstants.ts:45
+#: src/features/app/constants/AppConstants.ts:53
 msgid "Busy right now"
 msgstr "ไม่ว่างตอนนี้"
 
@@ -6203,7 +6297,7 @@ msgstr "การโทร"
 #. Generic voice/video setting label for the active camera device.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Short label in the video tab. Keep it concise.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:720
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:724
 #: src/features/user/components/modals/tabs/UserVideoTab.tsx:72
 #: src/features/user/components/settings_utils/section_registry/VoiceVideoSections.ts:162
 #: src/features/voice/utils/SettingsDeviceOptions.ts:24
@@ -6263,7 +6357,7 @@ msgstr "ปิดกล้อง"
 
 #. Generic action label that enables the local camera.
 #. Notification sound setting label. Sound played when the user turns their camera on in a call.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:724
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:728
 #: src/features/notification/utils/SoundLabels.ts:52
 msgid "Camera on"
 msgstr "เปิดกล้อง"
@@ -6367,6 +6461,8 @@ msgstr "อัปโหลดไฟล์ที่นี่ไม่ได้"
 #: src/features/moderation/components/modals/BanMemberModal.tsx:262
 #: src/features/moderation/components/modals/RemoveTimeoutModal.tsx:70
 #: src/features/moderation/components/modals/TimeoutMemberModal.tsx:126
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:698
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1022
 #: src/features/theme/components/modals/ThemeAcceptModal.tsx:173
 #: src/features/user/components/modals/EmailChangeModal.tsx:278
 #: src/features/user/components/modals/EmailChangeModal.tsx:289
@@ -6672,6 +6768,7 @@ msgstr "เปลี่ยนชื่อเล่นกลุ่ม"
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:86
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:626
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildIconUploadField.tsx:35
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:812
 msgid "Change icon"
 msgstr "เปลี่ยนไอคอน"
 
@@ -6728,6 +6825,12 @@ msgstr "เปลี่ยนรหัสผ่าน"
 #: src/features/user/components/modals/PasswordChangeModal.tsx:42
 msgid "Change password form"
 msgstr "แบบฟอร์มเปลี่ยนรหัสผ่าน"
+
+#. Generic action label that opens the persona picker.
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:712
+msgid "Change persona"
+msgstr "Change persona"
+
 
 #. Subscription status badge meaning a future billing plan change is scheduled.
 #: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:437
@@ -6802,7 +6905,7 @@ msgid "Change your nickname for a community profile"
 msgstr "เปลี่ยนชื่อเล่นสำหรับโปรไฟล์คอมมูนิตี้ของคุณ"
 
 #. Slash-command description for /nick. Changes the user's nickname in the current community.
-#: src/features/devtools/hooks/useCommands.ts:35
+#: src/features/devtools/hooks/useCommands.ts:36
 msgid "Change your nickname in this community."
 msgstr "เปลี่ยนชื่อเล่นของคุณในคอมมูนิตี้นี้"
 
@@ -7047,7 +7150,7 @@ msgid "Channel actions"
 msgstr "การดำเนินการของช่อง"
 
 #. Toast confirming a channel was added to the favorites list.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:792
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:796
 msgid "Channel added to favorites"
 msgstr "เพิ่มช่องไปยังรายการโปรดแล้ว"
 
@@ -7075,7 +7178,7 @@ msgstr "แก้ไขข้อผิดพลาดของช่อง"
 #. Audit log entry label. Past-tense action describing that a channel was deleted.
 #. Toast confirming a channel was successfully deleted.
 #: src/features/app/config/AuditLogConstants.ts:20
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:760
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:764
 msgid "Channel deleted"
 msgstr "ช่องถูกลบแล้ว"
 
@@ -7165,7 +7268,7 @@ msgid "Channel record"
 msgstr "บันทึกช่อง"
 
 #. Toast confirming a channel was removed from the favorites list.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:788
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:792
 msgid "Channel removed from favorites"
 msgstr "นำช่องออกจากรายการโปรดแล้ว"
 
@@ -7228,7 +7331,7 @@ msgstr "เกินขีดจำกัดไป {remaining} ตัวอั�
 #: src/features/input/components/modals/KeyboardShortcutsCheatsheetModal.tsx:41
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedSettingsCategories.ts:15
 #: src/features/user/components/modals/tabs/keybinds_tab/DefaultKeybindsList.tsx:39
-#: src/features/user/components/settings_utils/SettingsConstants.tsx:115
+#: src/features/user/components/settings_utils/SettingsConstants.tsx:120
 msgid "Chat"
 msgstr "แชท"
 
@@ -7413,6 +7516,11 @@ msgstr "เลือกวิธีการยืนยัน"
 msgid "Choose a new password."
 msgstr "ตั้งรหัสผ่านใหม่"
 
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:503
+msgid "Choose a PluralKit export (.json) or drag & drop"
+msgstr "Choose a PluralKit export (.json) or drag & drop"
+
+
 #. Description text in the accessibility tab.
 #: src/features/user/components/modals/tabs/AccessibilityTab.tsx:63
 msgid "Choose a speed for spoken text."
@@ -7505,6 +7613,11 @@ msgstr "เลือกวิธีจัดเก็บ GIF ที่ติด�
 #: src/features/user/components/settings_utils/search_index/LanguageIndex.ts:70
 msgid "Choose how times are displayed throughout the app"
 msgstr "เลือกวิธีแสดงเวลาในแอป"
+
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:749
+msgid "Choose how untagged messages and persona tags interact with your active persona."
+msgstr "Choose how untagged messages and persona tags interact with your active persona."
+
 
 #. Plutonium subscription payment method picker description, generic fallback when no country-specific copy applies.
 #: src/features/app/components/dialogs/components/plutonium/hooks/useCheckoutActions.tsx:57
@@ -7820,7 +7933,7 @@ msgstr "ล้างข้อมูลจำลองไฟล์แนบ"
 
 #. Accessible label for the button that clears the slash command being composed in the message box.
 #. Accessible label for the composer button that clears the slash command currently being composed.
-#: src/features/channel/components/LexicalChannelTextareaContent.tsx:135
+#: src/features/channel/components/LexicalChannelTextareaContent.tsx:136
 #: src/features/channel/components/SlashCommandParamBar.tsx:16
 msgid "Clear command"
 msgstr "ล้างคำสั่ง"
@@ -7834,7 +7947,7 @@ msgid "Clear custom status"
 msgstr "ล้างสถานะที่กำหนดเอง"
 
 #. Body of the confirmation alert shown when clearing every reaction on a message.
-#: src/features/channel/components/MessageActionUtils.tsx:72
+#: src/features/channel/components/MessageActionUtils.tsx:73
 msgid "Clear every reaction from this message?"
 msgstr "ลบทุกรีแอ็กชันออกจากข้อความนี้ใช่ไหม"
 
@@ -8490,7 +8603,7 @@ msgid "Community debug"
 msgstr "แก้ไขข้อผิดพลาดของคอมมูนิตี้"
 
 #. Notification level option indicating the channel inherits the community default.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:764
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:768
 msgid "Community default"
 msgstr "ค่าเริ่มต้นของคอมมูนิตี้"
 
@@ -8766,7 +8879,7 @@ msgstr "โฟกัสช่องพิมพ์ข้อความ"
 
 #. Button label that opens a dedicated advanced settings modal for configuring screen-share encoder controls.
 #. Button label that opens a dedicated advanced settings modal.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:164
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:168
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedVideoControls.tsx:160
 msgid "Configure"
 msgstr "กำหนดค่า"
@@ -8835,6 +8948,18 @@ msgstr "ตั้งค่าไมโครโฟน ลำโพง โหม�
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:209
 msgid "Configure your profile badge"
 msgstr "ตั้งค่าป้ายโปรไฟล์"
+
+#. Header for configured personas list with count
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:222
+msgid "Configured Personas ({count})"
+msgstr "Configured Personas ({count})"
+
+
+#. Progress status for configuring persona
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:334
+msgid "Configuring {name}..."
+msgstr "Configuring {name}..."
+
 
 #. Action label for confirming a mass mention that may notify many people.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
@@ -9064,7 +9189,7 @@ msgid "Connections"
 msgstr "การเชื่อมต่อ"
 
 #. User settings tab for linked external accounts.
-#: src/features/user/components/settings_utils/SettingsConstants.tsx:106
+#: src/features/user/components/settings_utils/SettingsConstants.tsx:111
 msgctxt "user-settings-tab"
 msgid "Connections"
 msgstr "การเชื่อมต่อ"
@@ -9161,7 +9286,7 @@ msgstr "เมนูบริบทสามารถเปิดได้ด้
 #: src/features/auth/components/pages/oauth_authorize_page/OAuthAccountStep.tsx:34
 #: src/features/auth/flow/HandoffApprovalFlow.tsx:109
 #: src/features/connection/components/modals/AddConnectionModal.tsx:384
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:712
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:716
 #: src/features/user/components/modals/FluxerTagChangeModal.tsx:397
 #: src/features/user/components/modals/tabs/AuthorizedAppsTab.tsx:182
 msgid "Continue"
@@ -9374,7 +9499,7 @@ msgid "Copy code"
 msgstr "คัดลอกรหัส"
 
 #. Developer-mode action that copies a community snowflake/ID to the clipboard.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:728
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:732
 msgid "Copy community ID"
 msgstr "คัดลอก ID คอมมูนิตี้"
 
@@ -9477,7 +9602,7 @@ msgid "Copy invite URL"
 msgstr "คัดลอก URL คำเชิญ"
 
 #. Generic action label that copies a URL to the clipboard.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:740
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:744
 #: src/features/user/components/modals/tabs/component_gallery_tab/ComponentGalleryTabButtonsTab.tsx:330
 #: src/features/user/components/modals/tabs/component_gallery_tab/index.tsx:145
 msgid "Copy link"
@@ -9504,13 +9629,13 @@ msgid "Copy media to clipboard"
 msgstr "คัดลอกสื่อไปยังคลิปบอร์ด"
 
 #. Message context menu item that copies the message text content to the clipboard.
-#: src/features/channel/components/MessageActionMenu.tsx:91
+#: src/features/channel/components/MessageActionMenu.tsx:94
 msgid "Copy message"
 msgstr "คัดลอกข้อความ"
 
 #. Developer-mode action that copies a message snowflake/ID to the clipboard.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:732
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:736
 #: src/features/input/state/input_keybind/shared.ts:277
 msgid "Copy message ID"
 msgstr "คัดลอก ID ข้อความ"
@@ -9591,7 +9716,7 @@ msgid "Copy user ID"
 msgstr "คัดลอก ID ผู้ใช้"
 
 #. Action that copies a user username (handle) to the clipboard.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:736
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:740
 msgid "Copy username"
 msgstr "คัดลอกชื่อผู้ใช้"
 
@@ -10013,7 +10138,7 @@ msgid "Couldn't ring this person"
 msgstr "ไม่สามารถโทรหาบุคคลนี้ได้"
 
 #. Error message in the use textarea submit hook. Preserve {detail}; it is inserted by code.
-#: src/features/messaging/hooks/useTextareaSubmit.ts:48
+#: src/features/messaging/hooks/useTextareaSubmit.ts:49
 msgid "Couldn't run that command: {detail}"
 msgstr "ไม่สามารถเรียกใช้คำสั่งนั้นได้: {detail}"
 
@@ -10797,7 +10922,7 @@ msgid "Custom warning text"
 msgstr "ข้อความเตือนที่กำหนดเอง"
 
 #. Last "Custom…" option in dropdown menus that opens a custom-value picker.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:768
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:772
 msgid "Custom…"
 msgstr "กำหนดเอง…"
 
@@ -10846,6 +10971,12 @@ msgstr "ปรับแต่งแท็กของคุณ ({discriminatorLa
 #: src/features/user/components/modals/FluxerTagChangeModal.tsx:386
 msgid "Customize your tag or keep it when changing your username"
 msgstr "ปรับแต่งแท็กของคุณ หรือใช้แท็กเดิมเมื่อเปลี่ยนชื่อผู้ใช้"
+
+#. Description for persona accent color picker
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:178
+msgid "Customizes the border and banner color on this persona's profile"
+msgstr "Customizes the border and banner color on this persona's profile"
+
 
 #. Label in the accent color picker. Keep the tone plain and specific.
 #: src/features/user/components/modals/tabs/my_profile_tab/AccentColorPicker.tsx:16
@@ -11024,6 +11155,12 @@ msgstr "วัน"
 msgid "Deactivate"
 msgstr "ปิดใช้งาน"
 
+#. Aria label for deactivating active persona
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:210
+msgid "Deactivate persona"
+msgstr "Deactivate persona"
+
+
 #. Voice action label. Turns off what the user hears in voice chat. Distinct from microphone mute.
 #: src/features/voice/utils/VoiceMessageDescriptors.ts:78
 msgid "Deafen"
@@ -11109,7 +11246,7 @@ msgstr "ดีบักสมาชิก"
 #. Developer-mode item in the message action bar overflow menu. Opens the message debug modal.
 #. Developer-mode message context menu item that opens an internal debug view for the message.
 #: src/features/channel/components/MessageActionBar.tsx:81
-#: src/features/channel/components/MessageActionMenu.tsx:103
+#: src/features/channel/components/MessageActionMenu.tsx:106
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:66
 msgid "Debug message"
 msgstr "ดีบักข้อความ"
@@ -11264,8 +11401,10 @@ msgstr "เดลาแวร์"
 #: src/features/emoji/components/emojis/EmojiListItem.tsx:204
 #: src/features/emoji/components/emojis/EmojiListItem.tsx:216
 #: src/features/emoji/components/stickers/StickerGridItem.tsx:35
-#: src/features/messaging/commands/MessageCommands.tsx:79
+#: src/features/messaging/commands/MessageCommands.tsx:81
 #: src/features/moderation/components/report_modal/IARModalCopy.ts:109
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:670
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1147
 #: src/features/platform/utils/DesktopLocaleBridge.ts:76
 #: src/features/theme_studio/sections/LibrarySection.tsx:514
 #: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:399
@@ -11342,7 +11481,7 @@ msgid "Delete application"
 msgstr "ลบแอปพลิเคชัน"
 
 #. Generic action label that removes an attachment from the upload tray / message.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:748
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:752
 msgid "Delete attachment"
 msgstr "ลบไฟล์แนบ"
 
@@ -11445,6 +11584,17 @@ msgstr "ลบข้อความของสมาชิกคนอื่น
 msgid "Delete passkey"
 msgstr "ลบพาสคีย์"
 
+#. Aria label for deleting persona
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:218
+msgid "Delete persona"
+msgstr "Delete persona"
+
+
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:664
+msgid "Delete Persona"
+msgstr "Delete Persona"
+
+
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:403
 msgid "Delete prompt"
@@ -11513,7 +11663,7 @@ msgid "Delete this message"
 msgstr "ลบข้อความนี้"
 
 #. Error message in the messaging commands. Keep the tone plain and specific.
-#: src/features/messaging/commands/MessageCommands.tsx:75
+#: src/features/messaging/commands/MessageCommands.tsx:77
 msgid "Delete this message? Can't be undone."
 msgstr "ลบข้อความนี้ใช่หรือไม่ การดำเนินการนี้จะยกเลิกไม่ได้"
 
@@ -11675,7 +11825,7 @@ msgid "Description must be no more than {discoveryDescriptionMaxLength} characte
 msgstr "คำอธิบายต้องมีความยาวไม่เกิน {discoveryDescriptionMaxLength} ตัวอักษร"
 
 #. Developer settings tab showing UI component examples.
-#: src/features/user/components/settings_utils/SettingsConstants.tsx:148
+#: src/features/user/components/settings_utils/SettingsConstants.tsx:153
 msgid "Design system"
 msgstr "ระบบการออกแบบ"
 
@@ -11689,8 +11839,8 @@ msgstr "เดสก์ท็อป"
 
 #. User settings tab for desktop app integration and platform settings.
 #. User settings tab label shown on desktop builds when the OS could not be identified (fallback for the per-OS labels).
-#: src/features/user/components/settings_utils/SettingsConstants.tsx:81
-#: src/features/user/components/settings_utils/SettingsConstants.tsx:136
+#: src/features/user/components/settings_utils/SettingsConstants.tsx:82
+#: src/features/user/components/settings_utils/SettingsConstants.tsx:141
 msgid "Desktop app"
 msgstr "แอปเดสก์ท็อป"
 
@@ -11821,11 +11971,16 @@ msgstr "รายละเอียด"
 msgid "Detect while typing"
 msgstr "ตรวจจับขณะพิมพ์"
 
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:531
+msgid "Detected System Name / Tag"
+msgstr "Detected System Name / Tag"
+
+
 #. Advanced settings category tag.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedSettingsCategories.ts:20
 #: src/features/user/components/settings_utils/search_index/SharedDescriptors.ts:25
-#: src/features/user/components/settings_utils/SettingsConstants.tsx:206
+#: src/features/user/components/settings_utils/SettingsConstants.tsx:211
 msgid "Developer"
 msgstr "นักพัฒนา"
 
@@ -11912,7 +12067,7 @@ msgstr "อุปกรณ์:"
 #: src/features/user/components/modals/tabs/DevicesTab.tsx:530
 #: src/features/user/components/settings_utils/search_index/DevicesIndex.ts:11
 #: src/features/user/components/settings_utils/section_registry/AppearanceSections.ts:82
-#: src/features/user/components/settings_utils/SettingsConstants.tsx:57
+#: src/features/user/components/settings_utils/SettingsConstants.tsx:58
 #: src/features/voice/components/modals/ScreenSharePickerModal.tsx:192
 msgid "Devices"
 msgstr "อุปกรณ์"
@@ -12389,6 +12544,28 @@ msgstr "ชื่อที่แสดง (ไม่บังคับ)"
 msgid "Display scaling"
 msgstr "การปรับขนาดการแสดงผล"
 
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:772
+msgid "Display Tag"
+msgstr "Display Tag"
+
+
+#. Toast when display tag icon is removed
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:138
+msgid "Display tag icon removed"
+msgstr "Display tag icon removed"
+
+
+#. Toast when display tag icon is updated
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:134
+msgid "Display tag icon updated"
+msgstr "Display tag icon updated"
+
+
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:775
+msgid "Display tag will appear next to all persona names in messages. If no display tag is set, your account profile picture will be shown."
+msgstr "Display tag will appear next to all persona names in messages. If no display tag is set, your account profile picture will be shown."
+
+
 #. IAR modal: rule description.
 #: src/features/moderation/components/report_modal/IARModalCopy.ts:277
 msgid "Distributes malware, credential-stealing tools, or other harmful files."
@@ -12480,7 +12657,7 @@ msgstr "ระเบียน DNS TXT"
 
 #. Short label in the app constants.
 #. Tray status menu item. User presence that suppresses notifications.
-#: src/features/app/constants/AppConstants.ts:33
+#: src/features/app/constants/AppConstants.ts:41
 #: src/features/platform/utils/DesktopLocaleBridge.ts:200
 msgid "Do not disturb"
 msgstr "ห้ามรบกวน"
@@ -12549,7 +12726,7 @@ msgstr "ไม่บล็อก คุณสามารถเปิดให�
 
 #. Generic form-field / table-column label for an internet domain.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:772
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:776
 #: src/features/user/components/settings_utils/search_index/LinkedAccountsIndex.ts:28
 msgid "Domain"
 msgstr "โดเมน"
@@ -12612,6 +12789,7 @@ msgstr "ไม่ต้องแนะนำ {deviceName} อีก"
 #: src/features/input/components/KeybindRecorder.tsx:470
 #: src/features/moderation/components/report_modal/IARModal.tsx:94
 #: src/features/moderation/components/report/ReportBreadcrumbs.tsx:31
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:718
 #: src/features/search/components/search/ChannelFilterSheet.tsx:165
 #: src/features/search/components/search/HasFilterSheet.tsx:206
 #: src/features/search/components/search/UserFilterSheet.tsx:175
@@ -12728,6 +12906,12 @@ msgstr "ดาวน์โหลดแพ็กเกจ"
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:117
 msgid "Download video"
 msgstr "ดาวน์โหลดวิดีโอ"
+
+#. Progress status during avatar download
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:257
+msgid "Downloading avatar {current} of {total}..."
+msgstr "Downloading avatar {current} of {total}..."
+
 
 #. Tooltip on the channel header updater icon while downloading a versioned update without throughput info.
 #: src/features/channel/components/channel_header_components/UpdaterIcon.tsx:33
@@ -12900,6 +13084,12 @@ msgstr "ทำซ้ำช่อง"
 msgid "Duplicate role"
 msgstr "ทำซ้ำบทบาท"
 
+#. Validation error when tag pair is duplicated within the same persona
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:126
+msgid "Duplicate tag pair on this persona"
+msgstr "Duplicate tag pair on this persona"
+
+
 #. Field label in the voice connection status popout. Shows how long the current voice session has been connected.
 #: src/features/voice/components/voice_connection_status/shared.ts:74
 msgid "Duration:"
@@ -12909,6 +13099,18 @@ msgstr "ระยะเวลา:"
 #: src/features/user/utils/LocaleUtils.ts:96
 msgid "Dutch"
 msgstr "ดัตช์"
+
+#. Placeholder for persona name
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:182
+msgid "e.g. Alice"
+msgstr "e.g. Alice"
+
+
+#. Placeholder for persona pronouns
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:186
+msgid "e.g. she/her"
+msgstr "e.g. she/her"
+
 
 #. Placeholder or example text in the authentication passkey name modal. Keep the tone plain and specific.
 #: src/features/auth/components/modals/PasskeyNameModal.tsx:27
@@ -12940,6 +13142,7 @@ msgstr "การตัดเสียงสะท้อน"
 #. Button or menu action label in the search engines tab. Keep it concise.
 #. Top-level native menu bar title (Edit menu, holds cut/copy/paste).
 #: src/features/emoji/components/stickers/StickerGridItem.tsx:43
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1139
 #: src/features/platform/utils/DesktopLocaleBridge.ts:47
 #: src/features/user/components/modals/tabs/chat_settings_tab/SearchEnginesTab.tsx:35
 #: src/features/user/components/modals/tabs/LinkedAccountsTab.tsx:51
@@ -13081,6 +13284,18 @@ msgstr "แก้ไขหรือลบอิโมจิและสติก
 #: src/features/permissions/utils/PermissionLabelDescriptors.ts:201
 msgid "Edit overwrites for roles and members in this channel."
 msgstr "แก้ไขการแทนที่สิทธิ์สำหรับบทบาทและสมาชิกในช่องนี้"
+
+#. Aria label for editing persona
+#: src/features/persona/components/PersonaProfilePopout.tsx:279
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:214
+msgid "Edit persona"
+msgstr "Edit persona"
+
+
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:878
+msgid "Edit Persona"
+msgstr "Edit Persona"
+
 
 #: src/features/app/components/floating/UserAreaPopout.tsx:743
 #: src/features/app/components/pages/YouPage.tsx:157
@@ -13276,7 +13491,7 @@ msgid "Email verified successfully"
 msgstr "ยืนยันอีเมลสำเร็จแล้ว"
 
 #. Screen-reader fragment listing one embed on a message. Lowercase because it appears inside a longer sentence.
-#: src/features/channel/components/ChannelMessage.tsx:61
+#: src/features/channel/components/ChannelMessage.tsx:65
 msgid "embed"
 msgstr "เนื้อหาที่ฝัง"
 
@@ -13288,7 +13503,7 @@ msgstr "ฝัง"
 #. Developer settings tab for testing URL unfurls and rendered embeds.
 #. Settings search entry label for the developer embed debugger.
 #: src/features/user/components/settings_utils/search_index/EmbedDebuggerIndex.ts:7
-#: src/features/user/components/settings_utils/SettingsConstants.tsx:144
+#: src/features/user/components/settings_utils/SettingsConstants.tsx:149
 msgid "Embed debugger"
 msgstr "ตัวแก้ไขข้อผิดพลาดการฝัง"
 
@@ -13328,12 +13543,12 @@ msgid "Embeds"
 msgstr "การฝัง"
 
 #. Toast confirmation after hiding link previews and embeds on a message.
-#: src/features/channel/components/MessageActionUtils.tsx:84
+#: src/features/channel/components/MessageActionUtils.tsx:85
 msgid "Embeds suppressed"
 msgstr "ปิดการแสดงตัวอย่างแล้ว"
 
 #. Toast confirmation after re-enabling link previews and embeds on a message.
-#: src/features/channel/components/MessageActionUtils.tsx:80
+#: src/features/channel/components/MessageActionUtils.tsx:81
 msgid "Embeds unsuppressed"
 msgstr "เปิดการแสดงตัวอย่างแล้ว"
 
@@ -13617,7 +13832,7 @@ msgstr "เปิดการแจ้งเตือนแบบพุชบน
 
 #. Generic action label / toggle that turns on push or desktop notifications.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:780
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:784
 #: src/features/user/components/settings_utils/section_registry/NotificationsSections.ts:127
 msgid "Enable notifications"
 msgstr "เปิดการแจ้งเตือน"
@@ -13832,7 +14047,7 @@ msgid "English (US)"
 msgstr "อังกฤษ (สหรัฐอเมริกา)"
 
 #. Generic radio / dropdown option label for an "enhanced" tier.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:784
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:788
 msgid "Enhanced"
 msgstr "ปรับปรุงแล้ว"
 
@@ -14150,7 +14365,7 @@ msgstr "เสียงเข้าห้องใช้ไม่ได้"
 
 #. Heading shown above the error message in the channel search results error state.
 #: src/features/channel/components/bottomsheets/ChannelSearchBottomSheet.tsx:549
-#: src/features/channel/components/channel_search_results/ChannelSearchResultsShared.tsx:70
+#: src/features/channel/components/channel_search_results/ChannelSearchResultsShared.tsx:71
 #: src/features/user/components/modals/tabs/component_gallery_tab/OverlaysTab.tsx:132
 msgid "Error"
 msgstr "เกิดข้อผิดพลาด"
@@ -14489,6 +14704,11 @@ msgstr "ส่งออกคลัง"
 msgid "Export my data"
 msgstr "ส่งออกข้อมูลของฉัน"
 
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:527
+msgid "Export Summary"
+msgstr "Export Summary"
+
+
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/section_registry/AppearanceSections.ts:110
 msgid "Export themes"
@@ -14507,7 +14727,7 @@ msgid "Expression autocomplete"
 msgstr "เติมอิโมจิอัตโนมัติ"
 
 #. Aria label for the expression picker category nav.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:752
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:756
 msgid "Expression picker categories"
 msgstr "หมวดหมู่ตัวเลือกอิโมจิ"
 
@@ -14629,6 +14849,12 @@ msgstr "ครอบตัดไอคอนไม่สำเร็จ ลอ�
 msgid "Failed to delete channel"
 msgstr "ลบช่องไม่สำเร็จ"
 
+#. Toast when persona deletion fails
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:166
+msgid "Failed to delete persona"
+msgstr "Failed to delete persona"
+
+
 #. Toast / inline error in the camera preview modal when enabling the camera fails.
 #: src/features/voice/components/modals/CameraPreviewModal.tsx:59
 msgid "Failed to enable camera."
@@ -14648,6 +14874,12 @@ msgstr "ส่งต่อข้อความไม่สำเร็จ"
 #: src/features/auth/flow/DesktopHandoffAccountSelector.tsx:17
 msgid "Failed to generate token"
 msgstr "สร้างโทเค็นไม่สำเร็จ"
+
+#. Toast error message on persona import failure
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:62
+msgid "Failed to import personas"
+msgstr "Failed to import personas"
+
 
 #: src/features/moderation/components/modals/KickMemberModal.tsx:35
 msgid "Failed to kick member. Try again."
@@ -14716,6 +14948,12 @@ msgstr "โหลดคอมมูนิตี้และแชทกลุ่
 msgid "Failed to load your communities."
 msgstr "โหลดคอมมูนิตี้ของคุณไม่สำเร็จ"
 
+#. Error message when parsing PluralKit JSON fails
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:30
+msgid "Failed to parse JSON file. Please ensure it is a valid PluralKit export."
+msgstr "Failed to parse JSON file. Please ensure it is a valid PluralKit export."
+
+
 #. Channel details bottom sheet label or action (channel type, settings, toast, confirmation, or notification option).
 #. Error modal title shown when pinning a DM in the DM list fails.
 #. Error toast when pinning a direct message fails.
@@ -14749,6 +14987,12 @@ msgstr "เตรียมอิโมจิไม่สำเร็จ"
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:405
 msgid "Failed to process the cropped image. Try again."
 msgstr "ประมวลผลรูปภาพที่ครอบตัดไม่สำเร็จ โปรดลองอีกครั้ง"
+
+#. Error message when reading uploaded file fails
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:34
+msgid "Failed to read the selected file."
+msgstr "Failed to read the selected file."
+
 
 #. Error message in the background image gallery modal. Keep the tone plain and specific.
 #: src/features/theme/components/modals/BackgroundImageGalleryModal.tsx:123
@@ -14784,18 +15028,24 @@ msgstr "ส่งรหัสยืนยันอีกครั้งไม่
 msgid "Failed to reset premium state."
 msgstr "รีเซ็ตสถานะพรีเมียมไม่สำเร็จ"
 
+#. Toast when persona save fails
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:158
+msgid "Failed to save persona"
+msgstr "Failed to save persona"
+
+
 #. Error shown when the initial email verification code send fails on the DSA report flow.
 #: src/features/moderation/components/pages/ReportPage.tsx:67
 msgid "Failed to send code. Try again."
 msgstr "ส่งรหัสไม่สำเร็จ ลองอีกครั้ง"
 
 #. Error message in the channel and chat user message.
-#: src/features/channel/components/UserMessage.tsx:70
+#: src/features/channel/components/UserMessage.tsx:72
 msgid "Failed to send message."
 msgstr "ส่งข้อความไม่สำเร็จ"
 
 #. Error message in the channel and chat user message.
-#: src/features/channel/components/UserMessage.tsx:66
+#: src/features/channel/components/UserMessage.tsx:68
 msgid "Failed to send message. Hold for options."
 msgstr "ส่งข้อความไม่สำเร็จ แตะค้างไว้เพื่อดูตัวเลือก"
 
@@ -14895,6 +15145,12 @@ msgstr "อัปโหลดอิโมจิตั้งแต่ {startLabel
 #: src/features/guild/components/modals/guild_tabs/GuildEmojiTab.tsx:60
 msgid "Failed to upload emojis. Try again."
 msgstr "อัปโหลดอิโมจิไม่สำเร็จ โปรดลองอีกครั้ง"
+
+#. Toast when icon upload fails
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:142
+msgid "Failed to upload icon to server"
+msgstr "Failed to upload icon to server"
+
 
 #. IAR modal: rule description.
 #: src/features/moderation/components/report_modal/IARModalCopy.ts:237
@@ -15556,7 +15812,7 @@ msgstr "ฟอร์ม"
 #. Message context menu item that opens the forward-to-channel picker.
 #. Tooltip on the forward button in the inline message hover action bar.
 #: src/features/channel/components/MessageActionBar.tsx:85
-#: src/features/channel/components/MessageActionMenu.tsx:83
+#: src/features/channel/components/MessageActionMenu.tsx:86
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:54
 msgid "Forward"
 msgstr "ส่งต่อ"
@@ -16001,7 +16257,7 @@ msgid "Germany"
 msgstr "เยอรมนี"
 
 #. Generic upsell CTA button to start the Plutonium purchase flow. Preserve {premiumProductName}.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:796
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:800
 msgid "Get {premiumProductName}"
 msgstr "รับ {premiumProductName}"
 
@@ -16247,7 +16503,7 @@ msgstr "ได้รับของขวัญ <0/> จนถึง <1>{giftEnd
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. User settings tab for gift inventory and redemption codes.
 #: src/features/user/components/settings_utils/search_index/SharedDescriptors.ts:37
-#: src/features/user/components/settings_utils/SettingsConstants.tsx:94
+#: src/features/user/components/settings_utils/SettingsConstants.tsx:99
 msgid "Gifts"
 msgstr "ของขวัญ"
 
@@ -16357,13 +16613,13 @@ msgstr "ไปที่ข้อความ"
 
 #. Accessible label for the jump-to-page input on the community members pagination control.
 #. Accessible label of the inline page-number input shown when the user opens the pagination ellipsis.
-#: src/features/channel/components/channel_search_results/ChannelSearchResultsShared.tsx:95
+#: src/features/channel/components/channel_search_results/ChannelSearchResultsShared.tsx:96
 #: src/features/channel/components/guild_members_page/MembersPagination.tsx:20
 msgid "Go to page"
 msgstr "ไปที่หน้า"
 
 #. Accessible label of each pagination page button. page is the 1-indexed page number.
-#: src/features/channel/components/channel_search_results/ChannelSearchResultsShared.tsx:91
+#: src/features/channel/components/channel_search_results/ChannelSearchResultsShared.tsx:92
 msgid "Go to page {page}"
 msgstr "ไปที่หน้า {page}"
 
@@ -16986,13 +17242,13 @@ msgstr "ซ่อนช่องที่ปิดเสียง"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced sidebar preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:140
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:144
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:487
 msgid "Hide muted channels by default"
 msgstr "ซ่อนช่องที่ปิดเสียงไว้เป็นค่าเริ่มต้น"
 
 #. Confirmation prompt in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:144
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:148
 msgid "Hide muted channels by default?"
 msgstr "ซ่อนช่องที่ปิดเสียงไว้เป็นค่าเริ่มต้นหรือไม่"
 
@@ -17194,7 +17450,7 @@ msgid "How long they stay timed out."
 msgstr "ระยะเวลาที่ผู้ใช้จะถูกพักการใช้งานชั่วคราว"
 
 #. Description for the /ban delete_messages option.
-#: src/features/devtools/hooks/useCommands.ts:83
+#: src/features/devtools/hooks/useCommands.ts:84
 msgid "How much of the member's recent message history to delete."
 msgstr "จะลบประวัติข้อความล่าสุดของสมาชิกจำนวนเท่าใด"
 
@@ -17304,6 +17560,12 @@ msgstr "ไฟล์ไอคอนมีขนาดใหญ่เกินไ
 #: src/features/guild/components/modals/add_guild_modal/shared.ts:110
 msgid "Icon file is too large. Choose a file smaller than {imageMaxSizeLabel}."
 msgstr "ไฟล์ไอคอนมีขนาดใหญ่เกินไป โปรดเลือกไฟล์ที่มีขนาดเล็กกว่า {imageMaxSizeLabel}"
+
+#. Toast when icon file exceeds size limit
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:146
+msgid "Icon file is too large. Choose an image smaller than 10MB."
+msgstr "Icon file is too large. Choose an image smaller than 10MB."
+
 
 #. US state name, shown next to the country name in the mature content gate.
 #: src/features/user/utils/UserGeo.ts:68
@@ -17606,6 +17868,17 @@ msgstr "นำเข้าเทมเพลตจาก {theOtherPlatform}"
 msgid "Import a .css file to get started, or paste your own CSS in Quick CSS."
 msgstr "นำเข้าไฟล์ .css เพื่อเริ่มต้น หรือวาง CSS ของคุณใน Quick CSS"
 
+#. Modal title for PluralKit import step completed
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:472
+msgid "Import Complete"
+msgstr "Import Complete"
+
+
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:656
+msgid "Import Complete!"
+msgstr "Import Complete!"
+
+
 #. Completion text in the favorite GIF import modal. importedCount is the number added; skippedCount is the number skipped.
 #: src/features/channel/components/pickers/gif/ImportFavoriteGifsModal.tsx:27
 msgid "Import complete. Added {importedCount, plural, one {# GIF} other {# GIFs}}, skipped {skippedCount, number} (duplicates or limit reached)."
@@ -17632,6 +17905,13 @@ msgstr "นำเข้า GIF รายการโปรด"
 msgid "Import folder"
 msgstr "นำเข้าโฟลเดอร์"
 
+#. Modal title for PluralKit import step select
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:459
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1044
+msgid "Import from PluralKit"
+msgstr "Import from PluralKit"
+
+
 #. Short label in the channel and chat gif picker header. Keep it concise.
 #: src/features/channel/components/pickers/gif/GifPickerHeader.tsx:30
 msgid "Import GIFs"
@@ -17645,6 +17925,11 @@ msgstr "นำเข้าคลังธีม"
 #: src/features/channel/components/pickers/gif/ImportFavoriteGifsModal.tsx:50
 msgid "Import more"
 msgstr "นำเข้าเพิ่ม"
+
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:571
+msgid "Import Strategy"
+msgstr "Import Strategy"
+
 
 #. Accessible label for the import-template form element. Used by assistive tech only.
 #: src/features/guild/components/modals/add_guild_modal/shared.ts:141
@@ -17694,6 +17979,17 @@ msgstr "นำเข้า {themes, plural, one {# ธีม} other {# ธีม
 #: src/features/theme/commands/ThemeCommands.tsx:14
 msgid "Imported theme has been applied."
 msgstr "ใช้ธีมที่นำเข้าแล้ว"
+
+#. Modal title for PluralKit import step importing
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:466
+msgid "Importing Personas..."
+msgstr "Importing Personas..."
+
+
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:712
+msgid "Importing..."
+msgstr "Importing..."
+
 
 #. Progress text in the favorite GIF import modal. processedCount is completed URLs, totalCount is queued URLs, importedCount is successfully added GIFs.
 #: src/features/channel/components/pickers/gif/ImportFavoriteGifsModal.tsx:37
@@ -17889,13 +18185,13 @@ msgid "Incorrect PIN. Try again."
 msgstr "ใส่รหัส PIN ไม่ถูกต้อง ลองใหม่อีกครั้ง"
 
 #. Header status shown while the channel is being indexed for the first time before search is available.
-#: src/features/channel/components/channel_search_results/ChannelSearchResultsShared.tsx:45
+#: src/features/channel/components/channel_search_results/ChannelSearchResultsShared.tsx:46
 msgid "Indexing"
 msgstr "กำลังจัดทำดัชนี"
 
 #. Heading of the indexing placeholder shown while the channel index is being built for the first time.
 #: src/features/channel/components/bottomsheets/ChannelSearchBottomSheet.tsx:524
-#: src/features/channel/components/channel_search_results/ChannelSearchResultsShared.tsx:61
+#: src/features/channel/components/channel_search_results/ChannelSearchResultsShared.tsx:62
 msgid "Indexing channel"
 msgstr "กำลังจัดทำดัชนีช่อง"
 
@@ -18222,7 +18518,7 @@ msgstr "แตะปุ่มกลับด้านแล้ว"
 
 #. Short label in the app constants.
 #. Tray status menu item. User presence that appears offline to others.
-#: src/features/app/constants/AppConstants.ts:37
+#: src/features/app/constants/AppConstants.ts:45
 #: src/features/platform/utils/DesktopLocaleBridge.ts:204
 msgid "Invisible"
 msgstr "ซ่อนตัว"
@@ -18722,7 +19018,7 @@ msgid "Jump to message"
 msgstr "ไปยังข้อความ"
 
 #. Label in the channel and chat user message. Preserve {displayName}, {formattedDate}; they are inserted by code.
-#: src/features/channel/components/UserMessage.tsx:57
+#: src/features/channel/components/UserMessage.tsx:59
 msgid "Jump to message from {displayName}, sent {formattedDate}"
 msgstr "ข้ามไปที่ข้อความจาก {displayName} ที่ส่งเมื่อ {formattedDate}"
 
@@ -18738,7 +19034,7 @@ msgstr "ข้ามไปยังช่องที่ยังไม่ได
 
 #. Accessible label of the ellipsis button in the pagination bar that reveals the page-number input.
 #. Placeholder text in the pagination jump input on the community members page.
-#: src/features/channel/components/channel_search_results/ChannelSearchResultsShared.tsx:99
+#: src/features/channel/components/channel_search_results/ChannelSearchResultsShared.tsx:100
 #: src/features/channel/components/guild_members_page/MembersPagination.tsx:24
 msgid "Jump to page"
 msgstr "ข้ามไปที่หน้า"
@@ -18827,6 +19123,11 @@ msgstr "เก็บไฟล์แนบ"
 msgid "Keep attachments when clearing an edit"
 msgstr "เก็บไฟล์แนบเมื่อล้างการแก้ไข"
 
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:586
+msgid "Keep existing and add new (Recommended)"
+msgstr "Keep existing and add new (Recommended)"
+
+
 #. Description for the mirror premium model.
 #: src/features/app/components/setup/SetupWizardSteps.tsx:315
 msgid "Keep free and premium tiers. You can customize the tiers later."
@@ -18864,6 +19165,12 @@ msgstr "ยังคงส่งสัญญาณต่อสักครู่
 #: src/features/user/components/settings_utils/search_index/DesktopSettingsIndex.ts:110
 msgid "Keep window dimensions and placement between reloads"
 msgstr "คงขนาดและตำแหน่งหน้าต่างไว้เมื่อเปิดใหม่"
+
+#. placeholder {0}: pkData.members?.length ?? 0
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:589
+msgid "Keep your {existingCount} current persona(s) and add all {0} imported personas alongside them as new entries."
+msgstr "Keep your {existingCount} current persona(s) and add all {0} imported personas alongside them as new entries."
+
 
 #. US state name, shown next to the country name in the mature content gate.
 #: src/features/user/utils/UserGeo.ts:93
@@ -18936,7 +19243,7 @@ msgid "Kick"
 msgstr "เตะออก"
 
 #. Slash-command description for /kick. Removes a member from the current community (moderation action).
-#: src/features/devtools/hooks/useCommands.ts:39
+#: src/features/devtools/hooks/useCommands.ts:40
 msgid "Kick a member from this community."
 msgstr "เตะสมาชิกออกจากคอมมูนิตี้นี้"
 
@@ -18969,7 +19276,7 @@ msgstr "เกาหลี"
 #. User settings tab for language, locale, and time display preferences.
 #: src/features/app/components/setup/SetupWizardSteps.tsx:56
 #: src/features/user/components/settings_utils/search_index/LanguageIndex.ts:6
-#: src/features/user/components/settings_utils/SettingsConstants.tsx:132
+#: src/features/user/components/settings_utils/SettingsConstants.tsx:137
 msgid "Language"
 msgstr "ภาษา"
 
@@ -19012,6 +19319,16 @@ msgstr "แก้ไขล่าสุด: ไม่เคย"
 #: src/features/user/components/modals/tabs/DevicesTab.tsx:170
 msgid "Last used"
 msgstr "ใช้งานล่าสุด"
+
+#. Active persona mode last used
+#. Active persona mode last used
+#. Active persona mode last used
+#: src/features/persona/components/PersonaComposerPill.tsx:25
+#: src/features/persona/components/PersonaPickerSheet.tsx:29
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:65
+msgid "Last Used"
+msgstr "Last Used"
+
 
 #. Aria label on the signal-strength icon. {latency} is the integer millisecond latency.
 #: src/features/voice/components/SignalStrengthIcon.tsx:20
@@ -19472,7 +19789,7 @@ msgid "Links"
 msgstr "ลิงก์"
 
 #. User settings tab label shown on Linux desktop builds.
-#: src/features/user/components/settings_utils/SettingsConstants.tsx:73
+#: src/features/user/components/settings_utils/SettingsConstants.tsx:74
 msgid "Linux app"
 msgstr "แอป Linux"
 
@@ -19710,7 +20027,7 @@ msgid "Luxembourg"
 msgstr "ลักเซมเบิร์ก"
 
 #. User settings tab label shown on macOS desktop builds.
-#: src/features/user/components/settings_utils/SettingsConstants.tsx:77
+#: src/features/user/components/settings_utils/SettingsConstants.tsx:78
 msgid "macOS app"
 msgstr "แอป macOS"
 
@@ -19738,6 +20055,11 @@ msgstr "ตั้งค่าให้ช่องสืบทอดการต
 #: src/features/user/components/settings_utils/section_registry/AccountSecuritySections.ts:12
 msgid "Mail"
 msgstr "อีเมล"
+
+#: src/features/persona/components/PersonaProfilePopout.tsx:251
+msgid "Main account"
+msgstr "Main account"
+
 
 #. US state name, shown next to the country name in the mature content gate.
 #: src/features/user/utils/UserGeo.ts:103
@@ -19814,6 +20136,12 @@ msgstr "จัดการ"
 msgid "Manage accounts"
 msgstr "จัดการบัญชี"
 
+#. OAuth scope description shown on the consent screen for the personas.write scope.
+#: src/features/app/constants/AppConstants.ts:37
+msgid "Manage and create your personas"
+msgstr "Manage and create your personas"
+
+
 #. Security settings section description for account access controls.
 #: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:53
 msgid "Manage apps and devices with access to your account"
@@ -19882,6 +20210,11 @@ msgstr "จัดการวิธีการชำระเงิน"
 msgid "Manage permissions"
 msgstr "จัดการสิทธิ์"
 
+#: src/features/persona/components/PersonaPickerSheet.tsx:251
+msgid "Manage Personas"
+msgstr "Manage Personas"
+
+
 #. Settings search entry description. One-line summary of what the settings search entry controls.
 #: src/features/user/components/settings_utils/search_index/GiftInventoryIndex.ts:58
 msgid "Manage purchased gift codes and gift URLs"
@@ -19910,6 +20243,16 @@ msgstr "จัดการรหัสของขวัญ {PREMIUM_PRODUCT_NAM
 #: src/features/user/components/settings_utils/search_index/PlutoniumIndex.ts:43
 msgid "Manage your subscription"
 msgstr "จัดการการสมัครสมาชิกของคุณ"
+
+#. Active persona mode manual
+#. Active persona mode manual
+#. Active persona mode manual
+#: src/features/persona/components/PersonaComposerPill.tsx:21
+#: src/features/persona/components/PersonaPickerSheet.tsx:25
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:61
+msgid "Manual"
+msgstr "Manual"
+
 
 #. Modal title when automatic in-app desktop updates cannot be used.
 #: src/features/updater/commands/UpdaterModalCommands.tsx:53
@@ -20370,6 +20713,12 @@ msgstr "ขนาดกลาง (ค่าเริ่มต้น)"
 msgid "Member"
 msgstr "สมาชิก"
 
+#. Placeholder name for unnamed member in import
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:319
+msgid "Member #{index}"
+msgstr "Member #{index}"
+
+
 #. Accessible label for the actions menu button on a member row.
 #: src/features/channel/components/guild_members_page/MemberTableRow.tsx:85
 msgid "Member actions for {displayName}"
@@ -20478,6 +20827,11 @@ msgstr "สมาชิกจะถูกนำออกเมื่อออฟ
 #: src/features/app/components/shared/ChannelPinsContent.tsx:47
 msgid "Members with \"{pinMessagesPermissionLabel}\" can pin messages for everyone."
 msgstr "สมาชิกที่มีสิทธิ์ \"{pinMessagesPermissionLabel}\" สามารถปักหมุดข้อความให้ทุกคนเห็นได้"
+
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:546
+msgid "Members with Avatars"
+msgstr "Members with Avatars"
+
 
 #: src/features/guild/components/modals/guild_tabs/GuildModerationTab.tsx:309
 msgid "Members with roles can bypass these checks. For public spaces, we recommend enabling verification."
@@ -20604,13 +20958,14 @@ msgid "Menu shortcuts"
 msgstr "ปุ่มลัดเมนู"
 
 #. Fallback role label used in screen-reader message summaries.
-#: src/features/channel/components/ChannelMessage.tsx:75
+#: src/features/channel/components/ChannelMessage.tsx:79
 msgid "message"
 msgstr "ข้อความ"
 
 #. Audit log target-type filter label. Filters entries that target an individual message.
 #. Short label in the inputs tab. Keep it concise.
 #: src/features/app/config/AuditLogConstants.ts:184
+#: src/features/persona/components/PersonaProfilePopout.tsx:289
 #: src/features/user/components/modals/tabs/component_gallery_tab/ComponentGalleryTabInputsTab.tsx:86
 msgid "Message"
 msgstr "ข้อความ"
@@ -20694,7 +21049,7 @@ msgstr "ข้อความมีสื่อที่แนบมา"
 #. Title of the developer-mode message debug modal opened from the message context menu.
 #. Title of the developer-mode message debug modal.
 #: src/features/channel/components/MessageActionBar.tsx:73
-#: src/features/channel/components/MessageActionMenu.tsx:71
+#: src/features/channel/components/MessageActionMenu.tsx:74
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:62
 msgid "Message debug"
 msgstr "แก้ไขข้อผิดพลาดข้อความ"
@@ -21311,7 +21666,7 @@ msgid "Most popular"
 msgstr "เป็นที่นิยมที่สุด"
 
 #. Sort mode option label in the mobile search sort sheet. Sort by relevance score.
-#: src/features/channel/components/channel_search_results/ChannelSearchResultsShared.tsx:115
+#: src/features/channel/components/channel_search_results/ChannelSearchResultsShared.tsx:116
 #: src/features/search/components/search/SortModeSheet.tsx:31
 msgid "Most relevant"
 msgstr "เกี่ยวข้องมากที่สุด"
@@ -21860,6 +22215,11 @@ msgstr "การแทนที่ค่า Nagbar"
 msgid "Name"
 msgstr "ชื่อ"
 
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:883
+msgid "Name *"
+msgstr "Name *"
+
+
 #. Form validation error shown when the name field is empty.
 #. Form validation error shown when the name field is empty.
 #: src/features/expressions/components/modals/meme_form/MemeFormFields.tsx:16
@@ -22078,15 +22438,15 @@ msgid "New category"
 msgstr "หมวดหมู่ใหม่"
 
 #. Short confirmation button label in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:152
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:156
 msgid "New communities only"
 msgstr "เฉพาะคอมมูนิตี้ใหม่"
 
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:650
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:660
 msgid "New communities you join will automatically have muted channels hidden. Would you also like to apply this setting to all your existing communities?"
 msgstr "ช่องที่ปิดเสียงในคอมมูนิตี้ใหม่ที่คุณเข้าร่วมจะถูกซ่อนโดยอัตโนมัติ คุณต้องการใช้การตั้งค่านี้กับคอมมูนิตี้ที่มีอยู่ทั้งหมดของคุณด้วยหรือไม่"
 
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:681
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:691
 msgid "New communities you join will no longer have muted channels hidden automatically. Would you also like to show muted channels in all your existing communities?"
 msgstr "คอมมูนิตี้ใหม่ที่คุณเข้าร่วมจะไม่ซ่อนช่องที่ปิดเสียงโดยอัตโนมัติอีกต่อไป คุณต้องการแสดงช่องที่ปิดเสียงในคอมมูนิตี้ที่มีอยู่ทั้งหมดของคุณด้วยหรือไม่"
 
@@ -22162,6 +22522,11 @@ msgstr "ไมโครโฟนใหม่"
 msgid "New password"
 msgstr "รหัสผ่านใหม่"
 
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:878
+msgid "New Persona"
+msgstr "New Persona"
+
+
 #. Plutonium subscription card line shown when a move to a lower price is scheduled but the new amount is unknown. {pendingChangeDate} is a date already formatted and localized by code; never write a date into the translation.
 #: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:593
 msgid "New price scheduled for <0>{pendingChangeDate}</0>."
@@ -22205,7 +22570,7 @@ msgstr "นิวยอร์ก"
 
 #. Sort mode label in the mobile channel search bottom sheet. Sorts results newest first.
 #: src/features/channel/components/bottomsheets/ChannelSearchBottomSheet.tsx:75
-#: src/features/channel/components/channel_search_results/ChannelSearchResultsShared.tsx:113
+#: src/features/channel/components/channel_search_results/ChannelSearchResultsShared.tsx:114
 msgid "Newest"
 msgstr "ใหม่สุด"
 
@@ -22221,7 +22586,7 @@ msgstr "ใหม่สุดขึ้นก่อน"
 #. Primary button in the required-action modal. Moves to the next carousel step.
 #: src/features/app/components/setup/SelfHostedSetupWizardGate.tsx:81
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:154
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:716
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:720
 msgid "Next"
 msgstr "ถัดไป"
 
@@ -22260,6 +22625,12 @@ msgstr "ชื่อเล่น: "
 #: src/features/app/components/dialogs/components/ComparisonCheckRow.tsx:31
 msgid "No"
 msgstr "ไม่"
+
+#. Error message when PluralKit export lacks members array
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:26
+msgid "No \"members\" array found in this export file."
+msgstr "No \"members\" array found in this export file."
+
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
 #: src/features/channel/components/channel_header_components/developer_tools/DeveloperOptionLabels.ts:256
@@ -22450,6 +22821,11 @@ msgstr "ไม่มีคำอธิบาย"
 msgid "No desktop update is available."
 msgstr "ไม่มีการอัปเดตเดสก์ท็อป"
 
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:865
+msgid "No display tag configured. Messages will show your account profile picture."
+msgstr "No display tag configured. Messages will show your account profile picture."
+
+
 #: src/features/voice/components/modals/ScreenSharePickerModal.tsx:130
 msgid "No displays found"
 msgstr "ไม่พบจอแสดงผล"
@@ -22570,6 +22946,11 @@ msgstr "ไม่พบรายการที่ตรงกัน"
 msgid "No matches found"
 msgstr "ไม่พบผลลัพธ์"
 
+#: src/features/persona/components/PersonaPickerSheet.tsx:202
+msgid "No matching personas found."
+msgstr "No matching personas found."
+
+
 #: src/features/messaging/components/popouts/RecentMentionsContent.tsx:346
 msgid "No mentions yet"
 msgstr "ยังไม่มีการกล่าวถึง"
@@ -22598,7 +22979,7 @@ msgid "No optional services are available on this instance. You can skip this st
 msgstr "ไม่มีบริการเสริมใดพร้อมใช้งานในอินสแตนซ์นี้ คุณสามารถข้ามขั้นตอนนี้ได้"
 
 #. Body copy under the nothing-to-search-for heading. Preserve {query}; it is the text the user submitted and is inserted by code.
-#: src/features/channel/components/channel_search_results/ChannelSearchResultsShared.tsx:86
+#: src/features/channel/components/channel_search_results/ChannelSearchResultsShared.tsx:87
 msgid "No part of {query} could be applied. Fix the underlined value or add something to search for."
 msgstr "ไม่สามารถใช้ส่วนใดของ {query} ได้ โปรดแก้ไขค่าที่ขีดเส้นใต้ หรือเพิ่มข้อความที่ต้องการค้นหา"
 
@@ -22624,6 +23005,16 @@ msgstr "ไม่พบสิทธิ์"
 #: src/features/user/components/modals/tabs/LanguageTab.tsx:594
 msgid "No personal words yet."
 msgstr "ยังไม่มีคำส่วนตัว"
+
+#: src/features/persona/components/PersonaPickerSheet.tsx:200
+msgid "No personas configured yet. Create one in Settings."
+msgstr "No personas configured yet. Create one in Settings."
+
+
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1055
+msgid "No personas created yet. Click \"Add Persona\" to create your first persona!"
+msgstr "No personas created yet. Click \"Add Persona\" to create your first persona!"
+
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
 #: src/features/channel/components/channel_header_components/developer_tools/OptionPresets.ts:50
@@ -22673,7 +23064,7 @@ msgstr "ไม่ได้รับเนื้อหาการตอบกล
 #. Empty state title in the mobile memes picker when the search query matches nothing.
 #. Empty-state text in the channel and chat memes picker view.
 #. Heading shown when the channel search query returned zero matches.
-#: src/features/channel/components/channel_search_results/ChannelSearchResultsShared.tsx:74
+#: src/features/channel/components/channel_search_results/ChannelSearchResultsShared.tsx:75
 #: src/features/channel/components/MobileMemesPicker.tsx:66
 #: src/features/channel/components/pickers/memes/MemesPickerView.tsx:32
 msgid "No results"
@@ -22779,7 +23170,7 @@ msgid "No system channel"
 msgstr "ไม่มีช่องระบบ"
 
 #. Screen-reader fragment indicating the message has no text body. Lowercase because it appears inside a longer sentence.
-#: src/features/channel/components/ChannelMessage.tsx:70
+#: src/features/channel/components/ChannelMessage.tsx:74
 msgid "no text content"
 msgstr "ไม่มีข้อความ"
 
@@ -22893,11 +23284,13 @@ msgstr "ไม่แปลง"
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
 #. Library picker entry meaning no sound is selected for this scope.
 #. Member verification level option in the community moderation settings tab. Short standalone label for the lowest level (no verification).
+#. None value
 #. Short label in the visual tab. Keep it concise.
 #. Summary row value on the confirm step when no items in the category were selected.
 #: src/features/channel/components/channel_header_components/developer_tools/DeveloperToolsShared.ts:41
 #: src/features/guild/components/modals/guild_tabs/GuildModerationTab.tsx:47
 #: src/features/guild/utils/guild_tabs/audit_log/AuditLogSharedMessages.ts:52
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:534
 #: src/features/user/components/modals/tabs/accessibility_tab/VisualTab.tsx:37
 #: src/features/user/components/modals/tabs/components/EntranceSoundSection.tsx:146
 #: src/features/user/components/modals/tabs/privacy_safety_tab/data_request_modal/DataRequestModal.tsx:220
@@ -22954,7 +23347,7 @@ msgid "Not available"
 msgstr "ไม่พร้อมใช้งาน"
 
 #. Short label in the app constants.
-#: src/features/app/constants/AppConstants.ts:57
+#: src/features/app/constants/AppConstants.ts:65
 msgid "Not connected"
 msgstr "ไม่ได้เชื่อมต่อ"
 
@@ -23040,7 +23433,7 @@ msgid "Nothing to refund"
 msgstr "ไม่มีรายการที่ขอคืนเงินได้"
 
 #. Heading shown when the submitted search query produced no filter and no text the server could search on.
-#: src/features/channel/components/channel_search_results/ChannelSearchResultsShared.tsx:82
+#: src/features/channel/components/channel_search_results/ChannelSearchResultsShared.tsx:83
 msgid "Nothing to search for"
 msgstr "ไม่มีอะไรให้ค้นหา"
 
@@ -23095,7 +23488,7 @@ msgid "Notifications"
 msgstr "การแจ้งเตือน"
 
 #. User settings tab for notification and alert sound controls.
-#: src/features/user/components/settings_utils/SettingsConstants.tsx:127
+#: src/features/user/components/settings_utils/SettingsConstants.tsx:132
 msgctxt "user-settings-tab"
 msgid "Notifications"
 msgstr "การแจ้งเตือน"
@@ -23167,6 +23560,9 @@ msgstr "เครื่องมือสร้าง URL สำหรับ OAu
 msgid "Objects"
 msgstr "สิ่งของ"
 
+#. Active persona mode off
+#. Active persona mode off
+#. Active persona mode off
 #. Activity log value meaning the explicit content filter of a community is turned off.
 #. Channel overview settings tab label, control, or validation message (name, topic, slowmode, voice region, mature content gate).
 #. Explicit content filter option in the community moderation settings tab. Short standalone label meaning disabled.
@@ -23180,6 +23576,9 @@ msgstr "สิ่งของ"
 #: src/features/guild/components/modals/guild_tabs/GuildModerationTab.tsx:97
 #: src/features/guild/components/modals/guild_tabs/GuildModerationTab.tsx:139
 #: src/features/guild/utils/guild_tabs/audit_log/AuditLogSharedMessages.ts:73
+#: src/features/persona/components/PersonaComposerPill.tsx:17
+#: src/features/persona/components/PersonaPickerSheet.tsx:21
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:57
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedVideoControls.tsx:128
 msgid "Off"
 msgstr "ปิด"
@@ -23212,7 +23611,7 @@ msgstr "โอคลาโฮมา"
 
 #. Sort mode label in the mobile channel search bottom sheet. Sorts results oldest first.
 #: src/features/channel/components/bottomsheets/ChannelSearchBottomSheet.tsx:79
-#: src/features/channel/components/channel_search_results/ChannelSearchResultsShared.tsx:114
+#: src/features/channel/components/channel_search_results/ChannelSearchResultsShared.tsx:115
 msgid "Oldest"
 msgstr "เก่าสุด"
 
@@ -23290,7 +23689,7 @@ msgid "Online"
 msgstr "ออนไลน์"
 
 #. Short label in the app constants.
-#: src/features/app/constants/AppConstants.ts:41
+#: src/features/app/constants/AppConstants.ts:49
 msgid "Online and ready to chat"
 msgstr "ออนไลน์และพร้อมแชท"
 
@@ -23387,12 +23786,18 @@ msgstr "เฉพาะเจ้าของกลุ่มเท่านั้
 msgid "Only the selected ones"
 msgstr "เฉพาะที่เลือกไว้"
 
+#. Helper description for private persona visibility
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:104
+msgid "Only visible to you. Others cannot view this persona’s full bio or profile details."
+msgstr "Only visible to you. Others cannot view this persona’s full bio or profile details."
+
+
 #. Body of the error modal shown when a non-Visionary user tries to rejoin a gated Plutonium community.
 #: src/features/app/components/dialogs/components/plutonium/hooks/useCommunityActions.tsx:22
 msgid "Only Visionary members can join this community. Your access may have changed since this screen was opened."
 msgstr "เฉพาะสมาชิก Visionary เท่านั้นที่เข้าร่วมคอมมูนิตี้นี้ได้ สิทธิ์การเข้าถึงของคุณอาจเปลี่ยนไปตั้งแต่หน้าจอนี้เปิดขึ้น"
 
-#: src/features/channel/components/UserMessage.tsx:441
+#: src/features/channel/components/UserMessage.tsx:456
 msgid "Only you can see this message. <0>Dismiss</0>"
 msgstr "คุณเท่านั้นที่เห็นข้อความนี้ได้ <0>ปิด</0>"
 
@@ -23966,6 +24371,12 @@ msgstr "อาร์กิวเมนต์เสริม"
 #: src/features/app/components/setup/SetupWizardSteps.tsx:266
 msgid "Optional services"
 msgstr "บริการเสริม"
+
+#. Placeholder for system badge in import modal
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:66
+msgid "Optional system badge, e.g. ⚞Seraphim⚟"
+msgstr "Optional system badge, e.g. ⚞Seraphim⚟"
+
 
 #. Short label in the channel and chat textual attachment preview bottom sheet. Keep it concise.
 #: src/features/channel/components/embeds/attachments/TextualAttachmentPreviewBottomSheet.tsx:31
@@ -24568,6 +24979,11 @@ msgstr "ถาวร"
 msgid "Permanent deletion"
 msgstr "ลบถาวร"
 
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:618
+msgid "Permanently delete all {existingCount} existing persona(s) and replace them completely with the imported personas."
+msgstr "Permanently delete all {existingCount} existing persona(s) and replace them completely with the imported personas."
+
+
 #. Confirmation modal description warning that every message the caller has sent across every channel in this community will be deleted. Cannot be undone.
 #: src/features/guild/hooks/useDeleteMyMessagesInGuild.tsx:20
 msgid "Permanently delete every message you've sent here, across every channel. Can't be undone."
@@ -24619,6 +25035,35 @@ msgstr "สิทธิ์"
 msgid "Permissions for {0}"
 msgstr "สิทธิ์สำหรับ {0}"
 
+#. Toast when persona is created
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:154
+msgid "Persona created"
+msgstr "Persona created"
+
+
+#. Toast when persona is deleted
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:162
+msgid "Persona deleted"
+msgstr "Persona deleted"
+
+
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:971
+msgid "Persona Tags (Prefix & Suffix)"
+msgstr "Persona Tags (Prefix & Suffix)"
+
+
+#. Toast when persona is updated
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:150
+msgid "Persona updated"
+msgstr "Persona updated"
+
+
+#. Aria label for persona visibility tabs
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:121
+msgid "Persona visibility"
+msgstr "Persona visibility"
+
+
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Subsection title for personal dictionary settings. Keep it concise.
 #: src/features/user/components/modals/tabs/LanguageTab.tsx:131
@@ -24635,6 +25080,20 @@ msgstr "บันทึกส่วนตัว"
 #: src/features/channel/components/direct_message/DirectMessageList.tsx:85
 msgid "Personal notes were already empty"
 msgstr "บันทึกส่วนตัวว่างเปล่าอยู่แล้ว"
+
+#. Title of personas settings section
+#. User settings tab for personas.
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:109
+#: src/features/user/components/settings_utils/SettingsConstants.tsx:91
+msgid "Personas"
+msgstr "Personas"
+
+
+#. Progress label for prepared personas
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:46
+msgid "personas prepared"
+msgstr "personas prepared"
+
 
 #. Keyboard shortcut keycap label for Page Down. Keep the abbreviation compact.
 #: src/features/ui/keybind_hint/KeybindHint.tsx:54
@@ -24781,7 +25240,7 @@ msgstr "ภาพซ้อนภาพ"
 
 #. Confirm button label on the pin message alert.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/channel/components/MessageActionUtils.tsx:64
+#: src/features/channel/components/MessageActionUtils.tsx:65
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:70
 msgid "Pin"
 msgstr "ปักหมุด"
@@ -24799,7 +25258,7 @@ msgstr "ปักหมุดแชทกลุ่ม"
 #. Generic action label that pins a message to the channel pins.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Title of the confirmation alert shown when pinning a message.
-#: src/features/channel/components/MessageActionUtils.tsx:56
+#: src/features/channel/components/MessageActionUtils.tsx:57
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:534
 #: src/features/input/state/input_keybind/shared.ts:13
 msgid "Pin message"
@@ -24826,7 +25285,7 @@ msgid "Pin or unpin any message."
 msgstr "ปักหมุดหรือยกเลิกการปักหมุดข้อความใดๆ"
 
 #. Body of the confirmation alert shown when pinning a message.
-#: src/features/channel/components/MessageActionUtils.tsx:60
+#: src/features/channel/components/MessageActionUtils.tsx:61
 msgid "Pin this message to the channel for everyone to see."
 msgstr "ปักหมุดข้อความนี้ในช่องเพื่อให้ทุกคนเห็น"
 
@@ -25150,6 +25609,12 @@ msgstr "ตัวแปลงสัญญาณที่ต้องการส
 msgid "Prefers reduced motion"
 msgstr "ลดการเคลื่อนไหว"
 
+#. Placeholder for persona tag prefix
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:194
+msgid "Prefix (e.g. [)"
+msgstr "Prefix (e.g. [)"
+
+
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/search_index/PlutoniumIndex.ts:15
 msgid "Premium"
@@ -25205,6 +25670,12 @@ msgstr "ประเภทพรีเมียม"
 msgid "Premium until date"
 msgstr "พรีเมียมถึงวันที่"
 
+#. Progress status when preparing avatar batch download
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:38
+msgid "Preparing avatar batch download..."
+msgstr "Preparing avatar batch download..."
+
+
 #. Setup wizard title while the instance configuration loads.
 #: src/features/app/components/setup/SetupWizardSteps.tsx:72
 msgid "Preparing setup"
@@ -25258,6 +25729,7 @@ msgstr "ระงับไม่ให้สมาชิกส่งข้อค
 
 #: src/features/expressions/components/modals/sticker_form/StickerPreview.tsx:21
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildInviteSplashSettingsField.tsx:45
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:839
 #: src/features/user/components/modals/tabs/EmbedDebuggerTab.tsx:276
 msgid "Preview"
 msgstr "ตัวอย่าง"
@@ -25426,7 +25898,7 @@ msgstr "ผู้พูดสำคัญ"
 #. User settings tab for privacy and safety controls.
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedSettingsCategories.ts:12
 #: src/features/user/components/settings_utils/section_registry/PrivacySafetySections.ts:60
-#: src/features/user/components/settings_utils/SettingsConstants.tsx:98
+#: src/features/user/components/settings_utils/SettingsConstants.tsx:103
 msgid "Privacy"
 msgstr "ความเป็นส่วนตัว"
 
@@ -25465,6 +25937,12 @@ msgstr "การละเมิดความเป็นส่วนตัว
 msgid "Privacy violation or stalking"
 msgstr "การละเมิดความเป็นส่วนตัวหรือการสะกดรอยตาม"
 
+#. Persona visibility private
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:91
+msgid "Private"
+msgstr "Private"
+
+
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/section_registry/AppearanceSections.ts:222
 msgid "Private details"
@@ -25480,6 +25958,12 @@ msgstr "คีย์ส่วนตัว"
 msgid "Private message"
 msgstr "ข้อความส่วนตัว"
 
+#. Tooltip on private persona badge
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:174
+msgid "Private persona"
+msgstr "Private persona"
+
+
 #. Bolded green prefix shown before the shift-bypass pro tip in confirmation modals. Includes the trailing colon.
 #: src/features/app/components/dialogs/ConfirmModal.tsx:21
 msgid "Pro tip:"
@@ -25494,6 +25978,12 @@ msgstr "ดำเนินการต่อ"
 msgid "Processing"
 msgstr "กำลังดำเนินการ"
 
+#. placeholder {0}: progress.currentName
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:637
+msgid "Processing: {0}"
+msgstr "Processing: {0}"
+
+
 #. Label for the product name input in the setup wizard.
 #. Summary row label for the product name in the setup wizard.
 #: src/features/app/components/setup/SetupWizardSteps.tsx:89
@@ -25502,7 +25992,7 @@ msgid "Product name"
 msgstr "ชื่อผลิตภัณฑ์"
 
 #. User settings tab for editing the current user profile.
-#: src/features/user/components/settings_utils/SettingsConstants.tsx:86
+#: src/features/user/components/settings_utils/SettingsConstants.tsx:87
 msgid "Profile"
 msgstr "โปรไฟล์"
 
@@ -25529,6 +26019,18 @@ msgstr "แบนเนอร์โปรไฟล์ต้องใช้ {prem
 #: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:64
 msgid "Profile banners require {premiumProductName}."
 msgstr "แบนเนอร์โปรไฟล์ต้องใช้ {premiumProductName}"
+
+#. Helper description for unlisted persona visibility
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:96
+msgid "Profile cards are accessible only when clicking on messages sent by this persona. Not listed in your public persona list."
+msgstr "Profile cards are accessible only when clicking on messages sent by this persona. Not listed in your public persona list."
+
+
+#. Helper description for public persona visibility
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:100
+msgid "Profile cards are accessible when clicking on messages and visible in your public personas list to friends and mutual servers."
+msgstr "Profile cards are accessible when clicking on messages and visible in your public personas list to friends and mutual servers."
+
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:169
@@ -25650,14 +26152,15 @@ msgstr "แจ้งเตือนเมื่อมีอุปกรณ์เ
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Short label in the my profile tab. Keep it concise.
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:896
 #: src/features/user/components/modals/tabs/MyProfileTab.tsx:142
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:177
 #: src/features/user/components/settings_utils/section_registry/PrivacySafetySections.ts:160
 msgid "Pronouns"
 msgstr "คำสรรพนาม"
 
-#: src/features/user/components/modals/user_profile_modal/UserProfileModalUserInfo.tsx:79
-#: src/features/user/components/profile/profile_card/ProfileCardUserInfo.tsx:126
+#: src/features/user/components/modals/user_profile_modal/UserProfileModalUserInfo.tsx:44
+#: src/features/user/components/profile/profile_card/ProfileCardUserInfo.tsx:86
 msgid "Pronouns: "
 msgstr "สรรพนาม: "
 
@@ -25690,6 +26193,12 @@ msgstr "ผู้ให้บริการ"
 msgid "PTT"
 msgstr "PTT"
 
+#. Persona visibility public
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:87
+msgid "Public"
+msgstr "Public"
+
+
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Short label in the application info section. Keep it concise.
 #: src/features/user/components/modals/tabs/applications_tab/application_detail/ApplicationInfoSection.tsx:36
@@ -25701,6 +26210,12 @@ msgstr "บอทสาธารณะ"
 #: src/features/discovery/components/modals/DiscoveryGuildPreviewModal.tsx:34
 msgid "Public community"
 msgstr "คอมมูนิตี้สาธารณะ"
+
+#. Tooltip on public persona badge
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:170
+msgid "Public persona"
+msgstr "Public persona"
+
 
 #. Description for the closed registration mode.
 #: src/features/app/components/setup/SetupWizardSteps.tsx:175
@@ -26096,7 +26611,7 @@ msgid "Reason (optional)"
 msgstr "เหตุผล (ไม่บังคับ)"
 
 #. Description for an optional moderation slash-command reason.
-#: src/features/devtools/hooks/useCommands.ts:67
+#: src/features/devtools/hooks/useCommands.ts:68
 msgid "Reason (optional)."
 msgstr "เหตุผล (ไม่บังคับ)"
 
@@ -26135,6 +26650,11 @@ msgstr "สมาชิกล่าสุด"
 #: src/features/messaging/components/pages/RecentMentionsPage.tsx:27
 msgid "Recent mentions"
 msgstr "การกล่าวถึงล่าสุด"
+
+#: src/features/persona/components/PersonaPickerSheet.tsx:167
+msgid "Recent Personas"
+msgstr "Recent Personas"
+
 
 #. Section header in the message search popout listing previously-run searches.
 #: src/features/channel/components/message_search_bar/HistorySection.tsx:20
@@ -26552,7 +27072,7 @@ msgid "Remove {userName} from your friends?"
 msgstr "ลบ {userName} ออกจากรายชื่อเพื่อนใช่หรือไม่"
 
 #. Confirm button label on the remove-all-reactions alert. Destructive.
-#: src/features/channel/components/MessageActionUtils.tsx:76
+#: src/features/channel/components/MessageActionUtils.tsx:77
 msgid "Remove all"
 msgstr "ลบทั้งหมด"
 
@@ -26564,8 +27084,8 @@ msgstr "ลบรีแอ็กชัน {emojiNameWithColons} ทั้งห�
 #. Destructive message context menu item for moderators that clears every reaction on a message.
 #. Message action that removes every reaction from the selected message.
 #. Title of the confirmation alert shown when clearing every reaction on a message.
-#: src/features/channel/components/MessageActionMenu.tsx:79
-#: src/features/channel/components/MessageActionUtils.tsx:68
+#: src/features/channel/components/MessageActionMenu.tsx:82
+#: src/features/channel/components/MessageActionUtils.tsx:69
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:70
 msgid "Remove all reactions"
 msgstr "ลบรีแอ็กชันทั้งหมด"
@@ -26658,6 +27178,7 @@ msgstr "นำออกจาก GIF รายการโปรด (เฉพ�
 #: src/features/channel/components/modals/EditGroupModal.tsx:293
 #: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:314
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:635
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:820
 msgid "Remove icon"
 msgstr "ลบไอคอน"
 
@@ -26733,6 +27254,12 @@ msgstr "ลบสติกเกอร์"
 #: src/features/guild/components/modals/guild_tabs/GuildDiscoveryTab.tsx:132
 msgid "Remove tag {tag}"
 msgstr "ลบแท็ก {tag}"
+
+#. Aria label for removing a tag pair
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:202
+msgid "Remove tag pair"
+msgstr "Remove tag pair"
+
 
 #. Error message in the linked accounts tab. Keep the tone plain and specific.
 #: src/features/user/components/modals/tabs/LinkedAccountsTab.tsx:63
@@ -27017,6 +27544,21 @@ msgstr "ต่ออายุในวันที่ <0>{renewalDate}</0>"
 msgid "Replace"
 msgstr "แทนที่"
 
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:442
+msgid "Replace All"
+msgstr "Replace All"
+
+
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:614
+msgid "Replace all existing personas (Destructive)"
+msgstr "Replace all existing personas (Destructive)"
+
+
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:435
+msgid "Replace All Personas"
+msgstr "Replace All Personas"
+
+
 #. Button or menu action label in the background image gallery modal. Keep it concise.
 #: src/features/theme/components/modals/BackgroundImageGalleryModal.tsx:135
 msgid "Replace background"
@@ -27083,7 +27625,7 @@ msgstr "ตอบกลับข้อความ"
 msgid "Replying to {replyAuthorName}, {authorName} said: {formatted}"
 msgstr "{authorName} ตอบกลับ {replyAuthorName} ว่า: {formatted}"
 
-#: src/features/channel/components/ChannelReplyBar.tsx:153
+#: src/features/channel/components/ChannelReplyBar.tsx:154
 msgid "Replying to <0>{authorNickname}</0>"
 msgstr "กำลังตอบกลับ <0>{authorNickname}</0>"
 
@@ -28090,6 +28632,11 @@ msgstr "โรมาเนีย"
 msgid "Romanian"
 msgstr "โรมาเนีย"
 
+#: src/features/persona/components/PersonaPickerSheet.tsx:156
+msgid "Root Account (Default)"
+msgstr "Root Account (Default)"
+
+
 #. Short label in the image crop modal. Keep it concise.
 #. Tooltip on the media viewer button that rotates the current media item 90 degrees clockwise.
 #: src/features/messaging/components/modals/ImageCropModal.tsx:24
@@ -28241,6 +28788,11 @@ msgstr "บันทึก GIF รายการโปรดเป็นสื�
 msgid "Save icon"
 msgstr "บันทึกไอคอน"
 
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1029
+msgid "Save Persona"
+msgstr "Save Persona"
+
+
 #. Button or menu action label in the channel and chat memes picker view. Keep it concise.
 #. Empty state body in the mobile memes picker explaining how to save media. Tone can be friendly.
 #: src/features/channel/components/MobileMemesPicker.tsx:62
@@ -28282,6 +28834,18 @@ msgstr "บันทึกแล้ว"
 #: src/features/channel/components/embeds/channel_embed/BlueskyEmbed.tsx:63
 msgid "Saves: <0>{countLabel}</0>"
 msgstr "บันทึก: <0>{countLabel}</0>"
+
+#. Progress label when saving personas
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:54
+msgid "saving personas"
+msgstr "saving personas"
+
+
+#. Progress status when saving personas
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:50
+msgid "Saving personas..."
+msgstr "Saving personas..."
+
 
 #: src/features/channel/components/direct_message/DMWelcomeSection.tsx:298
 msgid "Say hi to <0>{displayName}</0>. Your DM starts here."
@@ -28542,7 +29106,7 @@ msgstr "เลื่อนไปล่างสุด"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:132
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:136
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:443
 msgid "Scroll to bottom when sending a message"
 msgstr "เลื่อนไปด้านล่างเมื่อส่งข้อความ"
@@ -28657,7 +29221,7 @@ msgid "Search filters"
 msgstr "ตัวกรองการค้นหา"
 
 #. Slash-command description for /gif. Searches for and sends a GIF.
-#: src/features/devtools/hooks/useCommands.ts:59
+#: src/features/devtools/hooks/useCommands.ts:60
 msgid "Search for and send a GIF."
 msgstr "ค้นหาและส่ง GIF"
 
@@ -28738,12 +29302,24 @@ msgstr "ค้นหาสิทธิ์"
 msgid "Search permissions…"
 msgstr "ค้นหาสิทธิ์…"
 
+#. Search placeholder in persona picker sheet
+#: src/features/persona/components/PersonaPickerSheet.tsx:33
+msgid "Search personas, tags, pronouns..."
+msgstr "Search personas, tags, pronouns..."
+
+
 #. Default header title in the channel search results panel before a query has been submitted.
 #. Settings content title shown above results for a settings search query.
 #: src/features/app/components/dialogs/components/DesktopSettingsView.tsx:106
-#: src/features/channel/components/channel_search_results/ChannelSearchResultsShared.tsx:53
+#: src/features/channel/components/channel_search_results/ChannelSearchResultsShared.tsx:54
 msgid "Search results"
 msgstr "ผลการค้นหา"
+
+#. placeholder {0}: filteredPersonas.length
+#: src/features/persona/components/PersonaPickerSheet.tsx:194
+msgid "Search Results ({0})"
+msgstr "Search Results ({0})"
+
 
 #. Heading in the Discovery navigation bar when a search is active. {query} is the text the user searched for.
 #: src/features/discovery/discovery/DiscoveryNavbar.tsx:37
@@ -28774,7 +29350,7 @@ msgstr "ขอบเขตการค้นหา"
 
 #. Status label in the channel search results header announcing the current scope. label is the selected scope name.
 #. Tooltip and aria-label for the search scope button in the message search bar. Sentence case. Preserve {label}; it is inserted by code.
-#: src/features/channel/components/channel_search_results/ChannelSearchResultsShared.tsx:103
+#: src/features/channel/components/channel_search_results/ChannelSearchResultsShared.tsx:104
 #: src/features/channel/components/message_search_bar/MessageSearchBar.tsx:47
 msgid "Search scope: {label}"
 msgstr "ขอบเขตการค้นหา: {label}"
@@ -28849,7 +29425,7 @@ msgid "Search…"
 msgstr "ค้นหา…"
 
 #. Header status shown while a search request is in flight in the channel search results panel.
-#: src/features/channel/components/channel_search_results/ChannelSearchResultsShared.tsx:49
+#: src/features/channel/components/channel_search_results/ChannelSearchResultsShared.tsx:50
 msgid "Searching"
 msgstr "กำลังค้นหา"
 
@@ -29212,7 +29788,7 @@ msgid "Send ({selectedCount}/{selectionLimit})"
 msgstr "ส่ง ({selectedCount}/{selectionLimit})"
 
 #. Slash-command description for /dm. Sends a direct message to a user.
-#: src/features/devtools/hooks/useCommands.ts:47
+#: src/features/devtools/hooks/useCommands.ts:48
 msgid "Send a direct message to a user."
 msgstr "ส่งข้อความส่วนตัวถึงผู้ใช้"
 
@@ -29222,27 +29798,27 @@ msgid "Send a friend request to {userName}, or use the staff override to add the
 msgstr "ส่งคำขอเป็นเพื่อนถึง {userName} หรือใช้สิทธิ์ของเจ้าหน้าที่เพื่อเพิ่มเป็นเพื่อนทันที"
 
 #. Slash-command description for /favorites. Sends a saved / favorited media item.
-#: src/features/devtools/hooks/useCommands.ts:51
+#: src/features/devtools/hooks/useCommands.ts:52
 msgid "Send a saved media item."
 msgstr "ส่งรายการสื่อที่บันทึกไว้"
 
 #. Slash-command description for /spoiler. Wraps the message in spoiler tags so recipients must click to reveal.
-#: src/features/devtools/hooks/useCommands.ts:25
+#: src/features/devtools/hooks/useCommands.ts:26
 msgid "Send a spoiler message (wraps in spoiler tags)."
 msgstr "ส่งข้อความสปอยล์ (จะซ่อนข้อความไว้)"
 
 #. Slash-command description for /sticker. Sends a sticker.
-#: src/features/devtools/hooks/useCommands.ts:55
+#: src/features/devtools/hooks/useCommands.ts:56
 msgid "Send a sticker."
 msgstr "ส่งสติกเกอร์"
 
 #. Slash-command description for /tts. Sends a text-to-speech message played aloud for users with TTS enabled.
-#: src/features/devtools/hooks/useCommands.ts:30
+#: src/features/devtools/hooks/useCommands.ts:31
 msgid "Send a text-to-speech message."
 msgstr "ส่งข้อความแบบอ่านออกเสียง"
 
 #. Slash-command description for /me. Sends the message wrapped in italics, IRC-style.
-#: src/features/devtools/hooks/useCommands.ts:21
+#: src/features/devtools/hooks/useCommands.ts:22
 msgid "Send an action message (wraps in italics)."
 msgstr "ส่งข้อความแบบบรรยายการกระทำ (แสดงเป็นตัวเอียง)"
 
@@ -29331,6 +29907,12 @@ msgstr "ส่งข้อความในช่อง"
 msgid "Send messages in this channel."
 msgstr "ส่งข้อความในช่องนี้"
 
+#. Description of personas settings section
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:113
+msgid "Send messages with distinct names and avatars. Personas can represent plural system members, roleplay characters, or any other identity."
+msgstr "Send messages with distinct names and avatars. Personas can represent plural system members, roleplay characters, or any other identity."
+
+
 #. Footer submit button in the IAR modal. Sends the report to the safety team.
 #: src/features/moderation/components/report_modal/IARModal.tsx:90
 msgid "Send report"
@@ -29413,6 +29995,18 @@ msgstr "การส่ง SMS ไปยังหมายเลขนี้ม�
 msgid "Sending an SMS to this phone number is too expensive for {PRODUCT_NAME}, so we need you to send us an SMS instead. We know this isn't ideal. You can also contact <0>{SUPPORT_EMAIL}</0> to have us lift this requirement from your account."
 msgstr "การส่ง SMS ไปยังเบอร์นี้มีค่าใช้จ่ายสูงเกินไปสำหรับ {PRODUCT_NAME} เราจึงอยากให้คุณส่ง SMS มาให้เราแทน เราทราบว่านี่อาจไม่สะดวก คุณสามารถติดต่อ <0>{SUPPORT_EMAIL}</0> เพื่อให้เรายกเลิกข้อกำหนดนี้ออกจากบัญชีของคุณได้"
 
+#. Tooltip when sending as a persona matched by persona tag
+#: src/features/persona/components/PersonaComposerPill.tsx:29
+msgid "Sending as {name} (Matched by tag) - Click to switch persona"
+msgstr "Sending as {name} (Matched by tag) - Click to switch persona"
+
+
+#. Tooltip when sending as root account with persona mode active
+#: src/features/persona/components/PersonaComposerPill.tsx:37
+msgid "Sending as @{username} ({mode}) - Click to switch persona"
+msgstr "Sending as @{username} ({mode}) - Click to switch persona"
+
+
 #. IAR modal: rule label.
 #: src/features/moderation/components/report_modal/IARModalCopy.ts:269
 msgid "Sending malware or dangerous links"
@@ -29462,7 +30056,7 @@ msgid "Sensitive media"
 msgstr "สื่อที่ละเอียดอ่อน"
 
 #. Generic short status label confirming an item (invite, gift, theme link) was sent.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:804
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:808
 msgid "Sent"
 msgstr "ส่งแล้ว"
 
@@ -29536,6 +30130,17 @@ msgstr "ตั้งสถานะกำหนดเอง"
 #: src/features/guild/utils/guild_tabs/audit_log/AuditLogRoleMessages.ts:150
 msgid "Set a member list position for the role"
 msgstr "กำหนดตำแหน่งของบทบาทในรายการสมาชิก"
+
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1131
+msgid "Set Active"
+msgstr "Set Active"
+
+
+#. Aria label for setting active persona
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:206
+msgid "Set as active persona"
+msgstr "Set as active persona"
+
 
 #. Short label in the keybinds tab. Keep it concise.
 #: src/features/user/components/modals/tabs/keybinds_tab/DefaultShortcutRow.tsx:28
@@ -29971,7 +30576,7 @@ msgstr "ปุ่มลัดขัดแย้งกัน"
 #. User settings tab for keyboard shortcuts and custom bindings.
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:18
 #: src/features/user/components/settings_utils/section_registry/AccessibilitySections.ts:175
-#: src/features/user/components/settings_utils/SettingsConstants.tsx:123
+#: src/features/user/components/settings_utils/SettingsConstants.tsx:128
 msgid "Shortcuts"
 msgstr "ปุ่มลัด"
 
@@ -30142,7 +30747,7 @@ msgstr "แสดงตัวอย่างลิงก์เว็บไซต
 
 #. Short label for an advanced message input preference.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:55
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:59
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:124
 msgid "Show emoji button"
 msgstr "แสดงปุ่มอิโมจิ"
@@ -30192,7 +30797,7 @@ msgid "Show icon when collapsed"
 msgstr "แสดงไอคอนเมื่อยุบ"
 
 #. Short confirmation button label in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:160
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:164
 msgid "Show in all communities"
 msgstr "แสดงในทุกคอมมูนิตี้"
 
@@ -30354,6 +30959,14 @@ msgstr "แสดงรหัสผ่าน"
 msgid "Show per-device participant volume sliders in voice menus"
 msgstr "แสดงแถบเลื่อนระดับเสียงของผู้เข้าร่วมตามอุปกรณ์ในเมนูเสียง"
 
+#. Plus menu submenu toggle that shows the persona selector next to the textarea.
+#. Short label for an advanced message input preference.
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:51
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:128
+msgid "Show personas button"
+msgstr "Show personas button"
+
+
 #. Developer option label for exposing the staff-only profile timezone section in profile settings.
 #: src/features/devtools/components/DeveloperOptionsToggleGroups.ts:135
 msgid "Show profile time zone settings"
@@ -30378,8 +30991,8 @@ msgstr "แสดงสื่อที่บันทึกไว้ในกา
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #: src/features/channel/components/textarea/TextareaContextMenu.tsx:102
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:59
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:128
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:63
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:132
 msgid "Show send button"
 msgstr "แสดงปุ่มส่ง"
 
@@ -30390,7 +31003,7 @@ msgstr "แสดงเนื้อหาสปอยล์เมื่อคล
 
 #. Short label for an advanced message input preference.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:51
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:55
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:120
 msgid "Show stickers button"
 msgstr "แสดงปุ่มสติกเกอร์"
@@ -30465,7 +31078,7 @@ msgid "Showing {displayedCount, number} of {totalCount, plural, one {# total mem
 msgstr "กำลังแสดง {displayedCount, number} จากสมาชิกทั้งหมด {totalCount, plural, one {# คน} other {# คน}}"
 
 #. Short label in the app constants.
-#: src/features/app/constants/AppConstants.ts:53
+#: src/features/app/constants/AppConstants.ts:61
 msgid "Shown as offline"
 msgstr "แสดงเป็นออฟไลน์"
 
@@ -30708,7 +31321,7 @@ msgstr "ข้าม"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced inbox preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:136
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:140
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:459
 msgid "Skip \"Mark all as read\" confirmation"
 msgstr "ข้ามการยืนยัน \"ทำเครื่องหมายว่าอ่านแล้วทั้งหมด\""
@@ -30750,6 +31363,12 @@ msgstr "ข้ามขั้นตอนนี้"
 #: src/app/App.tsx:69
 msgid "Skip to content"
 msgstr "ข้ามไปเนื้อหา"
+
+#. Import warning when member has no name
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:58
+msgid "Skipped member because they have no name configured."
+msgstr "Skipped member because they have no name configured."
+
 
 #. TTS substitution token spoken in place of a slash-command invocation. {commandName} is the command name without the slash.
 #: src/features/voice/utils/TtsTextFormatter.ts:42
@@ -31195,7 +31814,7 @@ msgid "Sort"
 msgstr "จัดเรียง"
 
 #. Status label in the channel search results header announcing the current sort mode. label is the selected sort.
-#: src/features/channel/components/channel_search_results/ChannelSearchResultsShared.tsx:108
+#: src/features/channel/components/channel_search_results/ChannelSearchResultsShared.tsx:109
 msgid "Sort mode: {label}"
 msgstr "โหมดเรียงลำดับ: {label}"
 
@@ -31223,7 +31842,7 @@ msgstr "ระดับเสียง"
 
 #. Section heading / tab label for the notification-sounds area.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:808
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:812
 #: src/features/user/components/settings_utils/section_registry/NotificationsSections.ts:135
 msgid "Sounds"
 msgstr "เสียง"
@@ -31351,7 +31970,7 @@ msgstr "อ่านออกเสียงทุกข้อความ"
 
 #. Message action that has the screen reader read the selected message aloud.
 #. Message context menu item that reads the message aloud via text-to-speech.
-#: src/features/channel/components/MessageActionMenu.tsx:99
+#: src/features/channel/components/MessageActionMenu.tsx:102
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:78
 msgid "Speak message"
 msgstr "อ่านข้อความออกเสียง"
@@ -31610,6 +32229,11 @@ msgstr "วันที่เริ่มต้นต้องเร็วกว
 msgid "Start drag and drop"
 msgstr "เริ่มลากและวาง"
 
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:705
+msgid "Start Import"
+msgstr "Start Import"
+
+
 #: src/features/user/components/modals/tabs/components/MicTestSection.tsx:15
 msgid "Start mic test"
 msgstr "เริ่มทดสอบไมโครโฟน"
@@ -31742,7 +32366,7 @@ msgstr "ไมโครโฟนสเตอริโอ"
 #. Label for the has:sticker filter option in the mobile channel search sheet.
 #. Screen-reader fragment listing one sticker on a message. Lowercase because it appears inside a longer sentence.
 #: src/features/channel/components/bottomsheets/ChannelSearchBottomSheet.tsx:120
-#: src/features/channel/components/ChannelMessage.tsx:52
+#: src/features/channel/components/ChannelMessage.tsx:56
 msgid "sticker"
 msgstr "สติกเกอร์"
 
@@ -31882,7 +32506,7 @@ msgid "Stop"
 msgstr "หยุด"
 
 #. Confirmation prompt in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:156
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:160
 msgid "Stop hiding muted channels by default?"
 msgstr "หยุดซ่อนช่องที่ปิดเสียงไว้เป็นค่าเริ่มต้นหรือไม่"
 
@@ -31923,7 +32547,7 @@ msgstr "หยุดแชร์กิจกรรมเสียงกับเ
 #. Message action that stops the screen reader from speaking the selected message.
 #. Message context menu item that stops the text-to-speech playback in progress.
 #. Native macOS Edit > Speech submenu item that stops reading text aloud. Imperative verb.
-#: src/features/channel/components/MessageActionMenu.tsx:95
+#: src/features/channel/components/MessageActionMenu.tsx:98
 #: src/features/platform/utils/DesktopLocaleBridge.ts:92
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:74
 msgid "Stop speaking"
@@ -32192,6 +32816,18 @@ msgstr "ข้อความรอง"
 msgid "Success"
 msgstr "สำเร็จ"
 
+#. placeholder {0}: importResults.successCount
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:659
+msgid "Successfully imported {0} persona(s) into your account. All avatar images are safely stored on your local server."
+msgstr "Successfully imported {0} persona(s) into your account. All avatar images are safely stored on your local server."
+
+
+#. Placeholder for persona tag suffix
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:198
+msgid "Suffix (e.g. ])"
+msgstr "Suffix (e.g. ])"
+
+
 #. Helper text under the "Filter members without roles" explicit content filter option in the community moderation settings tab.
 #: src/features/guild/components/modals/guild_tabs/GuildModerationTab.tsx:112
 msgid "Suggested for most communities"
@@ -32213,6 +32849,11 @@ msgstr "คำแนะนำ"
 #: src/features/devtools/components/debug/DebugModal.tsx:90
 msgid "Summary"
 msgstr "สรุป"
+
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:506
+msgid "Supports PluralKit system export files"
+msgstr "Supports PluralKit system export files"
+
 
 #. Switch label in the community notification settings modal. Suppresses @everyone and @here notifications in this community. The two placeholders render the literal @everyone and @here tokens and must not be translated.
 #. Toggle label that suppresses @everyone and @here mentions; placeholders are the localized mention tags.
@@ -32587,6 +33228,11 @@ msgstr "การเคลื่อนไหวของระบบ"
 msgid "System reduced motion"
 msgstr "ลดการเคลื่อนไหวของระบบ"
 
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:556
+msgid "System Tag (Applied to imported personas)"
+msgstr "System Tag (Applied to imported personas)"
+
+
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Short label in the theme tab content. Keep it concise.
 #: src/features/user/components/modals/tabs/appearance_tab/theme/ThemeTabContent.tsx:54
@@ -32645,6 +33291,22 @@ msgstr "ตาราง"
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:73
 msgid "Tag"
 msgstr "แท็ก"
+
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:800
+msgid "Tag Icon"
+msgstr "Tag Icon"
+
+
+#. Validation error when tag pair is already used by another persona
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:130
+msgid "Tag pair already in use by persona \"{name}\""
+msgstr "Tag pair already in use by persona \"{name}\""
+
+
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:787
+msgid "Tag Text"
+msgstr "Tag Text"
+
 
 #. Short label in the theme studio library section. Keep it concise.
 #: src/features/theme_studio/sections/LibrarySection.tsx:117
@@ -32729,6 +33391,12 @@ msgstr "งาน"
 #: src/features/voice/components/VoiceRegionTeleportOverlay.tsx:10
 msgid "Teleporting you to another voice region..."
 msgstr "กำลังย้ายคุณไปยังภูมิภาคเสียงอื่น..."
+
+#. Placeholder for persona bio
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:190
+msgid "Tell us about this persona..."
+msgstr "Tell us about this persona..."
+
 
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:560
 msgid "Template"
@@ -33062,6 +33730,12 @@ msgstr "การแสดงตัวอย่างกล้องกำลั
 msgid "The channel you're looking for may have been deleted or you may not have access to it."
 msgstr "ช่องที่คุณกำลังมองหาอาจถูกลบไปแล้ว หรือคุณอาจไม่ได้รับสิทธิ์เข้าถึง"
 
+#. Error message when uploaded file is not valid JSON
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:22
+msgid "The chosen file is not a valid JSON object."
+msgstr "The chosen file is not a valid JSON object."
+
+
 #. Body of the error modal shown when the source community has disabled cloning of this expression.
 #: src/features/app/components/alerts/ExpressionCloneFailedModal.tsx:26
 msgid "The community this came from has turned off cloning, so it cannot be copied."
@@ -33170,12 +33844,12 @@ msgid "The member is no longer temporary"
 msgstr "สมาชิกไม่เป็นแบบชั่วคราวอีกต่อไป"
 
 #. Description for the member option of a moderation slash command.
-#: src/features/devtools/hooks/useCommands.ts:63
+#: src/features/devtools/hooks/useCommands.ts:64
 msgid "The member to target."
 msgstr "สมาชิกที่จะดำเนินการ"
 
 #. Description for a required message option in a slash command.
-#: src/features/devtools/hooks/useCommands.ts:71
+#: src/features/devtools/hooks/useCommands.ts:72
 msgid "The message to send."
 msgstr "ข้อความที่จะส่ง"
 
@@ -33793,6 +34467,11 @@ msgstr "นี่คืออิโมจิที่กำหนดเองจ
 msgid "This is a custom sticker from a community."
 msgstr "นี่คือสติกเกอร์ที่กำหนดเองจากชุมชน"
 
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:863
+msgid "This is a preview of how your display tag will look in chat."
+msgstr "This is a preview of how your display tag will look in chat."
+
+
 #. Required-action modal intro text when phone verification is required.
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:228
 msgid "This is an anti-spam check. Your phone number is not linked to your account."
@@ -34141,7 +34820,7 @@ msgid "This voice channel is no longer available."
 msgstr "ช่องเสียงนี้ไม่พร้อมใช้งานแล้ว"
 
 #. Description text in the channel and chat user message. Preserve {silentMention}; it is inserted by code.
-#: src/features/channel/components/UserMessage.tsx:74
+#: src/features/channel/components/UserMessage.tsx:76
 msgid "This was a {silentMention} message."
 msgstr "ข้อความนี้เป็นข้อความ {silentMention}"
 
@@ -34574,6 +35253,11 @@ msgctxt "channel-topic-field"
 msgid "Topic"
 msgstr "หัวข้อ"
 
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:540
+msgid "Total Members"
+msgstr "Total Members"
+
+
 #. Developer debug summary label for total message markdown parsing duration.
 #: src/features/devtools/components/debug/MessageDebugModal.tsx:23
 msgid "Total parsing time:"
@@ -34761,7 +35445,7 @@ msgid "Try a different name."
 msgstr "ลองใช้ชื่ออื่น"
 
 #. Body copy under the no-results heading suggesting the user adjust their query.
-#: src/features/channel/components/channel_search_results/ChannelSearchResultsShared.tsx:78
+#: src/features/channel/components/channel_search_results/ChannelSearchResultsShared.tsx:79
 msgid "Try a different search query."
 msgstr "ลองใช้คำค้นหาอื่น"
 
@@ -35440,7 +36124,7 @@ msgstr "ตัวเลือกสำรองแบบครอบคลุม
 #. Generic fallback label when a more specific value is unavailable.
 #. Short label in the invite list item. Keep it concise.
 #: src/features/emoji/components/emojis/EmojiListItem.tsx:584
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:756
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:760
 #: src/features/invite/components/InviteListItem.tsx:36
 #: src/features/moderation/components/modals/BanDetailsModal.tsx:114
 #: src/features/updater/commands/UpdaterModalCommands.tsx:144
@@ -35555,7 +36239,7 @@ msgstr "ผู้ใช้ที่ไม่รู้จัก"
 #: src/features/channel/components/modals/channel_tabs/ChannelPermissionsTab.tsx:68
 #: src/features/channel/components/modals/GroupInvitesBottomSheet.tsx:53
 #: src/features/channel/utils/ChannelUtils.tsx:55
-#: src/features/devtools/utils/CommandUtils.ts:27
+#: src/features/devtools/utils/CommandUtils.ts:28
 #: src/features/guild/components/modals/guild_tabs/GuildAuditLogSentence.tsx:54
 #: src/features/guild/components/modals/guild_tabs/GuildAuditLogTab.tsx:102
 #: src/features/lexical/composer/nodes/SlashSlotNode.ts:61
@@ -35582,6 +36266,12 @@ msgstr "unknown-mention"
 #: src/features/messaging/utils/markdown/Plaintext.ts:76
 msgid "unknown-role"
 msgstr "unknown-role"
+
+#. Persona visibility unlisted
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:83
+msgid "Unlisted"
+msgstr "Unlisted"
+
 
 #: src/features/channel/components/EmojiPicker.tsx:176
 #: src/features/channel/components/MobileEmojiPicker.tsx:212
@@ -35754,7 +36444,7 @@ msgid "Unordered"
 msgstr "ไม่มีลำดับ"
 
 #. Confirm button label on the unpin message alert.
-#: src/features/channel/components/MessageActionUtils.tsx:52
+#: src/features/channel/components/MessageActionUtils.tsx:53
 msgid "Unpin"
 msgstr "เลิกปักหมุด"
 
@@ -35779,7 +36469,7 @@ msgid "Unpin message"
 msgstr "เลิกปักหมุดข้อความ"
 
 #. Body of the confirmation alert shown when unpinning a message.
-#: src/features/channel/components/MessageActionUtils.tsx:48
+#: src/features/channel/components/MessageActionUtils.tsx:49
 msgid "Unpin this message?"
 msgstr "เลิกปักหมุดข้อความนี้ใช่ไหม"
 
@@ -35922,10 +36612,28 @@ msgstr "ไฟล์สติกเกอร์ที่ไม่รองรั
 
 #. Message action that re-enables embeds on the selected message.
 #. Message context menu item that re-shows previously hidden link previews and embeds on the message.
-#: src/features/channel/components/MessageActionMenu.tsx:87
+#: src/features/channel/components/MessageActionMenu.tsx:90
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:58
 msgid "Unsuppress embeds"
 msgstr "แสดงตัวอย่างลิงก์"
+
+#. Helper description for Off persona mode
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:70
+msgid "Untagged messages always send from your root account. Personas only speak when you type their tags (e.g. [text])."
+msgstr "Untagged messages always send from your root account. Personas only speak when you type their tags (e.g. [text])."
+
+
+#. Helper description for Last Used persona mode
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:78
+msgid "Untagged messages send as the persona that spoke most recently. Whenever anyone uses a persona tag, they automatically become the active persona."
+msgstr "Untagged messages send as the persona that spoke most recently. Whenever anyone uses a persona tag, they automatically become the active persona."
+
+
+#. Helper description for Manual persona mode
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:74
+msgid "Untagged messages send as your chosen persona. Typing another persona’s tags will only send that single message and won’t switch who is active."
+msgstr "Untagged messages send as your chosen persona. Typing another persona’s tags will only send that single message and won’t switch who is active."
+
 
 #. Summary row value on the confirm step when only an end date is set. {end} is a localized date.
 #: src/features/user/components/modals/tabs/privacy_safety_tab/data_request_modal/DataRequestModal.tsx:232
@@ -35933,7 +36641,7 @@ msgid "Until {end}"
 msgstr "จนถึง {end}"
 
 #. Status duration option meaning the selected presence stays active until the user changes it manually.
-#: src/features/app/constants/AppConstants.ts:61
+#: src/features/app/constants/AppConstants.ts:69
 msgid "Until I change it"
 msgstr "จนกว่าฉันจะเปลี่ยนเอง"
 
@@ -36136,6 +36844,7 @@ msgstr "อัปโหลดไฟล์และสื่อในช่อง
 #: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:305
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:626
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildIconUploadField.tsx:130
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:830
 msgid "Upload icon"
 msgstr "อัปโหลดไอคอน"
 
@@ -36219,6 +36928,11 @@ msgstr "เฉพาะไฟล์วิดีโอที่อัปโหล
 #: src/features/messaging/utils/UploadingAttachmentLabelUtils.ts:6
 msgid "Uploading {count, plural, one {# file} other {# files}}"
 msgstr "กำลังอัปโหลด {count, plural, one {# ไฟล์} other {# ไฟล์}}"
+
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1029
+msgid "Uploading avatar..."
+msgstr "Uploading avatar..."
+
 
 #: src/features/emoji/components/modals/EmojiUploadModal.tsx:26
 msgid "Uploading emojis"
@@ -36726,7 +37440,7 @@ msgid "User record"
 msgstr "บันทึกผู้ใช้"
 
 #. Root label for the current user settings modal and settings search paths.
-#: src/features/user/components/settings_utils/SettingsConstants.tsx:341
+#: src/features/user/components/settings_utils/SettingsConstants.tsx:352
 msgid "User settings"
 msgstr "การตั้งค่าผู้ใช้"
 
@@ -37474,7 +38188,7 @@ msgid "View profile for {displayName}"
 msgstr "ดูโปรไฟล์ของ {displayName}"
 
 #. Message context menu item that opens the reactions list sheet for the message.
-#: src/features/channel/components/MessageActionMenu.tsx:75
+#: src/features/channel/components/MessageActionMenu.tsx:78
 msgid "View reactions"
 msgstr "ดูรีแอ็กชัน"
 
@@ -37502,6 +38216,12 @@ msgstr "ดูบัญชีที่เชื่อมต่อของคุ
 #: src/features/app/constants/AppConstants.ts:17
 msgid "View your email address"
 msgstr "ดูที่อยู่อีเมลของคุณ"
+
+#. OAuth scope description shown on the consent screen for the personas.read scope.
+#: src/features/app/constants/AppConstants.ts:33
+msgid "View your personas"
+msgstr "View your personas"
+
 
 #. Notification sound setting label. Sound played when a viewer joins your screen share or stream.
 #: src/features/notification/utils/SoundLabels.ts:36
@@ -37540,6 +38260,7 @@ msgid "Virginia"
 msgstr "เวอร์จิเนีย"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:953
 #: src/features/user/components/settings_utils/section_registry/AccessibilitySections.ts:39
 msgid "Visibility"
 msgstr "การมองเห็น"
@@ -37625,7 +38346,7 @@ msgid "Voice (mature)"
 msgstr "เสียง (เนื้อหาสำหรับผู้ใหญ่)"
 
 #. User settings tab for microphone, speaker, camera, and call stats.
-#: src/features/user/components/settings_utils/SettingsConstants.tsx:119
+#: src/features/user/components/settings_utils/SettingsConstants.tsx:124
 msgid "Voice & video"
 msgstr "เสียงและวิดีโอ"
 
@@ -38177,7 +38898,7 @@ msgid "We're having trouble connecting to the space-time continuum. Check your c
 msgstr "เรากำลังประสบปัญหาในการเชื่อมต่อกับห้วงอวกาศและเวลา โปรดตรวจสอบการเชื่อมต่อของคุณแล้วลองอีกครั้ง"
 
 #. Body copy under the indexing heading explaining why search results are not yet available.
-#: src/features/channel/components/channel_search_results/ChannelSearchResultsShared.tsx:65
+#: src/features/channel/components/channel_search_results/ChannelSearchResultsShared.tsx:66
 msgid "We're indexing this channel for the first time. This may take a moment. Results will appear here when ready."
 msgstr "เรากำลังจัดทำดัชนีช่องนี้เป็นครั้งแรก ซึ่งอาจใช้เวลาสักครู่ ผลลัพธ์จะปรากฏที่นี่เมื่อพร้อมใช้งาน"
 
@@ -38422,7 +39143,7 @@ msgid "What to include"
 msgstr "สิ่งที่ต้องการรวม"
 
 #. Description for a media search slash-command query.
-#: src/features/devtools/hooks/useCommands.ts:75
+#: src/features/devtools/hooks/useCommands.ts:76
 msgid "What to search for."
 msgstr "สิ่งที่ต้องการค้นหา"
 
@@ -38615,7 +39336,7 @@ msgid "Window state"
 msgstr "สถานะหน้าต่าง"
 
 #. User settings tab label shown on Windows desktop builds. Refers to the Microsoft Windows OS.
-#: src/features/user/components/settings_utils/SettingsConstants.tsx:69
+#: src/features/user/components/settings_utils/SettingsConstants.tsx:70
 msgid "Windows app"
 msgstr "แอป Windows"
 
@@ -39088,7 +39809,7 @@ msgid "You cannot remove this permission because it would remove it from you"
 msgstr "คุณไม่สามารถลบสิทธิ์นี้ได้ เนื่องจากจะเป็นการลบสิทธิ์ออกจากตัวคุณเอง"
 
 #. Local system message after the user changes their community nickname with a slash command. The bold markdown markers should remain around the two names.
-#: src/features/devtools/utils/CommandUtils.ts:31
+#: src/features/devtools/utils/CommandUtils.ts:32
 msgid "You changed your nickname in this community from **{previousNickname}** to **{newNickname}**."
 msgstr "คุณเปลี่ยนชื่อเล่นในคอมมูนิตี้นี้จาก **{previousNickname}** เป็น **{newNickname}**"
 
@@ -39637,7 +40358,7 @@ msgstr "การสมัครสมาชิก {premiumProductName} ขอ�
 msgid "Your {productName} session expired. Sign in again to continue authorizing this application."
 msgstr "เซสชัน {productName} ของคุณหมดอายุแล้ว โปรดลงชื่อเข้าใช้อีกครั้งเพื่อดำเนินการให้สิทธิ์แอปพลิเคชันนี้ต่อ"
 
-#: src/features/user/components/settings_utils/SettingsConstants.tsx:200
+#: src/features/user/components/settings_utils/SettingsConstants.tsx:205
 msgid "Your account"
 msgstr "บัญชีของคุณ"
 
@@ -39823,22 +40544,22 @@ msgid "Your last purchase is outside the refund window. Contact support for bill
 msgstr "การซื้อครั้งล่าสุดของคุณอยู่นอกช่วงเวลาการคืนเงิน โปรดติดต่อฝ่ายสนับสนุนสำหรับปัญหาการเรียกเก็บเงิน"
 
 #. Label in the message queue state.
-#: src/features/messaging/state/MessageQueue.tsx:72
+#: src/features/messaging/state/MessageQueue.tsx:73
 msgid "Your message could not be delivered because it was flagged by our safety systems. If you believe this is a mistake, please contact support."
 msgstr "ไม่สามารถส่งข้อความของคุณได้ เนื่องจากถูกระบบความปลอดภัยของเราตรวจจับไว้ หากคุณคิดว่านี่เป็นความผิดพลาด โปรดติดต่อฝ่ายสนับสนุน"
 
 #. Label in the message queue state.
-#: src/features/messaging/state/MessageQueue.tsx:59
+#: src/features/messaging/state/MessageQueue.tsx:60
 msgid "Your message could not be delivered. This is usually because you don't share a community with the recipient or the recipient is only accepting direct messages from friends. You may also need to adjust your own direct message privacy settings in {directMessagePrivacySettingsPath}."
 msgstr "ส่งข้อความของคุณไม่ได้ โดยปกติแล้วเป็นเพราะคุณไม่ได้อยู่ในคอมมูนิตี้เดียวกับผู้รับ หรือผู้รับตั้งค่ารับข้อความส่วนตัวจากเพื่อนเท่านั้น คุณอาจต้องปรับการตั้งค่าความเป็นส่วนตัวสำหรับข้อความส่วนตัวของคุณใน {directMessagePrivacySettingsPath} ด้วย"
 
 #. Description text in the message queue state.
-#: src/features/messaging/state/MessageQueue.tsx:64
+#: src/features/messaging/state/MessageQueue.tsx:65
 msgid "Your message could not be delivered. You need to claim your account to send direct messages."
 msgstr "ส่งข้อความของคุณไม่ได้ คุณต้องยืนยันบัญชีก่อนจึงจะส่งข้อความส่วนตัวได้"
 
 #. Description text in the message queue state.
-#: src/features/messaging/state/MessageQueue.tsx:68
+#: src/features/messaging/state/MessageQueue.tsx:69
 msgid "Your message could not be delivered. You need to claim your account to send messages."
 msgstr "ส่งข้อความไม่ได้ คุณต้องยืนยันบัญชีก่อนจึงจะส่งข้อความได้"
 
@@ -39868,7 +40589,7 @@ msgid "your new email"
 msgstr "อีเมลใหม่ของคุณ"
 
 #. Description for the /nick nickname option.
-#: src/features/devtools/hooks/useCommands.ts:79
+#: src/features/devtools/hooks/useCommands.ts:80
 msgid "Your new nickname, or leave blank to reset it."
 msgstr "ชื่อเล่นใหม่ของคุณ หรือเว้นว่างไว้เพื่อรีเซ็ต"
 
