@@ -53,6 +53,7 @@ import {
 	handleUserPersonaCreate,
 	handleUserPersonaDelete,
 	handleUserPersonasUpdate,
+	handleUserPersonaSettingsUpdate,
 	handleUserPersonaUpdate,
 } from '@app/features/persona/events/PersonaEvents';
 import {handlePresenceUpdate} from '@app/features/presence/events/PresenceUpdate';
@@ -107,6 +108,7 @@ export function createHandlerRegistry(): GatewayHandlerRegistry {
 	registry.set('USER_PERSONA_UPDATE', handleUserPersonaUpdate as GatewayEventHandler);
 	registry.set('USER_PERSONA_DELETE', handleUserPersonaDelete as GatewayEventHandler);
 	registry.set('USER_PERSONAS_UPDATE', handleUserPersonasUpdate as GatewayEventHandler);
+	registry.set('USER_PERSONA_SETTINGS_UPDATE', handleUserPersonaSettingsUpdate as GatewayEventHandler);
 	registry.set('WEBAUTHN_CREDENTIALS_UPDATE', handleWebAuthnCredentialsUpdate as GatewayEventHandler);
 	registry.set('GUILD_CREATE', handleGuildCreate as GatewayEventHandler);
 	registry.set('GUILD_UPDATE', handleGuildUpdate as GatewayEventHandler);
