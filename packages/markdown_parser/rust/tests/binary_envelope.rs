@@ -59,3 +59,18 @@ fn spoiler_and_heading_golden_bytes() {
         [1, 2, 7, 1, 1, 0, 1, b'h', 6, 1, 1, 0, 1, b's']
     );
 }
+
+#[test]
+fn user_mention_golden_bytes() {
+    // Tag 0 for standard user mention: [FORMAT_VERSION, count=1, tag=14 (Mention), kind=0, len=3, '1', '2', '3']
+    assert_eq!(encode("<@123>"), [1, 1, 14, 0, 3, b'1', b'2', b'3']);
+}
+
+#[test]
+fn user_persona_mention_golden_bytes() {
+    // Tag 7 for persona user mention: [FORMAT_VERSION, count=1, tag=14 (Mention), kind=7, user_len=3, '1', '2', '3', persona_len=3, '4', '5', '6']
+    assert_eq!(
+        encode("<@123:456>"),
+        [1, 1, 14, 7, 3, b'1', b'2', b'3', 3, b'4', b'5', b'6']
+    );
+}
