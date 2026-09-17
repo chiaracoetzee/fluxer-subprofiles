@@ -41227,3 +41227,708 @@ msgstr "Zoom avant"
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:86
 msgid "Zoom out"
 msgstr "Zoom arrière"
+
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:857
+msgid "— Today at 12:00 PM"
+msgstr "— Aujourd'hui à 12:00"
+
+#. placeholder {0}: w.prefix
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:680
+msgid "(Prefix: {0})"
+msgstr "(Préfixe : {0})"
+
+#. placeholder {0}: importResults.warnings.length
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:671
+msgid "{0} notice(s) during import"
+msgstr "{0} remarque(s) lors de l'importation"
+
+#. placeholder {0}: progress.current
+#. placeholder {1}: progress.total
+#. placeholder {2}: progress.label ?? 'items'
+#. placeholder {3}: progress.percent
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:643
+msgid "{0} of {1} {2} ({3}%)"
+msgstr "{0} sur {1} {2} ({3} %)"
+
+#. Tooltip when sending as a latched persona
+#: src/features/persona/components/PersonaComposerPill.tsx:33
+msgid "{name} ({mode}) - Click to switch persona"
+msgstr "{name} ({mode}) - Cliquer pour changer de persona"
+
+#. Required-action error when the API requires a captcha for phone verification.
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:581
+msgid "A browser check is required before phone verification. Try again from the sign-in page or contact support."
+msgstr "Une vérification du navigateur est requise avant la vérification du téléphone. Réessayez depuis la page de connexion ou contactez l'assistance."
+
+#. Tooltip showing root account username
+#: src/features/persona/components/PersonaTag.tsx:88
+msgid "Account: @{username}"
+msgstr "Compte : @{username}"
+
+#. Aria label for active persona mode tabs
+#. Aria label for active persona mode tabs
+#: src/features/persona/components/PersonaPickerSheet.tsx:37
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:117
+msgid "Active persona mode"
+msgstr "Mode de persona actif"
+
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:745
+msgid "Active Persona Mode"
+msgstr "Mode de persona actif"
+
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1046
+msgid "Add Persona"
+msgstr "Ajouter une persona"
+
+#. placeholder {0}: formData.tags.length
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:979
+msgid "Add Tag Pair ({0}/5)"
+msgstr "Ajouter une paire de balises ({0}/5)"
+
+#: src/features/persona/components/PersonaPickerSheet.tsx:194
+msgid "All Personas"
+msgstr "Toutes les personas"
+
+#. placeholder {0}: persona.name
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:665
+msgid "Are you sure you want to delete <0>{0}</0>? This action cannot be undone."
+msgstr "Voulez-vous vraiment supprimer <0>{0}</0> ? Cette action est irréversible."
+
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:437
+msgid "Are you sure you want to replace all <0>{existingCount}</0> existing persona(s)? This will permanently delete them from your account and cannot be undone."
+msgstr "Voulez-vous vraiment remplacer l'ensemble des <0>{existingCount}</0> persona(s) existante(s) ? Elles seront définitivement supprimées de votre compte et cette action est irréversible."
+
+#. Import warning when avatar fails to download
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:355
+msgid "Avatar image failed to download: {error}. Persona was imported without an avatar."
+msgstr "Échec du téléchargement de l'avatar : {error}. La persona a été importée sans avatar."
+
+#. Progress label for avatar downloads
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:42
+msgid "avatars downloaded"
+msgstr "avatars téléchargés"
+
+#. Setup wizard title for CAPTCHA integration credentials.
+#: src/features/app/components/setup/SetupWizardSteps.tsx:984
+msgid "Bot protection"
+msgstr "Protection contre les bots"
+
+#. Toast error shown when captcha verification fails inside the auth captcha interceptor.
+#: src/features/auth/components/CaptchaInterceptor.tsx:15
+msgid "Captcha verification failed. Try again."
+msgstr "Échec de la vérification du CAPTCHA. Veuillez réessayer."
+
+#. Generic action label that opens the persona picker.
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:712
+msgid "Change persona"
+msgstr "Changer de persona"
+
+#: src/features/auth/components/AltchaVerification.tsx:62
+msgid "Checking your browser. This takes a few seconds."
+msgstr "Vérification de votre navigateur. Cela prend quelques secondes."
+
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:503
+msgid "Choose a PluralKit export (.json) or drag & drop"
+msgstr "Choisissez un export PluralKit (.json) ou glissez-déposez-le"
+
+#. Setup wizard body for CAPTCHA integration credentials.
+#: src/features/app/components/setup/SetupWizardSteps.tsx:988
+msgid "Choose hCaptcha or Cloudflare Turnstile for signup challenges."
+msgstr "Choisissez hCaptcha ou Cloudflare Turnstile pour les vérifications à l’inscription."
+
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:748
+msgid "Choose how untagged messages and persona tags interact with your active persona."
+msgstr "Choisissez comment les messages sans balise et les balises de persona interagissent avec votre persona active."
+
+#. Cloudflare Turnstile provider option.
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1013
+msgid "Cloudflare Turnstile"
+msgstr "Cloudflare Turnstile"
+
+#. Header for configured personas list with count
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:222
+msgid "Configured Personas ({count})"
+msgstr "Personas configurées ({count})"
+
+#. Progress status for configuring persona
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:334
+msgid "Configuring {name}..."
+msgstr "Configuration de {name}…"
+
+#. Description for persona accent color picker
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:178
+msgid "Customizes the border and banner color on this persona's profile"
+msgstr "Personnalise la couleur de la bordure et de la bannière sur le profil de cette persona"
+
+#. Aria label for deactivating active persona
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:210
+msgid "Deactivate persona"
+msgstr "Désactiver la persona"
+
+#. Aria label for deleting persona
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:218
+msgid "Delete persona"
+msgstr "Supprimer la persona"
+
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:663
+msgid "Delete Persona"
+msgstr "Supprimer la persona"
+
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:531
+msgid "Detected System Name / Tag"
+msgstr "Nom / balise de système détecté"
+
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:771
+msgid "Display Tag"
+msgstr "Badge d'affichage"
+
+#. Toast when display tag icon is removed
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:138
+msgid "Display tag icon removed"
+msgstr "Icône du badge d'affichage supprimée"
+
+#. Toast when display tag icon is updated
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:134
+msgid "Display tag icon updated"
+msgstr "Icône du badge d'affichage mise à jour"
+
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:774
+msgid "Display tag will appear next to all persona names in messages. If no display tag is set, your account profile picture will be shown."
+msgstr "Le badge d'affichage apparaîtra à côté du nom de toutes vos personas dans les messages. Si aucun badge n'est configuré, votre photo de profil de compte sera affichée."
+
+#. Progress status during avatar download
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:257
+msgid "Downloading avatar {current} of {total}..."
+msgstr "Téléchargement de l'avatar {current} sur {total}…"
+
+#. Validation error when tag pair is duplicated within the same persona
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:126
+msgid "Duplicate tag pair on this persona"
+msgstr "Paire de balises déjà présente sur cette persona"
+
+#. Placeholder for persona name
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:182
+msgid "e.g. Alice"
+msgstr "ex. Alice"
+
+#. Placeholder for persona pronouns
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:186
+msgid "e.g. she/her"
+msgstr "ex. elle / iel"
+
+#. Aria label for editing persona
+#: src/features/persona/components/PersonaProfilePopout.tsx:279
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:214
+msgid "Edit persona"
+msgstr "Modifier la persona"
+
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:877
+msgid "Edit Persona"
+msgstr "Modifier la persona"
+
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:527
+msgid "Export Summary"
+msgstr "Résumé de l'export"
+
+#. Toast when persona deletion fails
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:166
+msgid "Failed to delete persona"
+msgstr "Échec de la suppression de la persona"
+
+#. Toast error message on persona import failure
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:62
+msgid "Failed to import personas"
+msgstr "Échec de l'importation des personas"
+
+#. Error message when parsing PluralKit JSON fails
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:30
+msgid "Failed to parse JSON file. Please ensure it is a valid PluralKit export."
+msgstr "Impossible d'analyser le fichier JSON. Assurez-vous qu'il s'agit d'un export PluralKit valide."
+
+#. Error message when reading uploaded file fails
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:34
+msgid "Failed to read the selected file."
+msgstr "Impossible de lire le fichier sélectionné."
+
+#. Toast when persona save fails
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:158
+msgid "Failed to save persona"
+msgstr "Échec de l'enregistrement de la persona"
+
+#. Toast when icon upload fails
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:142
+msgid "Failed to upload icon to server"
+msgstr "Impossible de téléverser l'icône sur le serveur"
+
+#: src/features/voice/components/StreamSettingsMenuContent.tsx:868
+msgid "Follow voice input"
+msgstr "Suivre l'entrée vocale"
+
+#: src/features/auth/components/modals/CaptchaModal.tsx:175
+msgid "Having issues? Try hCaptcha instead"
+msgstr "Vous rencontrez des problèmes ? Essayez plutôt hCaptcha"
+
+#. hCaptcha provider option.
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1012
+msgid "hCaptcha"
+msgstr "hCaptcha"
+
+#. Description for the DeepFilterNet3 noise suppression strength slider.
+#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:71
+msgid "Higher values remove more noise but can affect speech texture."
+msgstr "Des valeurs plus élevées suppriment plus de bruit, mais peuvent affecter la texture de la voix."
+
+#. Toast when icon file exceeds size limit
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:146
+msgid "Icon file is too large. Choose an image smaller than 10MB."
+msgstr "Le fichier d'icône est trop volumineux. Choisissez une image de moins de 10 Mo."
+
+#. Modal title for PluralKit import step completed
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:472
+msgid "Import Complete"
+msgstr "Importation terminée"
+
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:656
+msgid "Import Complete!"
+msgstr "Importation terminée !"
+
+#. Modal title for PluralKit import step select
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:459
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1043
+msgid "Import from PluralKit"
+msgstr "Importer depuis PluralKit"
+
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:571
+msgid "Import Strategy"
+msgstr "Stratégie d'importation"
+
+#. Modal title for PluralKit import step importing
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:466
+msgid "Importing Personas..."
+msgstr "Importation des personas…"
+
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:712
+msgid "Importing..."
+msgstr "Importation…"
+
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:586
+msgid "Keep existing and add new (Recommended)"
+msgstr "Conserver les existantes et ajouter les nouvelles (Recommandé)"
+
+#. Description for the mirror premium model.
+#: src/features/app/components/setup/SetupWizardSteps.tsx:341
+msgid "Keep free and premium tiers. You can customize the tiers later."
+msgstr "Conservez les niveaux Gratuit et Premium. Vous pourrez personnaliser les niveaux plus tard."
+
+#. placeholder {0}: pkData.members?.length ?? 0
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:589
+msgid "Keep your {existingCount} current persona(s) and add all {0} imported personas alongside them as new entries."
+msgstr "Conserve vos {existingCount} persona(s) actuelle(s) et ajoute les {0} personas importées comme nouvelles entrées."
+
+#. Active persona mode last used
+#. Active persona mode last used
+#. Active persona mode last used
+#: src/features/persona/components/PersonaComposerPill.tsx:25
+#: src/features/persona/components/PersonaPickerSheet.tsx:29
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:65
+msgid "Last Used"
+msgstr "Dernière utilisée"
+
+#: src/features/persona/components/PersonaProfilePopout.tsx:251
+msgid "Main account"
+msgstr "Compte principal"
+
+#. OAuth scope description shown on the consent screen for the personas.write scope.
+#: src/features/app/constants/AppConstants.ts:37
+msgid "Manage and create your personas"
+msgstr "Gérez et créez vos personas"
+
+#: src/features/persona/components/PersonaPickerSheet.tsx:251
+msgid "Manage Personas"
+msgstr "Gérer les personas"
+
+#. Active persona mode manual
+#. Active persona mode manual
+#. Active persona mode manual
+#: src/features/persona/components/PersonaComposerPill.tsx:21
+#: src/features/persona/components/PersonaPickerSheet.tsx:25
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:61
+msgid "Manual"
+msgstr "Manuel"
+
+#. Placeholder name for unnamed member in import
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:319
+msgid "Member #{index}"
+msgstr "Membre #{index}"
+
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:546
+msgid "Members with Avatars"
+msgstr "Membres avec avatars"
+
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:882
+msgid "Name *"
+msgstr "Nom *"
+
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:877
+msgid "New Persona"
+msgstr "Nouvelle persona"
+
+#. Error message when PluralKit export lacks members array
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:26
+msgid "No \"members\" array found in this export file."
+msgstr "Aucun tableau « members » trouvé dans ce fichier d'export."
+
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:864
+msgid "No display tag configured. Messages will show your account profile picture."
+msgstr "Aucun badge d'affichage configuré. Les messages afficheront la photo de profil de votre compte."
+
+#: src/features/persona/components/PersonaPickerSheet.tsx:202
+msgid "No matching personas found."
+msgstr "Aucune persona correspondante trouvée."
+
+#: src/features/persona/components/PersonaPickerSheet.tsx:200
+msgid "No personas configured yet. Create one in Settings."
+msgstr "Aucune persona configurée pour l'instant. Créez-en une dans les Paramètres."
+
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1054
+msgid "No personas created yet. Click \"Add Persona\" to create your first persona!"
+msgstr "Aucune persona créée pour le moment. Cliquez sur « Ajouter une persona » pour créer votre première persona !"
+
+#. Helper description for private persona visibility
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:104
+msgid "Only visible to you. Others cannot view this persona’s full bio or profile details."
+msgstr "Visible uniquement par vous. Les autres ne peuvent pas voir la biographie complète ni les détails du profil de cette persona."
+
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:288
+msgid "Open captcha modal"
+msgstr "Ouvrir la modale de captcha"
+
+#. Placeholder for system badge in import modal
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:66
+msgid "Optional system badge, e.g. ⚞Seraphim⚟"
+msgstr "Badge de système optionnel, ex. ⚞Séraphin⚟"
+
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:618
+msgid "Permanently delete all {existingCount} existing persona(s) and replace them completely with the imported personas."
+msgstr "Supprime définitivement l'ensemble des {existingCount} persona(s) existante(s) et les remplace intégralement par les personas importées."
+
+#. Toast when persona is created
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:154
+msgid "Persona created"
+msgstr "Persona créée"
+
+#. Toast when persona is deleted
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:162
+msgid "Persona deleted"
+msgstr "Persona supprimée"
+
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:970
+msgid "Persona Tags (Prefix & Suffix)"
+msgstr "Balises de persona (Préfixe et Suffixe)"
+
+#. Toast when persona is updated
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:150
+msgid "Persona updated"
+msgstr "Persona mise à jour"
+
+#. Aria label for persona visibility tabs
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:121
+msgid "Persona visibility"
+msgstr "Visibilité de la persona"
+
+#. Title of personas settings section
+#. User settings tab for personas.
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:109
+#: src/features/user/components/settings_utils/SettingsConstants.tsx:91
+msgid "Personas"
+msgstr "Personas"
+
+#. Progress label for prepared personas
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:46
+msgid "personas prepared"
+msgstr "personas préparées"
+
+#. Settings search synonym. Used to match this term when the user types it in the settings search bar.
+#. Settings search synonym. Used to match this term when the user types it in the settings search bar.
+#: src/features/user/components/settings_utils/search_index/SharedDescriptors.ts:9
+#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:178
+msgid "Plutonium"
+msgstr "Plutonium"
+
+#. Placeholder for persona tag prefix
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:194
+msgid "Prefix (e.g. [)"
+msgstr "Préfixe (ex. [)"
+
+#. Progress status when preparing avatar batch download
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:38
+msgid "Preparing avatar batch download..."
+msgstr "Préparation du téléchargement par lot des avatars…"
+
+#. Persona visibility private
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:91
+msgid "Private"
+msgstr "Privé"
+
+#. Tooltip on private persona badge
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:174
+msgid "Private persona"
+msgstr "Persona privée"
+
+#. placeholder {0}: progress.currentName
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:637
+msgid "Processing: {0}"
+msgstr "Traitement : {0}"
+
+#. Helper description for unlisted persona visibility
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:96
+msgid "Profile cards are accessible only when clicking on messages sent by this persona. Not listed in your public persona list."
+msgstr "Les fiches de profil ne sont accessibles qu'en cliquant sur les messages envoyés par cette persona. Non listée dans votre liste publique de personas."
+
+#. Helper description for public persona visibility
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:100
+msgid "Profile cards are accessible when clicking on messages and visible in your public personas list to friends and mutual servers."
+msgstr "Les fiches de profil sont accessibles en cliquant sur les messages et visibles dans votre liste publique de personas par vos amis et serveurs en commun."
+
+#. Label for an integration provider choice.
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1008
+msgid "Provider"
+msgstr "Fournisseur"
+
+#. Persona visibility public
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:87
+msgid "Public"
+msgstr "Public"
+
+#. Tooltip on public persona badge
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:170
+msgid "Public persona"
+msgstr "Persona publique"
+
+#: src/features/persona/components/PersonaPickerSheet.tsx:167
+msgid "Recent Personas"
+msgstr "Personas récentes"
+
+#. Aria label for removing a tag pair
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:202
+msgid "Remove tag pair"
+msgstr "Supprimer la paire de balises"
+
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:442
+msgid "Replace All"
+msgstr "Tout remplacer"
+
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:614
+msgid "Replace all existing personas (Destructive)"
+msgstr "Remplacer toutes les personas existantes (Destructif)"
+
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:435
+msgid "Replace All Personas"
+msgstr "Remplacer toutes les personas"
+
+#: src/features/persona/components/PersonaPickerSheet.tsx:156
+msgid "Root Account (Default)"
+msgstr "Compte principal (par défaut)"
+
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1028
+msgid "Save Persona"
+msgstr "Enregistrer la persona"
+
+#. Progress label when saving personas
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:54
+msgid "saving personas"
+msgstr "enregistrement des personas"
+
+#. Progress status when saving personas
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:50
+msgid "Saving personas..."
+msgstr "Enregistrement des personas…"
+
+#. Search placeholder in persona picker sheet
+#: src/features/persona/components/PersonaPickerSheet.tsx:33
+msgid "Search personas, tags, pronouns..."
+msgstr "Rechercher des personas, balises, pronoms…"
+
+#. placeholder {0}: filteredPersonas.length
+#: src/features/persona/components/PersonaPickerSheet.tsx:194
+msgid "Search Results ({0})"
+msgstr "Résultats de recherche ({0})"
+
+#. Label for a CAPTCHA secret key input.
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1019
+msgid "Secret key"
+msgstr "Clé secrète"
+
+#. Description of personas settings section
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:113
+msgid "Send messages with distinct names and avatars. Personas can represent plural system members, roleplay characters, or any other identity."
+msgstr "Envoyez des messages avec des noms et avatars distincts. Les personas peuvent représenter les membres d'un système pluriel, des personnages de jeu de rôle ou toute autre identité."
+
+#. Required-action modal explanation for an inbound phone verification challenge due to SMS cost.
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:442
+msgid "Sending an SMS to this number is expensive, so we need you to text us instead."
+msgstr "L’envoi d’un SMS à ce numéro coûte cher. Nous vous demandons donc de nous envoyer un SMS à la place."
+
+#. Tooltip when sending as a persona matched by proxy tag
+#: src/features/persona/components/PersonaComposerPill.tsx:29
+msgid "Sending as {name} (Matched by tag) - Click to switch persona"
+msgstr "Envoi en tant que {name} (Associé par balise) - Cliquer pour changer de persona"
+
+#. Tooltip when sending as root account with persona mode active
+#: src/features/persona/components/PersonaComposerPill.tsx:37
+msgid "Sending as @{username} ({mode}) - Click to switch persona"
+msgstr "Envoi en tant que @{username} ({mode}) - Cliquer pour changer de persona"
+
+#. Toast error shown in the desktop-handoff account picker when the session for the chosen account has expired.
+#: src/features/auth/flow/DesktopHandoffAccountSelector.tsx:12
+msgid "Session expired. Sign in again."
+msgstr "Session expirée. Connectez-vous à nouveau."
+
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1130
+msgid "Set Active"
+msgstr "Définir comme active"
+
+#. Aria label for setting active persona
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:206
+msgid "Set as active persona"
+msgstr "Définir comme persona active"
+
+#. Plus menu submenu toggle that shows the persona selector next to the textarea.
+#. Short label for an advanced message input preference.
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:51
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:128
+msgid "Show personas button"
+msgstr "Afficher le bouton des personas"
+
+#. Developer option label for exposing the staff-only profile timezone section in profile settings.
+#: src/features/devtools/components/DeveloperOptionsToggleGroups.ts:135
+msgid "Show profile time zone settings"
+msgstr "Afficher les paramètres de fuseau horaire du profil"
+
+#. Label for a CAPTCHA site key input.
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1018
+msgid "Site key"
+msgstr "Clé du site"
+
+#. Import warning when member has no name
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:58
+msgid "Skipped member because they have no name configured."
+msgstr "Membre ignoré car aucun nom n'est configuré."
+
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:705
+msgid "Start Import"
+msgstr "Lancer l'importation"
+
+#. placeholder {0}: importResults.successCount
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:659
+msgid "Successfully imported {0} persona(s) into your account. All avatar images are safely stored on your local server."
+msgstr "Importation réussie de {0} persona(s) sur votre compte. Toutes les images d'avatar sont stockées en sécurité sur votre serveur local."
+
+#. Placeholder for persona tag suffix
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:198
+msgid "Suffix (e.g. ])"
+msgstr "Suffixe (ex. ])"
+
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:506
+msgid "Supports PluralKit system export files"
+msgstr "Prend en charge les fichiers d'export de système PluralKit"
+
+#. Label for the DeepFilterNet3 noise suppression strength slider in the custom voice processing settings.
+#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:67
+msgid "Suppression strength"
+msgstr "Intensité de la réduction du bruit"
+
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:556
+msgid "System Tag (Applied to imported personas)"
+msgstr "Balise de système (Appliquée aux personas importées)"
+
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:799
+msgid "Tag Icon"
+msgstr "Icône de badge"
+
+#. Validation error when tag pair is already used by another persona
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:130
+msgid "Tag pair already in use by persona \"{name}\""
+msgstr "Paire de balises déjà utilisée par la persona « {name} »"
+
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:786
+msgid "Tag Text"
+msgstr "Texte du badge"
+
+#. Placeholder for persona bio
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:190
+msgid "Tell us about this persona..."
+msgstr "Présentez cette persona…"
+
+#. Error message when uploaded file is not valid JSON
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:22
+msgid "The chosen file is not a valid JSON object."
+msgstr "Le fichier sélectionné n'est pas un objet JSON valide."
+
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:862
+msgid "This is a preview of how your display tag will look in chat."
+msgstr "Voici un aperçu de l'affichage de votre badge dans la discussion."
+
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:540
+msgid "Total Members"
+msgstr "Total des membres"
+
+#: src/features/auth/components/modals/CaptchaModal.tsx:177
+msgid "Try Turnstile instead"
+msgstr "Essayer plutôt Turnstile"
+
+#. Persona visibility unlisted
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:83
+msgid "Unlisted"
+msgstr "Non répertorié"
+
+#. Helper description for Off persona mode
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:70
+msgid "Untagged messages always send from your root account. Personas only speak when you type their tags (e.g. [text])."
+msgstr "Les messages sans balise sont toujours envoyés depuis votre compte principal. Les personas ne parlent que lorsque vous tapez leurs balises (ex. [texte])."
+
+#. Helper description for Last Used persona mode
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:78
+msgid "Untagged messages send as the persona that spoke most recently. Whenever anyone uses a persona tag, they automatically become the active persona."
+msgstr "Les messages sans balise sont envoyés sous l'identité de la persona ayant parlé le plus récemment. Dès qu'une balise de persona est utilisée, celle-ci devient automatiquement la persona active."
+
+#. Helper description for Manual persona mode
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:74
+msgid "Untagged messages send as your chosen persona. Typing another persona’s tags will only send that single message and won’t switch who is active."
+msgstr "Les messages sans balise sont envoyés sous l'identité de la persona choisie. Taper les balises d'une autre persona enverra uniquement ce message sans changer la persona active."
+
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1028
+msgid "Uploading avatar..."
+msgstr "Téléversement de l'avatar…"
+
+#. Short label in the authentication captcha modal. Keep the tone plain and specific.
+#: src/features/auth/components/modals/CaptchaModal.tsx:17
+msgid "Verify you're human"
+msgstr "Vérifiez que vous n'êtes pas un robot"
+
+#. OAuth scope description shown on the consent screen for the personas.read scope.
+#: src/features/app/constants/AppConstants.ts:33
+msgid "View your personas"
+msgstr "Voir vos personas"
+
+#: src/features/auth/components/modals/CaptchaModal.tsx:128
+msgid "We need to make sure you're not a bot. Complete the verification below."
+msgstr "Nous devons nous assurer que vous n'êtes pas un robot. Veuillez compléter la vérification ci-dessous."
+
+#: src/features/user/components/modals/PhoneAddModal.tsx:286
+msgid "We'll send an SMS code when available. Your number is not linked to your account. We keep only an encrypted marker, with no user ID, to allow at most {PHONE_VERIFICATION_LIMIT} verifications in about {PHONE_VERIFICATION_WINDOW_DAYS} days."
+msgstr "Nous enverrons un code par SMS si cette option est disponible. Votre numéro n’est pas lié à votre compte. Nous conservons uniquement un marqueur chiffré, sans identifiant d’utilisateur, pour autoriser au maximum {PHONE_VERIFICATION_LIMIT} vérifications sur environ {PHONE_VERIFICATION_WINDOW_DAYS} jours."
+
+#. First line of the set-aside confirmation in the required-action modal. Always shown. Says can rather than will, because whether the check returns depends on account age and instance settings the user cannot see.
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:316
+msgid "Your account goes back to normal right away and you will not need a phone number now. This is not a permanent exemption. Joining a large or public community can bring this check back."
+msgstr "Votre compte redevient normal immédiatement et vous n'aurez pas besoin de numéro de téléphone. Ce n'est pas une exemption permanente. Rejoindre une communauté grande ou publique peut réactiver cette vérification."
+
+#: src/features/auth/components/AltchaVerification.tsx:50
+msgid "Your browser couldn't finish the check."
+msgstr "Votre navigateur n'a pas pu terminer la vérification."
+
+#. Required-action modal privacy note for phone verification. limit and duration are inserted by code.
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:421
+msgid "Your number is not linked to your account. We keep only an encrypted marker, with no user ID, for at most {limit} verifications in about {duration} days."
+msgstr "Votre numéro n'est pas lié à votre compte. Nous ne conservons qu'un marqueur chiffré, sans identifiant d'utilisateur, pour un maximum de {limit} vérifications en environ {duration} jours."
