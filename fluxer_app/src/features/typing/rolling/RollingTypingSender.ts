@@ -11,28 +11,38 @@ import {
 	type TypingSendSlot,
 } from '@app/features/typing/rolling/TypingSendThrottle';
 
+import type {MessageSubprofileRequest} from '@fluxer/schema/src/domains/persona/PersonaSchemas';
+
 const logger = new Logger('Typing');
 
 class RollingTypingSender {
-	private slot: TypingSendSlot | null = null;
+	private slot: (TypingSendSlot & {subprofile?: MessageSubprofileRequest | null}) | null = null;
 
-	startTyping(channelId: string): void {
+	startTyping(channelId: string, subprofile?: MessageSubprofileRequest | null): void {
 		const userId = Authentication.currentUserId;
 		if (userId == null) {
 			return;
 		}
 		const now = Date.now();
-		const plan = planTypingSend(this.slot, channelId, userId, now);
+		const personaId = subprofile?.id ?? null;
+		const plan = planTypingSend(this.slot, channelId, userId, now, personaId);
 		if (plan.dropSlot) {
 			this.dropSlot();
 		}
 		if (plan.action === 'throttled') {
 			return;
 		}
-		const slot: TypingSendSlot = {channelId, userId, timeout: null, prevSend: now};
+		const slot: TypingSendSlot & {subprofile?: MessageSubprofileRequest | null} = {
+			channelId,
+			userId,
+			personaId,
+			subprofile,
+			timeout: null,
+			prevSend: now,
+		};
 		slot.timeout = setTimeout(() => this.fire(slot), plan.delayMs);
 		this.slot = slot;
-		RollingTypingStore.start(channelId, userId, 'local');
+		RollingTypingStore.start(channelId, userId, 'local', subprofile);
 	}
 
 	stopTyping(channelId: string): void {
@@ -68,7 +78,7 @@ class RollingTypingSender {
 		this.slot = null;
 	}
 
-	private fire(captured: TypingSendSlot): void {
+	private fire(captured: TypingSendSlot & {subprofile?: MessageSubprofileRequest | null}): void {
 		const slot = this.slot;
 		if (slot !== captured || Authentication.currentUserId !== captured.userId || captured.timeout === null) {
 			return;
@@ -77,12 +87,18 @@ class RollingTypingSender {
 		if (RollingTypingStore.countTypists(captured.channelId) > TYPING_ROLLING_SKIP_ABOVE_TRACKED) {
 			return;
 		}
-		void this.postTyping(captured.channelId);
+		void this.postTyping(captured.channelId, captured.subprofile);
 	}
 
-	private async postTyping(channelId: string): Promise<void> {
+	private async postTyping(channelId: string, subprofile?: MessageSubprofileRequest | null): Promise<void> {
 		try {
-			await http.post(Endpoints.CHANNEL_TYPING(channelId));
+			if (subprofile) {
+				await http.post(Endpoints.CHANNEL_TYPING(channelId), {
+					body: {subprofile},
+				});
+			} else {
+				await http.post(Endpoints.CHANNEL_TYPING(channelId));
+			}
 		} catch (error) {
 			logger.error(`Failed to send typing indicator to channel ${channelId}:`, error);
 		}
