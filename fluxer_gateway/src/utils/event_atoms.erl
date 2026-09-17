@@ -135,6 +135,10 @@ user_voice_event_map() ->
         <<"USER_CONNECTIONS_UPDATE">> => user_connections_update,
         <<"USER_GUILD_SETTINGS_UPDATE">> => user_guild_settings_update,
         <<"USER_NOTE_UPDATE">> => user_note_update,
+        <<"USER_PERSONA_CREATE">> => user_persona_create,
+        <<"USER_PERSONA_DELETE">> => user_persona_delete,
+        <<"USER_PERSONA_UPDATE">> => user_persona_update,
+        <<"USER_PERSONAS_UPDATE">> => user_personas_update,
         <<"USER_PINNED_DMS_UPDATE">> => user_pinned_dms_update,
         <<"USER_SETTINGS_UPDATE">> => user_settings_update,
         <<"USER_UPDATE">> => user_update,
@@ -157,7 +161,11 @@ normalize_binary_existing_atom_test() ->
 
 normalize_known_private_event_test() ->
     ?assertEqual(user_guild_settings_update, normalize(<<"USER_GUILD_SETTINGS_UPDATE">>)),
-    ?assertEqual(user_note_update, normalize(<<"USER_NOTE_UPDATE">>)).
+    ?assertEqual(user_note_update, normalize(<<"USER_NOTE_UPDATE">>)),
+    ?assertEqual(user_persona_create, normalize(<<"USER_PERSONA_CREATE">>)),
+    ?assertEqual(user_persona_update, normalize(<<"USER_PERSONA_UPDATE">>)),
+    ?assertEqual(user_persona_delete, normalize(<<"USER_PERSONA_DELETE">>)),
+    ?assertEqual(user_personas_update, normalize(<<"USER_PERSONAS_UPDATE">>)).
 
 normalize_thread_events_test() ->
     ?assertEqual(thread_create, normalize(<<"THREAD_CREATE">>)),
