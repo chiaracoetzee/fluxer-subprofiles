@@ -16,7 +16,7 @@ msgstr ""
 
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:858
 msgid "— Today at 12:00 PM"
-msgstr "— Today at 12:00 PM"
+msgstr "— Ma 12:00-kor"
 
 
 #. Description text in the messages tab.
@@ -40,7 +40,7 @@ msgstr "(csak te láthatod)"
 #. placeholder {0}: w.prefix
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:680
 msgid "(Prefix: {0})"
-msgstr "(Prefix: {0})"
+msgstr "(Előtag: {0})"
 
 
 #. Short label in the keybinds tab. Keep it concise.
@@ -60,7 +60,7 @@ msgstr "{0, plural, one {# tag} other {# tag}}"
 #. placeholder {0}: importResults.warnings.length
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:671
 msgid "{0} notice(s) during import"
-msgstr "{0} notice(s) during import"
+msgstr "{0} megjegyzés az importálás során"
 
 
 #. placeholder {0}: progress.current
@@ -69,7 +69,7 @@ msgstr "{0} notice(s) during import"
 #. placeholder {3}: progress.percent
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:643
 msgid "{0} of {1} {2} ({3}%)"
-msgstr "{0} of {1} {2} ({3}%)"
+msgstr "{0} / {1} {2} ({3}%)"
 
 
 #. Screen reader announcement in the composer when two people are typing. {a} and {b} are their display names.
@@ -1537,7 +1537,7 @@ msgstr "{months, plural, one {# hónap} other {# hónap}}"
 #. Tooltip when sending as a latched persona
 #: src/features/persona/components/PersonaComposerPill.tsx:33
 msgid "{name} ({mode}) - Click to switch persona"
-msgstr "{name} ({mode}) - Click to switch persona"
+msgstr "{name} ({mode}) - Kattints a persona váltásához"
 
 
 #. Default name for a role created by duplicating another role in the community roles settings tab. {name} is the source role name; translate the whole label so "copy" can move or inflect as the language needs.
@@ -2719,7 +2719,7 @@ msgstr "Fiókellenőrzés szükséges"
 #. Tooltip showing root account username
 #: src/features/persona/components/PersonaTag.tsx:88
 msgid "Account: @{username}"
-msgstr "Account: @{username}"
+msgstr "Fiók: @{username}"
 
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
@@ -2844,12 +2844,12 @@ msgstr "Most aktívak"
 #: src/features/persona/components/PersonaPickerSheet.tsx:37
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:117
 msgid "Active persona mode"
-msgstr "Active persona mode"
+msgstr "Aktív persona mód"
 
 
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:746
 msgid "Active Persona Mode"
-msgstr "Active Persona Mode"
+msgstr "Aktív persona mód"
 
 
 #. Developer premium-state scenario label.
@@ -3136,7 +3136,7 @@ msgstr "Jelszókulcs hozzáadása"
 
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:1047
 msgid "Add Persona"
-msgstr "Add Persona"
+msgstr "Persona hozzáadása"
 
 
 #. Generic action label that opens the reaction picker for a message.
@@ -3212,7 +3212,7 @@ msgstr "Stream hozzáadása"
 #. placeholder {0}: formData.tags.length
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:980
 msgid "Add Tag Pair ({0}/5)"
-msgstr "Add Tag Pair ({0}/5)"
+msgstr "Címkepár hozzáadása ({0}/5)"
 
 
 #. Description for configuring an optional setup wizard integration now.
@@ -3616,7 +3616,7 @@ msgstr "Összes üzenet"
 
 #: src/features/persona/components/PersonaPickerSheet.tsx:194
 msgid "All Personas"
-msgstr "All Personas"
+msgstr "Összes persona"
 
 
 #: src/features/user/components/modals/tabs/component_gallery_tab/IndicatorsTab.tsx:227
@@ -4503,7 +4503,7 @@ msgstr "Biztosan törölni szeretnéd a(z) <0>{0}</0> alkalmazást?"
 #. placeholder {0}: persona.name
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:666
 msgid "Are you sure you want to delete <0>{0}</0>? This action cannot be undone."
-msgstr "Are you sure you want to delete <0>{0}</0>? This action cannot be undone."
+msgstr "Biztosan törölni szeretnéd a(z) <0>{0}</0> elemet? Ez a művelet nem vonható vissza."
 
 
 #. Destructive confirmation for deleting a channel category.
@@ -4579,7 +4579,7 @@ msgstr "Biztosan eltávolítod a(z) <0>{engineName}</0> keresőmotort?"
 
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:437
 msgid "Are you sure you want to replace all <0>{existingCount}</0> existing persona(s)? This will permanently delete them from your account and cannot be undone."
-msgstr "Are you sure you want to replace all <0>{existingCount}</0> existing persona(s)? This will permanently delete them from your account and cannot be undone."
+msgstr "Biztosan le akarod cserélni mind a(z) <0>{existingCount}</0> meglévő personádat? Ezzel végleg törlődnek a fiókodból, és a művelet nem vonható vissza."
 
 
 #. Confirm dialog message for the destructive reset action. Tone stays plain.
@@ -5226,7 +5226,7 @@ msgstr "A profilképfájl túl nagy. Válassz {imageMaxSizeLabel} méretnél kis
 #. Import warning when avatar fails to download
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:355
 msgid "Avatar image failed to download: {error}. Persona was imported without an avatar."
-msgstr "Avatar image failed to download: {error}. Persona was imported without an avatar."
+msgstr "Az avatarkép letöltése sikertelen: {error}. A persona avatar nélkül lett importálva."
 
 
 #. Webhook avatar upload error. IMAGE_MAX_SIZE_LABEL is a formatted file-size limit.
@@ -5256,7 +5256,7 @@ msgstr "Profilképek"
 #. Progress label for avatar downloads
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:42
 msgid "avatars downloaded"
-msgstr "avatars downloaded"
+msgstr "avatar letöltve"
 
 
 #. Field label in the voice connection status popout. Shows the average RTT in ms over the recent window.
@@ -7518,7 +7518,7 @@ msgstr "Válassz új jelszót."
 
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:503
 msgid "Choose a PluralKit export (.json) or drag & drop"
-msgstr "Choose a PluralKit export (.json) or drag & drop"
+msgstr "Válassz egy PluralKit export fájlt (.json), vagy húzd ide"
 
 
 #. Description text in the accessibility tab.
@@ -7616,7 +7616,7 @@ msgstr "Válaszd ki, hogyan jelenjenek meg az időpontok az alkalmazásban"
 
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:749
 msgid "Choose how untagged messages and persona tags interact with your active persona."
-msgstr "Choose how untagged messages and persona tags interact with your active persona."
+msgstr "Válaszd ki, hogyan lépjenek kölcsönhatásba a címkézetlen üzenetek és a persona címkék az aktív personáddal."
 
 
 #. Plutonium subscription payment method picker description, generic fallback when no country-specific copy applies.
@@ -8952,13 +8952,13 @@ msgstr "Profiljelvény beállítása"
 #. Header for configured personas list with count
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:222
 msgid "Configured Personas ({count})"
-msgstr "Configured Personas ({count})"
+msgstr "Beállított personák ({count})"
 
 
 #. Progress status for configuring persona
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:334
 msgid "Configuring {name}..."
-msgstr "Configuring {name}..."
+msgstr "{name} beállítása..."
 
 
 #. Action label for confirming a mass mention that may notify many people.
@@ -10975,7 +10975,7 @@ msgstr "Testreszabhatod a címkédet, vagy megtarthatod a felhasználóneved meg
 #. Description for persona accent color picker
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:178
 msgid "Customizes the border and banner color on this persona's profile"
-msgstr "Customizes the border and banner color on this persona's profile"
+msgstr "Testreszabja a keret és a banner színét ezen a persona profilon"
 
 
 #. Label in the accent color picker. Keep the tone plain and specific.
@@ -11158,7 +11158,7 @@ msgstr "Fiók inaktiválása"
 #. Aria label for deactivating active persona
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:210
 msgid "Deactivate persona"
-msgstr "Deactivate persona"
+msgstr "Persona inaktiválása"
 
 
 #. Voice action label. Turns off what the user hears in voice chat. Distinct from microphone mute.
@@ -11587,12 +11587,12 @@ msgstr "Jelszókulcs törlése"
 #. Aria label for deleting persona
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:218
 msgid "Delete persona"
-msgstr "Delete persona"
+msgstr "Persona törlése"
 
 
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:664
 msgid "Delete Persona"
-msgstr "Delete Persona"
+msgstr "Persona törlése"
 
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
@@ -11973,7 +11973,7 @@ msgstr "Észlelés gépelés közben"
 
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:531
 msgid "Detected System Name / Tag"
-msgstr "Detected System Name / Tag"
+msgstr "Észlelt rendszer név / címke"
 
 
 #. Advanced settings category tag.
@@ -12546,24 +12546,24 @@ msgstr "Kijelzőméretezés"
 
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:772
 msgid "Display Tag"
-msgstr "Display Tag"
+msgstr "Megjelenítési címke"
 
 
 #. Toast when display tag icon is removed
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:138
 msgid "Display tag icon removed"
-msgstr "Display tag icon removed"
+msgstr "Megjelenítési címke ikonja eltávolítva"
 
 
 #. Toast when display tag icon is updated
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:134
 msgid "Display tag icon updated"
-msgstr "Display tag icon updated"
+msgstr "Megjelenítési címke ikonja frissítve"
 
 
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:775
 msgid "Display tag will appear next to all persona names in messages. If no display tag is set, your account profile picture will be shown."
-msgstr "Display tag will appear next to all persona names in messages. If no display tag is set, your account profile picture will be shown."
+msgstr "A megjelenítési címke minden persona neve mellett megjelenik az üzenetekben. Ha nincs beállítva megjelenítési címke, a fiókod profilképe fog megjelenni."
 
 
 #. IAR modal: rule description.
@@ -12910,7 +12910,7 @@ msgstr "Videó letöltése"
 #. Progress status during avatar download
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:257
 msgid "Downloading avatar {current} of {total}..."
-msgstr "Downloading avatar {current} of {total}..."
+msgstr "{current} / {total} avatar letöltése..."
 
 
 #. Tooltip on the channel header updater icon while downloading a versioned update without throughput info.
@@ -13087,7 +13087,7 @@ msgstr "Szerepkör másolása"
 #. Validation error when tag pair is duplicated within the same persona
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:126
 msgid "Duplicate tag pair on this persona"
-msgstr "Duplicate tag pair on this persona"
+msgstr "Duplikált címkepár ezen a personán"
 
 
 #. Field label in the voice connection status popout. Shows how long the current voice session has been connected.
@@ -13103,13 +13103,13 @@ msgstr "Holland"
 #. Placeholder for persona name
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:182
 msgid "e.g. Alice"
-msgstr "e.g. Alice"
+msgstr "pl. Alice"
 
 
 #. Placeholder for persona pronouns
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:186
 msgid "e.g. she/her"
-msgstr "e.g. she/her"
+msgstr "pl. ő / övé"
 
 
 #. Placeholder or example text in the authentication passkey name modal. Keep the tone plain and specific.
@@ -13289,12 +13289,12 @@ msgstr "Szerepkörök és tagok egyéni jogosultságainak szerkesztése ebben a 
 #: src/features/persona/components/PersonaProfilePopout.tsx:279
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:214
 msgid "Edit persona"
-msgstr "Edit persona"
+msgstr "Persona szerkesztése"
 
 
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:878
 msgid "Edit Persona"
-msgstr "Edit Persona"
+msgstr "Persona szerkesztése"
 
 
 #: src/features/app/components/floating/UserAreaPopout.tsx:743
@@ -14706,7 +14706,7 @@ msgstr "Adataim exportálása"
 
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:527
 msgid "Export Summary"
-msgstr "Export Summary"
+msgstr "Exportálás összegzése"
 
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
@@ -14852,7 +14852,7 @@ msgstr "Nem sikerült törölni a csatornát"
 #. Toast when persona deletion fails
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:166
 msgid "Failed to delete persona"
-msgstr "Failed to delete persona"
+msgstr "Nem sikerült törölni a personát"
 
 
 #. Toast / inline error in the camera preview modal when enabling the camera fails.
@@ -14878,7 +14878,7 @@ msgstr "Nem sikerült tokent generálni"
 #. Toast error message on persona import failure
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:62
 msgid "Failed to import personas"
-msgstr "Failed to import personas"
+msgstr "Nem sikerült importálni a personákat"
 
 
 #: src/features/moderation/components/modals/KickMemberModal.tsx:35
@@ -14951,7 +14951,7 @@ msgstr "Nem sikerült betölteni a közösségeidet."
 #. Error message when parsing PluralKit JSON fails
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:30
 msgid "Failed to parse JSON file. Please ensure it is a valid PluralKit export."
-msgstr "Failed to parse JSON file. Please ensure it is a valid PluralKit export."
+msgstr "Nem sikerült feldolgozni a JSON fájlt. Kérjük, ellenőrizd, hogy érvényes PluralKit export."
 
 
 #. Channel details bottom sheet label or action (channel type, settings, toast, confirmation, or notification option).
@@ -14991,7 +14991,7 @@ msgstr "Nem sikerült feldolgozni a körbevágott képet. Próbáld újra."
 #. Error message when reading uploaded file fails
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:34
 msgid "Failed to read the selected file."
-msgstr "Failed to read the selected file."
+msgstr "Nem sikerült beolvasni a kiválasztott fájlt."
 
 
 #. Error message in the background image gallery modal. Keep the tone plain and specific.
@@ -15031,7 +15031,7 @@ msgstr "A prémium állapot visszaállítása sikertelen."
 #. Toast when persona save fails
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:158
 msgid "Failed to save persona"
-msgstr "Failed to save persona"
+msgstr "Nem sikerült menteni a personát"
 
 
 #. Error shown when the initial email verification code send fails on the DSA report flow.
@@ -15149,7 +15149,7 @@ msgstr "Nem sikerült feltölteni az emojikat. Próbáld újra."
 #. Toast when icon upload fails
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:142
 msgid "Failed to upload icon to server"
-msgstr "Failed to upload icon to server"
+msgstr "Nem sikerült feltölteni az ikont a szerverre"
 
 
 #. IAR modal: rule description.
@@ -17564,7 +17564,7 @@ msgstr "Az ikonfájl túl nagy. Válassz {imageMaxSizeLabel} méretnél kisebb f
 #. Toast when icon file exceeds size limit
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:146
 msgid "Icon file is too large. Choose an image smaller than 10MB."
-msgstr "Icon file is too large. Choose an image smaller than 10MB."
+msgstr "Az ikon fájl túl nagy. Válassz egy 10MB-nál kisebb képet."
 
 
 #. US state name, shown next to the country name in the mature content gate.
@@ -17871,12 +17871,12 @@ msgstr "Kezdéshez importálj egy .css fájlt, vagy illeszd be a saját CSS-edet
 #. Modal title for PluralKit import step completed
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:472
 msgid "Import Complete"
-msgstr "Import Complete"
+msgstr "Importálás befejezve"
 
 
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:656
 msgid "Import Complete!"
-msgstr "Import Complete!"
+msgstr "Importálás befejezve!"
 
 
 #. Completion text in the favorite GIF import modal. importedCount is the number added; skippedCount is the number skipped.
@@ -17909,7 +17909,7 @@ msgstr "Mappa importálása"
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:459
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:1044
 msgid "Import from PluralKit"
-msgstr "Import from PluralKit"
+msgstr "Importálás a PluralKitből"
 
 
 #. Short label in the channel and chat gif picker header. Keep it concise.
@@ -17928,7 +17928,7 @@ msgstr "További importálása"
 
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:571
 msgid "Import Strategy"
-msgstr "Import Strategy"
+msgstr "Importálási stratégia"
 
 
 #. Accessible label for the import-template form element. Used by assistive tech only.
@@ -17983,12 +17983,12 @@ msgstr "Az importált téma alkalmazva."
 #. Modal title for PluralKit import step importing
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:466
 msgid "Importing Personas..."
-msgstr "Importing Personas..."
+msgstr "Personák importálása..."
 
 
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:712
 msgid "Importing..."
-msgstr "Importing..."
+msgstr "Importálás..."
 
 
 #. Progress text in the favorite GIF import modal. processedCount is completed URLs, totalCount is queued URLs, importedCount is successfully added GIFs.
@@ -19125,7 +19125,7 @@ msgstr "Mellékletek megtartása a szerkesztett szöveg törlésekor"
 
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:586
 msgid "Keep existing and add new (Recommended)"
-msgstr "Keep existing and add new (Recommended)"
+msgstr "Meglévők megtartása és újak hozzáadása (Ajánlott)"
 
 
 #. Description for the mirror premium model.
@@ -19169,7 +19169,7 @@ msgstr "Ablakméret és -pozíció megőrzése újratöltések között"
 #. placeholder {0}: pkData.members?.length ?? 0
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:589
 msgid "Keep your {existingCount} current persona(s) and add all {0} imported personas alongside them as new entries."
-msgstr "Keep your {existingCount} current persona(s) and add all {0} imported personas alongside them as new entries."
+msgstr "Megtartja a(z) {existingCount} jelenlegi personádat, és mind a(z) {0} importált personát új bejegyzésként adja hozzá."
 
 
 #. US state name, shown next to the country name in the mature content gate.
@@ -19327,7 +19327,7 @@ msgstr "Utolsó használat"
 #: src/features/persona/components/PersonaPickerSheet.tsx:29
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:65
 msgid "Last Used"
-msgstr "Last Used"
+msgstr "Legutóbb használt"
 
 
 #. Aria label on the signal-strength icon. {latency} is the integer millisecond latency.
@@ -20058,7 +20058,7 @@ msgstr "E-mail"
 
 #: src/features/persona/components/PersonaProfilePopout.tsx:251
 msgid "Main account"
-msgstr "Main account"
+msgstr "Fő fiók"
 
 
 #. US state name, shown next to the country name in the mature content gate.
@@ -20212,7 +20212,7 @@ msgstr "Jogosultságok kezelése"
 
 #: src/features/persona/components/PersonaPickerSheet.tsx:251
 msgid "Manage Personas"
-msgstr "Manage Personas"
+msgstr "Personák kezelése"
 
 
 #. Settings search entry description. One-line summary of what the settings search entry controls.
@@ -20251,7 +20251,7 @@ msgstr "Előfizetés kezelése"
 #: src/features/persona/components/PersonaPickerSheet.tsx:25
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:61
 msgid "Manual"
-msgstr "Manual"
+msgstr "Kézi"
 
 
 #. Modal title when automatic in-app desktop updates cannot be used.
@@ -20716,7 +20716,7 @@ msgstr "Tag"
 #. Placeholder name for unnamed member in import
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:319
 msgid "Member #{index}"
-msgstr "Member #{index}"
+msgstr "Tag #{index}"
 
 
 #. Accessible label for the actions menu button on a member row.
@@ -20830,7 +20830,7 @@ msgstr "Azok a tagok, akik rendelkeznek a(z) „{pinMessagesPermissionLabel}” 
 
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:546
 msgid "Members with Avatars"
-msgstr "Members with Avatars"
+msgstr "Tagok avatarral"
 
 
 #: src/features/guild/components/modals/guild_tabs/GuildModerationTab.tsx:309
@@ -22217,7 +22217,7 @@ msgstr "Név"
 
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:883
 msgid "Name *"
-msgstr "Name *"
+msgstr "Név *"
 
 
 #. Form validation error shown when the name field is empty.
@@ -22524,7 +22524,7 @@ msgstr "Új jelszó"
 
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:878
 msgid "New Persona"
-msgstr "New Persona"
+msgstr "Új persona"
 
 
 #. Plutonium subscription card line shown when a move to a lower price is scheduled but the new amount is unknown. {pendingChangeDate} is a date already formatted and localized by code; never write a date into the translation.
@@ -22823,7 +22823,7 @@ msgstr "Nem érhető el asztali frissítés."
 
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:865
 msgid "No display tag configured. Messages will show your account profile picture."
-msgstr "No display tag configured. Messages will show your account profile picture."
+msgstr "Nincs beállítva megjelenítési címke. Az üzeneteknél a fiókod profilképe fog megjelenni."
 
 
 #: src/features/voice/components/modals/ScreenSharePickerModal.tsx:130
@@ -22948,7 +22948,7 @@ msgstr "Nincs találat"
 
 #: src/features/persona/components/PersonaPickerSheet.tsx:202
 msgid "No matching personas found."
-msgstr "No matching personas found."
+msgstr "Nem található megfelelő persona."
 
 
 #: src/features/messaging/components/popouts/RecentMentionsContent.tsx:346
@@ -23008,7 +23008,7 @@ msgstr "Még nincsenek személyes szavak."
 
 #: src/features/persona/components/PersonaPickerSheet.tsx:200
 msgid "No personas configured yet. Create one in Settings."
-msgstr "No personas configured yet. Create one in Settings."
+msgstr "Még nincsenek personák beállítva. Hozz létre egyet a Beállításokban."
 
 
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:1055
@@ -23789,7 +23789,7 @@ msgstr "Csak a kiválasztottak"
 #. Helper description for private persona visibility
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:104
 msgid "Only visible to you. Others cannot view this persona’s full bio or profile details."
-msgstr "Only visible to you. Others cannot view this persona’s full bio or profile details."
+msgstr "Csak te láthatod. Mások nem tekinthetik meg ezen persona teljes életrajzát vagy profiljának részleteit."
 
 
 #. Body of the error modal shown when a non-Visionary user tries to rejoin a gated Plutonium community.
@@ -24375,7 +24375,7 @@ msgstr "Opcionális szolgáltatások"
 #. Placeholder for system badge in import modal
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:66
 msgid "Optional system badge, e.g. ⚞Seraphim⚟"
-msgstr "Optional system badge, e.g. ⚞Seraphim⚟"
+msgstr "Opcionális rendszer kitűző, pl. ⚞Seraphim⚟"
 
 
 #. Short label in the channel and chat textual attachment preview bottom sheet. Keep it concise.
@@ -24981,7 +24981,7 @@ msgstr "Végleges törlés"
 
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:618
 msgid "Permanently delete all {existingCount} existing persona(s) and replace them completely with the imported personas."
-msgstr "Permanently delete all {existingCount} existing persona(s) and replace them completely with the imported personas."
+msgstr "Végleg törli mind a(z) {existingCount} meglévő personát, és teljesen kicseréli őket az importált personákra."
 
 
 #. Confirmation modal description warning that every message the caller has sent across every channel in this community will be deleted. Cannot be undone.
@@ -25038,30 +25038,30 @@ msgstr "A(z) {0} alkalmazás jogosultságai"
 #. Toast when persona is created
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:154
 msgid "Persona created"
-msgstr "Persona created"
+msgstr "Persona létrehozva"
 
 
 #. Toast when persona is deleted
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:162
 msgid "Persona deleted"
-msgstr "Persona deleted"
+msgstr "Persona törölve"
 
 
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:971
 msgid "Persona Tags (Prefix & Suffix)"
-msgstr "Persona Tags (Prefix & Suffix)"
+msgstr "Persona címkék (Előtag és Utótag)"
 
 
 #. Toast when persona is updated
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:150
 msgid "Persona updated"
-msgstr "Persona updated"
+msgstr "Persona frissítve"
 
 
 #. Aria label for persona visibility tabs
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:121
 msgid "Persona visibility"
-msgstr "Persona visibility"
+msgstr "Persona láthatósága"
 
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
@@ -25086,13 +25086,13 @@ msgstr "A személyes jegyzetek már üresek voltak"
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:109
 #: src/features/user/components/settings_utils/SettingsConstants.tsx:91
 msgid "Personas"
-msgstr "Personas"
+msgstr "Personák"
 
 
 #. Progress label for prepared personas
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:46
 msgid "personas prepared"
-msgstr "personas prepared"
+msgstr "persona előkészítve"
 
 
 #. Keyboard shortcut keycap label for Page Down. Keep the abbreviation compact.
@@ -25612,7 +25612,7 @@ msgstr "Előnyben részesíti a csökkentett mozgást"
 #. Placeholder for persona tag prefix
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:194
 msgid "Prefix (e.g. [)"
-msgstr "Prefix (e.g. [)"
+msgstr "Előtag (pl. [)"
 
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
@@ -25673,7 +25673,7 @@ msgstr "Prémium eddig érvényes"
 #. Progress status when preparing avatar batch download
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:38
 msgid "Preparing avatar batch download..."
-msgstr "Preparing avatar batch download..."
+msgstr "Avatarok kötegelt letöltésének előkészítése..."
 
 
 #. Setup wizard title while the instance configuration loads.
@@ -25940,7 +25940,7 @@ msgstr "Adatvédelmi szabálysértés vagy zaklatás"
 #. Persona visibility private
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:91
 msgid "Private"
-msgstr "Private"
+msgstr "Privát"
 
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
@@ -25961,7 +25961,7 @@ msgstr "Privát üzenet"
 #. Tooltip on private persona badge
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:174
 msgid "Private persona"
-msgstr "Private persona"
+msgstr "Privát persona"
 
 
 #. Bolded green prefix shown before the shift-bypass pro tip in confirmation modals. Includes the trailing colon.
@@ -25981,7 +25981,7 @@ msgstr "Feldolgozás alatt"
 #. placeholder {0}: progress.currentName
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:637
 msgid "Processing: {0}"
-msgstr "Processing: {0}"
+msgstr "Feldolgozás: {0}"
 
 
 #. Label for the product name input in the setup wizard.
@@ -26023,13 +26023,13 @@ msgstr "A profilborítóképekhez {premiumProductName} szükséges."
 #. Helper description for unlisted persona visibility
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:96
 msgid "Profile cards are accessible only when clicking on messages sent by this persona. Not listed in your public persona list."
-msgstr "Profile cards are accessible only when clicking on messages sent by this persona. Not listed in your public persona list."
+msgstr "A profilkártyák csak az ezen persona által küldött üzenetekre kattintva érhetők el. Nem szerepel a nyilvános personáid listáján."
 
 
 #. Helper description for public persona visibility
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:100
 msgid "Profile cards are accessible when clicking on messages and visible in your public personas list to friends and mutual servers."
-msgstr "Profile cards are accessible when clicking on messages and visible in your public personas list to friends and mutual servers."
+msgstr "A profilkártyák az üzenetekre kattintva érhetők el, és a barátaid, valamint a közös szerverek számára is láthatóak a nyilvános personáid listáján."
 
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
@@ -26196,7 +26196,7 @@ msgstr "PTT"
 #. Persona visibility public
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:87
 msgid "Public"
-msgstr "Public"
+msgstr "Nyilvános"
 
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
@@ -26214,7 +26214,7 @@ msgstr "Nyilvános közösség"
 #. Tooltip on public persona badge
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:170
 msgid "Public persona"
-msgstr "Public persona"
+msgstr "Nyilvános persona"
 
 
 #. Description for the closed registration mode.
@@ -26653,7 +26653,7 @@ msgstr "Legutóbbi említések"
 
 #: src/features/persona/components/PersonaPickerSheet.tsx:167
 msgid "Recent Personas"
-msgstr "Recent Personas"
+msgstr "Legutóbbi personák"
 
 
 #. Section header in the message search popout listing previously-run searches.
@@ -27258,7 +27258,7 @@ msgstr "{tag} címke eltávolítása"
 #. Aria label for removing a tag pair
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:202
 msgid "Remove tag pair"
-msgstr "Remove tag pair"
+msgstr "Címkepár eltávolítása"
 
 
 #. Error message in the linked accounts tab. Keep the tone plain and specific.
@@ -27546,17 +27546,17 @@ msgstr "Csere"
 
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:442
 msgid "Replace All"
-msgstr "Replace All"
+msgstr "Összes cseréje"
 
 
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:614
 msgid "Replace all existing personas (Destructive)"
-msgstr "Replace all existing personas (Destructive)"
+msgstr "Összes meglévő persona cseréje (Destruktív)"
 
 
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:435
 msgid "Replace All Personas"
-msgstr "Replace All Personas"
+msgstr "Összes persona cseréje"
 
 
 #. Button or menu action label in the background image gallery modal. Keep it concise.
@@ -28634,7 +28634,7 @@ msgstr "Román"
 
 #: src/features/persona/components/PersonaPickerSheet.tsx:156
 msgid "Root Account (Default)"
-msgstr "Root Account (Default)"
+msgstr "Fő fiók (Alapértelmezett)"
 
 
 #. Short label in the image crop modal. Keep it concise.
@@ -28790,7 +28790,7 @@ msgstr "Ikon mentése"
 
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:1029
 msgid "Save Persona"
-msgstr "Save Persona"
+msgstr "Persona mentése"
 
 
 #. Button or menu action label in the channel and chat memes picker view. Keep it concise.
@@ -28838,13 +28838,13 @@ msgstr "Mentések: <0>{countLabel}</0>"
 #. Progress label when saving personas
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:54
 msgid "saving personas"
-msgstr "saving personas"
+msgstr "personák mentése"
 
 
 #. Progress status when saving personas
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:50
 msgid "Saving personas..."
-msgstr "Saving personas..."
+msgstr "Personák mentése..."
 
 
 #: src/features/channel/components/direct_message/DMWelcomeSection.tsx:298
@@ -29305,7 +29305,7 @@ msgstr "Jogosultságok keresése…"
 #. Search placeholder in persona picker sheet
 #: src/features/persona/components/PersonaPickerSheet.tsx:33
 msgid "Search personas, tags, pronouns..."
-msgstr "Search personas, tags, pronouns..."
+msgstr "Personák, címkék, pronév keresése..."
 
 
 #. Default header title in the channel search results panel before a query has been submitted.
@@ -29318,7 +29318,7 @@ msgstr "Keresési eredmények"
 #. placeholder {0}: filteredPersonas.length
 #: src/features/persona/components/PersonaPickerSheet.tsx:194
 msgid "Search Results ({0})"
-msgstr "Search Results ({0})"
+msgstr "Keresési eredmények ({0})"
 
 
 #. Heading in the Discovery navigation bar when a search is active. {query} is the text the user searched for.
@@ -29910,7 +29910,7 @@ msgstr "Üzenetek küldése ebben a csatornában."
 #. Description of personas settings section
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:113
 msgid "Send messages with distinct names and avatars. Personas can represent plural system members, roleplay characters, or any other identity."
-msgstr "Send messages with distinct names and avatars. Personas can represent plural system members, roleplay characters, or any other identity."
+msgstr "Küldj üzeneteket eltérő nevekkel és avatarokkal. A personák képviselhetik a plural rendszerek tagjait, szerepjáték karaktereket vagy bármilyen más identitást."
 
 
 #. Footer submit button in the IAR modal. Sends the report to the safety team.
@@ -29998,13 +29998,13 @@ msgstr "Túl drága lenne a(z) {PRODUCT_NAME} számára, ha SMS-t küldenénk er
 #. Tooltip when sending as a persona matched by persona tag
 #: src/features/persona/components/PersonaComposerPill.tsx:29
 msgid "Sending as {name} (Matched by tag) - Click to switch persona"
-msgstr "Sending as {name} (Matched by tag) - Click to switch persona"
+msgstr "Küldés mint {name} (Címke alapján) - Kattints a persona váltásához"
 
 
 #. Tooltip when sending as root account with persona mode active
 #: src/features/persona/components/PersonaComposerPill.tsx:37
 msgid "Sending as @{username} ({mode}) - Click to switch persona"
-msgstr "Sending as @{username} ({mode}) - Click to switch persona"
+msgstr "Küldés mint @{username} ({mode}) - Kattints a persona váltásához"
 
 
 #. IAR modal: rule label.
@@ -30133,13 +30133,13 @@ msgstr "Beállította a szerepkör taglistabeli pozícióját"
 
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:1131
 msgid "Set Active"
-msgstr "Set Active"
+msgstr "Beállítás aktívként"
 
 
 #. Aria label for setting active persona
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:206
 msgid "Set as active persona"
-msgstr "Set as active persona"
+msgstr "Beállítás aktív personaként"
 
 
 #. Short label in the keybinds tab. Keep it concise.
@@ -31367,7 +31367,7 @@ msgstr "Ugrás a tartalomra"
 #. Import warning when member has no name
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:58
 msgid "Skipped member because they have no name configured."
-msgstr "Skipped member because they have no name configured."
+msgstr "Tag kihagyva, mert nincs beállítva neve."
 
 
 #. TTS substitution token spoken in place of a slash-command invocation. {commandName} is the command name without the slash.
@@ -32231,7 +32231,7 @@ msgstr "Húzás és ejtés indítása"
 
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:705
 msgid "Start Import"
-msgstr "Start Import"
+msgstr "Importálás indítása"
 
 
 #: src/features/user/components/modals/tabs/components/MicTestSection.tsx:15
@@ -32819,13 +32819,13 @@ msgstr "Sikerült"
 #. placeholder {0}: importResults.successCount
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:659
 msgid "Successfully imported {0} persona(s) into your account. All avatar images are safely stored on your local server."
-msgstr "Successfully imported {0} persona(s) into your account. All avatar images are safely stored on your local server."
+msgstr "Sikeresen importáltál {0} personát a fiókodba. Minden avatarkép biztonságosan el van tárolva a helyi szervereden."
 
 
 #. Placeholder for persona tag suffix
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:198
 msgid "Suffix (e.g. ])"
-msgstr "Suffix (e.g. ])"
+msgstr "Utótag (pl. ])"
 
 
 #. Helper text under the "Filter members without roles" explicit content filter option in the community moderation settings tab.
@@ -32852,7 +32852,7 @@ msgstr "Összefoglalás"
 
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:506
 msgid "Supports PluralKit system export files"
-msgstr "Supports PluralKit system export files"
+msgstr "Támogatja a PluralKit rendszer export fájljait"
 
 
 #. Switch label in the community notification settings modal. Suppresses @everyone and @here notifications in this community. The two placeholders render the literal @everyone and @here tokens and must not be translated.
@@ -33230,7 +33230,7 @@ msgstr "Rendszerbeli mozgáscsökkentés"
 
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:556
 msgid "System Tag (Applied to imported personas)"
-msgstr "System Tag (Applied to imported personas)"
+msgstr "Rendszer címke (Alkalmazva az importált personákra)"
 
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
@@ -33294,7 +33294,7 @@ msgstr "Címke"
 
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:800
 msgid "Tag Icon"
-msgstr "Tag Icon"
+msgstr "Címke ikon"
 
 
 #. Validation error when tag pair is already used by another persona
@@ -33305,7 +33305,7 @@ msgstr "Tag pair already in use by persona \"{name}\""
 
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:787
 msgid "Tag Text"
-msgstr "Tag Text"
+msgstr "Címke szövege"
 
 
 #. Short label in the theme studio library section. Keep it concise.
@@ -33395,7 +33395,7 @@ msgstr "Áthelyezés egy másik hangrégióba…"
 #. Placeholder for persona bio
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:190
 msgid "Tell us about this persona..."
-msgstr "Tell us about this persona..."
+msgstr "Mesélj nekünk erről a personáról..."
 
 
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:560
@@ -33733,7 +33733,7 @@ msgstr "Lehet, hogy a csatornát, amit keresel, törölték, vagy nincs hozzáf�
 #. Error message when uploaded file is not valid JSON
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:22
 msgid "The chosen file is not a valid JSON object."
-msgstr "The chosen file is not a valid JSON object."
+msgstr "A kiválasztott fájl nem egy érvényes JSON objektum."
 
 
 #. Body of the error modal shown when the source community has disabled cloning of this expression.
@@ -34469,7 +34469,7 @@ msgstr "Ez egy egyedi matrica egy közösségből."
 
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:863
 msgid "This is a preview of how your display tag will look in chat."
-msgstr "This is a preview of how your display tag will look in chat."
+msgstr "Ez egy előnézet arról, hogyan fog kinézni a megjelenítési címkéd a chaten."
 
 
 #. Required-action modal intro text when phone verification is required.
@@ -35255,7 +35255,7 @@ msgstr "Téma"
 
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:540
 msgid "Total Members"
-msgstr "Total Members"
+msgstr "Összes tag"
 
 
 #. Developer debug summary label for total message markdown parsing duration.
@@ -36270,7 +36270,7 @@ msgstr "unknown-role"
 #. Persona visibility unlisted
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:83
 msgid "Unlisted"
-msgstr "Unlisted"
+msgstr "Nem listázott"
 
 
 #: src/features/channel/components/EmojiPicker.tsx:176
@@ -36620,19 +36620,19 @@ msgstr "Beágyazott tartalmak megjelenítése"
 #. Helper description for Off persona mode
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:70
 msgid "Untagged messages always send from your root account. Personas only speak when you type their tags (e.g. [text])."
-msgstr "Untagged messages always send from your root account. Personas only speak when you type their tags (e.g. [text])."
+msgstr "A címkézetlen üzenetek mindig a fő fiókodból lesznek elküldve. A personák csak akkor beszélnek, ha beírod a címkéjüket (pl. [szöveg])."
 
 
 #. Helper description for Last Used persona mode
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:78
 msgid "Untagged messages send as the persona that spoke most recently. Whenever anyone uses a persona tag, they automatically become the active persona."
-msgstr "Untagged messages send as the persona that spoke most recently. Whenever anyone uses a persona tag, they automatically become the active persona."
+msgstr "A címkézetlen üzenetek a legutóbb beszélő personaként lesznek elküldve. Bárki, aki persona címkét használ, automatikusan az aktív personává válik."
 
 
 #. Helper description for Manual persona mode
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:74
 msgid "Untagged messages send as your chosen persona. Typing another persona’s tags will only send that single message and won’t switch who is active."
-msgstr "Untagged messages send as your chosen persona. Typing another persona’s tags will only send that single message and won’t switch who is active."
+msgstr "A címkézetlen üzenetek a kiválasztott personádként lesznek elküldve. Egy másik persona címkéjének beírása csak azt az egy üzenetet küldi el, és nem változtatja meg, hogy ki az aktív."
 
 
 #. Summary row value on the confirm step when only an end date is set. {end} is a localized date.
@@ -36931,7 +36931,7 @@ msgstr "Feltöltés: {count, plural, one {# fájl} other {# fájl}}"
 
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:1029
 msgid "Uploading avatar..."
-msgstr "Uploading avatar..."
+msgstr "Avatar feltöltése..."
 
 
 #: src/features/emoji/components/modals/EmojiUploadModal.tsx:26

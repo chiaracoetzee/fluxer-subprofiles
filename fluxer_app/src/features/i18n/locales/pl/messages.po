@@ -16,7 +16,7 @@ msgstr ""
 
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:858
 msgid "— Today at 12:00 PM"
-msgstr "— Today at 12:00 PM"
+msgstr "— Dzisiaj o 12:00"
 
 
 #. Description text in the messages tab.
@@ -40,7 +40,7 @@ msgstr "(widoczne tylko dla Ciebie)"
 #. placeholder {0}: w.prefix
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:680
 msgid "(Prefix: {0})"
-msgstr "(Prefix: {0})"
+msgstr "(Prefiks: {0})"
 
 
 #. Short label in the keybinds tab. Keep it concise.
@@ -60,7 +60,7 @@ msgstr "{0, plural, one {# członek} few {# członków} many {# członków} othe
 #. placeholder {0}: importResults.warnings.length
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:671
 msgid "{0} notice(s) during import"
-msgstr "{0} notice(s) during import"
+msgstr "{0} uwag(i) podczas importu"
 
 
 #. placeholder {0}: progress.current
@@ -69,7 +69,7 @@ msgstr "{0} notice(s) during import"
 #. placeholder {3}: progress.percent
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:643
 msgid "{0} of {1} {2} ({3}%)"
-msgstr "{0} of {1} {2} ({3}%)"
+msgstr "{0} z {1} {2} ({3}%)"
 
 
 #. Screen reader announcement in the composer when two people are typing. {a} and {b} are their display names.
@@ -1537,7 +1537,7 @@ msgstr "{months, plural, one {# miesiąc} few {# miesiące} many {# miesięcy} o
 #. Tooltip when sending as a latched persona
 #: src/features/persona/components/PersonaComposerPill.tsx:33
 msgid "{name} ({mode}) - Click to switch persona"
-msgstr "{name} ({mode}) - Click to switch persona"
+msgstr "{name} ({mode}) - Kliknij, aby zmienić personę"
 
 
 #. Default name for a role created by duplicating another role in the community roles settings tab. {name} is the source role name; translate the whole label so "copy" can move or inflect as the language needs.
@@ -2719,7 +2719,7 @@ msgstr "Wymagana weryfikacja konta"
 #. Tooltip showing root account username
 #: src/features/persona/components/PersonaTag.tsx:88
 msgid "Account: @{username}"
-msgstr "Account: @{username}"
+msgstr "Konto: @{username}"
 
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
@@ -2844,12 +2844,12 @@ msgstr "Aktywni teraz"
 #: src/features/persona/components/PersonaPickerSheet.tsx:37
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:117
 msgid "Active persona mode"
-msgstr "Active persona mode"
+msgstr "Tryb aktywnej persony"
 
 
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:746
 msgid "Active Persona Mode"
-msgstr "Active Persona Mode"
+msgstr "Tryb aktywnej persony"
 
 
 #. Developer premium-state scenario label.
@@ -3136,7 +3136,7 @@ msgstr "Dodaj klucz dostępu"
 
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:1047
 msgid "Add Persona"
-msgstr "Add Persona"
+msgstr "Dodaj personę"
 
 
 #. Generic action label that opens the reaction picker for a message.
@@ -3212,7 +3212,7 @@ msgstr "Dodaj transmisję"
 #. placeholder {0}: formData.tags.length
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:980
 msgid "Add Tag Pair ({0}/5)"
-msgstr "Add Tag Pair ({0}/5)"
+msgstr "Dodaj parę tagów ({0}/5)"
 
 
 #. Description for configuring an optional setup wizard integration now.
@@ -3616,7 +3616,7 @@ msgstr "Wszystkie wiadomości"
 
 #: src/features/persona/components/PersonaPickerSheet.tsx:194
 msgid "All Personas"
-msgstr "All Personas"
+msgstr "Wszystkie persony"
 
 
 #: src/features/user/components/modals/tabs/component_gallery_tab/IndicatorsTab.tsx:227
@@ -4503,7 +4503,7 @@ msgstr "Czy na pewno chcesz usunąć <0>{0}</0>?"
 #. placeholder {0}: persona.name
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:666
 msgid "Are you sure you want to delete <0>{0}</0>? This action cannot be undone."
-msgstr "Are you sure you want to delete <0>{0}</0>? This action cannot be undone."
+msgstr "Czy na pewno chcesz usunąć <0>{0}</0>? Tej akcji nie można cofnąć."
 
 
 #. Destructive confirmation for deleting a channel category.
@@ -4579,7 +4579,7 @@ msgstr "Czy na pewno chcesz usunąć <0>{engineName}</0>?"
 
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:437
 msgid "Are you sure you want to replace all <0>{existingCount}</0> existing persona(s)? This will permanently delete them from your account and cannot be undone."
-msgstr "Are you sure you want to replace all <0>{existingCount}</0> existing persona(s)? This will permanently delete them from your account and cannot be undone."
+msgstr "Czy na pewno chcesz zastąpić wszystkie istniejące persony (<0>{existingCount}</0>)? Zostaną one trwale usunięte z twojego konta i tej akcji nie można cofnąć."
 
 
 #. Confirm dialog message for the destructive reset action. Tone stays plain.
@@ -5226,7 +5226,7 @@ msgstr "Plik awatara jest za duży. Wybierz plik mniejszy niż {imageMaxSizeLabe
 #. Import warning when avatar fails to download
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:355
 msgid "Avatar image failed to download: {error}. Persona was imported without an avatar."
-msgstr "Avatar image failed to download: {error}. Persona was imported without an avatar."
+msgstr "Nie udało się pobrać awatara: {error}. Persona została zaimportowana bez awatara."
 
 
 #. Webhook avatar upload error. IMAGE_MAX_SIZE_LABEL is a formatted file-size limit.
@@ -5256,7 +5256,7 @@ msgstr "Awatary"
 #. Progress label for avatar downloads
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:42
 msgid "avatars downloaded"
-msgstr "avatars downloaded"
+msgstr "pobrane awatary"
 
 
 #. Field label in the voice connection status popout. Shows the average RTT in ms over the recent window.
@@ -7518,7 +7518,7 @@ msgstr "Wybierz nowe hasło."
 
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:503
 msgid "Choose a PluralKit export (.json) or drag & drop"
-msgstr "Choose a PluralKit export (.json) or drag & drop"
+msgstr "Wybierz plik eksportu PluralKit (.json) lub przeciągnij go tutaj"
 
 
 #. Description text in the accessibility tab.
@@ -7616,7 +7616,7 @@ msgstr "Wybierz sposób wyświetlania godzin w aplikacji"
 
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:749
 msgid "Choose how untagged messages and persona tags interact with your active persona."
-msgstr "Choose how untagged messages and persona tags interact with your active persona."
+msgstr "Wybierz, jak wiadomości bez tagów i tagi person współdziałają z twoją aktywną personą."
 
 
 #. Plutonium subscription payment method picker description, generic fallback when no country-specific copy applies.
@@ -8952,13 +8952,13 @@ msgstr "Skonfiguruj swoją odznakę profilową"
 #. Header for configured personas list with count
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:222
 msgid "Configured Personas ({count})"
-msgstr "Configured Personas ({count})"
+msgstr "Skonfigurowane persony ({count})"
 
 
 #. Progress status for configuring persona
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:334
 msgid "Configuring {name}..."
-msgstr "Configuring {name}..."
+msgstr "Konfigurowanie {name}..."
 
 
 #. Action label for confirming a mass mention that may notify many people.
@@ -10975,7 +10975,7 @@ msgstr "Dostosuj swój tag lub zachowaj go przy zmianie nazwy użytkownika"
 #. Description for persona accent color picker
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:178
 msgid "Customizes the border and banner color on this persona's profile"
-msgstr "Customizes the border and banner color on this persona's profile"
+msgstr "Dostosowuje kolor obramowania i baneru na profilu tej persony"
 
 
 #. Label in the accent color picker. Keep the tone plain and specific.
@@ -11158,7 +11158,7 @@ msgstr "Dezaktywuj"
 #. Aria label for deactivating active persona
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:210
 msgid "Deactivate persona"
-msgstr "Deactivate persona"
+msgstr "Dezaktywuj personę"
 
 
 #. Voice action label. Turns off what the user hears in voice chat. Distinct from microphone mute.
@@ -11587,12 +11587,12 @@ msgstr "Usuń klucz dostępu"
 #. Aria label for deleting persona
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:218
 msgid "Delete persona"
-msgstr "Delete persona"
+msgstr "Usuń personę"
 
 
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:664
 msgid "Delete Persona"
-msgstr "Delete Persona"
+msgstr "Usuń personę"
 
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
@@ -11973,7 +11973,7 @@ msgstr "Wykrywaj podczas pisania"
 
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:531
 msgid "Detected System Name / Tag"
-msgstr "Detected System Name / Tag"
+msgstr "Wykryta nazwa systemu / tag"
 
 
 #. Advanced settings category tag.
@@ -12546,24 +12546,24 @@ msgstr "Skalowanie wyświetlania"
 
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:772
 msgid "Display Tag"
-msgstr "Display Tag"
+msgstr "Widoczny tag"
 
 
 #. Toast when display tag icon is removed
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:138
 msgid "Display tag icon removed"
-msgstr "Display tag icon removed"
+msgstr "Ikona widocznego tagu została usunięta"
 
 
 #. Toast when display tag icon is updated
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:134
 msgid "Display tag icon updated"
-msgstr "Display tag icon updated"
+msgstr "Ikona widocznego tagu została zaktualizowana"
 
 
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:775
 msgid "Display tag will appear next to all persona names in messages. If no display tag is set, your account profile picture will be shown."
-msgstr "Display tag will appear next to all persona names in messages. If no display tag is set, your account profile picture will be shown."
+msgstr "Widoczny tag pojawi się obok nazw wszystkich person w wiadomościach. Jeśli nie ustawiono tagu, zostanie pokazane zdjęcie profilowe twojego konta."
 
 
 #. IAR modal: rule description.
@@ -12910,7 +12910,7 @@ msgstr "Pobierz wideo"
 #. Progress status during avatar download
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:257
 msgid "Downloading avatar {current} of {total}..."
-msgstr "Downloading avatar {current} of {total}..."
+msgstr "Pobieranie awatara {current} z {total}..."
 
 
 #. Tooltip on the channel header updater icon while downloading a versioned update without throughput info.
@@ -13087,7 +13087,7 @@ msgstr "Duplikuj rolę"
 #. Validation error when tag pair is duplicated within the same persona
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:126
 msgid "Duplicate tag pair on this persona"
-msgstr "Duplicate tag pair on this persona"
+msgstr "Zduplikowana para tagów na tej personie"
 
 
 #. Field label in the voice connection status popout. Shows how long the current voice session has been connected.
@@ -13103,13 +13103,13 @@ msgstr "Niderlandzki"
 #. Placeholder for persona name
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:182
 msgid "e.g. Alice"
-msgstr "e.g. Alice"
+msgstr "np. Alice"
 
 
 #. Placeholder for persona pronouns
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:186
 msgid "e.g. she/her"
-msgstr "e.g. she/her"
+msgstr "np. ona/jej"
 
 
 #. Placeholder or example text in the authentication passkey name modal. Keep the tone plain and specific.
@@ -13289,12 +13289,12 @@ msgstr "Edytuj indywidualne uprawnienia ról i członków w tym kanale."
 #: src/features/persona/components/PersonaProfilePopout.tsx:279
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:214
 msgid "Edit persona"
-msgstr "Edit persona"
+msgstr "Edytuj personę"
 
 
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:878
 msgid "Edit Persona"
-msgstr "Edit Persona"
+msgstr "Edytuj personę"
 
 
 #: src/features/app/components/floating/UserAreaPopout.tsx:743
@@ -14706,7 +14706,7 @@ msgstr "Eksportuj moje dane"
 
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:527
 msgid "Export Summary"
-msgstr "Export Summary"
+msgstr "Podsumowanie eksportu"
 
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
@@ -14852,7 +14852,7 @@ msgstr "Nie udało się usunąć kanału"
 #. Toast when persona deletion fails
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:166
 msgid "Failed to delete persona"
-msgstr "Failed to delete persona"
+msgstr "Nie udało się usunąć persony"
 
 
 #. Toast / inline error in the camera preview modal when enabling the camera fails.
@@ -14878,7 +14878,7 @@ msgstr "Nie udało się wygenerować tokena"
 #. Toast error message on persona import failure
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:62
 msgid "Failed to import personas"
-msgstr "Failed to import personas"
+msgstr "Nie udało się zaimportować person"
 
 
 #: src/features/moderation/components/modals/KickMemberModal.tsx:35
@@ -14951,7 +14951,7 @@ msgstr "Nie udało się wczytać Twoich społeczności."
 #. Error message when parsing PluralKit JSON fails
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:30
 msgid "Failed to parse JSON file. Please ensure it is a valid PluralKit export."
-msgstr "Failed to parse JSON file. Please ensure it is a valid PluralKit export."
+msgstr "Nie udało się przeanalizować pliku JSON. Upewnij się, że to prawidłowy plik eksportu PluralKit."
 
 
 #. Channel details bottom sheet label or action (channel type, settings, toast, confirmation, or notification option).
@@ -14991,7 +14991,7 @@ msgstr "Nie udało się przetworzyć przyciętego obrazu. Spróbuj ponownie."
 #. Error message when reading uploaded file fails
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:34
 msgid "Failed to read the selected file."
-msgstr "Failed to read the selected file."
+msgstr "Nie udało się odczytać wybranego pliku."
 
 
 #. Error message in the background image gallery modal. Keep the tone plain and specific.
@@ -15031,7 +15031,7 @@ msgstr "Nie udało się zresetować stanu Premium."
 #. Toast when persona save fails
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:158
 msgid "Failed to save persona"
-msgstr "Failed to save persona"
+msgstr "Nie udało się zapisać persony"
 
 
 #. Error shown when the initial email verification code send fails on the DSA report flow.
@@ -15149,7 +15149,7 @@ msgstr "Nie udało się przesłać emoji. Spróbuj ponownie."
 #. Toast when icon upload fails
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:142
 msgid "Failed to upload icon to server"
-msgstr "Failed to upload icon to server"
+msgstr "Nie udało się przesłać ikony na serwer"
 
 
 #. IAR modal: rule description.
@@ -17564,7 +17564,7 @@ msgstr "Plik ikony jest za duży. Wybierz plik mniejszy niż {imageMaxSizeLabel}
 #. Toast when icon file exceeds size limit
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:146
 msgid "Icon file is too large. Choose an image smaller than 10MB."
-msgstr "Icon file is too large. Choose an image smaller than 10MB."
+msgstr "Plik ikony jest za duży. Wybierz obraz mniejszy niż 10 MB."
 
 
 #. US state name, shown next to the country name in the mature content gate.
@@ -17871,12 +17871,12 @@ msgstr "Zaimportuj plik .css, aby rozpocząć, lub wklej własny kod CSS w Szybk
 #. Modal title for PluralKit import step completed
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:472
 msgid "Import Complete"
-msgstr "Import Complete"
+msgstr "Import zakończony"
 
 
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:656
 msgid "Import Complete!"
-msgstr "Import Complete!"
+msgstr "Import zakończony!"
 
 
 #. Completion text in the favorite GIF import modal. importedCount is the number added; skippedCount is the number skipped.
@@ -17909,7 +17909,7 @@ msgstr "Importuj folder"
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:459
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:1044
 msgid "Import from PluralKit"
-msgstr "Import from PluralKit"
+msgstr "Importuj z PluralKit"
 
 
 #. Short label in the channel and chat gif picker header. Keep it concise.
@@ -17928,7 +17928,7 @@ msgstr "Importuj więcej"
 
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:571
 msgid "Import Strategy"
-msgstr "Import Strategy"
+msgstr "Strategia importu"
 
 
 #. Accessible label for the import-template form element. Used by assistive tech only.
@@ -17983,12 +17983,12 @@ msgstr "Zaimportowany motyw został zastosowany."
 #. Modal title for PluralKit import step importing
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:466
 msgid "Importing Personas..."
-msgstr "Importing Personas..."
+msgstr "Importowanie person..."
 
 
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:712
 msgid "Importing..."
-msgstr "Importing..."
+msgstr "Importowanie..."
 
 
 #. Progress text in the favorite GIF import modal. processedCount is completed URLs, totalCount is queued URLs, importedCount is successfully added GIFs.
@@ -19125,7 +19125,7 @@ msgstr "Zachowaj załączniki po wyczyszczeniu edycji"
 
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:586
 msgid "Keep existing and add new (Recommended)"
-msgstr "Keep existing and add new (Recommended)"
+msgstr "Zachowaj istniejące i dodaj nowe (zalecane)"
 
 
 #. Description for the mirror premium model.
@@ -19169,7 +19169,7 @@ msgstr "Zachowuj rozmiar i położenie okna między przeładowaniami"
 #. placeholder {0}: pkData.members?.length ?? 0
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:589
 msgid "Keep your {existingCount} current persona(s) and add all {0} imported personas alongside them as new entries."
-msgstr "Keep your {existingCount} current persona(s) and add all {0} imported personas alongside them as new entries."
+msgstr "Zachowaj obecne persony ({existingCount}) i dodaj wszystkie zaimportowane persony ({0}) jako nowe wpisy."
 
 
 #. US state name, shown next to the country name in the mature content gate.
@@ -19327,7 +19327,7 @@ msgstr "Ostatnio używany"
 #: src/features/persona/components/PersonaPickerSheet.tsx:29
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:65
 msgid "Last Used"
-msgstr "Last Used"
+msgstr "Ostatnio używana"
 
 
 #. Aria label on the signal-strength icon. {latency} is the integer millisecond latency.
@@ -20058,7 +20058,7 @@ msgstr "Poczta"
 
 #: src/features/persona/components/PersonaProfilePopout.tsx:251
 msgid "Main account"
-msgstr "Main account"
+msgstr "Konto główne"
 
 
 #. US state name, shown next to the country name in the mature content gate.
@@ -20212,7 +20212,7 @@ msgstr "Zarządzanie uprawnieniami"
 
 #: src/features/persona/components/PersonaPickerSheet.tsx:251
 msgid "Manage Personas"
-msgstr "Manage Personas"
+msgstr "Zarządzaj personami"
 
 
 #. Settings search entry description. One-line summary of what the settings search entry controls.
@@ -20251,7 +20251,7 @@ msgstr "Zarządzaj subskrypcją"
 #: src/features/persona/components/PersonaPickerSheet.tsx:25
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:61
 msgid "Manual"
-msgstr "Manual"
+msgstr "Ręczny"
 
 
 #. Modal title when automatic in-app desktop updates cannot be used.
@@ -20716,7 +20716,7 @@ msgstr "Członek"
 #. Placeholder name for unnamed member in import
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:319
 msgid "Member #{index}"
-msgstr "Member #{index}"
+msgstr "Członek #{index}"
 
 
 #. Accessible label for the actions menu button on a member row.
@@ -20830,7 +20830,7 @@ msgstr "Członkowie z uprawnieniem „{pinMessagesPermissionLabel}” mogą przy
 
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:546
 msgid "Members with Avatars"
-msgstr "Members with Avatars"
+msgstr "Członkowie z awatarami"
 
 
 #: src/features/guild/components/modals/guild_tabs/GuildModerationTab.tsx:309
@@ -22217,7 +22217,7 @@ msgstr "Nazwa"
 
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:883
 msgid "Name *"
-msgstr "Name *"
+msgstr "Nazwa *"
 
 
 #. Form validation error shown when the name field is empty.
@@ -22524,7 +22524,7 @@ msgstr "Nowe hasło"
 
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:878
 msgid "New Persona"
-msgstr "New Persona"
+msgstr "Nowa persona"
 
 
 #. Plutonium subscription card line shown when a move to a lower price is scheduled but the new amount is unknown. {pendingChangeDate} is a date already formatted and localized by code; never write a date into the translation.
@@ -22823,7 +22823,7 @@ msgstr "Brak dostępnej aktualizacji aplikacji komputerowej."
 
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:865
 msgid "No display tag configured. Messages will show your account profile picture."
-msgstr "No display tag configured. Messages will show your account profile picture."
+msgstr "Nie skonfigurowano widocznego tagu. Wiadomości będą pokazywać zdjęcie profilowe twojego konta."
 
 
 #: src/features/voice/components/modals/ScreenSharePickerModal.tsx:130
@@ -22948,7 +22948,7 @@ msgstr "Brak wyników"
 
 #: src/features/persona/components/PersonaPickerSheet.tsx:202
 msgid "No matching personas found."
-msgstr "No matching personas found."
+msgstr "Nie znaleziono pasujących person."
 
 
 #: src/features/messaging/components/popouts/RecentMentionsContent.tsx:346
@@ -23008,7 +23008,7 @@ msgstr "Nie dodano jeszcze własnych słów."
 
 #: src/features/persona/components/PersonaPickerSheet.tsx:200
 msgid "No personas configured yet. Create one in Settings."
-msgstr "No personas configured yet. Create one in Settings."
+msgstr "Nie skonfigurowano jeszcze żadnych person. Utwórz jedną w ustawieniach."
 
 
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:1055
@@ -23789,7 +23789,7 @@ msgstr "Tylko wybrane"
 #. Helper description for private persona visibility
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:104
 msgid "Only visible to you. Others cannot view this persona’s full bio or profile details."
-msgstr "Only visible to you. Others cannot view this persona’s full bio or profile details."
+msgstr "Widoczne tylko dla ciebie. Inni nie mogą zobaczyć pełnej biografii ani szczegółów profilu tej persony."
 
 
 #. Body of the error modal shown when a non-Visionary user tries to rejoin a gated Plutonium community.
@@ -24375,7 +24375,7 @@ msgstr "Opcjonalne usługi"
 #. Placeholder for system badge in import modal
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:66
 msgid "Optional system badge, e.g. ⚞Seraphim⚟"
-msgstr "Optional system badge, e.g. ⚞Seraphim⚟"
+msgstr "Opcjonalna odznaka systemu, np. ⚞Seraphim⚟"
 
 
 #. Short label in the channel and chat textual attachment preview bottom sheet. Keep it concise.
@@ -24981,7 +24981,7 @@ msgstr "Trwałe usunięcie"
 
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:618
 msgid "Permanently delete all {existingCount} existing persona(s) and replace them completely with the imported personas."
-msgstr "Permanently delete all {existingCount} existing persona(s) and replace them completely with the imported personas."
+msgstr "Trwale usuń wszystkie istniejące persony ({existingCount}) i całkowicie zastąp je zaimportowanymi personami."
 
 
 #. Confirmation modal description warning that every message the caller has sent across every channel in this community will be deleted. Cannot be undone.
@@ -25038,30 +25038,30 @@ msgstr "Uprawnienia dla {0}"
 #. Toast when persona is created
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:154
 msgid "Persona created"
-msgstr "Persona created"
+msgstr "Utworzono personę"
 
 
 #. Toast when persona is deleted
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:162
 msgid "Persona deleted"
-msgstr "Persona deleted"
+msgstr "Usunięto personę"
 
 
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:971
 msgid "Persona Tags (Prefix & Suffix)"
-msgstr "Persona Tags (Prefix & Suffix)"
+msgstr "Tagi persony (prefiks i sufiks)"
 
 
 #. Toast when persona is updated
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:150
 msgid "Persona updated"
-msgstr "Persona updated"
+msgstr "Zaktualizowano personę"
 
 
 #. Aria label for persona visibility tabs
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:121
 msgid "Persona visibility"
-msgstr "Persona visibility"
+msgstr "Widoczność persony"
 
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
@@ -25086,13 +25086,13 @@ msgstr "Notatki osobiste były już puste"
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:109
 #: src/features/user/components/settings_utils/SettingsConstants.tsx:91
 msgid "Personas"
-msgstr "Personas"
+msgstr "Persony"
 
 
 #. Progress label for prepared personas
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:46
 msgid "personas prepared"
-msgstr "personas prepared"
+msgstr "persony przygotowane"
 
 
 #. Keyboard shortcut keycap label for Page Down. Keep the abbreviation compact.
@@ -25612,7 +25612,7 @@ msgstr "Preferuje ograniczenie animacji"
 #. Placeholder for persona tag prefix
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:194
 msgid "Prefix (e.g. [)"
-msgstr "Prefix (e.g. [)"
+msgstr "Prefiks (np. [)"
 
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
@@ -25673,7 +25673,7 @@ msgstr "Premium ważne do"
 #. Progress status when preparing avatar batch download
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:38
 msgid "Preparing avatar batch download..."
-msgstr "Preparing avatar batch download..."
+msgstr "Przygotowywanie grupowego pobierania awatarów..."
 
 
 #. Setup wizard title while the instance configuration loads.
@@ -25940,7 +25940,7 @@ msgstr "Naruszenie prywatności lub nękanie"
 #. Persona visibility private
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:91
 msgid "Private"
-msgstr "Private"
+msgstr "Prywatna"
 
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
@@ -25961,7 +25961,7 @@ msgstr "Wiadomość prywatna"
 #. Tooltip on private persona badge
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:174
 msgid "Private persona"
-msgstr "Private persona"
+msgstr "Prywatna persona"
 
 
 #. Bolded green prefix shown before the shift-bypass pro tip in confirmation modals. Includes the trailing colon.
@@ -25981,7 +25981,7 @@ msgstr "Przetwarzanie"
 #. placeholder {0}: progress.currentName
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:637
 msgid "Processing: {0}"
-msgstr "Processing: {0}"
+msgstr "Przetwarzanie: {0}"
 
 
 #. Label for the product name input in the setup wizard.
@@ -26023,13 +26023,13 @@ msgstr "Banery profilowe wymagają {premiumProductName}."
 #. Helper description for unlisted persona visibility
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:96
 msgid "Profile cards are accessible only when clicking on messages sent by this persona. Not listed in your public persona list."
-msgstr "Profile cards are accessible only when clicking on messages sent by this persona. Not listed in your public persona list."
+msgstr "Karty profilowe są dostępne tylko po kliknięciu wiadomości wysłanych przez tę personę. Nie ma jej na publicznej liście person."
 
 
 #. Helper description for public persona visibility
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:100
 msgid "Profile cards are accessible when clicking on messages and visible in your public personas list to friends and mutual servers."
-msgstr "Profile cards are accessible when clicking on messages and visible in your public personas list to friends and mutual servers."
+msgstr "Karty profilowe są dostępne po kliknięciu wiadomości i widoczne na publicznej liście person dla znajomych i wspólnych serwerów."
 
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
@@ -26196,7 +26196,7 @@ msgstr "PTT"
 #. Persona visibility public
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:87
 msgid "Public"
-msgstr "Public"
+msgstr "Publiczna"
 
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
@@ -26214,7 +26214,7 @@ msgstr "Publiczna społeczność"
 #. Tooltip on public persona badge
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:170
 msgid "Public persona"
-msgstr "Public persona"
+msgstr "Publiczna persona"
 
 
 #. Description for the closed registration mode.
@@ -26653,7 +26653,7 @@ msgstr "Ostatnie wzmianki"
 
 #: src/features/persona/components/PersonaPickerSheet.tsx:167
 msgid "Recent Personas"
-msgstr "Recent Personas"
+msgstr "Ostatnie persony"
 
 
 #. Section header in the message search popout listing previously-run searches.
@@ -27258,7 +27258,7 @@ msgstr "Usuń tag {tag}"
 #. Aria label for removing a tag pair
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:202
 msgid "Remove tag pair"
-msgstr "Remove tag pair"
+msgstr "Usuń parę tagów"
 
 
 #. Error message in the linked accounts tab. Keep the tone plain and specific.
@@ -27546,17 +27546,17 @@ msgstr "Zastąp"
 
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:442
 msgid "Replace All"
-msgstr "Replace All"
+msgstr "Zastąp wszystko"
 
 
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:614
 msgid "Replace all existing personas (Destructive)"
-msgstr "Replace all existing personas (Destructive)"
+msgstr "Zastąp wszystkie istniejące persony (destrukcyjne)"
 
 
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:435
 msgid "Replace All Personas"
-msgstr "Replace All Personas"
+msgstr "Zastąp wszystkie persony"
 
 
 #. Button or menu action label in the background image gallery modal. Keep it concise.
@@ -28634,7 +28634,7 @@ msgstr "Rumuński"
 
 #: src/features/persona/components/PersonaPickerSheet.tsx:156
 msgid "Root Account (Default)"
-msgstr "Root Account (Default)"
+msgstr "Konto główne (domyślne)"
 
 
 #. Short label in the image crop modal. Keep it concise.
@@ -28790,7 +28790,7 @@ msgstr "Zapisz ikonę"
 
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:1029
 msgid "Save Persona"
-msgstr "Save Persona"
+msgstr "Zapisz personę"
 
 
 #. Button or menu action label in the channel and chat memes picker view. Keep it concise.
@@ -28838,13 +28838,13 @@ msgstr "Zapisania: <0>{countLabel}</0>"
 #. Progress label when saving personas
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:54
 msgid "saving personas"
-msgstr "saving personas"
+msgstr "zapisywanie person"
 
 
 #. Progress status when saving personas
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:50
 msgid "Saving personas..."
-msgstr "Saving personas..."
+msgstr "Zapisywanie person..."
 
 
 #: src/features/channel/components/direct_message/DMWelcomeSection.tsx:298
@@ -29305,7 +29305,7 @@ msgstr "Szukaj uprawnień…"
 #. Search placeholder in persona picker sheet
 #: src/features/persona/components/PersonaPickerSheet.tsx:33
 msgid "Search personas, tags, pronouns..."
-msgstr "Search personas, tags, pronouns..."
+msgstr "Szukaj person, tagów, zaimków..."
 
 
 #. Default header title in the channel search results panel before a query has been submitted.
@@ -29318,7 +29318,7 @@ msgstr "Wyniki wyszukiwania"
 #. placeholder {0}: filteredPersonas.length
 #: src/features/persona/components/PersonaPickerSheet.tsx:194
 msgid "Search Results ({0})"
-msgstr "Search Results ({0})"
+msgstr "Wyniki wyszukiwania ({0})"
 
 
 #. Heading in the Discovery navigation bar when a search is active. {query} is the text the user searched for.
@@ -29910,7 +29910,7 @@ msgstr "Wysyłaj wiadomości na tym kanale."
 #. Description of personas settings section
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:113
 msgid "Send messages with distinct names and avatars. Personas can represent plural system members, roleplay characters, or any other identity."
-msgstr "Send messages with distinct names and avatars. Personas can represent plural system members, roleplay characters, or any other identity."
+msgstr "Wysyłaj wiadomości z różnymi nazwami i awatarami. Persony mogą reprezentować członków systemu mnogiego, postacie do odgrywania ról lub jakąkolwiek inną tożsamość."
 
 
 #. Footer submit button in the IAR modal. Sends the report to the safety team.
@@ -29998,13 +29998,13 @@ msgstr "Wysłanie SMS-a na ten numer telefonu jest zbyt kosztowne dla {PRODUCT_N
 #. Tooltip when sending as a persona matched by persona tag
 #: src/features/persona/components/PersonaComposerPill.tsx:29
 msgid "Sending as {name} (Matched by tag) - Click to switch persona"
-msgstr "Sending as {name} (Matched by tag) - Click to switch persona"
+msgstr "Wysyłanie jako {name} (dopasowane przez tag) - kliknij, aby zmienić personę"
 
 
 #. Tooltip when sending as root account with persona mode active
 #: src/features/persona/components/PersonaComposerPill.tsx:37
 msgid "Sending as @{username} ({mode}) - Click to switch persona"
-msgstr "Sending as @{username} ({mode}) - Click to switch persona"
+msgstr "Wysyłanie jako @{username} ({mode}) - kliknij, aby zmienić personę"
 
 
 #. IAR modal: rule label.
@@ -30133,13 +30133,13 @@ msgstr "Ustawiono pozycję roli na liście członków"
 
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:1131
 msgid "Set Active"
-msgstr "Set Active"
+msgstr "Ustaw jako aktywną"
 
 
 #. Aria label for setting active persona
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:206
 msgid "Set as active persona"
-msgstr "Set as active persona"
+msgstr "Ustaw jako aktywną personę"
 
 
 #. Short label in the keybinds tab. Keep it concise.
@@ -31367,7 +31367,7 @@ msgstr "Przejdź do treści"
 #. Import warning when member has no name
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:58
 msgid "Skipped member because they have no name configured."
-msgstr "Skipped member because they have no name configured."
+msgstr "Pominięto członka, ponieważ nie ma on skonfigurowanej nazwy."
 
 
 #. TTS substitution token spoken in place of a slash-command invocation. {commandName} is the command name without the slash.
@@ -32231,7 +32231,7 @@ msgstr "Rozpocznij przeciąganie i upuszczanie"
 
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:705
 msgid "Start Import"
-msgstr "Start Import"
+msgstr "Rozpocznij import"
 
 
 #: src/features/user/components/modals/tabs/components/MicTestSection.tsx:15
@@ -32819,13 +32819,13 @@ msgstr "Sukces"
 #. placeholder {0}: importResults.successCount
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:659
 msgid "Successfully imported {0} persona(s) into your account. All avatar images are safely stored on your local server."
-msgstr "Successfully imported {0} persona(s) into your account. All avatar images are safely stored on your local server."
+msgstr "Pomyślnie zaimportowano {0} person na twoje konto. Wszystkie obrazy awatarów są bezpiecznie przechowywane na lokalnym serwerze."
 
 
 #. Placeholder for persona tag suffix
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:198
 msgid "Suffix (e.g. ])"
-msgstr "Suffix (e.g. ])"
+msgstr "Sufiks (np. ])"
 
 
 #. Helper text under the "Filter members without roles" explicit content filter option in the community moderation settings tab.
@@ -32852,7 +32852,7 @@ msgstr "Podsumowanie"
 
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:506
 msgid "Supports PluralKit system export files"
-msgstr "Supports PluralKit system export files"
+msgstr "Obsługuje pliki eksportu systemów PluralKit"
 
 
 #. Switch label in the community notification settings modal. Suppresses @everyone and @here notifications in this community. The two placeholders render the literal @everyone and @here tokens and must not be translated.
@@ -33230,7 +33230,7 @@ msgstr "Systemowe ograniczenie animacji"
 
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:556
 msgid "System Tag (Applied to imported personas)"
-msgstr "System Tag (Applied to imported personas)"
+msgstr "Tag systemu (zastosowany do zaimportowanych person)"
 
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
@@ -33294,7 +33294,7 @@ msgstr "Tag"
 
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:800
 msgid "Tag Icon"
-msgstr "Tag Icon"
+msgstr "Ikona tagu"
 
 
 #. Validation error when tag pair is already used by another persona
@@ -33305,7 +33305,7 @@ msgstr "Tag pair already in use by persona \"{name}\""
 
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:787
 msgid "Tag Text"
-msgstr "Tag Text"
+msgstr "Tekst tagu"
 
 
 #. Short label in the theme studio library section. Keep it concise.
@@ -33395,7 +33395,7 @@ msgstr "Przenosimy Cię do innego regionu głosowego..."
 #. Placeholder for persona bio
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:190
 msgid "Tell us about this persona..."
-msgstr "Tell us about this persona..."
+msgstr "Opowiedz nam o tej personie..."
 
 
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:560
@@ -33733,7 +33733,7 @@ msgstr "Kanał, którego szukasz, mógł zostać usunięty lub możesz nie mieć
 #. Error message when uploaded file is not valid JSON
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:22
 msgid "The chosen file is not a valid JSON object."
-msgstr "The chosen file is not a valid JSON object."
+msgstr "Wybrany plik nie jest prawidłowym obiektem JSON."
 
 
 #. Body of the error modal shown when the source community has disabled cloning of this expression.
@@ -34469,7 +34469,7 @@ msgstr "To naklejka niestandardowa ze społeczności."
 
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:863
 msgid "This is a preview of how your display tag will look in chat."
-msgstr "This is a preview of how your display tag will look in chat."
+msgstr "To jest podgląd tego, jak twój widoczny tag będzie wyglądać na czacie."
 
 
 #. Required-action modal intro text when phone verification is required.
@@ -35255,7 +35255,7 @@ msgstr "Temat"
 
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:540
 msgid "Total Members"
-msgstr "Total Members"
+msgstr "Liczba członków"
 
 
 #. Developer debug summary label for total message markdown parsing duration.
@@ -36270,7 +36270,7 @@ msgstr "nieznana-rola"
 #. Persona visibility unlisted
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:83
 msgid "Unlisted"
-msgstr "Unlisted"
+msgstr "Niepubliczna"
 
 
 #: src/features/channel/components/EmojiPicker.tsx:176
@@ -36620,19 +36620,19 @@ msgstr "Pokaż osadzone treści"
 #. Helper description for Off persona mode
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:70
 msgid "Untagged messages always send from your root account. Personas only speak when you type their tags (e.g. [text])."
-msgstr "Untagged messages always send from your root account. Personas only speak when you type their tags (e.g. [text])."
+msgstr "Wiadomości bez tagów są zawsze wysyłane z konta głównego. Persony odzywają się tylko wtedy, gdy wpiszesz ich tagi (np. [tekst])."
 
 
 #. Helper description for Last Used persona mode
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:78
 msgid "Untagged messages send as the persona that spoke most recently. Whenever anyone uses a persona tag, they automatically become the active persona."
-msgstr "Untagged messages send as the persona that spoke most recently. Whenever anyone uses a persona tag, they automatically become the active persona."
+msgstr "Wiadomości bez tagów są wysyłane jako persona, która ostatnio się odezwała. Za każdym razem, gdy ktoś użyje tagu persony, automatycznie staje się ona aktywną personą."
 
 
 #. Helper description for Manual persona mode
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:74
 msgid "Untagged messages send as your chosen persona. Typing another persona’s tags will only send that single message and won’t switch who is active."
-msgstr "Untagged messages send as your chosen persona. Typing another persona’s tags will only send that single message and won’t switch who is active."
+msgstr "Wiadomości bez tagów są wysyłane jako wybrana przez ciebie persona. Wpisanie tagów innej persony spowoduje wysłanie tylko tej jednej wiadomości i nie zmieni tego, kto jest aktywny."
 
 
 #. Summary row value on the confirm step when only an end date is set. {end} is a localized date.
@@ -36931,7 +36931,7 @@ msgstr "Przesyłanie {count, plural, one {# pliku} few {# plików} many {# plik�
 
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:1029
 msgid "Uploading avatar..."
-msgstr "Uploading avatar..."
+msgstr "Przesyłanie awatara..."
 
 
 #: src/features/emoji/components/modals/EmojiUploadModal.tsx:26
