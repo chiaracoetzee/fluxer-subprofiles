@@ -68,4 +68,28 @@ describe('planTypingSend', () => {
 			planTypingSend(slot({userId: 'previous', timeout: PENDING_TIMEOUT}), 'channel', 'me', PREVIOUS_SEND + 1),
 		).toEqual({dropSlot: true, action: 'schedule', delayMs: 1500});
 	});
+
+	it('drops a slot and immediately schedules with 0ms delay when personaId changes', () => {
+		expect(
+			planTypingSend(
+				slot({personaId: 'persona_1', timeout: PENDING_TIMEOUT}),
+				'channel',
+				'me',
+				PREVIOUS_SEND + 1,
+				'persona_2',
+			),
+		).toEqual({dropSlot: true, action: 'schedule', delayMs: 0});
+	});
+
+	it('drops a slot and immediately schedules when switching from persona to root account (null)', () => {
+		expect(
+			planTypingSend(
+				slot({personaId: 'persona_1', timeout: PENDING_TIMEOUT}),
+				'channel',
+				'me',
+				PREVIOUS_SEND + 1,
+				null,
+			),
+		).toEqual({dropSlot: true, action: 'schedule', delayMs: 0});
+	});
 });
