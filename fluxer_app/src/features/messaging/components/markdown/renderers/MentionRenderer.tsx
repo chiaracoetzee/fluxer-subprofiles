@@ -9,10 +9,12 @@ import Guilds from '@app/features/guild/state/Guilds';
 import {isKeyboardActivationKey} from '@app/features/input/utils/KeyboardUtils';
 import {MentionLabel} from '@app/features/messaging/components/markdown/renderers/MentionLabel';
 import type {RendererProps} from '@app/features/messaging/components/markdown/renderers/RendererTypes';
+import Messages from '@app/features/messaging/state/MessagingMessages';
 import {GuildNavKind, MentionKind} from '@app/features/messaging/utils/markdown/parser/Enums';
 import type {MentionNode} from '@app/features/messaging/utils/markdown/parser/Nodes';
 import * as NavigationCommands from '@app/features/navigation/commands/NavigationCommands';
 import SelectedGuild from '@app/features/navigation/state/SelectedGuild';
+import {PersonaStore} from '@app/features/persona/state/PersonaStore';
 import markupStyles from '@app/features/theme/styles/Markup.module.css';
 import mentionRendererStyles from '@app/features/theme/styles/MentionRenderer.module.css';
 import * as ColorUtils from '@app/features/theme/utils/ColorUtils';
@@ -117,9 +119,79 @@ export const MentionRenderer = observer(function MentionRenderer({
 	const shouldDisableInteractions = options.disableInteractions === true;
 	switch (kind.kind) {
 		case MentionKind.User: {
-			const user = kind.id ? Users.getUser(kind.id) : null;
 			const channel = channelId ? Channels.getChannel(channelId) : undefined;
 			const resolvedGuildId = channel?.guildId || options.guildId || '';
+			const user = kind.id ? Users.getUser(kind.id) : null;
+
+			if (kind.personaId) {
+				let persona = PersonaStore.getKnownPersona(kind.personaId);
+				if (!persona && channelId) {
+					const cachedMsgs = Messages.getCachedMessages(channelId);
+					if (cachedMsgs) {
+						cachedMsgs.forEach((msg) => {
+							const sub = msg.subprofile;
+							if (sub != null && sub.id === kind.personaId) {
+								persona = sub;
+								PersonaStore.recordKnownPersona(sub);
+								return false;
+							}
+							return true;
+						}, undefined, true);
+					}
+				}
+				if (!persona && kind.id) {
+					void PersonaStore.fetchPersona(kind.id, kind.personaId);
+				}
+				const personaName = persona?.name || kind.personaId;
+				const personaMentionLabel = `@${personaName}`;
+
+				if (shouldDisableInteractions || !user) {
+					return (
+						<span
+							key={id}
+							className={markupStyles.mention}
+							data-flx="messaging.markdown.renderers.mention-renderer.span-persona"
+						>
+							<MentionLabel data-flx="messaging.markdown.renderers.mention-renderer.mention-label-persona">
+								{personaMentionLabel}
+							</MentionLabel>
+						</span>
+					);
+				}
+
+				return (
+					<PreloadableUserPopout
+						key={id}
+						user={user}
+						isWebhook={false}
+						guildId={resolvedGuildId}
+						channelId={channelId}
+						subprofileOverride={persona}
+						position="right-start"
+						data-flx="messaging.markdown.renderers.mention-renderer.preloadable-persona-popout"
+					>
+						<FocusRing offset={-2} data-flx="messaging.markdown.renderers.mention-renderer.focus-ring-persona">
+							<span
+								role="button"
+								tabIndex={0}
+								className={clsx(markupStyles.mention, markupStyles.interactive)}
+								onClick={(e) => e.stopPropagation()}
+								onKeyDown={(e) => {
+									if (!isKeyboardActivationKey(e.key)) return;
+									e.preventDefault();
+									e.stopPropagation();
+								}}
+								data-flx="messaging.markdown.renderers.mention-renderer.button.stop-propagation-persona"
+							>
+								<MentionLabel data-flx="messaging.markdown.renderers.mention-renderer.mention-label-persona-interactive">
+									{personaMentionLabel}
+								</MentionLabel>
+							</span>
+						</FocusRing>
+					</PreloadableUserPopout>
+				);
+			}
+
 			const name = user ? NicknameUtils.getNickname(user, resolvedGuildId || null, channelId) : null;
 			const genericMention = (
 				<span key={id} className={markupStyles.mention} data-flx="messaging.markdown.renderers.mention-renderer.span">
