@@ -2,7 +2,9 @@
 
 import Channels from '@app/features/channel/state/Channels';
 import Guilds from '@app/features/guild/state/Guilds';
+import Messages from '@app/features/messaging/state/MessagingMessages';
 import {formatTimestamp} from '@app/features/messaging/utils/markdown/DateFormatter';
+import {PersonaStore} from '@app/features/persona/state/PersonaStore';
 import {
 	AlertType,
 	EmojiKind,
@@ -360,6 +362,29 @@ function renderMentionToPlaintext(node: MentionNode, options: PlaintextRenderOpt
 	const {kind} = node;
 	switch (kind.kind) {
 		case MentionKind.User: {
+			if (kind.personaId) {
+				const persona = PersonaStore.getKnownPersona(kind.personaId);
+				if (persona) {
+					return `@${persona.name}`;
+				}
+				if (options.channelId) {
+					const cachedMsgs = Messages.getCachedMessages(options.channelId);
+					if (cachedMsgs) {
+						let foundName: string | null = null;
+						cachedMsgs.forEach((msg) => {
+							const sub = msg.subprofile;
+							if (sub != null && sub.id === kind.personaId) {
+								foundName = sub.name;
+								return false;
+							}
+							return true;
+						}, undefined, true);
+						if (foundName) {
+							return `@${foundName}`;
+						}
+					}
+				}
+			}
 			const user = Users.getUser(kind.id);
 			if (!user) {
 				return `@${kind.id}`;
