@@ -14,7 +14,7 @@ msgstr ""
 "Plural-Forms: \n"
 "X-Generator: @lingui/cli\n"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:857
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:858
 msgid "— Today at 12:00 PM"
 msgstr "— Aujourd'hui à 12:00"
 
@@ -2585,7 +2585,7 @@ msgstr "Accentuation"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label in the accent color picker. Keep it concise.
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:908
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:909
 #: src/features/user/components/modals/tabs/my_profile_tab/AccentColorPicker.tsx:12
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:153
 msgid "Accent color"
@@ -2780,7 +2780,7 @@ msgstr "Actions"
 #. Subscription status badge meaning the paid subscription is active.
 #: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:445
 #: src/features/channel/components/channel_header_components/developer_tools/DeveloperToolsShared.ts:37
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1130
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1131
 #: src/features/user/components/settings_utils/search_index/DevicesIndex.ts:19
 msgid "Active"
 msgstr "Actif"
@@ -2840,7 +2840,7 @@ msgstr "Actif en ce moment"
 msgid "Active persona mode"
 msgstr "Mode de persona actif"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:745
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:746
 msgid "Active Persona Mode"
 msgstr "Mode de persona actif"
 
@@ -3126,7 +3126,7 @@ msgstr "Ajouter des permissions spécifiques"
 msgid "Add passkey"
 msgstr "Ajouter une clé d'accès"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1046
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1047
 msgid "Add Persona"
 msgstr "Ajouter une persona"
 
@@ -3201,7 +3201,7 @@ msgid "Add stream"
 msgstr "Ajouter une diffusion"
 
 #. placeholder {0}: formData.tags.length
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:979
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:980
 msgid "Add Tag Pair ({0}/5)"
 msgstr "Ajouter une paire de balises ({0}/5)"
 
@@ -4490,7 +4490,7 @@ msgid "Are you sure you want to delete <0>{0}</0>?"
 msgstr "Voulez-vous vraiment supprimer <0>{0}</0> ?"
 
 #. placeholder {0}: persona.name
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:665
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:666
 msgid "Are you sure you want to delete <0>{0}</0>? This action cannot be undone."
 msgstr "Voulez-vous vraiment supprimer <0>{0}</0> ? Cette action est irréversible."
 
@@ -5196,7 +5196,7 @@ msgstr "Disponible dans l'application de bureau."
 #. Accessible label for an avatar image.
 #. Form label for a webhook avatar image.
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:922
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:923
 #: src/features/ui/components/BaseAvatar.tsx:18
 #: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:373
 #: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:421
@@ -5617,7 +5617,7 @@ msgstr "Raccourcis clavier"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:939
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:940
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:129
 #: src/features/user/components/settings_utils/section_registry/PrivacySafetySections.ts:156
 msgid "Bio"
@@ -6447,7 +6447,7 @@ msgstr "Impossible d’envoyer des fichiers ici"
 #: src/features/moderation/components/modals/RemoveTimeoutModal.tsx:70
 #: src/features/moderation/components/modals/TimeoutMemberModal.tsx:126
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:698
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1021
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1022
 #: src/features/theme/components/modals/ThemeAcceptModal.tsx:173
 #: src/features/user/components/modals/EmailChangeModal.tsx:278
 #: src/features/user/components/modals/EmailChangeModal.tsx:289
@@ -6753,7 +6753,7 @@ msgstr "Modifier le surnom du groupe"
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:86
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:626
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildIconUploadField.tsx:35
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:811
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:812
 msgid "Change icon"
 msgstr "Changer l'icône"
 
@@ -7597,7 +7597,7 @@ msgstr "Choisir comment les GIF favoris marqués d'une étoile sont stockés"
 msgid "Choose how times are displayed throughout the app"
 msgstr "Choisissez le format d’affichage des heures dans l’application"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:748
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:749
 msgid "Choose how untagged messages and persona tags interact with your active persona."
 msgstr "Choisissez comment les messages sans balise et les balises de persona interagissent avec votre persona active."
 
@@ -11381,8 +11381,8 @@ msgstr "Delaware"
 #: src/features/emoji/components/stickers/StickerGridItem.tsx:35
 #: src/features/messaging/commands/MessageCommands.tsx:81
 #: src/features/moderation/components/report_modal/IARModalCopy.ts:109
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:669
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1146
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:670
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1147
 #: src/features/platform/utils/DesktopLocaleBridge.ts:76
 #: src/features/theme_studio/sections/LibrarySection.tsx:514
 #: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:399
@@ -11567,7 +11567,7 @@ msgstr "Supprimer la clé d'accès"
 msgid "Delete persona"
 msgstr "Supprimer la persona"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:663
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:664
 msgid "Delete Persona"
 msgstr "Supprimer la persona"
 
@@ -12519,7 +12519,7 @@ msgstr "Nom affiché (facultatif)"
 msgid "Display scaling"
 msgstr "Mise à l'échelle de l'affichage"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:771
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:772
 msgid "Display Tag"
 msgstr "Badge d'affichage"
 
@@ -12533,7 +12533,7 @@ msgstr "Icône du badge d'affichage supprimée"
 msgid "Display tag icon updated"
 msgstr "Icône du badge d'affichage mise à jour"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:774
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:775
 msgid "Display tag will appear next to all persona names in messages. If no display tag is set, your account profile picture will be shown."
 msgstr "Le badge d'affichage apparaîtra à côté du nom de toutes vos personas dans les messages. Si aucun badge n'est configuré, votre photo de profil de compte sera affichée."
 
@@ -13109,7 +13109,7 @@ msgstr "Annulation de l’écho"
 #. Button or menu action label in the search engines tab. Keep it concise.
 #. Top-level native menu bar title (Edit menu, holds cut/copy/paste).
 #: src/features/emoji/components/stickers/StickerGridItem.tsx:43
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1138
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1139
 #: src/features/platform/utils/DesktopLocaleBridge.ts:47
 #: src/features/user/components/modals/tabs/chat_settings_tab/SearchEnginesTab.tsx:35
 #: src/features/user/components/modals/tabs/LinkedAccountsTab.tsx:51
@@ -13258,7 +13258,7 @@ msgstr "Modifier les permissions spécifiques aux rôles et aux membres dans ce 
 msgid "Edit persona"
 msgstr "Modifier la persona"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:877
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:878
 msgid "Edit Persona"
 msgstr "Modifier la persona"
 
@@ -17862,7 +17862,7 @@ msgstr "Importer un dossier"
 
 #. Modal title for PluralKit import step select
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:459
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1043
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1044
 msgid "Import from PluralKit"
 msgstr "Importer depuis PluralKit"
 
@@ -22157,7 +22157,7 @@ msgstr "Forçages des bandeaux de notification"
 msgid "Name"
 msgstr "Nom"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:882
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:883
 msgid "Name *"
 msgstr "Nom *"
 
@@ -22463,7 +22463,7 @@ msgstr "Nouveau microphone"
 msgid "New password"
 msgstr "Nouveau mot de passe"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:877
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:878
 msgid "New Persona"
 msgstr "Nouvelle persona"
 
@@ -22760,7 +22760,7 @@ msgstr "Aucune description."
 msgid "No desktop update is available."
 msgstr "Aucune mise à jour de l’application de bureau n’est disponible."
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:864
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:865
 msgid "No display tag configured. Messages will show your account profile picture."
 msgstr "Aucun badge d'affichage configuré. Les messages afficheront la photo de profil de votre compte."
 
@@ -22947,7 +22947,7 @@ msgstr "Pas encore de mots personnels."
 msgid "No personas configured yet. Create one in Settings."
 msgstr "Aucune persona configurée pour l'instant. Créez-en une dans les Paramètres."
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1054
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1055
 msgid "No personas created yet. Click \"Add Persona\" to create your first persona!"
 msgstr "Aucune persona créée pour le moment. Cliquez sur « Ajouter une persona » pour créer votre première persona !"
 
@@ -24977,7 +24977,7 @@ msgstr "Persona créée"
 msgid "Persona deleted"
 msgstr "Persona supprimée"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:970
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:971
 msgid "Persona Tags (Prefix & Suffix)"
 msgstr "Balises de persona (Préfixe et Suffixe)"
 
@@ -25652,7 +25652,7 @@ msgstr "Empêcher les membres d'envoyer des messages, de réagir et de rejoindre
 
 #: src/features/expressions/components/modals/sticker_form/StickerPreview.tsx:21
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildInviteSplashSettingsField.tsx:45
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:838
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:839
 #: src/features/user/components/modals/tabs/EmbedDebuggerTab.tsx:276
 msgid "Preview"
 msgstr "Aperçu"
@@ -26070,7 +26070,7 @@ msgstr "Demander la confirmation pour les nouveaux périphériques audio."
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:895
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:896
 #: src/features/user/components/modals/tabs/MyProfileTab.tsx:142
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:177
 #: src/features/user/components/settings_utils/section_registry/PrivacySafetySections.ts:160
@@ -27093,7 +27093,7 @@ msgstr "Supprimer des favoris GIF enregistrés par URL"
 #: src/features/channel/components/modals/EditGroupModal.tsx:293
 #: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:314
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:635
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:819
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:820
 msgid "Remove icon"
 msgstr "Supprimer l'icône"
 
@@ -28698,7 +28698,7 @@ msgstr "Enregistrer les GIF favoris en tant que médias enregistrés"
 msgid "Save icon"
 msgstr "Enregistrer l'icône"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1028
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1029
 msgid "Save Persona"
 msgstr "Enregistrer la persona"
 
@@ -29899,7 +29899,7 @@ msgstr "L’envoi d’un SMS à ce numéro coûte cher. Nous vous demandons donc
 msgid "Sending an SMS to this phone number is too expensive for {PRODUCT_NAME}, so we need you to send us an SMS instead. We know this isn't ideal. You can also contact <0>{SUPPORT_EMAIL}</0> to have us lift this requirement from your account."
 msgstr "L'envoi d'un SMS à ce numéro de téléphone est trop coûteux pour {PRODUCT_NAME}. Nous avons donc besoin que vous nous envoyiez un SMS à la place. Nous savons que ce n'est pas idéal. Vous pouvez également contacter <0>{SUPPORT_EMAIL}</0> pour que nous levions cette exigence de votre compte."
 
-#. Tooltip when sending as a persona matched by proxy tag
+#. Tooltip when sending as a persona matched by persona tag
 #: src/features/persona/components/PersonaComposerPill.tsx:29
 msgid "Sending as {name} (Matched by tag) - Click to switch persona"
 msgstr "Envoi en tant que {name} (Associé par balise) - Cliquer pour changer de persona"
@@ -30033,7 +30033,7 @@ msgstr "Définir un statut personnalisé"
 msgid "Set a member list position for the role"
 msgstr "A défini une position dans la liste des membres pour ce rôle"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1130
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1131
 msgid "Set Active"
 msgstr "Définir comme active"
 
@@ -33185,7 +33185,7 @@ msgstr "Tableaux"
 msgid "Tag"
 msgstr "Tag"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:799
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:800
 msgid "Tag Icon"
 msgstr "Icône de badge"
 
@@ -33194,7 +33194,7 @@ msgstr "Icône de badge"
 msgid "Tag pair already in use by persona \"{name}\""
 msgstr "Paire de balises déjà utilisée par la persona « {name} »"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:786
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:787
 msgid "Tag Text"
 msgstr "Texte du badge"
 
@@ -34355,7 +34355,7 @@ msgstr "Ceci est un emoji personnalisé d'une communauté."
 msgid "This is a custom sticker from a community."
 msgstr "Ceci est un sticker personnalisé d'une communauté."
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:862
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:863
 msgid "This is a preview of how your display tag will look in chat."
 msgstr "Voici un aperçu de l'affichage de votre badge dans la discussion."
 
@@ -36726,7 +36726,7 @@ msgstr "Envoyer des fichiers et des médias dans ce salon."
 #: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:305
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:626
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildIconUploadField.tsx:130
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:829
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:830
 msgid "Upload icon"
 msgstr "Importer une icône"
 
@@ -36811,7 +36811,7 @@ msgstr "Uniquement les fichiers vidéo importés"
 msgid "Uploading {count, plural, one {# file} other {# files}}"
 msgstr "Envoi de {count, plural, one {# fichier} other {# fichiers}}"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1028
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:1029
 msgid "Uploading avatar..."
 msgstr "Téléversement de l'avatar…"
 
@@ -38140,7 +38140,7 @@ msgid "Virginia"
 msgstr "Virginie"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:952
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:953
 #: src/features/user/components/settings_utils/section_registry/AccessibilitySections.ts:39
 msgid "Visibility"
 msgstr "Visibilité"
