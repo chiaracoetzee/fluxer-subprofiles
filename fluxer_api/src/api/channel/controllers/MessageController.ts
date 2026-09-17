@@ -32,6 +32,7 @@ import {
 import {
 	BulkDeleteMessagesRequest,
 	BulkMessageFetchRequest,
+	IndicateTypingRequestSchema,
 	MessageAckRequest,
 	MessageRequestSchema,
 	MessagesQuery,
@@ -486,6 +487,7 @@ export function MessageController(app: HonoApp) {
 		RateLimitMiddleware(RateLimitConfigs.CHANNEL_TYPING),
 		LoginRequired,
 		Validator('param', ChannelIdParam),
+		Validator('json', IndicateTypingRequestSchema),
 		OpenAPI({
 			operationId: 'indicate_typing',
 			summary: 'Indicate typing activity',
@@ -499,7 +501,12 @@ export function MessageController(app: HonoApp) {
 		async (ctx) => {
 			const userId = ctx.get('user').id;
 			const channelId = createChannelID(ctx.req.valid('param').channel_id);
-			await ctx.get('channelService').interactions.startTyping({userId, channelId});
+			const body = ctx.req.valid('json');
+			await ctx.get('channelService').interactions.startTyping({
+				userId,
+				channelId,
+				subprofile: body?.subprofile,
+			});
 			return ctx.body(null, 204);
 		},
 	);
