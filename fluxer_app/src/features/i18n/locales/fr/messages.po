@@ -41187,3 +41187,41 @@ msgstr "Votre navigateur n'a pas pu terminer la vérification."
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:421
 msgid "Your number is not linked to your account. We keep only an encrypted marker, with no user ID, for at most {limit} verifications in about {duration} days."
 msgstr "Votre numéro n'est pas lié à votre compte. Nous ne conservons qu'un marqueur chiffré, sans identifiant d'utilisateur, pour un maximum de {limit} vérifications en environ {duration} jours."
+
+#. Error modal body shown when a non-croppable community image has dimensions that do not fit the target asset. {label} names the image field.
+#: src/features/guild/components/modals/guild_tabs/guild_overview_tab/hooks/useGuildImageAssetField.tsx:72
+msgid "{label} dimensions do not match this asset. Choose a different image or upload a static image you can crop."
+msgstr "Les dimensions de {label} ne correspondent pas à cette ressource. Choisissez une autre image ou importez une image statique que vous pouvez recadrer."
+
+#: src/features/expressions/utils/AnimatedAvifModalUtils.tsx:26
+msgid "Animated {AVIF_FORMAT_LABEL} files aren't supported. Upload a static {AVIF_FORMAT_LABEL} file instead."
+msgstr "Les fichiers {AVIF_FORMAT_LABEL} animés ne sont pas pris en charge. Veuillez plutôt importer un fichier {AVIF_FORMAT_LABEL} statique."
+
+#. Confirmation modal body shown before using an animated community image without cropping. {formatLabel} is the image format name.
+#: src/features/guild/components/modals/guild_tabs/guild_overview_tab/hooks/useGuildImageAssetField.tsx:58
+msgid "Cropping animated {formatLabel} files isn't supported yet. The original image will be used."
+msgstr "Le recadrage des fichiers {formatLabel} animés n'est pas encore pris en charge. L'image originale sera utilisée."
+
+#. Description text in the avatar uploader. Preserve {formatLabel}; it is inserted by code.
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:95
+msgid "Cropping animated {formatLabel} files isn't supported yet. The original upload will be used."
+msgstr "Le recadrage des fichiers {formatLabel} animés n'est pas encore pris en charge. Le fichier original sera utilisé."
+
+#. Confirmation modal body shown before using an animated community image with an unknown format.
+#: src/features/guild/components/modals/guild_tabs/guild_overview_tab/hooks/useGuildImageAssetField.tsx:63
+msgid "Cropping animated files isn't supported yet. The original image will be used."
+msgstr "Le recadrage des fichiers animés n'est pas encore pris en charge. L'image d'origine sera utilisée."
+
+#. Description text in the avatar uploader when the animated image format is unknown.
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:99
+msgid "Cropping animated files isn't supported yet. The original upload will be used."
+msgstr "Le recadrage des fichiers animés n'est pas encore pris en charge. Le fichier d'origine sera utilisé."
+
+#. Quick switcher section header for group DM results.
+#: src/features/search/state/QuickSwitcherResultConverters.ts:26
+msgid "Group messages"
+msgstr "Messages de groupe"
+
+#: src/features/auth/flow/DesktopHandoffAccountSelector.tsx:69
+msgid "Select the account you want to sign in with on the desktop app."
+msgstr "Sélectionnez le compte avec lequel vous souhaitez vous connecter sur l'application de bureau."
