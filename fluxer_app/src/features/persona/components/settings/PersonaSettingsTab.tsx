@@ -31,6 +31,8 @@ import {AvatarUploader} from '@app/features/user/components/modals/tabs/my_profi
 import Users from '@app/features/user/state/Users';
 import * as AvatarUtils from '@app/features/user/utils/AvatarUtils';
 import type {PersonaVisibility} from '@fluxer/schema/src/domains/persona/PersonaApiSchemas';
+import type {I18n} from '@lingui/core';
+import {msg} from '@lingui/core/macro';
 import {Trans, useLingui} from '@lingui/react/macro';
 import {
 	GlobeSimple,
@@ -45,39 +47,206 @@ import {
 import {clsx} from 'clsx';
 import {observer} from 'mobx-react-lite';
 import type React from 'react';
-import {useCallback, useEffect, useRef, useState} from 'react';
+import {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import * as PersonaCommands from '../../commands/PersonaCommands';
 import {type ActivePersonaMode, type Persona, PersonaStore} from '../../state/PersonaStore';
 import {openPluralKitImportModal} from '../modals/PluralKitImportModal';
 import {PersonaTag} from '../PersonaTag';
 import styles from './PersonaSettingsTab.module.css';
 
-const ACTIVE_PERSONA_TABS: Array<SegmentedTab<ActivePersonaMode>> = [
-	{id: 'off', label: 'Off'},
-	{id: 'manual', label: 'Manual'},
-	{id: 'last', label: 'Last Used'},
+const MODE_OFF_DESCRIPTOR = msg({
+	message: 'Off',
+	comment: 'Active persona mode off',
+});
+const MODE_MANUAL_DESCRIPTOR = msg({
+	message: 'Manual',
+	comment: 'Active persona mode manual',
+});
+const MODE_LAST_DESCRIPTOR = msg({
+	message: 'Last Used',
+	comment: 'Active persona mode last used',
+});
+
+const ACTIVE_PERSONA_MODE_OFF_DESC = msg({
+	message: 'Untagged messages always send from your root account. Personas only speak when you type their tags (e.g. [text]).',
+	comment: 'Helper description for Off persona mode',
+});
+const ACTIVE_PERSONA_MODE_MANUAL_DESC = msg({
+	message: 'Untagged messages send as your chosen persona. Typing another persona’s tags will only send that single message and won’t switch who is active.',
+	comment: 'Helper description for Manual persona mode',
+});
+const ACTIVE_PERSONA_MODE_LAST_DESC = msg({
+	message: 'Untagged messages send as the persona that spoke most recently. Whenever anyone uses a persona tag, they automatically become the active persona.',
+	comment: 'Helper description for Last Used persona mode',
+});
+
+const VISIBILITY_UNLISTED_DESCRIPTOR = msg({
+	message: 'Unlisted',
+	comment: 'Persona visibility unlisted',
+});
+const VISIBILITY_PUBLIC_DESCRIPTOR = msg({
+	message: 'Public',
+	comment: 'Persona visibility public',
+});
+const VISIBILITY_PRIVATE_DESCRIPTOR = msg({
+	message: 'Private',
+	comment: 'Persona visibility private',
+});
+
+const VISIBILITY_UNLISTED_DESC = msg({
+	message: 'Profile cards are accessible only when clicking on messages sent by this persona. Not listed in your public persona list.',
+	comment: 'Helper description for unlisted persona visibility',
+});
+const VISIBILITY_PUBLIC_DESC = msg({
+	message: 'Profile cards are accessible when clicking on messages and visible in your public personas list to friends and mutual servers.',
+	comment: 'Helper description for public persona visibility',
+});
+const VISIBILITY_PRIVATE_DESC = msg({
+	message: 'Only visible to you. Others cannot view this persona’s full bio or profile details.',
+	comment: 'Helper description for private persona visibility',
+});
+
+const PERSONAS_SECTION_TITLE_DESCRIPTOR = msg({
+	message: 'Personas',
+	comment: 'Title of personas settings section',
+});
+const PERSONAS_SECTION_DESC_DESCRIPTOR = msg({
+	message: 'Send messages with distinct names and avatars. Personas can represent plural system members, roleplay characters, or any other identity.',
+	comment: 'Description of personas settings section',
+});
+const ACTIVE_PERSONA_MODE_ARIA_DESCRIPTOR = msg({
+	message: 'Active persona mode',
+	comment: 'Aria label for active persona mode tabs',
+});
+const PERSONA_VISIBILITY_ARIA_DESCRIPTOR = msg({
+	message: 'Persona visibility',
+	comment: 'Aria label for persona visibility tabs',
+});
+
+const DUPLICATE_TAG_PAIR_DESCRIPTOR = msg({
+	message: 'Duplicate tag pair on this persona',
+	comment: 'Validation error when tag pair is duplicated within the same persona',
+});
+const TAG_PAIR_IN_USE_DESCRIPTOR = msg({
+	message: 'Tag pair already in use by persona "{name}"',
+	comment: 'Validation error when tag pair is already used by another persona',
+});
+const DISPLAY_TAG_ICON_UPDATED_DESCRIPTOR = msg({
+	message: 'Display tag icon updated',
+	comment: 'Toast when display tag icon is updated',
+});
+const DISPLAY_TAG_ICON_REMOVED_DESCRIPTOR = msg({
+	message: 'Display tag icon removed',
+	comment: 'Toast when display tag icon is removed',
+});
+const FAILED_TO_UPLOAD_ICON_DESCRIPTOR = msg({
+	message: 'Failed to upload icon to server',
+	comment: 'Toast when icon upload fails',
+});
+const ICON_FILE_TOO_LARGE_DESCRIPTOR = msg({
+	message: 'Icon file is too large. Choose an image smaller than 10MB.',
+	comment: 'Toast when icon file exceeds size limit',
+});
+const PERSONA_UPDATED_DESCRIPTOR = msg({
+	message: 'Persona updated',
+	comment: 'Toast when persona is updated',
+});
+const PERSONA_CREATED_DESCRIPTOR = msg({
+	message: 'Persona created',
+	comment: 'Toast when persona is created',
+});
+const FAILED_TO_SAVE_PERSONA_DESCRIPTOR = msg({
+	message: 'Failed to save persona',
+	comment: 'Toast when persona save fails',
+});
+const PERSONA_DELETED_DESCRIPTOR = msg({
+	message: 'Persona deleted',
+	comment: 'Toast when persona is deleted',
+});
+const FAILED_TO_DELETE_PERSONA_DESCRIPTOR = msg({
+	message: 'Failed to delete persona',
+	comment: 'Toast when persona deletion fails',
+});
+const PUBLIC_PERSONA_TOOLTIP_DESCRIPTOR = msg({
+	message: 'Public persona',
+	comment: 'Tooltip on public persona badge',
+});
+const PRIVATE_PERSONA_TOOLTIP_DESCRIPTOR = msg({
+	message: 'Private persona',
+	comment: 'Tooltip on private persona badge',
+});
+const ACCENT_COLOR_DESCRIPTION_DESCRIPTOR = msg({
+	message: "Customizes the border and banner color on this persona's profile",
+	comment: 'Description for persona accent color picker',
+});
+const NAME_PLACEHOLDER_DESCRIPTOR = msg({
+	message: 'e.g. Alice',
+	comment: 'Placeholder for persona name',
+});
+const PRONOUNS_PLACEHOLDER_DESCRIPTOR = msg({
+	message: 'e.g. she/her',
+	comment: 'Placeholder for persona pronouns',
+});
+const BIO_PLACEHOLDER_DESCRIPTOR = msg({
+	message: 'Tell us about this persona...',
+	comment: 'Placeholder for persona bio',
+});
+const PREFIX_PLACEHOLDER_DESCRIPTOR = msg({
+	message: 'Prefix (e.g. [)',
+	comment: 'Placeholder for persona tag prefix',
+});
+const SUFFIX_PLACEHOLDER_DESCRIPTOR = msg({
+	message: 'Suffix (e.g. ])',
+	comment: 'Placeholder for persona tag suffix',
+});
+const REMOVE_TAG_PAIR_ARIA_DESCRIPTOR = msg({
+	message: 'Remove tag pair',
+	comment: 'Aria label for removing a tag pair',
+});
+const SET_ACTIVE_PERSONA_ARIA_DESCRIPTOR = msg({
+	message: 'Set as active persona',
+	comment: 'Aria label for setting active persona',
+});
+const DEACTIVATE_PERSONA_ARIA_DESCRIPTOR = msg({
+	message: 'Deactivate persona',
+	comment: 'Aria label for deactivating active persona',
+});
+const EDIT_PERSONA_ARIA_DESCRIPTOR = msg({
+	message: 'Edit persona',
+	comment: 'Aria label for editing persona',
+});
+const DELETE_PERSONA_ARIA_DESCRIPTOR = msg({
+	message: 'Delete persona',
+	comment: 'Aria label for deleting persona',
+});
+const CONFIG_PERSONAS_COUNT_DESCRIPTOR = msg({
+	message: 'Configured Personas ({count})',
+	comment: 'Header for configured personas list with count',
+});
+
+const getActivePersonaTabs = (i18n: I18n): Array<SegmentedTab<ActivePersonaMode>> => [
+	{id: 'off', label: i18n._(MODE_OFF_DESCRIPTOR)},
+	{id: 'manual', label: i18n._(MODE_MANUAL_DESCRIPTOR)},
+	{id: 'last', label: i18n._(MODE_LAST_DESCRIPTOR)},
 ];
 
-const ACTIVE_PERSONA_DESCRIPTIONS: Record<ActivePersonaMode, string> = {
-	off: 'Untagged messages always send from your root account. Personas only speak when you type their tags (e.g. [text]).',
-	manual:
-		'Untagged messages send as your chosen persona. Typing another persona’s tags will only send that single message and won’t switch who is active.',
-	last: 'Untagged messages send as the persona that spoke most recently. Whenever anyone uses a persona tag, they automatically become the active persona.',
-};
+const getActivePersonaDescriptions = (i18n: I18n): Record<ActivePersonaMode, string> => ({
+	off: i18n._(ACTIVE_PERSONA_MODE_OFF_DESC),
+	manual: i18n._(ACTIVE_PERSONA_MODE_MANUAL_DESC),
+	last: i18n._(ACTIVE_PERSONA_MODE_LAST_DESC),
+});
 
-const VISIBILITY_TABS: Array<SegmentedTab<PersonaVisibility>> = [
-	{id: 'unlisted', label: 'Unlisted'},
-	{id: 'public', label: 'Public'},
-	{id: 'private', label: 'Private'},
+const getVisibilityTabs = (i18n: I18n): Array<SegmentedTab<PersonaVisibility>> => [
+	{id: 'unlisted', label: i18n._(VISIBILITY_UNLISTED_DESCRIPTOR)},
+	{id: 'public', label: i18n._(VISIBILITY_PUBLIC_DESCRIPTOR)},
+	{id: 'private', label: i18n._(VISIBILITY_PRIVATE_DESCRIPTOR)},
 ];
 
-const VISIBILITY_DESCRIPTIONS: Record<PersonaVisibility, string> = {
-	unlisted:
-		'Profile cards are accessible only when clicking on messages sent by this persona. Not listed in your public persona list.',
-	public:
-		'Profile cards are accessible when clicking on messages and visible in your public personas list to friends and mutual servers.',
-	private: 'Only visible to you. Others cannot view this persona’s full bio or profile details.',
-};
+const getVisibilityDescriptions = (i18n: I18n): Record<PersonaVisibility, string> => ({
+	unlisted: i18n._(VISIBILITY_UNLISTED_DESC),
+	public: i18n._(VISIBILITY_PUBLIC_DESC),
+	private: i18n._(VISIBILITY_PRIVATE_DESC),
+});
 
 interface PersonaFormState {
 	id?: string;
@@ -121,6 +290,11 @@ export interface PersonaSettingsTabProps {
 
 export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({initialSubtab}) => {
 	const {i18n} = useLingui();
+	const activePersonaTabs = useMemo(() => getActivePersonaTabs(i18n), [i18n]);
+	const activePersonaDescriptions = useMemo(() => getActivePersonaDescriptions(i18n), [i18n]);
+	const visibilityTabs = useMemo(() => getVisibilityTabs(i18n), [i18n]);
+	const visibilityDescriptions = useMemo(() => getVisibilityDescriptions(i18n), [i18n]);
+
 	const currentUser = Users.getCurrentUser();
 	const personas = PersonaStore.personas;
 	const activePersonaId = PersonaStore.activePersonaId;
@@ -146,7 +320,7 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 			if (i === idx) continue;
 			const other = normalizeTag(formData.tags[i]);
 			if ((other.prefix || other.suffix) && getTagKey(other) === currentKey) {
-				return 'Duplicate tag pair on this persona';
+				return i18n._(DUPLICATE_TAG_PAIR_DESCRIPTOR);
 			}
 		}
 
@@ -157,7 +331,7 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 			for (const ot of otherTags) {
 				const normOther = normalizeTag(ot);
 				if ((normOther.prefix || normOther.suffix) && getTagKey(normOther) === currentKey) {
-					return `Tag pair already in use by persona "${p.name}"`;
+					return i18n._(TAG_PAIR_IN_USE_DESCRIPTOR, {name: p.name});
 				}
 			}
 		}
@@ -197,24 +371,24 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 					await PersonaStore.setDisplayTag(tagText, newIcon);
 					ToastCommands.createToast({
 						type: 'success',
-						children: 'Display tag icon updated',
+						children: i18n._(DISPLAY_TAG_ICON_UPDATED_DESCRIPTOR),
 					});
 				} else {
 					ToastCommands.createToast({
 						type: 'error',
-						children: 'Failed to upload icon to server',
+						children: i18n._(FAILED_TO_UPLOAD_ICON_DESCRIPTOR),
 					});
 				}
 			} catch {
 				ToastCommands.createToast({
 					type: 'error',
-					children: 'Failed to upload icon to server',
+					children: i18n._(FAILED_TO_UPLOAD_ICON_DESCRIPTOR),
 				});
 			} finally {
 				setIsUploadingTagIcon(false);
 			}
 		},
-		[tagText],
+		[tagText, i18n],
 	);
 
 	const handleClearTagIcon = useCallback(async () => {
@@ -222,16 +396,16 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 		await PersonaStore.setDisplayTag(tagText, null);
 		ToastCommands.createToast({
 			type: 'success',
-			children: 'Display tag icon removed',
+			children: i18n._(DISPLAY_TAG_ICON_REMOVED_DESCRIPTOR),
 		});
-	}, [tagText]);
+	}, [tagText, i18n]);
 
 	const processTagIconFile = useCallback(
 		async (file: File) => {
 			if (file.size > 10 * 1024 * 1024) {
 				ToastCommands.createToast({
 					type: 'error',
-					children: 'Icon file is too large. Choose an image smaller than 10MB.',
+					children: i18n._(ICON_FILE_TOO_LARGE_DESCRIPTOR),
 				});
 				return;
 			}
@@ -453,7 +627,7 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 				});
 				ToastCommands.createToast({
 					type: 'success',
-					children: 'Persona updated',
+					children: i18n._(PERSONA_UPDATED_DESCRIPTOR),
 				});
 			} else {
 				await PersonaCommands.createPersona({
@@ -467,14 +641,14 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 				});
 				ToastCommands.createToast({
 					type: 'success',
-					children: 'Persona created',
+					children: i18n._(PERSONA_CREATED_DESCRIPTOR),
 				});
 			}
 
 			setIsEditing(false);
 			setFormData(emptyFormState());
 		} catch (err: unknown) {
-			const message = err instanceof Error ? err.message : 'Failed to save persona';
+			const message = err instanceof Error ? err.message : i18n._(FAILED_TO_SAVE_PERSONA_DESCRIPTOR);
 			ToastCommands.createToast({
 				type: 'error',
 				children: message,
@@ -503,12 +677,12 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 							}
 							ToastCommands.createToast({
 								type: 'success',
-								children: 'Persona deleted',
+								children: i18n._(PERSONA_DELETED_DESCRIPTOR),
 							});
 						} catch {
 							ToastCommands.createToast({
 								type: 'error',
-								children: 'Failed to delete persona',
+								children: i18n._(FAILED_TO_DELETE_PERSONA_DESCRIPTOR),
 							});
 						}
 					}}
@@ -561,47 +735,56 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 					{/* Header section */}
 					<SettingsSection
 						id="personas_general"
-						title="Personas"
-						description="Send messages with distinct names and avatars. Personas can represent plural system members, roleplay characters, or any other identity."
+						title={i18n._(PERSONAS_SECTION_TITLE_DESCRIPTOR)}
+						description={i18n._(PERSONAS_SECTION_DESC_DESCRIPTOR)}
 						linkable={false}
 					>
 						<div className={styles.sectionHeader}>
 							<div>
-								<h4 className={styles.sectionTitle}>Active Persona Mode</h4>
+								<h4 className={styles.sectionTitle}>
+									<Trans>Active Persona Mode</Trans>
+								</h4>
 								<p className={styles.sectionDescription}>
-									Choose how untagged messages and persona tags interact with your active persona.
+									<Trans>Choose how untagged messages and persona tags interact with your active persona.</Trans>
 								</p>
 							</div>
 						</div>
 						<div className={styles.modeControlWrapper}>
 							<SegmentedTabs<ActivePersonaMode>
-								tabs={ACTIVE_PERSONA_TABS}
+								tabs={activePersonaTabs}
 								selectedTab={activePersonaMode}
 								onTabChange={(mode) => {
 									void handleModeChange(mode);
 								}}
-								ariaLabel="Active persona mode"
+								ariaLabel={i18n._(ACTIVE_PERSONA_MODE_ARIA_DESCRIPTOR)}
 							/>
 							<div className={styles.modeHelperText}>
 								<Info size={16} weight="bold" className={styles.modeHelperIcon} />
-								<span>{ACTIVE_PERSONA_DESCRIPTIONS[activePersonaMode]}</span>
+								<span>{activePersonaDescriptions[activePersonaMode]}</span>
 							</div>
 						</div>
 
 						{/* Display Tag section */}
 						<div className={styles.sectionHeader} style={{marginTop: 24}}>
 							<div>
-								<h4 className={styles.sectionTitle}>Display Tag</h4>
+								<h4 className={styles.sectionTitle}>
+									<Trans>Display Tag</Trans>
+								</h4>
 								<p className={styles.sectionDescription}>
-									Display tag will appear next to all persona names in messages. If no display tag is set, your account
-									profile picture will be shown.
+									<Trans>
+										Display tag will appear next to all persona names in messages. If no display tag is set, your
+										account profile picture will be shown.
+									</Trans>
 								</p>
 							</div>
 						</div>
+
 						<div className={styles.displayTagControlWrapper}>
 							<div className={styles.displayTagInputs}>
 								<div className={styles.displayTagTextField}>
-									<div className={styles.formLabel}>Tag Text</div>
+									<div className={styles.formLabel}>
+										<Trans>Tag Text</Trans>
+									</div>
 									<input
 										type="text"
 										className={styles.textInput}
@@ -612,7 +795,9 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 									/>
 								</div>
 								<div className={styles.displayTagIconField}>
-									<div className={styles.formLabel}>Tag Icon</div>
+									<div className={styles.formLabel}>
+										<Trans>Tag Icon</Trans>
+									</div>
 									<div className={styles.tagIconRow}>
 										{tagIcon ? (
 											<>
@@ -623,7 +808,7 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 													onClick={handleOpenTagIconUpload}
 													disabled={isUploadingTagIcon}
 												>
-													Change icon
+													<Trans>Change icon</Trans>
 												</Button>
 												<Button
 													variant="secondary"
@@ -631,7 +816,7 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 													onClick={handleClearTagIcon}
 													disabled={isUploadingTagIcon}
 												>
-													Remove icon
+													<Trans>Remove icon</Trans>
 												</Button>
 											</>
 										) : (
@@ -641,7 +826,7 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 												onClick={handleOpenTagIconUpload}
 												disabled={isUploadingTagIcon}
 											>
-												Upload icon
+												<Trans>Upload icon</Trans>
 											</Button>
 										)}
 									</div>
@@ -649,7 +834,9 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 							</div>
 							{/* Live Preview Card */}
 							<div className={styles.previewContainer}>
-								<div className={styles.previewLabel}>Preview</div>
+								<div className={styles.previewLabel}>
+									<Trans>Preview</Trans>
+								</div>
 								<div className={styles.previewCard}>
 									{currentUser && <Avatar user={currentUser} size={40} className={styles.previewAvatar} />}
 									<div className={styles.previewMessageContent}>
@@ -666,12 +853,16 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 													rootUser={currentUser}
 												/>
 											)}
-											<span className={styles.previewTimestamp}>— Today at 12:00 PM</span>
+											<span className={styles.previewTimestamp}>
+												<Trans>— Today at 12:00 PM</Trans>
+											</span>
 										</div>
 										<div className={styles.previewBody}>
-											{tagText.trim() || tagIcon
-												? 'This is a preview of how your display tag will look in chat.'
-												: 'No display tag configured. Messages will show your account profile picture.'}
+											{tagText.trim() || tagIcon ? (
+												<Trans>This is a preview of how your display tag will look in chat.</Trans>
+											) : (
+												<Trans>No display tag configured. Messages will show your account profile picture.</Trans>
+											)}
 										</div>
 									</div>
 								</div>
@@ -682,34 +873,42 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 					{/* Editor Form */}
 					{isEditing && (
 						<div ref={editorCardRef} className={styles.editorCard}>
-							<div className={styles.editorTitle}>{formData.id ? 'Edit Persona' : 'New Persona'}</div>
+							<div className={styles.editorTitle}>
+								{formData.id ? <Trans>Edit Persona</Trans> : <Trans>New Persona</Trans>}
+							</div>
 							<div className={styles.formGrid}>
 								<div className={styles.formField}>
-									<div className={styles.formLabel}>Name *</div>
+									<div className={styles.formLabel}>
+										<Trans>Name *</Trans>
+									</div>
 									<input
 										type="text"
 										className={styles.textInput}
-										placeholder="e.g. Alice"
+										placeholder={i18n._(NAME_PLACEHOLDER_DESCRIPTOR)}
 										maxLength={100}
 										value={formData.name}
 										onChange={(e) => setFormData({...formData, name: e.target.value})}
 									/>
 								</div>
 								<div className={styles.formField}>
-									<div className={styles.formLabel}>Pronouns</div>
+									<div className={styles.formLabel}>
+										<Trans>Pronouns</Trans>
+									</div>
 									<input
 										type="text"
 										className={styles.textInput}
-										placeholder="e.g. she/her"
+										placeholder={i18n._(PRONOUNS_PLACEHOLDER_DESCRIPTOR)}
 										maxLength={100}
 										value={formData.pronouns}
 										onChange={(e) => setFormData({...formData, pronouns: e.target.value})}
 									/>
 								</div>
 								<div className={styles.formField}>
-									<div className={styles.formLabel}>Accent color</div>
+									<div className={styles.formLabel}>
+										<Trans>Accent color</Trans>
+									</div>
 									<ColorPickerField
-										description="Customizes the border and banner color on this persona's profile"
+										description={i18n._(ACCENT_COLOR_DESCRIPTION_DESCRIPTOR)}
 										value={formData.accentColor ?? 0}
 										onChange={(accentColor) =>
 											setFormData((prev) => ({...prev, accentColor: accentColor === 0 ? null : accentColor}))
@@ -719,7 +918,9 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 									/>
 								</div>
 								<div className={styles.formField} style={{gridColumn: '1 / -1'}}>
-									<div className={styles.formLabel}>Avatar</div>
+									<div className={styles.formLabel}>
+										<Trans>Avatar</Trans>
+									</div>
 									<div style={{display: 'flex', gap: 16, alignItems: 'center'}}>
 										{currentUser && <Avatar user={currentUser} avatarUrl={formData.avatarUrl || undefined} size={64} />}
 										<div style={{flex: 1}}>
@@ -734,10 +935,12 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 									</div>
 								</div>
 								<div className={styles.formField} style={{gridColumn: '1 / -1'}}>
-									<div className={styles.formLabel}>Bio</div>
+									<div className={styles.formLabel}>
+										<Trans>Bio</Trans>
+									</div>
 									<textarea
 										className={styles.textareaInput}
-										placeholder="Tell us about this persona..."
+										placeholder={i18n._(BIO_PLACEHOLDER_DESCRIPTOR)}
 										maxLength={4096}
 										rows={4}
 										value={formData.bio}
@@ -745,23 +948,27 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 									/>
 								</div>
 								<div className={styles.formField} style={{gridColumn: '1 / -1'}}>
-									<div className={styles.formLabel}>Visibility</div>
+									<div className={styles.formLabel}>
+										<Trans>Visibility</Trans>
+									</div>
 									<SegmentedTabs<PersonaVisibility>
-										tabs={VISIBILITY_TABS}
+										tabs={visibilityTabs}
 										selectedTab={formData.visibility}
 										onTabChange={(vis) => setFormData((prev) => ({...prev, visibility: vis}))}
-										ariaLabel="Persona visibility"
+										ariaLabel={i18n._(PERSONA_VISIBILITY_ARIA_DESCRIPTOR)}
 									/>
 									<div className={styles.modeHelperText} style={{marginTop: 6}}>
 										<Info size={16} weight="bold" className={styles.modeHelperIcon} />
-										<span>{VISIBILITY_DESCRIPTIONS[formData.visibility]}</span>
+										<span>{visibilityDescriptions[formData.visibility]}</span>
 									</div>
 								</div>
 								<div className={styles.formField} style={{gridColumn: '1 / -1'}}>
 									<div
 										style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4}}
 									>
-										<div className={styles.formLabel}>Persona Tags (Prefix & Suffix)</div>
+										<div className={styles.formLabel}>
+											<Trans>Persona Tags (Prefix & Suffix)</Trans>
+										</div>
 										<Button
 											variant="secondary"
 											small
@@ -769,7 +976,7 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 											onClick={handleAddTagRow}
 											disabled={formData.tags.length >= 5}
 										>
-											Add Tag Pair ({formData.tags.length}/5)
+											<Trans>Add Tag Pair ({formData.tags.length}/5)</Trans>
 										</Button>
 									</div>
 									{formData.tags.map((tag, idx) => {
@@ -780,7 +987,7 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 													<input
 														type="text"
 														className={`${styles.tagInput} ${tagError ? styles.tagInputError : ''}`}
-														placeholder="Prefix (e.g. [)"
+														placeholder={i18n._(PREFIX_PLACEHOLDER_DESCRIPTOR)}
 														value={tag.prefix}
 														onChange={(e) => handleTagChange(idx, 'prefix', e.target.value)}
 													/>
@@ -788,7 +995,7 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 													<input
 														type="text"
 														className={`${styles.tagInput} ${tagError ? styles.tagInputError : ''}`}
-														placeholder="Suffix (e.g. ])"
+														placeholder={i18n._(SUFFIX_PLACEHOLDER_DESCRIPTOR)}
 														value={tag.suffix}
 														onChange={(e) => handleTagChange(idx, 'suffix', e.target.value)}
 													/>
@@ -799,7 +1006,7 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 															square
 															icon={<Trash size={14} />}
 															onClick={() => handleRemoveTagRow(idx)}
-															aria-label="Remove tag pair"
+															aria-label={i18n._(REMOVE_TAG_PAIR_ARIA_DESCRIPTOR)}
 														/>
 													)}
 												</div>
@@ -811,14 +1018,14 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 							</div>
 							<div className={styles.editorActions}>
 								<Button variant="secondary" onClick={handleCancelEdit}>
-									Cancel
+									<Trans>Cancel</Trans>
 								</Button>
 								<Button
 									variant="primary"
 									disabled={!formData.name.trim() || isUploadingAvatar || hasTagErrors}
 									onClick={handleSaveForm}
 								>
-									{isUploadingAvatar ? 'Uploading avatar...' : 'Save Persona'}
+									{isUploadingAvatar ? <Trans>Uploading avatar...</Trans> : <Trans>Save Persona</Trans>}
 								</Button>
 							</div>
 						</div>
@@ -827,16 +1034,16 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 					{/* Personas List */}
 					<SettingsSection
 						id="personas_list"
-						title={`Configured Personas (${personas.length})`}
+						title={i18n._(CONFIG_PERSONAS_COUNT_DESCRIPTOR, {count: personas.length})}
 						linkable={false}
 						actions={
 							!isEditing && (
 								<div style={{display: 'flex', gap: 8}}>
 									<Button variant="secondary" leftIcon={<UploadSimple size={16} />} onClick={openPluralKitImportModal}>
-										Import from PluralKit
+										<Trans>Import from PluralKit</Trans>
 									</Button>
 									<Button variant="primary" leftIcon={<Plus size={16} />} onClick={handleStartAdd}>
-										Add Persona
+										<Trans>Add Persona</Trans>
 									</Button>
 								</div>
 							)
@@ -844,7 +1051,7 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 					>
 						{personas.length === 0 && !isEditing ? (
 							<div className={styles.emptyState}>
-								No personas created yet. Click "Add Persona" to create your first persona!
+								<Trans>No personas created yet. Click "Add Persona" to create your first persona!</Trans>
 							</div>
 						) : (
 							<div className={styles.cardList}>
@@ -872,15 +1079,23 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 														/>
 													)}
 													{persona.visibility === 'public' && (
-														<Tooltip text="Public persona" position="top">
-															<span className={styles.visibilityIcon} role="img" aria-label="Public persona">
+														<Tooltip text={i18n._(PUBLIC_PERSONA_TOOLTIP_DESCRIPTOR)} position="top">
+															<span
+																className={styles.visibilityIcon}
+																role="img"
+																aria-label={i18n._(PUBLIC_PERSONA_TOOLTIP_DESCRIPTOR)}
+															>
 																<GlobeSimple size={14} weight="bold" className={styles.iconPublic} />
 															</span>
 														</Tooltip>
 													)}
 													{persona.visibility === 'private' && (
-														<Tooltip text="Private persona" position="top">
-															<span className={styles.visibilityIcon} role="img" aria-label="Private persona">
+														<Tooltip text={i18n._(PRIVATE_PERSONA_TOOLTIP_DESCRIPTOR)} position="top">
+															<span
+																className={styles.visibilityIcon}
+																role="img"
+																aria-label={i18n._(PRIVATE_PERSONA_TOOLTIP_DESCRIPTOR)}
+															>
 																<LockSimple size={14} weight="bold" className={styles.iconPrivate} />
 															</span>
 														</Tooltip>
@@ -906,25 +1121,29 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 															<LockSimpleOpen size={14} />
 														)
 													}
-													aria-label={isThisActive ? 'Deactivate persona' : 'Set as active persona'}
+													aria-label={
+														isThisActive
+															? i18n._(DEACTIVATE_PERSONA_ARIA_DESCRIPTOR)
+															: i18n._(SET_ACTIVE_PERSONA_ARIA_DESCRIPTOR)
+													}
 												>
-													{isThisActive ? 'Active' : 'Set Active'}
+													{isThisActive ? <Trans>Active</Trans> : <Trans>Set Active</Trans>}
 												</Button>
 												<Button
 													variant="secondary"
 													leftIcon={<PencilSimple size={14} />}
 													onClick={() => handleStartEdit(persona)}
-													aria-label="Edit persona"
+													aria-label={i18n._(EDIT_PERSONA_ARIA_DESCRIPTOR)}
 												>
-													Edit
+													<Trans>Edit</Trans>
 												</Button>
 												<Button
 													variant="danger"
 													leftIcon={<Trash size={14} />}
 													onClick={() => handleDeletePersona(persona)}
-													aria-label="Delete persona"
+													aria-label={i18n._(DELETE_PERSONA_ARIA_DESCRIPTOR)}
 												>
-													Delete
+													<Trans>Delete</Trans>
 												</Button>
 											</div>
 										</div>
@@ -933,6 +1152,7 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 							</div>
 						)}
 					</SettingsSection>
+
 				</div>
 			</SettingsTabContent>
 		</SettingsTabContainer>
