@@ -340,7 +340,12 @@ import {
 	type UserSettingsRow,
 	type UsersPendingDeletionRow,
 } from '@app/api/database/types/UserTypes';
-import {PERSONA_COLUMNS, type PersonaRow} from '@app/api/database/types/PersonaTypes';
+import {
+	PERSONA_COLUMNS,
+	type PersonaRow,
+	USER_PERSONA_SETTINGS_COLUMNS,
+	type UserPersonaSettingsRow,
+} from '@app/api/database/types/PersonaTypes';
 import {ATTACHMENT_DECAY_COLUMNS, type AttachmentDecayRow} from '@app/api/types/AttachmentDecayTypes';
 
 export const Users = defineTable<UserRow, 'user_id'>({
@@ -444,6 +449,11 @@ export const Personas = defineTable<PersonaRow, 'user_id' | 'persona_id', 'user_
 	columns: PERSONA_COLUMNS,
 	primaryKey: ['user_id', 'persona_id'],
 	partitionKey: ['user_id'],
+});
+export const UserPersonaSettings = defineTable<UserPersonaSettingsRow, 'user_id'>({
+	name: 'user_persona_settings',
+	columns: USER_PERSONA_SETTINGS_COLUMNS,
+	primaryKey: ['user_id'],
 });
 export const Notes = defineTable<NoteRow, 'source_user_id' | 'target_user_id'>({
 	name: 'notes',
