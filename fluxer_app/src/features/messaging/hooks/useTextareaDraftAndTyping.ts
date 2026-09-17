@@ -1,11 +1,11 @@
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 import * as DraftCommands from '@app/features/messaging/commands/DraftCommands';
 import {segmentsEqual} from '@app/features/messaging/state/MessagingDrafts';
 import type {MentionSegment, TextareaSegmentManager} from '@app/features/messaging/utils/TextareaSegmentManager';
+import {PersonaStore} from '@app/features/persona/state/PersonaStore';
 import {onBeforeAppStorageScopeChange} from '@app/features/platform/state/PersistentStorage';
 import {flushPendingPersistWrites} from '@app/features/platform/utils/MobXPersistence';
 import {TypingUtils} from '@app/features/typing/utils/TypingUtils';
+import type {MessageSubprofileRequest} from '@fluxer/schema/src/domains/persona/PersonaSchemas';
 import {useEffect, useRef} from 'react';
 
 interface UseTextareaDraftAndTypingOptions {
@@ -145,6 +145,8 @@ export const useTextareaDraftAndTyping = ({
 			flushDraftRef.current();
 		};
 	}, [channelId, isEditingMessageInComposer]);
+	const activePersonaId = PersonaStore.activePersonaId;
+	const isPersonaLatched = PersonaStore.isPersonaLatched;
 	useEffect(() => {
 		const flushBeforeUnload = (): void => {
 			flushDraftRef.current();
@@ -165,6 +167,21 @@ export const useTextareaDraftAndTyping = ({
 		if (isRestoringDraftRef.current) {
 			return;
 		}
+		const {persona: effectivePersona} = PersonaStore.getEffectivePersonaForText(value, false);
+		const subprofile: MessageSubprofileRequest | null = effectivePersona
+			? {
+					id: effectivePersona.id,
+					name: effectivePersona.name,
+					avatar: effectivePersona.avatar_url ?? effectivePersona.avatarUrl ?? null,
+					avatar_color: effectivePersona.color ?? effectivePersona.accentColor ?? null,
+					display_tag_text: PersonaStore.displayTagText || null,
+					display_tag_icon: PersonaStore.displayTagIcon || null,
+					system_name: PersonaStore.displayTagText || null,
+					pronouns: effectivePersona.pronouns ?? null,
+					color: effectivePersona.color ?? effectivePersona.accentColor ?? null,
+				}
+			: null;
+
 		TypingUtils.handleComposerChange({
 			channelId,
 			value,
@@ -172,6 +189,7 @@ export const useTextareaDraftAndTyping = ({
 			enabled,
 			typingEnabled,
 			isEditingMessageInComposer: isEditingMessageInComposerRef.current,
+			subprofile,
 		});
-	}, [channelId, value, enabled, typingEnabled]);
+	}, [channelId, value, enabled, typingEnabled, activePersonaId, isPersonaLatched]);
 };

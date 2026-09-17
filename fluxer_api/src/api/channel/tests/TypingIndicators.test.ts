@@ -73,4 +73,24 @@ describe('Typing Indicators', () => {
 			.expect(HTTP_STATUS.FORBIDDEN)
 			.execute();
 	});
+	test('should send typing indicator with subprofile in DM channel', async () => {
+		const user1 = await createTestAccount(harness);
+		const user2 = await createTestAccount(harness);
+		await createFriendship(harness, user1, user2);
+		const dmChannel = await createDmChannel(harness, user1.token, user2.userId);
+		await createBuilder<void>(harness, user1.token)
+			.post(`/channels/${dmChannel.id}/typing`)
+			.body({
+				subprofile: {
+					id: 'persona_test_1',
+					name: 'Persona Alice',
+					avatar: 'https://example.com/avatar.png',
+					avatar_color: 123456,
+					display_tag_text: 'System Alpha',
+					color: 654321,
+				},
+			})
+			.expect(204)
+			.execute();
+	});
 });

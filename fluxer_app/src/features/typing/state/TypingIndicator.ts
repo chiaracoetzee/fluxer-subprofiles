@@ -2,10 +2,11 @@
 
 import RollingTypingStore from '@app/features/typing/rolling/RollingTypingStore';
 import type {Message} from '@fluxer/schema/src/domains/message/MessageResponseSchemas';
+import type {MessageSubprofileResponse} from '@fluxer/schema/src/domains/persona/PersonaSchemas';
 
 class TypingIndicator {
-	startRemoteTyping(channelId: string, userId: string): void {
-		RollingTypingStore.start(channelId, userId, 'gateway');
+	startRemoteTyping(channelId: string, userId: string, subprofile?: MessageSubprofileResponse | null): void {
+		RollingTypingStore.start(channelId, userId, 'gateway', subprofile);
 	}
 
 	stopTypingOnMessageCreate(message: Message): void {
