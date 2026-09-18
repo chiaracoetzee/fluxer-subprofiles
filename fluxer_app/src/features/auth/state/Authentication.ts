@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 import ExperimentAssignments from '@app/features/experiment/state/ExperimentAssignments';
+import {PersonaStore} from '@app/features/persona/state/PersonaStore';
 import SessionManager from '@app/features/platform/state/AuthSession';
 import type {ValueOf} from '@fluxer/constants/src/ValueOf';
 import type {UserPrivate} from '@fluxer/schema/src/domains/user/UserResponseSchemas';
@@ -125,6 +126,7 @@ class Authentication {
 	@action
 	handleLogout(options?: {skipRedirect?: boolean}): void {
 		ExperimentAssignments.reset();
+		PersonaStore.reset();
 		this.loginState = LoginState.Default;
 		this.mfaTicket = null;
 		this.mfaMethods = null;
