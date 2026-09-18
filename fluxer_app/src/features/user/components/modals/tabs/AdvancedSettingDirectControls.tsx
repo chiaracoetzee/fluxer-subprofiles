@@ -8,6 +8,7 @@ import {
 	VideoSeekThumbnailsControl,
 } from '@app/features/user/components/modals/tabs/advanced_settings_tab/AdvancedAccessibilityControls';
 import {
+	EdgeHoverPeekControl,
 	FavoritesControl,
 	HideKeyboardHintsControl,
 	KeepNekoStillControl,
@@ -68,6 +69,7 @@ export const DIRECT_CONTROL_ITEM_IDS = new Set([
 	'appearance-hide-keyboard-hints',
 	'appearance-voice-channel-join-behavior',
 	'appearance-enable-favorites',
+	'appearance-edge-hover-peek',
 	'chat-settings-auto-send-gifs',
 	'chat-settings-save-gif-favorites',
 	'chat-settings-message-action-bar',
@@ -116,6 +118,7 @@ export const COMPACT_SWITCH_CONTROL_ITEM_IDS = new Set([
 	'appearance-keep-neko-still',
 	'appearance-hide-keyboard-hints',
 	'appearance-enable-favorites',
+	'appearance-edge-hover-peek',
 	'chat-settings-auto-send-gifs',
 	'chat-settings-save-gif-favorites',
 	'chat-settings-strip-tracking',
@@ -177,6 +180,10 @@ export const AdvancedSettingControl = observer(({item}: {item: SearchableSetting
 		case 'appearance-enable-favorites':
 			return (
 				<FavoritesControl data-flx="user.advanced-setting-direct-controls.advanced-setting-control.favorites-control" />
+			);
+		case 'appearance-edge-hover-peek':
+			return (
+				<EdgeHoverPeekControl data-flx="user.advanced-setting-direct-controls.advanced-setting-control.edge-hover-peek-control" />
 			);
 		case 'chat-settings-auto-send-gifs':
 			return (
