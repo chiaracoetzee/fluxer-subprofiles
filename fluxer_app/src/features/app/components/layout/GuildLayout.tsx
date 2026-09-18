@@ -32,6 +32,7 @@ import * as ModalCommands from '@app/features/ui/commands/ModalCommands';
 import {modal} from '@app/features/ui/commands/ModalCommands';
 import * as NagbarCommands from '@app/features/ui/commands/NagbarCommands';
 import MobileLayout from '@app/features/ui/state/MobileLayout';
+import LayoutState from '@app/features/ui/state/LayoutState';
 import NagbarState from '@app/features/ui/state/Nagbar';
 import {openExternalUrl} from '@app/features/ui/utils/NativeUtils';
 import {UserSettingsModal} from '@app/features/user/components/modals/UserSettingsModal';
@@ -655,6 +656,9 @@ export const GuildLayout = observer(({children}: {children: React.ReactNode}) =>
 			</TopNagbarContext.Provider>
 		);
 	}
+	const isChannelListOpen = mobileLayout.enabled || LayoutState.channelListVisible;
+	const isChannelListPeeking = !mobileLayout.enabled && !LayoutState.channelListVisible && LayoutState.isLeftHoverPeeking;
+
 	return (
 		<TopNagbarContext.Provider value={nagbarContextValue}>
 			<div
@@ -662,8 +666,19 @@ export const GuildLayout = observer(({children}: {children: React.ReactNode}) =>
 				data-flx="app.guild-layout.guild-layout-container--7"
 			>
 				{guildNagbars}
-				<div className={styles.guildLayoutContent} data-flx="app.guild-layout.guild-layout-content--6">
-					<GuildNavbar guild={guild!} data-flx="app.guild-layout.guild-navbar--3" />
+				<div
+					className={clsx(
+						styles.guildLayoutContent,
+						!isChannelListOpen && styles.guildLayoutContentCollapsed,
+					)}
+					data-flx="app.guild-layout.guild-layout-content--6"
+				>
+					{isChannelListOpen && <GuildNavbar guild={guild!} data-flx="app.guild-layout.guild-navbar--3" />}
+					{isChannelListPeeking && (
+						<div className={styles.guildSidebarOverlay} data-flx="app.guild-layout.guild-sidebar-overlay">
+							<GuildNavbar guild={guild!} data-flx="app.guild-layout.guild-navbar--peek" />
+						</div>
+					)}
 					<div className={styles.guildMainContent} data-flx="app.guild-layout.guild-main-content--8">
 						{children}
 					</div>
@@ -672,3 +687,4 @@ export const GuildLayout = observer(({children}: {children: React.ReactNode}) =>
 		</TopNagbarContext.Provider>
 	);
 });
+
