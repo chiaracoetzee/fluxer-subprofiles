@@ -48,10 +48,13 @@ import {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 
 // Fork imports.
 
+import {startMessageEdit, useMessagePermissions} from '@app/features/channel/components/MessageActionUtils';
 import MessageChangePersona from '@app/features/messaging/state/MessageChangePersona';
+import {shouldTriggerDoubleClickEdit} from '@app/features/messaging/utils/MessageDoubleClickUtils';
 import {PersonaPickerSheet} from '@app/features/persona/components/PersonaPickerSheet';
 import {PersonaStore} from '@app/features/persona/state/PersonaStore';
 import * as PopoutCommands from '@app/features/ui/commands/PopoutCommands';
+import AdvancedSettings from '@app/features/user/state/AdvancedSettings';
 
 const ATTACHMENT_DESCRIPTOR = msg({
 	message: 'attachment',
@@ -320,6 +323,29 @@ export const Message: React.FC<MessageProps> = observer((props) => {
 			handleAltKeyboardEvent(event, message);
 		},
 		[message],
+	);
+	const permissions = useMessagePermissions(message, channel);
+	const canEditMessage = Boolean(permissions?.canEditMessage);
+	const handleDoubleClick = useCallback(
+		(event: React.MouseEvent<HTMLDivElement>) => {
+			if (
+				!shouldTriggerDoubleClickEdit({
+					doubleClickToEditEnabled: AdvancedSettings.doubleClickToEdit,
+					target: event.target,
+					message,
+					isEditing,
+					previewContext,
+					canEditMessage,
+				})
+			) {
+				return;
+			}
+			event.preventDefault();
+			event.stopPropagation();
+			window.getSelection()?.removeAllRanges();
+			startMessageEdit(message);
+		},
+		[canEditMessage, isEditing, message, previewContext],
 	);
 	const handleDelete = useCallback(
 		(bypassConfirm = false) => {
@@ -762,6 +788,7 @@ export const Message: React.FC<MessageProps> = observer((props) => {
 					ref={messageRef}
 					onClickCapture={handleClickCapture}
 					onClick={handleAltClick}
+					onDoubleClick={handleDoubleClick}
 					onKeyDown={handleAltKeyDown}
 					onFocus={handleFocusWithin}
 					onBlur={handleBlurWithin}
