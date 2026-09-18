@@ -69,20 +69,20 @@ msgid "{0} of {1} {2} ({3}%)"
 msgstr "{0} dari {1} {2} ({3}%)"
 
 #. Screen reader announcement in the composer when two people are typing. {a} and {b} are their display names.
-#: src/features/typing/rolling/RollingTypingText.tsx:19
-#: src/features/typing/rolling/RollingTypingText.tsx:54
+#: src/features/typing/rolling/RollingTypingText.tsx:20
+#: src/features/typing/rolling/RollingTypingText.tsx:85
 msgid "{a} and {b} are typing..."
 msgstr "{a} dan {b} sedang mengetik..."
 
 #. Screen reader announcement in the composer when one person is typing. {a} is their display name.
-#: src/features/typing/rolling/RollingTypingText.tsx:15
-#: src/features/typing/rolling/RollingTypingText.tsx:50
+#: src/features/typing/rolling/RollingTypingText.tsx:16
+#: src/features/typing/rolling/RollingTypingText.tsx:81
 msgid "{a} is typing..."
 msgstr "{a} sedang mengetik..."
 
 #. Screen reader announcement in the composer when three people are typing. {a}, {b} and {c} are their display names.
-#: src/features/typing/rolling/RollingTypingText.tsx:24
-#: src/features/typing/rolling/RollingTypingText.tsx:60
+#: src/features/typing/rolling/RollingTypingText.tsx:25
+#: src/features/typing/rolling/RollingTypingText.tsx:91
 msgid "{a}, {b} and {c} are typing..."
 msgstr "{a}, {b}, dan {c} sedang mengetik..."
 
@@ -1452,7 +1452,7 @@ msgid "{length, plural, one {# app} other {# apps}}"
 msgstr "{length, plural, other {# aplikasi}}"
 
 #. Screen-reader fragment listing multiple attachments on a message. length is the count.
-#: src/features/channel/components/ChannelMessage.tsx:52
+#: src/features/channel/components/ChannelMessage.tsx:58
 msgid "{length, plural, one {# attachment} other {# attachments}}"
 msgstr "{length, plural, other {# lampiran}}"
 
@@ -1462,12 +1462,12 @@ msgid "{length, plural, one {# channel} other {# channels}}"
 msgstr "{length, plural, other {# saluran}}"
 
 #. Screen-reader fragment listing multiple embeds on a message. length is the count.
-#: src/features/channel/components/ChannelMessage.tsx:70
+#: src/features/channel/components/ChannelMessage.tsx:76
 msgid "{length, plural, one {# embed} other {# embeds}}"
 msgstr "{length, plural, other {# sematan}}"
 
 #. Screen-reader fragment listing multiple stickers on a message. length is the count.
-#: src/features/channel/components/ChannelMessage.tsx:61
+#: src/features/channel/components/ChannelMessage.tsx:67
 msgid "{length, plural, one {# sticker} other {# stickers}}"
 msgstr "{length, plural, other {# stiker}}"
 
@@ -4433,7 +4433,7 @@ msgid "Apply theme"
 msgstr "Terapkan tema"
 
 #. Short confirmation button label in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:152
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:153
 msgid "Apply to all communities"
 msgstr "Terapkan ke semua komunitas"
 
@@ -4639,7 +4639,7 @@ msgid "Attach files"
 msgstr "Lampirkan file"
 
 #. Screen-reader fragment listing one attachment on a message. Lowercase because it appears inside a longer sentence.
-#: src/features/channel/components/ChannelMessage.tsx:47
+#: src/features/channel/components/ChannelMessage.tsx:53
 msgid "attachment"
 msgstr "lampiran"
 
@@ -5136,7 +5136,7 @@ msgstr "Kirim GIF secara otomatis dari pemilih tanpa konfirmasi"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced GIF behavior preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:40
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:41
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:11
 msgid "Automatically send GIFs when selected"
 msgstr "Kirim GIF secara otomatis saat dipilih"
@@ -6675,7 +6675,7 @@ msgstr "Pengaturan kategori"
 #. Markdown alert label for a caution callout when copied as plaintext.
 #. Short label in the messaging block elements. Keep it concise. Keep the tone plain and specific.
 #: src/features/messaging/components/markdown/renderers/common/BlockElements.tsx:54
-#: src/features/messaging/utils/markdown/Plaintext.ts:68
+#: src/features/messaging/utils/markdown/Plaintext.ts:70
 msgid "Caution"
 msgstr "Perhatian"
 
@@ -7185,7 +7185,7 @@ msgstr "ID saluran disalin ke papan klip"
 #. Short label in the messaging mention renderer. Keep it concise.
 #. Type chip suffix in tooltips for inline rendered channel mentions. Lowercase because it follows the channel name.
 #: src/features/messaging/components/markdown/renderers/LinkRenderer.tsx:87
-#: src/features/messaging/components/markdown/renderers/MentionRenderer.tsx:39
+#: src/features/messaging/components/markdown/renderers/MentionRenderer.tsx:41
 msgid "channel link"
 msgstr "tautan saluran"
 
@@ -12778,16 +12778,33 @@ msgid "Done"
 msgstr "Selesai"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
+#: src/features/user/components/settings_utils/search_index/AdvancedSettingsIndex.ts:60
+msgid "Double click"
+msgstr "Klik ganda"
+
+#. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/section_registry/AppearanceSections.ts:382
 #: src/features/user/components/settings_utils/section_registry/AppearanceSections.ts:386
 msgid "Double-click"
 msgstr "Klik ganda"
 
+#. Settings search entry description. One-line summary of what the setting controls.
+#: src/features/user/components/settings_utils/search_index/AdvancedSettingsIndex.ts:72
+msgid "Double-click a message you sent to edit it directly"
+msgstr "Klik dua kali pada pesan yang Anda kirim untuk mengeditnya secara langsung"
+
 #. Empty / hint text on the screen-share hover card explaining how to start watching a remote stream.
 #: src/features/voice/components/StreamWatchHoverCard.tsx:33
 msgid "Double-click someone to watch their stream."
 msgstr "Klik ganda seseorang untuk menonton streaming mereka."
+
+#. Settings search entry label for double-clicking a message to edit it.
+#. Short label for an advanced message editing preference.
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:298
+#: src/features/user/components/settings_utils/search_index/AdvancedSettingsIndex.ts:56
+msgid "Double-click to edit"
+msgstr "Klik ganda untuk mengedit"
 
 #. Button that downloads account backup codes as a text file.
 #. Generic action label that downloads an attachment / file.
@@ -13240,8 +13257,10 @@ msgstr "Edit media"
 
 #. Generic action label that opens the message edit composer.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
+#. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:708
 #: src/features/input/state/input_keybind/shared.ts:9
+#: src/features/user/components/settings_utils/search_index/AdvancedSettingsIndex.ts:68
 msgid "Edit message"
 msgstr "Edit pesan"
 
@@ -13466,7 +13485,7 @@ msgid "Email verified successfully"
 msgstr "Email berhasil diverifikasi"
 
 #. Screen-reader fragment listing one embed on a message. Lowercase because it appears inside a longer sentence.
-#: src/features/channel/components/ChannelMessage.tsx:65
+#: src/features/channel/components/ChannelMessage.tsx:71
 msgid "embed"
 msgstr "sematan"
 
@@ -13858,7 +13877,7 @@ msgid "Enable self-hosted mode client-side. Hides all premium and billing UI."
 msgstr "Aktifkan mode self-hosted sisi klien. Menyembunyikan semua UI premium dan penagihan."
 
 #. Short label for an advanced message action bar preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:60
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:61
 msgid "Enable Shift to expand"
 msgstr "Aktifkan Shift untuk memperluas"
 
@@ -16043,7 +16062,7 @@ msgid "Full legal name"
 msgstr "Nama lengkap sesuai identitas"
 
 #. Screen-reader-only identity detail appended to a user mention in the message composer. Preserve {tag}; it contains the full user tag.
-#: src/features/lexical/composer/nodes/ComposerMentionPill.tsx:20
+#: src/features/lexical/composer/nodes/ComposerMentionPill.tsx:24
 msgid "Full user tag: {tag}"
 msgstr "Tag pengguna lengkap: {tag}"
 
@@ -17192,13 +17211,13 @@ msgstr "Sembunyikan saluran yang dibisukan"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced sidebar preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:144
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:145
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:487
 msgid "Hide muted channels by default"
 msgstr "Sembunyikan saluran yang dibisukan secara default"
 
 #. Confirmation prompt in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:148
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:149
 msgid "Hide muted channels by default?"
 msgstr "Sembunyikan saluran yang dibisukan secara default?"
 
@@ -17895,7 +17914,7 @@ msgstr "Impor tidak tersedia"
 #. Markdown alert label for an important callout when copied as plaintext.
 #. Short label in the messaging block elements. Keep it concise. Keep the tone plain and specific.
 #: src/features/messaging/components/markdown/renderers/common/BlockElements.tsx:46
-#: src/features/messaging/utils/markdown/Plaintext.ts:60
+#: src/features/messaging/utils/markdown/Plaintext.ts:62
 msgid "Important"
 msgstr "Penting"
 
@@ -20887,7 +20906,7 @@ msgid "Menu shortcuts"
 msgstr "Pintasan menu"
 
 #. Fallback role label used in screen-reader message summaries.
-#: src/features/channel/components/ChannelMessage.tsx:79
+#: src/features/channel/components/ChannelMessage.tsx:85
 msgid "message"
 msgstr "pesan"
 
@@ -21756,7 +21775,7 @@ msgid "Multi-line"
 msgstr "Banyak baris"
 
 #. Label in the composer typing row when the names of the people typing do not fit.
-#: src/features/typing/rolling/RollingTypingText.tsx:29
+#: src/features/typing/rolling/RollingTypingText.tsx:30
 msgid "Multiple people are typing..."
 msgstr "Beberapa orang sedang mengetik..."
 
@@ -22366,15 +22385,15 @@ msgid "New category"
 msgstr "Kategori baru"
 
 #. Short confirmation button label in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:156
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:157
 msgid "New communities only"
 msgstr "Hanya komunitas baru"
 
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:660
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:679
 msgid "New communities you join will automatically have muted channels hidden. Would you also like to apply this setting to all your existing communities?"
 msgstr "Komunitas baru yang kamu ikuti akan otomatis menyembunyikan saluran yang dibisukan. Terapkan juga ke semua komunitas yang sudah kamu ikuti?"
 
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:691
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:710
 msgid "New communities you join will no longer have muted channels hidden automatically. Would you also like to show muted channels in all your existing communities?"
 msgstr "Komunitas baru yang kamu ikuti tidak akan lagi otomatis menyembunyikan saluran yang dibisukan. Tampilkan juga saluran yang dibisukan di semua komunitas yang sudah kamu ikuti?"
 
@@ -23102,7 +23121,7 @@ msgid "No system channel"
 msgstr "Tidak ada saluran sistem"
 
 #. Screen-reader fragment indicating the message has no text body. Lowercase because it appears inside a longer sentence.
-#: src/features/channel/components/ChannelMessage.tsx:74
+#: src/features/channel/components/ChannelMessage.tsx:80
 msgid "no text content"
 msgstr "tidak ada konten teks"
 
@@ -23334,7 +23353,7 @@ msgstr "Bukan benar atau salah"
 #. Short label in the user profile modal. Keep it concise.
 #: src/features/app/components/pages/YouPage.tsx:186
 #: src/features/messaging/components/markdown/renderers/common/BlockElements.tsx:38
-#: src/features/messaging/utils/markdown/Plaintext.ts:72
+#: src/features/messaging/utils/markdown/Plaintext.ts:74
 #: src/features/user/components/modals/user_profile_modal/UserNoteEditor.tsx:19
 #: src/features/user/components/modals/user_profile_modal/UserNoteEditor.tsx:79
 #: src/features/user/components/modals/UserProfileMobileSheet.tsx:897
@@ -23441,12 +23460,12 @@ msgid "Notify"
 msgstr "Beri tahu"
 
 #. Description text in the channel and chat autocomplete mention. Keep the tone plain and specific.
-#: src/features/channel/components/AutocompleteMention.tsx:31
+#: src/features/channel/components/AutocompleteMention.tsx:37
 msgid "Notify everyone online who has permission to view this channel."
 msgstr "Beri tahu semua orang yang online dan memiliki izin untuk melihat saluran ini."
 
 #. Description text in the channel and chat autocomplete mention. Keep the tone plain and specific.
-#: src/features/channel/components/AutocompleteMention.tsx:27
+#: src/features/channel/components/AutocompleteMention.tsx:33
 msgid "Notify everyone who has permission to view this channel."
 msgstr "Beri tahu semua orang yang memiliki izin untuk melihat saluran ini."
 
@@ -23456,7 +23475,7 @@ msgid "Notify on reply"
 msgstr "Beri tahu jika ada balasan"
 
 #. Description text in the channel and chat autocomplete mention. Keep the tone plain and specific.
-#: src/features/channel/components/AutocompleteMention.tsx:35
+#: src/features/channel/components/AutocompleteMention.tsx:41
 msgid "Notify users with this role who have permission to view this channel."
 msgstr "Beri tahu pengguna dengan peran ini yang memiliki izin untuk melihat saluran ini."
 
@@ -26310,6 +26329,11 @@ msgid "Quick CSS replaced from {fileName}."
 msgstr "CSS cepat diganti dari {fileName}."
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
+#: src/features/user/components/settings_utils/search_index/AdvancedSettingsIndex.ts:64
+msgid "Quick edit"
+msgstr "Edit cepat"
+
+#. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:319
 msgid "Quick reactions"
 msgstr "Reaksi cepat"
@@ -28664,7 +28688,7 @@ msgstr "Simpan favorit"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced GIF storage preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:44
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:45
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:47
 msgid "Save GIF favorites as saved media"
 msgstr "Simpan GIF favorit sebagai media tersimpan"
@@ -28991,7 +29015,7 @@ msgstr "Gulir ke bawah"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:136
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:137
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:443
 msgid "Scroll to bottom when sending a message"
 msgstr "Gulir ke bawah saat mengirim pesan"
@@ -29739,7 +29763,7 @@ msgstr "Kirim laporan DSA"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:116
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:117
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:127
 msgid "Send file messages in order"
 msgstr "Kirim pesan file secara berurutan"
@@ -30543,7 +30567,7 @@ msgid "Show active now on the home screen to surface friends active in voice. Yo
 msgstr "Tampilkan status aktif sekarang di layar utama untuk memunculkan teman yang sedang aktif di saluran suara. Kamu akan melihat pratinjau, konteks saluran, siapa saja yang sudah ada di sana, dan cara cepat untuk bergabung."
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:68
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:69
 msgid "Show attachment expiration indicator"
 msgstr "Tampilkan indikator kedaluwarsa lampiran"
 
@@ -30594,7 +30618,7 @@ msgid "Show creation date instead of expiration date"
 msgstr "Tampilkan tanggal pembuatan, bukan tanggal kedaluwarsa"
 
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:92
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:93
 msgid "Show custom emojis in expression autocomplete"
 msgstr "Tampilkan emoji kustom di pelengkapan otomatis ekspresi"
 
@@ -30604,17 +30628,17 @@ msgid "Show default avatar, ignoring your global profile"
 msgstr "Tampilkan avatar default, abaikan profil globalmu"
 
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:88
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:89
 msgid "Show default emojis in expression autocomplete"
 msgstr "Tampilkan emoji default di pelengkapan otomatis ekspresi"
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:72
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:73
 msgid "Show delete button"
 msgstr "Tampilkan tombol hapus"
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:76
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:77
 msgid "Show download button"
 msgstr "Tampilkan tombol unduh"
 
@@ -30641,7 +30665,7 @@ msgstr "Tampilkan sematan dan pratinjau tautan situs web"
 #. Short label for an advanced message input preference.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:59
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:124
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:125
 msgid "Show emoji button"
 msgstr "Tampilkan tombol emoji"
 
@@ -30651,7 +30675,7 @@ msgid "Show emoji reactions on messages"
 msgstr "Tampilkan reaksi emoji di pesan"
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:80
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:81
 msgid "Show favorite button"
 msgstr "Tampilkan tombol favorit"
 
@@ -30673,14 +30697,14 @@ msgid "Show focus ring on chat text area"
 msgstr "Tampilkan cincin fokus di area teks obrolan"
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:64
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:65
 msgid "Show GIF indicator"
 msgstr "Tampilkan indikator GIF"
 
 #. Plus menu submenu toggle that shows the GIFs button next to the textarea.
 #. Short label for an advanced message input preference.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:43
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:104
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:105
 msgid "Show GIFs button"
 msgstr "Tampilkan tombol GIF"
 
@@ -30690,7 +30714,7 @@ msgid "Show icon when collapsed"
 msgstr "Tampilkan ikon saat diciutkan"
 
 #. Short confirmation button label in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:164
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:165
 msgid "Show in all communities"
 msgstr "Tampilkan di semua komunitas"
 
@@ -30729,7 +30753,7 @@ msgstr "Tampilkan maks. 5 (lencana +5)"
 #. Plus menu submenu toggle that shows the saved media (memes) button next to the textarea.
 #. Short label for an advanced message input preference.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:47
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:108
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:109
 msgid "Show media button"
 msgstr "Tampilkan tombol media"
 
@@ -30750,7 +30774,7 @@ msgid "Show menu bar icon"
 msgstr "Tampilkan ikon bilah menu"
 
 #. Short label for an advanced message action bar preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:48
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:49
 msgid "Show message action bar"
 msgstr "Tampilkan bilah tindakan pesan"
 
@@ -30833,7 +30857,7 @@ msgid "Show oldest messages first"
 msgstr "Tampilkan pesan terlama dulu"
 
 #. Short label for an advanced message action bar preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:52
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:53
 msgid "Show only the more button"
 msgstr "Tampilkan hanya tombol lainnya"
 
@@ -30855,7 +30879,7 @@ msgstr "Tampilkan penggeser volume peserta per perangkat di menu suara"
 #. Plus menu submenu toggle that shows the persona selector next to the textarea.
 #. Short label for an advanced message input preference.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:51
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:128
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:129
 msgid "Show personas button"
 msgstr "Show personas button"
 
@@ -30865,7 +30889,7 @@ msgid "Show profile time zone settings"
 msgstr "Tampilkan pengaturan zona waktu profil"
 
 #. Short label for an advanced message action bar preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:56
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:57
 msgid "Show quick reactions"
 msgstr "Tampilkan reaksi cepat"
 
@@ -30875,7 +30899,7 @@ msgid "Show rich previews for YouTube links."
 msgstr "Tampilkan pratinjau kaya untuk tautan YouTube."
 
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:100
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:101
 msgid "Show saved media in expression autocomplete"
 msgstr "Tampilkan media tersimpan di pelengkapan otomatis ekspresi"
 
@@ -30884,7 +30908,7 @@ msgstr "Tampilkan media tersimpan di pelengkapan otomatis ekspresi"
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #: src/features/channel/components/textarea/TextareaContextMenu.tsx:102
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:63
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:132
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:133
 msgid "Show send button"
 msgstr "Tampilkan tombol kirim"
 
@@ -30896,12 +30920,12 @@ msgstr "Tampilkan konten spoiler saat diklik"
 #. Short label for an advanced message input preference.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:55
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:120
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:121
 msgid "Show stickers button"
 msgstr "Tampilkan tombol stiker"
 
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:96
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:97
 msgid "Show stickers in expression autocomplete"
 msgstr "Tampilkan stiker di pelengkapan otomatis ekspresi"
 
@@ -30911,7 +30935,7 @@ msgid "Show strikethrough Markdown text in a slightly muted color."
 msgstr "Tampilkan teks Markdown coret dengan warna yang sedikit diredam."
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:84
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:85
 msgid "Show suppress embeds button"
 msgstr "Tampilkan tombol sembunyikan sematan"
 
@@ -31217,7 +31241,7 @@ msgstr "Lewati"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced inbox preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:140
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:141
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:459
 msgid "Skip \"Mark all as read\" confirmation"
 msgstr "Lewati konfirmasi \"Tandai semua sudah dibaca\""
@@ -32257,7 +32281,7 @@ msgstr "Mikrofon stereo"
 #. Label for the has:sticker filter option in the mobile channel search sheet.
 #. Screen-reader fragment listing one sticker on a message. Lowercase because it appears inside a longer sentence.
 #: src/features/channel/components/bottomsheets/ChannelSearchBottomSheet.tsx:120
-#: src/features/channel/components/ChannelMessage.tsx:56
+#: src/features/channel/components/ChannelMessage.tsx:62
 msgid "sticker"
 msgstr "stiker"
 
@@ -32397,7 +32421,7 @@ msgid "Stop"
 msgstr "Berhenti"
 
 #. Confirmation prompt in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:160
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:161
 msgid "Stop hiding muted channels by default?"
 msgstr "Berhenti menyembunyikan saluran yang dibisukan secara default?"
 
@@ -34918,7 +34942,7 @@ msgstr "Stempel waktu"
 #. Markdown alert label for a tip callout when copied as plaintext.
 #. Short label in the messaging block elements. Keep it concise. Keep the tone plain and specific.
 #: src/features/messaging/components/markdown/renderers/common/BlockElements.tsx:42
-#: src/features/messaging/utils/markdown/Plaintext.ts:56
+#: src/features/messaging/utils/markdown/Plaintext.ts:58
 msgid "Tip"
 msgstr "Tips"
 
@@ -36109,9 +36133,9 @@ msgstr "peran tidak diketahui"
 #. Reason spoken by screen readers when a slash-command argument does not match any role.
 #. Short label in the messaging mention renderer. Keep it concise.
 #: src/features/channel/components/modals/channel_tabs/ChannelPermissionsTab.tsx:64
-#: src/features/lexical/composer/nodes/ComposerMentionPill.tsx:25
+#: src/features/lexical/composer/nodes/ComposerMentionPill.tsx:29
 #: src/features/lexical/composer/nodes/SlashSlotNode.ts:65
-#: src/features/messaging/components/markdown/renderers/MentionRenderer.tsx:31
+#: src/features/messaging/components/markdown/renderers/MentionRenderer.tsx:33
 msgid "Unknown role"
 msgstr "Peran tidak diketahui"
 
@@ -36146,19 +36170,19 @@ msgstr "Pengguna tidak dikenal"
 
 #. Fallback plaintext for an unresolved channel mention in copied markdown. Keep lowercase and hyphenated.
 #. Short label in the messaging mention renderer. Keep it concise.
-#: src/features/messaging/components/markdown/renderers/MentionRenderer.tsx:35
-#: src/features/messaging/utils/markdown/Plaintext.ts:80
+#: src/features/messaging/components/markdown/renderers/MentionRenderer.tsx:37
+#: src/features/messaging/utils/markdown/Plaintext.ts:82
 msgid "unknown-channel"
 msgstr "unknown-channel"
 
 #. Fallback plaintext for an unresolved mention in copied markdown. Keep lowercase and hyphenated.
-#: src/features/messaging/components/markdown/renderers/MentionRenderer.tsx:43
-#: src/features/messaging/utils/markdown/Plaintext.ts:84
+#: src/features/messaging/components/markdown/renderers/MentionRenderer.tsx:45
+#: src/features/messaging/utils/markdown/Plaintext.ts:86
 msgid "unknown-mention"
 msgstr "unknown-mention"
 
 #. Fallback plaintext for an unresolved role mention in copied markdown. Keep lowercase and hyphenated.
-#: src/features/messaging/utils/markdown/Plaintext.ts:76
+#: src/features/messaging/utils/markdown/Plaintext.ts:78
 msgid "unknown-role"
 msgstr "unknown-role"
 
@@ -36679,7 +36703,7 @@ msgstr "Unggah aset"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced message input privacy preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:112
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:113
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:107
 msgid "Upload attachments before sending"
 msgstr "Unggah lampiran sebelum mengirim"
@@ -38552,7 +38576,7 @@ msgstr "Bangunkan"
 #. Markdown alert label for a warning callout when copied as plaintext.
 #. Warning text in the messaging block elements. Keep the tone plain and specific.
 #: src/features/messaging/components/markdown/renderers/common/BlockElements.tsx:50
-#: src/features/messaging/utils/markdown/Plaintext.ts:64
+#: src/features/messaging/utils/markdown/Plaintext.ts:66
 msgid "Warning"
 msgstr "Peringatan"
 
