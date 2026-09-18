@@ -26,6 +26,8 @@ import {
 	CREATE_GROUP_DM_DESCRIPTOR,
 	EDIT_GROUP_DETAILS_DESCRIPTOR,
 	HIDE_MEMBERS_DESCRIPTOR,
+	HIDE_SERVER_LIST_DESCRIPTOR,
+	HIDE_CHANNELS_DESCRIPTOR,
 	MEMBERS_LIST_UNAVAILABLE_AT_THIS_SCREEN_WIDTH_DESCRIPTOR,
 	OPEN_CHANNEL_DETAILS_FOR_DESCRIPTOR,
 	OPEN_DIRECT_MESSAGE_DETAILS_FOR_DESCRIPTOR,
@@ -33,10 +35,13 @@ import {
 	OPEN_GROUP_DETAILS_FOR_DESCRIPTOR,
 	OPEN_PROFILE_FOR_DESCRIPTOR,
 	SEARCH_DESCRIPTOR,
-	SHOW_CHANNEL_LIST_DESCRIPTOR,
+	SHOW_CHANNELS_DESCRIPTOR,
 	SHOW_MEMBERS_DESCRIPTOR,
+	SHOW_SERVER_LIST_DESCRIPTOR,
 	VIDEO_CALL_DESCRIPTOR,
 } from '@app/features/channel/components/channel_header/shared';
+import * as LayoutCommands from '@app/features/ui/commands/LayoutCommands';
+import LayoutState from '@app/features/ui/state/LayoutState';
 import {useChannelHeaderData} from '@app/features/channel/components/channel_header/useChannelHeaderData';
 import {CallButtons} from '@app/features/channel/components/channel_header_components/CallButtons';
 import {ChannelHeaderIcon} from '@app/features/channel/components/channel_header_components/ChannelHeaderIcon';
@@ -89,7 +94,6 @@ import {GroupDMContextMenu} from '@app/features/ui/action_menu/GroupDMContextMen
 import {MenuGroup} from '@app/features/ui/action_menu/MenuGroup';
 import {MenuItem} from '@app/features/ui/action_menu/MenuItem';
 import * as ContextMenuCommands from '@app/features/ui/commands/ContextMenuCommands';
-import * as LayoutCommands from '@app/features/ui/commands/LayoutCommands';
 import * as ModalCommands from '@app/features/ui/commands/ModalCommands';
 import {modal} from '@app/features/ui/commands/ModalCommands';
 import * as ToastCommands from '@app/features/ui/commands/ToastCommands';
@@ -114,10 +118,11 @@ import {
 	ArrowLeftIcon,
 	CaretRightIcon,
 	EyeSlashIcon,
-	ListIcon,
 	MagnifyingGlassIcon,
 	PencilIcon,
 	PhoneIcon,
+	SidebarSimpleIcon,
+	SquaresFourIcon,
 	StarIcon,
 	UserPlusIcon,
 	UsersIcon,
@@ -604,18 +609,34 @@ export const ChannelHeader = observer(
 									</button>
 								</FocusRing>
 							) : (
-								<FocusRing offset={-2} data-flx="channel.channel-header.focus-ring--2">
-									<button
-										type="button"
-										className={styles.backButtonDesktop}
-										aria-label={i18n._(SHOW_CHANNEL_LIST_DESCRIPTOR)}
-										onClick={handleBackClick}
-										data-flx="channel.channel-header.back-button-desktop.back-click"
-									>
-										<ListIcon className={styles.backIcon} data-flx="channel.channel-header.back-icon" />
-									</button>
-								</FocusRing>
+								<div className={styles.desktopPanelControls}>
+									<ChannelHeaderIcon
+										icon={SquaresFourIcon}
+										isSelected={LayoutState.serverListVisible}
+										label={
+											LayoutState.serverListVisible
+												? i18n._(HIDE_SERVER_LIST_DESCRIPTOR)
+												: i18n._(SHOW_SERVER_LIST_DESCRIPTOR)
+										}
+										onClick={LayoutCommands.toggleServerList}
+										aria-pressed={LayoutState.serverListVisible}
+										data-flx="channel.channel-header.toggle-server-list"
+									/>
+									<ChannelHeaderIcon
+										icon={SidebarSimpleIcon}
+										isSelected={LayoutState.channelListVisible}
+										label={
+											LayoutState.channelListVisible
+												? i18n._(HIDE_CHANNELS_DESCRIPTOR)
+												: i18n._(SHOW_CHANNELS_DESCRIPTOR)
+										}
+										onClick={LayoutCommands.toggleChannelList}
+										aria-pressed={LayoutState.channelListVisible}
+										data-flx="channel.channel-header.toggle-channel-list"
+									/>
+								</div>
 							)}
+
 							<div className={styles.leftContentContainer} data-flx="channel.channel-header.left-content-container">
 								{leftContent ? (
 									leftContent
