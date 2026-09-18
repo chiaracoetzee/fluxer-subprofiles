@@ -9,6 +9,7 @@ import {
 } from '@app/features/user/components/modals/tabs/advanced_settings_tab/AdvancedAccessibilityControls';
 import {
 	DownloadButtonControl,
+	EdgeHoverPeekControl,
 	FavoritesControl,
 	HelpCenterButtonControl,
 	HideKeyboardHintsControl,
@@ -73,6 +74,7 @@ export const DIRECT_CONTROL_ITEM_IDS = new Set([
 	'appearance-enable-favorites',
 	'appearance-show-help-center-button',
 	'appearance-show-download-button',
+	'appearance-edge-hover-peek',
 	'chat-settings-auto-send-gifs',
 	'chat-settings-save-gif-favorites',
 	'chat-settings-message-action-bar',
@@ -124,6 +126,7 @@ export const COMPACT_SWITCH_CONTROL_ITEM_IDS = new Set([
 	'appearance-enable-favorites',
 	'appearance-show-help-center-button',
 	'appearance-show-download-button',
+	'appearance-edge-hover-peek',
 	'chat-settings-auto-send-gifs',
 	'chat-settings-save-gif-favorites',
 	'chat-settings-strip-tracking',
@@ -194,6 +197,10 @@ export const AdvancedSettingControl = observer(({item}: {item: SearchableSetting
 		case 'appearance-show-download-button':
 			return (
 				<DownloadButtonControl data-flx="user.advanced-setting-direct-controls.advanced-setting-control.download-button-control" />
+			);
+		case 'appearance-edge-hover-peek':
+			return (
+				<EdgeHoverPeekControl data-flx="user.advanced-setting-direct-controls.advanced-setting-control.edge-hover-peek-control" />
 			);
 		case 'chat-settings-auto-send-gifs':
 			return (
