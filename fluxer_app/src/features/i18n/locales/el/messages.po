@@ -69,20 +69,20 @@ msgid "{0} of {1} {2} ({3}%)"
 msgstr "{0} από {1} {2} ({3}%)"
 
 #. Screen reader announcement in the composer when two people are typing. {a} and {b} are their display names.
-#: src/features/typing/rolling/RollingTypingText.tsx:19
-#: src/features/typing/rolling/RollingTypingText.tsx:54
+#: src/features/typing/rolling/RollingTypingText.tsx:20
+#: src/features/typing/rolling/RollingTypingText.tsx:85
 msgid "{a} and {b} are typing..."
 msgstr "Ο/Η {a} και ο/η {b} πληκτρολογούν..."
 
 #. Screen reader announcement in the composer when one person is typing. {a} is their display name.
-#: src/features/typing/rolling/RollingTypingText.tsx:15
-#: src/features/typing/rolling/RollingTypingText.tsx:50
+#: src/features/typing/rolling/RollingTypingText.tsx:16
+#: src/features/typing/rolling/RollingTypingText.tsx:81
 msgid "{a} is typing..."
 msgstr "Ο/Η {a} πληκτρολογεί..."
 
 #. Screen reader announcement in the composer when three people are typing. {a}, {b} and {c} are their display names.
-#: src/features/typing/rolling/RollingTypingText.tsx:24
-#: src/features/typing/rolling/RollingTypingText.tsx:60
+#: src/features/typing/rolling/RollingTypingText.tsx:25
+#: src/features/typing/rolling/RollingTypingText.tsx:91
 msgid "{a}, {b} and {c} are typing..."
 msgstr "Ο/Η {a}, ο/η {b} και ο/η {c} πληκτρολογούν..."
 
@@ -1452,7 +1452,7 @@ msgid "{length, plural, one {# app} other {# apps}}"
 msgstr "{length, plural, one {# εφαρμογή} other {# εφαρμογές}}"
 
 #. Screen-reader fragment listing multiple attachments on a message. length is the count.
-#: src/features/channel/components/ChannelMessage.tsx:52
+#: src/features/channel/components/ChannelMessage.tsx:58
 msgid "{length, plural, one {# attachment} other {# attachments}}"
 msgstr "{length, plural, one {# συνημμένο} other {# συνημμένα}}"
 
@@ -1462,12 +1462,12 @@ msgid "{length, plural, one {# channel} other {# channels}}"
 msgstr "{length, plural, one {# κανάλι} other {# κανάλια}}"
 
 #. Screen-reader fragment listing multiple embeds on a message. length is the count.
-#: src/features/channel/components/ChannelMessage.tsx:70
+#: src/features/channel/components/ChannelMessage.tsx:76
 msgid "{length, plural, one {# embed} other {# embeds}}"
 msgstr "{length, plural, one {# ενσωμάτωση} other {# ενσωματώσεις}}"
 
 #. Screen-reader fragment listing multiple stickers on a message. length is the count.
-#: src/features/channel/components/ChannelMessage.tsx:61
+#: src/features/channel/components/ChannelMessage.tsx:67
 msgid "{length, plural, one {# sticker} other {# stickers}}"
 msgstr "{length, plural, one {# αυτοκόλλητο} other {# αυτοκόλλητα}}"
 
@@ -4433,7 +4433,7 @@ msgid "Apply theme"
 msgstr "Εφαρμογή θέματος"
 
 #. Short confirmation button label in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:152
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:153
 msgid "Apply to all communities"
 msgstr "Εφαρμογή σε όλες τις κοινότητες"
 
@@ -4639,7 +4639,7 @@ msgid "Attach files"
 msgstr "Επισύναψη αρχείων"
 
 #. Screen-reader fragment listing one attachment on a message. Lowercase because it appears inside a longer sentence.
-#: src/features/channel/components/ChannelMessage.tsx:47
+#: src/features/channel/components/ChannelMessage.tsx:53
 msgid "attachment"
 msgstr "συνημμένο"
 
@@ -5136,7 +5136,7 @@ msgstr "Αυτόματη αποστολή GIF από τον επιλογέα χ�
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced GIF behavior preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:40
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:41
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:11
 msgid "Automatically send GIFs when selected"
 msgstr "Αυτόματη αποστολή GIF όταν επιλεγεί"
@@ -6675,7 +6675,7 @@ msgstr "Ρυθμίσεις κατηγορίας"
 #. Markdown alert label for a caution callout when copied as plaintext.
 #. Short label in the messaging block elements. Keep it concise. Keep the tone plain and specific.
 #: src/features/messaging/components/markdown/renderers/common/BlockElements.tsx:54
-#: src/features/messaging/utils/markdown/Plaintext.ts:68
+#: src/features/messaging/utils/markdown/Plaintext.ts:70
 msgid "Caution"
 msgstr "Προσοχή"
 
@@ -7185,7 +7185,7 @@ msgstr "Το αναγνωριστικό καναλιού αντιγράφηκε 
 #. Short label in the messaging mention renderer. Keep it concise.
 #. Type chip suffix in tooltips for inline rendered channel mentions. Lowercase because it follows the channel name.
 #: src/features/messaging/components/markdown/renderers/LinkRenderer.tsx:87
-#: src/features/messaging/components/markdown/renderers/MentionRenderer.tsx:39
+#: src/features/messaging/components/markdown/renderers/MentionRenderer.tsx:41
 msgid "channel link"
 msgstr "σύνδεσμος καναλιού"
 
@@ -12778,16 +12778,33 @@ msgid "Done"
 msgstr "Τέλος"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
+#: src/features/user/components/settings_utils/search_index/AdvancedSettingsIndex.ts:60
+msgid "Double click"
+msgstr "Διπλό κλικ"
+
+#. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/section_registry/AppearanceSections.ts:382
 #: src/features/user/components/settings_utils/section_registry/AppearanceSections.ts:386
 msgid "Double-click"
 msgstr "Διπλό κλικ"
 
+#. Settings search entry description. One-line summary of what the setting controls.
+#: src/features/user/components/settings_utils/search_index/AdvancedSettingsIndex.ts:72
+msgid "Double-click a message you sent to edit it directly"
+msgstr "Κάντε διπλό κλικ σε ένα μήνυμα που στείλατε για να το επεξεργαστείτε απευθείας"
+
 #. Empty / hint text on the screen-share hover card explaining how to start watching a remote stream.
 #: src/features/voice/components/StreamWatchHoverCard.tsx:33
 msgid "Double-click someone to watch their stream."
 msgstr "Κάντε διπλό κλικ σε κάποιον για να παρακολουθήσετε τη ροή του."
+
+#. Settings search entry label for double-clicking a message to edit it.
+#. Short label for an advanced message editing preference.
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:298
+#: src/features/user/components/settings_utils/search_index/AdvancedSettingsIndex.ts:56
+msgid "Double-click to edit"
+msgstr "Διπλό κλικ για επεξεργασία"
 
 #. Button that downloads account backup codes as a text file.
 #. Generic action label that downloads an attachment / file.
@@ -13240,8 +13257,10 @@ msgstr "Επεξεργασία πολυμέσων"
 
 #. Generic action label that opens the message edit composer.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
+#. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:708
 #: src/features/input/state/input_keybind/shared.ts:9
+#: src/features/user/components/settings_utils/search_index/AdvancedSettingsIndex.ts:68
 msgid "Edit message"
 msgstr "Επεξεργασία μηνύματος"
 
@@ -13466,7 +13485,7 @@ msgid "Email verified successfully"
 msgstr "Το email επαληθεύτηκε με επιτυχία"
 
 #. Screen-reader fragment listing one embed on a message. Lowercase because it appears inside a longer sentence.
-#: src/features/channel/components/ChannelMessage.tsx:65
+#: src/features/channel/components/ChannelMessage.tsx:71
 msgid "embed"
 msgstr "ενσωμάτωση"
 
@@ -13858,7 +13877,7 @@ msgid "Enable self-hosted mode client-side. Hides all premium and billing UI."
 msgstr "Ενεργοποίηση λειτουργίας self-hosted από την πλευρά του πελάτη. Κρύβει όλο το UI premium και χρέωσης."
 
 #. Short label for an advanced message action bar preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:60
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:61
 msgid "Enable Shift to expand"
 msgstr "Ενεργοποίηση Shift για επέκταση"
 
@@ -16043,7 +16062,7 @@ msgid "Full legal name"
 msgstr "Πλήρες νόμιμο όνομα"
 
 #. Screen-reader-only identity detail appended to a user mention in the message composer. Preserve {tag}; it contains the full user tag.
-#: src/features/lexical/composer/nodes/ComposerMentionPill.tsx:20
+#: src/features/lexical/composer/nodes/ComposerMentionPill.tsx:24
 msgid "Full user tag: {tag}"
 msgstr "Πλήρης ετικέτα χρήστη: {tag}"
 
@@ -17192,13 +17211,13 @@ msgstr "Απόκρυψη καναλιών σε σίγαση"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced sidebar preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:144
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:145
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:487
 msgid "Hide muted channels by default"
 msgstr "Απόκρυψη καναλιών σε σίγαση από προεπιλογή"
 
 #. Confirmation prompt in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:148
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:149
 msgid "Hide muted channels by default?"
 msgstr "Να αποκρύπτονται τα κανάλια σε σίγαση από προεπιλογή;"
 
@@ -17895,7 +17914,7 @@ msgstr "Η εισαγωγή δεν είναι διαθέσιμη"
 #. Markdown alert label for an important callout when copied as plaintext.
 #. Short label in the messaging block elements. Keep it concise. Keep the tone plain and specific.
 #: src/features/messaging/components/markdown/renderers/common/BlockElements.tsx:46
-#: src/features/messaging/utils/markdown/Plaintext.ts:60
+#: src/features/messaging/utils/markdown/Plaintext.ts:62
 msgid "Important"
 msgstr "Σημαντικό"
 
@@ -20887,7 +20906,7 @@ msgid "Menu shortcuts"
 msgstr "Συντομεύσεις μενού"
 
 #. Fallback role label used in screen-reader message summaries.
-#: src/features/channel/components/ChannelMessage.tsx:79
+#: src/features/channel/components/ChannelMessage.tsx:85
 msgid "message"
 msgstr "μήνυμα"
 
@@ -21756,7 +21775,7 @@ msgid "Multi-line"
 msgstr "Πολλές γραμμές"
 
 #. Label in the composer typing row when the names of the people typing do not fit.
-#: src/features/typing/rolling/RollingTypingText.tsx:29
+#: src/features/typing/rolling/RollingTypingText.tsx:30
 msgid "Multiple people are typing..."
 msgstr "Πολλοί χρήστες πληκτρολογούν..."
 
@@ -22366,15 +22385,15 @@ msgid "New category"
 msgstr "Νέα κατηγορία"
 
 #. Short confirmation button label in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:156
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:157
 msgid "New communities only"
 msgstr "Μόνο νέες κοινότητες"
 
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:660
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:679
 msgid "New communities you join will automatically have muted channels hidden. Would you also like to apply this setting to all your existing communities?"
 msgstr "Οι νέες κοινότητες στις οποίες συμμετέχετε θα έχουν αυτόματα κρυφά τα κανάλια σε σίγαση. Θέλετε να εφαρμόσετε αυτήν τη ρύθμιση και σε όλες τις υπάρχουσες κοινότητές σας;"
 
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:691
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:710
 msgid "New communities you join will no longer have muted channels hidden automatically. Would you also like to show muted channels in all your existing communities?"
 msgstr "Οι νέες κοινότητες στις οποίες συμμετέχετε δεν θα έχουν πλέον κρυμμένα αυτόματα τα κανάλια σε σίγαση. Θέλετε επίσης να εμφανίζονται τα κανάλια σε σίγαση σε όλες τις υπάρχουσες κοινότητές σας;"
 
@@ -23102,7 +23121,7 @@ msgid "No system channel"
 msgstr "Δεν υπάρχει κανάλι συστήματος"
 
 #. Screen-reader fragment indicating the message has no text body. Lowercase because it appears inside a longer sentence.
-#: src/features/channel/components/ChannelMessage.tsx:74
+#: src/features/channel/components/ChannelMessage.tsx:80
 msgid "no text content"
 msgstr "χωρίς περιεχόμενο κειμένου"
 
@@ -23334,7 +23353,7 @@ msgstr "Δεν είναι αληθές ή ψευδές"
 #. Short label in the user profile modal. Keep it concise.
 #: src/features/app/components/pages/YouPage.tsx:186
 #: src/features/messaging/components/markdown/renderers/common/BlockElements.tsx:38
-#: src/features/messaging/utils/markdown/Plaintext.ts:72
+#: src/features/messaging/utils/markdown/Plaintext.ts:74
 #: src/features/user/components/modals/user_profile_modal/UserNoteEditor.tsx:19
 #: src/features/user/components/modals/user_profile_modal/UserNoteEditor.tsx:79
 #: src/features/user/components/modals/UserProfileMobileSheet.tsx:897
@@ -23441,12 +23460,12 @@ msgid "Notify"
 msgstr "Ειδοποίηση"
 
 #. Description text in the channel and chat autocomplete mention. Keep the tone plain and specific.
-#: src/features/channel/components/AutocompleteMention.tsx:31
+#: src/features/channel/components/AutocompleteMention.tsx:37
 msgid "Notify everyone online who has permission to view this channel."
 msgstr "Ειδοποίηση όλων των συνδεδεμένων χρηστών που έχουν δικαίωμα προβολής αυτού του καναλιού."
 
 #. Description text in the channel and chat autocomplete mention. Keep the tone plain and specific.
-#: src/features/channel/components/AutocompleteMention.tsx:27
+#: src/features/channel/components/AutocompleteMention.tsx:33
 msgid "Notify everyone who has permission to view this channel."
 msgstr "Ειδοποίηση όλων όσων έχουν δικαίωμα προβολής αυτού του καναλιού."
 
@@ -23456,7 +23475,7 @@ msgid "Notify on reply"
 msgstr "Ειδοποίηση για απάντηση"
 
 #. Description text in the channel and chat autocomplete mention. Keep the tone plain and specific.
-#: src/features/channel/components/AutocompleteMention.tsx:35
+#: src/features/channel/components/AutocompleteMention.tsx:41
 msgid "Notify users with this role who have permission to view this channel."
 msgstr "Ειδοποίηση χρηστών με αυτόν τον ρόλο που έχουν δικαίωμα προβολής αυτού του καναλιού."
 
@@ -26310,6 +26329,11 @@ msgid "Quick CSS replaced from {fileName}."
 msgstr "Το γρήγορο CSS αντικαταστάθηκε από το {fileName}."
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
+#: src/features/user/components/settings_utils/search_index/AdvancedSettingsIndex.ts:64
+msgid "Quick edit"
+msgstr "Γρήγορη επεξεργασία"
+
+#. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:319
 msgid "Quick reactions"
 msgstr "Γρήγορες αντιδράσεις"
@@ -28664,7 +28688,7 @@ msgstr "Αποθήκευση στα αγαπημένα"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced GIF storage preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:44
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:45
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:47
 msgid "Save GIF favorites as saved media"
 msgstr "Αποθήκευση αγαπημένων GIF ως αποθηκευμένα πολυμέσα"
@@ -28991,7 +29015,7 @@ msgstr "Μετάβαση στο κάτω μέρος"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:136
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:137
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:443
 msgid "Scroll to bottom when sending a message"
 msgstr "Κύλιση προς τα κάτω κατά την αποστολή μηνύματος"
@@ -29739,7 +29763,7 @@ msgstr "Αποστολή αναφοράς DSA"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:116
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:117
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:127
 msgid "Send file messages in order"
 msgstr "Διαδοχική αποστολή μηνυμάτων με αρχεία"
@@ -30543,7 +30567,7 @@ msgid "Show active now on the home screen to surface friends active in voice. Yo
 msgstr "Εμφάνιση \"Ενεργός τώρα\" στην αρχική οθόνη για να βλέπεις φίλους που είναι ενεργοί σε φωνητική συνομιλία. Θα δεις μια προεπισκόπηση, το περιβάλλον του καναλιού, ποιος είναι ήδη εκεί και έναν γρήγορο τρόπο να συμμετάσχεις."
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:68
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:69
 msgid "Show attachment expiration indicator"
 msgstr "Εμφάνιση ένδειξης λήξης συνημμένου"
 
@@ -30594,7 +30618,7 @@ msgid "Show creation date instead of expiration date"
 msgstr "Εμφάνιση ημερομηνίας δημιουργίας αντί για ημερομηνία λήξης"
 
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:92
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:93
 msgid "Show custom emojis in expression autocomplete"
 msgstr "Εμφάνιση προσαρμοσμένων emoji στην αυτόματη συμπλήρωση εκφράσεων"
 
@@ -30604,17 +30628,17 @@ msgid "Show default avatar, ignoring your global profile"
 msgstr "Εμφάνιση προεπιλεγμένου avatar, αγνοώντας το καθολικό προφίλ σας"
 
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:88
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:89
 msgid "Show default emojis in expression autocomplete"
 msgstr "Εμφάνιση προεπιλεγμένων emoji στην αυτόματη συμπλήρωση εκφράσεων"
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:72
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:73
 msgid "Show delete button"
 msgstr "Εμφάνιση κουμπιού διαγραφής"
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:76
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:77
 msgid "Show download button"
 msgstr "Εμφάνιση κουμπιού λήψης"
 
@@ -30641,7 +30665,7 @@ msgstr "Εμφάνιση ενσωματώσεων και προεπισκόπη�
 #. Short label for an advanced message input preference.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:59
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:124
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:125
 msgid "Show emoji button"
 msgstr "Εμφάνιση κουμπιού emoji"
 
@@ -30651,7 +30675,7 @@ msgid "Show emoji reactions on messages"
 msgstr "Εμφάνιση αντιδράσεων emoji στα μηνύματα"
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:80
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:81
 msgid "Show favorite button"
 msgstr "Εμφάνιση κουμπιού αγαπημένων"
 
@@ -30673,14 +30697,14 @@ msgid "Show focus ring on chat text area"
 msgstr "Εμφάνιση περιγράμματος εστίασης στο πεδίο κειμένου συνομιλίας"
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:64
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:65
 msgid "Show GIF indicator"
 msgstr "Εμφάνιση ένδειξης GIF"
 
 #. Plus menu submenu toggle that shows the GIFs button next to the textarea.
 #. Short label for an advanced message input preference.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:43
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:104
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:105
 msgid "Show GIFs button"
 msgstr "Εμφάνιση κουμπιού GIF"
 
@@ -30690,7 +30714,7 @@ msgid "Show icon when collapsed"
 msgstr "Εμφάνιση εικονιδίου όταν είναι συμπτυγμένο"
 
 #. Short confirmation button label in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:164
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:165
 msgid "Show in all communities"
 msgstr "Εμφάνιση σε όλες τις κοινότητες"
 
@@ -30729,7 +30753,7 @@ msgstr "Εμφάνιση έως 5 (σήμα +5)"
 #. Plus menu submenu toggle that shows the saved media (memes) button next to the textarea.
 #. Short label for an advanced message input preference.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:47
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:108
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:109
 msgid "Show media button"
 msgstr "Εμφάνιση κουμπιού πολυμέσων"
 
@@ -30750,7 +30774,7 @@ msgid "Show menu bar icon"
 msgstr "Εμφάνιση εικονιδίου γραμμής μενού"
 
 #. Short label for an advanced message action bar preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:48
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:49
 msgid "Show message action bar"
 msgstr "Εμφάνιση γραμμής ενεργειών μηνύματος"
 
@@ -30833,7 +30857,7 @@ msgid "Show oldest messages first"
 msgstr "Εμφάνιση πρώτα των παλαιότερων μηνυμάτων"
 
 #. Short label for an advanced message action bar preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:52
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:53
 msgid "Show only the more button"
 msgstr "Να εμφανίζεται μόνο το κουμπί \"Περισσότερα\""
 
@@ -30855,7 +30879,7 @@ msgstr "Εμφάνιση ρυθμιστικών έντασης ήχου συμμ
 #. Plus menu submenu toggle that shows the persona selector next to the textarea.
 #. Short label for an advanced message input preference.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:51
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:128
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:129
 msgid "Show personas button"
 msgstr "Show personas button"
 
@@ -30865,7 +30889,7 @@ msgid "Show profile time zone settings"
 msgstr "Εμφάνιση ρυθμίσεων ζώνης ώρας προφίλ"
 
 #. Short label for an advanced message action bar preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:56
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:57
 msgid "Show quick reactions"
 msgstr "Εμφάνιση γρήγορων αντιδράσεων"
 
@@ -30875,7 +30899,7 @@ msgid "Show rich previews for YouTube links."
 msgstr "Εμφάνιση πλούσιων προεπισκοπήσεων για συνδέσμους YouTube."
 
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:100
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:101
 msgid "Show saved media in expression autocomplete"
 msgstr "Εμφάνιση αποθηκευμένων πολυμέσων στην αυτόματη συμπλήρωση εκφράσεων"
 
@@ -30884,7 +30908,7 @@ msgstr "Εμφάνιση αποθηκευμένων πολυμέσων στην 
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #: src/features/channel/components/textarea/TextareaContextMenu.tsx:102
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:63
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:132
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:133
 msgid "Show send button"
 msgstr "Εμφάνιση κουμπιού αποστολής"
 
@@ -30896,12 +30920,12 @@ msgstr "Εμφάνιση περιεχομένου spoiler όταν πατηθε�
 #. Short label for an advanced message input preference.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:55
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:120
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:121
 msgid "Show stickers button"
 msgstr "Εμφάνιση κουμπιού αυτοκόλλητων"
 
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:96
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:97
 msgid "Show stickers in expression autocomplete"
 msgstr "Εμφάνιση αυτοκόλλητων στην αυτόματη συμπλήρωση εκφράσεων"
 
@@ -30911,7 +30935,7 @@ msgid "Show strikethrough Markdown text in a slightly muted color."
 msgstr "Εμφάνιση του διαγραμμένου κειμένου Markdown σε ελαφρώς πιο απαλό χρώμα."
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:84
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:85
 msgid "Show suppress embeds button"
 msgstr "Εμφάνιση κουμπιού απόκρυψης ενσωματώσεων"
 
@@ -31217,7 +31241,7 @@ msgstr "Παράλειψη"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced inbox preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:140
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:141
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:459
 msgid "Skip \"Mark all as read\" confirmation"
 msgstr "Παράλειψη επιβεβαίωσης \"Επισήμανση όλων ως αναγνωσμένων\""
@@ -32257,7 +32281,7 @@ msgstr "Στερεοφωνικό μικρόφωνο"
 #. Label for the has:sticker filter option in the mobile channel search sheet.
 #. Screen-reader fragment listing one sticker on a message. Lowercase because it appears inside a longer sentence.
 #: src/features/channel/components/bottomsheets/ChannelSearchBottomSheet.tsx:120
-#: src/features/channel/components/ChannelMessage.tsx:56
+#: src/features/channel/components/ChannelMessage.tsx:62
 msgid "sticker"
 msgstr "αυτοκόλλητο"
 
@@ -32397,7 +32421,7 @@ msgid "Stop"
 msgstr "Διακοπή"
 
 #. Confirmation prompt in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:160
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:161
 msgid "Stop hiding muted channels by default?"
 msgstr "Να μην αποκρύπτονται πλέον τα κανάλια σε σίγαση από προεπιλογή;"
 
@@ -34918,7 +34942,7 @@ msgstr "Χρονοσημάνσεις"
 #. Markdown alert label for a tip callout when copied as plaintext.
 #. Short label in the messaging block elements. Keep it concise. Keep the tone plain and specific.
 #: src/features/messaging/components/markdown/renderers/common/BlockElements.tsx:42
-#: src/features/messaging/utils/markdown/Plaintext.ts:56
+#: src/features/messaging/utils/markdown/Plaintext.ts:58
 msgid "Tip"
 msgstr "Συμβουλή"
 
@@ -36109,9 +36133,9 @@ msgstr "άγνωστος ρόλος"
 #. Reason spoken by screen readers when a slash-command argument does not match any role.
 #. Short label in the messaging mention renderer. Keep it concise.
 #: src/features/channel/components/modals/channel_tabs/ChannelPermissionsTab.tsx:64
-#: src/features/lexical/composer/nodes/ComposerMentionPill.tsx:25
+#: src/features/lexical/composer/nodes/ComposerMentionPill.tsx:29
 #: src/features/lexical/composer/nodes/SlashSlotNode.ts:65
-#: src/features/messaging/components/markdown/renderers/MentionRenderer.tsx:31
+#: src/features/messaging/components/markdown/renderers/MentionRenderer.tsx:33
 msgid "Unknown role"
 msgstr "Άγνωστος ρόλος"
 
@@ -36146,19 +36170,19 @@ msgstr "Άγνωστος χρήστης"
 
 #. Fallback plaintext for an unresolved channel mention in copied markdown. Keep lowercase and hyphenated.
 #. Short label in the messaging mention renderer. Keep it concise.
-#: src/features/messaging/components/markdown/renderers/MentionRenderer.tsx:35
-#: src/features/messaging/utils/markdown/Plaintext.ts:80
+#: src/features/messaging/components/markdown/renderers/MentionRenderer.tsx:37
+#: src/features/messaging/utils/markdown/Plaintext.ts:82
 msgid "unknown-channel"
 msgstr "unknown-channel"
 
 #. Fallback plaintext for an unresolved mention in copied markdown. Keep lowercase and hyphenated.
-#: src/features/messaging/components/markdown/renderers/MentionRenderer.tsx:43
-#: src/features/messaging/utils/markdown/Plaintext.ts:84
+#: src/features/messaging/components/markdown/renderers/MentionRenderer.tsx:45
+#: src/features/messaging/utils/markdown/Plaintext.ts:86
 msgid "unknown-mention"
 msgstr "unknown-mention"
 
 #. Fallback plaintext for an unresolved role mention in copied markdown. Keep lowercase and hyphenated.
-#: src/features/messaging/utils/markdown/Plaintext.ts:76
+#: src/features/messaging/utils/markdown/Plaintext.ts:78
 msgid "unknown-role"
 msgstr "unknown-role"
 
@@ -36679,7 +36703,7 @@ msgstr "Ανέβασμα στοιχείων"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced message input privacy preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:112
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:113
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:107
 msgid "Upload attachments before sending"
 msgstr "Ανέβασμα συνημμένων πριν από την αποστολή"
@@ -38552,7 +38576,7 @@ msgstr "Αφύπνιση"
 #. Markdown alert label for a warning callout when copied as plaintext.
 #. Warning text in the messaging block elements. Keep the tone plain and specific.
 #: src/features/messaging/components/markdown/renderers/common/BlockElements.tsx:50
-#: src/features/messaging/utils/markdown/Plaintext.ts:64
+#: src/features/messaging/utils/markdown/Plaintext.ts:66
 msgid "Warning"
 msgstr "Προειδοποίηση"
 
