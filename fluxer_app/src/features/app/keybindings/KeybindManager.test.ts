@@ -214,6 +214,12 @@ describe('KeybindManager editable shortcut matching', () => {
 	});
 	it('allows page-scroll shortcuts from an empty channel textarea only', () => {
 		expect(shouldAllowLocalShortcutForChannelTextarea({editableFocusBehavior: 'allow_when_empty'}, '')).toBe(true);
+		expect(shouldAllowLocalShortcutForChannelTextarea({editableFocusBehavior: 'allow_when_empty'}, ' ')).toBe(
+			false,
+		);
+		expect(shouldAllowLocalShortcutForChannelTextarea({editableFocusBehavior: 'allow_when_empty'}, '   ')).toBe(
+			false,
+		);
 		expect(shouldAllowLocalShortcutForChannelTextarea({editableFocusBehavior: 'allow_when_empty'}, 'draft')).toBe(
 			false,
 		);
