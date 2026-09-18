@@ -2,6 +2,7 @@
 
 import type {RuntimeConfigSnapshot} from '@app/features/app/state/InstanceSnapshotStore';
 import ExperimentAssignments from '@app/features/experiment/state/ExperimentAssignments';
+import {PersonaStore} from '@app/features/persona/state/PersonaStore';
 import {AccountScopedWork} from '@app/features/platform/state/AccountScopedWork';
 import SessionManager from '@app/features/platform/state/AuthSession';
 import {Logger} from '@app/features/platform/utils/AppLogger';
@@ -115,6 +116,7 @@ class Authentication {
 
 	handleLogout(options?: {skipRedirect?: boolean}): void {
 		ExperimentAssignments.reset();
+		PersonaStore.reset();
 		this.loginState = LoginState.DEFAULT;
 		this.currentMfaTicket = null;
 		this.availableMfaMethods = null;
