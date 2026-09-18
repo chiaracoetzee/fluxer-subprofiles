@@ -28,7 +28,6 @@ import {
 	HIDE_MEMBERS_DESCRIPTOR,
 	HIDE_SERVER_LIST_DESCRIPTOR,
 	HIDE_CHANNELS_DESCRIPTOR,
-	MEMBERS_LIST_UNAVAILABLE_AT_THIS_SCREEN_WIDTH_DESCRIPTOR,
 	OPEN_CHANNEL_DETAILS_FOR_DESCRIPTOR,
 	OPEN_DIRECT_MESSAGE_DETAILS_FOR_DESCRIPTOR,
 	OPEN_DIRECT_MESSAGE_PROFILE_DESCRIPTOR,
@@ -58,6 +57,7 @@ import {
 	StaffToolsButton,
 } from '@app/features/channel/components/channel_header_components/UtilityButtons';
 import {useChannelSearchState} from '@app/features/channel/components/channel_view/useChannelSearchState';
+import {useCollapsedPanelBadges} from '@app/features/channel/components/channel_header/useCollapsedPanelBadges';
 import {MessageSearchBar} from '@app/features/channel/components/message_search_bar/MessageSearchBar';
 import {ChannelTopicModal} from '@app/features/channel/components/modals/ChannelTopicModal';
 import {CreateDMModal} from '@app/features/channel/components/modals/CreateDMModal';
@@ -74,7 +74,6 @@ import {
 } from '@app/features/i18n/utils/CommonMessageDescriptors';
 import {isKeyboardActivationKey} from '@app/features/input/utils/KeyboardUtils';
 import type {LexicalSearchInputHandle} from '@app/features/lexical/search/LexicalSearchInput';
-import {useCanFitMemberList} from '@app/features/member/hooks/useMemberListVisible';
 import MemberList from '@app/features/member/state/MemberList';
 import * as FavoritesCommands from '@app/features/messaging/commands/FavoritesCommands';
 import {SafeMarkdown} from '@app/features/messaging/components/markdown';
@@ -186,7 +185,7 @@ export const ChannelHeader = observer(
 					CallState.hasActiveCall(channel.id),
 			);
 		const isVoiceHeaderActive = isVoiceCallActive || forceVoiceCallStyle;
-		const canFitMemberList = useCanFitMemberList();
+		const collapsedBadges = useCollapsedPanelBadges();
 		const memberListChannelId = channel?.id ?? null;
 		const memberListUsesChannelOverride = Boolean(memberListDefaultHiddenForChannel && memberListChannelId);
 		const isMembersToggleOpen = memberListUsesChannelOverride
@@ -319,13 +318,12 @@ export const ChannelHeader = observer(
 			);
 		}, [channel]);
 		const handleToggleMembers = useCallback(() => {
-			if (!canFitMemberList) return;
 			if (memberListUsesChannelOverride) {
 				MemberList.toggleDefaultHiddenChannelMembers(memberListChannelId);
 				return;
 			}
 			LayoutCommands.toggleMembers(!isMembersOpen);
-		}, [isMembersOpen, canFitMemberList, memberListChannelId, memberListUsesChannelOverride]);
+		}, [isMembersOpen, memberListChannelId, memberListUsesChannelOverride]);
 		useEffect(() => {
 			const handleChannelDetailsOpen = (payload?: unknown) => {
 				const {initialTab} = (payload ?? {}) as {initialTab?: 'members' | 'pins'};
@@ -337,15 +335,13 @@ export const ChannelHeader = observer(
 		useEffect(() => {
 			if (!showMembersToggle) return;
 			return ComponentBus.subscribe('CHANNEL_MEMBER_LIST_TOGGLE', () => {
-				if (canFitMemberList) {
-					if (memberListUsesChannelOverride) {
-						MemberList.toggleDefaultHiddenChannelMembers(memberListChannelId);
-						return;
-					}
-					LayoutCommands.toggleMembers(!isMembersOpen);
+				if (memberListUsesChannelOverride) {
+					MemberList.toggleDefaultHiddenChannelMembers(memberListChannelId);
+					return;
 				}
+				LayoutCommands.toggleMembers(!isMembersOpen);
 			});
-		}, [showMembersToggle, canFitMemberList, isMembersOpen, memberListChannelId, memberListUsesChannelOverride]);
+		}, [showMembersToggle, isMembersOpen, memberListChannelId, memberListUsesChannelOverride]);
 		useEffect(() => {
 			if (!channel?.topic) {
 				setIsTopicOverflowing(false);
@@ -614,6 +610,8 @@ export const ChannelHeader = observer(
 									<ChannelHeaderIcon
 										icon={SquaresFourIcon}
 										isSelected={LayoutState.serverListVisible}
+										badgeCount={collapsedBadges.serverListMentionCount}
+										hasUnread={collapsedBadges.serverListHasUnread}
 										label={
 											LayoutState.serverListVisible
 												? i18n._(HIDE_SERVER_LIST_DESCRIPTOR)
@@ -626,6 +624,8 @@ export const ChannelHeader = observer(
 									<ChannelHeaderIcon
 										icon={SidebarSimpleIcon}
 										isSelected={LayoutState.channelListVisible}
+										badgeCount={collapsedBadges.channelListMentionCount}
+										hasUnread={collapsedBadges.channelListHasUnread}
 										label={
 											LayoutState.channelListVisible
 												? i18n._(HIDE_CHANNELS_DESCRIPTOR)
@@ -1079,14 +1079,11 @@ export const ChannelHeader = observer(
 									icon={UsersIcon}
 									isSelected={isMembersToggleOpen}
 									label={
-										!canFitMemberList
-											? i18n._(MEMBERS_LIST_UNAVAILABLE_AT_THIS_SCREEN_WIDTH_DESCRIPTOR)
-											: isMembersToggleOpen
-												? i18n._(HIDE_MEMBERS_DESCRIPTOR)
-												: i18n._(SHOW_MEMBERS_DESCRIPTOR)
+										isMembersToggleOpen
+											? i18n._(HIDE_MEMBERS_DESCRIPTOR)
+											: i18n._(SHOW_MEMBERS_DESCRIPTOR)
 									}
 									onClick={handleToggleMembers}
-									disabled={!canFitMemberList}
 									aria-pressed={isMembersToggleOpen}
 									keybindAction="chat_toggle_member_list"
 									data-flx="channel.channel-header.channel-header-icon.toggle-members"
