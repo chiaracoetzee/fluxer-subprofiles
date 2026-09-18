@@ -18,7 +18,6 @@ msgstr ""
 msgid "— Today at 12:00 PM"
 msgstr "— Сегодня в 12:00"
 
-
 #. Description text in the messages tab.
 #: src/features/user/components/modals/tabs/appearance_tab/MessagesTab.tsx:52
 msgid "... turn dense mode on. Nice!"
@@ -42,7 +41,6 @@ msgstr "(видно только вам)"
 msgid "(Prefix: {0})"
 msgstr "(Префикс: {0})"
 
-
 #. Short label in the keybinds tab. Keep it concise.
 #: src/features/user/components/modals/tabs/keybinds_tab/CustomKeybindsList.tsx:26
 msgid "(unassigned)"
@@ -62,7 +60,6 @@ msgstr "{0, plural, one {# участник} few {# участника} many {# 
 msgid "{0} notice(s) during import"
 msgstr "{0} замечаний при импорте"
 
-
 #. placeholder {0}: progress.current
 #. placeholder {1}: progress.total
 #. placeholder {2}: progress.label ?? 'items'
@@ -71,22 +68,21 @@ msgstr "{0} замечаний при импорте"
 msgid "{0} of {1} {2} ({3}%)"
 msgstr "{0} из {1} {2} ({3}%)"
 
-
 #. Screen reader announcement in the composer when two people are typing. {a} and {b} are their display names.
-#: src/features/typing/rolling/RollingTypingText.tsx:19
-#: src/features/typing/rolling/RollingTypingText.tsx:54
+#: src/features/typing/rolling/RollingTypingText.tsx:20
+#: src/features/typing/rolling/RollingTypingText.tsx:85
 msgid "{a} and {b} are typing..."
 msgstr "{a} и {b} печатают…"
 
 #. Screen reader announcement in the composer when one person is typing. {a} is their display name.
-#: src/features/typing/rolling/RollingTypingText.tsx:15
-#: src/features/typing/rolling/RollingTypingText.tsx:50
+#: src/features/typing/rolling/RollingTypingText.tsx:16
+#: src/features/typing/rolling/RollingTypingText.tsx:81
 msgid "{a} is typing..."
 msgstr "{a} печатает…"
 
 #. Screen reader announcement in the composer when three people are typing. {a}, {b} and {c} are their display names.
-#: src/features/typing/rolling/RollingTypingText.tsx:24
-#: src/features/typing/rolling/RollingTypingText.tsx:60
+#: src/features/typing/rolling/RollingTypingText.tsx:25
+#: src/features/typing/rolling/RollingTypingText.tsx:91
 msgid "{a}, {b} and {c} are typing..."
 msgstr "{a}, {b} и {c} печатают…"
 
@@ -1449,7 +1445,7 @@ msgid "{length, plural, one {# app} other {# apps}}"
 msgstr "{length, plural, one {# приложение} few {# приложения} many {# приложений} other {# приложения}}"
 
 #. Screen-reader fragment listing multiple attachments on a message. length is the count.
-#: src/features/channel/components/ChannelMessage.tsx:52
+#: src/features/channel/components/ChannelMessage.tsx:58
 msgid "{length, plural, one {# attachment} other {# attachments}}"
 msgstr "{length, plural, one {# вложение} few {# вложения} many {# вложений} other {# вложения}}"
 
@@ -1459,12 +1455,12 @@ msgid "{length, plural, one {# channel} other {# channels}}"
 msgstr "{length, plural, one {# канал} few {# канала} many {# каналов} other {# канала}}"
 
 #. Screen-reader fragment listing multiple embeds on a message. length is the count.
-#: src/features/channel/components/ChannelMessage.tsx:70
+#: src/features/channel/components/ChannelMessage.tsx:76
 msgid "{length, plural, one {# embed} other {# embeds}}"
 msgstr "{length, plural, one {# встраиваемый элемент} few {# встраиваемых элемента} many {# встраиваемых элементов} other {# встраиваемого элемента}}"
 
 #. Screen-reader fragment listing multiple stickers on a message. length is the count.
-#: src/features/channel/components/ChannelMessage.tsx:61
+#: src/features/channel/components/ChannelMessage.tsx:67
 msgid "{length, plural, one {# sticker} other {# stickers}}"
 msgstr "{length, plural, one {# стикер} few {# стикера} many {# стикеров} other {# стикера}}"
 
@@ -1538,7 +1534,6 @@ msgstr "{months, plural, one {# месяц} few {# месяца} many {# мес�
 #: src/features/persona/components/PersonaComposerPill.tsx:33
 msgid "{name} ({mode}) - Click to switch persona"
 msgstr "{name} ({mode}) — Нажмите, чтобы сменить персону"
-
 
 #. Default name for a role created by duplicating another role in the community roles settings tab. {name} is the source role name; translate the whole label so "copy" can move or inflect as the language needs.
 #: src/features/guild/components/modals/guild_tabs/GuildRolesTab.tsx:52
@@ -2721,7 +2716,6 @@ msgstr "Требуется подтверждение аккаунта"
 msgid "Account: @{username}"
 msgstr "Аккаунт: @{username}"
 
-
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/search_index/LinkedAccountsIndex.ts:20
 msgid "Accounts"
@@ -2846,11 +2840,9 @@ msgstr "Сейчас онлайн"
 msgid "Active persona mode"
 msgstr "Режим активной персоны"
 
-
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:746
 msgid "Active Persona Mode"
 msgstr "Режим активной персоны"
-
 
 #. Developer premium-state scenario label.
 #: src/features/devtools/components/PremiumScenarioOptions.ts:36
@@ -3138,7 +3130,6 @@ msgstr "Добавить ключ доступа"
 msgid "Add Persona"
 msgstr "Добавить персону"
 
-
 #. Generic action label that opens the reaction picker for a message.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:522
@@ -3213,7 +3204,6 @@ msgstr "Добавить трансляцию"
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:980
 msgid "Add Tag Pair ({0}/5)"
 msgstr "Добавить пару тегов ({0}/5)"
-
 
 #. Description for configuring an optional setup wizard integration now.
 #: src/features/app/components/setup/SetupWizardSteps.tsx:926
@@ -3617,7 +3607,6 @@ msgstr "Все сообщения"
 #: src/features/persona/components/PersonaPickerSheet.tsx:194
 msgid "All Personas"
 msgstr "Все персоны"
-
 
 #: src/features/user/components/modals/tabs/component_gallery_tab/IndicatorsTab.tsx:227
 msgid "All status types"
@@ -4458,7 +4447,7 @@ msgid "Apply theme"
 msgstr "Применить тему"
 
 #. Short confirmation button label in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:152
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:153
 msgid "Apply to all communities"
 msgstr "Применить ко всем сообществам"
 
@@ -4504,7 +4493,6 @@ msgstr "Вы уверены, что хотите удалить <0>{0}</0>?"
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:666
 msgid "Are you sure you want to delete <0>{0}</0>? This action cannot be undone."
 msgstr "Вы уверены, что хотите удалить <0>{0}</0>? Это действие нельзя отменить."
-
 
 #. Destructive confirmation for deleting a channel category.
 #. Destructive confirmation for deleting a channel.
@@ -4580,7 +4568,6 @@ msgstr "Вы уверены, что хотите удалить <0>{engineName}<
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:437
 msgid "Are you sure you want to replace all <0>{existingCount}</0> existing persona(s)? This will permanently delete them from your account and cannot be undone."
 msgstr "Вы уверены, что хотите заменить все существующие персоны (<0>{existingCount}</0>)? Они будут навсегда удалены из вашего аккаунта, и это действие нельзя отменить."
-
 
 #. Confirm dialog message for the destructive reset action. Tone stays plain.
 #: src/features/platform/utils/DesktopLocaleBridge.ts:178
@@ -4660,7 +4647,7 @@ msgid "Attach files"
 msgstr "Прикреплять файлы"
 
 #. Screen-reader fragment listing one attachment on a message. Lowercase because it appears inside a longer sentence.
-#: src/features/channel/components/ChannelMessage.tsx:47
+#: src/features/channel/components/ChannelMessage.tsx:53
 msgid "attachment"
 msgstr "вложение"
 
@@ -5157,7 +5144,7 @@ msgstr "Автоматически отправлять GIF из панели в
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced GIF behavior preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:40
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:41
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:11
 msgid "Automatically send GIFs when selected"
 msgstr "Автоматически отправлять GIF при выборе"
@@ -5228,7 +5215,6 @@ msgstr "Файл аватара слишком большой. Выберите 
 msgid "Avatar image failed to download: {error}. Persona was imported without an avatar."
 msgstr "Не удалось скачать аватар: {error}. Персона импортирована без аватара."
 
-
 #. Webhook avatar upload error. IMAGE_MAX_SIZE_LABEL is a formatted file-size limit.
 #: src/features/webhook/components/WebhookListItem.tsx:39
 msgid "Avatar is too large — pick one under {imageMaxSizeLabel}."
@@ -5257,7 +5243,6 @@ msgstr "Аватары"
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:42
 msgid "avatars downloaded"
 msgstr "аватаров скачано"
-
 
 #. Field label in the voice connection status popout. Shows the average RTT in ms over the recent window.
 #: src/features/voice/components/voice_connection_status/shared.ts:50
@@ -6691,7 +6676,7 @@ msgstr "Настройки категории"
 #. Markdown alert label for a caution callout when copied as plaintext.
 #. Short label in the messaging block elements. Keep it concise. Keep the tone plain and specific.
 #: src/features/messaging/components/markdown/renderers/common/BlockElements.tsx:54
-#: src/features/messaging/utils/markdown/Plaintext.ts:68
+#: src/features/messaging/utils/markdown/Plaintext.ts:70
 msgid "Caution"
 msgstr "Внимание"
 
@@ -6830,7 +6815,6 @@ msgstr "Форма смены пароля"
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:712
 msgid "Change persona"
 msgstr "Change persona"
-
 
 #. Subscription status badge meaning a future billing plan change is scheduled.
 #: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:437
@@ -7202,7 +7186,7 @@ msgstr "ID канала скопирован в буфер обмена"
 #. Short label in the messaging mention renderer. Keep it concise.
 #. Type chip suffix in tooltips for inline rendered channel mentions. Lowercase because it follows the channel name.
 #: src/features/messaging/components/markdown/renderers/LinkRenderer.tsx:86
-#: src/features/messaging/components/markdown/renderers/MentionRenderer.tsx:39
+#: src/features/messaging/components/markdown/renderers/MentionRenderer.tsx:41
 msgid "channel link"
 msgstr "ссылка на канал"
 
@@ -7520,7 +7504,6 @@ msgstr "Придумайте новый пароль."
 msgid "Choose a PluralKit export (.json) or drag & drop"
 msgstr "Выберите файл экспорта PluralKit (.json) или перетащите его сюда"
 
-
 #. Description text in the accessibility tab.
 #: src/features/user/components/modals/tabs/AccessibilityTab.tsx:63
 msgid "Choose a speed for spoken text."
@@ -7617,7 +7600,6 @@ msgstr "Выберите формат времени в приложении"
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:749
 msgid "Choose how untagged messages and persona tags interact with your active persona."
 msgstr "Выберите, как сообщения без тегов и теги персон взаимодействуют с вашей активной персоной."
-
 
 #. Plutonium subscription payment method picker description, generic fallback when no country-specific copy applies.
 #: src/features/app/components/dialogs/components/plutonium/hooks/useCheckoutActions.tsx:57
@@ -8879,7 +8861,7 @@ msgstr "Фокус на поле ввода"
 
 #. Button label that opens a dedicated advanced settings modal for configuring screen-share encoder controls.
 #. Button label that opens a dedicated advanced settings modal.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:168
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:169
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedVideoControls.tsx:160
 msgid "Configure"
 msgstr "Настроить"
@@ -8954,12 +8936,10 @@ msgstr "Настроить значок профиля"
 msgid "Configured Personas ({count})"
 msgstr "Настроенные персоны ({count})"
 
-
 #. Progress status for configuring persona
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:334
 msgid "Configuring {name}..."
 msgstr "Настройка {name}..."
-
 
 #. Action label for confirming a mass mention that may notify many people.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
@@ -10977,7 +10957,6 @@ msgstr "Измените свой тег или сохраните его при
 msgid "Customizes the border and banner color on this persona's profile"
 msgstr "Настраивает цвет рамки и баннера в профиле этой персоны"
 
-
 #. Label in the accent color picker. Keep the tone plain and specific.
 #: src/features/user/components/modals/tabs/my_profile_tab/AccentColorPicker.tsx:16
 msgid "Customizes the border and banner color on your profile"
@@ -11159,7 +11138,6 @@ msgstr "Деактивировать"
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:210
 msgid "Deactivate persona"
 msgstr "Деактивировать персону"
-
 
 #. Voice action label. Turns off what the user hears in voice chat. Distinct from microphone mute.
 #: src/features/voice/utils/VoiceMessageDescriptors.ts:78
@@ -11589,11 +11567,9 @@ msgstr "Удалить ключ доступа"
 msgid "Delete persona"
 msgstr "Удалить персону"
 
-
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:664
 msgid "Delete Persona"
 msgstr "Удалить персону"
-
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:403
@@ -11974,7 +11950,6 @@ msgstr "Определять при вводе"
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:531
 msgid "Detected System Name / Tag"
 msgstr "Обнаруженное имя системы или тег"
-
 
 #. Advanced settings category tag.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
@@ -12548,23 +12523,19 @@ msgstr "Масштаб отображения"
 msgid "Display Tag"
 msgstr "Отображаемый тег"
 
-
 #. Toast when display tag icon is removed
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:138
 msgid "Display tag icon removed"
 msgstr "Иконка отображаемого тега удалена"
-
 
 #. Toast when display tag icon is updated
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:134
 msgid "Display tag icon updated"
 msgstr "Иконка отображаемого тега обновлена"
 
-
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:775
 msgid "Display tag will appear next to all persona names in messages. If no display tag is set, your account profile picture will be shown."
 msgstr "Отображаемый тег будет появляться рядом со всеми именами персон в сообщениях. Если тег не задан, будет показываться аватар вашего аккаунта."
-
 
 #. IAR modal: rule description.
 #: src/features/moderation/components/report_modal/IARModalCopy.ts:277
@@ -12797,16 +12768,33 @@ msgid "Done"
 msgstr "Готово"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
+#: src/features/user/components/settings_utils/search_index/AdvancedSettingsIndex.ts:60
+msgid "Double click"
+msgstr "Двойной щелчок"
+
+#. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/section_registry/AppearanceSections.ts:382
 #: src/features/user/components/settings_utils/section_registry/AppearanceSections.ts:386
 msgid "Double-click"
 msgstr "Двойной щелчок"
 
+#. Settings search entry description. One-line summary of what the setting controls.
+#: src/features/user/components/settings_utils/search_index/AdvancedSettingsIndex.ts:72
+msgid "Double-click a message you sent to edit it directly"
+msgstr "Дважды нажмите на отправленное сообщение, чтобы сразу отредактировать его"
+
 #. Empty / hint text on the screen-share hover card explaining how to start watching a remote stream.
 #: src/features/voice/components/StreamWatchHoverCard.tsx:33
 msgid "Double-click someone to watch their stream."
 msgstr "Дважды нажмите на пользователя, чтобы посмотреть его трансляцию."
+
+#. Settings search entry label for double-clicking a message to edit it.
+#. Short label for an advanced message editing preference.
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:298
+#: src/features/user/components/settings_utils/search_index/AdvancedSettingsIndex.ts:56
+msgid "Double-click to edit"
+msgstr "Двойной щелчок для редактирования"
 
 #. Button that downloads account backup codes as a text file.
 #. Generic action label that downloads an attachment / file.
@@ -12911,7 +12899,6 @@ msgstr "Скачать видео"
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:257
 msgid "Downloading avatar {current} of {total}..."
 msgstr "Скачивание аватара {current} из {total}..."
-
 
 #. Tooltip on the channel header updater icon while downloading a versioned update without throughput info.
 #: src/features/channel/components/channel_header_components/UpdaterIcon.tsx:33
@@ -13089,7 +13076,6 @@ msgstr "Дублировать роль"
 msgid "Duplicate tag pair on this persona"
 msgstr "Такая пара тегов уже есть у этой персоны"
 
-
 #. Field label in the voice connection status popout. Shows how long the current voice session has been connected.
 #: src/features/voice/components/voice_connection_status/shared.ts:74
 msgid "Duration:"
@@ -13105,12 +13091,10 @@ msgstr "Нидерландский"
 msgid "e.g. Alice"
 msgstr "напр., Алиса"
 
-
 #. Placeholder for persona pronouns
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:186
 msgid "e.g. she/her"
 msgstr "напр., она/её"
-
 
 #. Placeholder or example text in the authentication passkey name modal. Keep the tone plain and specific.
 #: src/features/auth/components/modals/PasskeyNameModal.tsx:27
@@ -13263,8 +13247,10 @@ msgstr "Изменить медиа"
 
 #. Generic action label that opens the message edit composer.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
+#. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:708
 #: src/features/input/state/input_keybind/shared.ts:9
+#: src/features/user/components/settings_utils/search_index/AdvancedSettingsIndex.ts:68
 msgid "Edit message"
 msgstr "Изменить сообщение"
 
@@ -13291,11 +13277,9 @@ msgstr "Изменять переопределения разрешений д�
 msgid "Edit persona"
 msgstr "Редактировать персону"
 
-
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:878
 msgid "Edit Persona"
 msgstr "Редактировать персону"
-
 
 #: src/features/app/components/floating/UserAreaPopout.tsx:743
 #: src/features/app/components/pages/YouPage.tsx:157
@@ -13491,7 +13475,7 @@ msgid "Email verified successfully"
 msgstr "Электронная почта подтверждена"
 
 #. Screen-reader fragment listing one embed on a message. Lowercase because it appears inside a longer sentence.
-#: src/features/channel/components/ChannelMessage.tsx:65
+#: src/features/channel/components/ChannelMessage.tsx:71
 msgid "embed"
 msgstr "встраиваемый элемент"
 
@@ -13883,7 +13867,7 @@ msgid "Enable self-hosted mode client-side. Hides all premium and billing UI."
 msgstr "Включить режим самостоятельного хостинга на стороне клиента. Скрывает весь интерфейс премиума и оплаты."
 
 #. Short label for an advanced message action bar preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:60
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:61
 msgid "Enable Shift to expand"
 msgstr "Включить Shift для разворачивания"
 
@@ -14708,7 +14692,6 @@ msgstr "Экспорт моих данных"
 msgid "Export Summary"
 msgstr "Сводка экспорта"
 
-
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/section_registry/AppearanceSections.ts:110
 msgid "Export themes"
@@ -14854,7 +14837,6 @@ msgstr "Не удалось удалить канал"
 msgid "Failed to delete persona"
 msgstr "Не удалось удалить персону"
 
-
 #. Toast / inline error in the camera preview modal when enabling the camera fails.
 #: src/features/voice/components/modals/CameraPreviewModal.tsx:59
 msgid "Failed to enable camera."
@@ -14879,7 +14861,6 @@ msgstr "Не удалось сгенерировать токен"
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:62
 msgid "Failed to import personas"
 msgstr "Не удалось импортировать персоны"
-
 
 #: src/features/moderation/components/modals/KickMemberModal.tsx:35
 msgid "Failed to kick member. Try again."
@@ -14953,7 +14934,6 @@ msgstr "Не удалось загрузить ваши сообщества."
 msgid "Failed to parse JSON file. Please ensure it is a valid PluralKit export."
 msgstr "Не удалось обработать JSON-файл. Убедитесь, что это корректный файл экспорта PluralKit."
 
-
 #. Channel details bottom sheet label or action (channel type, settings, toast, confirmation, or notification option).
 #. Error modal title shown when pinning a DM in the DM list fails.
 #. Error toast when pinning a direct message fails.
@@ -14993,7 +14973,6 @@ msgstr "Не удалось обработать обрезанное изобр
 msgid "Failed to read the selected file."
 msgstr "Не удалось прочитать выбранный файл."
 
-
 #. Error message in the background image gallery modal. Keep the tone plain and specific.
 #: src/features/theme/components/modals/BackgroundImageGalleryModal.tsx:123
 msgid "Failed to remove background image. Try again."
@@ -15032,7 +15011,6 @@ msgstr "Не удалось сбросить премиум-статус."
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:158
 msgid "Failed to save persona"
 msgstr "Не удалось сохранить персону"
-
 
 #. Error shown when the initial email verification code send fails on the DSA report flow.
 #: src/features/moderation/components/pages/ReportPage.tsx:67
@@ -15150,7 +15128,6 @@ msgstr "Не удалось загрузить эмодзи. Повторите 
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:142
 msgid "Failed to upload icon to server"
 msgstr "Не удалось загрузить иконку на сервер"
-
 
 #. IAR modal: rule description.
 #: src/features/moderation/components/report_modal/IARModalCopy.ts:237
@@ -16075,7 +16052,7 @@ msgid "Full legal name"
 msgstr "Полное имя"
 
 #. Screen-reader-only identity detail appended to a user mention in the message composer. Preserve {tag}; it contains the full user tag.
-#: src/features/lexical/composer/nodes/ComposerMentionPill.tsx:20
+#: src/features/lexical/composer/nodes/ComposerMentionPill.tsx:24
 msgid "Full user tag: {tag}"
 msgstr "Полный тег пользователя: {tag}"
 
@@ -17242,13 +17219,13 @@ msgstr "Скрыть заглушенные каналы"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced sidebar preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:144
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:145
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:487
 msgid "Hide muted channels by default"
 msgstr "Скрывать заглушенные каналы по умолчанию"
 
 #. Confirmation prompt in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:148
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:149
 msgid "Hide muted channels by default?"
 msgstr "Скрывать заглушенные каналы по умолчанию?"
 
@@ -17566,7 +17543,6 @@ msgstr "Файл значка слишком большой. Выберите ф
 msgid "Icon file is too large. Choose an image smaller than 10MB."
 msgstr "Файл иконки слишком велик. Выберите изображение размером менее 10 МБ."
 
-
 #. US state name, shown next to the country name in the mature content gate.
 #: src/features/user/utils/UserGeo.ts:68
 msgctxt "us-state"
@@ -17873,11 +17849,9 @@ msgstr "Импортируйте файл .css, чтобы начать, или 
 msgid "Import Complete"
 msgstr "Импорт завершён"
 
-
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:656
 msgid "Import Complete!"
 msgstr "Импорт завершён!"
-
 
 #. Completion text in the favorite GIF import modal. importedCount is the number added; skippedCount is the number skipped.
 #: src/features/channel/components/pickers/gif/ImportFavoriteGifsModal.tsx:27
@@ -17911,7 +17885,6 @@ msgstr "Импортировать папку"
 msgid "Import from PluralKit"
 msgstr "Импортировать из PluralKit"
 
-
 #. Short label in the channel and chat gif picker header. Keep it concise.
 #: src/features/channel/components/pickers/gif/GifPickerHeader.tsx:30
 msgid "Import GIFs"
@@ -17929,7 +17902,6 @@ msgstr "Импортировать ещё"
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:571
 msgid "Import Strategy"
 msgstr "Стратегия импорта"
-
 
 #. Accessible label for the import-template form element. Used by assistive tech only.
 #: src/features/guild/components/modals/add_guild_modal/shared.ts:141
@@ -17955,7 +17927,7 @@ msgstr "Импорт недоступен"
 #. Markdown alert label for an important callout when copied as plaintext.
 #. Short label in the messaging block elements. Keep it concise. Keep the tone plain and specific.
 #: src/features/messaging/components/markdown/renderers/common/BlockElements.tsx:46
-#: src/features/messaging/utils/markdown/Plaintext.ts:60
+#: src/features/messaging/utils/markdown/Plaintext.ts:62
 msgid "Important"
 msgstr "Важно"
 
@@ -17985,11 +17957,9 @@ msgstr "Импортированная тема применена."
 msgid "Importing Personas..."
 msgstr "Импорт персон..."
 
-
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:712
 msgid "Importing..."
 msgstr "Импорт..."
-
 
 #. Progress text in the favorite GIF import modal. processedCount is completed URLs, totalCount is queued URLs, importedCount is successfully added GIFs.
 #: src/features/channel/components/pickers/gif/ImportFavoriteGifsModal.tsx:37
@@ -19127,7 +19097,6 @@ msgstr "Сохранять вложения при очистке редакти
 msgid "Keep existing and add new (Recommended)"
 msgstr "Оставить существующие и добавить новые (Рекомендуется)"
 
-
 #. Description for the mirror premium model.
 #: src/features/app/components/setup/SetupWizardSteps.tsx:315
 msgid "Keep free and premium tiers. You can customize the tiers later."
@@ -19170,7 +19139,6 @@ msgstr "Сохранять размер и положение окна при п
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:589
 msgid "Keep your {existingCount} current persona(s) and add all {0} imported personas alongside them as new entries."
 msgstr "Оставить текущие персоны ({existingCount}) и добавить все импортированные персоны ({0}) как новые."
-
 
 #. US state name, shown next to the country name in the mature content gate.
 #: src/features/user/utils/UserGeo.ts:93
@@ -19328,7 +19296,6 @@ msgstr "Последнее использование"
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:65
 msgid "Last Used"
 msgstr "Последнее использование"
-
 
 #. Aria label on the signal-strength icon. {latency} is the integer millisecond latency.
 #: src/features/voice/components/SignalStrengthIcon.tsx:20
@@ -20060,7 +20027,6 @@ msgstr "Почта"
 msgid "Main account"
 msgstr "Основной аккаунт"
 
-
 #. US state name, shown next to the country name in the mature content gate.
 #: src/features/user/utils/UserGeo.ts:103
 msgctxt "us-state"
@@ -20141,7 +20107,6 @@ msgstr "Управление аккаунтами"
 msgid "Manage and create your personas"
 msgstr "Manage and create your personas"
 
-
 #. Security settings section description for account access controls.
 #: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:53
 msgid "Manage apps and devices with access to your account"
@@ -20214,7 +20179,6 @@ msgstr "Управление разрешениями"
 msgid "Manage Personas"
 msgstr "Управление персонами"
 
-
 #. Settings search entry description. One-line summary of what the settings search entry controls.
 #: src/features/user/components/settings_utils/search_index/GiftInventoryIndex.ts:58
 msgid "Manage purchased gift codes and gift URLs"
@@ -20252,7 +20216,6 @@ msgstr "Управление подпиской"
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:61
 msgid "Manual"
 msgstr "Вручную"
-
 
 #. Modal title when automatic in-app desktop updates cannot be used.
 #: src/features/updater/commands/UpdaterModalCommands.tsx:53
@@ -20718,7 +20681,6 @@ msgstr "Участник"
 msgid "Member #{index}"
 msgstr "Участник #{index}"
 
-
 #. Accessible label for the actions menu button on a member row.
 #: src/features/channel/components/guild_members_page/MemberTableRow.tsx:85
 msgid "Member actions for {displayName}"
@@ -20831,7 +20793,6 @@ msgstr "Участники с разрешением «{pinMessagesPermissionLab
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:546
 msgid "Members with Avatars"
 msgstr "Участники с аватарами"
-
 
 #: src/features/guild/components/modals/guild_tabs/GuildModerationTab.tsx:309
 msgid "Members with roles can bypass these checks. For public spaces, we recommend enabling verification."
@@ -20958,7 +20919,7 @@ msgid "Menu shortcuts"
 msgstr "Быстрые клавиши в меню"
 
 #. Fallback role label used in screen-reader message summaries.
-#: src/features/channel/components/ChannelMessage.tsx:79
+#: src/features/channel/components/ChannelMessage.tsx:85
 msgid "message"
 msgstr "сообщение"
 
@@ -21827,7 +21788,7 @@ msgid "Multi-line"
 msgstr "Несколько строк"
 
 #. Label in the composer typing row when the names of the people typing do not fit.
-#: src/features/typing/rolling/RollingTypingText.tsx:29
+#: src/features/typing/rolling/RollingTypingText.tsx:30
 msgid "Multiple people are typing..."
 msgstr "Несколько человек печатают..."
 
@@ -22219,7 +22180,6 @@ msgstr "Название"
 msgid "Name *"
 msgstr "Имя *"
 
-
 #. Form validation error shown when the name field is empty.
 #. Form validation error shown when the name field is empty.
 #: src/features/expressions/components/modals/meme_form/MemeFormFields.tsx:16
@@ -22438,15 +22398,15 @@ msgid "New category"
 msgstr "Новая категория"
 
 #. Short confirmation button label in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:156
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:157
 msgid "New communities only"
 msgstr "Только новые сообщества"
 
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:660
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:679
 msgid "New communities you join will automatically have muted channels hidden. Would you also like to apply this setting to all your existing communities?"
 msgstr "В новых сообществах, к которым вы присоединитесь, каналы без уведомлений будут скрываться автоматически. Хотите применить эту настройку ко всем существующим сообществам?"
 
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:691
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:710
 msgid "New communities you join will no longer have muted channels hidden automatically. Would you also like to show muted channels in all your existing communities?"
 msgstr "В новых сообществах, к которым вы присоединитесь, каналы без уведомлений больше не будут скрываться автоматически. Хотите также показать каналы без уведомлений во всех существующих сообществах?"
 
@@ -22525,7 +22485,6 @@ msgstr "Новый пароль"
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:878
 msgid "New Persona"
 msgstr "Новая персона"
-
 
 #. Plutonium subscription card line shown when a move to a lower price is scheduled but the new amount is unknown. {pendingChangeDate} is a date already formatted and localized by code; never write a date into the translation.
 #: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:593
@@ -22630,7 +22589,6 @@ msgstr "Нет"
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:26
 msgid "No \"members\" array found in this export file."
 msgstr "No \"members\" array found in this export file."
-
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
 #: src/features/channel/components/channel_header_components/developer_tools/DeveloperOptionLabels.ts:256
@@ -22825,7 +22783,6 @@ msgstr "Нет доступных обновлений для компьютер
 msgid "No display tag configured. Messages will show your account profile picture."
 msgstr "Отображаемый тег не настроен. В сообщениях будет показываться аватар вашего аккаунта."
 
-
 #: src/features/voice/components/modals/ScreenSharePickerModal.tsx:130
 msgid "No displays found"
 msgstr "Дисплеи не найдены"
@@ -22950,7 +22907,6 @@ msgstr "Совпадений не найдено"
 msgid "No matching personas found."
 msgstr "Подходящих персон не найдено."
 
-
 #: src/features/messaging/components/popouts/RecentMentionsContent.tsx:346
 msgid "No mentions yet"
 msgstr "Пока нет упоминаний"
@@ -23010,11 +22966,9 @@ msgstr "Пока нет личных слов."
 msgid "No personas configured yet. Create one in Settings."
 msgstr "Персоны ещё не настроены. Создайте первую в настройках."
 
-
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:1055
 msgid "No personas created yet. Click \"Add Persona\" to create your first persona!"
 msgstr "No personas created yet. Click \"Add Persona\" to create your first persona!"
-
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
 #: src/features/channel/components/channel_header_components/developer_tools/OptionPresets.ts:50
@@ -23170,7 +23124,7 @@ msgid "No system channel"
 msgstr "Нет системного канала"
 
 #. Screen-reader fragment indicating the message has no text body. Lowercase because it appears inside a longer sentence.
-#: src/features/channel/components/ChannelMessage.tsx:74
+#: src/features/channel/components/ChannelMessage.tsx:80
 msgid "no text content"
 msgstr "нет текстового содержимого"
 
@@ -23402,7 +23356,7 @@ msgstr "Не «да» и не «нет»"
 #. Short label in the user profile modal. Keep it concise.
 #: src/features/app/components/pages/YouPage.tsx:186
 #: src/features/messaging/components/markdown/renderers/common/BlockElements.tsx:38
-#: src/features/messaging/utils/markdown/Plaintext.ts:72
+#: src/features/messaging/utils/markdown/Plaintext.ts:74
 #: src/features/user/components/modals/user_profile_modal/UserNoteEditor.tsx:19
 #: src/features/user/components/modals/user_profile_modal/UserNoteEditor.tsx:79
 #: src/features/user/components/modals/UserProfileMobileSheet.tsx:897
@@ -23509,12 +23463,12 @@ msgid "Notify"
 msgstr "Уведомлять"
 
 #. Description text in the channel and chat autocomplete mention. Keep the tone plain and specific.
-#: src/features/channel/components/AutocompleteMention.tsx:31
+#: src/features/channel/components/AutocompleteMention.tsx:37
 msgid "Notify everyone online who has permission to view this channel."
 msgstr "Уведомить всех в сети, у кого есть разрешение на просмотр этого канала."
 
 #. Description text in the channel and chat autocomplete mention. Keep the tone plain and specific.
-#: src/features/channel/components/AutocompleteMention.tsx:27
+#: src/features/channel/components/AutocompleteMention.tsx:33
 msgid "Notify everyone who has permission to view this channel."
 msgstr "Уведомить всех, у кого есть разрешение на просмотр этого канала."
 
@@ -23524,7 +23478,7 @@ msgid "Notify on reply"
 msgstr "Уведомлять об ответах"
 
 #. Description text in the channel and chat autocomplete mention. Keep the tone plain and specific.
-#: src/features/channel/components/AutocompleteMention.tsx:35
+#: src/features/channel/components/AutocompleteMention.tsx:41
 msgid "Notify users with this role who have permission to view this channel."
 msgstr "Уведомить пользователей с этой ролью, у которых есть разрешение на просмотр этого канала."
 
@@ -23790,7 +23744,6 @@ msgstr "Только выбранные"
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:104
 msgid "Only visible to you. Others cannot view this persona’s full bio or profile details."
 msgstr "Видно только вам. Другие не смогут просматривать полную биографию или детали профиля этой персоны."
-
 
 #. Body of the error modal shown when a non-Visionary user tries to rejoin a gated Plutonium community.
 #: src/features/app/components/dialogs/components/plutonium/hooks/useCommunityActions.tsx:22
@@ -24376,7 +24329,6 @@ msgstr "Дополнительные службы"
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:66
 msgid "Optional system badge, e.g. ⚞Seraphim⚟"
 msgstr "Необязательный системный значок, напр., ⚞Seraphim⚟"
-
 
 #. Short label in the channel and chat textual attachment preview bottom sheet. Keep it concise.
 #: src/features/channel/components/embeds/attachments/TextualAttachmentPreviewBottomSheet.tsx:31
@@ -24983,7 +24935,6 @@ msgstr "Окончательное удаление"
 msgid "Permanently delete all {existingCount} existing persona(s) and replace them completely with the imported personas."
 msgstr "Навсегда удалить все существующие персоны ({existingCount}) и полностью заменить их импортированными."
 
-
 #. Confirmation modal description warning that every message the caller has sent across every channel in this community will be deleted. Cannot be undone.
 #: src/features/guild/hooks/useDeleteMyMessagesInGuild.tsx:20
 msgid "Permanently delete every message you've sent here, across every channel. Can't be undone."
@@ -25040,29 +24991,24 @@ msgstr "Разрешения для {0}"
 msgid "Persona created"
 msgstr "Персона создана"
 
-
 #. Toast when persona is deleted
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:162
 msgid "Persona deleted"
 msgstr "Персона удалена"
 
-
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:971
 msgid "Persona Tags (Prefix & Suffix)"
 msgstr "Теги персоны (префикс и суффикс)"
-
 
 #. Toast when persona is updated
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:150
 msgid "Persona updated"
 msgstr "Персона обновлена"
 
-
 #. Aria label for persona visibility tabs
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:121
 msgid "Persona visibility"
 msgstr "Видимость персоны"
-
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Subsection title for personal dictionary settings. Keep it concise.
@@ -25088,12 +25034,10 @@ msgstr "Личные заметки уже пусты"
 msgid "Personas"
 msgstr "Персоны"
 
-
 #. Progress label for prepared personas
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:46
 msgid "personas prepared"
 msgstr "персон подготовлено"
-
 
 #. Keyboard shortcut keycap label for Page Down. Keep the abbreviation compact.
 #: src/features/ui/keybind_hint/KeybindHint.tsx:54
@@ -25614,7 +25558,6 @@ msgstr "Уменьшение движения"
 msgid "Prefix (e.g. [)"
 msgstr "Префикс (напр., [)"
 
-
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/search_index/PlutoniumIndex.ts:15
 msgid "Premium"
@@ -25674,7 +25617,6 @@ msgstr "Дата окончания премиума"
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:38
 msgid "Preparing avatar batch download..."
 msgstr "Подготовка к пакетному скачиванию аватаров..."
-
 
 #. Setup wizard title while the instance configuration loads.
 #: src/features/app/components/setup/SetupWizardSteps.tsx:72
@@ -25942,7 +25884,6 @@ msgstr "Нарушение конфиденциальности или прес�
 msgid "Private"
 msgstr "Приватная"
 
-
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/section_registry/AppearanceSections.ts:222
 msgid "Private details"
@@ -25963,7 +25904,6 @@ msgstr "Личное сообщение"
 msgid "Private persona"
 msgstr "Приватная персона"
 
-
 #. Bolded green prefix shown before the shift-bypass pro tip in confirmation modals. Includes the trailing colon.
 #: src/features/app/components/dialogs/ConfirmModal.tsx:21
 msgid "Pro tip:"
@@ -25982,7 +25922,6 @@ msgstr "Обработка"
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:637
 msgid "Processing: {0}"
 msgstr "Обработка: {0}"
-
 
 #. Label for the product name input in the setup wizard.
 #. Summary row label for the product name in the setup wizard.
@@ -26025,12 +25964,10 @@ msgstr "Для баннеров профиля требуется {premiumProduc
 msgid "Profile cards are accessible only when clicking on messages sent by this persona. Not listed in your public persona list."
 msgstr "Карточки профиля доступны только при нажатии на сообщения от этой персоны. Не отображается в вашем публичном списке персон."
 
-
 #. Helper description for public persona visibility
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:100
 msgid "Profile cards are accessible when clicking on messages and visible in your public personas list to friends and mutual servers."
 msgstr "Карточки профиля доступны при нажатии на сообщения, а также видны друзьям и на общих серверах в вашем публичном списке персон."
-
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:169
@@ -26198,7 +26135,6 @@ msgstr "PTT"
 msgid "Public"
 msgstr "Публичная"
 
-
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Short label in the application info section. Keep it concise.
 #: src/features/user/components/modals/tabs/applications_tab/application_detail/ApplicationInfoSection.tsx:36
@@ -26215,7 +26151,6 @@ msgstr "Публичное сообщество"
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:170
 msgid "Public persona"
 msgstr "Публичная персона"
-
 
 #. Description for the closed registration mode.
 #: src/features/app/components/setup/SetupWizardSteps.tsx:175
@@ -26417,6 +26352,11 @@ msgstr "Редактор быстрого CSS"
 #: src/features/theme_studio/sections/QuickCssSection.tsx:36
 msgid "Quick CSS replaced from {fileName}."
 msgstr "Быстрый CSS заменён из {fileName}."
+
+#. Settings search synonym. Used to match this term when the user types it in the settings search bar.
+#: src/features/user/components/settings_utils/search_index/AdvancedSettingsIndex.ts:64
+msgid "Quick edit"
+msgstr "Быстрое редактирование"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:319
@@ -26654,7 +26594,6 @@ msgstr "Недавние упоминания"
 #: src/features/persona/components/PersonaPickerSheet.tsx:167
 msgid "Recent Personas"
 msgstr "Недавние персоны"
-
 
 #. Section header in the message search popout listing previously-run searches.
 #: src/features/channel/components/message_search_bar/HistorySection.tsx:20
@@ -27260,7 +27199,6 @@ msgstr "Удалить тег {tag}"
 msgid "Remove tag pair"
 msgstr "Удалить пару тегов"
 
-
 #. Error message in the linked accounts tab. Keep the tone plain and specific.
 #: src/features/user/components/modals/tabs/LinkedAccountsTab.tsx:63
 msgid "Remove this connection? Can't be undone."
@@ -27548,16 +27486,13 @@ msgstr "Заменить"
 msgid "Replace All"
 msgstr "Заменить все"
 
-
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:614
 msgid "Replace all existing personas (Destructive)"
 msgstr "Заменить все существующие персоны (безвозвратно)"
 
-
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:435
 msgid "Replace All Personas"
 msgstr "Заменить все персоны"
-
 
 #. Button or menu action label in the background image gallery modal. Keep it concise.
 #: src/features/theme/components/modals/BackgroundImageGalleryModal.tsx:135
@@ -28636,7 +28571,6 @@ msgstr "Румынский"
 msgid "Root Account (Default)"
 msgstr "Основной аккаунт (по умолчанию)"
 
-
 #. Short label in the image crop modal. Keep it concise.
 #. Tooltip on the media viewer button that rotates the current media item 90 degrees clockwise.
 #: src/features/messaging/components/modals/ImageCropModal.tsx:24
@@ -28778,7 +28712,7 @@ msgstr "Сохранить в избранное"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced GIF storage preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:44
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:45
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:47
 msgid "Save GIF favorites as saved media"
 msgstr "Сохранять избранные GIF как сохраненные медиа"
@@ -28791,7 +28725,6 @@ msgstr "Сохранить значок"
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:1029
 msgid "Save Persona"
 msgstr "Сохранить персону"
-
 
 #. Button or menu action label in the channel and chat memes picker view. Keep it concise.
 #. Empty state body in the mobile memes picker explaining how to save media. Tone can be friendly.
@@ -28840,12 +28773,10 @@ msgstr "Сохранения: <0>{countLabel}</0>"
 msgid "saving personas"
 msgstr "сохранение персон"
 
-
 #. Progress status when saving personas
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:50
 msgid "Saving personas..."
 msgstr "Сохранение персон..."
-
 
 #: src/features/channel/components/direct_message/DMWelcomeSection.tsx:298
 msgid "Say hi to <0>{displayName}</0>. Your DM starts here."
@@ -29106,7 +29037,7 @@ msgstr "Прокрутить вниз"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:136
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:137
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:443
 msgid "Scroll to bottom when sending a message"
 msgstr "Прокручивать вниз при отправке сообщения"
@@ -29307,7 +29238,6 @@ msgstr "Поиск разрешений…"
 msgid "Search personas, tags, pronouns..."
 msgstr "Поиск персон, тегов, местоимений..."
 
-
 #. Default header title in the channel search results panel before a query has been submitted.
 #. Settings content title shown above results for a settings search query.
 #: src/features/app/components/dialogs/components/DesktopSettingsView.tsx:106
@@ -29319,7 +29249,6 @@ msgstr "Результаты поиска"
 #: src/features/persona/components/PersonaPickerSheet.tsx:194
 msgid "Search Results ({0})"
 msgstr "Результаты поиска ({0})"
-
 
 #. Heading in the Discovery navigation bar when a search is active. {query} is the text the user searched for.
 #: src/features/discovery/discovery/DiscoveryNavbar.tsx:37
@@ -29851,7 +29780,7 @@ msgstr "Отправить жалобу по DSA"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:116
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:117
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:127
 msgid "Send file messages in order"
 msgstr "Отправлять файлы по порядку"
@@ -29911,7 +29840,6 @@ msgstr "Отправлять сообщения в этом канале."
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:113
 msgid "Send messages with distinct names and avatars. Personas can represent plural system members, roleplay characters, or any other identity."
 msgstr "Отправляйте сообщения от разных имён и с разными аватарами. Персоны могут представлять участников множественных систем, ролевых персонажей или любые другие личности."
-
 
 #. Footer submit button in the IAR modal. Sends the report to the safety team.
 #: src/features/moderation/components/report_modal/IARModal.tsx:90
@@ -30000,12 +29928,10 @@ msgstr "Отправка SMS на этот номер слишком дорог�
 msgid "Sending as {name} (Matched by tag) - Click to switch persona"
 msgstr "Отправка от имени {name} (по тегу) — Нажмите, чтобы сменить персону"
 
-
 #. Tooltip when sending as root account with persona mode active
 #: src/features/persona/components/PersonaComposerPill.tsx:37
 msgid "Sending as @{username} ({mode}) - Click to switch persona"
 msgstr "Отправка как @{username} ({mode}) — Нажмите, чтобы сменить персону"
-
 
 #. IAR modal: rule label.
 #: src/features/moderation/components/report_modal/IARModalCopy.ts:269
@@ -30135,12 +30061,10 @@ msgstr "Для роли задана позиция в списке участн
 msgid "Set Active"
 msgstr "Сделать активной"
 
-
 #. Aria label for setting active persona
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:206
 msgid "Set as active persona"
 msgstr "Сделать активной персоной"
-
 
 #. Short label in the keybinds tab. Keep it concise.
 #: src/features/user/components/modals/tabs/keybinds_tab/DefaultShortcutRow.tsx:28
@@ -30650,7 +30574,7 @@ msgid "Show active now on the home screen to surface friends active in voice. Yo
 msgstr "Показывать раздел «Сейчас онлайн» на главном экране, чтобы видеть друзей в голосовых каналах. Вы увидите предпросмотр, в каком это канале, кто уже там и как быстро присоединиться."
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:68
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:69
 msgid "Show attachment expiration indicator"
 msgstr "Показывать индикатор срока действия вложений"
 
@@ -30701,7 +30625,7 @@ msgid "Show creation date instead of expiration date"
 msgstr "Показывать дату создания вместо даты истечения"
 
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:92
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:93
 msgid "Show custom emojis in expression autocomplete"
 msgstr "Показывать пользовательские эмодзи в автозавершении выражений"
 
@@ -30711,17 +30635,17 @@ msgid "Show default avatar, ignoring your global profile"
 msgstr "Показывать аватар по умолчанию, игнорируя ваш глобальный профиль"
 
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:88
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:89
 msgid "Show default emojis in expression autocomplete"
 msgstr "Показывать стандартные эмодзи в автозавершении выражений"
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:72
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:73
 msgid "Show delete button"
 msgstr "Показывать кнопку удаления"
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:76
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:77
 msgid "Show download button"
 msgstr "Показывать кнопку загрузки"
 
@@ -30748,7 +30672,7 @@ msgstr "Показывать встроенные материалы и пред
 #. Short label for an advanced message input preference.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:59
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:124
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:125
 msgid "Show emoji button"
 msgstr "Показывать кнопку эмодзи"
 
@@ -30758,7 +30682,7 @@ msgid "Show emoji reactions on messages"
 msgstr "Показывать реакции-эмодзи на сообщениях"
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:80
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:81
 msgid "Show favorite button"
 msgstr "Показывать кнопку «Избранное»"
 
@@ -30780,14 +30704,14 @@ msgid "Show focus ring on chat text area"
 msgstr "Показывать рамку фокуса в поле ввода чата"
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:64
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:65
 msgid "Show GIF indicator"
 msgstr "Показывать индикатор GIF"
 
 #. Plus menu submenu toggle that shows the GIFs button next to the textarea.
 #. Short label for an advanced message input preference.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:43
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:104
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:105
 msgid "Show GIFs button"
 msgstr "Показывать кнопку GIF"
 
@@ -30797,7 +30721,7 @@ msgid "Show icon when collapsed"
 msgstr "Показывать значок, когда папка свёрнута"
 
 #. Short confirmation button label in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:164
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:165
 msgid "Show in all communities"
 msgstr "Показывать во всех сообществах"
 
@@ -30836,7 +30760,7 @@ msgstr "Показывать максимум 5 (значок +5)"
 #. Plus menu submenu toggle that shows the saved media (memes) button next to the textarea.
 #. Short label for an advanced message input preference.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:47
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:108
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:109
 msgid "Show media button"
 msgstr "Показывать кнопку медиа"
 
@@ -30857,7 +30781,7 @@ msgid "Show menu bar icon"
 msgstr "Показывать значок в строке меню"
 
 #. Short label for an advanced message action bar preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:48
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:49
 msgid "Show message action bar"
 msgstr "Показывать панель действий с сообщениями"
 
@@ -30940,7 +30864,7 @@ msgid "Show oldest messages first"
 msgstr "Сначала показывать самые старые сообщения"
 
 #. Short label for an advanced message action bar preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:52
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:53
 msgid "Show only the more button"
 msgstr "Показывать только кнопку «Ещё»"
 
@@ -30962,10 +30886,9 @@ msgstr "Показывать ползунки громкости участни�
 #. Plus menu submenu toggle that shows the persona selector next to the textarea.
 #. Short label for an advanced message input preference.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:51
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:128
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:129
 msgid "Show personas button"
 msgstr "Show personas button"
-
 
 #. Developer option label for exposing the staff-only profile timezone section in profile settings.
 #: src/features/devtools/components/DeveloperOptionsToggleGroups.ts:135
@@ -30973,7 +30896,7 @@ msgid "Show profile time zone settings"
 msgstr "Показать настройки часового пояса в профиле"
 
 #. Short label for an advanced message action bar preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:56
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:57
 msgid "Show quick reactions"
 msgstr "Показывать быстрые реакции"
 
@@ -30983,7 +30906,7 @@ msgid "Show rich previews for YouTube links."
 msgstr "Показывать расширенные превью для ссылок YouTube."
 
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:100
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:101
 msgid "Show saved media in expression autocomplete"
 msgstr "Показывать сохраненные медиа в автозавершении выражений"
 
@@ -30992,7 +30915,7 @@ msgstr "Показывать сохраненные медиа в автозав
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #: src/features/channel/components/textarea/TextareaContextMenu.tsx:102
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:63
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:132
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:133
 msgid "Show send button"
 msgstr "Показывать кнопку отправки"
 
@@ -31004,12 +30927,12 @@ msgstr "Показывать содержимое спойлера по нажа
 #. Short label for an advanced message input preference.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:55
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:120
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:121
 msgid "Show stickers button"
 msgstr "Показывать кнопку стикеров"
 
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:96
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:97
 msgid "Show stickers in expression autocomplete"
 msgstr "Показывать стикеры в автозавершении выражений"
 
@@ -31019,7 +30942,7 @@ msgid "Show strikethrough Markdown text in a slightly muted color."
 msgstr "Показывать зачеркнутый текст Markdown слегка приглушенным цветом."
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:84
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:85
 msgid "Show suppress embeds button"
 msgstr "Показывать кнопку «Скрыть предпросмотр»"
 
@@ -31321,7 +31244,7 @@ msgstr "Пропустить"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced inbox preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:140
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:141
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:459
 msgid "Skip \"Mark all as read\" confirmation"
 msgstr "Пропускать подтверждение «Отметить все как прочитанные»"
@@ -31368,7 +31291,6 @@ msgstr "Перейти к содержимому"
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:58
 msgid "Skipped member because they have no name configured."
 msgstr "Участник пропущен, так как для него не настроено имя."
-
 
 #. TTS substitution token spoken in place of a slash-command invocation. {commandName} is the command name without the slash.
 #: src/features/voice/utils/TtsTextFormatter.ts:42
@@ -32233,7 +32155,6 @@ msgstr "Начать перетаскивание"
 msgid "Start Import"
 msgstr "Начать импорт"
 
-
 #: src/features/user/components/modals/tabs/components/MicTestSection.tsx:15
 msgid "Start mic test"
 msgstr "Начать проверку микрофона"
@@ -32366,7 +32287,7 @@ msgstr "Стереомикрофон"
 #. Label for the has:sticker filter option in the mobile channel search sheet.
 #. Screen-reader fragment listing one sticker on a message. Lowercase because it appears inside a longer sentence.
 #: src/features/channel/components/bottomsheets/ChannelSearchBottomSheet.tsx:120
-#: src/features/channel/components/ChannelMessage.tsx:56
+#: src/features/channel/components/ChannelMessage.tsx:62
 msgid "sticker"
 msgstr "стикер"
 
@@ -32506,7 +32427,7 @@ msgid "Stop"
 msgstr "Стоп"
 
 #. Confirmation prompt in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:160
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:161
 msgid "Stop hiding muted channels by default?"
 msgstr "Перестать скрывать заглушенные каналы по умолчанию?"
 
@@ -32821,12 +32742,10 @@ msgstr "Готово"
 msgid "Successfully imported {0} persona(s) into your account. All avatar images are safely stored on your local server."
 msgstr "Успешно импортировано {0} персон(ы) в ваш аккаунт. Все аватары надёжно сохранены на вашем локальном сервере."
 
-
 #. Placeholder for persona tag suffix
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:198
 msgid "Suffix (e.g. ])"
 msgstr "Суффикс (напр., ])"
-
 
 #. Helper text under the "Filter members without roles" explicit content filter option in the community moderation settings tab.
 #: src/features/guild/components/modals/guild_tabs/GuildModerationTab.tsx:112
@@ -32853,7 +32772,6 @@ msgstr "Сводка"
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:506
 msgid "Supports PluralKit system export files"
 msgstr "Поддерживаются файлы экспорта системы PluralKit"
-
 
 #. Switch label in the community notification settings modal. Suppresses @everyone and @here notifications in this community. The two placeholders render the literal @everyone and @here tokens and must not be translated.
 #. Toggle label that suppresses @everyone and @here mentions; placeholders are the localized mention tags.
@@ -33232,7 +33150,6 @@ msgstr "Системное уменьшение движения"
 msgid "System Tag (Applied to imported personas)"
 msgstr "Системный тег (применяется к импортированным персонам)"
 
-
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Short label in the theme tab content. Keep it concise.
 #: src/features/user/components/modals/tabs/appearance_tab/theme/ThemeTabContent.tsx:54
@@ -33296,17 +33213,14 @@ msgstr "Тег"
 msgid "Tag Icon"
 msgstr "Иконка тега"
 
-
 #. Validation error when tag pair is already used by another persona
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:130
 msgid "Tag pair already in use by persona \"{name}\""
 msgstr "Tag pair already in use by persona \"{name}\""
 
-
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:787
 msgid "Tag Text"
 msgstr "Текст тега"
-
 
 #. Short label in the theme studio library section. Keep it concise.
 #: src/features/theme_studio/sections/LibrarySection.tsx:117
@@ -33396,7 +33310,6 @@ msgstr "Перемещаем вас в другой голосовой реги�
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:190
 msgid "Tell us about this persona..."
 msgstr "Расскажите об этой персоне..."
-
 
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:560
 msgid "Template"
@@ -33734,7 +33647,6 @@ msgstr "Канал, который вы ищете, возможно, был у�
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:22
 msgid "The chosen file is not a valid JSON object."
 msgstr "Выбранный файл не является корректным объектом JSON."
-
 
 #. Body of the error modal shown when the source community has disabled cloning of this expression.
 #: src/features/app/components/alerts/ExpressionCloneFailedModal.tsx:26
@@ -34471,7 +34383,6 @@ msgstr "Это пользовательская эмодзи из сообщес
 msgid "This is a preview of how your display tag will look in chat."
 msgstr "Так ваш отображаемый тег будет выглядеть в чате."
 
-
 #. Required-action modal intro text when phone verification is required.
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:228
 msgid "This is an anti-spam check. Your phone number is not linked to your account."
@@ -35029,7 +34940,7 @@ msgstr "Метки времени"
 #. Markdown alert label for a tip callout when copied as plaintext.
 #. Short label in the messaging block elements. Keep it concise. Keep the tone plain and specific.
 #: src/features/messaging/components/markdown/renderers/common/BlockElements.tsx:42
-#: src/features/messaging/utils/markdown/Plaintext.ts:56
+#: src/features/messaging/utils/markdown/Plaintext.ts:58
 msgid "Tip"
 msgstr "Подсказка"
 
@@ -35256,7 +35167,6 @@ msgstr "Тема"
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:540
 msgid "Total Members"
 msgstr "Всего участников"
-
 
 #. Developer debug summary label for total message markdown parsing duration.
 #: src/features/devtools/components/debug/MessageDebugModal.tsx:23
@@ -36214,9 +36124,9 @@ msgstr "неизвестная роль"
 #. Reason spoken by screen readers when a slash-command argument does not match any role.
 #. Short label in the messaging mention renderer. Keep it concise.
 #: src/features/channel/components/modals/channel_tabs/ChannelPermissionsTab.tsx:64
-#: src/features/lexical/composer/nodes/ComposerMentionPill.tsx:25
+#: src/features/lexical/composer/nodes/ComposerMentionPill.tsx:29
 #: src/features/lexical/composer/nodes/SlashSlotNode.ts:65
-#: src/features/messaging/components/markdown/renderers/MentionRenderer.tsx:31
+#: src/features/messaging/components/markdown/renderers/MentionRenderer.tsx:33
 msgid "Unknown role"
 msgstr "Неизвестная роль"
 
@@ -36251,19 +36161,19 @@ msgstr "Неизвестный пользователь"
 
 #. Fallback plaintext for an unresolved channel mention in copied markdown. Keep lowercase and hyphenated.
 #. Short label in the messaging mention renderer. Keep it concise.
-#: src/features/messaging/components/markdown/renderers/MentionRenderer.tsx:35
-#: src/features/messaging/utils/markdown/Plaintext.ts:80
+#: src/features/messaging/components/markdown/renderers/MentionRenderer.tsx:37
+#: src/features/messaging/utils/markdown/Plaintext.ts:82
 msgid "unknown-channel"
 msgstr "unknown-channel"
 
 #. Fallback plaintext for an unresolved mention in copied markdown. Keep lowercase and hyphenated.
-#: src/features/messaging/components/markdown/renderers/MentionRenderer.tsx:43
-#: src/features/messaging/utils/markdown/Plaintext.ts:84
+#: src/features/messaging/components/markdown/renderers/MentionRenderer.tsx:45
+#: src/features/messaging/utils/markdown/Plaintext.ts:86
 msgid "unknown-mention"
 msgstr "unknown-mention"
 
 #. Fallback plaintext for an unresolved role mention in copied markdown. Keep lowercase and hyphenated.
-#: src/features/messaging/utils/markdown/Plaintext.ts:76
+#: src/features/messaging/utils/markdown/Plaintext.ts:78
 msgid "unknown-role"
 msgstr "unknown-role"
 
@@ -36271,7 +36181,6 @@ msgstr "unknown-role"
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:83
 msgid "Unlisted"
 msgstr "Скрытая"
-
 
 #: src/features/channel/components/EmojiPicker.tsx:176
 #: src/features/channel/components/MobileEmojiPicker.tsx:212
@@ -36622,18 +36531,15 @@ msgstr "Показать предпросмотр"
 msgid "Untagged messages always send from your root account. Personas only speak when you type their tags (e.g. [text])."
 msgstr "Сообщения без тегов всегда отправляются с вашего основного аккаунта. Персоны говорят только тогда, когда вы вводите их теги (напр., [текст])."
 
-
 #. Helper description for Last Used persona mode
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:78
 msgid "Untagged messages send as the persona that spoke most recently. Whenever anyone uses a persona tag, they automatically become the active persona."
 msgstr "Сообщения без тегов отправляются от персоны, говорившей последней. При использовании тега персоны, она автоматически становится активной."
 
-
 #. Helper description for Manual persona mode
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:74
 msgid "Untagged messages send as your chosen persona. Typing another persona’s tags will only send that single message and won’t switch who is active."
 msgstr "Сообщения без тегов отправляются от выбранной персоны. Ввод тегов другой персоны отправит только одно сообщение и не переключит активную персону."
-
 
 #. Summary row value on the confirm step when only an end date is set. {end} is a localized date.
 #: src/features/user/components/modals/tabs/privacy_safety_tab/data_request_modal/DataRequestModal.tsx:232
@@ -36788,7 +36694,7 @@ msgstr "Загрузить ресурсы"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced message input privacy preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:112
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:113
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:107
 msgid "Upload attachments before sending"
 msgstr "Загружать вложения перед отправкой"
@@ -36932,7 +36838,6 @@ msgstr "Загрузка {count, plural, one {# файла} few {# файлов}
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:1029
 msgid "Uploading avatar..."
 msgstr "Загрузка аватара..."
-
 
 #: src/features/emoji/components/modals/EmojiUploadModal.tsx:26
 msgid "Uploading emojis"
@@ -38222,7 +38127,6 @@ msgstr "Посмотреть адрес эл. почты"
 msgid "View your personas"
 msgstr "View your personas"
 
-
 #. Notification sound setting label. Sound played when a viewer joins your screen share or stream.
 #: src/features/notification/utils/SoundLabels.ts:36
 msgid "Viewer joins stream"
@@ -38653,7 +38557,7 @@ msgstr "Пробуждение"
 #. Markdown alert label for a warning callout when copied as plaintext.
 #. Warning text in the messaging block elements. Keep the tone plain and specific.
 #: src/features/messaging/components/markdown/renderers/common/BlockElements.tsx:50
-#: src/features/messaging/utils/markdown/Plaintext.ts:64
+#: src/features/messaging/utils/markdown/Plaintext.ts:66
 msgid "Warning"
 msgstr "Внимание"
 

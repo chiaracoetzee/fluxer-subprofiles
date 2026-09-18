@@ -26,4 +26,12 @@ describe('Advanced settings', () => {
 		AdvancedSettings.setExpressionCloneShortcutsEnabled(true);
 		expect(AppStorage.getItem('AdvancedSettings:expressionCloneShortcutsEnabled')).toBe('true');
 	});
+
+	it('defaults the double click to edit preference to off and stores it under its own key', () => {
+		expect(AdvancedSettings.doubleClickToEdit).toBe(false);
+		AdvancedSettings.setDoubleClickToEdit(true);
+		expect(AppStorage.getItem('AdvancedSettings:doubleClickToEdit')).toBe('true');
+		AdvancedSettings.setDoubleClickToEdit(false);
+		expect(AppStorage.getItem('AdvancedSettings:doubleClickToEdit')).toBe('false');
+	});
 });
