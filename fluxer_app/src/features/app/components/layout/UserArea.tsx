@@ -53,6 +53,11 @@ import {clsx} from 'clsx';
 import {observer} from 'mobx-react-lite';
 import {useEffect, useRef} from 'react';
 
+// Fork imports.
+
+import LayoutState from '@app/features/ui/state/LayoutState';
+import {useCallback, useState} from 'react';
+
 const PUSH_TO_TALK_IS_ON_HOLD_TO_SPEAK_DESCRIPTOR = msg({
 	message: 'Push to talk is on. Hold {pushToTalkHint} to speak.',
 	comment:
@@ -204,7 +209,57 @@ const UserAreaInner = observer(
 				clearHeight();
 			};
 		}, [hasVoiceConnection]);
-		const wrapperClassName = styles.userAreaInnerWrapper;
+		const isRailMode =
+			!LayoutState.channelListVisible && !LayoutState.isLeftHoverPeeking && LayoutState.serverListVisible;
+		const [isHoverExpanded, setIsHoverExpanded] = useState(false);
+		const hoverLeaveTimerRef = useRef<number | null>(null);
+
+		const handleMouseEnter = useCallback(() => {
+			if (!isRailMode) return;
+			if (hoverLeaveTimerRef.current !== null) {
+				window.clearTimeout(hoverLeaveTimerRef.current);
+				hoverLeaveTimerRef.current = null;
+			}
+			setIsHoverExpanded(true);
+		}, [isRailMode]);
+
+		const handleMouseLeave = useCallback(() => {
+			if (!isRailMode) return;
+			if (hoverLeaveTimerRef.current !== null) {
+				window.clearTimeout(hoverLeaveTimerRef.current);
+			}
+			hoverLeaveTimerRef.current = window.setTimeout(() => {
+				setIsHoverExpanded(false);
+				hoverLeaveTimerRef.current = null;
+			}, 200);
+		}, [isRailMode]);
+
+		useEffect(() => {
+			return () => {
+				if (hoverLeaveTimerRef.current !== null) {
+					window.clearTimeout(hoverLeaveTimerRef.current);
+				}
+			};
+		}, []);
+
+		useEffect(() => {
+			if (!isHoverExpanded) return;
+			const handleKeyDown = (e: KeyboardEvent) => {
+				if (e.key === 'Escape') {
+					setIsHoverExpanded(false);
+				}
+			};
+			window.addEventListener('keydown', handleKeyDown);
+			return () => window.removeEventListener('keydown', handleKeyDown);
+		}, [isHoverExpanded]);
+
+		const isEffectiveExpanded = isHoverExpanded || isOpen;
+		const isCompact = isRailMode && !isEffectiveExpanded;
+		const wrapperClassName = clsx(
+			styles.userAreaInnerWrapper,
+			isCompact && styles.userAreaCompact,
+			isRailMode && isEffectiveExpanded && styles.userAreaInnerWrapperHoverExpanded,
+		);
 		const isPushToTalkEffective = Keybind.isPushToTalkEffective();
 		const microphoneState = selectUserAreaMicrophoneState({
 			effectiveAudioMuted: isMuted,
@@ -215,8 +270,8 @@ const UserAreaInner = observer(
 			muteReason,
 			isPushToTalkEffective,
 			isPushToTalkHeld: Keybind.pushToTalkHeld,
-			isPushToMuteEffective: Keybind.isPushToMuteEffective(),
 			isPushToMuteHeld: Keybind.pushToMuteHeld,
+			isPushToMuteEffective: Keybind.isPushToMuteEffective(),
 		});
 		const effectiveMuted = microphoneState.effectiveMuted;
 		const isMuteToggleLocked = microphoneState.muteToggleLocked;
@@ -246,6 +301,8 @@ const UserAreaInner = observer(
 			<section
 				className={wrapperClassName}
 				aria-label={i18n._(USER_CONTROLS_DESCRIPTOR)}
+				onMouseEnter={handleMouseEnter}
+				onMouseLeave={handleMouseLeave}
 				data-flx="app.user-area.user-area-inner.section"
 			>
 				{hasVoiceConnection && (
