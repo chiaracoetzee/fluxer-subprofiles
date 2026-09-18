@@ -41970,3 +41970,25 @@ msgstr "Trình duyệt của bạn không thể hoàn tất kiểm tra."
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:421
 msgid "Your number is not linked to your account. We keep only an encrypted marker, with no user ID, for at most {limit} verifications in about {duration} days."
 msgstr "Số điện thoại của bạn chưa được liên kết với tài khoản. Chúng tôi chỉ lưu trữ một điểm đánh dấu được mã hóa, không có ID người dùng, cho tối đa {limit} lần xác minh trong khoảng {duration} ngày."
+
+#. Settings search synonym. Used to match this term when the user types it in the settings search bar.
+#: src/features/user/components/settings_utils/search_index/AdvancedSettingsIndex.ts:60
+msgid "Double click"
+msgstr "Nhấp đúp"
+
+#. Settings search entry description. One-line summary of what the setting controls.
+#: src/features/user/components/settings_utils/search_index/AdvancedSettingsIndex.ts:72
+msgid "Double-click a message you sent to edit it directly"
+msgstr "Nhấp đúp vào tin nhắn bạn đã gửi để chỉnh sửa trực tiếp"
+
+#. Settings search entry label for double-clicking a message to edit it.
+#. Short label for an advanced message editing preference.
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:298
+#: src/features/user/components/settings_utils/search_index/AdvancedSettingsIndex.ts:56
+msgid "Double-click to edit"
+msgstr "Nhấp đúp để chỉnh sửa"
+
+#. Settings search synonym. Used to match this term when the user types it in the settings search bar.
+#: src/features/user/components/settings_utils/search_index/AdvancedSettingsIndex.ts:64
+msgid "Quick edit"
+msgstr "Chỉnh sửa nhanh"

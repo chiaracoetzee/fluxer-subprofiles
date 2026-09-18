@@ -6,6 +6,7 @@ import {makeAutoObservable} from 'mobx';
 const UNREAD_BADGE_CUSTOMIZATION_STORAGE_KEY = 'AdvancedSettings:unreadBadgeCustomizationEnabled';
 const KEEP_ATTACHMENTS_ON_EMPTY_MESSAGE_EDIT_STORAGE_KEY = 'AdvancedSettings:keepAttachmentsOnEmptyMessageEdit';
 const EXPRESSION_CLONE_SHORTCUTS_STORAGE_KEY = 'AdvancedSettings:expressionCloneShortcutsEnabled';
+const DOUBLE_CLICK_TO_EDIT_STORAGE_KEY = 'AdvancedSettings:doubleClickToEdit';
 
 function readStoredBoolean(key: string, defaultValue = false): boolean {
 	const raw = AppStorage.getItem(key);
@@ -22,6 +23,7 @@ class AdvancedSettings {
 	unreadBadgeCustomizationEnabled = readStoredBoolean(UNREAD_BADGE_CUSTOMIZATION_STORAGE_KEY);
 	keepAttachmentsOnEmptyMessageEdit = readStoredBoolean(KEEP_ATTACHMENTS_ON_EMPTY_MESSAGE_EDIT_STORAGE_KEY);
 	expressionCloneShortcutsEnabled = readStoredBoolean(EXPRESSION_CLONE_SHORTCUTS_STORAGE_KEY);
+	doubleClickToEdit = readStoredBoolean(DOUBLE_CLICK_TO_EDIT_STORAGE_KEY);
 
 	constructor() {
 		makeAutoObservable(this, {}, {autoBind: true});
@@ -46,6 +48,12 @@ class AdvancedSettings {
 			},
 			{key: EXPRESSION_CLONE_SHORTCUTS_STORAGE_KEY, source: 'external'},
 		);
+		AppStorage.subscribe(
+			(event) => {
+				this.doubleClickToEdit = event.newValue === null ? false : readStoredBoolean(event.key ?? '');
+			},
+			{key: DOUBLE_CLICK_TO_EDIT_STORAGE_KEY, source: 'external'},
+		);
 	}
 
 	setUnreadBadgeCustomizationEnabled(value: boolean): void {
@@ -64,6 +72,12 @@ class AdvancedSettings {
 		if (this.expressionCloneShortcutsEnabled === value) return;
 		this.expressionCloneShortcutsEnabled = value;
 		AppStorage.setItem(EXPRESSION_CLONE_SHORTCUTS_STORAGE_KEY, JSON.stringify(value));
+	}
+
+	setDoubleClickToEdit(value: boolean): void {
+		if (this.doubleClickToEdit === value) return;
+		this.doubleClickToEdit = value;
+		AppStorage.setItem(DOUBLE_CLICK_TO_EDIT_STORAGE_KEY, JSON.stringify(value));
 	}
 }
 
