@@ -4,6 +4,7 @@ import * as AccessibilityCommands from '@app/features/accessibility/commands/Acc
 import Accessibility from '@app/features/accessibility/state/Accessibility';
 import {Switch} from '@app/features/ui/components/form/FormSwitch';
 import {SwitchGroup, SwitchGroupItem} from '@app/features/ui/components/SwitchGroup';
+import LayoutState from '@app/features/ui/state/LayoutState';
 import {
 	ENABLE_FAVORITES_DESCRIPTOR,
 	KEEP_NEKO_STILL_DESCRIPTOR,
@@ -95,3 +96,23 @@ export const FavoritesControl = observer(() => {
 		/>
 	);
 });
+
+const AUTO_PEEK_HIDDEN_SIDEBARS_DESCRIPTOR = msg({
+	message: 'Auto-peek hidden sidebars',
+	comment: 'Short label for an advanced appearance preference that reveals collapsed sidebars on mouse hover.',
+});
+
+export const EdgeHoverPeekControl = observer(() => {
+	const {i18n} = useLingui();
+	return (
+		<Switch
+			ariaLabel={i18n._(AUTO_PEEK_HIDDEN_SIDEBARS_DESCRIPTOR)}
+			value={LayoutState.edgeHoverPeekEnabled}
+			onChange={(value) => LayoutState.setEdgeHoverPeekEnabled(value)}
+			compact
+			data-flx="user.advanced-settings-tab.switch.edge-hover-peek"
+		/>
+	);
+});
+
+
