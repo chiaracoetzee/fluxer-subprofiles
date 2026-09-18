@@ -63,6 +63,10 @@ import {
 import type {SearchableSettingItem} from '@app/features/user/components/settings_utils/SettingsSectionRegistry';
 import {observer} from 'mobx-react-lite';
 
+// Fork imports.
+
+import {DoubleClickToEditControl} from '@app/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls';
+
 export const DIRECT_CONTROL_ITEM_IDS = new Set([
 	'advanced-windows-fluxer-sans',
 	'accessibility-text-selection',
@@ -104,6 +108,7 @@ export const DIRECT_CONTROL_ITEM_IDS = new Set([
 	'voice-video-screen-share-encoder-controls',
 	'advanced-unread-badge-customization',
 	'advanced-expression-clone-shortcuts',
+	'advanced-double-click-to-edit',
 	'client-developer-mode',
 	'accessibility-stay-interactive-unfocused',
 	'advanced-native-title-bar',
@@ -147,6 +152,7 @@ export const COMPACT_SWITCH_CONTROL_ITEM_IDS = new Set([
 	'voice-video-screen-share-hevc-opt-in',
 	'advanced-unread-badge-customization',
 	'advanced-expression-clone-shortcuts',
+	'advanced-double-click-to-edit',
 	'client-developer-mode',
 	'accessibility-stay-interactive-unfocused',
 	'advanced-native-title-bar',
@@ -340,6 +346,10 @@ export const AdvancedSettingControl = observer(({item}: {item: SearchableSetting
 		case 'advanced-expression-clone-shortcuts':
 			return (
 				<ExpressionCloneShortcutsControl data-flx="user.advanced-setting-direct-controls.advanced-setting-control.expression-clone-shortcuts-control" />
+			);
+		case 'advanced-double-click-to-edit':
+			return (
+				<DoubleClickToEditControl data-flx="user.advanced-setting-direct-controls.advanced-setting-control.double-click-to-edit-control" />
 			);
 		case 'client-developer-mode':
 			return (
