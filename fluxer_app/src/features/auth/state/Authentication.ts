@@ -8,6 +8,10 @@ import {Logger} from '@app/features/platform/utils/AppLogger';
 import type {UserPrivate} from '@fluxer/schema/src/domains/user/UserResponseSchemas';
 import {computed, makeAutoObservable} from 'mobx';
 
+// Fork imports.
+
+import {PersonaStore} from '@app/features/persona/state/PersonaStore';
+
 const logger = new Logger('Authentication');
 
 function persistToken(token: string | null): void {
@@ -98,6 +102,7 @@ class Authentication {
 
 	handleLogout(options?: {skipRedirect?: boolean}): void {
 		ExperimentAssignments.reset();
+		PersonaStore.reset();
 		this.loginState = LoginState.DEFAULT;
 		this.currentMfaTicket = null;
 		this.availableMfaMethods = null;
