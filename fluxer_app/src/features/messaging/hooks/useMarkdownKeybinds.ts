@@ -195,7 +195,7 @@ export const useMarkdownFormattingShortcut = ({
 			const selectionStart = textarea.selectionStart ?? 0;
 			const selectionEnd = textarea.selectionEnd ?? 0;
 			const inboxCombo = Keybind.getByAction('chat_toggle_inbox').combo;
-			if (doesEventMatchShortcut(event, inboxCombo) && selectionStart === selectionEnd && value.trim().length === 0) {
+			if (doesEventMatchShortcut(event, inboxCombo) && selectionStart === selectionEnd && value.length === 0) {
 				event.preventDefault();
 				event.stopPropagation();
 				ComponentBus.dispatch('INBOX_OPEN');
@@ -206,6 +206,21 @@ export const useMarkdownFormattingShortcut = ({
 					continue;
 				}
 				if (selectionStart === selectionEnd) {
+					if (value.length === 0) {
+						return;
+					}
+					const wrapperLength = wrapper.length;
+					const wrappedText = `${wrapper}${wrapper}`;
+					const newValue = value.slice(0, selectionStart) + wrappedText + value.slice(selectionEnd);
+					const newSelection = selectionStart + wrapperLength;
+					event.preventDefault();
+					event.stopPropagation();
+					const appliedNativeEdit = replaceTextRange(textarea, newValue, 0, value.length);
+					if (!appliedNativeEdit) {
+						handleTextChange(newValue, previousValueRef.current);
+						setValue(newValue);
+					}
+					setTextSelectionSoon(textarea, newSelection, newSelection);
 					return;
 				}
 				const selectedText = value.slice(selectionStart, selectionEnd);
