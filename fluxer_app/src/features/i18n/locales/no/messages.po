@@ -41225,3 +41225,25 @@ msgstr "Nettleseren din klarte ikke å fullføre sjekken."
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:421
 msgid "Your number is not linked to your account. We keep only an encrypted marker, with no user ID, for at most {limit} verifications in about {duration} days."
 msgstr "Nummeret ditt er ikke knyttet til kontoen din. Vi lagrer kun en kryptert markør, uten bruker-ID, for maksimalt {limit} bekreftelser i løpet av omtrent {duration} dager."
+
+#. Settings search synonym. Used to match this term when the user types it in the settings search bar.
+#: src/features/user/components/settings_utils/search_index/AdvancedSettingsIndex.ts:60
+msgid "Double click"
+msgstr "Dobbeltklikk"
+
+#. Settings search entry description. One-line summary of what the setting controls.
+#: src/features/user/components/settings_utils/search_index/AdvancedSettingsIndex.ts:72
+msgid "Double-click a message you sent to edit it directly"
+msgstr "Dobbeltklikk på en melding du har sendt for å redigere den direkte"
+
+#. Settings search entry label for double-clicking a message to edit it.
+#. Short label for an advanced message editing preference.
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:298
+#: src/features/user/components/settings_utils/search_index/AdvancedSettingsIndex.ts:56
+msgid "Double-click to edit"
+msgstr "Dobbeltklikk for å redigere"
+
+#. Settings search synonym. Used to match this term when the user types it in the settings search bar.
+#: src/features/user/components/settings_utils/search_index/AdvancedSettingsIndex.ts:64
+msgid "Quick edit"
+msgstr "Hurtigredigering"
