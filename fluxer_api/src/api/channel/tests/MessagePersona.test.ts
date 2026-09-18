@@ -7,7 +7,7 @@ import {
 } from '@fluxer/schema/src/domains/message/MessageRequestSchemas';
 import {MessageResponseSchema} from '@fluxer/schema/src/domains/message/MessageResponseSchemas';
 import type {INatsConnectionManager} from '@pkgs/nats/src/INatsConnectionManager';
-import type {NatsConnection} from 'nats';
+import type {NatsConnection} from '@nats-io/transport-node';
 import {describe, expect, it} from 'vitest';
 import {createChannelID, createGuildID, createMessageID, createUserID} from '../../BrandedTypes';
 import {Message} from '../../models/Message';
