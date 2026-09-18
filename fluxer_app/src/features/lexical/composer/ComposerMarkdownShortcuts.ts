@@ -1,7 +1,9 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 import {
+	$captureSelectionOffsets,
 	$getComposerContentSelectionRange,
+	$isComposerEmpty,
 	$wrapComposerSelection,
 } from '@app/features/lexical/composer/composerOffsets';
 import {COMMAND_PRIORITY_HIGH, KEY_DOWN_COMMAND, type LexicalEditor} from 'lexical';
@@ -24,8 +26,16 @@ export function registerComposerMarkdownShortcuts(editor: LexicalEditor): () => 
 			if (shortcut == null || event.shiftKey !== shortcut.shift) {
 				return false;
 			}
+			const offsets = $captureSelectionOffsets();
+			if (offsets == null) {
+				return false;
+			}
+			const isCollapsed = offsets.anchor === offsets.focus;
+			if (isCollapsed && $isComposerEmpty()) {
+				return false;
+			}
 			const selection = $getComposerContentSelectionRange();
-			if (selection == null || selection.start === selection.end) {
+			if (selection == null || (!isCollapsed && selection.start === selection.end)) {
 				return false;
 			}
 			event.preventDefault();
