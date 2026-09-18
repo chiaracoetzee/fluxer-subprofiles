@@ -6,6 +6,7 @@ import HiddenGuildListButtons from '@app/features/guild/state/HiddenGuildListBut
 import WindowsFont from '@app/features/theme/state/WindowsFont';
 import {Switch} from '@app/features/ui/components/form/FormSwitch';
 import {SwitchGroup, SwitchGroupItem} from '@app/features/ui/components/SwitchGroup';
+import LayoutState from '@app/features/ui/state/LayoutState';
 import {
 	ENABLE_FAVORITES_DESCRIPTOR,
 	KEEP_NEKO_STILL_DESCRIPTOR,
@@ -123,6 +124,24 @@ export const HelpCenterButtonControl = observer(() => {
 			onChange={(value) => (value ? HiddenGuildListButtons.showHelpButton() : HiddenGuildListButtons.hideHelpButton())}
 			compact
 			data-flx="user.advanced-settings-tab.switch.help-center-button"
+		/>
+	);
+});
+
+const AUTO_PEEK_HIDDEN_SIDEBARS_DESCRIPTOR = msg({
+	message: 'Auto-peek hidden sidebars',
+	comment: 'Short label for an advanced appearance preference that reveals collapsed sidebars on mouse hover.',
+});
+
+export const EdgeHoverPeekControl = observer(() => {
+	const {i18n} = useLingui();
+	return (
+		<Switch
+			ariaLabel={i18n._(AUTO_PEEK_HIDDEN_SIDEBARS_DESCRIPTOR)}
+			value={LayoutState.edgeHoverPeekEnabled}
+			onChange={(value) => LayoutState.setEdgeHoverPeekEnabled(value)}
+			compact
+			data-flx="user.advanced-settings-tab.switch.edge-hover-peek"
 		/>
 	);
 });

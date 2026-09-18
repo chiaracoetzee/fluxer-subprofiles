@@ -1,8 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-import type {MessagePreviewContext} from '@app/features/channel/models/MessagePreviewContext';
 import type {Message} from '@app/features/messaging/models/MessagingMessage';
-import {MessageStates} from '@fluxer/constants/src/ChannelConstants';
+import {MessagePreviewContext, MessageStates} from '@fluxer/constants/src/ChannelConstants';
 
 const INTERACTIVE_TARGET_SELECTOR = [
 	'a',
@@ -29,7 +28,7 @@ export interface DoubleClickEditCheckParams {
 	target: EventTarget | null;
 	message: Message;
 	isEditing: boolean;
-	previewContext?: MessagePreviewContext | null;
+	previewContext?: keyof typeof MessagePreviewContext | null;
 	canEditMessage: boolean;
 }
 
