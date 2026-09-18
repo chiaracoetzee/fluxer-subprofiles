@@ -30,6 +30,7 @@ import {
 	TranslatorsContent,
 } from '@app/features/user/components/modals/tabs/chat_settings_tab/SearchEnginesTab';
 import PrivacyPreferences from '@app/features/user/state/PrivacyPreferences';
+import AdvancedSettings from '@app/features/user/state/AdvancedSettings';
 import UserSettings from '@app/features/user/state/UserSettings';
 import {msg} from '@lingui/core/macro';
 import {Trans, useLingui} from '@lingui/react/macro';
@@ -293,6 +294,24 @@ export const KeepAttachmentsOnEmptyEditAdvancedControl = observer(() => (
 		data-flx="user.advanced-settings-tab.keep-attachments-on-empty-edit-control"
 	/>
 ));
+
+const DOUBLE_CLICK_TO_EDIT_DESCRIPTOR = msg({
+	message: 'Double-click to edit',
+	comment: 'Short label for an advanced message editing preference.',
+});
+
+export const DoubleClickToEditControl = observer(() => {
+	const {i18n} = useLingui();
+	return (
+		<Switch
+			ariaLabel={i18n._(DOUBLE_CLICK_TO_EDIT_DESCRIPTOR)}
+			value={AdvancedSettings.doubleClickToEdit}
+			onChange={AdvancedSettings.setDoubleClickToEdit}
+			compact
+			data-flx="user.advanced-settings-tab.switch.double-click-to-edit"
+		/>
+	);
+});
 
 interface SearchProviderSettingsModalProps {
 	mode: SearchEngineMode;

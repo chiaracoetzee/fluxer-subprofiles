@@ -53,6 +53,27 @@ const SHOW_A_ONE_CLICK_SHORTCUT_FOR_COPYING_EXPRESSIONS_DESCRIPTOR = msg({
 	comment: 'Settings search entry description. One-line summary of what the setting controls.',
 });
 
+const DOUBLE_CLICK_TO_EDIT_DESCRIPTOR = msg({
+	message: 'Double-click to edit',
+	comment: 'Settings search entry label for double-clicking a message to edit it.',
+});
+const DOUBLE_CLICK_DESCRIPTOR = msg({
+	message: 'Double click',
+	comment: 'Settings search synonym. Used to match this term when the user types it in the settings search bar.',
+});
+const QUICK_EDIT_DESCRIPTOR = msg({
+	message: 'Quick edit',
+	comment: 'Settings search synonym. Used to match this term when the user types it in the settings search bar.',
+});
+const EDIT_MESSAGE_DESCRIPTOR = msg({
+	message: 'Edit message',
+	comment: 'Settings search synonym. Used to match this term when the user types it in the settings search bar.',
+});
+const DOUBLE_CLICK_A_MESSAGE_YOU_SENT_TO_EDIT_IT_DESCRIPTOR = msg({
+	message: 'Double-click a message you sent to edit it directly',
+	comment: 'Settings search entry description. One-line summary of what the setting controls.',
+});
+
 export const advancedSettingsIndex: Array<SearchableSettingDescriptor> = [
 	{
 		id: 'advanced-unread-badge-customization',
@@ -86,5 +107,19 @@ export const advancedSettingsIndex: Array<SearchableSettingDescriptor> = [
 		tags: ['chat'],
 		addedAt: '2026-09-11T00:00:00.000Z',
 		badges: ['experimental'],
+	},
+	{
+		id: 'advanced-double-click-to-edit',
+		tabType: 'advanced_settings',
+		label: DOUBLE_CLICK_TO_EDIT_DESCRIPTOR,
+		keywords: [
+			DOUBLE_CLICK_DESCRIPTOR,
+			QUICK_EDIT_DESCRIPTOR,
+			EDIT_MESSAGE_DESCRIPTOR,
+		],
+		description: DOUBLE_CLICK_A_MESSAGE_YOU_SENT_TO_EDIT_IT_DESCRIPTOR,
+		audience: 'advanced',
+		tags: ['chat'],
+		addedAt: '2026-09-18T00:00:00.000Z',
 	},
 ];
