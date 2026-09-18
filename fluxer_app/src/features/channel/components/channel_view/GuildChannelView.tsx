@@ -37,6 +37,7 @@ import Permission from '@app/features/permissions/state/Permission';
 import {ComponentBus} from '@app/features/platform/utils/ComponentBus';
 import ReadStates from '@app/features/read_state/state/ReadStates';
 import {Button} from '@app/features/ui/button/Button';
+import LayoutState from '@app/features/ui/state/LayoutState';
 import MobileLayout from '@app/features/ui/state/MobileLayout';
 import {Tooltip} from '@app/features/ui/tooltip/Tooltip';
 import {isPwaOnMobileOrTablet} from '@app/features/ui/utils/PwaUtils';
@@ -426,6 +427,7 @@ export const GuildChannelView = observer(({channelId, guildId}: GuildChannelView
 	if (isVoiceChannel) {
 		const isVoiceTextSplitView = isPwaVoiceTextSplitLayout && !isVoiceTextCallExpanded;
 		const shouldRenderMemberList = isMemberListVisible && !isMobileLayout && !isSearchActive;
+		const isMemberListPeeking = !isMemberListVisible && !isMobileLayout && !isSearchActive && LayoutState.isRightHoverPeeking;
 		const compactVoiceCallHeaderSupplement = isConnectedToThisChannel ? (
 			<CompactVoiceCallStreamHeaderInfo
 				channel={channel}
@@ -531,6 +533,14 @@ export const GuildChannelView = observer(({channelId, guildId}: GuildChannelView
 							guild={guild}
 							data-flx="channel.channel-view.guild-channel-view.channel-members--2"
 						/>
+					) : isMemberListPeeking ? (
+						<div className={styles.memberListOverlay} data-flx="channel.channel-view.guild-channel-view.member-list-overlay--voice">
+							<ChannelMembers
+								channel={channel}
+								guild={guild}
+								data-flx="channel.channel-view.guild-channel-view.channel-members--voice-peek"
+							/>
+						</div>
 					) : null
 				}
 				showMemberListDivider={shouldRenderMemberList && !isSearchActive}
@@ -540,6 +550,7 @@ export const GuildChannelView = observer(({channelId, guildId}: GuildChannelView
 		);
 	}
 	const shouldRenderMemberList = isMemberListVisible && !isMobileLayout && !isSearchActive;
+	const isMemberListPeeking = !isMemberListVisible && !isMobileLayout && !isSearchActive && LayoutState.isRightHoverPeeking;
 	return (
 		<ChannelViewScaffold
 			header={
@@ -585,6 +596,14 @@ export const GuildChannelView = observer(({channelId, guildId}: GuildChannelView
 						guild={guild}
 						data-flx="channel.channel-view.guild-channel-view.channel-members"
 					/>
+				) : isMemberListPeeking ? (
+					<div className={styles.memberListOverlay} data-flx="channel.channel-view.guild-channel-view.member-list-overlay">
+						<ChannelMembers
+							channel={channel}
+							guild={guild}
+							data-flx="channel.channel-view.guild-channel-view.channel-members--peek"
+						/>
+					</div>
 				) : null
 			}
 			showMemberListDivider={shouldRenderMemberList && !isSearchActive}
