@@ -890,7 +890,7 @@ msgid "{codec} cannot keep up on this device. Set the codec to Automatic in Adva
 msgstr "{codec} 在此设备上无法跟上。在“高级”设置中将编解码器设为“自动”，以允许使用更快的编解码器。"
 
 #. Guild nagbar body shown for staff-only communities. {communityName} is the community name and {productName} is Fluxer.
-#: src/features/app/components/layout/GuildLayout.tsx:83
+#: src/features/app/components/layout/GuildLayout.tsx:84
 msgid "{communityName} is currently only accessible to {productName} staff members"
 msgstr "{communityName} 目前仅供 {productName} 员工访问"
 
@@ -965,7 +965,7 @@ msgstr "{count, plural, other {# 条被屏蔽的消息}}"
 msgid "{count, plural, one {# community found} other {# communities found}}"
 msgstr "{count, plural, other {# 个社区}}"
 
-#: src/features/app/components/layout/GuildsLayout.tsx:1953
+#: src/features/app/components/layout/GuildsLayout.tsx:1973
 msgid "{count, plural, one {# community is temporarily unavailable due to a flux capacitor malfunction.} other {# communities are temporarily unavailable due to a flux capacitor malfunction.}}"
 msgstr "{count, plural, other {# 个社区因时空穿梭器故障暂时不可用。}}"
 
@@ -4552,7 +4552,7 @@ msgid "Are you sure you want to delete your account? This action will schedule y
 msgstr "确定要删除你的账号吗？此操作将安排永久删除你的账号。"
 
 #. Confirmation modal body shown before re-enabling invite links in the current community.
-#: src/features/app/components/layout/GuildLayout.tsx:58
+#: src/features/app/components/layout/GuildLayout.tsx:59
 msgid "Are you sure you want to enable invites? This will allow users to join this community through invite links again."
 msgstr "确定要启用邀请吗？启用后，用户将能够再次通过邀请链接加入此社区。"
 
@@ -5013,6 +5013,18 @@ msgstr "自动灵敏度"
 #: src/features/messaging/utils/AttachmentPreviewUtils.ts:7
 msgid "Auto-detect language"
 msgstr "自动检测语言"
+
+#. Settings search synonym.
+#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:103
+msgid "Auto-hide"
+msgstr "Auto-hide"
+
+#. Settings section label in Advanced Settings for edge hover peek preference.
+#. Short label for an advanced appearance preference that reveals collapsed sidebars on mouse hover.
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedAppearanceControls.tsx:100
+#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:91
+msgid "Auto-peek hidden sidebars"
+msgstr "Auto-peek hidden sidebars"
 
 #. Short label in the voice tab. Keep it concise.
 #: src/features/user/components/modals/tabs/UserVoiceTab.tsx:116
@@ -8741,7 +8753,7 @@ msgid "Community settings"
 msgstr "社区设置"
 
 #. Short label in the app layout guild layout.
-#: src/features/app/components/layout/GuildLayout.tsx:92
+#: src/features/app/components/layout/GuildLayout.tsx:93
 msgid "Community temporarily unavailable"
 msgstr "社区暂时不可用"
 
@@ -8950,7 +8962,7 @@ msgstr "确认"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced voice-channel safety preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedAppearanceControls.tsx:21
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedAppearanceControls.tsx:22
 #: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:15
 msgid "Confirm before joining voice channels"
 msgstr "加入语音频道前确认"
@@ -9345,7 +9357,7 @@ msgstr "控制频道列表中已静音频道的未读标记行为。"
 msgid "Control which chat updates are announced by assistive technology."
 msgstr "控制辅助技术播报哪些聊天更新。"
 
-#: src/features/channel/components/channel_view/DMChannelView.tsx:260
+#: src/features/channel/components/channel_view/DMChannelView.tsx:268
 msgid "Conversation not found"
 msgstr "未找到对话"
 
@@ -13658,7 +13670,7 @@ msgstr "收藏夹为空"
 #. Button or menu action label in the invites disable invites button. Keep it concise.
 #. Primary button label in the enable-invites confirmation modal.
 #: src/features/app/components/layout/app_layout/nagbars/LinuxInputAccessNagbar.tsx:32
-#: src/features/app/components/layout/GuildLayout.tsx:54
+#: src/features/app/components/layout/GuildLayout.tsx:55
 #: src/features/invite/components/DisableInvitesButton.tsx:27
 #: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:256
 #: src/features/user/components/modals/tabs/components/LinuxInputAccessSection.tsx:23
@@ -13787,13 +13799,13 @@ msgid "Enable invites"
 msgstr "启用邀请"
 
 #. Button label on the invites-disabled guild nagbar. Opens a confirmation to re-enable invites.
-#: src/features/app/components/layout/GuildLayout.tsx:73
+#: src/features/app/components/layout/GuildLayout.tsx:74
 msgid "Enable invites again"
 msgstr "重新开启邀请"
 
 #. Button or menu action label in the invites disable invites button. Keep it concise.
 #. Confirmation modal title for re-enabling invite links in the current community.
-#: src/features/app/components/layout/GuildLayout.tsx:50
+#: src/features/app/components/layout/GuildLayout.tsx:51
 #: src/features/invite/components/DisableInvitesButton.tsx:19
 msgid "Enable invites for this community"
 msgstr "为此社区启用邀请"
@@ -17133,6 +17145,11 @@ msgstr "隐藏 {premiumProductName} 购买日期（{dateUtilsGetFormattedShortDa
 msgid "Hide avatars"
 msgstr "隐藏头像"
 
+#. Tooltip on the channel header channel list toggle when the channel list is currently shown.
+#: src/features/channel/components/channel_header/shared.ts:81
+msgid "Hide channel list"
+msgstr "Hide channel list"
+
 #. Settings search entry description. One-line summary of what the settings search entry controls.
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:507
 msgid "Hide channels you've muted from community sidebars"
@@ -17228,6 +17245,11 @@ msgstr "隐藏画中画弹窗？"
 #: src/features/voice/components/StreamSettingsMenuContent.tsx:770
 msgid "Hide preview thumbnail"
 msgstr "隐藏预览缩略图"
+
+#. Tooltip on the channel header server list toggle when the server rail is currently shown.
+#: src/features/channel/components/channel_header/shared.ts:73
+msgid "Hide server list"
+msgstr "Hide server list"
 
 #. Settings search entry description. One-line summary of what the settings search entry controls.
 #: src/features/user/components/settings_utils/search_index/DesktopSettingsIndex.ts:198
@@ -17378,6 +17400,11 @@ msgstr "悬停效果"
 #: src/features/user/components/modals/tabs/component_gallery_tab/OverlaysTab.tsx:72
 msgid "Hover me"
 msgstr "悬停试试"
+
+#. Settings section description in Advanced Settings for edge hover peek preference.
+#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:95
+msgid "Hover near window edges to temporarily reveal collapsed panels."
+msgstr "Hover near window edges to temporarily reveal collapsed panels."
 
 #: src/features/user/components/modals/tabs/component_gallery_tab/OverlaysTab.tsx:63
 msgid "Hover over buttons to see tooltips in different positions."
@@ -18703,12 +18730,12 @@ msgid "Invites paused"
 msgstr "邀请已暂停"
 
 #. Guild nagbar body shown when invite links are paused in the current community.
-#: src/features/app/components/layout/GuildLayout.tsx:69
+#: src/features/app/components/layout/GuildLayout.tsx:70
 msgid "Invites to {communityName} are currently disabled"
 msgstr "{communityName} 的邀请目前已禁用"
 
 #. Guild nagbar body shown when invite links are paused because raid detection is active. {communityName} is the community name and {productName} is Fluxer.
-#: src/features/app/components/layout/GuildLayout.tsx:63
+#: src/features/app/components/layout/GuildLayout.tsx:64
 msgid "Invites to {communityName} are currently disabled because {productName} detected a potential raid. New people cannot join right now."
 msgstr "由于 {productName} 检测到潜在的突袭，{communityName} 的邀请目前已禁用。新成员暂时无法加入。"
 
@@ -18898,7 +18925,7 @@ msgstr "加入语音通话"
 
 #. Button in the unjoined voice channel call surface. Joins the current voice channel.
 #. Confirm dialog title shown before joining a voice channel from a context where confirmation is required.
-#: src/features/channel/components/channel_view/GuildChannelView.tsx:64
+#: src/features/channel/components/channel_view/GuildChannelView.tsx:65
 #: src/features/voice/hooks/usePendingVoiceConnection.tsx:12
 msgid "Join voice channel"
 msgstr "加入语音频道"
@@ -20109,7 +20136,7 @@ msgid "Manage community"
 msgstr "管理社区"
 
 #. Button label on the staff-only community nagbar. Opens the admin feature-management page.
-#: src/features/app/components/layout/GuildLayout.tsx:88
+#: src/features/app/components/layout/GuildLayout.tsx:89
 msgid "Manage community features"
 msgstr "管理社区功能"
 
@@ -21487,7 +21514,7 @@ msgid "Moderation actions and community changes will appear here."
 msgstr "管理操作和社区变更将在此处显示。"
 
 #. Guild nagbar body shown when moderation actions in a community require two-factor authentication. {communityName} is the community name.
-#: src/features/app/components/layout/GuildLayout.tsx:77
+#: src/features/app/components/layout/GuildLayout.tsx:78
 msgid "Moderation actions in {communityName} require two-factor authentication. Enable 2FA to kick, ban, time out, or delete messages here."
 msgstr "在“{communityName}”中执行管理操作需要双重认证。请启用双重认证，以便在此踢出、封禁、禁言或删除消息。"
 
@@ -21907,7 +21934,7 @@ msgstr "静音成员"
 
 #. Short label in the app layout user area.
 #. Tray menu item shown while in a voice call. Mutes the local microphone.
-#: src/features/app/components/layout/UserArea.tsx:63
+#: src/features/app/components/layout/UserArea.tsx:64
 #: src/features/platform/utils/DesktopLocaleBridge.ts:208
 msgid "Mute microphone"
 msgstr "麦克风静音"
@@ -22341,7 +22368,7 @@ msgid "New"
 msgstr "新消息"
 
 #. Small badge on a new or recently added app navigation item.
-#: src/features/app/components/layout/GuildsLayout.tsx:136
+#: src/features/app/components/layout/GuildsLayout.tsx:138
 msgctxt "navigation-badge"
 msgid "New"
 msgstr "新"
@@ -22577,7 +22604,7 @@ msgid "No access"
 msgstr "无法访问"
 
 #. Short label in the app layout guild layout.
-#: src/features/app/components/layout/GuildLayout.tsx:109
+#: src/features/app/components/layout/GuildLayout.tsx:110
 msgid "No accessible channels"
 msgstr "没有可访问的频道"
 
@@ -24180,7 +24207,7 @@ msgid "Open theme studio…"
 msgstr "打开主题工作室…"
 
 #. Short label in the app layout user area. Preserve {displayName}; it is inserted by code.
-#: src/features/app/components/layout/UserArea.tsx:71
+#: src/features/app/components/layout/UserArea.tsx:72
 msgid "Open user menu for {displayName}"
 msgstr "打开 {displayName} 的用户菜单"
 
@@ -24808,6 +24835,11 @@ msgstr "支付暂时不可用。请稍后重试。"
 #: src/features/app/components/dialogs/components/plutonium/utils/PremiumActionErrorModal.tsx:12
 msgid "Payments are unavailable"
 msgstr "支付不可用"
+
+#. Settings search synonym.
+#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:107
+msgid "Peek"
+msgstr "Peek"
 
 #. Discovery application status badge in the community Discovery settings tab. The application is awaiting staff review.
 #. Tab label in the DM friends view showing pending friend requests.
@@ -26255,7 +26287,7 @@ msgid "Push to talk (priority)"
 msgstr "按住说话（优先）"
 
 #. User-area voice status text shown when push-to-talk is active. The hint is the user-configured keybind label.
-#: src/features/app/components/layout/UserArea.tsx:54
+#: src/features/app/components/layout/UserArea.tsx:55
 msgid "Push to talk is on. Hold {pushToTalkHint} to speak."
 msgstr "按住说话已开启。按住 {pushToTalkHint} 讲话。"
 
@@ -27629,7 +27661,7 @@ msgid "Require 2FA for moderation actions"
 msgstr "要求双重认证才能执行管理操作"
 
 #. Short label for an advanced voice-channel navigation preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedAppearanceControls.tsx:17
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedAppearanceControls.tsx:18
 msgid "Require double-click to join voice channels"
 msgstr "加入语音频道需双击"
 
@@ -30565,7 +30597,9 @@ msgid "Show camera"
 msgstr "显示摄像头"
 
 #. Accessible label on the mobile channel header button that opens the channel list drawer.
+#. Tooltip on the channel header channel list toggle when the channel list is currently hidden.
 #: src/features/channel/components/channel_header/shared.ts:31
+#: src/features/channel/components/channel_header/shared.ts:85
 msgid "Show channel list"
 msgstr "显示频道列表"
 
@@ -30894,6 +30928,11 @@ msgstr "在表情自动补全中显示已保存媒体"
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:133
 msgid "Show send button"
 msgstr "显示发送按钮"
+
+#. Tooltip on the channel header server list toggle when the server rail is currently hidden.
+#: src/features/channel/components/channel_header/shared.ts:77
+msgid "Show server list"
+msgstr "Show server list"
 
 #. Label in the display tab.
 #: src/features/user/components/modals/tabs/chat_settings_tab/DisplayTab.tsx:26
@@ -31704,7 +31743,7 @@ msgid "Something went wrong. Try again."
 msgstr "出错了。请重试。"
 
 #. Community layout error-boundary body shown when rendering the community pane crashes. Keep plain and calm.
-#: src/features/app/components/layout/GuildLayout.tsx:96
+#: src/features/app/components/layout/GuildLayout.tsx:97
 #: src/features/app/components/layout/sidebar_nav/GuildListItemTooltip.tsx:203
 msgid "Something went wrong. We're working on it."
 msgstr "出错了，我们正在修复。"
@@ -33272,6 +33311,11 @@ msgstr "tar.gz 压缩包"
 msgid "Targets people by protected characteristics."
 msgstr "基于受保护特征针对他人。"
 
+#. Settings search synonym.
+#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:99
+msgid "Taskbar"
+msgstr "Taskbar"
+
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/search_index/NotificationsIndex.ts:34
@@ -33642,7 +33686,7 @@ msgid "The community this came from has turned off cloning, so it cannot be copi
 msgstr "此内容所属的社区已关闭克隆功能，因此无法复制。"
 
 #. Community layout empty-state body shown when the active community is missing (deleted or no longer accessible).
-#: src/features/app/components/layout/GuildLayout.tsx:104
+#: src/features/app/components/layout/GuildLayout.tsx:105
 msgid "The community you're looking for may have been deleted or you may not have access to it."
 msgstr "你要找的社区可能已被删除，或者你没有访问权限。"
 
@@ -34217,7 +34261,7 @@ msgstr "此连接尚未验证。"
 msgid "This contains sensitive content."
 msgstr "此处包含敏感内容。"
 
-#: src/features/channel/components/channel_view/DMChannelView.tsx:263
+#: src/features/channel/components/channel_view/DMChannelView.tsx:271
 msgid "This conversation is no longer available."
 msgstr "此对话已不可用。"
 
@@ -34406,7 +34450,7 @@ msgid "This is not the channel you're looking for."
 msgstr "这不是你要找的频道。"
 
 #. Body text in the app layout guild layout.
-#: src/features/app/components/layout/GuildLayout.tsx:100
+#: src/features/app/components/layout/GuildLayout.tsx:101
 msgid "This is not the community you're looking for."
 msgstr "这不是你要找的社区。"
 
@@ -34679,7 +34723,7 @@ msgstr "该用户在此社区中没有身份组。"
 msgid "This user is already banned from the community."
 msgstr "该用户已被此社区封禁。"
 
-#: src/features/channel/components/channel_view/DMChannelView.tsx:280
+#: src/features/channel/components/channel_view/DMChannelView.tsx:288
 msgid "This user is no longer available."
 msgstr "该用户已不可用。"
 
@@ -36304,7 +36348,7 @@ msgstr "取消收藏夹静音"
 
 #. Short label in the app layout user area.
 #. Tray menu item shown while in a voice call. Unmutes the local microphone.
-#: src/features/app/components/layout/UserArea.tsx:59
+#: src/features/app/components/layout/UserArea.tsx:60
 #: src/features/platform/utils/DesktopLocaleBridge.ts:212
 msgid "Unmute microphone"
 msgstr "取消麦克风静音"
@@ -37283,7 +37327,7 @@ msgid "User avatars"
 msgstr "用户头像"
 
 #. Short label in the app layout user area.
-#: src/features/app/components/layout/UserArea.tsx:67
+#: src/features/app/components/layout/UserArea.tsx:68
 msgid "User controls"
 msgstr "用户控制项"
 
@@ -37325,7 +37369,7 @@ msgstr "用户被移至其他频道"
 #. Reason chip in the unaddable recipients alert when the user record is missing.
 #. Title of the error modal shown when the recipient of a DM no longer exists.
 #: src/features/app/components/alerts/DmActionErrorModal.tsx:24
-#: src/features/channel/components/channel_view/DMChannelView.tsx:277
+#: src/features/channel/components/channel_view/DMChannelView.tsx:285
 #: src/features/channel/components/modals/UnaddableRecipientsConfirmModal.tsx:11
 msgid "User not found"
 msgstr "用户不存在"
@@ -39739,7 +39783,7 @@ msgid "You do not have access to the channel where this message was sent."
 msgstr "你无权访问发送此消息的频道。"
 
 #. Community layout empty-state body shown when the user has joined the community but cannot see any channels.
-#: src/features/app/components/layout/GuildLayout.tsx:113
+#: src/features/app/components/layout/GuildLayout.tsx:114
 msgid "You don't have access to any channels in this community."
 msgstr "你无法访问此社区中的任何频道。"
 
@@ -39776,7 +39820,7 @@ msgid "You don't have permission to do this to this member."
 msgstr "你没有权限对该成员执行此操作。"
 
 #. Tooltip on the disabled Join voice channel button shown when the user lacks the Connect permission in the voice channel.
-#: src/features/channel/components/channel_view/GuildChannelView.tsx:68
+#: src/features/channel/components/channel_view/GuildChannelView.tsx:69
 msgid "You don't have permission to join this voice channel"
 msgstr "你没有加入此语音频道的权限"
 
