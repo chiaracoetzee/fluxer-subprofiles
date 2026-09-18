@@ -885,7 +885,7 @@ msgid "{clientName} will use this account for this authorization."
 msgstr "{clientName} utilisera ce compte pour cette autorisation."
 
 #. Guild nagbar body shown for staff-only communities. {communityName} is the community name and {productName} is Fluxer.
-#: src/features/app/components/layout/GuildLayout.tsx:83
+#: src/features/app/components/layout/GuildLayout.tsx:84
 msgid "{communityName} is currently only accessible to {productName} staff members"
 msgstr "{communityName} est actuellement accessible uniquement aux membres de l’équipe {productName}"
 
@@ -960,7 +960,7 @@ msgstr "{count, plural, one {# message bloqué} other {# messages bloqués}}"
 msgid "{count, plural, one {# community found} other {# communities found}}"
 msgstr "{count, plural, one {# communauté trouvée} other {# communautés trouvées}}"
 
-#: src/features/app/components/layout/GuildsLayout.tsx:1953
+#: src/features/app/components/layout/GuildsLayout.tsx:1973
 msgid "{count, plural, one {# community is temporarily unavailable due to a flux capacitor malfunction.} other {# communities are temporarily unavailable due to a flux capacitor malfunction.}}"
 msgstr "{count, plural, one {# communauté est temporairement indisponible en raison d'un dysfonctionnement du condensateur de flux.} other {# communautés sont temporairement indisponibles en raison d'un dysfonctionnement du condensateur de flux.}}"
 
@@ -4539,7 +4539,7 @@ msgid "Are you sure you want to delete your account? This action will schedule y
 msgstr "Voulez-vous vraiment supprimer votre compte ? Cette action planifiera la suppression définitive de votre compte."
 
 #. Confirmation modal body shown before re-enabling invite links in the current community.
-#: src/features/app/components/layout/GuildLayout.tsx:58
+#: src/features/app/components/layout/GuildLayout.tsx:59
 msgid "Are you sure you want to enable invites? This will allow users to join this community through invite links again."
 msgstr "Voulez-vous vraiment activer les invitations ? Les utilisateurs pourront à nouveau rejoindre cette communauté via des liens d'invitation."
 
@@ -5011,6 +5011,18 @@ msgstr "Sensibilité automatique"
 #: src/features/messaging/utils/AttachmentPreviewUtils.ts:7
 msgid "Auto-detect language"
 msgstr "Détection automatique de la langue"
+
+#. Settings search synonym.
+#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:103
+msgid "Auto-hide"
+msgstr "Masquage automatique"
+
+#. Settings section label in Advanced Settings for edge hover peek preference.
+#. Short label for an advanced appearance preference that reveals collapsed sidebars on mouse hover.
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedAppearanceControls.tsx:100
+#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:91
+msgid "Auto-peek hidden sidebars"
+msgstr "Aperçu automatique des barres latérales masquées"
 
 #. Short label in the voice tab. Keep it concise.
 #: src/features/user/components/modals/tabs/UserVoiceTab.tsx:116
@@ -8741,7 +8753,7 @@ msgid "Community settings"
 msgstr "Paramètres de la communauté"
 
 #. Short label in the app layout guild layout.
-#: src/features/app/components/layout/GuildLayout.tsx:92
+#: src/features/app/components/layout/GuildLayout.tsx:93
 msgid "Community temporarily unavailable"
 msgstr "Communauté temporairement indisponible"
 
@@ -8950,7 +8962,7 @@ msgstr "Confirmer"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced voice-channel safety preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedAppearanceControls.tsx:21
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedAppearanceControls.tsx:22
 #: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:15
 msgid "Confirm before joining voice channels"
 msgstr "Confirmer avant de rejoindre les salons vocaux"
@@ -9350,7 +9362,7 @@ msgstr "Gérer le comportement de l'indicateur de messages non lus pour les salo
 msgid "Control which chat updates are announced by assistive technology."
 msgstr "Choisissez les mises à jour du chat annoncées par les technologies d’assistance."
 
-#: src/features/channel/components/channel_view/DMChannelView.tsx:260
+#: src/features/channel/components/channel_view/DMChannelView.tsx:268
 msgid "Conversation not found"
 msgstr "Conversation introuvable"
 
@@ -13679,7 +13691,7 @@ msgstr "Favoris vides"
 #. Button or menu action label in the invites disable invites button. Keep it concise.
 #. Primary button label in the enable-invites confirmation modal.
 #: src/features/app/components/layout/app_layout/nagbars/LinuxInputAccessNagbar.tsx:32
-#: src/features/app/components/layout/GuildLayout.tsx:54
+#: src/features/app/components/layout/GuildLayout.tsx:55
 #: src/features/invite/components/DisableInvitesButton.tsx:27
 #: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:360
 #: src/features/user/components/modals/tabs/components/LinuxInputAccessSection.tsx:23
@@ -13808,13 +13820,13 @@ msgid "Enable invites"
 msgstr "Activer les invitations"
 
 #. Button label on the invites-disabled guild nagbar. Opens a confirmation to re-enable invites.
-#: src/features/app/components/layout/GuildLayout.tsx:73
+#: src/features/app/components/layout/GuildLayout.tsx:74
 msgid "Enable invites again"
 msgstr "Réactiver les invitations"
 
 #. Button or menu action label in the invites disable invites button. Keep it concise.
 #. Confirmation modal title for re-enabling invite links in the current community.
-#: src/features/app/components/layout/GuildLayout.tsx:50
+#: src/features/app/components/layout/GuildLayout.tsx:51
 #: src/features/invite/components/DisableInvitesButton.tsx:19
 msgid "Enable invites for this community"
 msgstr "Activer les invitations pour cette communauté"
@@ -17159,6 +17171,11 @@ msgstr "Masquer la date d'achat de {premiumProductName} ({dateUtilsGetFormattedS
 msgid "Hide avatars"
 msgstr "Masquer les avatars"
 
+#. Tooltip on the channel header channel list toggle when the channel list is currently shown.
+#: src/features/channel/components/channel_header/shared.ts:81
+msgid "Hide channel list"
+msgstr "Masquer la liste des salons"
+
 #. Settings search entry description. One-line summary of what the settings search entry controls.
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:507
 msgid "Hide channels you've muted from community sidebars"
@@ -17254,6 +17271,11 @@ msgstr "Masquer la fenêtre incrustée (PIP) ?"
 #: src/features/voice/components/StreamSettingsMenuContent.tsx:770
 msgid "Hide preview thumbnail"
 msgstr "Masquer la miniature d’aperçu"
+
+#. Tooltip on the channel header server list toggle when the server rail is currently shown.
+#: src/features/channel/components/channel_header/shared.ts:73
+msgid "Hide server list"
+msgstr "Masquer la liste des serveurs"
 
 #. Settings search entry description. One-line summary of what the settings search entry controls.
 #: src/features/user/components/settings_utils/search_index/DesktopSettingsIndex.ts:198
@@ -17404,6 +17426,11 @@ msgstr "Effets au survol"
 #: src/features/user/components/modals/tabs/component_gallery_tab/OverlaysTab.tsx:72
 msgid "Hover me"
 msgstr "Passez la souris"
+
+#. Settings section description in Advanced Settings for edge hover peek preference.
+#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:95
+msgid "Hover near window edges to temporarily reveal collapsed panels."
+msgstr "Survolez les bords de la fenêtre pour afficher temporairement les panneaux masqués."
 
 #: src/features/user/components/modals/tabs/component_gallery_tab/OverlaysTab.tsx:63
 msgid "Hover over buttons to see tooltips in different positions."
@@ -18729,12 +18756,12 @@ msgid "Invites paused"
 msgstr "Invitations suspendues"
 
 #. Guild nagbar body shown when invite links are paused in the current community.
-#: src/features/app/components/layout/GuildLayout.tsx:69
+#: src/features/app/components/layout/GuildLayout.tsx:70
 msgid "Invites to {communityName} are currently disabled"
 msgstr "Les invitations à {communityName} sont actuellement désactivées"
 
 #. Guild nagbar body shown when invite links are paused because raid detection is active. {communityName} is the community name and {productName} is Fluxer.
-#: src/features/app/components/layout/GuildLayout.tsx:63
+#: src/features/app/components/layout/GuildLayout.tsx:64
 msgid "Invites to {communityName} are currently disabled because {productName} detected a potential raid. New people cannot join right now."
 msgstr "Les invitations à {communityName} sont actuellement désactivées car {productName} a détecté un raid potentiel. Personne ne peut rejoindre pour le moment."
 
@@ -18924,7 +18951,7 @@ msgstr "Rejoindre l'appel vocal"
 
 #. Button in the unjoined voice channel call surface. Joins the current voice channel.
 #. Confirm dialog title shown before joining a voice channel from a context where confirmation is required.
-#: src/features/channel/components/channel_view/GuildChannelView.tsx:64
+#: src/features/channel/components/channel_view/GuildChannelView.tsx:65
 #: src/features/voice/hooks/usePendingVoiceConnection.tsx:12
 msgid "Join voice channel"
 msgstr "Rejoindre le salon vocal"
@@ -20135,7 +20162,7 @@ msgid "Manage community"
 msgstr "Gérer la communauté"
 
 #. Button label on the staff-only community nagbar. Opens the admin feature-management page.
-#: src/features/app/components/layout/GuildLayout.tsx:88
+#: src/features/app/components/layout/GuildLayout.tsx:89
 msgid "Manage community features"
 msgstr "Gérer les fonctionnalités de la communauté"
 
@@ -21513,7 +21540,7 @@ msgid "Moderation actions and community changes will appear here."
 msgstr "Les actions de modération et les modifications de la communauté apparaîtront ici."
 
 #. Guild nagbar body shown when moderation actions in a community require two-factor authentication. {communityName} is the community name.
-#: src/features/app/components/layout/GuildLayout.tsx:77
+#: src/features/app/components/layout/GuildLayout.tsx:78
 msgid "Moderation actions in {communityName} require two-factor authentication. Enable 2FA to kick, ban, time out, or delete messages here."
 msgstr "Les actions de modération dans {communityName} nécessitent l’authentification à deux facteurs. Activez-la pour expulser ou bannir des membres, leur appliquer une restriction temporaire ou supprimer des messages."
 
@@ -21933,7 +21960,7 @@ msgstr "Couper le micro des membres"
 
 #. Short label in the app layout user area.
 #. Tray menu item shown while in a voice call. Mutes the local microphone.
-#: src/features/app/components/layout/UserArea.tsx:63
+#: src/features/app/components/layout/UserArea.tsx:64
 #: src/features/platform/utils/DesktopLocaleBridge.ts:208
 msgid "Mute microphone"
 msgstr "Couper le micro"
@@ -22367,7 +22394,7 @@ msgid "New"
 msgstr "Nouveau"
 
 #. Small badge on a new or recently added app navigation item.
-#: src/features/app/components/layout/GuildsLayout.tsx:136
+#: src/features/app/components/layout/GuildsLayout.tsx:138
 msgctxt "navigation-badge"
 msgid "New"
 msgstr "Nouveau"
@@ -22603,7 +22630,7 @@ msgid "No access"
 msgstr "Accès refusé"
 
 #. Short label in the app layout guild layout.
-#: src/features/app/components/layout/GuildLayout.tsx:109
+#: src/features/app/components/layout/GuildLayout.tsx:110
 msgid "No accessible channels"
 msgstr "Aucun salon accessible"
 
@@ -24211,7 +24238,7 @@ msgid "Open theme studio…"
 msgstr "Ouvrir le studio de thèmes…"
 
 #. Short label in the app layout user area. Preserve {displayName}; it is inserted by code.
-#: src/features/app/components/layout/UserArea.tsx:71
+#: src/features/app/components/layout/UserArea.tsx:72
 msgid "Open user menu for {displayName}"
 msgstr "Ouvrir le menu utilisateur pour {displayName}"
 
@@ -24824,6 +24851,11 @@ msgstr "Les paiements sont temporairement indisponibles. Veuillez réessayer dan
 #: src/features/app/components/dialogs/components/plutonium/utils/PremiumActionErrorModal.tsx:12
 msgid "Payments are unavailable"
 msgstr "Paiements indisponibles"
+
+#. Settings search synonym.
+#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:107
+msgid "Peek"
+msgstr "Aperçu rapide"
 
 #. Discovery application status badge in the community Discovery settings tab. The application is awaiting staff review.
 #. Tab label in the DM friends view showing pending friend requests.
@@ -26271,7 +26303,7 @@ msgid "Push to talk (priority)"
 msgstr "Appuyer pour parler (priorité)"
 
 #. User-area voice status text shown when push-to-talk is active. The hint is the user-configured keybind label.
-#: src/features/app/components/layout/UserArea.tsx:54
+#: src/features/app/components/layout/UserArea.tsx:55
 msgid "Push to talk is on. Hold {pushToTalkHint} to speak."
 msgstr "« Appuyer pour parler » est activé. Maintenez {pushToTalkHint} enfoncé pour parler."
 
@@ -27651,7 +27683,7 @@ msgid "Require a passkey as your second factor"
 msgstr "Exiger une clé d'accès comme deuxième facteur"
 
 #. Short label for an advanced voice-channel navigation preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedAppearanceControls.tsx:17
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedAppearanceControls.tsx:18
 msgid "Require double-click to join voice channels"
 msgstr "Demander un double-clic pour rejoindre les salons vocaux"
 
@@ -30596,7 +30628,9 @@ msgid "Show camera"
 msgstr "Afficher la caméra"
 
 #. Accessible label on the mobile channel header button that opens the channel list drawer.
+#. Tooltip on the channel header channel list toggle when the channel list is currently hidden.
 #: src/features/channel/components/channel_header/shared.ts:31
+#: src/features/channel/components/channel_header/shared.ts:85
 msgid "Show channel list"
 msgstr "Afficher la liste des salons"
 
@@ -30925,6 +30959,11 @@ msgstr "Afficher les médias enregistrés dans la saisie semi-automatique des ex
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:133
 msgid "Show send button"
 msgstr "Afficher le bouton d'envoi"
+
+#. Tooltip on the channel header server list toggle when the server rail is currently hidden.
+#: src/features/channel/components/channel_header/shared.ts:77
+msgid "Show server list"
+msgstr "Afficher la liste des serveurs"
 
 #. Label in the display tab.
 #: src/features/user/components/modals/tabs/chat_settings_tab/DisplayTab.tsx:26
@@ -31734,7 +31773,7 @@ msgid "Something went wrong. Try again."
 msgstr "Une erreur est survenue. Veuillez réessayer."
 
 #. Community layout error-boundary body shown when rendering the community pane crashes. Keep plain and calm.
-#: src/features/app/components/layout/GuildLayout.tsx:96
+#: src/features/app/components/layout/GuildLayout.tsx:97
 #: src/features/app/components/layout/sidebar_nav/GuildListItemTooltip.tsx:203
 msgid "Something went wrong. We're working on it."
 msgstr "Une erreur est survenue. Nous y travaillons."
@@ -33297,6 +33336,11 @@ msgstr "Archive tar.gz"
 msgid "Targets people by protected characteristics."
 msgstr "Cible les personnes selon leurs caractéristiques protégées."
 
+#. Settings search synonym.
+#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:99
+msgid "Taskbar"
+msgstr "Barre des tâches"
+
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/search_index/NotificationsIndex.ts:34
@@ -33662,7 +33706,7 @@ msgid "The community this came from has turned off cloning, so it cannot be copi
 msgstr "La communauté d’origine a désactivé le clonage, il est donc impossible de copier cette expression."
 
 #. Community layout empty-state body shown when the active community is missing (deleted or no longer accessible).
-#: src/features/app/components/layout/GuildLayout.tsx:104
+#: src/features/app/components/layout/GuildLayout.tsx:105
 msgid "The community you're looking for may have been deleted or you may not have access to it."
 msgstr "La communauté que vous recherchez a peut-être été supprimée ou vous n'y avez peut-être pas accès."
 
@@ -34237,7 +34281,7 @@ msgstr "Cette connexion n'a pas été vérifiée."
 msgid "This contains sensitive content."
 msgstr "Ce contenu est sensible."
 
-#: src/features/channel/components/channel_view/DMChannelView.tsx:263
+#: src/features/channel/components/channel_view/DMChannelView.tsx:271
 msgid "This conversation is no longer available."
 msgstr "Cette conversation n'est plus disponible."
 
@@ -34426,7 +34470,7 @@ msgid "This is not the channel you're looking for."
 msgstr "Ce n'est pas le salon que vous cherchez."
 
 #. Body text in the app layout guild layout.
-#: src/features/app/components/layout/GuildLayout.tsx:100
+#: src/features/app/components/layout/GuildLayout.tsx:101
 msgid "This is not the community you're looking for."
 msgstr "Ce n'est pas la communauté que vous recherchez."
 
@@ -34707,7 +34751,7 @@ msgstr "Cet utilisateur n'a aucun rôle dans cette communauté."
 msgid "This user is already banned from the community."
 msgstr "Cet utilisateur est déjà banni de la communauté."
 
-#: src/features/channel/components/channel_view/DMChannelView.tsx:280
+#: src/features/channel/components/channel_view/DMChannelView.tsx:288
 msgid "This user is no longer available."
 msgstr "Cet utilisateur n'est plus disponible."
 
@@ -36334,7 +36378,7 @@ msgstr "Réactiver les notifications des favoris"
 
 #. Short label in the app layout user area.
 #. Tray menu item shown while in a voice call. Unmutes the local microphone.
-#: src/features/app/components/layout/UserArea.tsx:59
+#: src/features/app/components/layout/UserArea.tsx:60
 #: src/features/platform/utils/DesktopLocaleBridge.ts:212
 msgid "Unmute microphone"
 msgstr "Réactiver le micro"
@@ -37318,7 +37362,7 @@ msgid "User avatars"
 msgstr "Avatars des utilisateurs"
 
 #. Short label in the app layout user area.
-#: src/features/app/components/layout/UserArea.tsx:67
+#: src/features/app/components/layout/UserArea.tsx:68
 msgid "User controls"
 msgstr "Commandes utilisateur"
 
@@ -37360,7 +37404,7 @@ msgstr "L’utilisateur change de salon"
 #. Reason chip in the unaddable recipients alert when the user record is missing.
 #. Title of the error modal shown when the recipient of a DM no longer exists.
 #: src/features/app/components/alerts/DmActionErrorModal.tsx:24
-#: src/features/channel/components/channel_view/DMChannelView.tsx:277
+#: src/features/channel/components/channel_view/DMChannelView.tsx:285
 #: src/features/channel/components/modals/UnaddableRecipientsConfirmModal.tsx:11
 msgid "User not found"
 msgstr "Utilisateur introuvable"
@@ -39783,7 +39827,7 @@ msgid "You do not have access to the channel where this message was sent."
 msgstr "Vous n'avez pas accès au salon où ce message a été envoyé."
 
 #. Community layout empty-state body shown when the user has joined the community but cannot see any channels.
-#: src/features/app/components/layout/GuildLayout.tsx:113
+#: src/features/app/components/layout/GuildLayout.tsx:114
 msgid "You don't have access to any channels in this community."
 msgstr "Vous n'avez accès à aucun salon dans cette communauté."
 
@@ -39820,7 +39864,7 @@ msgid "You don't have permission to do this to this member."
 msgstr "Vous n’avez pas l’autorisation d’effectuer cette action sur ce membre."
 
 #. Tooltip on the disabled Join voice channel button shown when the user lacks the Connect permission in the voice channel.
-#: src/features/channel/components/channel_view/GuildChannelView.tsx:68
+#: src/features/channel/components/channel_view/GuildChannelView.tsx:69
 msgid "You don't have permission to join this voice channel"
 msgstr "Vous n'avez pas l'autorisation de rejoindre ce salon vocal"
 

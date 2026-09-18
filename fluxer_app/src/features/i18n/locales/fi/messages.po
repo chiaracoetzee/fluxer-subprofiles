@@ -885,7 +885,7 @@ msgid "{clientName} will use this account for this authorization."
 msgstr "{clientName} käyttää tätä tiliä tähän valtuutukseen."
 
 #. Guild nagbar body shown for staff-only communities. {communityName} is the community name and {productName} is Fluxer.
-#: src/features/app/components/layout/GuildLayout.tsx:83
+#: src/features/app/components/layout/GuildLayout.tsx:84
 msgid "{communityName} is currently only accessible to {productName} staff members"
 msgstr "{communityName} on tällä hetkellä vain {productName}-henkilöstön jäsenten käytettävissä"
 
@@ -960,7 +960,7 @@ msgstr "{count, plural, one {# estetty viesti} other {# estettyä viestiä}}"
 msgid "{count, plural, one {# community found} other {# communities found}}"
 msgstr "{count, plural, one {# yhteisö löytyi} other {# yhteisöä löytyi}}"
 
-#: src/features/app/components/layout/GuildsLayout.tsx:1953
+#: src/features/app/components/layout/GuildsLayout.tsx:1973
 msgid "{count, plural, one {# community is temporarily unavailable due to a flux capacitor malfunction.} other {# communities are temporarily unavailable due to a flux capacitor malfunction.}}"
 msgstr "{count, plural, one {# yhteisö on tilapäisesti pois käytöstä toimintahäiriön vuoksi.} other {# yhteisöä on tilapäisesti pois käytöstä toimintahäiriön vuoksi.}}"
 
@@ -4539,7 +4539,7 @@ msgid "Are you sure you want to delete your account? This action will schedule y
 msgstr "Haluatko varmasti poistaa tilisi? Tilisi merkitään poistettavaksi pysyvästi."
 
 #. Confirmation modal body shown before re-enabling invite links in the current community.
-#: src/features/app/components/layout/GuildLayout.tsx:58
+#: src/features/app/components/layout/GuildLayout.tsx:59
 msgid "Are you sure you want to enable invites? This will allow users to join this community through invite links again."
 msgstr "Haluatko varmasti ottaa kutsut käyttöön? Tämän jälkeen käyttäjät voivat taas liittyä tähän yhteisöön kutsulinkkien kautta."
 
@@ -5011,6 +5011,18 @@ msgstr "Automaattinen herkkyys"
 #: src/features/messaging/utils/AttachmentPreviewUtils.ts:7
 msgid "Auto-detect language"
 msgstr "Tunnista kieli automaattisesti"
+
+#. Settings search synonym.
+#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:103
+msgid "Auto-hide"
+msgstr "Auto-hide"
+
+#. Settings section label in Advanced Settings for edge hover peek preference.
+#. Short label for an advanced appearance preference that reveals collapsed sidebars on mouse hover.
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedAppearanceControls.tsx:100
+#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:91
+msgid "Auto-peek hidden sidebars"
+msgstr "Auto-peek hidden sidebars"
 
 #. Short label in the voice tab. Keep it concise.
 #: src/features/user/components/modals/tabs/UserVoiceTab.tsx:116
@@ -8741,7 +8753,7 @@ msgid "Community settings"
 msgstr "Yhteisön asetukset"
 
 #. Short label in the app layout guild layout.
-#: src/features/app/components/layout/GuildLayout.tsx:92
+#: src/features/app/components/layout/GuildLayout.tsx:93
 msgid "Community temporarily unavailable"
 msgstr "Yhteisö tilapäisesti pois käytöstä"
 
@@ -8950,7 +8962,7 @@ msgstr "Vahvista"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced voice-channel safety preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedAppearanceControls.tsx:21
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedAppearanceControls.tsx:22
 #: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:15
 msgid "Confirm before joining voice channels"
 msgstr "Vahvista ennen äänikanaville liittymistä"
@@ -9350,7 +9362,7 @@ msgstr "Hallitse mykistettyjen kanavien lukemattomien viestien ilmaisimia kanava
 msgid "Control which chat updates are announced by assistive technology."
 msgstr "Hallitse, mitkä chat-päivitykset ilmoitetaan avustavalla teknologialla."
 
-#: src/features/channel/components/channel_view/DMChannelView.tsx:260
+#: src/features/channel/components/channel_view/DMChannelView.tsx:268
 msgid "Conversation not found"
 msgstr "Keskustelua ei löydy"
 
@@ -13679,7 +13691,7 @@ msgstr "Ei suosikkeja"
 #. Button or menu action label in the invites disable invites button. Keep it concise.
 #. Primary button label in the enable-invites confirmation modal.
 #: src/features/app/components/layout/app_layout/nagbars/LinuxInputAccessNagbar.tsx:32
-#: src/features/app/components/layout/GuildLayout.tsx:54
+#: src/features/app/components/layout/GuildLayout.tsx:55
 #: src/features/invite/components/DisableInvitesButton.tsx:27
 #: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:360
 #: src/features/user/components/modals/tabs/components/LinuxInputAccessSection.tsx:23
@@ -13808,13 +13820,13 @@ msgid "Enable invites"
 msgstr "Ota kutsut käyttöön"
 
 #. Button label on the invites-disabled guild nagbar. Opens a confirmation to re-enable invites.
-#: src/features/app/components/layout/GuildLayout.tsx:73
+#: src/features/app/components/layout/GuildLayout.tsx:74
 msgid "Enable invites again"
 msgstr "Ota kutsut uudelleen käyttöön"
 
 #. Button or menu action label in the invites disable invites button. Keep it concise.
 #. Confirmation modal title for re-enabling invite links in the current community.
-#: src/features/app/components/layout/GuildLayout.tsx:50
+#: src/features/app/components/layout/GuildLayout.tsx:51
 #: src/features/invite/components/DisableInvitesButton.tsx:19
 msgid "Enable invites for this community"
 msgstr "Ota kutsut käyttöön tässä yhteisössä"
@@ -17159,6 +17171,11 @@ msgstr "Piilota {premiumProductName}-ostopäivämäärä ({dateUtilsGetFormatted
 msgid "Hide avatars"
 msgstr "Piilota avatarit"
 
+#. Tooltip on the channel header channel list toggle when the channel list is currently shown.
+#: src/features/channel/components/channel_header/shared.ts:81
+msgid "Hide channel list"
+msgstr "Hide channel list"
+
 #. Settings search entry description. One-line summary of what the settings search entry controls.
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:507
 msgid "Hide channels you've muted from community sidebars"
@@ -17254,6 +17271,11 @@ msgstr "Piilotetaanko kuva kuvassa -ikkuna?"
 #: src/features/voice/components/StreamSettingsMenuContent.tsx:770
 msgid "Hide preview thumbnail"
 msgstr "Piilota esikatselukuva"
+
+#. Tooltip on the channel header server list toggle when the server rail is currently shown.
+#: src/features/channel/components/channel_header/shared.ts:73
+msgid "Hide server list"
+msgstr "Hide server list"
 
 #. Settings search entry description. One-line summary of what the settings search entry controls.
 #: src/features/user/components/settings_utils/search_index/DesktopSettingsIndex.ts:198
@@ -17404,6 +17426,11 @@ msgstr "Osoitintehosteet"
 #: src/features/user/components/modals/tabs/component_gallery_tab/OverlaysTab.tsx:72
 msgid "Hover me"
 msgstr "Vie hiiri päälle"
+
+#. Settings section description in Advanced Settings for edge hover peek preference.
+#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:95
+msgid "Hover near window edges to temporarily reveal collapsed panels."
+msgstr "Hover near window edges to temporarily reveal collapsed panels."
 
 #: src/features/user/components/modals/tabs/component_gallery_tab/OverlaysTab.tsx:63
 msgid "Hover over buttons to see tooltips in different positions."
@@ -18729,12 +18756,12 @@ msgid "Invites paused"
 msgstr "Kutsut keskeytetty"
 
 #. Guild nagbar body shown when invite links are paused in the current community.
-#: src/features/app/components/layout/GuildLayout.tsx:69
+#: src/features/app/components/layout/GuildLayout.tsx:70
 msgid "Invites to {communityName} are currently disabled"
 msgstr "Kutsut yhteisöön {communityName} on tällä hetkellä poistettu käytöstä"
 
 #. Guild nagbar body shown when invite links are paused because raid detection is active. {communityName} is the community name and {productName} is Fluxer.
-#: src/features/app/components/layout/GuildLayout.tsx:63
+#: src/features/app/components/layout/GuildLayout.tsx:64
 msgid "Invites to {communityName} are currently disabled because {productName} detected a potential raid. New people cannot join right now."
 msgstr "Kutsut yhteisöön {communityName} on tällä hetkellä poistettu käytöstä, koska {productName} havaitsi mahdollisen hyökkäyksen. Uudet henkilöt eivät voi liittyä juuri nyt."
 
@@ -18924,7 +18951,7 @@ msgstr "Liity äänipuheluun"
 
 #. Button in the unjoined voice channel call surface. Joins the current voice channel.
 #. Confirm dialog title shown before joining a voice channel from a context where confirmation is required.
-#: src/features/channel/components/channel_view/GuildChannelView.tsx:64
+#: src/features/channel/components/channel_view/GuildChannelView.tsx:65
 #: src/features/voice/hooks/usePendingVoiceConnection.tsx:12
 msgid "Join voice channel"
 msgstr "Liity äänikanavalle"
@@ -20135,7 +20162,7 @@ msgid "Manage community"
 msgstr "Hallinnoi yhteisöä"
 
 #. Button label on the staff-only community nagbar. Opens the admin feature-management page.
-#: src/features/app/components/layout/GuildLayout.tsx:88
+#: src/features/app/components/layout/GuildLayout.tsx:89
 msgid "Manage community features"
 msgstr "Hallinnoi yhteisön ominaisuuksia"
 
@@ -21513,7 +21540,7 @@ msgid "Moderation actions and community changes will appear here."
 msgstr "Tässä näkyvät moderointitoimet ja yhteisön muutokset."
 
 #. Guild nagbar body shown when moderation actions in a community require two-factor authentication. {communityName} is the community name.
-#: src/features/app/components/layout/GuildLayout.tsx:77
+#: src/features/app/components/layout/GuildLayout.tsx:78
 msgid "Moderation actions in {communityName} require two-factor authentication. Enable 2FA to kick, ban, time out, or delete messages here."
 msgstr "Yhteisön {communityName} moderointitoiminnot edellyttävät kaksivaiheista todennusta. Ota se käyttöön, jotta voit poistaa jäseniä yhteisöstä, antaa porttikieltoja ja jäähyjä sekä poistaa viestejä täällä."
 
@@ -21933,7 +21960,7 @@ msgstr "Mykistä jäseniä"
 
 #. Short label in the app layout user area.
 #. Tray menu item shown while in a voice call. Mutes the local microphone.
-#: src/features/app/components/layout/UserArea.tsx:63
+#: src/features/app/components/layout/UserArea.tsx:64
 #: src/features/platform/utils/DesktopLocaleBridge.ts:208
 msgid "Mute microphone"
 msgstr "Mykistä mikrofoni"
@@ -22367,7 +22394,7 @@ msgid "New"
 msgstr "Uudet"
 
 #. Small badge on a new or recently added app navigation item.
-#: src/features/app/components/layout/GuildsLayout.tsx:136
+#: src/features/app/components/layout/GuildsLayout.tsx:138
 msgctxt "navigation-badge"
 msgid "New"
 msgstr "Uusi"
@@ -22603,7 +22630,7 @@ msgid "No access"
 msgstr "Ei käyttöoikeutta"
 
 #. Short label in the app layout guild layout.
-#: src/features/app/components/layout/GuildLayout.tsx:109
+#: src/features/app/components/layout/GuildLayout.tsx:110
 msgid "No accessible channels"
 msgstr "Ei käytettävissä olevia kanavia"
 
@@ -24211,7 +24238,7 @@ msgid "Open theme studio…"
 msgstr "Avaa teemastudio…"
 
 #. Short label in the app layout user area. Preserve {displayName}; it is inserted by code.
-#: src/features/app/components/layout/UserArea.tsx:71
+#: src/features/app/components/layout/UserArea.tsx:72
 msgid "Open user menu for {displayName}"
 msgstr "Avaa käyttäjän {displayName} valikko"
 
@@ -24824,6 +24851,11 @@ msgstr "Maksut ovat tilapäisesti poissa käytöstä. Yritä uudelleen hetken ku
 #: src/features/app/components/dialogs/components/plutonium/utils/PremiumActionErrorModal.tsx:12
 msgid "Payments are unavailable"
 msgstr "Maksut eivät ole käytettävissä"
+
+#. Settings search synonym.
+#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:107
+msgid "Peek"
+msgstr "Peek"
 
 #. Discovery application status badge in the community Discovery settings tab. The application is awaiting staff review.
 #. Tab label in the DM friends view showing pending friend requests.
@@ -26271,7 +26303,7 @@ msgid "Push to talk (priority)"
 msgstr "Puhu painamalla (prioriteetti)"
 
 #. User-area voice status text shown when push-to-talk is active. The hint is the user-configured keybind label.
-#: src/features/app/components/layout/UserArea.tsx:54
+#: src/features/app/components/layout/UserArea.tsx:55
 msgid "Push to talk is on. Hold {pushToTalkHint} to speak."
 msgstr "Push-to-talk on käytössä. Pidä {pushToTalkHint} pohjassa puhuaksesi."
 
@@ -27651,7 +27683,7 @@ msgid "Require a passkey as your second factor"
 msgstr "Vaadi pääsyavain toisena vaiheena"
 
 #. Short label for an advanced voice-channel navigation preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedAppearanceControls.tsx:17
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedAppearanceControls.tsx:18
 msgid "Require double-click to join voice channels"
 msgstr "Vaadi kaksoisnapsautus äänikanaville liittymiseen"
 
@@ -30596,7 +30628,9 @@ msgid "Show camera"
 msgstr "Näytä kamera"
 
 #. Accessible label on the mobile channel header button that opens the channel list drawer.
+#. Tooltip on the channel header channel list toggle when the channel list is currently hidden.
 #: src/features/channel/components/channel_header/shared.ts:31
+#: src/features/channel/components/channel_header/shared.ts:85
 msgid "Show channel list"
 msgstr "Näytä kanavaluettelo"
 
@@ -30925,6 +30959,11 @@ msgstr "Näytä tallennettu media ilmaisujen automaattisessa täydennyksessä"
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:133
 msgid "Show send button"
 msgstr "Näytä lähetyspainike"
+
+#. Tooltip on the channel header server list toggle when the server rail is currently hidden.
+#: src/features/channel/components/channel_header/shared.ts:77
+msgid "Show server list"
+msgstr "Show server list"
 
 #. Label in the display tab.
 #: src/features/user/components/modals/tabs/chat_settings_tab/DisplayTab.tsx:26
@@ -31734,7 +31773,7 @@ msgid "Something went wrong. Try again."
 msgstr "Jokin meni pieleen. Yritä uudelleen."
 
 #. Community layout error-boundary body shown when rendering the community pane crashes. Keep plain and calm.
-#: src/features/app/components/layout/GuildLayout.tsx:96
+#: src/features/app/components/layout/GuildLayout.tsx:97
 #: src/features/app/components/layout/sidebar_nav/GuildListItemTooltip.tsx:203
 msgid "Something went wrong. We're working on it."
 msgstr "Jokin meni pieleen. Korjaamme ongelmaa."
@@ -33297,6 +33336,11 @@ msgstr "tar.gz-arkisto"
 msgid "Targets people by protected characteristics."
 msgstr "Kohdistuu ihmisiin suojattujen ominaisuuksien perusteella."
 
+#. Settings search synonym.
+#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:99
+msgid "Taskbar"
+msgstr "Taskbar"
+
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/search_index/NotificationsIndex.ts:34
@@ -33662,7 +33706,7 @@ msgid "The community this came from has turned off cloning, so it cannot be copi
 msgstr "Yhteisö, josta tämä on peräisin, on poistanut kloonauksen käytöstä, joten sitä ei voi kopioida."
 
 #. Community layout empty-state body shown when the active community is missing (deleted or no longer accessible).
-#: src/features/app/components/layout/GuildLayout.tsx:104
+#: src/features/app/components/layout/GuildLayout.tsx:105
 msgid "The community you're looking for may have been deleted or you may not have access to it."
 msgstr "Etsimääsi yhteisöä ei ehkä enää ole tai sinulla ei ole siihen pääsyä."
 
@@ -34237,7 +34281,7 @@ msgstr "Yhteyttä ei ole vahvistettu."
 msgid "This contains sensitive content."
 msgstr "Sisältää arkaluonteista sisältöä."
 
-#: src/features/channel/components/channel_view/DMChannelView.tsx:263
+#: src/features/channel/components/channel_view/DMChannelView.tsx:271
 msgid "This conversation is no longer available."
 msgstr "Tämä keskustelu ei ole enää saatavilla."
 
@@ -34426,7 +34470,7 @@ msgid "This is not the channel you're looking for."
 msgstr "Tämä ei ole etsimäsi kanava."
 
 #. Body text in the app layout guild layout.
-#: src/features/app/components/layout/GuildLayout.tsx:100
+#: src/features/app/components/layout/GuildLayout.tsx:101
 msgid "This is not the community you're looking for."
 msgstr "Tämä ei ole etsimäsi yhteisö."
 
@@ -34707,7 +34751,7 @@ msgstr "Tällä käyttäjällä ei ole rooleja tässä yhteisössä."
 msgid "This user is already banned from the community."
 msgstr "Tämä käyttäjä on jo porttikiellossa tässä yhteisössä."
 
-#: src/features/channel/components/channel_view/DMChannelView.tsx:280
+#: src/features/channel/components/channel_view/DMChannelView.tsx:288
 msgid "This user is no longer available."
 msgstr "Tämä käyttäjä ei ole enää saatavilla."
 
@@ -36334,7 +36378,7 @@ msgstr "Poista suosikkien mykistys"
 
 #. Short label in the app layout user area.
 #. Tray menu item shown while in a voice call. Unmutes the local microphone.
-#: src/features/app/components/layout/UserArea.tsx:59
+#: src/features/app/components/layout/UserArea.tsx:60
 #: src/features/platform/utils/DesktopLocaleBridge.ts:212
 msgid "Unmute microphone"
 msgstr "Poista mikrofonin mykistys"
@@ -37318,7 +37362,7 @@ msgid "User avatars"
 msgstr "Käyttäjien profiilikuvat"
 
 #. Short label in the app layout user area.
-#: src/features/app/components/layout/UserArea.tsx:67
+#: src/features/app/components/layout/UserArea.tsx:68
 msgid "User controls"
 msgstr "Käyttäjäsäätimet"
 
@@ -37360,7 +37404,7 @@ msgstr "Käyttäjä siirretään toiselle kanavalle"
 #. Reason chip in the unaddable recipients alert when the user record is missing.
 #. Title of the error modal shown when the recipient of a DM no longer exists.
 #: src/features/app/components/alerts/DmActionErrorModal.tsx:24
-#: src/features/channel/components/channel_view/DMChannelView.tsx:277
+#: src/features/channel/components/channel_view/DMChannelView.tsx:285
 #: src/features/channel/components/modals/UnaddableRecipientsConfirmModal.tsx:11
 msgid "User not found"
 msgstr "Käyttäjää ei löydy"
@@ -39783,7 +39827,7 @@ msgid "You do not have access to the channel where this message was sent."
 msgstr "Sinulla ei ole pääsyä kanavalle, jolle tämä viesti lähetettiin."
 
 #. Community layout empty-state body shown when the user has joined the community but cannot see any channels.
-#: src/features/app/components/layout/GuildLayout.tsx:113
+#: src/features/app/components/layout/GuildLayout.tsx:114
 msgid "You don't have access to any channels in this community."
 msgstr "Sinulla ei ole pääsyä mihinkään tämän yhteisön kanavista."
 
@@ -39820,7 +39864,7 @@ msgid "You don't have permission to do this to this member."
 msgstr "Sinulla ei ole oikeutta tehdä tätä tälle jäsenelle."
 
 #. Tooltip on the disabled Join voice channel button shown when the user lacks the Connect permission in the voice channel.
-#: src/features/channel/components/channel_view/GuildChannelView.tsx:68
+#: src/features/channel/components/channel_view/GuildChannelView.tsx:69
 msgid "You don't have permission to join this voice channel"
 msgstr "Sinulla ei ole oikeutta liittyä tälle äänikanavalle"
 
