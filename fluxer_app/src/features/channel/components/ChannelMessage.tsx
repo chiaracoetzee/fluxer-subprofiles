@@ -5,7 +5,11 @@ import {useContextMenuHoverState} from '@app/features/app/hooks/useContextMenuHo
 import {isMediaOnlyEmbed} from '@app/features/channel/components/embeds/EmbedRenderUtils';
 import {MessageActionBar, MessageActionBarCore} from '@app/features/channel/components/MessageActionBar';
 import {MessageActionBottomSheet} from '@app/features/channel/components/MessageActionBottomSheet';
-import {requestDeleteMessage} from '@app/features/channel/components/MessageActionUtils';
+import {
+	requestDeleteMessage,
+	startMessageEdit,
+	useMessagePermissions,
+} from '@app/features/channel/components/MessageActionUtils';
 import {useMessageHoverState} from '@app/features/channel/components/MessageHoverState';
 import {MessageViewContextProvider} from '@app/features/channel/components/MessageViewContext';
 import type {Channel} from '@app/features/channel/models/Channel';
@@ -18,6 +22,7 @@ import MessageEdit from '@app/features/messaging/state/MessageEdit';
 import MessageFocus from '@app/features/messaging/state/MessageFocus';
 import MessageReply from '@app/features/messaging/state/MessageReply';
 import {getMessageComponent} from '@app/features/messaging/utils/MessageComponentUtils';
+import {shouldTriggerDoubleClickEdit} from '@app/features/messaging/utils/MessageDoubleClickUtils';
 import {renderAstToPlaintext} from '@app/features/messaging/utils/markdown/Plaintext';
 import {NodeType} from '@app/features/messaging/utils/markdown/parser/Enums';
 import {SystemMessageUtils} from '@app/features/messaging/utils/SystemMessageUtils';
@@ -31,6 +36,7 @@ import * as PopoutCommands from '@app/features/ui/commands/PopoutCommands';
 import FocusRing from '@app/features/ui/focus_ring/FocusRing';
 import KeyboardMode from '@app/features/ui/state/KeyboardMode';
 import MobileLayout from '@app/features/ui/state/MobileLayout';
+import AdvancedSettings from '@app/features/user/state/AdvancedSettings';
 import UserSettings from '@app/features/user/state/UserSettings';
 import Users from '@app/features/user/state/Users';
 import * as DateUtils from '@app/features/user/utils/DateFormatting';
@@ -314,6 +320,29 @@ export const Message: React.FC<MessageProps> = observer((props) => {
 			handleAltKeyboardEvent(event, message);
 		},
 		[message],
+	);
+	const permissions = useMessagePermissions(message, channel);
+	const canEditMessage = Boolean(permissions?.canEditMessage);
+	const handleDoubleClick = useCallback(
+		(event: React.MouseEvent<HTMLDivElement>) => {
+			if (
+				!shouldTriggerDoubleClickEdit({
+					doubleClickToEditEnabled: AdvancedSettings.doubleClickToEdit,
+					target: event.target,
+					message,
+					isEditing,
+					previewContext,
+					canEditMessage,
+				})
+			) {
+				return;
+			}
+			event.preventDefault();
+			event.stopPropagation();
+			window.getSelection()?.removeAllRanges();
+			startMessageEdit(message);
+		},
+		[canEditMessage, isEditing, message, previewContext],
 	);
 	const handleDelete = useCallback(
 		(bypassConfirm = false) => {
@@ -789,6 +818,7 @@ export const Message: React.FC<MessageProps> = observer((props) => {
 					ref={messageRef}
 					onClickCapture={handleClickCapture}
 					onClick={handleAltClick}
+					onDoubleClick={handleDoubleClick}
 					onKeyDown={handleAltKeyDown}
 					onFocus={handleFocusWithin}
 					onBlur={handleBlurWithin}
