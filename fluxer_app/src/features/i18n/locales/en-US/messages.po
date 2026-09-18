@@ -41159,3 +41159,45 @@ msgstr "Double-click to edit"
 #: src/features/user/components/settings_utils/search_index/AdvancedSettingsIndex.ts:64
 msgid "Quick edit"
 msgstr "Quick edit"
+
+#. Settings search synonym.
+#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:103
+msgid "Auto-hide"
+msgstr "Auto-hide"
+
+#. Settings section label in Advanced Settings for edge hover peek preference.
+#. Short label for an advanced appearance preference that reveals collapsed sidebars on mouse hover.
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedAppearanceControls.tsx:100
+#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:91
+msgid "Auto-peek hidden sidebars"
+msgstr "Auto-peek hidden sidebars"
+
+#. Tooltip on the channel header channel list toggle when the channel list is currently shown.
+#: src/features/channel/components/channel_header/shared.ts:81
+msgid "Hide channel list"
+msgstr "Hide channel list"
+
+#. Tooltip on the channel header server list toggle when the server rail is currently shown.
+#: src/features/channel/components/channel_header/shared.ts:73
+msgid "Hide server list"
+msgstr "Hide server list"
+
+#. Settings section description in Advanced Settings for edge hover peek preference.
+#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:95
+msgid "Hover near window edges to temporarily reveal collapsed panels."
+msgstr "Hover near window edges to temporarily reveal collapsed panels."
+
+#. Settings search synonym.
+#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:107
+msgid "Peek"
+msgstr "Peek"
+
+#. Tooltip on the channel header server list toggle when the server rail is currently hidden.
+#: src/features/channel/components/channel_header/shared.ts:77
+msgid "Show server list"
+msgstr "Show server list"
+
+#. Settings search synonym.
+#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:99
+msgid "Taskbar"
+msgstr "Taskbar"
