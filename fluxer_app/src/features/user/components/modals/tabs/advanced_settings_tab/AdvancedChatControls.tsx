@@ -48,6 +48,10 @@ import {GearIcon} from '@phosphor-icons/react';
 import {observer} from 'mobx-react-lite';
 import {useCallback} from 'react';
 
+// Fork imports.
+
+import AdvancedSettings from '@app/features/user/state/AdvancedSettings';
+
 const SHOW_MESSAGE_ACTION_BAR_DESCRIPTOR = msg({
 	message: 'Show message action bar',
 	comment: 'Short label for an advanced message action bar preference.',
@@ -267,6 +271,24 @@ export const ConvertEmoticonsAdvancedControl = observer(() => (
 export const KeepAttachmentsOnEmptyEditAdvancedControl = observer(() => (
 	<KeepAttachmentsOnEmptyEditControl data-flx="user.advanced-settings-tab.keep-attachments-on-empty-edit-control" />
 ));
+
+const DOUBLE_CLICK_TO_EDIT_DESCRIPTOR = msg({
+	message: 'Double-click to edit',
+	comment: 'Short label for an advanced message editing preference.',
+});
+
+export const DoubleClickToEditControl = observer(() => {
+	const {i18n} = useLingui();
+	return (
+		<Switch
+			ariaLabel={i18n._(DOUBLE_CLICK_TO_EDIT_DESCRIPTOR)}
+			value={AdvancedSettings.doubleClickToEdit}
+			onChange={AdvancedSettings.setDoubleClickToEdit}
+			compact
+			data-flx="user.advanced-settings-tab.switch.double-click-to-edit"
+		/>
+	);
+});
 
 interface SearchProviderSettingsModalProps {
 	mode: SearchEngineMode;
