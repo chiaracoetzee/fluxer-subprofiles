@@ -44,6 +44,7 @@ import ReadStates from '@app/features/read_state/state/ReadStates';
 import Relationships from '@app/features/relationship/state/Relationships';
 import {remFromPx} from '@app/features/theme/layout/RemFromPx';
 import {Button} from '@app/features/ui/button/Button';
+import LayoutState from '@app/features/ui/state/LayoutState';
 import MobileLayout from '@app/features/ui/state/MobileLayout';
 import {isMobileExperienceEnabled} from '@app/features/ui/utils/MobileExperience';
 import Users from '@app/features/user/state/Users';
@@ -218,6 +219,13 @@ export const DMChannelView = observer(({channelId}: DMChannelViewProps) => {
 		if (currentChannelId) CallCommands.ignoreCall(currentChannelId);
 	}, [currentChannelId]);
 	const shouldRenderMemberList = Boolean(isGroupDM && isMemberListVisible && !isSearchActive);
+	const isMemberListPeeking = Boolean(
+		isGroupDM &&
+			!isMemberListVisible &&
+			!isMobileLayout &&
+			!isSearchActive &&
+			LayoutState.isRightHoverPeeking,
+	);
 	const callStatusLabel = useMemo(() => {
 		switch (controlsVariant) {
 			case 'incoming':
@@ -328,6 +336,8 @@ export const DMChannelView = observer(({channelId}: DMChannelViewProps) => {
 					showCallBackground && styles.channelGridVoiceCallActive,
 					showCompactVoiceView && isCompactCallExpanded && styles.channelGridVoiceCallExpanded,
 				)}
+				hasMemberList={Boolean(isGroupDM)}
+				showMemberListDivider={shouldRenderMemberList && !isSearchActive}
 				header={
 					<div
 						ref={voiceCallChromeRef}
@@ -521,6 +531,10 @@ export const DMChannelView = observer(({channelId}: DMChannelViewProps) => {
 						</div>
 					) : shouldRenderMemberList ? (
 						<ChannelMembers channel={channel} data-flx="channel.channel-view.dm-channel-view.channel-members" />
+					) : isMemberListPeeking ? (
+						<div className={styles.memberListOverlay} data-flx="channel.channel-view.dm-channel-view.member-list-overlay">
+							<ChannelMembers channel={channel} data-flx="channel.channel-view.dm-channel-view.channel-members--peek" />
+						</div>
 					) : null
 				}
 				chatAreaInert={isCompactCallChatSuppressed}
