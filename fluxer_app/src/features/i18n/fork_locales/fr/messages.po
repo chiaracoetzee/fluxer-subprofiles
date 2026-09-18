@@ -93,6 +93,19 @@ msgstr "Icône du badge d'affichage mise à jour"
 msgid "Display tag will appear next to all persona names in messages. If no display tag is set, your account profile picture will be shown."
 msgstr "Le badge d'affichage apparaîtra à côté du nom de toutes vos personas dans les messages. Si aucun badge n'est configuré, votre photo de profil de compte sera affichée."
 
+#. Settings search synonym. Used to match this term when the user types it in the settings search bar.
+msgid "Double click"
+msgstr "Double-clic"
+
+#. Settings search entry description. One-line summary of what the setting controls.
+msgid "Double-click a message you sent to edit it directly"
+msgstr "Double-cliquez sur un message que vous avez envoyé pour le modifier directement"
+
+#. Settings search entry label for double-clicking a message to edit it.
+#. Short label for an advanced message editing preference.
+msgid "Double-click to edit"
+msgstr "Double-clic pour modifier"
+
 #. Progress status during avatar download
 msgid "Downloading avatar {current} of {total}..."
 msgstr "Téléchargement de l'avatar {current} sur {total}…"
@@ -288,6 +301,10 @@ msgstr "Public"
 #. Tooltip on public persona badge
 msgid "Public persona"
 msgstr "Persona publique"
+
+#. Settings search synonym. Used to match this term when the user types it in the settings search bar.
+msgid "Quick edit"
+msgstr "Modification rapide"
 
 msgid "Recent Personas"
 msgstr "Personas récentes"

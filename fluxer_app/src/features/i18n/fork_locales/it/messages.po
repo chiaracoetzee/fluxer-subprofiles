@@ -93,6 +93,19 @@ msgstr "Display tag icon updated"
 msgid "Display tag will appear next to all persona names in messages. If no display tag is set, your account profile picture will be shown."
 msgstr "Display tag will appear next to all persona names in messages. If no display tag is set, your account profile picture will be shown."
 
+#. Settings search synonym. Used to match this term when the user types it in the settings search bar.
+msgid "Double click"
+msgstr "Doppio clic"
+
+#. Settings search entry description. One-line summary of what the setting controls.
+msgid "Double-click a message you sent to edit it directly"
+msgstr "Fai doppio clic su un messaggio che hai inviato per modificarlo direttamente"
+
+#. Settings search entry label for double-clicking a message to edit it.
+#. Short label for an advanced message editing preference.
+msgid "Double-click to edit"
+msgstr "Doppio clic per modificare"
+
 #. Progress status during avatar download
 msgid "Downloading avatar {current} of {total}..."
 msgstr "Downloading avatar {current} of {total}..."
@@ -288,6 +301,10 @@ msgstr "Public"
 #. Tooltip on public persona badge
 msgid "Public persona"
 msgstr "Public persona"
+
+#. Settings search synonym. Used to match this term when the user types it in the settings search bar.
+msgid "Quick edit"
+msgstr "Modifica rapida"
 
 msgid "Recent Personas"
 msgstr "Recent Personas"
