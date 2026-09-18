@@ -7,6 +7,7 @@ import FocusRing from '@app/features/ui/focus_ring/FocusRing';
 import {TooltipWithKeybind} from '@app/features/ui/keybind_hint/KeybindHint';
 import {Tooltip} from '@app/features/ui/tooltip/Tooltip';
 import type {Icon, IconWeight} from '@phosphor-icons/react';
+import {MentionBadge} from '@app/features/ui/components/MentionBadge';
 import {clsx} from 'clsx';
 import React, {useCallback, useRef} from 'react';
 
@@ -19,6 +20,8 @@ interface ChannelHeaderIconProps extends Omit<React.ButtonHTMLAttributes<HTMLBut
 	onContextMenu?: React.MouseEventHandler<HTMLButtonElement>;
 	disabled?: boolean;
 	keybindAction?: KeybindCommand;
+	badgeCount?: number;
+	hasUnread?: boolean;
 }
 
 export const ChannelHeaderIcon = React.forwardRef<HTMLButtonElement, ChannelHeaderIconProps>((props, ref) => {
@@ -31,6 +34,8 @@ export const ChannelHeaderIcon = React.forwardRef<HTMLButtonElement, ChannelHead
 		disabled = false,
 		keybindAction,
 		className,
+		badgeCount,
+		hasUnread,
 		...rest
 	} = props;
 	const buttonRef = useRef<HTMLButtonElement | null>(null);
@@ -59,7 +64,13 @@ export const ChannelHeaderIcon = React.forwardRef<HTMLButtonElement, ChannelHead
 				ref={mergedRef}
 				type="button"
 				className={clsx(isSelected ? styles.iconButtonSelected : styles.iconButtonDefault, className)}
-				aria-label={label}
+				aria-label={
+					badgeCount && badgeCount > 0
+						? `${label} (${badgeCount})`
+						: hasUnread
+							? `${label} (*)`
+							: label
+				}
 				aria-pressed={ariaPressed}
 				onClick={disabled ? undefined : onClick}
 				disabled={disabled}
@@ -70,6 +81,13 @@ export const ChannelHeaderIcon = React.forwardRef<HTMLButtonElement, ChannelHead
 					className={styles.buttonIcon}
 					data-flx="channel.channel-header-components.channel-header-icon.button-icon"
 				/>
+				{badgeCount && badgeCount > 0 ? (
+					<div className={styles.headerButtonBadge}>
+						<MentionBadge mentionCount={badgeCount} size="small" />
+					</div>
+				) : hasUnread ? (
+					<span className={styles.headerButtonUnreadDot} aria-hidden="true" />
+				) : null}
 			</button>
 		</FocusRing>
 	);
