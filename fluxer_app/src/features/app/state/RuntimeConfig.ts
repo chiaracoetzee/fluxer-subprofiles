@@ -147,6 +147,7 @@ export const DEFAULT_APP_PUBLIC_CONFIG: InstanceAppPublic = {
 		theme_color: null,
 		status_page_url: null,
 		status_page_incident_history_url: null,
+		desktop_app_prompt_enabled: true,
 	},
 	setup: {
 		configured: false,
@@ -525,6 +526,10 @@ class RuntimeConfig {
 
 	get themeColor(): string | null {
 		return this.appPublic.branding.theme_color;
+	}
+
+	get desktopAppPromptEnabled(): boolean {
+		return this.appPublic.branding.desktop_app_prompt_enabled ?? true;
 	}
 
 	get termsUrl(): string | null {
