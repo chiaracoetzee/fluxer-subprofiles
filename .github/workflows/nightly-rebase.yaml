@@ -144,11 +144,22 @@ jobs:
           git push origin "$BACKUP_TAG"
           echo "backup_tag=$BACKUP_TAG" >> "$GITHUB_ENV"
 
+      - name: Determine Rust Toolchain Version
+        id: rust_toolchain
+        if: steps.check_upstream.outputs.skip_rebase != 'true'
+        run: |
+          RUST_VER=$(git show upstream/main:.github/workflows/tests.yaml 2>/dev/null | grep -m1 'toolchain: "' | sed -E 's/.*toolchain: "([^"]+)".*/\1/' || true)
+          if [ -z "$RUST_VER" ]; then
+            RUST_VER=$(grep -m1 'toolchain: "' .github/workflows/tests.yaml 2>/dev/null | sed -E 's/.*toolchain: "([^"]+)".*/\1/' || echo "1.98.1")
+          fi
+          echo "version=$RUST_VER" >> "$GITHUB_OUTPUT"
+          echo "Resolved Rust toolchain from upstream: $RUST_VER"
+
       - name: Set up Rust toolchain (WASM Codegen)
         if: steps.check_upstream.outputs.skip_rebase != 'true'
         uses: dtolnay/rust-toolchain@e97e2d8cc328f1b50210efc529dca0028893a2d9
         with:
-          toolchain: "1.93.0"
+          toolchain: ${{ steps.rust_toolchain.outputs.version }}
           targets: wasm32-unknown-unknown
 
       - name: Set up pnpm
