@@ -367,6 +367,10 @@ export function InstanceConfigAdminController(app: HonoApp) {
 									data.app_public.branding,
 									'status_page_incident_history_url',
 								),
+								desktop_app_prompt_enabled: readOptionalField(
+									data.app_public.branding,
+									'desktop_app_prompt_enabled',
+								),
 							})
 						: undefined,
 					legal: data.app_public.legal
