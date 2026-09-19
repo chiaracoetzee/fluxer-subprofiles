@@ -276,6 +276,7 @@ export interface APIConfig {
 			themeColor?: string;
 			statusPageUrl?: string;
 			statusPageIncidentHistoryUrl?: string;
+			desktopAppPromptEnabled?: boolean;
 		};
 		setup: {
 			configured: boolean;
