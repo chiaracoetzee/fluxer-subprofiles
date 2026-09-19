@@ -30201,6 +30201,11 @@
 					"premium_info_url": {
 						"description": "Optional absolute URL of a page describing the premium tier",
 						"type": ["string", "null"]
+					},
+					"desktop_app_prompt_enabled": {
+						"description": "Whether the web app shows prompts to open deep links in the desktop app",
+						"type": "boolean",
+						"default": true
 					}
 				},
 				"required": [
@@ -30214,7 +30219,8 @@
 					"status_page_url",
 					"status_page_incident_history_url",
 					"premium_product_name",
-					"premium_info_url"
+					"premium_info_url",
+					"desktop_app_prompt_enabled"
 				],
 				"additionalProperties": false,
 				"description": "Branding values safe to expose to clients"

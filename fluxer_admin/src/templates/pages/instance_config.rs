@@ -863,6 +863,18 @@ fn app_public_config_section(
                             ))
                             p class="text-xs text-neutral-500" { (setup_helper) }
                         }
+                        div class="space-y-2" {
+                            (checkbox(
+                                "app_desktop_app_prompt_enabled",
+                                "true",
+                                "Show desktop app prompt",
+                                app_public.branding.desktop_app_prompt_enabled,
+                                true,
+                            ))
+                            p class="text-xs text-neutral-500" {
+                                "Show prompts on invite and gift pages encouraging desktop web visitors to open the desktop app."
+                            }
+                        }
                         (form_actions(html! {
                             (submit_button("Save Public App Identity"))
                         }))
@@ -1888,6 +1900,7 @@ fn limit_config_section(base: &str, limit_config: &LimitConfigResponse) -> Marku
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::api::types::AppBrandingConfigResponse;
 
     #[test]
     fn captcha_section_posts_the_switch_and_difficulty_fields() {
@@ -1974,5 +1987,19 @@ mod tests {
         let markup = domain_migration_section("/admin", "csrf", &domain_migration).into_string();
         assert!(markup.contains("1000 of 1000 stored"));
         assert!(markup.contains("at the cap"));
+    }
+
+    #[test]
+    fn app_public_config_section_renders_desktop_app_prompt_checkbox() {
+        let app_public = AppPublicConfigResponse {
+            branding: AppBrandingConfigResponse {
+                desktop_app_prompt_enabled: true,
+                ..Default::default()
+            },
+            ..Default::default()
+        };
+        let markup = app_public_config_section("/admin", "csrf", &app_public, true).into_string();
+        assert!(markup.contains("app_desktop_app_prompt_enabled"));
+        assert!(markup.contains("Show desktop app prompt"));
     }
 }

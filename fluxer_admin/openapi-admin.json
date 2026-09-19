@@ -10923,7 +10923,8 @@
 									"status_page_url": {"nullable": true, "type": "string"},
 									"status_page_incident_history_url": {"nullable": true, "type": "string"},
 									"premium_product_name": {"type": "string"},
-									"premium_info_url": {"nullable": true, "type": "string"}
+									"premium_info_url": {"nullable": true, "type": "string"},
+									"desktop_app_prompt_enabled": {"type": "boolean"}
 								},
 								"required": [
 									"product_name",
@@ -11396,7 +11397,8 @@
 									"status_page_url": {"nullable": true, "type": "string", "maxLength": 2048},
 									"status_page_incident_history_url": {"nullable": true, "type": "string", "maxLength": 2048},
 									"premium_product_name": {"nullable": true, "type": "string", "minLength": 1, "maxLength": 40},
-									"premium_info_url": {"nullable": true, "type": "string", "maxLength": 2048}
+									"premium_info_url": {"nullable": true, "type": "string", "maxLength": 2048},
+									"desktop_app_prompt_enabled": {"nullable": true, "type": "boolean"}
 								}
 							},
 							"setup": {"nullable": true, "type": "object", "properties": {"configured": {"type": "boolean"}}},
