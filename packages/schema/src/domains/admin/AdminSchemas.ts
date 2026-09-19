@@ -499,6 +499,7 @@ const AppPublicConfigResponse = z.object({
 		theme_color: z.string().nullable(),
 		status_page_url: z.string().nullable(),
 		status_page_incident_history_url: z.string().nullable(),
+		desktop_app_prompt_enabled: z.boolean(),
 	}),
 	setup: z.object({
 		configured: z.boolean(),
@@ -524,6 +525,7 @@ const AppPublicConfigUpdateRequest = z.object({
 			theme_color: z.string().trim().max(64).nullish(),
 			status_page_url: z.string().trim().max(2048).nullish(),
 			status_page_incident_history_url: z.string().trim().max(2048).nullish(),
+			desktop_app_prompt_enabled: z.boolean().optional(),
 		})
 		.nullish(),
 	setup: z
