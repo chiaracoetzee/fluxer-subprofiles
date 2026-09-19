@@ -330,6 +330,8 @@ pub struct AppBrandingConfigResponse {
     pub theme_color: Option<String>,
     pub status_page_url: Option<String>,
     pub status_page_incident_history_url: Option<String>,
+    #[serde(default = "default_desktop_app_prompt_enabled")]
+    pub desktop_app_prompt_enabled: bool,
 }
 
 impl Default for AppBrandingConfigResponse {
@@ -344,8 +346,13 @@ impl Default for AppBrandingConfigResponse {
             theme_color: None,
             status_page_url: None,
             status_page_incident_history_url: None,
+            desktop_app_prompt_enabled: default_desktop_app_prompt_enabled(),
         }
     }
+}
+
+fn default_desktop_app_prompt_enabled() -> bool {
+    true
 }
 
 fn default_product_name() -> String {
@@ -908,6 +915,8 @@ pub struct AppBrandingConfigUpdateRequest {
     pub status_page_url: Option<Option<String>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub status_page_incident_history_url: Option<Option<String>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub desktop_app_prompt_enabled: Option<bool>,
 }
 
 #[derive(Clone, Debug, Default, Serialize)]
