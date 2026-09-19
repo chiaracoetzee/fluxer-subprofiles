@@ -322,6 +322,24 @@ describe('buildNamedFluxerEnvOverrides', () => {
 			'FLUXER_GOOGLE_PLAY_PRODUCTS must be valid JSON',
 		);
 	});
+
+	test('parses FLUXER_APP_DESKTOP_APP_PROMPT_ENABLED into instance.branding.desktop_app_prompt_enabled', () => {
+		const overridesTrue = buildNamedFluxerEnvOverrides({
+			FLUXER_APP_DESKTOP_APP_PROMPT_ENABLED: 'true',
+		});
+		expect(
+			(overridesTrue.instance as {branding: {desktop_app_prompt_enabled: boolean}}).branding
+				.desktop_app_prompt_enabled,
+		).toBe(true);
+
+		const overridesFalse = buildNamedFluxerEnvOverrides({
+			FLUXER_APP_DESKTOP_APP_PROMPT_ENABLED: 'false',
+		});
+		expect(
+			(overridesFalse.instance as {branding: {desktop_app_prompt_enabled: boolean}}).branding
+				.desktop_app_prompt_enabled,
+		).toBe(false);
+	});
 });
 
 describe('readEnvValue with NAME_FILE', () => {
