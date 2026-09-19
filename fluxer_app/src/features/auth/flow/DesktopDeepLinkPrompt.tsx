@@ -14,6 +14,10 @@ import {ArrowSquareOutIcon} from '@phosphor-icons/react';
 import type React from 'react';
 import {useState} from 'react';
 
+// Fork imports.
+
+import {observer} from 'mobx-react-lite';
+
 interface DesktopDeepLinkPromptProps {
 	code: string;
 	kind: 'invite' | 'gift' | 'theme';
@@ -32,12 +36,13 @@ const FAILED_TO_OPEN_IN_DESKTOP_APP_DESCRIPTOR = msg({
 	message: 'Something went wrong. Try again.',
 	comment: 'Inline error in the web deep-link prompt when opening the desktop app fails.',
 });
-export const DesktopDeepLinkPrompt: React.FC<DesktopDeepLinkPromptProps> = ({code, kind, preferLogin = false}) => {
-	const {i18n} = useLingui();
-	const [isLoading, setIsLoading] = useState(false);
-	const [error, setError] = useState<string | null>(null);
-	const isMobileBrowser = Platform.isMobileBrowser;
-	if (isDesktop() || isMobileBrowser) return null;
+export const DesktopDeepLinkPrompt: React.FC<DesktopDeepLinkPromptProps> = observer(
+	({code, kind, preferLogin = false}) => {
+		const {i18n} = useLingui();
+		const [isLoading, setIsLoading] = useState(false);
+		const [error, setError] = useState<string | null>(null);
+		const isMobileBrowser = Platform.isMobileBrowser;
+		if (isDesktop() || isMobileBrowser || !RuntimeConfig.desktopAppPromptEnabled) return null;
 	const getPath = (): string => {
 		switch (kind) {
 			case 'invite':
@@ -94,4 +99,4 @@ export const DesktopDeepLinkPrompt: React.FC<DesktopDeepLinkPromptProps> = ({cod
 			</Button>
 		</div>
 	);
-};
+});
