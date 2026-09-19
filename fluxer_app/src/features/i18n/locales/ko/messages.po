@@ -1306,12 +1306,12 @@ msgid "{emojiName}: {reactionCountText}, {actionText}"
 msgstr "{emojiName}: {reactionCountText}, {actionText}"
 
 #. Reason shown in the confirmation before joining a community from an emoji info card. It explains that the emoji the viewer opened belongs to this community. {expressionName} is the emoji name, written with colons around it.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:99
+#: src/features/expressions/components/ExpressionInfoCard.tsx:103
 msgid "{expressionName} is a custom emoji from this community. Members can use it here."
 msgstr "{expressionName}은(는) 이 커뮤니티의 사용자 지정 이모지입니다. 멤버들이 이곳에서 사용할 수 있습니다."
 
 #. Reason shown in the confirmation before joining a community from a sticker info card. It explains that the sticker the viewer opened belongs to this community. {expressionName} is the sticker name.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:104
+#: src/features/expressions/components/ExpressionInfoCard.tsx:108
 msgid "{expressionName} is a custom sticker from this community. Members can use it here."
 msgstr "{expressionName}은 이 커뮤니티의 맞춤 스티커입니다. 멤버들이 여기서 사용할 수 있습니다."
 
@@ -2407,27 +2407,27 @@ msgid "a channel"
 msgstr "채널"
 
 #. Shown under the "This emoji is from" or "This sticker is from" label in the expression info card when the source community is private to the viewer or cannot be reached.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:84
+#: src/features/expressions/components/ExpressionInfoCard.tsx:88
 msgid "A community that is either invite-only or unavailable."
 msgstr "초대 전용이거나 사용할 수 없는 커뮤니티입니다."
 
 #. Description of a custom emoji in the emoji info card when the viewer can use it outside the community. productName is the Fluxer product name.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:37
+#: src/features/expressions/components/ExpressionInfoCard.tsx:41
 msgid "A custom emoji from this community. You can use it anywhere on {productName}."
 msgstr "이 커뮤니티의 맞춤 이모지입니다. {productName} 어디에서든 사용할 수 있습니다."
 
 #. Description of a custom emoji in the emoji info card when the viewer can only use it inside the community.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:49
+#: src/features/expressions/components/ExpressionInfoCard.tsx:53
 msgid "A custom emoji from this community. You can use it in this community."
 msgstr "이 커뮤니티의 맞춤 이모지입니다. 이 커뮤니티에서 사용할 수 있습니다."
 
 #. Description of a custom sticker in the sticker info card when the viewer can use it outside the community. productName is the Fluxer product name.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:42
+#: src/features/expressions/components/ExpressionInfoCard.tsx:46
 msgid "A custom sticker from this community. You can use it anywhere on {productName}."
 msgstr "이 커뮤니티의 맞춤 스티커입니다. {productName} 어디에서나 사용할 수 있습니다."
 
 #. Description of a custom sticker in the sticker info card when the viewer can only use it inside the community.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:54
+#: src/features/expressions/components/ExpressionInfoCard.tsx:58
 msgid "A custom sticker from this community. You can use it in this community."
 msgstr "이 커뮤니티의 맞춤 스티커입니다. 이 커뮤니티에서 사용할 수 있습니다."
 
@@ -2437,7 +2437,7 @@ msgid "a date or date range"
 msgstr "날짜 또는 날짜 범위"
 
 #. Description of a built-in unicode emoji in the emoji info card. productName is the Fluxer product name.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:32
+#: src/features/expressions/components/ExpressionInfoCard.tsx:36
 msgid "A default emoji. You can use it anywhere on {productName}."
 msgstr "기본 이모지입니다. {productName} 어디에서든 사용할 수 있습니다."
 
@@ -9508,14 +9508,9 @@ msgid "Copy emoji"
 msgstr "이모티콘 복사"
 
 #. Developer-mode action that copies the emoji ID to the clipboard.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:32
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:40
 msgid "Copy emoji ID"
 msgstr "이모티콘 ID 복사"
-
-#. Action that copies the emoji URL to the clipboard.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:36
-msgid "Copy emoji URL"
-msgstr "이모티콘 URL 복사"
 
 #. Tooltip / button label that copies the voice endpoint hostname to the clipboard.
 #: src/features/voice/components/voice_connection_status/shared.ts:58
@@ -9528,11 +9523,15 @@ msgid "Copy file link"
 msgstr "파일 링크 복사"
 
 #. Media context menu action that copies a GIF attachment to the clipboard.
+#. Media context menu action that copies a GIF to the clipboard.
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:48
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:53
 msgid "Copy GIF"
 msgstr "GIF 복사"
 
 #. Media context menu action that copies the URL of the GIF attachment.
+#. Media context menu action that copies the URL of the GIF.
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:64
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:73
 msgid "Copy GIF link"
 msgstr "GIF 링크 복사"
@@ -9558,6 +9557,8 @@ msgid "Copy identifier"
 msgstr "식별자 복사"
 
 #. Media context menu action that copies an image attachment to the clipboard.
+#. Media context menu action that copies an image to the clipboard.
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:44
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:49
 msgid "Copy image"
 msgstr "이미지 복사"
@@ -9565,7 +9566,7 @@ msgstr "이미지 복사"
 #. Image context menu action that copies the image URL to the clipboard.
 #. Image context menu action that copies the image URL to the clipboard.
 #. Image context menu action that copies the image URL to the clipboard.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:44
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:60
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:69
 #: src/features/ui/action_menu/items/StickerContextMenuItems.tsx:44
 msgid "Copy image link"
@@ -12670,7 +12671,7 @@ msgid "Do you also want to block direct messages from members of your existing c
 msgstr "기존 커뮤니티 멤버가 보내는 DM도 차단할까요?"
 
 #. Body of the confirmation shown before joining a discoverable community from an expression info card. {communityName} is the community name.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:110
+#: src/features/expressions/components/ExpressionInfoCard.tsx:114
 msgid "Do you want to join {communityName}?"
 msgstr "{communityName}에 참여하시겠어요?"
 
@@ -12874,11 +12875,15 @@ msgid "Download fluxer-verification"
 msgstr "fluxer-verification 다운로드"
 
 #. Media context menu action that downloads a GIF attachment.
+#. Media context menu action that downloads a GIF to disk.
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:56
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:113
 msgid "Download GIF"
 msgstr "GIF 다운로드"
 
 #. Image context menu action that downloads the image to disk.
+#. Image context menu action that downloads the image to disk.
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:52
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:109
 msgid "Download image"
 msgstr "이미지 다운로드"
@@ -15186,7 +15191,7 @@ msgid "Favorite DM"
 msgstr "DM 즐겨찾기"
 
 #. Emoji context menu action that adds the emoji to favorites.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:28
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:36
 msgid "Favorite emoji"
 msgstr "이모티콘 즐겨찾기"
 
@@ -16550,7 +16555,7 @@ msgid "Go back and enter a valid email."
 msgstr "돌아가서 유효한 이메일을 입력하세요."
 
 #. Accessible label for the community row of an expression info card, which opens a community the viewer is already a member of. {communityName} is the community name.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:89
+#: src/features/expressions/components/ExpressionInfoCard.tsx:93
 msgid "Go to {communityName}"
 msgstr "{communityName}(으)로 이동"
 
@@ -18679,7 +18684,7 @@ msgid "Invite unavailable"
 msgstr "초대를 사용할 수 없음"
 
 #. Subtitle for a community that can only be joined with an invite.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:80
+#: src/features/expressions/components/ExpressionInfoCard.tsx:84
 msgid "Invite-only community"
 msgstr "초대 전용 커뮤니티"
 
@@ -18859,7 +18864,7 @@ msgstr "참여하기"
 #. Accessible label of a button that joins a community. {communityName} is the community name.
 #. Nagbar button label that opens the official product community invite. communityName is the community name.
 #: src/features/app/components/layout/app_layout/nagbars/GuildMembershipCtaNagbar.tsx:29
-#: src/features/expressions/components/ExpressionInfoCard.tsx:94
+#: src/features/expressions/components/ExpressionInfoCard.tsx:98
 msgid "Join {communityName}"
 msgstr "{communityName}에 참여하기"
 
@@ -21620,7 +21625,7 @@ msgid "More button"
 msgstr "더보기 버튼"
 
 #. Submenu label that contains additional emoji context menu actions.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:52
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:76
 msgid "More emoji actions"
 msgstr "기타 이모티콘 작업"
 
@@ -24011,11 +24016,6 @@ msgstr "열려 있는 DM + 커뮤니티"
 msgid "Open DMs only"
 msgstr "열려 있는 DM만"
 
-#. Action that opens the emoji URL in an external browser.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:40
-msgid "Open emoji in browser"
-msgstr "브라우저에서 이모티콘 열기"
-
 #. Accessible label for the emoji picker trigger button in the forward modal comment field.
 #: src/features/messaging/components/modals/ForwardModal.tsx:103
 #: src/features/user/components/modals/tabs/my_profile_tab/BioEditor.tsx:27
@@ -24037,6 +24037,8 @@ msgid "Open file link"
 msgstr "파일 링크 열기"
 
 #. Media context menu action that opens the GIF URL in an external browser.
+#. Media context menu action that opens the GIF URL in an external browser.
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:72
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:93
 msgid "Open GIF link"
 msgstr "GIF 링크 열기"
@@ -24070,7 +24072,7 @@ msgstr "이미지 전체 화면으로 보기"
 #. Image context menu action that opens the image URL in an external browser.
 #. Image context menu action that opens the image URL in an external browser.
 #. Image context menu action that opens the image URL in an external browser.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:48
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:68
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:89
 #: src/features/ui/action_menu/items/StickerContextMenuItems.tsx:48
 msgid "Open image link"
@@ -34303,7 +34305,7 @@ msgid "This emoji could not be prepared. Try another file or try again in a mome
 msgstr "이 이모티콘을 준비할 수 없습니다. 다른 파일을 시도하거나 잠시 후에 다시 시도해 주세요."
 
 #. Label above the community an emoji comes from in the emoji info card.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:71
+#: src/features/expressions/components/ExpressionInfoCard.tsx:75
 msgid "This emoji is from"
 msgstr "이 이모지는 다음 커뮤니티에서 가져왔습니다."
 
@@ -34414,12 +34416,12 @@ msgid "This invite may have expired or been deleted."
 msgstr "초대 링크가 만료되었거나 삭제되었을 수 있습니다."
 
 #. Description of a custom emoji from a community the viewer is not a member of.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:61
+#: src/features/expressions/components/ExpressionInfoCard.tsx:65
 msgid "This is a custom emoji from a community."
 msgstr "커뮤니티의 맞춤 이모티콘입니다."
 
 #. Description of a custom sticker from a community the viewer is not a member of.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:65
+#: src/features/expressions/components/ExpressionInfoCard.tsx:69
 msgid "This is a custom sticker from a community."
 msgstr "이 스티커는 커뮤니티의 맞춤 스티커입니다."
 
@@ -34669,7 +34671,7 @@ msgid "This shows how links appear: {linkPreviewExampleUrl}"
 msgstr "링크가 이렇게 표시됩니다: {linkPreviewExampleUrl}"
 
 #. Label above the community a sticker comes from in the sticker info card.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:75
+#: src/features/expressions/components/ExpressionInfoCard.tsx:79
 msgid "This sticker is from"
 msgstr "이 스티커는 다음 커뮤니티에서 가져왔습니다."
 
@@ -36022,7 +36024,7 @@ msgid "Unfavorite DM"
 msgstr "DM 즐겨찾기 해제"
 
 #. Emoji context menu action that removes the emoji from favorites.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:24
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:32
 msgid "Unfavorite emoji"
 msgstr "이모티콘 즐겨찾기 해제"
 

@@ -1306,12 +1306,12 @@ msgid "{emojiName}: {reactionCountText}, {actionText}"
 msgstr "{emojiName}: {reactionCountText}, {actionText}"
 
 #. Reason shown in the confirmation before joining a community from an emoji info card. It explains that the emoji the viewer opened belongs to this community. {expressionName} is the emoji name, written with colons around it.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:99
+#: src/features/expressions/components/ExpressionInfoCard.tsx:103
 msgid "{expressionName} is a custom emoji from this community. Members can use it here."
 msgstr "{expressionName} este un emoji personalizat din această comunitate. Membrii îl pot folosi aici."
 
 #. Reason shown in the confirmation before joining a community from a sticker info card. It explains that the sticker the viewer opened belongs to this community. {expressionName} is the sticker name.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:104
+#: src/features/expressions/components/ExpressionInfoCard.tsx:108
 msgid "{expressionName} is a custom sticker from this community. Members can use it here."
 msgstr "{expressionName} este un sticker personalizat din această comunitate. Membrii îl pot folosi aici."
 
@@ -2407,27 +2407,27 @@ msgid "a channel"
 msgstr "un canal"
 
 #. Shown under the "This emoji is from" or "This sticker is from" label in the expression info card when the source community is private to the viewer or cannot be reached.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:84
+#: src/features/expressions/components/ExpressionInfoCard.tsx:88
 msgid "A community that is either invite-only or unavailable."
 msgstr "O comunitate la care accesul este doar pe bază de invitație sau indisponibilă."
 
 #. Description of a custom emoji in the emoji info card when the viewer can use it outside the community. productName is the Fluxer product name.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:37
+#: src/features/expressions/components/ExpressionInfoCard.tsx:41
 msgid "A custom emoji from this community. You can use it anywhere on {productName}."
 msgstr "O emoji personalizată din această comunitate. O poți folosi oriunde pe {productName}."
 
 #. Description of a custom emoji in the emoji info card when the viewer can only use it inside the community.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:49
+#: src/features/expressions/components/ExpressionInfoCard.tsx:53
 msgid "A custom emoji from this community. You can use it in this community."
 msgstr "O emoji personalizată din această comunitate. O poți folosi în această comunitate."
 
 #. Description of a custom sticker in the sticker info card when the viewer can use it outside the community. productName is the Fluxer product name.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:42
+#: src/features/expressions/components/ExpressionInfoCard.tsx:46
 msgid "A custom sticker from this community. You can use it anywhere on {productName}."
 msgstr "Un sticker personalizat din această comunitate. Îl poți folosi oriunde pe {productName}."
 
 #. Description of a custom sticker in the sticker info card when the viewer can only use it inside the community.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:54
+#: src/features/expressions/components/ExpressionInfoCard.tsx:58
 msgid "A custom sticker from this community. You can use it in this community."
 msgstr "Un sticker personalizat din această comunitate. Îl poți folosi în această comunitate."
 
@@ -2437,7 +2437,7 @@ msgid "a date or date range"
 msgstr "o dată sau un interval de date"
 
 #. Description of a built-in unicode emoji in the emoji info card. productName is the Fluxer product name.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:32
+#: src/features/expressions/components/ExpressionInfoCard.tsx:36
 msgid "A default emoji. You can use it anywhere on {productName}."
 msgstr "O emoji implicită. O poți folosi oriunde pe {productName}."
 
@@ -9508,14 +9508,9 @@ msgid "Copy emoji"
 msgstr "Copiază emoji"
 
 #. Developer-mode action that copies the emoji ID to the clipboard.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:32
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:40
 msgid "Copy emoji ID"
 msgstr "Copiază ID-ul emoji-ului"
-
-#. Action that copies the emoji URL to the clipboard.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:36
-msgid "Copy emoji URL"
-msgstr "Copiază URL-ul emoji-ului"
 
 #. Tooltip / button label that copies the voice endpoint hostname to the clipboard.
 #: src/features/voice/components/voice_connection_status/shared.ts:58
@@ -9528,11 +9523,15 @@ msgid "Copy file link"
 msgstr "Copiază linkul fișierului"
 
 #. Media context menu action that copies a GIF attachment to the clipboard.
+#. Media context menu action that copies a GIF to the clipboard.
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:48
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:53
 msgid "Copy GIF"
 msgstr "Copiază GIF-ul"
 
 #. Media context menu action that copies the URL of the GIF attachment.
+#. Media context menu action that copies the URL of the GIF.
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:64
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:73
 msgid "Copy GIF link"
 msgstr "Copiază linkul GIF-ului"
@@ -9558,6 +9557,8 @@ msgid "Copy identifier"
 msgstr "Copiază identificatorul"
 
 #. Media context menu action that copies an image attachment to the clipboard.
+#. Media context menu action that copies an image to the clipboard.
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:44
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:49
 msgid "Copy image"
 msgstr "Copiază imaginea"
@@ -9565,7 +9566,7 @@ msgstr "Copiază imaginea"
 #. Image context menu action that copies the image URL to the clipboard.
 #. Image context menu action that copies the image URL to the clipboard.
 #. Image context menu action that copies the image URL to the clipboard.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:44
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:60
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:69
 #: src/features/ui/action_menu/items/StickerContextMenuItems.tsx:44
 msgid "Copy image link"
@@ -12670,7 +12671,7 @@ msgid "Do you also want to block direct messages from members of your existing c
 msgstr "Vrei să blochezi și mesajele directe de la membrii comunităților tale existente?"
 
 #. Body of the confirmation shown before joining a discoverable community from an expression info card. {communityName} is the community name.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:110
+#: src/features/expressions/components/ExpressionInfoCard.tsx:114
 msgid "Do you want to join {communityName}?"
 msgstr "Dorești să te alături la {communityName}?"
 
@@ -12874,11 +12875,15 @@ msgid "Download fluxer-verification"
 msgstr "Descarcă fluxer-verification"
 
 #. Media context menu action that downloads a GIF attachment.
+#. Media context menu action that downloads a GIF to disk.
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:56
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:113
 msgid "Download GIF"
 msgstr "Descarcă GIF"
 
 #. Image context menu action that downloads the image to disk.
+#. Image context menu action that downloads the image to disk.
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:52
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:109
 msgid "Download image"
 msgstr "Descarcă imaginea"
@@ -15186,7 +15191,7 @@ msgid "Favorite DM"
 msgstr "Adaugă DM-ul la favorite"
 
 #. Emoji context menu action that adds the emoji to favorites.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:28
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:36
 msgid "Favorite emoji"
 msgstr "Adaugă emoji la favorite"
 
@@ -16550,7 +16555,7 @@ msgid "Go back and enter a valid email."
 msgstr "Întoarce-te și introdu o adresă de e-mail validă."
 
 #. Accessible label for the community row of an expression info card, which opens a community the viewer is already a member of. {communityName} is the community name.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:89
+#: src/features/expressions/components/ExpressionInfoCard.tsx:93
 msgid "Go to {communityName}"
 msgstr "Mergi la {communityName}"
 
@@ -18679,7 +18684,7 @@ msgid "Invite unavailable"
 msgstr "Invitație indisponibilă"
 
 #. Subtitle for a community that can only be joined with an invite.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:80
+#: src/features/expressions/components/ExpressionInfoCard.tsx:84
 msgid "Invite-only community"
 msgstr "Comunitate doar cu invitație"
 
@@ -18859,7 +18864,7 @@ msgstr "Alăturare"
 #. Accessible label of a button that joins a community. {communityName} is the community name.
 #. Nagbar button label that opens the official product community invite. communityName is the community name.
 #: src/features/app/components/layout/app_layout/nagbars/GuildMembershipCtaNagbar.tsx:29
-#: src/features/expressions/components/ExpressionInfoCard.tsx:94
+#: src/features/expressions/components/ExpressionInfoCard.tsx:98
 msgid "Join {communityName}"
 msgstr "Alătură-te {communityName}"
 
@@ -21620,7 +21625,7 @@ msgid "More button"
 msgstr "Butonul Mai multe"
 
 #. Submenu label that contains additional emoji context menu actions.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:52
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:76
 msgid "More emoji actions"
 msgstr "Mai multe acțiuni emoji"
 
@@ -24011,11 +24016,6 @@ msgstr "DM-uri deschise + comunități"
 msgid "Open DMs only"
 msgstr "Doar DM-uri deschise"
 
-#. Action that opens the emoji URL in an external browser.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:40
-msgid "Open emoji in browser"
-msgstr "Deschide emoji în browser"
-
 #. Accessible label for the emoji picker trigger button in the forward modal comment field.
 #: src/features/messaging/components/modals/ForwardModal.tsx:103
 #: src/features/user/components/modals/tabs/my_profile_tab/BioEditor.tsx:27
@@ -24037,6 +24037,8 @@ msgid "Open file link"
 msgstr "Deschide linkul fișierului"
 
 #. Media context menu action that opens the GIF URL in an external browser.
+#. Media context menu action that opens the GIF URL in an external browser.
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:72
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:93
 msgid "Open GIF link"
 msgstr "Deschide linkul GIF"
@@ -24070,7 +24072,7 @@ msgstr "Deschide imaginea în vizualizare completă"
 #. Image context menu action that opens the image URL in an external browser.
 #. Image context menu action that opens the image URL in an external browser.
 #. Image context menu action that opens the image URL in an external browser.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:48
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:68
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:89
 #: src/features/ui/action_menu/items/StickerContextMenuItems.tsx:48
 msgid "Open image link"
@@ -34303,7 +34305,7 @@ msgid "This emoji could not be prepared. Try another file or try again in a mome
 msgstr "Acest emoji nu a putut fi pregătit. Încearcă un alt fișier sau încearcă din nou mai târziu."
 
 #. Label above the community an emoji comes from in the emoji info card.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:71
+#: src/features/expressions/components/ExpressionInfoCard.tsx:75
 msgid "This emoji is from"
 msgstr "Acest emoji provine din"
 
@@ -34414,12 +34416,12 @@ msgid "This invite may have expired or been deleted."
 msgstr "Această invitație ar putea fi expirată sau ștearsă."
 
 #. Description of a custom emoji from a community the viewer is not a member of.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:61
+#: src/features/expressions/components/ExpressionInfoCard.tsx:65
 msgid "This is a custom emoji from a community."
 msgstr "Acesta este un emoji personalizat dintr-o comunitate."
 
 #. Description of a custom sticker from a community the viewer is not a member of.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:65
+#: src/features/expressions/components/ExpressionInfoCard.tsx:69
 msgid "This is a custom sticker from a community."
 msgstr "Acesta este un sticker personalizat dintr-o comunitate."
 
@@ -34669,7 +34671,7 @@ msgid "This shows how links appear: {linkPreviewExampleUrl}"
 msgstr "Așa arată previzualizarea linkurilor: {linkPreviewExampleUrl}"
 
 #. Label above the community a sticker comes from in the sticker info card.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:75
+#: src/features/expressions/components/ExpressionInfoCard.tsx:79
 msgid "This sticker is from"
 msgstr "Acest sticker este din"
 
@@ -36022,7 +36024,7 @@ msgid "Unfavorite DM"
 msgstr "Elimină DM-ul din favorite"
 
 #. Emoji context menu action that removes the emoji from favorites.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:24
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:32
 msgid "Unfavorite emoji"
 msgstr "Elimină emoji-ul din favorite"
 
