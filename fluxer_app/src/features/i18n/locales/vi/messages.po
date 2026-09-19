@@ -1306,12 +1306,12 @@ msgid "{emojiName}: {reactionCountText}, {actionText}"
 msgstr "{emojiName}: {reactionCountText}, {actionText}"
 
 #. Reason shown in the confirmation before joining a community from an emoji info card. It explains that the emoji the viewer opened belongs to this community. {expressionName} is the emoji name, written with colons around it.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:99
+#: src/features/expressions/components/ExpressionInfoCard.tsx:103
 msgid "{expressionName} is a custom emoji from this community. Members can use it here."
 msgstr "{expressionName} là một biểu tượng cảm xúc tùy chỉnh từ cộng đồng này. Thành viên có thể sử dụng nó ở đây."
 
 #. Reason shown in the confirmation before joining a community from a sticker info card. It explains that the sticker the viewer opened belongs to this community. {expressionName} is the sticker name.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:104
+#: src/features/expressions/components/ExpressionInfoCard.tsx:108
 msgid "{expressionName} is a custom sticker from this community. Members can use it here."
 msgstr "{expressionName} là một sticker tùy chỉnh từ cộng đồng này. Thành viên có thể sử dụng tại đây."
 
@@ -2400,27 +2400,27 @@ msgid "a channel"
 msgstr "một kênh"
 
 #. Shown under the "This emoji is from" or "This sticker is from" label in the expression info card when the source community is private to the viewer or cannot be reached.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:84
+#: src/features/expressions/components/ExpressionInfoCard.tsx:88
 msgid "A community that is either invite-only or unavailable."
 msgstr "Một cộng đồng chỉ dành cho lời mời hoặc không khả dụng."
 
 #. Description of a custom emoji in the emoji info card when the viewer can use it outside the community. productName is the Fluxer product name.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:37
+#: src/features/expressions/components/ExpressionInfoCard.tsx:41
 msgid "A custom emoji from this community. You can use it anywhere on {productName}."
 msgstr "Một biểu tượng cảm xúc tùy chỉnh từ cộng đồng này. Bạn có thể sử dụng nó ở bất kỳ đâu trên {productName}."
 
 #. Description of a custom emoji in the emoji info card when the viewer can only use it inside the community.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:49
+#: src/features/expressions/components/ExpressionInfoCard.tsx:53
 msgid "A custom emoji from this community. You can use it in this community."
 msgstr "Một biểu tượng cảm xúc tùy chỉnh từ cộng đồng này. Bạn có thể sử dụng nó trong cộng đồng này."
 
 #. Description of a custom sticker in the sticker info card when the viewer can use it outside the community. productName is the Fluxer product name.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:42
+#: src/features/expressions/components/ExpressionInfoCard.tsx:46
 msgid "A custom sticker from this community. You can use it anywhere on {productName}."
 msgstr "Một nhãn dán tùy chỉnh từ cộng đồng này. Bạn có thể sử dụng nó ở bất kỳ đâu trên {productName}."
 
 #. Description of a custom sticker in the sticker info card when the viewer can only use it inside the community.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:54
+#: src/features/expressions/components/ExpressionInfoCard.tsx:58
 msgid "A custom sticker from this community. You can use it in this community."
 msgstr "Một nhãn dán tùy chỉnh từ cộng đồng này. Bạn có thể sử dụng nó trong cộng đồng này."
 
@@ -2430,7 +2430,7 @@ msgid "a date or date range"
 msgstr "một ngày hoặc phạm vi ngày"
 
 #. Description of a built-in unicode emoji in the emoji info card. productName is the Fluxer product name.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:32
+#: src/features/expressions/components/ExpressionInfoCard.tsx:36
 msgid "A default emoji. You can use it anywhere on {productName}."
 msgstr "Một biểu tượng cảm xúc mặc định. Bạn có thể sử dụng nó ở bất kỳ đâu trên {productName}."
 
@@ -9544,14 +9544,9 @@ msgid "Copy emoji"
 msgstr "Sao chép biểu tượng cảm xúc"
 
 #. Developer-mode action that copies the emoji ID to the clipboard.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:32
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:40
 msgid "Copy emoji ID"
 msgstr "Sao chép ID biểu tượng cảm xúc"
-
-#. Action that copies the emoji URL to the clipboard.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:36
-msgid "Copy emoji URL"
-msgstr "Sao chép URL biểu tượng cảm xúc"
 
 #. Tooltip / button label that copies the voice endpoint hostname to the clipboard.
 #: src/features/voice/components/voice_connection_status/shared.ts:58
@@ -9564,11 +9559,15 @@ msgid "Copy file link"
 msgstr "Sao chép liên kết tệp"
 
 #. Media context menu action that copies a GIF attachment to the clipboard.
+#. Media context menu action that copies a GIF to the clipboard.
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:48
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:54
 msgid "Copy GIF"
 msgstr "Sao chép ảnh GIF"
 
 #. Media context menu action that copies the URL of the GIF attachment.
+#. Media context menu action that copies the URL of the GIF.
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:64
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:74
 msgid "Copy GIF link"
 msgstr "Sao chép liên kết GIF"
@@ -9594,6 +9593,8 @@ msgid "Copy identifier"
 msgstr "Sao chép ID"
 
 #. Media context menu action that copies an image attachment to the clipboard.
+#. Media context menu action that copies an image to the clipboard.
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:44
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:50
 msgid "Copy image"
 msgstr "Sao chép ảnh"
@@ -9601,7 +9602,7 @@ msgstr "Sao chép ảnh"
 #. Image context menu action that copies the image URL to the clipboard.
 #. Image context menu action that copies the image URL to the clipboard.
 #. Image context menu action that copies the image URL to the clipboard.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:44
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:60
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:70
 #: src/features/ui/action_menu/items/StickerContextMenuItems.tsx:44
 msgid "Copy image link"
@@ -12734,7 +12735,7 @@ msgid "Do you also want to block direct messages from members of your existing c
 msgstr "Bạn có muốn chặn tin nhắn trực tiếp từ các thành viên trong cộng đồng hiện có của mình không?"
 
 #. Body of the confirmation shown before joining a discoverable community from an expression info card. {communityName} is the community name.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:110
+#: src/features/expressions/components/ExpressionInfoCard.tsx:114
 msgid "Do you want to join {communityName}?"
 msgstr "Bạn có muốn tham gia {communityName} không?"
 
@@ -12939,11 +12940,15 @@ msgid "Download fluxer-verification"
 msgstr "Tải xuống fluxer-verification"
 
 #. Media context menu action that downloads a GIF attachment.
+#. Media context menu action that downloads a GIF to disk.
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:56
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:114
 msgid "Download GIF"
 msgstr "Tải GIF"
 
 #. Image context menu action that downloads the image to disk.
+#. Image context menu action that downloads the image to disk.
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:52
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:110
 msgid "Download image"
 msgstr "Tải ảnh"
@@ -15269,7 +15274,7 @@ msgid "Favorite DM"
 msgstr "Thêm tin nhắn trực tiếp vào mục yêu thích"
 
 #. Emoji context menu action that adds the emoji to favorites.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:28
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:36
 msgid "Favorite emoji"
 msgstr "Thêm biểu tượng cảm xúc vào mục yêu thích"
 
@@ -16638,7 +16643,7 @@ msgid "Go back to {productName} to continue."
 msgstr "Quay lại {productName} để tiếp tục."
 
 #. Accessible label for the community row of an expression info card, which opens a community the viewer is already a member of. {communityName} is the community name.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:89
+#: src/features/expressions/components/ExpressionInfoCard.tsx:93
 msgid "Go to {communityName}"
 msgstr "Đi tới {communityName}"
 
@@ -18742,7 +18747,7 @@ msgid "Invite unavailable"
 msgstr "Lời mời không khả dụng"
 
 #. Subtitle for a community that can only be joined with an invite.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:80
+#: src/features/expressions/components/ExpressionInfoCard.tsx:84
 msgid "Invite-only community"
 msgstr "Cộng đồng chỉ dành cho lời mời"
 
@@ -18922,7 +18927,7 @@ msgstr "Tham gia"
 #. Accessible label of a button that joins a community. {communityName} is the community name.
 #. Nagbar button label that opens the official product community invite. communityName is the community name.
 #: src/features/app/components/layout/app_layout/nagbars/GuildMembershipCtaNagbar.tsx:29
-#: src/features/expressions/components/ExpressionInfoCard.tsx:94
+#: src/features/expressions/components/ExpressionInfoCard.tsx:98
 msgid "Join {communityName}"
 msgstr "Tham gia {communityName}"
 
@@ -21683,7 +21688,7 @@ msgid "More button"
 msgstr "Nút Thêm"
 
 #. Submenu label that contains additional emoji context menu actions.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:52
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:76
 msgid "More emoji actions"
 msgstr "Thêm thao tác với biểu tượng cảm xúc"
 
@@ -24086,11 +24091,6 @@ msgstr "Tin nhắn trực tiếp đang mở + cộng đồng"
 msgid "Open DMs only"
 msgstr "Chỉ tin nhắn trực tiếp đang mở"
 
-#. Action that opens the emoji URL in an external browser.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:40
-msgid "Open emoji in browser"
-msgstr "Mở biểu tượng cảm xúc trong trình duyệt"
-
 #. Accessible label for the emoji picker trigger button in the forward modal comment field.
 #: src/features/messaging/components/modals/ForwardModal.tsx:103
 #: src/features/user/components/modals/tabs/my_profile_tab/BioEditor.tsx:27
@@ -24112,6 +24112,8 @@ msgid "Open file link"
 msgstr "Mở liên kết tệp"
 
 #. Media context menu action that opens the GIF URL in an external browser.
+#. Media context menu action that opens the GIF URL in an external browser.
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:72
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:94
 msgid "Open GIF link"
 msgstr "Mở liên kết GIF"
@@ -24145,7 +24147,7 @@ msgstr "Mở ảnh ở chế độ xem đầy đủ"
 #. Image context menu action that opens the image URL in an external browser.
 #. Image context menu action that opens the image URL in an external browser.
 #. Image context menu action that opens the image URL in an external browser.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:48
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:68
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:90
 #: src/features/ui/action_menu/items/StickerContextMenuItems.tsx:48
 msgid "Open image link"
@@ -34408,7 +34410,7 @@ msgid "This emoji could not be prepared. Try another file or try again in a mome
 msgstr "Không thể chuẩn bị biểu tượng cảm xúc này. Hãy thử một tệp khác hoặc thử lại sau giây lát."
 
 #. Label above the community an emoji comes from in the emoji info card.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:71
+#: src/features/expressions/components/ExpressionInfoCard.tsx:75
 msgid "This emoji is from"
 msgstr "Emoji này đến từ"
 
@@ -34519,12 +34521,12 @@ msgid "This invite may have expired or been deleted."
 msgstr "Lời mời này có thể đã hết hạn hoặc bị xóa."
 
 #. Description of a custom emoji from a community the viewer is not a member of.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:61
+#: src/features/expressions/components/ExpressionInfoCard.tsx:65
 msgid "This is a custom emoji from a community."
 msgstr "Đây là biểu tượng cảm xúc tùy chỉnh từ một cộng đồng."
 
 #. Description of a custom sticker from a community the viewer is not a member of.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:65
+#: src/features/expressions/components/ExpressionInfoCard.tsx:69
 msgid "This is a custom sticker from a community."
 msgstr "Đây là một nhãn dán tùy chỉnh từ một cộng đồng."
 
@@ -34792,7 +34794,7 @@ msgid "This shows how links appear: {linkPreviewExampleUrl}"
 msgstr "Đây là cách các liên kết xuất hiện: {linkPreviewExampleUrl}"
 
 #. Label above the community a sticker comes from in the sticker info card.
-#: src/features/expressions/components/ExpressionInfoCard.tsx:75
+#: src/features/expressions/components/ExpressionInfoCard.tsx:79
 msgid "This sticker is from"
 msgstr "Sticker này đến từ"
 
@@ -36156,7 +36158,7 @@ msgid "Unfavorite DM"
 msgstr "Bỏ yêu thích tin nhắn trực tiếp"
 
 #. Emoji context menu action that removes the emoji from favorites.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:24
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:32
 msgid "Unfavorite emoji"
 msgstr "Bỏ yêu thích biểu tượng cảm xúc"
 
