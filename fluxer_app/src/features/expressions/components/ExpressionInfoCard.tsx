@@ -6,8 +6,12 @@ import RuntimeConfig from '@app/features/app/state/RuntimeConfig';
 import {joinDiscoveryGuild} from '@app/features/discovery/commands/DiscoveryJoinCommands';
 import type {ExpressionKind} from '@app/features/expressions/commands/ExpressionMetadataCommands';
 import styles from '@app/features/expressions/components/ExpressionInfoCard.module.css';
+import Emoji from '@app/features/emoji/state/Emoji';
+import type {FlatEmoji} from '@app/features/emoji/types/EmojiTypes';
 import ExpressionSource from '@app/features/expressions/state/ExpressionSource';
 import {hasGlobalExpressionsEnabled} from '@app/features/expressions/utils/ExpressionPermissionUtils';
+import {EmojiContextMenuItems} from '@app/features/ui/action_menu/items/EmojiContextMenuItems';
+import * as ContextMenuCommands from '@app/features/ui/commands/ContextMenuCommands';
 import {GuildBadge} from '@app/features/guild/components/GuildBadge';
 import {GuildIcon} from '@app/features/guild/components/popouts/GuildIcon';
 import type {Guild} from '@app/features/guild/models/Guild';
@@ -416,6 +420,33 @@ export const ExpressionInfoCard = observer(function ExpressionInfoCard(props: Ex
 		}
 		return i18n._(FOREIGN_EXPRESSION_DESCRIPTORS[kind]);
 	};
+	const handleContextMenu = useCallback(
+		(e: React.MouseEvent) => {
+			if (kind !== 'emoji' || !expressionId) return;
+			e.preventDefault();
+			e.stopPropagation();
+			const emojiRecord = Emoji.getEmojiById(expressionId);
+			const isAnimated = Boolean(emojiRecord?.animated);
+			const nameWithoutColons = displayName.replace(/^:|:$/g, '');
+			const emojiForMenu: FlatEmoji = emojiRecord ?? {
+				id: expressionId,
+				guildId: guildId ?? undefined,
+				name: nameWithoutColons,
+				uniqueName: nameWithoutColons,
+				allNamesString: displayName,
+				animated: isAnimated,
+			};
+			ContextMenuCommands.openFromEvent(e, ({onClose: closeMenu}) => (
+				<EmojiContextMenuItems
+					emoji={emojiForMenu}
+					onClose={closeMenu}
+					data-flx="expressions.expression-info-card.handle-context-menu.emoji-context-menu-items"
+				/>
+			));
+		},
+		[kind, expressionId, displayName, guildId],
+	);
+
 	return (
 		<div className={clsx(styles.card, className)} data-flx="expressions.expression-info-card.card">
 			<div className={styles.summarySection} data-flx="expressions.expression-info-card.summary-section">
@@ -425,6 +456,7 @@ export const ExpressionInfoCard = observer(function ExpressionInfoCard(props: Ex
 						alt=""
 						draggable={false}
 						className={styles.preview}
+						onContextMenu={handleContextMenu}
 						data-flx="expressions.expression-info-card.preview"
 					/>
 				)}
