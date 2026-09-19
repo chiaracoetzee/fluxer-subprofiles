@@ -321,6 +321,8 @@ function getDefaultAppPublicConfig(): InstanceAppPublicConfig {
 			theme_color: normalizeOptionalString(Config.instance.branding.themeColor),
 			status_page_url: normalizeOptionalString(Config.instance.branding.statusPageUrl),
 			status_page_incident_history_url: normalizeOptionalString(Config.instance.branding.statusPageIncidentHistoryUrl),
+			desktop_app_prompt_enabled:
+				Config.instance.branding.desktopAppPromptEnabled ?? (Config.instance.selfHosted ? false : true),
 		},
 		setup: {
 			configured: !Config.instance.selfHosted || Config.instance.setup.configured,
@@ -526,6 +528,8 @@ function buildAppPublicConfig(config: z.infer<typeof StoredInstanceAppPublicSche
 				branding.status_page_incident_history_url,
 				defaults.branding.status_page_incident_history_url,
 			),
+			desktop_app_prompt_enabled:
+				branding.desktop_app_prompt_enabled ?? defaults.branding.desktop_app_prompt_enabled,
 		},
 		setup: {
 			configured: setup.configured ?? defaults.setup.configured,

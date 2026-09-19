@@ -38,6 +38,10 @@ export const InstanceBrandingSchema = z
 			.string()
 			.nullable()
 			.describe('Optional public status page incident history URL'),
+		desktop_app_prompt_enabled: z
+			.boolean()
+			.default(true)
+			.describe('Whether the web app shows prompts to open deep links in the desktop app'),
 	})
 	.describe('Branding values safe to expose to clients');
 export type InstanceBranding = z.infer<typeof InstanceBrandingSchema>;
