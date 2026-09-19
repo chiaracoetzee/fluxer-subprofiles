@@ -637,6 +637,9 @@ export interface AccessibilitySettings {
 	showNeko: boolean;
 	keepNekoStill: boolean;
 	showVideoSeekPreviewThumbnails: boolean;
+	mobileFontSize?: number;
+	mobileMessageGroupSpacing?: number;
+	mobileCompactMessageGroupSpacing?: number;
 }
 
 const getDefaultDmMessagePreviewMode = (): DMMessagePreviewMode =>
@@ -699,6 +702,9 @@ class Accessibility {
 	mobileStickerAnimationValue: number = StickerAnimationOptions.ANIMATE_ON_INTERACTION;
 	mobileGifAutoPlayValue = false;
 	mobileAnimateEmojiValue = true;
+	mobileFontSize?: number;
+	mobileMessageGroupSpacing?: number;
+	mobileCompactMessageGroupSpacing?: number;
 	autoSendKlipyGifs = true;
 	showGifButton = true;
 	showMemesButton = true;
@@ -813,6 +819,9 @@ class Accessibility {
 				'mobileStickerAnimationValue',
 				'mobileGifAutoPlayValue',
 				'mobileAnimateEmojiValue',
+				'mobileFontSize',
+				'mobileMessageGroupSpacing',
+				'mobileCompactMessageGroupSpacing',
 				'autoSendKlipyGifs',
 				'showGifButton',
 				'showMemesButton',
@@ -872,6 +881,9 @@ class Accessibility {
 				mobileStickerAnimationValue: s.mobileStickerAnimationValue,
 				mobileGifAutoplayValue: s.mobileGifAutoPlayValue,
 				mobileAnimateEmojiValue: s.mobileAnimateEmojiValue,
+				mobileFontSize: s.mobileFontSize,
+				mobileMessageGroupSpacing: s.mobileMessageGroupSpacing,
+				mobileCompactMessageGroupSpacing: s.mobileCompactMessageGroupSpacing,
 				autoSendKlipyGifs: s.autoSendKlipyGifs,
 				showGifButton: s.showGifButton,
 				showMemesButton: s.showMemesButton,
@@ -949,6 +961,10 @@ class Accessibility {
 				if (m.mobileStickerAnimationValue !== undefined) s.mobileStickerAnimationValue = m.mobileStickerAnimationValue;
 				if (m.mobileGifAutoplayValue !== undefined) s.mobileGifAutoPlayValue = m.mobileGifAutoplayValue;
 				if (m.mobileAnimateEmojiValue !== undefined) s.mobileAnimateEmojiValue = m.mobileAnimateEmojiValue;
+				if (m.mobileFontSize !== undefined) s.mobileFontSize = m.mobileFontSize;
+				if (m.mobileMessageGroupSpacing !== undefined) s.mobileMessageGroupSpacing = m.mobileMessageGroupSpacing;
+				if (m.mobileCompactMessageGroupSpacing !== undefined)
+					s.mobileCompactMessageGroupSpacing = m.mobileCompactMessageGroupSpacing;
 				s.autoSendKlipyGifs = m.autoSendKlipyGifs;
 				if (m.showGifButton !== undefined) s.showGifButton = m.showGifButton;
 				if (m.showMemesButton !== undefined) s.showMemesButton = m.showMemesButton;
@@ -1273,6 +1289,11 @@ class Accessibility {
 		if (validated.mobileGifAutoPlayValue !== undefined) this.mobileGifAutoPlayValue = validated.mobileGifAutoPlayValue;
 		if (validated.mobileAnimateEmojiValue !== undefined)
 			this.mobileAnimateEmojiValue = validated.mobileAnimateEmojiValue;
+		if (validated.mobileFontSize !== undefined) this.mobileFontSize = validated.mobileFontSize;
+		if (validated.mobileMessageGroupSpacing !== undefined)
+			this.mobileMessageGroupSpacing = validated.mobileMessageGroupSpacing;
+		if (validated.mobileCompactMessageGroupSpacing !== undefined)
+			this.mobileCompactMessageGroupSpacing = validated.mobileCompactMessageGroupSpacing;
 		if (validated.autoSendKlipyGifs !== undefined) this.autoSendKlipyGifs = validated.autoSendKlipyGifs;
 		if (validated.showGifButton !== undefined) this.showGifButton = validated.showGifButton;
 		if (validated.showMemesButton !== undefined) this.showMemesButton = validated.showMemesButton;
@@ -1392,6 +1413,15 @@ class Accessibility {
 			mobileStickerAnimationValue: data.mobileStickerAnimationValue ?? this.mobileStickerAnimationValue,
 			mobileGifAutoPlayValue: data.mobileGifAutoPlayValue ?? this.mobileGifAutoPlayValue,
 			mobileAnimateEmojiValue: data.mobileAnimateEmojiValue ?? this.mobileAnimateEmojiValue,
+			mobileFontSize: data.mobileFontSize !== undefined ? data.mobileFontSize : this.mobileFontSize,
+			mobileMessageGroupSpacing:
+				data.mobileMessageGroupSpacing !== undefined
+					? data.mobileMessageGroupSpacing
+					: this.mobileMessageGroupSpacing,
+			mobileCompactMessageGroupSpacing:
+				data.mobileCompactMessageGroupSpacing !== undefined
+					? data.mobileCompactMessageGroupSpacing
+					: this.mobileCompactMessageGroupSpacing,
 			autoSendKlipyGifs: data.autoSendKlipyGifs ?? this.autoSendKlipyGifs,
 			showGifButton: data.showGifButton ?? this.showGifButton,
 			showMemesButton: data.showMemesButton ?? this.showMemesButton,
