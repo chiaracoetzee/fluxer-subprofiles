@@ -10637,7 +10637,8 @@
 									"favicon_url": {"nullable": true, "type": "string"},
 									"theme_color": {"nullable": true, "type": "string"},
 									"status_page_url": {"nullable": true, "type": "string"},
-									"status_page_incident_history_url": {"nullable": true, "type": "string"}
+									"status_page_incident_history_url": {"nullable": true, "type": "string"},
+									"desktop_app_prompt_enabled": {"type": "boolean"}
 								},
 								"required": [
 									"product_name",
@@ -11144,7 +11145,8 @@
 									"favicon_url": {"nullable": true, "type": "string", "maxLength": 2048},
 									"theme_color": {"nullable": true, "type": "string", "maxLength": 64},
 									"status_page_url": {"nullable": true, "type": "string", "maxLength": 2048},
-									"status_page_incident_history_url": {"nullable": true, "type": "string", "maxLength": 2048}
+									"status_page_incident_history_url": {"nullable": true, "type": "string", "maxLength": 2048},
+									"desktop_app_prompt_enabled": {"nullable": true, "type": "boolean"}
 								}
 							},
 							"setup": {"nullable": true, "type": "object", "properties": {"configured": {"type": "boolean"}}},
