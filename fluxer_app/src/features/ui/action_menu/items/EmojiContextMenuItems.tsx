@@ -5,9 +5,17 @@ import EmojiPicker from '@app/features/emoji/state/EmojiPicker';
 import type {FlatEmoji} from '@app/features/emoji/types/EmojiTypes';
 import Guilds from '@app/features/guild/state/Guilds';
 import {LINK_COPIED_TO_CLIPBOARD_DESCRIPTOR} from '@app/features/i18n/utils/CommonMessageDescriptors';
+import {createDownloadHandler} from '@app/features/messaging/utils/FileDownloadUtils';
 import {CloneEmojiMenuItem} from '@app/features/ui/action_menu/items/CloneEmojiMenuItem';
+import {copyMediaToClipboard} from '@app/features/ui/action_menu/items/MediaMenuData';
 import styles from '@app/features/ui/action_menu/items/MenuItems.module.css';
 import {ReverseImageSearchMenuItems} from '@app/features/ui/action_menu/items/ReverseImageSearchMenuItems';
+import {
+	CopyLinkIcon,
+	CopyMediaIcon,
+	DownloadMediaIcon,
+	OpenMediaLinkIcon,
+} from '@app/features/ui/action_menu/ContextMenuIcons';
 import {MenuGroup} from '@app/features/ui/action_menu/MenuGroup';
 import {MenuItem} from '@app/features/ui/action_menu/MenuItem';
 import {MenuItemSubmenu} from '@app/features/ui/action_menu/MenuItemSubmenu';
@@ -33,21 +41,37 @@ const COPY_EMOJI_ID_DESCRIPTOR = msg({
 	message: 'Copy emoji ID',
 	comment: 'Developer-mode action that copies the emoji ID to the clipboard.',
 });
-const COPY_EMOJI_URL_DESCRIPTOR = msg({
-	message: 'Copy emoji URL',
-	comment: 'Action that copies the emoji URL to the clipboard.',
+const COPY_IMAGE_DESCRIPTOR = msg({
+	message: 'Copy image',
+	comment: 'Media context menu action that copies an image to the clipboard.',
 });
-const OPEN_EMOJI_IN_BROWSER_DESCRIPTOR = msg({
-	message: 'Open emoji in browser',
-	comment: 'Action that opens the emoji URL in an external browser.',
+const COPY_GIF_DESCRIPTOR = msg({
+	message: 'Copy GIF',
+	comment: 'Media context menu action that copies a GIF to the clipboard.',
+});
+const DOWNLOAD_IMAGE_DESCRIPTOR = msg({
+	message: 'Download image',
+	comment: 'Image context menu action that downloads the image to disk.',
+});
+const DOWNLOAD_GIF_DESCRIPTOR = msg({
+	message: 'Download GIF',
+	comment: 'Media context menu action that downloads a GIF to disk.',
 });
 const COPY_IMAGE_LINK_DESCRIPTOR = msg({
 	message: 'Copy image link',
 	comment: 'Image context menu action that copies the image URL to the clipboard.',
 });
+const COPY_GIF_LINK_DESCRIPTOR = msg({
+	message: 'Copy GIF link',
+	comment: 'Media context menu action that copies the URL of the GIF.',
+});
 const OPEN_IMAGE_LINK_DESCRIPTOR = msg({
 	message: 'Open image link',
 	comment: 'Image context menu action that opens the image URL in an external browser.',
+});
+const OPEN_GIF_LINK_DESCRIPTOR = msg({
+	message: 'Open GIF link',
+	comment: 'Media context menu action that opens the GIF URL in an external browser.',
 });
 const MORE_EMOJI_ACTIONS_DESCRIPTOR = msg({
 	message: 'More emoji actions',
@@ -63,51 +87,134 @@ const useEmojiHandlers = (emoji: FlatEmoji, onClose: () => void) => {
 	const {i18n} = useLingui();
 	const canFavorite = !emoji.id || Boolean(emoji.guildId && Guilds.getGuild(emoji.guildId));
 	const isFavorite = canFavorite ? EmojiPicker.isFavorite(emoji) : false;
-	const reverseImageSearchUrl = emoji.id
-		? AvatarUtils.getEmojiURL({id: emoji.id, animated: emoji.animated})
+	const originalUrl = emoji.id
+		? AvatarUtils.getEmojiOriginalURL({id: emoji.id, animated: emoji.animated})
 		: (emoji.url ?? null);
+
+	const copyLabel = emoji.animated ? i18n._(COPY_GIF_DESCRIPTOR) : i18n._(COPY_IMAGE_DESCRIPTOR);
+	const downloadLabel = emoji.animated ? i18n._(DOWNLOAD_GIF_DESCRIPTOR) : i18n._(DOWNLOAD_IMAGE_DESCRIPTOR);
+	const copyLinkLabel = emoji.animated ? i18n._(COPY_GIF_LINK_DESCRIPTOR) : i18n._(COPY_IMAGE_LINK_DESCRIPTOR);
+	const openLinkLabel = emoji.animated ? i18n._(OPEN_GIF_LINK_DESCRIPTOR) : i18n._(OPEN_IMAGE_LINK_DESCRIPTOR);
+
 	const handleToggleFavorite = useCallback(() => {
 		EmojiPickerCommands.toggleFavorite(emoji);
 	}, [emoji]);
+
 	const handleCopyId = useCallback(() => {
 		if (!emoji.id) return;
 		TextCopyCommands.copy(i18n, emoji.id);
 		onClose();
 	}, [i18n, emoji.id, onClose]);
+
+	const handleCopyImage = useCallback(async () => {
+		if (!originalUrl) return;
+		const mediaType = emoji.animated ? 'gif' : 'image';
+		const suggestedFilename = `${emoji.name}.${emoji.animated ? 'gif' : 'png'}`;
+		await copyMediaToClipboard({
+			i18n,
+			originalSrc: originalUrl,
+			type: mediaType,
+			defaultName: suggestedFilename,
+		});
+		onClose();
+	}, [emoji.animated, emoji.name, i18n, onClose, originalUrl]);
+
+	const handleDownloadImage = useCallback(() => {
+		if (!originalUrl) return;
+		const mediaType = emoji.animated ? 'gif' : 'image';
+		const suggestedFilename = `${emoji.name}.${emoji.animated ? 'gif' : 'png'}`;
+		createDownloadHandler(originalUrl, mediaType, suggestedFilename)();
+		onClose();
+	}, [emoji.animated, emoji.name, onClose, originalUrl]);
+
 	const handleCopyUrl = useCallback(async () => {
-		if (!reverseImageSearchUrl) return;
-		await TextCopyCommands.copy(i18n, reverseImageSearchUrl, true);
+		if (!originalUrl) return;
+		await TextCopyCommands.copy(i18n, originalUrl, true);
 		ToastCommands.createToast({
 			type: 'success',
 			children: i18n._(LINK_COPIED_TO_CLIPBOARD_DESCRIPTOR),
 		});
 		onClose();
-	}, [i18n, reverseImageSearchUrl, onClose]);
+	}, [i18n, onClose, originalUrl]);
+
 	const handleOpenInBrowser = useCallback(() => {
-		if (!reverseImageSearchUrl) return;
-		void openExternalUrl(reverseImageSearchUrl);
+		if (!originalUrl) return;
+		void openExternalUrl(originalUrl);
 		onClose();
-	}, [reverseImageSearchUrl, onClose]);
+	}, [onClose, originalUrl]);
+
 	return {
 		canFavorite,
 		isFavorite,
-		reverseImageSearchUrl,
+		originalUrl,
+		copyLabel,
+		downloadLabel,
+		copyLinkLabel,
+		openLinkLabel,
 		handleToggleFavorite,
 		handleCopyId,
+		handleCopyImage,
+		handleDownloadImage,
 		handleCopyUrl,
 		handleOpenInBrowser,
 	};
 };
+
 export const EmojiContextMenuItems = observer(({emoji, onClose}: EmojiContextMenuItemsProps) => {
 	const {i18n} = useLingui();
-	const {canFavorite, isFavorite, reverseImageSearchUrl, handleToggleFavorite, handleCopyId} = useEmojiHandlers(
-		emoji,
-		onClose,
-	);
-	const shouldShowPrimaryGroup = canFavorite || Boolean(emoji.id);
+	const {
+		canFavorite,
+		isFavorite,
+		originalUrl,
+		copyLabel,
+		downloadLabel,
+		copyLinkLabel,
+		openLinkLabel,
+		handleToggleFavorite,
+		handleCopyId,
+		handleCopyImage,
+		handleDownloadImage,
+		handleCopyUrl,
+		handleOpenInBrowser,
+	} = useEmojiHandlers(emoji, onClose);
+
+	const shouldShowSecondaryGroup = canFavorite || Boolean(emoji.id);
+
 	return (
 		<>
-			{shouldShowPrimaryGroup && (
+			{originalUrl && (
+				<MenuGroup data-flx="ui.action-menu.items.emoji-context-menu-items.media-menu-group">
+					<MenuItem
+						icon={<CopyMediaIcon size={20} data-flx="ui.action-menu.items.emoji-context-menu-items.copy-media-icon" />}
+						onClick={handleCopyImage}
+						data-flx="ui.action-menu.items.emoji-context-menu-items.menu-item.copy-image"
+					>
+						{copyLabel}
+					</MenuItem>
+					<MenuItem
+						icon={<DownloadMediaIcon size={20} data-flx="ui.action-menu.items.emoji-context-menu-items.download-media-icon" />}
+						onClick={handleDownloadImage}
+						data-flx="ui.action-menu.items.emoji-context-menu-items.menu-item.download-image"
+					>
+						{downloadLabel}
+					</MenuItem>
+					<MenuItem
+						icon={<CopyLinkIcon size={20} data-flx="ui.action-menu.items.emoji-context-menu-items.copy-link-icon" />}
+						onClick={handleCopyUrl}
+						data-flx="ui.action-menu.items.emoji-context-menu-items.menu-item.copy-link"
+					>
+						{copyLinkLabel}
+					</MenuItem>
+					<MenuItem
+						icon={<OpenMediaLinkIcon size={20} data-flx="ui.action-menu.items.emoji-context-menu-items.open-media-link-icon" />}
+						onClick={handleOpenInBrowser}
+						data-flx="ui.action-menu.items.emoji-context-menu-items.menu-item.open-link"
+					>
+						{openLinkLabel}
+					</MenuItem>
+				</MenuGroup>
+			)}
+			{shouldShowSecondaryGroup && (
 				<MenuGroup data-flx="ui.action-menu.items.emoji-context-menu-items.menu-group">
 					{canFavorite && (
 						<MenuItem
@@ -125,6 +232,13 @@ export const EmojiContextMenuItems = observer(({emoji, onClose}: EmojiContextMen
 						</MenuItem>
 					)}
 					{emoji.id && (
+						<CloneEmojiMenuItem
+							emoji={emoji}
+							onClose={onClose}
+							data-flx="ui.action-menu.items.emoji-context-menu-items.clone-emoji-menu-item"
+						/>
+					)}
+					{emoji.id && (
 						<MenuItem
 							icon={
 								<ClipboardIcon
@@ -140,21 +254,12 @@ export const EmojiContextMenuItems = observer(({emoji, onClose}: EmojiContextMen
 					)}
 				</MenuGroup>
 			)}
-			{emoji.id && (
-				<CloneEmojiMenuItem
-					emoji={emoji}
-					onClose={onClose}
-					data-flx="ui.action-menu.items.emoji-context-menu-items.clone-emoji-menu-item"
-				/>
-			)}
-			{reverseImageSearchUrl && (
+			{originalUrl && (
 				<ReverseImageSearchMenuItems
-					imageUrl={reverseImageSearchUrl}
+					imageUrl={originalUrl}
 					onClose={onClose}
 					wrapInGroup
-					includeCopyAndOpen
-					copyLabel={i18n._(COPY_EMOJI_URL_DESCRIPTOR)}
-					openLabel={i18n._(OPEN_EMOJI_IN_BROWSER_DESCRIPTOR)}
+					includeCopyAndOpen={false}
 					data-flx="ui.action-menu.items.emoji-context-menu-items.reverse-image-search-menu-items"
 				/>
 			)}
@@ -169,40 +274,65 @@ export const EmojiInlineMenuItems = observer(({emoji, onClose}: EmojiContextMenu
 	const {
 		canFavorite,
 		isFavorite,
-		reverseImageSearchUrl,
+		originalUrl,
+		copyLabel,
+		downloadLabel,
+		copyLinkLabel,
+		openLinkLabel,
 		handleToggleFavorite,
 		handleCopyId,
+		handleCopyImage,
+		handleDownloadImage,
 		handleCopyUrl,
 		handleOpenInBrowser,
 	} = useEmojiHandlers(emoji, onClose);
-	if (!canFavorite && !emoji.id && !reverseImageSearchUrl) {
+
+	if (!canFavorite && !emoji.id && !originalUrl) {
 		return null;
 	}
-	const showSubmenu = Boolean(emoji.id) || Boolean(reverseImageSearchUrl);
+
+	const showSubmenu = Boolean(emoji.id) || Boolean(originalUrl);
+
 	return (
 		<MenuGroup data-flx="ui.action-menu.items.emoji-context-menu-items.emoji-inline-menu-items.menu-group">
+			{originalUrl && (
+				<MenuItem
+					onClick={handleCopyImage}
+					data-flx="ui.action-menu.items.emoji-context-menu-items.emoji-inline-menu-items.menu-item.copy-image"
+				>
+					{copyLabel}
+				</MenuItem>
+			)}
+			{originalUrl && (
+				<MenuItem
+					onClick={handleDownloadImage}
+					data-flx="ui.action-menu.items.emoji-context-menu-items.emoji-inline-menu-items.menu-item.download-image"
+				>
+					{downloadLabel}
+				</MenuItem>
+			)}
+			{originalUrl && (
+				<MenuItem
+					onClick={handleCopyUrl}
+					data-flx="ui.action-menu.items.emoji-context-menu-items.emoji-inline-menu-items.menu-item.copy-url"
+				>
+					{copyLinkLabel}
+				</MenuItem>
+			)}
+			{originalUrl && (
+				<MenuItem
+					onClick={handleOpenInBrowser}
+					data-flx="ui.action-menu.items.emoji-context-menu-items.emoji-inline-menu-items.menu-item.open-in-browser"
+				>
+					{openLinkLabel}
+				</MenuItem>
+			)}
 			{canFavorite && (
 				<MenuItem
 					onClick={handleToggleFavorite}
 					data-flx="ui.action-menu.items.emoji-context-menu-items.emoji-inline-menu-items.menu-item.toggle-favorite"
 				>
 					{isFavorite ? i18n._(UNFAVORITE_EMOJI_DESCRIPTOR) : i18n._(FAVORITE_EMOJI_DESCRIPTOR)}
-				</MenuItem>
-			)}
-			{reverseImageSearchUrl && (
-				<MenuItem
-					onClick={handleCopyUrl}
-					data-flx="ui.action-menu.items.emoji-context-menu-items.emoji-inline-menu-items.menu-item.copy-url"
-				>
-					{i18n._(COPY_IMAGE_LINK_DESCRIPTOR)}
-				</MenuItem>
-			)}
-			{reverseImageSearchUrl && (
-				<MenuItem
-					onClick={handleOpenInBrowser}
-					data-flx="ui.action-menu.items.emoji-context-menu-items.emoji-inline-menu-items.menu-item.open-in-browser"
-				>
-					{i18n._(OPEN_IMAGE_LINK_DESCRIPTOR)}
 				</MenuItem>
 			)}
 			{showSubmenu && (
@@ -233,11 +363,12 @@ export const EmojiInlineMenuItems = observer(({emoji, onClose}: EmojiContextMenu
 									data-flx="ui.action-menu.items.emoji-context-menu-items.emoji-inline-menu-items.clone-emoji-menu-item"
 								/>
 							)}
-							{reverseImageSearchUrl && (
+							{originalUrl && (
 								<ReverseImageSearchMenuItems
-									imageUrl={reverseImageSearchUrl}
+									imageUrl={originalUrl}
 									onClose={onClose}
 									wrapInGroup
+									includeCopyAndOpen={false}
 									data-flx="ui.action-menu.items.emoji-context-menu-items.emoji-inline-menu-items.reverse-image-search-menu-items"
 								/>
 							)}
@@ -251,3 +382,4 @@ export const EmojiInlineMenuItems = observer(({emoji, onClose}: EmojiContextMenu
 });
 
 EmojiInlineMenuItems.displayName = 'EmojiInlineMenuItems';
+
