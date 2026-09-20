@@ -960,7 +960,7 @@ msgstr "{count, plural, one {# pesan diblokir} other {# pesan diblokir}}"
 msgid "{count, plural, one {# community found} other {# communities found}}"
 msgstr "{count, plural, one {# komunitas ditemukan} other {# komunitas ditemukan}}"
 
-#: src/features/app/components/layout/GuildsLayout.tsx:1973
+#: src/features/app/components/layout/GuildsLayout.tsx:1968
 msgid "{count, plural, one {# community is temporarily unavailable due to a flux capacitor malfunction.} other {# communities are temporarily unavailable due to a flux capacitor malfunction.}}"
 msgstr "{count, plural, one {# komunitas sementara tidak tersedia karena kerusakan kapasitor fluks.} other {# komunitas sementara tidak tersedia karena kerusakan kapasitor fluks.}}"
 
@@ -4223,7 +4223,7 @@ msgid "Another round checkbox"
 msgstr "Kotak centang bulat lainnya"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:213
+#: src/features/input/state/input_keybind/shared.ts:217
 msgid "Answer the incoming call"
 msgstr "Jawab panggilan masuk"
 
@@ -5832,6 +5832,8 @@ msgstr "Batas bookmark tercapai"
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:531
 #: src/features/input/state/input_keybind/shared.ts:265
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:526
+#: src/features/input/state/input_keybind/shared.ts:269
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:66
 msgid "Bookmark message"
 msgstr "Simpan pesan ke bookmark"
@@ -9512,7 +9514,7 @@ msgstr "Salin ID saluran"
 
 #. Action that copies a deep link to the selected channel.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:205
+#: src/features/input/state/input_keybind/shared.ts:209
 #: src/features/ui/action_menu/items/ChannelMenuData.tsx:130
 msgid "Copy channel link"
 msgstr "Salin tautan saluran"
@@ -9667,7 +9669,7 @@ msgstr "Salin pesan"
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:737
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:736
-#: src/features/input/state/input_keybind/shared.ts:277
+#: src/features/input/state/input_keybind/shared.ts:281
 msgid "Copy message ID"
 msgstr "Salin ID pesan"
 
@@ -9676,6 +9678,8 @@ msgstr "Salin ID pesan"
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:523
 #: src/features/input/state/input_keybind/shared.ts:273
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:518
+#: src/features/input/state/input_keybind/shared.ts:277
 #: src/features/moderation/components/report_modal/IARModalCopy.ts:389
 msgid "Copy message link"
 msgstr "Salin tautan pesan"
@@ -11312,7 +11316,7 @@ msgid "Decide whether replies @mention you by default"
 msgstr "Tentukan apakah balasan menyertakan @sebutan untukmu secara default"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:217
+#: src/features/input/state/input_keybind/shared.ts:221
 msgid "Decline the incoming call"
 msgstr "Tolak panggilan masuk"
 
@@ -12435,7 +12439,7 @@ msgstr "Putuskan sambungan dari {channel}"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Tray menu item. Leaves the current voice call when the channel name is unavailable.
-#: src/features/input/state/input_keybind/shared.ts:317
+#: src/features/input/state/input_keybind/shared.ts:321
 #: src/features/platform/utils/DesktopLocaleBridge.ts:220
 msgid "Disconnect from voice"
 msgstr "Putuskan sambungan suara"
@@ -14633,7 +14637,7 @@ msgid "Expand channel topic"
 msgstr "Perluas topik saluran"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:229
+#: src/features/input/state/input_keybind/shared.ts:233
 msgid "Expand or collapse compact call view"
 msgstr "Perluas atau ciutkan tampilan panggilan ringkas"
 
@@ -15601,7 +15605,7 @@ msgid "Focus text area"
 msgstr "Fokuskan area teks"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:197
+#: src/features/input/state/input_keybind/shared.ts:201
 msgid "Focus the text area"
 msgstr "Fokuskan area teks"
 
@@ -19145,7 +19149,7 @@ msgid "Jump to the message in {labelText}"
 msgstr "Lompat ke pesan di {labelText}"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:193
+#: src/features/input/state/input_keybind/shared.ts:197
 msgid "Jump to the oldest unread message"
 msgstr "Lompat ke pesan terlama yang belum dibaca"
 
@@ -22031,7 +22035,7 @@ msgstr "Bisukan anggota"
 
 #. Short label in the app layout user area.
 #. Tray menu item shown while in a voice call. Mutes the local microphone.
-#: src/features/app/components/layout/UserArea.tsx:64
+#: src/features/app/components/layout/UserArea.tsx:63
 #: src/features/platform/utils/DesktopLocaleBridge.ts:208
 msgid "Mute microphone"
 msgstr "Bisukan mikrofon"
@@ -24124,7 +24128,7 @@ msgid "Open group details for {groupDMName}"
 msgstr "Buka detail grup untuk {groupDMName}"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:233
+#: src/features/input/state/input_keybind/shared.ts:237
 msgid "Open help"
 msgstr "Buka bantuan"
 
@@ -24277,7 +24281,7 @@ msgid "Open the ban dialog for this community."
 msgstr "Buka dialog blokir untuk komunitas ini."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:241
+#: src/features/input/state/input_keybind/shared.ts:245
 msgid "Open the context menu"
 msgstr "Buka menu konteks"
 
@@ -24300,7 +24304,7 @@ msgid "Open the verification email and use the link inside. This window updates 
 msgstr "Buka email verifikasi dan gunakan tautan di dalamnya. Jendela ini akan diperbarui setelah tautan terbuka."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:249
+#: src/features/input/state/input_keybind/shared.ts:253
 msgid "Open theme studio popout"
 msgstr "Buka pop-out studio tema"
 
@@ -24310,7 +24314,7 @@ msgid "Open theme studio…"
 msgstr "Buka studio tema…"
 
 #. Short label in the app layout user area. Preserve {displayName}; it is inserted by code.
-#: src/features/app/components/layout/UserArea.tsx:72
+#: src/features/app/components/layout/UserArea.tsx:71
 msgid "Open user menu for {displayName}"
 msgstr "Buka menu pengguna untuk {displayName}"
 
@@ -24358,7 +24362,7 @@ msgid "Open your phone's messaging app and start a new text message."
 msgstr "Buka aplikasi pesan di ponselmu dan mulai pesan teks baru."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:245
+#: src/features/input/state/input_keybind/shared.ts:249
 msgid "Open your settings"
 msgstr "Buka pengaturanmu"
 
@@ -26369,26 +26373,26 @@ msgid "Push timeout"
 msgstr "Batas waktu push"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:297
+#: src/features/input/state/input_keybind/shared.ts:301
 msgid "Push to mute"
 msgstr "Tekan untuk bisukan"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/input/state/input_keybind/shared.ts:289
+#: src/features/input/state/input_keybind/shared.ts:293
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:162
 #: src/features/user/components/settings_utils/section_registry/VoiceVideoSections.ts:86
 msgid "Push to talk"
 msgstr "Tekan untuk bicara"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:293
+#: src/features/input/state/input_keybind/shared.ts:297
 msgid "Push to talk (priority)"
 msgstr "Tekan untuk bicara (prioritas)"
 
 #. User-area voice status text shown when push-to-talk is active. The hint is the user-configured keybind label.
-#: src/features/app/components/layout/UserArea.tsx:55
+#: src/features/app/components/layout/UserArea.tsx:54
 msgid "Push to talk is on. Hold {pushToTalkHint} to speak."
 msgstr "Push-to-talk aktif. Tahan {pushToTalkHint} untuk bicara."
 
@@ -28078,7 +28082,7 @@ msgstr "Setel ulang ke default"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Label for controls that reset app zoom to 100%, including the app zoom slider button.
-#: src/features/input/state/input_keybind/shared.ts:261
+#: src/features/input/state/input_keybind/shared.ts:265
 #: src/features/user/components/modals/tabs/appearance_tab/ScalingTab.tsx:38
 msgid "Reset zoom"
 msgstr "Setel ulang zoom"
@@ -29114,12 +29118,12 @@ msgid "Scroll animation"
 msgstr "Animasi gulir"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:189
+#: src/features/input/state/input_keybind/shared.ts:193
 msgid "Scroll chat down"
 msgstr "Gulir obrolan ke bawah"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:185
+#: src/features/input/state/input_keybind/shared.ts:189
 msgid "Scroll chat up"
 msgstr "Gulir obrolan ke atas"
 
@@ -29306,7 +29310,7 @@ msgstr "Cari bahasa…"
 #: src/features/channel/components/bottomsheets/ChannelSearchBottomSheet.tsx:137
 #: src/features/channel/components/bottomsheets/ChannelSearchBottomSheet.tsx:480
 #: src/features/channel/components/message_search_bar/MessageSearchBar.tsx:56
-#: src/features/input/state/input_keybind/shared.ts:237
+#: src/features/input/state/input_keybind/shared.ts:241
 msgid "Search messages"
 msgstr "Cari pesan"
 
@@ -30017,7 +30021,7 @@ msgstr "Kirim kode verifikasi"
 #. Plus menu item that opens the desktop voice message composer to record and send a voice clip.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:35
 #: src/features/channel/components/VoiceMessageRecorder.tsx:69
-#: src/features/input/state/input_keybind/shared.ts:285
+#: src/features/input/state/input_keybind/shared.ts:289
 msgid "Send voice message"
 msgstr "Kirim pesan suara"
 
@@ -32252,7 +32256,7 @@ msgid "Start {appName} automatically when you sign in."
 msgstr "Mulai {appName} secara otomatis saat kamu masuk."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:221
+#: src/features/input/state/input_keybind/shared.ts:225
 msgid "Start a call in a DM or group"
 msgstr "Mulai panggilan di DM atau grup"
 
@@ -33138,7 +33142,7 @@ msgid "Switch to…"
 msgstr "Pindah ke…"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:313
+#: src/features/input/state/input_keybind/shared.ts:317
 msgid "Switch voice channel"
 msgstr "Ganti saluran suara"
 
@@ -35162,7 +35166,7 @@ msgid "Toggle between last community and DMs"
 msgstr "Beralih antara komunitas terakhir dan DM"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:309
+#: src/features/input/state/input_keybind/shared.ts:313
 msgid "Toggle camera"
 msgstr "Alihkan kamera"
 
@@ -35182,7 +35186,7 @@ msgid "Toggle developer tools"
 msgstr "Alihkan alat pengembang"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:269
+#: src/features/input/state/input_keybind/shared.ts:273
 msgid "Toggle embed suppression"
 msgstr "Alihkan penyembunyian sematan"
 
@@ -35198,7 +35202,7 @@ msgstr "Alihkan akselerasi hardware"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/input/state/input_keybind/shared.ts:209
+#: src/features/input/state/input_keybind/shared.ts:213
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:183
 msgid "Toggle mute"
 msgstr "Alihkan bisu"
@@ -35214,7 +35218,7 @@ msgid "Toggle quick switcher"
 msgstr "Alihkan pengalih cepat"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:281
+#: src/features/input/state/input_keybind/shared.ts:285
 msgid "Toggle saved media"
 msgstr "Alihkan media tersimpan"
 
@@ -35223,12 +35227,17 @@ msgid "Toggle switches on and off to see state changes."
 msgstr "Alihkan tombol untuk melihat perubahan status."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:173
+#: src/features/input/state/input_keybind/shared.ts:169
+msgid "Toggle the channel list"
+msgstr "Alihkan daftar saluran"
+
+#. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
+#: src/features/input/state/input_keybind/shared.ts:177
 msgid "Toggle the emoji picker"
 msgstr "Alihkan pemilih emoji"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:177
+#: src/features/input/state/input_keybind/shared.ts:181
 msgid "Toggle the GIF picker"
 msgstr "Alihkan pemilih GIF"
 
@@ -35243,22 +35252,22 @@ msgid "Toggle the kinds of conversations you want included."
 msgstr "Pilih jenis percakapan yang ingin kamu sertakan."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:169
+#: src/features/input/state/input_keybind/shared.ts:173
 msgid "Toggle the member list or voice chat"
 msgstr "Alihkan daftar anggota atau obrolan suara"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:225
+#: src/features/input/state/input_keybind/shared.ts:229
 msgid "Toggle the soundboard"
 msgstr "Alihkan papan suara"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:181
+#: src/features/input/state/input_keybind/shared.ts:185
 msgid "Toggle the sticker picker"
 msgstr "Alihkan pemilih stiker"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:305
+#: src/features/input/state/input_keybind/shared.ts:309
 msgid "Toggle voice activity"
 msgstr "Alihkan aktivitas suara"
 
@@ -36492,7 +36501,7 @@ msgstr "Bunyikan favorit"
 
 #. Short label in the app layout user area.
 #. Tray menu item shown while in a voice call. Unmutes the local microphone.
-#: src/features/app/components/layout/UserArea.tsx:60
+#: src/features/app/components/layout/UserArea.tsx:59
 #: src/features/platform/utils/DesktopLocaleBridge.ts:212
 msgid "Unmute microphone"
 msgstr "Aktifkan mikrofon"
@@ -36880,7 +36889,7 @@ msgstr "Unggah suara khusus yang diputar secara otomatis saat kamu bergabung ke 
 #. Card label in the asset source modal for uploading an image from the device. Keep it concise.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #: src/features/expressions/components/modals/AssetSourceModal.tsx:19
-#: src/features/input/state/input_keybind/shared.ts:201
+#: src/features/input/state/input_keybind/shared.ts:205
 msgid "Upload a file"
 msgstr "Unggah file"
 
@@ -37491,7 +37500,7 @@ msgid "User avatars"
 msgstr "Avatar pengguna"
 
 #. Short label in the app layout user area.
-#: src/features/app/components/layout/UserArea.tsx:68
+#: src/features/app/components/layout/UserArea.tsx:67
 msgid "User controls"
 msgstr "Kontrol pengguna"
 
@@ -38498,7 +38507,7 @@ msgid "Voice activity on active now"
 msgstr "Aktivitas suara di Aktif sekarang"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:301
+#: src/features/input/state/input_keybind/shared.ts:305
 msgid "Voice activity priority"
 msgstr "Prioritas aktivitas suara"
 
@@ -40940,6 +40949,8 @@ msgstr "Zoom"
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:628
 #: src/features/input/state/input_keybind/shared.ts:253
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:623
+#: src/features/input/state/input_keybind/shared.ts:257
 #: src/features/platform/utils/DesktopLocaleBridge.ts:112
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:82
 msgid "Zoom in"
@@ -40951,6 +40962,8 @@ msgstr "Perbesar"
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:624
 #: src/features/input/state/input_keybind/shared.ts:257
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:619
+#: src/features/input/state/input_keybind/shared.ts:261
 #: src/features/platform/utils/DesktopLocaleBridge.ts:116
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:86
 msgid "Zoom out"

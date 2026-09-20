@@ -960,7 +960,7 @@ msgstr "{count, plural, one {# 則被封鎖的訊息} other {# 則被封鎖的�
 msgid "{count, plural, one {# community found} other {# communities found}}"
 msgstr "{count, plural, one {找到 # 個社群} other {找到 # 個社群}}"
 
-#: src/features/app/components/layout/GuildsLayout.tsx:1973
+#: src/features/app/components/layout/GuildsLayout.tsx:1968
 msgid "{count, plural, one {# community is temporarily unavailable due to a flux capacitor malfunction.} other {# communities are temporarily unavailable due to a flux capacitor malfunction.}}"
 msgstr "{count, plural, one {# 個社群} other {# 個社群}}因時空電容器故障，暫時無法使用。"
 
@@ -4223,7 +4223,7 @@ msgid "Another round checkbox"
 msgstr "另一個圓形核取方塊"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:213
+#: src/features/input/state/input_keybind/shared.ts:217
 msgid "Answer the incoming call"
 msgstr "接聽來電"
 
@@ -5832,6 +5832,8 @@ msgstr "已達書籤上限"
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:531
 #: src/features/input/state/input_keybind/shared.ts:265
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:526
+#: src/features/input/state/input_keybind/shared.ts:269
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:66
 msgid "Bookmark message"
 msgstr "將訊息加入書籤"
@@ -9512,7 +9514,7 @@ msgstr "複製頻道 ID"
 
 #. Action that copies a deep link to the selected channel.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:205
+#: src/features/input/state/input_keybind/shared.ts:209
 #: src/features/ui/action_menu/items/ChannelMenuData.tsx:130
 msgid "Copy channel link"
 msgstr "複製頻道連結"
@@ -9667,7 +9669,7 @@ msgstr "複製訊息"
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:737
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:736
-#: src/features/input/state/input_keybind/shared.ts:277
+#: src/features/input/state/input_keybind/shared.ts:281
 msgid "Copy message ID"
 msgstr "複製訊息 ID"
 
@@ -9676,6 +9678,8 @@ msgstr "複製訊息 ID"
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:523
 #: src/features/input/state/input_keybind/shared.ts:273
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:518
+#: src/features/input/state/input_keybind/shared.ts:277
 #: src/features/moderation/components/report_modal/IARModalCopy.ts:389
 msgid "Copy message link"
 msgstr "複製訊息連結"
@@ -11312,7 +11316,7 @@ msgid "Decide whether replies @mention you by default"
 msgstr "決定回覆是否預設 @提及您"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:217
+#: src/features/input/state/input_keybind/shared.ts:221
 msgid "Decline the incoming call"
 msgstr "拒絕來電"
 
@@ -12435,7 +12439,7 @@ msgstr "從 {channel} 中斷連線"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Tray menu item. Leaves the current voice call when the channel name is unavailable.
-#: src/features/input/state/input_keybind/shared.ts:317
+#: src/features/input/state/input_keybind/shared.ts:321
 #: src/features/platform/utils/DesktopLocaleBridge.ts:220
 msgid "Disconnect from voice"
 msgstr "中斷語音連線"
@@ -14633,7 +14637,7 @@ msgid "Expand channel topic"
 msgstr "展開頻道主題"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:229
+#: src/features/input/state/input_keybind/shared.ts:233
 msgid "Expand or collapse compact call view"
 msgstr "展開或收合精簡通話檢視"
 
@@ -15601,7 +15605,7 @@ msgid "Focus text area"
 msgstr "聚焦文字輸入區"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:197
+#: src/features/input/state/input_keybind/shared.ts:201
 msgid "Focus the text area"
 msgstr "聚焦文字輸入區"
 
@@ -19145,7 +19149,7 @@ msgid "Jump to the message in {labelText}"
 msgstr "跳到「{labelText}」中的訊息"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:193
+#: src/features/input/state/input_keybind/shared.ts:197
 msgid "Jump to the oldest unread message"
 msgstr "跳到最舊的未讀訊息"
 
@@ -22031,7 +22035,7 @@ msgstr "將成員靜音"
 
 #. Short label in the app layout user area.
 #. Tray menu item shown while in a voice call. Mutes the local microphone.
-#: src/features/app/components/layout/UserArea.tsx:64
+#: src/features/app/components/layout/UserArea.tsx:63
 #: src/features/platform/utils/DesktopLocaleBridge.ts:208
 msgid "Mute microphone"
 msgstr "麥克風靜音"
@@ -24124,7 +24128,7 @@ msgid "Open group details for {groupDMName}"
 msgstr "開啟「{groupDMName}」的群組詳細資訊"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:233
+#: src/features/input/state/input_keybind/shared.ts:237
 msgid "Open help"
 msgstr "開啟說明"
 
@@ -24277,7 +24281,7 @@ msgid "Open the ban dialog for this community."
 msgstr "開啟此社群的停權對話框。"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:241
+#: src/features/input/state/input_keybind/shared.ts:245
 msgid "Open the context menu"
 msgstr "開啟操作選單"
 
@@ -24300,7 +24304,7 @@ msgid "Open the verification email and use the link inside. This window updates 
 msgstr "開啟驗證電子郵件並使用裡面的連結。連結開啟後，此視窗會更新。"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:249
+#: src/features/input/state/input_keybind/shared.ts:253
 msgid "Open theme studio popout"
 msgstr "開啟主題工作室彈出視窗"
 
@@ -24310,7 +24314,7 @@ msgid "Open theme studio…"
 msgstr "開啟主題工作室…"
 
 #. Short label in the app layout user area. Preserve {displayName}; it is inserted by code.
-#: src/features/app/components/layout/UserArea.tsx:72
+#: src/features/app/components/layout/UserArea.tsx:71
 msgid "Open user menu for {displayName}"
 msgstr "開啟 {displayName} 的使用者選單"
 
@@ -24358,7 +24362,7 @@ msgid "Open your phone's messaging app and start a new text message."
 msgstr "開啟手機訊息應用程式，然後開始新的簡訊。"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:245
+#: src/features/input/state/input_keybind/shared.ts:249
 msgid "Open your settings"
 msgstr "開啟設定"
 
@@ -26369,26 +26373,26 @@ msgid "Push timeout"
 msgstr "推播逾時"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:297
+#: src/features/input/state/input_keybind/shared.ts:301
 msgid "Push to mute"
 msgstr "按住以靜音"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/input/state/input_keybind/shared.ts:289
+#: src/features/input/state/input_keybind/shared.ts:293
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:162
 #: src/features/user/components/settings_utils/section_registry/VoiceVideoSections.ts:86
 msgid "Push to talk"
 msgstr "按住說話"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:293
+#: src/features/input/state/input_keybind/shared.ts:297
 msgid "Push to talk (priority)"
 msgstr "按住說話（優先）"
 
 #. User-area voice status text shown when push-to-talk is active. The hint is the user-configured keybind label.
-#: src/features/app/components/layout/UserArea.tsx:55
+#: src/features/app/components/layout/UserArea.tsx:54
 msgid "Push to talk is on. Hold {pushToTalkHint} to speak."
 msgstr "已開啟「按住說話」。按住 {pushToTalkHint} 即可說話。"
 
@@ -28078,7 +28082,7 @@ msgstr "重設為預設值"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Label for controls that reset app zoom to 100%, including the app zoom slider button.
-#: src/features/input/state/input_keybind/shared.ts:261
+#: src/features/input/state/input_keybind/shared.ts:265
 #: src/features/user/components/modals/tabs/appearance_tab/ScalingTab.tsx:38
 msgid "Reset zoom"
 msgstr "重設縮放"
@@ -29114,12 +29118,12 @@ msgid "Scroll animation"
 msgstr "捲動動畫"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:189
+#: src/features/input/state/input_keybind/shared.ts:193
 msgid "Scroll chat down"
 msgstr "向下捲動聊天室"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:185
+#: src/features/input/state/input_keybind/shared.ts:189
 msgid "Scroll chat up"
 msgstr "向上捲動聊天室"
 
@@ -29306,7 +29310,7 @@ msgstr "搜尋語言…"
 #: src/features/channel/components/bottomsheets/ChannelSearchBottomSheet.tsx:137
 #: src/features/channel/components/bottomsheets/ChannelSearchBottomSheet.tsx:480
 #: src/features/channel/components/message_search_bar/MessageSearchBar.tsx:56
-#: src/features/input/state/input_keybind/shared.ts:237
+#: src/features/input/state/input_keybind/shared.ts:241
 msgid "Search messages"
 msgstr "搜尋訊息"
 
@@ -30017,7 +30021,7 @@ msgstr "傳送驗證碼"
 #. Plus menu item that opens the desktop voice message composer to record and send a voice clip.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:35
 #: src/features/channel/components/VoiceMessageRecorder.tsx:69
-#: src/features/input/state/input_keybind/shared.ts:285
+#: src/features/input/state/input_keybind/shared.ts:289
 msgid "Send voice message"
 msgstr "傳送語音訊息"
 
@@ -32252,7 +32256,7 @@ msgid "Start {appName} automatically when you sign in."
 msgstr "登入時自動啟動 {appName}。"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:221
+#: src/features/input/state/input_keybind/shared.ts:225
 msgid "Start a call in a DM or group"
 msgstr "在私訊或群組中發起通話"
 
@@ -33138,7 +33142,7 @@ msgid "Switch to…"
 msgstr "切換到…"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:313
+#: src/features/input/state/input_keybind/shared.ts:317
 msgid "Switch voice channel"
 msgstr "切換語音頻道"
 
@@ -35162,7 +35166,7 @@ msgid "Toggle between last community and DMs"
 msgstr "在上一個社群與私訊之間切換"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:309
+#: src/features/input/state/input_keybind/shared.ts:313
 msgid "Toggle camera"
 msgstr "切換相機"
 
@@ -35182,7 +35186,7 @@ msgid "Toggle developer tools"
 msgstr "切換開發人員工具"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:269
+#: src/features/input/state/input_keybind/shared.ts:273
 msgid "Toggle embed suppression"
 msgstr "切換嵌入內容抑制"
 
@@ -35198,7 +35202,7 @@ msgstr "切換硬體加速"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/input/state/input_keybind/shared.ts:209
+#: src/features/input/state/input_keybind/shared.ts:213
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:183
 msgid "Toggle mute"
 msgstr "切換麥克風靜音"
@@ -35214,7 +35218,7 @@ msgid "Toggle quick switcher"
 msgstr "切換快速切換器"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:281
+#: src/features/input/state/input_keybind/shared.ts:285
 msgid "Toggle saved media"
 msgstr "切換已儲存的媒體"
 
@@ -35223,12 +35227,17 @@ msgid "Toggle switches on and off to see state changes."
 msgstr "切換開關以查看狀態變化。"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:173
+#: src/features/input/state/input_keybind/shared.ts:169
+msgid "Toggle the channel list"
+msgstr "切換頻道列表"
+
+#. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
+#: src/features/input/state/input_keybind/shared.ts:177
 msgid "Toggle the emoji picker"
 msgstr "切換表情符號選擇器"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:177
+#: src/features/input/state/input_keybind/shared.ts:181
 msgid "Toggle the GIF picker"
 msgstr "切換 GIF 選擇器"
 
@@ -35243,22 +35252,22 @@ msgid "Toggle the kinds of conversations you want included."
 msgstr "切換您想納入的對話類型。"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:169
+#: src/features/input/state/input_keybind/shared.ts:173
 msgid "Toggle the member list or voice chat"
 msgstr "切換成員列表或語音聊天"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:225
+#: src/features/input/state/input_keybind/shared.ts:229
 msgid "Toggle the soundboard"
 msgstr "切換音效面板"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:181
+#: src/features/input/state/input_keybind/shared.ts:185
 msgid "Toggle the sticker picker"
 msgstr "切換貼圖選擇器"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:305
+#: src/features/input/state/input_keybind/shared.ts:309
 msgid "Toggle voice activity"
 msgstr "切換語音活動"
 
@@ -36492,7 +36501,7 @@ msgstr "解除最愛靜音"
 
 #. Short label in the app layout user area.
 #. Tray menu item shown while in a voice call. Unmutes the local microphone.
-#: src/features/app/components/layout/UserArea.tsx:60
+#: src/features/app/components/layout/UserArea.tsx:59
 #: src/features/platform/utils/DesktopLocaleBridge.ts:212
 msgid "Unmute microphone"
 msgstr "解除麥克風靜音"
@@ -36880,7 +36889,7 @@ msgstr "上傳自訂音效，該音效會在您加入語音頻道時自動播放
 #. Card label in the asset source modal for uploading an image from the device. Keep it concise.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #: src/features/expressions/components/modals/AssetSourceModal.tsx:19
-#: src/features/input/state/input_keybind/shared.ts:201
+#: src/features/input/state/input_keybind/shared.ts:205
 msgid "Upload a file"
 msgstr "上傳檔案"
 
@@ -37491,7 +37500,7 @@ msgid "User avatars"
 msgstr "使用者頭像"
 
 #. Short label in the app layout user area.
-#: src/features/app/components/layout/UserArea.tsx:68
+#: src/features/app/components/layout/UserArea.tsx:67
 msgid "User controls"
 msgstr "使用者控制項"
 
@@ -38498,7 +38507,7 @@ msgid "Voice activity on active now"
 msgstr "目前上線中的語音活動"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:301
+#: src/features/input/state/input_keybind/shared.ts:305
 msgid "Voice activity priority"
 msgstr "語音活動優先"
 
@@ -40940,6 +40949,8 @@ msgstr "縮放"
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:628
 #: src/features/input/state/input_keybind/shared.ts:253
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:623
+#: src/features/input/state/input_keybind/shared.ts:257
 #: src/features/platform/utils/DesktopLocaleBridge.ts:112
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:82
 msgid "Zoom in"
@@ -40951,6 +40962,8 @@ msgstr "放大"
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:624
 #: src/features/input/state/input_keybind/shared.ts:257
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:619
+#: src/features/input/state/input_keybind/shared.ts:261
 #: src/features/platform/utils/DesktopLocaleBridge.ts:116
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:86
 msgid "Zoom out"
