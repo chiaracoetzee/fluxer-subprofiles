@@ -42046,3 +42046,13 @@ msgstr "Näytä kopiointipainike"
 #: src/features/input/state/input_keybind/shared.ts:169
 msgid "Toggle the channel list"
 msgstr "Näytä tai piilota kanavaluettelo"
+
+#. Fallback screen reader label for the persona profile modal. Keep it concise.
+#: src/features/persona/components/PersonaProfileModal.tsx:18
+msgid "Persona profile"
+msgstr "Persoonaprofiili"
+
+#. Screen reader label for the persona profile modal. Keep it concise. Preserve {name}; it is inserted by code.
+#: src/features/persona/components/PersonaProfileModal.tsx:14
+msgid "Persona profile: {name}"
+msgstr "Persoonaprofiili: {name}"
