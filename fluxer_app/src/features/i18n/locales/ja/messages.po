@@ -37,7 +37,7 @@ msgid "(only visible to you)"
 msgstr "（あなただけに表示）"
 
 #. placeholder {0}: w.prefix
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:680
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:706
 msgid "(Prefix: {0})"
 msgstr "(プレフィックス: {0})"
 
@@ -56,7 +56,7 @@ msgid "{0, plural, one {# member} other {# members}}"
 msgstr "{0, plural, one {#人のメンバー} other {#人のメンバー}}"
 
 #. placeholder {0}: importResults.warnings.length
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:671
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:697
 msgid "{0} notice(s) during import"
 msgstr "インポート中の注意事項 {0}件"
 
@@ -64,7 +64,7 @@ msgstr "インポート中の注意事項 {0}件"
 #. placeholder {1}: progress.total
 #. placeholder {2}: progress.label ?? 'items'
 #. placeholder {3}: progress.percent
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:643
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:669
 msgid "{0} of {1} {2} ({3}%)"
 msgstr "{1}件中{0}件の{2} ({3}%)"
 
@@ -4433,7 +4433,7 @@ msgid "Apply theme"
 msgstr "テーマを適用"
 
 #. Short confirmation button label in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:153
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:157
 msgid "Apply to all communities"
 msgstr "すべてのコミュニティに適用"
 
@@ -4551,7 +4551,7 @@ msgstr "<0>{targetUserTag}</0>さんをコミュニティからキックしま�
 msgid "Are you sure you want to remove <0>{engineName}</0>?"
 msgstr "<0>{engineName}</0>を削除してもよろしいですか？"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:437
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:463
 msgid "Are you sure you want to replace all <0>{existingCount}</0> existing persona(s)? This will permanently delete them from your account and cannot be undone."
 msgstr "既存の<0>{existingCount}</0>件のペルソナをすべて置き換えてもよろしいですか？これらはアカウントから完全に削除され、元に戻すことはできません。"
 
@@ -5015,14 +5015,14 @@ msgstr "言語を自動検出"
 #. Settings search synonym.
 #: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:103
 msgid "Auto-hide"
-msgstr "Auto-hide"
+msgstr "自動非表示"
 
 #. Settings section label in Advanced Settings for edge hover peek preference.
 #. Short label for an advanced appearance preference that reveals collapsed sidebars on mouse hover.
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedAppearanceControls.tsx:100
 #: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:91
 msgid "Auto-peek hidden sidebars"
-msgstr "Auto-peek hidden sidebars"
+msgstr "非表示のサイドバーの自動チラ見せ"
 
 #. Short label in the voice tab. Keep it concise.
 #: src/features/user/components/modals/tabs/UserVoiceTab.tsx:116
@@ -6457,7 +6457,7 @@ msgstr "ここにファイルをアップロードできません"
 #: src/features/moderation/components/modals/BanMemberModal.tsx:262
 #: src/features/moderation/components/modals/RemoveTimeoutModal.tsx:70
 #: src/features/moderation/components/modals/TimeoutMemberModal.tsx:126
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:698
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:724
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:1022
 #: src/features/theme/components/modals/ThemeAcceptModal.tsx:173
 #: src/features/user/components/modals/EmailChangeModal.tsx:278
@@ -6830,7 +6830,7 @@ msgstr "パスワード変更フォーム"
 #. Generic action label that opens the persona picker.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:712
 msgid "Change persona"
-msgstr "Change persona"
+msgstr "ペルソナを変更"
 
 #. Subscription status badge meaning a future billing plan change is scheduled.
 #: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:437
@@ -7516,7 +7516,7 @@ msgstr "認証方法を選択"
 msgid "Choose a new password."
 msgstr "新しいパスワードを設定してください。"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:503
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:529
 msgid "Choose a PluralKit export (.json) or drag & drop"
 msgstr "PluralKitエクスポート (.json) を選択するか、ドラッグ＆ドロップしてください"
 
@@ -8088,7 +8088,7 @@ msgid "Click to open the color picker and choose a new color."
 msgstr "クリックしてカラーピッカーを開き、新しい色を選択してください。"
 
 #. Tooltip on the add-reaction button in the inline message hover action bar.
-#: src/features/channel/components/MessageActionBar.tsx:69
+#: src/features/channel/components/MessageActionBar.tsx:72
 msgid "Click to react"
 msgstr "クリックしてリアクション"
 
@@ -11245,7 +11245,7 @@ msgstr "メンバーをデバッグ"
 #. Developer-mode action that opens the message debug modal.
 #. Developer-mode item in the message action bar overflow menu. Opens the message debug modal.
 #. Developer-mode message context menu item that opens an internal debug view for the message.
-#: src/features/channel/components/MessageActionBar.tsx:81
+#: src/features/channel/components/MessageActionBar.tsx:84
 #: src/features/channel/components/MessageActionMenu.tsx:106
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:66
 msgid "Debug message"
@@ -11969,7 +11969,7 @@ msgstr "詳細"
 msgid "Detect while typing"
 msgstr "入力中に検出"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:531
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:557
 msgid "Detected System Name / Tag"
 msgstr "検出されたシステム名 / タグ"
 
@@ -12793,7 +12793,7 @@ msgstr "{deviceName}を再度提案しない"
 #: src/features/input/components/KeybindRecorder.tsx:470
 #: src/features/moderation/components/report_modal/IARModal.tsx:94
 #: src/features/moderation/components/report/ReportBreadcrumbs.tsx:31
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:718
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:744
 #: src/features/search/components/search/ChannelFilterSheet.tsx:165
 #: src/features/search/components/search/HasFilterSheet.tsx:206
 #: src/features/search/components/search/UserFilterSheet.tsx:186
@@ -12824,7 +12824,7 @@ msgstr "ユーザーをダブルクリックすると配信を視聴できます
 
 #. Settings search entry label for double-clicking a message to edit it.
 #. Short label for an advanced message editing preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:298
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:309
 #: src/features/user/components/settings_utils/search_index/AdvancedSettingsIndex.ts:56
 msgid "Double-click to edit"
 msgstr "ダブルクリックで編集"
@@ -13904,7 +13904,7 @@ msgid "Enable self-hosted mode client-side. Hides all premium and billing UI."
 msgstr "セルフホストモードをクライアント側で有効にします。すべてのプレミアムおよび請求UIを非表示にします。"
 
 #. Short label for an advanced message action bar preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:61
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:65
 msgid "Enable Shift to expand"
 msgstr "Shiftキーで展開"
 
@@ -14735,7 +14735,7 @@ msgstr "ライブラリをエクスポート"
 msgid "Export my data"
 msgstr "データをエクスポート"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:527
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:553
 msgid "Export Summary"
 msgstr "エクスポートの概要"
 
@@ -15825,7 +15825,7 @@ msgstr "フォーム"
 #. Message action label for forwarding the selected message to another channel or DM.
 #. Message context menu item that opens the forward-to-channel picker.
 #. Tooltip on the forward button in the inline message hover action bar.
-#: src/features/channel/components/MessageActionBar.tsx:85
+#: src/features/channel/components/MessageActionBar.tsx:88
 #: src/features/channel/components/MessageActionMenu.tsx:86
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:54
 msgid "Forward"
@@ -17179,7 +17179,7 @@ msgstr "アバターを非表示"
 #. Tooltip on the channel header channel list toggle when the channel list is currently shown.
 #: src/features/channel/components/channel_header/shared.ts:81
 msgid "Hide channel list"
-msgstr "Hide channel list"
+msgstr "チャンネルリストを非表示"
 
 #. Settings search entry description. One-line summary of what the settings search entry controls.
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:507
@@ -17243,13 +17243,13 @@ msgstr "ミュート中のチャンネルを非表示"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced sidebar preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:145
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:149
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:487
 msgid "Hide muted channels by default"
 msgstr "ミュート中のチャンネルをデフォルトで非表示にする"
 
 #. Confirmation prompt in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:149
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:153
 msgid "Hide muted channels by default?"
 msgstr "ミュート中のチャンネルをデフォルトで非表示にしますか？"
 
@@ -17280,7 +17280,7 @@ msgstr "プレビューサムネイルを非表示"
 #. Tooltip on the channel header server list toggle when the server rail is currently shown.
 #: src/features/channel/components/channel_header/shared.ts:73
 msgid "Hide server list"
-msgstr "Hide server list"
+msgstr "サーバーリストを非表示"
 
 #. Settings search entry description. One-line summary of what the settings search entry controls.
 #: src/features/user/components/settings_utils/search_index/DesktopSettingsIndex.ts:198
@@ -17435,7 +17435,7 @@ msgstr "ここにカーソルを合わせる"
 #. Settings section description in Advanced Settings for edge hover peek preference.
 #: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:95
 msgid "Hover near window edges to temporarily reveal collapsed panels."
-msgstr "Hover near window edges to temporarily reveal collapsed panels."
+msgstr "ウィンドウの端にカーソルを合わせると、折りたたまれたパネルを一時的に表示します。"
 
 #: src/features/user/components/modals/tabs/component_gallery_tab/OverlaysTab.tsx:63
 msgid "Hover over buttons to see tooltips in different positions."
@@ -17874,11 +17874,11 @@ msgid "Import a .css file to get started, or paste your own CSS in Quick CSS."
 msgstr "始めるには.cssファイルをインポートするか、クイックCSSに独自のCSSを貼り付けてください。"
 
 #. Modal title for PluralKit import step completed
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:472
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:498
 msgid "Import Complete"
 msgstr "インポート完了"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:656
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:682
 msgid "Import Complete!"
 msgstr "インポート完了！"
 
@@ -17909,7 +17909,7 @@ msgid "Import folder"
 msgstr "フォルダーをインポート"
 
 #. Modal title for PluralKit import step select
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:459
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:485
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:1044
 msgid "Import from PluralKit"
 msgstr "PluralKitからインポート"
@@ -17928,7 +17928,7 @@ msgstr "ライブラリをインポート"
 msgid "Import more"
 msgstr "さらにインポート"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:571
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:597
 msgid "Import Strategy"
 msgstr "インポート戦略"
 
@@ -17982,11 +17982,11 @@ msgid "Imported theme has been applied."
 msgstr "テーマをインポートして適用しました。"
 
 #. Modal title for PluralKit import step importing
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:466
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:492
 msgid "Importing Personas..."
 msgstr "ペルソナをインポート中..."
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:712
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:738
 msgid "Importing..."
 msgstr "インポート中..."
 
@@ -18987,7 +18987,7 @@ msgstr "未読チャンネル間を移動"
 msgid "Jump between unread channels with mentions"
 msgstr "メンションがある未読チャンネル間を移動"
 
-#: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:75
+#: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:78
 msgid "Jump straight to the app to continue."
 msgstr "続けるにはアプリに移動してください。"
 
@@ -19122,7 +19122,7 @@ msgstr "添付ファイルを保持"
 msgid "Keep attachments when clearing an edit"
 msgstr "編集をクリアしても添付ファイルを保持する"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:586
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:612
 msgid "Keep existing and add new (Recommended)"
 msgstr "既存を維持して新規追加 (推奨)"
 
@@ -19165,7 +19165,7 @@ msgid "Keep window dimensions and placement between reloads"
 msgstr "再読み込み後もウィンドウのサイズと位置を保持する"
 
 #. placeholder {0}: pkData.members?.length ?? 0
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:589
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:615
 msgid "Keep your {existingCount} current persona(s) and add all {0} imported personas alongside them as new entries."
 msgstr "現在の{existingCount}件のペルソナを維持し、インポートした{0}件のペルソナを新しいエントリとして追加します。"
 
@@ -20134,7 +20134,7 @@ msgstr "アカウントを管理"
 #. OAuth scope description shown on the consent screen for the personas.write scope.
 #: src/features/app/constants/AppConstants.ts:37
 msgid "Manage and create your personas"
-msgstr "Manage and create your personas"
+msgstr "ペルソナを管理・作成"
 
 #. Security settings section description for account access controls.
 #: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:92
@@ -20819,7 +20819,7 @@ msgstr "ロールが付与されていない限り、オフラインになると
 msgid "Members with \"{pinMessagesPermissionLabel}\" can pin messages for everyone."
 msgstr "「{pinMessagesPermissionLabel}」の権限を持つメンバーは、すべてのユーザー向けにメッセージをピン留めできます。"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:546
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:572
 msgid "Members with Avatars"
 msgstr "アバターありのメンバー"
 
@@ -21038,7 +21038,7 @@ msgstr "メディアが添付されています"
 #. Title of the developer-mode message debug modal opened from the message action bar.
 #. Title of the developer-mode message debug modal opened from the message context menu.
 #. Title of the developer-mode message debug modal.
-#: src/features/channel/components/MessageActionBar.tsx:73
+#: src/features/channel/components/MessageActionBar.tsx:76
 #: src/features/channel/components/MessageActionMenu.tsx:74
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:62
 msgid "Message debug"
@@ -21599,7 +21599,7 @@ msgstr "月間ギフト"
 #: src/features/auth/components/accounts/AccountRow.tsx:23
 #: src/features/channel/components/bottomsheets/channel_details_bottom_sheet/ChannelDetailsBottomSheetShared.ts:142
 #: src/features/channel/components/friends/FriendListItem.tsx:63
-#: src/features/channel/components/MessageActionBar.tsx:77
+#: src/features/channel/components/MessageActionBar.tsx:80
 #: src/features/user/components/modals/tabs/component_gallery_tab/ComponentGalleryTabButtonsTab.tsx:125
 msgid "More"
 msgstr "その他"
@@ -22427,15 +22427,15 @@ msgid "New category"
 msgstr "新しいカテゴリ"
 
 #. Short confirmation button label in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:157
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:161
 msgid "New communities only"
 msgstr "新しいコミュニティのみ"
 
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:679
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:690
 msgid "New communities you join will automatically have muted channels hidden. Would you also like to apply this setting to all your existing communities?"
 msgstr "新しく参加するコミュニティでは、ミュート中のチャンネルが自動的に非表示になります。この設定を既存のすべてのコミュニティにも適用しますか？"
 
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:710
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:721
 msgid "New communities you join will no longer have muted channels hidden automatically. Would you also like to show muted channels in all your existing communities?"
 msgstr "今後参加するコミュニティでは、ミュート中のチャンネルが自動的に非表示になることはありません。既存のすべてのコミュニティでもミュート中のチャンネルを表示しますか？"
 
@@ -23283,7 +23283,7 @@ msgstr "無変換"
 #: src/features/channel/components/channel_header_components/developer_tools/DeveloperToolsShared.ts:41
 #: src/features/guild/components/modals/guild_tabs/GuildModerationTab.tsx:47
 #: src/features/guild/utils/guild_tabs/audit_log/AuditLogSharedMessages.ts:52
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:534
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:560
 #: src/features/user/components/modals/tabs/accessibility_tab/VisualTab.tsx:37
 #: src/features/user/components/modals/tabs/components/EntranceSoundSection.tsx:146
 #: src/features/user/components/modals/tabs/privacy_safety_tab/data_request_modal/DataRequestModal.tsx:220
@@ -23846,7 +23846,7 @@ msgid "Open {macosSystemSettingsName} → {macosPrivacyAndSecuritySettingsName} 
 msgstr "「{macosSystemSettingsName}」→「{macosPrivacyAndSecuritySettingsName}」→「{macosScreenRecordingPermissionName}」を開き、{productName}にアクセスを許可してください。すでに{productName2}が有効になっている場合は、{productName3}を完全に終了して再起動し、macOSに権限を適用してください。"
 
 #. Button label that opens the desktop app. productName is the app name.
-#: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:27
+#: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:29
 msgid "Open {productName}"
 msgstr "{productName}を開く"
 
@@ -24084,7 +24084,7 @@ msgid "Open image link"
 msgstr "画像リンクを開く"
 
 #. Title in a web prompt that opens the same flow in the desktop app. productName is the app name.
-#: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:23
+#: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:25
 msgid "Open in {productName} for desktop"
 msgstr "デスクトップ版{productName}で開く"
 
@@ -24857,7 +24857,7 @@ msgstr "お支払いを利用できません"
 #. Settings search synonym.
 #: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:107
 msgid "Peek"
-msgstr "Peek"
+msgstr "チラ見せ"
 
 #. Discovery application status badge in the community Discovery settings tab. The application is awaiting staff review.
 #. Tab label in the DM friends view showing pending friend requests.
@@ -24955,7 +24955,7 @@ msgstr "永久"
 msgid "Permanent deletion"
 msgstr "完全削除"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:618
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:644
 msgid "Permanently delete all {existingCount} existing persona(s) and replace them completely with the imported personas."
 msgstr "既存の{existingCount}件のペルソナを完全に削除し、インポートしたペルソナにすべて置き換えます。"
 
@@ -25943,7 +25943,7 @@ msgid "Processing"
 msgstr "処理中"
 
 #. placeholder {0}: progress.currentName
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:637
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:663
 msgid "Processing: {0}"
 msgstr "処理中: {0}"
 
@@ -27491,15 +27491,15 @@ msgstr "<0>{renewalDate}</0>に更新されます。"
 msgid "Replace"
 msgstr "置き換える"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:442
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:468
 msgid "Replace All"
 msgstr "すべて置き換える"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:614
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:640
 msgid "Replace all existing personas (Destructive)"
 msgstr "既存のすべてのペルソナを置き換える (破壊的)"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:435
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:461
 msgid "Replace All Personas"
 msgstr "すべてのペルソナを置き換える"
 
@@ -29059,7 +29059,7 @@ msgstr "一番下までスクロール"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:137
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:141
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:443
 msgid "Scroll to bottom when sending a message"
 msgstr "メッセージ送信時に一番下までスクロールする"
@@ -29807,7 +29807,7 @@ msgstr "DSA報告を送信"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:117
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:121
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:127
 msgid "Send file messages in order"
 msgstr "ファイルを順番に送信"
@@ -30615,7 +30615,7 @@ msgid "Show active now on the home screen to surface friends active in voice. Yo
 msgstr "ホーム画面に「オンライン中」を表示して、通話中の友達を見つけやすくします。プレビュー、チャンネルの状況、参加中のメンバー、そしてすぐに参加する方法が表示されます。"
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:69
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:73
 msgid "Show attachment expiration indicator"
 msgstr "添付ファイルの有効期限インジケーターを表示"
 
@@ -30663,12 +30663,17 @@ msgstr "接続ごとの音量コントロールを表示"
 msgid "Show context menu shortcuts"
 msgstr "コンテキストメニューのショートカットを表示"
 
+#. Short label for an advanced message action bar preference.
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:61
+msgid "Show copy button"
+msgstr "コピーボタンを表示"
+
 #: src/features/invite/components/InviteDateToggle.tsx:31
 msgid "Show creation date instead of expiration date"
 msgstr "有効期限ではなく作成日を表示"
 
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:93
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:97
 msgid "Show custom emojis in expression autocomplete"
 msgstr "エクスプレッションの入力候補にカスタム絵文字を表示"
 
@@ -30678,17 +30683,17 @@ msgid "Show default avatar, ignoring your global profile"
 msgstr "デフォルトのアバターを表示（グローバルプロフィールを無視）"
 
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:89
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:93
 msgid "Show default emojis in expression autocomplete"
 msgstr "エクスプレッションの入力候補にデフォルトの絵文字を表示"
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:73
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:77
 msgid "Show delete button"
 msgstr "削除ボタンを表示"
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:77
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:81
 msgid "Show download button"
 msgstr "ダウンロードボタンを表示"
 
@@ -30715,7 +30720,7 @@ msgstr "ウェブサイトのリンクの埋め込みとプレビューを表示
 #. Short label for an advanced message input preference.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:59
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:125
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:129
 msgid "Show emoji button"
 msgstr "絵文字ボタンを表示"
 
@@ -30725,7 +30730,7 @@ msgid "Show emoji reactions on messages"
 msgstr "メッセージに絵文字リアクションを表示"
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:81
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:85
 msgid "Show favorite button"
 msgstr "お気に入りボタンを表示"
 
@@ -30747,14 +30752,14 @@ msgid "Show focus ring on chat text area"
 msgstr "チャット入力欄にフォーカスリングを表示"
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:65
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:69
 msgid "Show GIF indicator"
 msgstr "GIFインジケーターを表示"
 
 #. Plus menu submenu toggle that shows the GIFs button next to the textarea.
 #. Short label for an advanced message input preference.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:43
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:105
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:109
 msgid "Show GIFs button"
 msgstr "GIFボタンを表示"
 
@@ -30764,7 +30769,7 @@ msgid "Show icon when collapsed"
 msgstr "折りたたみ時にアイコンを表示"
 
 #. Short confirmation button label in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:165
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:169
 msgid "Show in all communities"
 msgstr "すべてのコミュニティに表示"
 
@@ -30803,7 +30808,7 @@ msgstr "最大5件表示（+5バッジ）"
 #. Plus menu submenu toggle that shows the saved media (memes) button next to the textarea.
 #. Short label for an advanced message input preference.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:47
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:109
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:113
 msgid "Show media button"
 msgstr "メディアボタンを表示"
 
@@ -30929,9 +30934,9 @@ msgstr "デバイスごとの参加者の音量スライダーを音声メニュ
 #. Plus menu submenu toggle that shows the persona selector next to the textarea.
 #. Short label for an advanced message input preference.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:51
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:129
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:133
 msgid "Show personas button"
-msgstr "Show personas button"
+msgstr "ペルソナボタンを表示"
 
 #. Developer option label for exposing the staff-only profile timezone section in profile settings.
 #: src/features/devtools/components/DeveloperOptionsToggleGroups.ts:135
@@ -30949,7 +30954,7 @@ msgid "Show rich previews for YouTube links."
 msgstr "YouTubeリンクのリッチプレビューを表示します。"
 
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:101
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:105
 msgid "Show saved media in expression autocomplete"
 msgstr "エクスプレッションの入力候補に保存済みメディアを表示"
 
@@ -30958,14 +30963,14 @@ msgstr "エクスプレッションの入力候補に保存済みメディアを
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #: src/features/channel/components/textarea/TextareaContextMenu.tsx:102
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:63
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:133
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:137
 msgid "Show send button"
 msgstr "送信ボタンを表示"
 
 #. Tooltip on the channel header server list toggle when the server rail is currently hidden.
 #: src/features/channel/components/channel_header/shared.ts:77
 msgid "Show server list"
-msgstr "Show server list"
+msgstr "サーバーリストを表示"
 
 #. Label in the display tab.
 #: src/features/user/components/modals/tabs/chat_settings_tab/DisplayTab.tsx:26
@@ -30975,12 +30980,12 @@ msgstr "クリックしてネタバレコンテンツを表示"
 #. Short label for an advanced message input preference.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:55
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:121
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:125
 msgid "Show stickers button"
 msgstr "スタンプボタンを表示"
 
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:97
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:101
 msgid "Show stickers in expression autocomplete"
 msgstr "エクスプレッションの入力候補にスタンプを表示"
 
@@ -30990,7 +30995,7 @@ msgid "Show strikethrough Markdown text in a slightly muted color."
 msgstr "取り消し線付きのMarkdownテキストを、やや落ち着いた色で表示します。"
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:85
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:89
 msgid "Show suppress embeds button"
 msgstr "埋め込みを非表示にするボタンを表示"
 
@@ -31296,7 +31301,7 @@ msgstr "スキップ"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced inbox preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:141
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:145
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:459
 msgid "Skip \"Mark all as read\" confirmation"
 msgstr "「すべて既読にする」の確認をスキップ"
@@ -31769,8 +31774,8 @@ msgstr "問題が発生しました。後でもう一度お試しください。
 #. Inline error in the web deep-link prompt when opening the desktop app fails.
 #. Toast error shown when the mature content check request fails unexpectedly.
 #: src/features/auth/components/modals/MatureContentCheckModal.tsx:18
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:585
-#: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:31
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:564
+#: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:33
 msgid "Something went wrong. Try again."
 msgstr "問題が発生しました。もう一度お試しください。"
 
@@ -32200,7 +32205,7 @@ msgstr "開始日は終了日より前に設定してください。"
 msgid "Start drag and drop"
 msgstr "ドラッグ＆ドロップを開始"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:705
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:731
 msgid "Start Import"
 msgstr "インポートを開始"
 
@@ -32476,7 +32481,7 @@ msgid "Stop"
 msgstr "停止"
 
 #. Confirmation prompt in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:161
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:165
 msgid "Stop hiding muted channels by default?"
 msgstr "ミュートしたチャンネルをデフォルトで非表示にするのをやめますか？"
 
@@ -32787,7 +32792,7 @@ msgid "Success"
 msgstr "成功"
 
 #. placeholder {0}: importResults.successCount
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:659
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:685
 msgid "Successfully imported {0} persona(s) into your account. All avatar images are safely stored on your local server."
 msgstr "アカウントに{0}件のペルソナを正常にインポートしました。すべてのアバター画像はローカルサーバーに安全に保存されます。"
 
@@ -32818,7 +32823,7 @@ msgstr "候補"
 msgid "Summary"
 msgstr "概要"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:506
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:532
 msgid "Supports PluralKit system export files"
 msgstr "PluralKitのシステムエクスポートファイルをサポート"
 
@@ -33195,7 +33200,7 @@ msgstr "システムモーション"
 msgid "System reduced motion"
 msgstr "システムの視差効果を減らす"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:556
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:582
 msgid "System Tag (Applied to imported personas)"
 msgstr "システムタグ (インポートしたペルソナに適用)"
 
@@ -33341,7 +33346,7 @@ msgstr "保護対象の属性を理由に特定の人を狙う行為。"
 #. Settings search synonym.
 #: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:99
 msgid "Taskbar"
-msgstr "Taskbar"
+msgstr "タスクバー"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
@@ -35231,7 +35236,7 @@ msgctxt "channel-topic-field"
 msgid "Topic"
 msgstr "トピック"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:540
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:566
 msgid "Total Members"
 msgstr "合計メンバー数"
 
@@ -36768,7 +36773,7 @@ msgstr "アセットをアップロード"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced message input privacy preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:113
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:117
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:107
 msgid "Upload attachments before sending"
 msgstr "送信前に添付ファイルをアップロード"
@@ -38209,7 +38214,7 @@ msgstr "メールアドレスを表示"
 #. OAuth scope description shown on the consent screen for the personas.read scope.
 #: src/features/app/constants/AppConstants.ts:33
 msgid "View your personas"
-msgstr "View your personas"
+msgstr "ペルソナを表示"
 
 #. Notification sound setting label. Sound played when a viewer joins your screen share or stream.
 #: src/features/notification/utils/SoundLabels.ts:36
