@@ -965,7 +965,7 @@ msgstr "{count, plural, one {# блокирано съобщение} other {# �
 msgid "{count, plural, one {# community found} other {# communities found}}"
 msgstr "{count, plural, one {Намерена е # общност} other {Намерени са # общности}}"
 
-#: src/features/app/components/layout/GuildsLayout.tsx:1973
+#: src/features/app/components/layout/GuildsLayout.tsx:1968
 msgid "{count, plural, one {# community is temporarily unavailable due to a flux capacitor malfunction.} other {# communities are temporarily unavailable due to a flux capacitor malfunction.}}"
 msgstr "{count, plural, one {# общност е временно недостъпна поради неизправност на флукс кондензатора.} other {# общности са временно недостъпни поради неизправност на флукс кондензатора.}}"
 
@@ -4233,7 +4233,7 @@ msgid "Another round checkbox"
 msgstr "Друго кръгло поле за отметка"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:213
+#: src/features/input/state/input_keybind/shared.ts:217
 msgid "Answer the incoming call"
 msgstr "Отговаряне на входящото повикване"
 
@@ -5810,7 +5810,7 @@ msgstr "Достигнат лимит за отметки"
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:526
-#: src/features/input/state/input_keybind/shared.ts:265
+#: src/features/input/state/input_keybind/shared.ts:269
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:66
 msgid "Bookmark message"
 msgstr "Добавяне на съобщение в отметки"
@@ -9478,7 +9478,7 @@ msgstr "Копирай ID на канала"
 
 #. Action that copies a deep link to the selected channel.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:205
+#: src/features/input/state/input_keybind/shared.ts:209
 #: src/features/ui/action_menu/items/ChannelMenuData.tsx:130
 msgid "Copy channel link"
 msgstr "Копирай линка към канала"
@@ -9628,7 +9628,7 @@ msgstr "Копирай съобщението"
 #. Developer-mode action that copies a message snowflake/ID to the clipboard.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:736
-#: src/features/input/state/input_keybind/shared.ts:277
+#: src/features/input/state/input_keybind/shared.ts:281
 msgid "Copy message ID"
 msgstr "Копирай ID на съобщението"
 
@@ -9636,7 +9636,7 @@ msgstr "Копирай ID на съобщението"
 #. IAR modal: quick-action card title.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:518
-#: src/features/input/state/input_keybind/shared.ts:273
+#: src/features/input/state/input_keybind/shared.ts:277
 #: src/features/moderation/components/report_modal/IARModalCopy.ts:389
 msgid "Copy message link"
 msgstr "Копирай линка към съобщението"
@@ -11259,7 +11259,7 @@ msgid "Decide whether replies @mention you by default"
 msgstr "Избери дали отговорите да те @споменават по подразбиране"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:217
+#: src/features/input/state/input_keybind/shared.ts:221
 msgid "Decline the incoming call"
 msgstr "Отхвърляне на входящото повикване"
 
@@ -12370,7 +12370,7 @@ msgstr "Прекъсване на връзката с {channel}"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Tray menu item. Leaves the current voice call when the channel name is unavailable.
-#: src/features/input/state/input_keybind/shared.ts:317
+#: src/features/input/state/input_keybind/shared.ts:321
 #: src/features/platform/utils/DesktopLocaleBridge.ts:220
 msgid "Disconnect from voice"
 msgstr "Прекъсване на връзката с гласовия чат"
@@ -14551,7 +14551,7 @@ msgid "Expand channel topic"
 msgstr "Разгъване на темата на канала"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:229
+#: src/features/input/state/input_keybind/shared.ts:233
 msgid "Expand or collapse compact call view"
 msgstr "Разгъване или свиване на компактен изглед на разговор"
 
@@ -15512,7 +15512,7 @@ msgid "Focus text area"
 msgstr "Фокусиране на текстовото поле"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:197
+#: src/features/input/state/input_keybind/shared.ts:201
 msgid "Focus the text area"
 msgstr "Фокусиране на текстовото поле"
 
@@ -19053,7 +19053,7 @@ msgid "Jump to the message in {labelText}"
 msgstr "Към съобщението в {labelText}"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:193
+#: src/features/input/state/input_keybind/shared.ts:197
 msgid "Jump to the oldest unread message"
 msgstr "Към най-старото непрочетено съобщение"
 
@@ -21939,7 +21939,7 @@ msgstr "Изключване на микрофона на членове"
 
 #. Short label in the app layout user area.
 #. Tray menu item shown while in a voice call. Mutes the local microphone.
-#: src/features/app/components/layout/UserArea.tsx:64
+#: src/features/app/components/layout/UserArea.tsx:63
 #: src/features/platform/utils/DesktopLocaleBridge.ts:208
 msgid "Mute microphone"
 msgstr "Изключване на микрофона"
@@ -24023,7 +24023,7 @@ msgid "Open group details for {groupDMName}"
 msgstr "Отваряне на подробности за групата {groupDMName}"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:233
+#: src/features/input/state/input_keybind/shared.ts:237
 msgid "Open help"
 msgstr "Отваряне на помощта"
 
@@ -24176,7 +24176,7 @@ msgid "Open the ban dialog for this community."
 msgstr "Отваряне на диалоговия прозорец за забрана за тази общност."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:241
+#: src/features/input/state/input_keybind/shared.ts:245
 msgid "Open the context menu"
 msgstr "Отваряне на контекстното меню"
 
@@ -24199,7 +24199,7 @@ msgid "Open the verification email and use the link inside. This window updates 
 msgstr "Отвори имейла за потвърждение и използвай линка в него. Този прозорец ще се актуализира, след като отвориш линка."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:249
+#: src/features/input/state/input_keybind/shared.ts:253
 msgid "Open theme studio popout"
 msgstr "Отваряне на студиото за теми в изскачащ прозорец"
 
@@ -24209,7 +24209,7 @@ msgid "Open theme studio…"
 msgstr "Отваряне на студиото за теми…"
 
 #. Short label in the app layout user area. Preserve {displayName}; it is inserted by code.
-#: src/features/app/components/layout/UserArea.tsx:72
+#: src/features/app/components/layout/UserArea.tsx:71
 msgid "Open user menu for {displayName}"
 msgstr "Отваряне на потребителското меню за {displayName}"
 
@@ -24257,7 +24257,7 @@ msgid "Open your phone's messaging app and start a new text message."
 msgstr "Отвори приложението за съобщения на телефона си и започни ново текстово съобщение."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:245
+#: src/features/input/state/input_keybind/shared.ts:249
 msgid "Open your settings"
 msgstr "Отваряне на настройките"
 
@@ -26270,26 +26270,26 @@ msgid "Push timeout"
 msgstr "Таймаут за известия"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:297
+#: src/features/input/state/input_keybind/shared.ts:301
 msgid "Push to mute"
 msgstr "Натисни и изключи микрофона"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/input/state/input_keybind/shared.ts:289
+#: src/features/input/state/input_keybind/shared.ts:293
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:162
 #: src/features/user/components/settings_utils/section_registry/VoiceVideoSections.ts:86
 msgid "Push to talk"
 msgstr "Натисни и говори"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:293
+#: src/features/input/state/input_keybind/shared.ts:297
 msgid "Push to talk (priority)"
 msgstr "Натисни и говори (приоритетно)"
 
 #. User-area voice status text shown when push-to-talk is active. The hint is the user-configured keybind label.
-#: src/features/app/components/layout/UserArea.tsx:55
+#: src/features/app/components/layout/UserArea.tsx:54
 msgid "Push to talk is on. Hold {pushToTalkHint} to speak."
 msgstr "Включено е „Натисни и говори“. Задръж {pushToTalkHint}, за да говориш."
 
@@ -27968,7 +27968,7 @@ msgstr "Възстановяване по подразбиране"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Label for controls that reset app zoom to 100%, including the app zoom slider button.
-#: src/features/input/state/input_keybind/shared.ts:261
+#: src/features/input/state/input_keybind/shared.ts:265
 #: src/features/user/components/modals/tabs/appearance_tab/ScalingTab.tsx:38
 msgid "Reset zoom"
 msgstr "Възстановяване на мащаба"
@@ -29002,12 +29002,12 @@ msgid "Scroll animation"
 msgstr "Анимация при превъртане"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:189
+#: src/features/input/state/input_keybind/shared.ts:193
 msgid "Scroll chat down"
 msgstr "Превъртане на чата надолу"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:185
+#: src/features/input/state/input_keybind/shared.ts:189
 msgid "Scroll chat up"
 msgstr "Превъртане на чата нагоре"
 
@@ -29194,7 +29194,7 @@ msgstr "Търсене на езици…"
 #: src/features/channel/components/bottomsheets/ChannelSearchBottomSheet.tsx:137
 #: src/features/channel/components/bottomsheets/ChannelSearchBottomSheet.tsx:480
 #: src/features/channel/components/message_search_bar/MessageSearchBar.tsx:56
-#: src/features/input/state/input_keybind/shared.ts:237
+#: src/features/input/state/input_keybind/shared.ts:241
 msgid "Search messages"
 msgstr "Търсене в съобщенията"
 
@@ -29900,7 +29900,7 @@ msgstr "Изпращане на код за потвърждение"
 #. Plus menu item that opens the desktop voice message composer to record and send a voice clip.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:35
 #: src/features/channel/components/VoiceMessageRecorder.tsx:69
-#: src/features/input/state/input_keybind/shared.ts:285
+#: src/features/input/state/input_keybind/shared.ts:289
 msgid "Send voice message"
 msgstr "Изпращане на гласово съобщение"
 
@@ -32130,7 +32130,7 @@ msgid "Start {appName} automatically when you sign in."
 msgstr "Стартиране на {appName} автоматично при влизане."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:221
+#: src/features/input/state/input_keybind/shared.ts:225
 msgid "Start a call in a DM or group"
 msgstr "Започване на разговор в DM или група"
 
@@ -33021,7 +33021,7 @@ msgid "Switch to…"
 msgstr "Премести се в…"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:313
+#: src/features/input/state/input_keybind/shared.ts:317
 msgid "Switch voice channel"
 msgstr "Смяна на гласов канал"
 
@@ -35032,7 +35032,7 @@ msgid "Toggle between last community and DMs"
 msgstr "Превключване между последната общност и DM"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:309
+#: src/features/input/state/input_keybind/shared.ts:313
 msgid "Toggle camera"
 msgstr "Включване/изключване на камерата"
 
@@ -35052,7 +35052,7 @@ msgid "Toggle developer tools"
 msgstr "Показване/скриване на инструментите за разработчици"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:269
+#: src/features/input/state/input_keybind/shared.ts:273
 msgid "Toggle embed suppression"
 msgstr "Превключване на скриването на вградените елементи"
 
@@ -35068,7 +35068,7 @@ msgstr "Включване/изключване на хардуерното ус
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/input/state/input_keybind/shared.ts:209
+#: src/features/input/state/input_keybind/shared.ts:213
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:183
 msgid "Toggle mute"
 msgstr "Включване/изключване на микрофона"
@@ -35084,7 +35084,7 @@ msgid "Toggle quick switcher"
 msgstr "Показване/скриване на бързия превключвател"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:281
+#: src/features/input/state/input_keybind/shared.ts:285
 msgid "Toggle saved media"
 msgstr "Показване/скриване на запазените медии"
 
@@ -35093,12 +35093,17 @@ msgid "Toggle switches on and off to see state changes."
 msgstr "Включвай и изключвай превключвателите, за да видиш промените в състоянието."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:173
+#: src/features/input/state/input_keybind/shared.ts:169
+msgid "Toggle the channel list"
+msgstr "Показване/скриване на списъка с канали"
+
+#. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
+#: src/features/input/state/input_keybind/shared.ts:177
 msgid "Toggle the emoji picker"
 msgstr "Показване/скриване на избора на емоджита"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:177
+#: src/features/input/state/input_keybind/shared.ts:181
 msgid "Toggle the GIF picker"
 msgstr "Показване/скриване на избора на GIF файлове"
 
@@ -35113,22 +35118,22 @@ msgid "Toggle the kinds of conversations you want included."
 msgstr "Избери кои видове разговори да се включат."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:169
+#: src/features/input/state/input_keybind/shared.ts:173
 msgid "Toggle the member list or voice chat"
 msgstr "Показване/скриване на списъка с членове или гласовия чат"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:225
+#: src/features/input/state/input_keybind/shared.ts:229
 msgid "Toggle the soundboard"
 msgstr "Показване/скриване на панела със звуци"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:181
+#: src/features/input/state/input_keybind/shared.ts:185
 msgid "Toggle the sticker picker"
 msgstr "Показване/скриване на избора на стикери"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:305
+#: src/features/input/state/input_keybind/shared.ts:309
 msgid "Toggle voice activity"
 msgstr "Включване/изключване на гласовата активност"
 
@@ -36355,7 +36360,7 @@ msgstr "Включване на известията за любими"
 
 #. Short label in the app layout user area.
 #. Tray menu item shown while in a voice call. Unmutes the local microphone.
-#: src/features/app/components/layout/UserArea.tsx:60
+#: src/features/app/components/layout/UserArea.tsx:59
 #: src/features/platform/utils/DesktopLocaleBridge.ts:212
 msgid "Unmute microphone"
 msgstr "Включване на микрофона"
@@ -36733,7 +36738,7 @@ msgstr "Качи персонализиран звук, който автома�
 #. Card label in the asset source modal for uploading an image from the device. Keep it concise.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #: src/features/expressions/components/modals/AssetSourceModal.tsx:19
-#: src/features/input/state/input_keybind/shared.ts:201
+#: src/features/input/state/input_keybind/shared.ts:205
 msgid "Upload a file"
 msgstr "Качване на файл"
 
@@ -37334,7 +37339,7 @@ msgid "User avatars"
 msgstr "Аватари на потребители"
 
 #. Short label in the app layout user area.
-#: src/features/app/components/layout/UserArea.tsx:68
+#: src/features/app/components/layout/UserArea.tsx:67
 msgid "User controls"
 msgstr "Потребителски контроли"
 
@@ -38338,7 +38343,7 @@ msgid "Voice activity on active now"
 msgstr "Гласова активност в „Активни сега“"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:301
+#: src/features/input/state/input_keybind/shared.ts:305
 msgid "Voice activity priority"
 msgstr "Приоритет на гласовата активност"
 
@@ -40782,7 +40787,7 @@ msgstr "Мащабиране"
 #. Native View menu item that increases UI zoom level.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:623
-#: src/features/input/state/input_keybind/shared.ts:253
+#: src/features/input/state/input_keybind/shared.ts:257
 #: src/features/platform/utils/DesktopLocaleBridge.ts:112
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:82
 msgid "Zoom in"
@@ -40793,7 +40798,7 @@ msgstr "Увеличаване"
 #. Native View menu item that decreases UI zoom level.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:619
-#: src/features/input/state/input_keybind/shared.ts:257
+#: src/features/input/state/input_keybind/shared.ts:261
 #: src/features/platform/utils/DesktopLocaleBridge.ts:116
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:86
 msgid "Zoom out"

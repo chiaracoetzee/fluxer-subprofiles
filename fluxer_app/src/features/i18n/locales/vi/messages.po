@@ -965,7 +965,7 @@ msgstr "{count, plural, one {# tin nhắn bị chặn} other {# tin nhắn bị 
 msgid "{count, plural, one {# community found} other {# communities found}}"
 msgstr "{count, plural, one {# cộng đồng được tìm thấy} other {# cộng đồng được tìm thấy}}"
 
-#: src/features/app/components/layout/GuildsLayout.tsx:1973
+#: src/features/app/components/layout/GuildsLayout.tsx:1968
 msgid "{count, plural, one {# community is temporarily unavailable due to a flux capacitor malfunction.} other {# communities are temporarily unavailable due to a flux capacitor malfunction.}}"
 msgstr "{count, plural, one {# cộng đồng hiện không khả dụng do lỗi bộ biến đổi dòng chảy.} other {# cộng đồng hiện không khả dụng do lỗi bộ biến đổi dòng chảy.}}"
 
@@ -4233,7 +4233,7 @@ msgid "Another round checkbox"
 msgstr "Ô đánh dấu tròn khác"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:213
+#: src/features/input/state/input_keybind/shared.ts:217
 msgid "Answer the incoming call"
 msgstr "Trả lời cuộc gọi đến"
 
@@ -5810,7 +5810,7 @@ msgstr "Đã đạt giới hạn tin nhắn đã lưu"
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:526
-#: src/features/input/state/input_keybind/shared.ts:265
+#: src/features/input/state/input_keybind/shared.ts:269
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:66
 msgid "Bookmark message"
 msgstr "Lưu tin nhắn"
@@ -9478,7 +9478,7 @@ msgstr "Sao chép ID kênh"
 
 #. Action that copies a deep link to the selected channel.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:205
+#: src/features/input/state/input_keybind/shared.ts:209
 #: src/features/ui/action_menu/items/ChannelMenuData.tsx:130
 msgid "Copy channel link"
 msgstr "Sao chép liên kết kênh"
@@ -9628,7 +9628,7 @@ msgstr "Sao chép tin nhắn"
 #. Developer-mode action that copies a message snowflake/ID to the clipboard.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:736
-#: src/features/input/state/input_keybind/shared.ts:277
+#: src/features/input/state/input_keybind/shared.ts:281
 msgid "Copy message ID"
 msgstr "Sao chép ID tin nhắn"
 
@@ -9636,7 +9636,7 @@ msgstr "Sao chép ID tin nhắn"
 #. IAR modal: quick-action card title.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:518
-#: src/features/input/state/input_keybind/shared.ts:273
+#: src/features/input/state/input_keybind/shared.ts:277
 #: src/features/moderation/components/report_modal/IARModalCopy.ts:389
 msgid "Copy message link"
 msgstr "Sao chép liên kết tin nhắn"
@@ -11259,7 +11259,7 @@ msgid "Decide whether replies @mention you by default"
 msgstr "Quyết định xem các trả lời có @nhắc đến bạn theo mặc định hay không"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:217
+#: src/features/input/state/input_keybind/shared.ts:221
 msgid "Decline the incoming call"
 msgstr "Từ chối cuộc gọi đến"
 
@@ -12370,7 +12370,7 @@ msgstr "Ngắt kết nối khỏi {channel}"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Tray menu item. Leaves the current voice call when the channel name is unavailable.
-#: src/features/input/state/input_keybind/shared.ts:317
+#: src/features/input/state/input_keybind/shared.ts:321
 #: src/features/platform/utils/DesktopLocaleBridge.ts:220
 msgid "Disconnect from voice"
 msgstr "Ngắt kết nối thoại"
@@ -14551,7 +14551,7 @@ msgid "Expand channel topic"
 msgstr "Mở rộng chủ đề kênh"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:229
+#: src/features/input/state/input_keybind/shared.ts:233
 msgid "Expand or collapse compact call view"
 msgstr "Mở rộng hoặc thu gọn chế độ xem cuộc gọi nhỏ gọn"
 
@@ -15512,7 +15512,7 @@ msgid "Focus text area"
 msgstr "Chuyển tiêu điểm vào vùng nhập văn bản"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:197
+#: src/features/input/state/input_keybind/shared.ts:201
 msgid "Focus the text area"
 msgstr "Chuyển tiêu điểm vào vùng nhập văn bản"
 
@@ -19053,7 +19053,7 @@ msgid "Jump to the message in {labelText}"
 msgstr "Chuyển đến tin nhắn trong {labelText}"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:193
+#: src/features/input/state/input_keybind/shared.ts:197
 msgid "Jump to the oldest unread message"
 msgstr "Chuyển đến tin nhắn chưa đọc cũ nhất"
 
@@ -21939,7 +21939,7 @@ msgstr "Tắt tiếng thành viên"
 
 #. Short label in the app layout user area.
 #. Tray menu item shown while in a voice call. Mutes the local microphone.
-#: src/features/app/components/layout/UserArea.tsx:64
+#: src/features/app/components/layout/UserArea.tsx:63
 #: src/features/platform/utils/DesktopLocaleBridge.ts:208
 msgid "Mute microphone"
 msgstr "Tắt micrô"
@@ -24023,7 +24023,7 @@ msgid "Open group details for {groupDMName}"
 msgstr "Mở chi tiết nhóm cho {groupDMName}"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:233
+#: src/features/input/state/input_keybind/shared.ts:237
 msgid "Open help"
 msgstr "Mở trợ giúp"
 
@@ -24176,7 +24176,7 @@ msgid "Open the ban dialog for this community."
 msgstr "Mở hộp thoại cấm cho cộng đồng này."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:241
+#: src/features/input/state/input_keybind/shared.ts:245
 msgid "Open the context menu"
 msgstr "Mở menu ngữ cảnh"
 
@@ -24199,7 +24199,7 @@ msgid "Open the verification email and use the link inside. This window updates 
 msgstr "Mở email xác minh và dùng liên kết bên trong. Cửa sổ này sẽ cập nhật sau khi liên kết mở ra."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:249
+#: src/features/input/state/input_keybind/shared.ts:253
 msgid "Open theme studio popout"
 msgstr "Mở cửa sổ bật lên studio chủ đề"
 
@@ -24209,7 +24209,7 @@ msgid "Open theme studio…"
 msgstr "Mở studio chủ đề…"
 
 #. Short label in the app layout user area. Preserve {displayName}; it is inserted by code.
-#: src/features/app/components/layout/UserArea.tsx:72
+#: src/features/app/components/layout/UserArea.tsx:71
 msgid "Open user menu for {displayName}"
 msgstr "Mở menu người dùng của {displayName}"
 
@@ -24257,7 +24257,7 @@ msgid "Open your phone's messaging app and start a new text message."
 msgstr "Mở ứng dụng nhắn tin trên điện thoại và bắt đầu một tin nhắn văn bản mới."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:245
+#: src/features/input/state/input_keybind/shared.ts:249
 msgid "Open your settings"
 msgstr "Mở cài đặt của bạn"
 
@@ -26270,26 +26270,26 @@ msgid "Push timeout"
 msgstr "Thời gian chờ thông báo đẩy"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:297
+#: src/features/input/state/input_keybind/shared.ts:301
 msgid "Push to mute"
 msgstr "Nhấn để tắt tiếng"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/input/state/input_keybind/shared.ts:289
+#: src/features/input/state/input_keybind/shared.ts:293
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:162
 #: src/features/user/components/settings_utils/section_registry/VoiceVideoSections.ts:86
 msgid "Push to talk"
 msgstr "Nhấn để nói"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:293
+#: src/features/input/state/input_keybind/shared.ts:297
 msgid "Push to talk (priority)"
 msgstr "Nhấn để nói (ưu tiên)"
 
 #. User-area voice status text shown when push-to-talk is active. The hint is the user-configured keybind label.
-#: src/features/app/components/layout/UserArea.tsx:55
+#: src/features/app/components/layout/UserArea.tsx:54
 msgid "Push to talk is on. Hold {pushToTalkHint} to speak."
 msgstr "Đã bật chế độ nhấn để nói. Giữ {pushToTalkHint} để nói."
 
@@ -27968,7 +27968,7 @@ msgstr "Đặt lại về mặc định"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Label for controls that reset app zoom to 100%, including the app zoom slider button.
-#: src/features/input/state/input_keybind/shared.ts:261
+#: src/features/input/state/input_keybind/shared.ts:265
 #: src/features/user/components/modals/tabs/appearance_tab/ScalingTab.tsx:38
 msgid "Reset zoom"
 msgstr "Đặt lại thu phóng"
@@ -29002,12 +29002,12 @@ msgid "Scroll animation"
 msgstr "Hoạt ảnh cuộn"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:189
+#: src/features/input/state/input_keybind/shared.ts:193
 msgid "Scroll chat down"
 msgstr "Cuộn trò chuyện xuống"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:185
+#: src/features/input/state/input_keybind/shared.ts:189
 msgid "Scroll chat up"
 msgstr "Cuộn trò chuyện lên"
 
@@ -29194,7 +29194,7 @@ msgstr "Tìm ngôn ngữ…"
 #: src/features/channel/components/bottomsheets/ChannelSearchBottomSheet.tsx:137
 #: src/features/channel/components/bottomsheets/ChannelSearchBottomSheet.tsx:480
 #: src/features/channel/components/message_search_bar/MessageSearchBar.tsx:56
-#: src/features/input/state/input_keybind/shared.ts:237
+#: src/features/input/state/input_keybind/shared.ts:241
 msgid "Search messages"
 msgstr "Tìm tin nhắn"
 
@@ -29900,7 +29900,7 @@ msgstr "Gửi mã xác minh"
 #. Plus menu item that opens the desktop voice message composer to record and send a voice clip.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:35
 #: src/features/channel/components/VoiceMessageRecorder.tsx:69
-#: src/features/input/state/input_keybind/shared.ts:285
+#: src/features/input/state/input_keybind/shared.ts:289
 msgid "Send voice message"
 msgstr "Gửi tin nhắn thoại"
 
@@ -32130,7 +32130,7 @@ msgid "Start {appName} automatically when you sign in."
 msgstr "Tự động khởi chạy {appName} khi bạn đăng nhập."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:221
+#: src/features/input/state/input_keybind/shared.ts:225
 msgid "Start a call in a DM or group"
 msgstr "Bắt đầu cuộc gọi trong tin nhắn trực tiếp hoặc nhóm"
 
@@ -33021,7 +33021,7 @@ msgid "Switch to…"
 msgstr "Chuyển đến…"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:313
+#: src/features/input/state/input_keybind/shared.ts:317
 msgid "Switch voice channel"
 msgstr "Chuyển kênh thoại"
 
@@ -35032,7 +35032,7 @@ msgid "Toggle between last community and DMs"
 msgstr "Chuyển qua lại giữa cộng đồng gần nhất và tin nhắn trực tiếp"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:309
+#: src/features/input/state/input_keybind/shared.ts:313
 msgid "Toggle camera"
 msgstr "Bật/tắt camera"
 
@@ -35052,7 +35052,7 @@ msgid "Toggle developer tools"
 msgstr "Bật/tắt công cụ dành cho nhà phát triển"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:269
+#: src/features/input/state/input_keybind/shared.ts:273
 msgid "Toggle embed suppression"
 msgstr "Bật/tắt ẩn nhúng"
 
@@ -35068,7 +35068,7 @@ msgstr "Bật/tắt tăng tốc phần cứng"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/input/state/input_keybind/shared.ts:209
+#: src/features/input/state/input_keybind/shared.ts:213
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:183
 msgid "Toggle mute"
 msgstr "Bật/tắt tiếng"
@@ -35084,7 +35084,7 @@ msgid "Toggle quick switcher"
 msgstr "Bật/tắt bộ chuyển đổi nhanh"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:281
+#: src/features/input/state/input_keybind/shared.ts:285
 msgid "Toggle saved media"
 msgstr "Bật/tắt media đã lưu"
 
@@ -35093,12 +35093,17 @@ msgid "Toggle switches on and off to see state changes."
 msgstr "Bật/tắt các nút chuyển để xem thay đổi trạng thái."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:173
+#: src/features/input/state/input_keybind/shared.ts:169
+msgid "Toggle the channel list"
+msgstr "Bật/tắt danh sách kênh"
+
+#. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
+#: src/features/input/state/input_keybind/shared.ts:177
 msgid "Toggle the emoji picker"
 msgstr "Mở/đóng bảng chọn biểu tượng cảm xúc"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:177
+#: src/features/input/state/input_keybind/shared.ts:181
 msgid "Toggle the GIF picker"
 msgstr "Mở/đóng bảng chọn GIF"
 
@@ -35113,22 +35118,22 @@ msgid "Toggle the kinds of conversations you want included."
 msgstr "Bật/tắt các loại cuộc trò chuyện bạn muốn đưa vào."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:169
+#: src/features/input/state/input_keybind/shared.ts:173
 msgid "Toggle the member list or voice chat"
 msgstr "Bật/tắt danh sách thành viên hoặc trò chuyện thoại"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:225
+#: src/features/input/state/input_keybind/shared.ts:229
 msgid "Toggle the soundboard"
 msgstr "Bật/tắt bảng âm thanh"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:181
+#: src/features/input/state/input_keybind/shared.ts:185
 msgid "Toggle the sticker picker"
 msgstr "Mở/đóng bảng chọn nhãn dán"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:305
+#: src/features/input/state/input_keybind/shared.ts:309
 msgid "Toggle voice activity"
 msgstr "Bật/tắt kích hoạt bằng giọng nói"
 
@@ -36355,7 +36360,7 @@ msgstr "Bật thông báo mục yêu thích"
 
 #. Short label in the app layout user area.
 #. Tray menu item shown while in a voice call. Unmutes the local microphone.
-#: src/features/app/components/layout/UserArea.tsx:60
+#: src/features/app/components/layout/UserArea.tsx:59
 #: src/features/platform/utils/DesktopLocaleBridge.ts:212
 msgid "Unmute microphone"
 msgstr "Bật tiếng micrô"
@@ -36733,7 +36738,7 @@ msgstr "Tải lên âm thanh tùy chỉnh phát tự động khi bạn tham gia 
 #. Card label in the asset source modal for uploading an image from the device. Keep it concise.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #: src/features/expressions/components/modals/AssetSourceModal.tsx:19
-#: src/features/input/state/input_keybind/shared.ts:201
+#: src/features/input/state/input_keybind/shared.ts:205
 msgid "Upload a file"
 msgstr "Tải tệp lên"
 
@@ -37334,7 +37339,7 @@ msgid "User avatars"
 msgstr "Ảnh đại diện người dùng"
 
 #. Short label in the app layout user area.
-#: src/features/app/components/layout/UserArea.tsx:68
+#: src/features/app/components/layout/UserArea.tsx:67
 msgid "User controls"
 msgstr "Điều khiển người dùng"
 
@@ -38338,7 +38343,7 @@ msgid "Voice activity on active now"
 msgstr "Hoạt động thoại trong mục Đang hoạt động"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:301
+#: src/features/input/state/input_keybind/shared.ts:305
 msgid "Voice activity priority"
 msgstr "Ưu tiên hoạt động giọng nói"
 
@@ -40782,7 +40787,7 @@ msgstr "Thu phóng cửa sổ"
 #. Native View menu item that increases UI zoom level.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:623
-#: src/features/input/state/input_keybind/shared.ts:253
+#: src/features/input/state/input_keybind/shared.ts:257
 #: src/features/platform/utils/DesktopLocaleBridge.ts:112
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:82
 msgid "Zoom in"
@@ -40793,7 +40798,7 @@ msgstr "Phóng to"
 #. Native View menu item that decreases UI zoom level.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:619
-#: src/features/input/state/input_keybind/shared.ts:257
+#: src/features/input/state/input_keybind/shared.ts:261
 #: src/features/platform/utils/DesktopLocaleBridge.ts:116
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:86
 msgid "Zoom out"

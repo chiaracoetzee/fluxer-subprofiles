@@ -656,8 +656,8 @@ export const GuildLayout = observer(({children}: {children: React.ReactNode}) =>
 			</TopNagbarContext.Provider>
 		);
 	}
-	const isChannelListOpen = mobileLayout.enabled || LayoutState.channelListVisible;
-	const isChannelListPeeking = !mobileLayout.enabled && !LayoutState.channelListVisible && LayoutState.isLeftHoverPeeking;
+	const isChannelListOpen = mobileLayout.enabled || LayoutState.leftSidebarVisible;
+	const isChannelListPeeking = !mobileLayout.enabled && !LayoutState.leftSidebarVisible && LayoutState.isLeftHoverPeeking;
 
 	return (
 		<TopNagbarContext.Provider value={nagbarContextValue}>
