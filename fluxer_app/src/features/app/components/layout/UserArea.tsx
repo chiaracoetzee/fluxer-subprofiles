@@ -49,7 +49,7 @@ import {useLingui} from '@lingui/react/macro';
 import {GearIcon, MicrophoneIcon, MicrophoneSlashIcon, SpeakerHighIcon, SpeakerSlashIcon} from '@phosphor-icons/react';
 import {clsx} from 'clsx';
 import {observer} from 'mobx-react-lite';
-import {useCallback, useEffect, useRef, useState} from 'react';
+import {useEffect, useRef} from 'react';
 
 const PUSH_TO_TALK_IS_ON_HOLD_TO_SPEAK_DESCRIPTOR = msg({
 	message: 'Push to talk is on. Hold {pushToTalkHint} to speak.',
