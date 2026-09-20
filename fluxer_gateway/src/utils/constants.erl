@@ -111,7 +111,7 @@ heartbeat_interval() -> 41250.
 heartbeat_timeout() -> 45000.
 
 -spec resume_timeout() -> pos_integer().
-resume_timeout() -> 60000.
+resume_timeout() -> 300000.
 
 -spec random_session_bytes() -> pos_integer().
 random_session_bytes() -> 16.
@@ -195,7 +195,7 @@ constants_values_test() ->
     ?assertEqual(4096, max_payload_size()),
     ?assertEqual(41250, heartbeat_interval()),
     ?assertEqual(45000, heartbeat_timeout()),
-    ?assertEqual(60000, resume_timeout()),
+    ?assertEqual(300000, resume_timeout()),
     ?assertEqual(16, random_session_bytes()),
     ?assertEqual(1024, view_channel_permission()),
     ?assertEqual(128, view_audit_log_permission()),
