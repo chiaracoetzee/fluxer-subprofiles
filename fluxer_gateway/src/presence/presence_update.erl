@@ -409,8 +409,17 @@ build_buffer_entry(_, _, _) ->
 -spec is_push_eligible(map()) -> boolean().
 is_push_eligible(Sessions) ->
     case map_size(Sessions) of
-        0 -> true;
-        _ -> all_sessions_afk(Sessions)
+        0 ->
+            true;
+        _ ->
+            NonMobile = maps:filter(
+                fun(_, S) -> not maps:get(mobile, S, false) end,
+                Sessions
+            ),
+            case map_size(NonMobile) of
+                0 -> true;
+                _ -> all_sessions_afk(NonMobile)
+            end
     end.
 
 -spec all_sessions_afk(map()) -> boolean().
@@ -441,10 +450,31 @@ parse_snowflake(FieldName, Value) ->
 
 is_push_eligible_test() ->
     ?assertEqual(true, is_push_eligible(#{})),
-    ?assertEqual(false, is_push_eligible(#{<<"s1">> => #{mobile => true, afk => false}})),
+    ?assertEqual(true, is_push_eligible(#{<<"s1">> => #{mobile => true, afk => false}})),
     ?assertEqual(true, is_push_eligible(#{<<"s1">> => #{mobile => true, afk => true}})),
     ?assertEqual(true, is_push_eligible(#{<<"s1">> => #{mobile => false, afk => true}})),
-    ?assertEqual(false, is_push_eligible(#{<<"s1">> => #{mobile => false, afk => false}})).
+    ?assertEqual(false, is_push_eligible(#{<<"s1">> => #{mobile => false, afk => false}})),
+    ?assertEqual(
+        true,
+        is_push_eligible(#{
+            <<"s1">> => #{mobile => true, afk => false},
+            <<"s2">> => #{mobile => false, afk => true}
+        })
+    ),
+    ?assertEqual(
+        false,
+        is_push_eligible(#{
+            <<"s1">> => #{mobile => true, afk => false},
+            <<"s2">> => #{mobile => false, afk => false}
+        })
+    ),
+    ?assertEqual(
+        true,
+        is_push_eligible(#{
+            <<"s1">> => #{mobile => true, afk => false},
+            <<"s2">> => #{mobile => true, afk => false}
+        })
+    ).
 
 custom_status_comparator_test() ->
     Expected = #{
