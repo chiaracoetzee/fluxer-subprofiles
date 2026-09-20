@@ -34,6 +34,10 @@ let userSettings: LocalPresenceUserSettings | null = null;
 
 export function setLocalPresenceUserSettings(settings: LocalPresenceUserSettings): void {
 	userSettings = settings;
+	const afkTimeout = settings.getAfkTimeout();
+	if (typeof afkTimeout === 'number' && afkTimeout > 0) {
+		Idle.setIdleDuration(afkTimeout * 1000);
+	}
 }
 
 class LocalPresence {
@@ -50,6 +54,15 @@ class LocalPresence {
 			reaction(
 				() => MobileLayout.isMobileLayout(),
 				() => this.updatePresence(),
+			);
+			reaction(
+				() => userSettings?.getAfkTimeout(),
+				(timeout) => {
+					if (typeof timeout === 'number' && timeout > 0) {
+						Idle.setIdleDuration(timeout * 1000);
+					}
+					this.updatePresence();
+				},
 			);
 		});
 	}
@@ -141,7 +154,7 @@ class LocalPresence {
 	private computeAfk(idleSince: number, isMobile: boolean, settings: LocalPresenceUserSettings | null): boolean {
 		if (isMobile || idleSince <= 0) return false;
 		const afkTimeout = settings?.getAfkTimeout() ?? 600;
-		return Date.now() - idleSince > afkTimeout * 1000;
+		return Date.now() - idleSince >= afkTimeout * 1000;
 	}
 
 	private applyRestoredIntent(isMobile: boolean, settings: LocalPresenceUserSettings | null): void {
