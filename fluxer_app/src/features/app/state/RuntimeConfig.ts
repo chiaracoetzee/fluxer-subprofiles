@@ -192,8 +192,24 @@ function escapeRegExp(value: string): string {
 	return value.replace(/[.*+?^${}()|[\]\\]/gu, '\\$&');
 }
 
+const defaultDocumentLinks = new Map<string, HTMLLinkElement[]>();
+
 function upsertDocumentLink(rel: string, href: string): void {
 	if (typeof document === 'undefined') return;
+
+	// Stash any unbranded default links (e.g. from index.html) before removing them
+	if (!defaultDocumentLinks.has(rel)) {
+		const unbranded = Array.from(
+			document.head.querySelectorAll<HTMLLinkElement>(`link[rel="${rel}"]:not([data-fluxer-branding="true"])`),
+		);
+		defaultDocumentLinks.set(rel, unbranded);
+	}
+
+	// Remove unbranded links from the DOM so there are never competing icons in <head>
+	document.head
+		.querySelectorAll<HTMLLinkElement>(`link[rel="${rel}"]:not([data-fluxer-branding="true"])`)
+		.forEach((link) => link.remove());
+
 	const selector = `link[rel="${rel}"][data-fluxer-branding="true"]`;
 	const existing = document.head.querySelector<HTMLLinkElement>(selector);
 	const link = existing ?? document.createElement('link');
@@ -207,9 +223,23 @@ function upsertDocumentLink(rel: string, href: string): void {
 
 function removeDocumentLink(rel: string): void {
 	if (typeof document === 'undefined') return;
-	document.head.querySelectorAll<HTMLLinkElement>(`link[rel="${rel}"][data-fluxer-branding="true"]`).forEach((link) => {
-		link.remove();
-	});
+
+	// Remove branded links
+	document.head
+		.querySelectorAll<HTMLLinkElement>(`link[rel="${rel}"][data-fluxer-branding="true"]`)
+		.forEach((link) => {
+			link.remove();
+		});
+
+	// Restore original unbranded links if they were previously stashed
+	const originalLinks = defaultDocumentLinks.get(rel);
+	if (originalLinks) {
+		originalLinks.forEach((link) => {
+			if (!link.isConnected) {
+				document.head.appendChild(link);
+			}
+		});
+	}
 }
 
 function upsertDocumentMeta(name: string, content: string): void {
@@ -256,8 +286,10 @@ function applyDocumentBranding(appPublic: InstanceAppPublic): void {
 	const faviconUrl = appPublic.branding.favicon_url ?? appPublic.branding.icon_url;
 	if (faviconUrl) {
 		upsertDocumentLink('icon', faviconUrl);
+		upsertDocumentLink('apple-touch-icon', faviconUrl);
 	} else {
 		removeDocumentLink('icon');
+		removeDocumentLink('apple-touch-icon');
 	}
 	if (appPublic.branding.theme_color) {
 		upsertDocumentMeta('theme-color', appPublic.branding.theme_color);
