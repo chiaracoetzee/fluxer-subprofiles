@@ -13,8 +13,6 @@ import {GuildMemberContextMenu} from '@app/features/ui/action_menu/GuildMemberCo
 import {UserContextMenu} from '@app/features/ui/action_menu/UserContextMenu';
 import {WebhookContextMenu} from '@app/features/ui/action_menu/WebhookContextMenu';
 import * as ContextMenuCommands from '@app/features/ui/commands/ContextMenuCommands';
-import * as ModalCommands from '@app/features/ui/commands/ModalCommands';
-import {modal} from '@app/features/ui/commands/ModalCommands';
 import type {PopoutAnimationType, PopoutPosition} from '@app/features/ui/popover';
 import {Popout} from '@app/features/ui/popover/PopoverPopout';
 import MobileLayout from '@app/features/ui/state/MobileLayout';
