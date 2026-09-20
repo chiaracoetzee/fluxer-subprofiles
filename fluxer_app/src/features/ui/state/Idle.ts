@@ -5,7 +5,6 @@ import LocalPresence from '@app/features/presence/state/LocalPresence';
 import {makeAutoObservable} from 'mobx';
 
 const IDLE_DURATION_MS = 1000 * (IS_DEV ? 10 : 60 * 10);
-const IDLE_CHECK_INTERVAL_MS = Math.min(Math.floor(IDLE_DURATION_MS * 0.25), 30_000);
 const SYSTEM_IDLE_RETRY_DELAY_MS = 60_000;
 
 interface DesktopIdleApi {
@@ -30,6 +29,7 @@ function normalizeIdleTimeMs(value: number): number | null {
 
 class Idle {
 	idle = false;
+	private idleDurationMs: number = IDLE_DURATION_MS;
 	private lastLocalActivityTime = Date.now();
 	private lastSystemActivityTime = 0;
 	private checkInterval: NodeJS.Timeout | null = null;
@@ -41,11 +41,28 @@ class Idle {
 		this.startIdleCheck();
 	}
 
+	private getCheckIntervalMs(): number {
+		return Math.min(Math.floor(this.idleDurationMs * 0.25), 30_000);
+	}
+
 	private startIdleCheck(): void {
 		if (typeof setInterval !== 'function') return;
+		this.destroy();
 		this.checkInterval = setInterval(() => {
 			this.updateIdleState();
-		}, IDLE_CHECK_INTERVAL_MS);
+		}, this.getCheckIntervalMs());
+	}
+
+	setIdleDuration(durationMs: number): void {
+		const normalized = Math.max(1_000, Math.floor(durationMs));
+		if (this.idleDurationMs === normalized) return;
+		this.idleDurationMs = normalized;
+		this.startIdleCheck();
+		this.updateIdleState();
+	}
+
+	getIdleDuration(): number {
+		return this.idleDurationMs;
 	}
 
 	destroy(): void {
@@ -63,7 +80,8 @@ class Idle {
 	}
 
 	markBackground(): void {
-		this.lastLocalActivityTime = 0;
+		const idleSince = Math.max(1, Date.now() - this.idleDurationMs);
+		this.lastLocalActivityTime = idleSince;
 		this.lastSystemActivityTime = 0;
 		this.applyIdleState(true);
 	}
@@ -99,7 +117,7 @@ class Idle {
 
 	private updateIdleStateFromLocalActivity(): void {
 		const now = Date.now();
-		this.applyIdleState(this.getInactiveDurationMs(now) >= IDLE_DURATION_MS);
+		this.applyIdleState(this.getInactiveDurationMs(now) >= this.idleDurationMs);
 	}
 
 	private async updateIdleStateFromSystem(desktopIdleApi: Required<DesktopIdleApi>): Promise<void> {
