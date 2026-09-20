@@ -6,8 +6,10 @@ import {NagbarButton} from '@app/features/app/components/layout/NagbarButton';
 import {NagbarContent} from '@app/features/app/components/layout/NagbarContent';
 import {NAGBAR_TONES, NagbarToneKind} from '@app/features/app/components/layout/NagbarTones';
 import {DESKTOP_DOWNLOAD_URL, PRODUCT_NAME} from '@app/features/app/config/I18nDisplayConstants';
+import RuntimeConfig from '@app/features/app/state/RuntimeConfig';
 import {DOWNLOAD_DESCRIPTOR} from '@app/features/i18n/utils/CommonMessageDescriptors';
 import * as NagbarCommands from '@app/features/ui/commands/NagbarCommands';
+import NagbarState from '@app/features/ui/state/Nagbar';
 import {openExternalUrl} from '@app/features/ui/utils/NativeUtils';
 import {msg} from '@lingui/core/macro';
 import {useLingui} from '@lingui/react/macro';
@@ -20,6 +22,9 @@ const DESKTOP_APP_DOWNLOAD_MESSAGE_DESCRIPTOR = msg({
 });
 export const DesktopDownloadNagbar = observer(({isMobile}: {isMobile: boolean}) => {
 	const {i18n} = useLingui();
+	if (!NagbarState.forceDesktopDownload && !RuntimeConfig.desktopAppPromptEnabled) {
+		return null;
+	}
 	const handleDownload = () => {
 		openExternalUrl(DESKTOP_DOWNLOAD_URL);
 	};
