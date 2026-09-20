@@ -2,7 +2,7 @@
 // @vitest-environment happy-dom
 
 import {runInAction} from 'mobx';
-import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
+import {afterEach, describe, expect, it, vi} from 'vitest';
 
 
 describe('MobileLayout device detection', () => {
