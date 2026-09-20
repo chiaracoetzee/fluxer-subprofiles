@@ -37,7 +37,7 @@ msgid "(only visible to you)"
 msgstr "(visible uniquement par vous)"
 
 #. placeholder {0}: w.prefix
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:680
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:706
 msgid "(Prefix: {0})"
 msgstr "(Préfixe : {0})"
 
@@ -56,7 +56,7 @@ msgid "{0, plural, one {# member} other {# members}}"
 msgstr "{0, plural, one {# membre} other {# membres}}"
 
 #. placeholder {0}: importResults.warnings.length
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:671
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:697
 msgid "{0} notice(s) during import"
 msgstr "{0} remarque(s) lors de l'importation"
 
@@ -64,7 +64,7 @@ msgstr "{0} remarque(s) lors de l'importation"
 #. placeholder {1}: progress.total
 #. placeholder {2}: progress.label ?? 'items'
 #. placeholder {3}: progress.percent
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:643
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:669
 msgid "{0} of {1} {2} ({3}%)"
 msgstr "{0} sur {1} {2} ({3} %)"
 
@@ -4433,7 +4433,7 @@ msgid "Apply theme"
 msgstr "Appliquer le thème"
 
 #. Short confirmation button label in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:153
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:157
 msgid "Apply to all communities"
 msgstr "Appliquer à toutes les communautés"
 
@@ -4551,7 +4551,7 @@ msgstr "Voulez-vous vraiment expulser <0>{targetUserTag}</0> de la communauté ?
 msgid "Are you sure you want to remove <0>{engineName}</0>?"
 msgstr "Voulez-vous vraiment supprimer <0>{engineName}</0> ?"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:437
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:463
 msgid "Are you sure you want to replace all <0>{existingCount}</0> existing persona(s)? This will permanently delete them from your account and cannot be undone."
 msgstr "Voulez-vous vraiment remplacer l'ensemble des <0>{existingCount}</0> persona(s) existante(s) ? Elles seront définitivement supprimées de votre compte et cette action est irréversible."
 
@@ -6452,7 +6452,7 @@ msgstr "Impossible d’envoyer des fichiers ici"
 #: src/features/moderation/components/modals/BanMemberModal.tsx:262
 #: src/features/moderation/components/modals/RemoveTimeoutModal.tsx:70
 #: src/features/moderation/components/modals/TimeoutMemberModal.tsx:126
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:698
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:724
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:1022
 #: src/features/theme/components/modals/ThemeAcceptModal.tsx:173
 #: src/features/user/components/modals/EmailChangeModal.tsx:278
@@ -7511,7 +7511,7 @@ msgstr "Choisir une méthode"
 msgid "Choose a new password."
 msgstr "Choisissez un nouveau mot de passe."
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:503
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:529
 msgid "Choose a PluralKit export (.json) or drag & drop"
 msgstr "Choisissez un export PluralKit (.json) ou glissez-déposez-le"
 
@@ -8083,7 +8083,7 @@ msgid "Click to open the color picker and choose a new color."
 msgstr "Cliquez pour ouvrir le sélecteur de couleurs et choisir une nouvelle couleur."
 
 #. Tooltip on the add-reaction button in the inline message hover action bar.
-#: src/features/channel/components/MessageActionBar.tsx:69
+#: src/features/channel/components/MessageActionBar.tsx:72
 msgid "Click to react"
 msgstr "Cliquer pour réagir"
 
@@ -11235,7 +11235,7 @@ msgstr "Déboguer le membre"
 #. Developer-mode action that opens the message debug modal.
 #. Developer-mode item in the message action bar overflow menu. Opens the message debug modal.
 #. Developer-mode message context menu item that opens an internal debug view for the message.
-#: src/features/channel/components/MessageActionBar.tsx:81
+#: src/features/channel/components/MessageActionBar.tsx:84
 #: src/features/channel/components/MessageActionMenu.tsx:106
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:66
 msgid "Debug message"
@@ -11959,7 +11959,7 @@ msgstr "Détails"
 msgid "Detect while typing"
 msgstr "Détection pendant la saisie"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:531
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:557
 msgid "Detected System Name / Tag"
 msgstr "Nom / balise de système détecté"
 
@@ -12783,7 +12783,7 @@ msgstr "Ne plus suggérer {deviceName}"
 #: src/features/input/components/KeybindRecorder.tsx:470
 #: src/features/moderation/components/report_modal/IARModal.tsx:94
 #: src/features/moderation/components/report/ReportBreadcrumbs.tsx:31
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:718
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:744
 #: src/features/search/components/search/ChannelFilterSheet.tsx:165
 #: src/features/search/components/search/HasFilterSheet.tsx:206
 #: src/features/search/components/search/UserFilterSheet.tsx:186
@@ -12814,7 +12814,7 @@ msgstr "Double-cliquez sur une personne pour regarder sa diffusion."
 
 #. Settings search entry label for double-clicking a message to edit it.
 #. Short label for an advanced message editing preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:298
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:309
 #: src/features/user/components/settings_utils/search_index/AdvancedSettingsIndex.ts:56
 msgid "Double-click to edit"
 msgstr "Double-clic pour modifier"
@@ -13894,7 +13894,7 @@ msgid "Enable self-hosted mode client-side. Hides all premium and billing UI."
 msgstr "Activer le mode auto-hébergé côté client. Masque toutes les interfaces utilisateur premium et de facturation."
 
 #. Short label for an advanced message action bar preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:61
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:65
 msgid "Enable Shift to expand"
 msgstr "Activer Maj pour développer"
 
@@ -14725,7 +14725,7 @@ msgstr "Exporter la bibliothèque"
 msgid "Export my data"
 msgstr "Exporter mes données"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:527
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:553
 msgid "Export Summary"
 msgstr "Résumé de l'export"
 
@@ -15815,7 +15815,7 @@ msgstr "Formulaires"
 #. Message action label for forwarding the selected message to another channel or DM.
 #. Message context menu item that opens the forward-to-channel picker.
 #. Tooltip on the forward button in the inline message hover action bar.
-#: src/features/channel/components/MessageActionBar.tsx:85
+#: src/features/channel/components/MessageActionBar.tsx:88
 #: src/features/channel/components/MessageActionMenu.tsx:86
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:54
 msgid "Forward"
@@ -17233,13 +17233,13 @@ msgstr "Masquer les salons mis en sourdine"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced sidebar preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:145
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:149
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:487
 msgid "Hide muted channels by default"
 msgstr "Masquer les salons mis en sourdine par défaut"
 
 #. Confirmation prompt in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:149
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:153
 msgid "Hide muted channels by default?"
 msgstr "Masquer les salons mis en sourdine par défaut ?"
 
@@ -17864,11 +17864,11 @@ msgid "Import a .css file to get started, or paste your own CSS in Quick CSS."
 msgstr "Importez un fichier .css pour commencer, ou collez votre propre CSS dans CSS rapide."
 
 #. Modal title for PluralKit import step completed
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:472
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:498
 msgid "Import Complete"
 msgstr "Importation terminée"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:656
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:682
 msgid "Import Complete!"
 msgstr "Importation terminée !"
 
@@ -17899,7 +17899,7 @@ msgid "Import folder"
 msgstr "Importer un dossier"
 
 #. Modal title for PluralKit import step select
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:459
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:485
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:1044
 msgid "Import from PluralKit"
 msgstr "Importer depuis PluralKit"
@@ -17918,7 +17918,7 @@ msgstr "Importer une bibliothèque"
 msgid "Import more"
 msgstr "Importer plus"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:571
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:597
 msgid "Import Strategy"
 msgstr "Stratégie d'importation"
 
@@ -17972,11 +17972,11 @@ msgid "Imported theme has been applied."
 msgstr "Le thème importé a été appliqué."
 
 #. Modal title for PluralKit import step importing
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:466
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:492
 msgid "Importing Personas..."
 msgstr "Importation des personas…"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:712
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:738
 msgid "Importing..."
 msgstr "Importation…"
 
@@ -18977,7 +18977,7 @@ msgstr "Passer d'un salon non lu à l'autre"
 msgid "Jump between unread channels with mentions"
 msgstr "Passer d'un salon non lu à l'autre avec des mentions"
 
-#: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:75
+#: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:78
 msgid "Jump straight to the app to continue."
 msgstr "Accédez directement à l'app pour continuer."
 
@@ -19112,7 +19112,7 @@ msgstr "Conserver les pièces jointes"
 msgid "Keep attachments when clearing an edit"
 msgstr "Conserver les pièces jointes lors de la suppression d'une modification"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:586
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:612
 msgid "Keep existing and add new (Recommended)"
 msgstr "Conserver les existantes et ajouter les nouvelles (Recommandé)"
 
@@ -19155,7 +19155,7 @@ msgid "Keep window dimensions and placement between reloads"
 msgstr "Conserver la taille et l'emplacement de la fenêtre entre les rechargements"
 
 #. placeholder {0}: pkData.members?.length ?? 0
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:589
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:615
 msgid "Keep your {existingCount} current persona(s) and add all {0} imported personas alongside them as new entries."
 msgstr "Conserve vos {existingCount} persona(s) actuelle(s) et ajoute les {0} personas importées comme nouvelles entrées."
 
@@ -20809,7 +20809,7 @@ msgstr "Les membres sont retirés de la communauté lorsqu’ils passent hors li
 msgid "Members with \"{pinMessagesPermissionLabel}\" can pin messages for everyone."
 msgstr "Les membres disposant de la permission « {pinMessagesPermissionLabel} » peuvent épingler des messages pour tout le monde."
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:546
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:572
 msgid "Members with Avatars"
 msgstr "Membres avec avatars"
 
@@ -21028,7 +21028,7 @@ msgstr "Le message contient des médias en pièce jointe"
 #. Title of the developer-mode message debug modal opened from the message action bar.
 #. Title of the developer-mode message debug modal opened from the message context menu.
 #. Title of the developer-mode message debug modal.
-#: src/features/channel/components/MessageActionBar.tsx:73
+#: src/features/channel/components/MessageActionBar.tsx:76
 #: src/features/channel/components/MessageActionMenu.tsx:74
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:62
 msgid "Message debug"
@@ -21589,7 +21589,7 @@ msgstr "Cadeau d’un mois"
 #: src/features/auth/components/accounts/AccountRow.tsx:23
 #: src/features/channel/components/bottomsheets/channel_details_bottom_sheet/ChannelDetailsBottomSheetShared.ts:142
 #: src/features/channel/components/friends/FriendListItem.tsx:63
-#: src/features/channel/components/MessageActionBar.tsx:77
+#: src/features/channel/components/MessageActionBar.tsx:80
 #: src/features/user/components/modals/tabs/component_gallery_tab/ComponentGalleryTabButtonsTab.tsx:125
 msgid "More"
 msgstr "Plus"
@@ -22417,15 +22417,15 @@ msgid "New category"
 msgstr "Nouvelle catégorie"
 
 #. Short confirmation button label in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:157
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:161
 msgid "New communities only"
 msgstr "Nouvelles communautés uniquement"
 
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:679
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:690
 msgid "New communities you join will automatically have muted channels hidden. Would you also like to apply this setting to all your existing communities?"
 msgstr "Les salons mis en sourdine seront automatiquement masqués dans les nouvelles communautés que vous rejoindrez. Voulez-vous aussi appliquer ce réglage à toutes vos communautés actuelles ?"
 
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:710
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:721
 msgid "New communities you join will no longer have muted channels hidden automatically. Would you also like to show muted channels in all your existing communities?"
 msgstr "Les salons mis en sourdine des nouvelles communautés que vous rejoindrez ne seront plus masqués automatiquement. Souhaitez-vous également afficher les salons mis en sourdine dans toutes vos communautés existantes ?"
 
@@ -23273,7 +23273,7 @@ msgstr "Sans conversion"
 #: src/features/channel/components/channel_header_components/developer_tools/DeveloperToolsShared.ts:41
 #: src/features/guild/components/modals/guild_tabs/GuildModerationTab.tsx:47
 #: src/features/guild/utils/guild_tabs/audit_log/AuditLogSharedMessages.ts:52
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:534
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:560
 #: src/features/user/components/modals/tabs/accessibility_tab/VisualTab.tsx:37
 #: src/features/user/components/modals/tabs/components/EntranceSoundSection.tsx:146
 #: src/features/user/components/modals/tabs/privacy_safety_tab/data_request_modal/DataRequestModal.tsx:220
@@ -23836,7 +23836,7 @@ msgid "Open {macosSystemSettingsName} → {macosPrivacyAndSecuritySettingsName} 
 msgstr "Ouvrez « {macosSystemSettingsName} » → « {macosPrivacyAndSecuritySettingsName} » → « {macosScreenRecordingPermissionName} », puis autorisez {productName}. Si {productName2} est déjà activé, quittez complètement et redémarrez {productName3} pour que macOS applique l’autorisation."
 
 #. Button label that opens the desktop app. productName is the app name.
-#: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:27
+#: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:29
 msgid "Open {productName}"
 msgstr "Ouvrir {productName}"
 
@@ -24074,7 +24074,7 @@ msgid "Open image link"
 msgstr "Ouvrir le lien de l'image"
 
 #. Title in a web prompt that opens the same flow in the desktop app. productName is the app name.
-#: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:23
+#: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:25
 msgid "Open in {productName} for desktop"
 msgstr "Ouvrir dans {productName} pour ordinateur"
 
@@ -24945,7 +24945,7 @@ msgstr "Permanent"
 msgid "Permanent deletion"
 msgstr "Suppression définitive"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:618
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:644
 msgid "Permanently delete all {existingCount} existing persona(s) and replace them completely with the imported personas."
 msgstr "Supprime définitivement l'ensemble des {existingCount} persona(s) existante(s) et les remplace intégralement par les personas importées."
 
@@ -25933,7 +25933,7 @@ msgid "Processing"
 msgstr "Traitement en cours"
 
 #. placeholder {0}: progress.currentName
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:637
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:663
 msgid "Processing: {0}"
 msgstr "Traitement : {0}"
 
@@ -27481,15 +27481,15 @@ msgstr "Renouvellement le <0>{renewalDate}.</0>"
 msgid "Replace"
 msgstr "Remplacer"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:442
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:468
 msgid "Replace All"
 msgstr "Tout remplacer"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:614
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:640
 msgid "Replace all existing personas (Destructive)"
 msgstr "Remplacer toutes les personas existantes (Destructif)"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:435
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:461
 msgid "Replace All Personas"
 msgstr "Remplacer toutes les personas"
 
@@ -29049,7 +29049,7 @@ msgstr "Faire défiler vers le bas"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:137
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:141
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:443
 msgid "Scroll to bottom when sending a message"
 msgstr "Faire défiler vers le bas lors de l'envoi d'un message"
@@ -29797,7 +29797,7 @@ msgstr "Envoyer le signalement DSA"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:117
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:121
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:127
 msgid "Send file messages in order"
 msgstr "Envoyer les messages de fichiers dans l'ordre"
@@ -30601,7 +30601,7 @@ msgid "Show active now on the home screen to surface friends active in voice. Yo
 msgstr "Affichez « Actif en ce moment » sur l’écran d’accueil pour retrouver vos amis actifs dans les salons vocaux. Vous verrez un aperçu, le contexte du salon, les personnes déjà présentes et un moyen de les rejoindre rapidement."
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:69
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:73
 msgid "Show attachment expiration indicator"
 msgstr "Afficher l'indicateur d'expiration des pièces jointes"
 
@@ -30649,12 +30649,17 @@ msgstr "Afficher les contrôles de volume de connexion"
 msgid "Show context menu shortcuts"
 msgstr "Afficher les raccourcis du menu contextuel"
 
+#. Short label for an advanced message action bar preference.
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:61
+msgid "Show copy button"
+msgstr "Afficher le bouton de copie"
+
 #: src/features/invite/components/InviteDateToggle.tsx:31
 msgid "Show creation date instead of expiration date"
 msgstr "Afficher la date de création au lieu de la date d'expiration"
 
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:93
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:97
 msgid "Show custom emojis in expression autocomplete"
 msgstr "Afficher les emojis personnalisés dans la saisie semi-automatique des expressions"
 
@@ -30664,17 +30669,17 @@ msgid "Show default avatar, ignoring your global profile"
 msgstr "Afficher l'avatar par défaut, en ignorant votre profil global"
 
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:89
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:93
 msgid "Show default emojis in expression autocomplete"
 msgstr "Afficher les emojis par défaut dans la saisie semi-automatique des expressions"
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:73
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:77
 msgid "Show delete button"
 msgstr "Afficher le bouton de suppression"
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:77
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:81
 msgid "Show download button"
 msgstr "Afficher le bouton de téléchargement"
 
@@ -30701,7 +30706,7 @@ msgstr "Afficher les aperçus des liens et les contenus intégrés"
 #. Short label for an advanced message input preference.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:59
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:125
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:129
 msgid "Show emoji button"
 msgstr "Afficher le bouton emoji"
 
@@ -30711,7 +30716,7 @@ msgid "Show emoji reactions on messages"
 msgstr "Afficher les réactions emoji sur les messages"
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:81
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:85
 msgid "Show favorite button"
 msgstr "Afficher le bouton \"Favoris\""
 
@@ -30733,14 +30738,14 @@ msgid "Show focus ring on chat text area"
 msgstr "Afficher le contour de focus dans la zone de texte du chat"
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:65
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:69
 msgid "Show GIF indicator"
 msgstr "Afficher l'indicateur GIF"
 
 #. Plus menu submenu toggle that shows the GIFs button next to the textarea.
 #. Short label for an advanced message input preference.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:43
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:105
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:109
 msgid "Show GIFs button"
 msgstr "Afficher le bouton GIF"
 
@@ -30750,7 +30755,7 @@ msgid "Show icon when collapsed"
 msgstr "Afficher l'icône lorsque le dossier est réduit"
 
 #. Short confirmation button label in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:165
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:169
 msgid "Show in all communities"
 msgstr "Afficher dans toutes les communautés"
 
@@ -30789,7 +30794,7 @@ msgstr "Afficher 5 au maximum (badge +5)"
 #. Plus menu submenu toggle that shows the saved media (memes) button next to the textarea.
 #. Short label for an advanced message input preference.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:47
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:109
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:113
 msgid "Show media button"
 msgstr "Afficher le bouton média"
 
@@ -30915,7 +30920,7 @@ msgstr "Afficher les curseurs de volume des participants par appareil dans les m
 #. Plus menu submenu toggle that shows the persona selector next to the textarea.
 #. Short label for an advanced message input preference.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:51
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:129
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:133
 msgid "Show personas button"
 msgstr "Afficher le bouton des personas"
 
@@ -30935,7 +30940,7 @@ msgid "Show rich previews for YouTube links."
 msgstr "Afficher des aperçus enrichis pour les liens YouTube."
 
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:101
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:105
 msgid "Show saved media in expression autocomplete"
 msgstr "Afficher les médias enregistrés dans la saisie semi-automatique des expressions"
 
@@ -30944,7 +30949,7 @@ msgstr "Afficher les médias enregistrés dans la saisie semi-automatique des ex
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #: src/features/channel/components/textarea/TextareaContextMenu.tsx:102
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:63
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:133
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:137
 msgid "Show send button"
 msgstr "Afficher le bouton d'envoi"
 
@@ -30961,12 +30966,12 @@ msgstr "Afficher le contenu masqué au clic"
 #. Short label for an advanced message input preference.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:55
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:121
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:125
 msgid "Show stickers button"
 msgstr "Afficher le bouton des stickers"
 
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:97
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:101
 msgid "Show stickers in expression autocomplete"
 msgstr "Afficher les stickers dans la saisie semi-automatique des expressions"
 
@@ -30976,7 +30981,7 @@ msgid "Show strikethrough Markdown text in a slightly muted color."
 msgstr "Afficher le texte barré en Markdown dans une couleur légèrement atténuée."
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:85
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:89
 msgid "Show suppress embeds button"
 msgstr "Afficher le bouton « Masquer les contenus intégrés »"
 
@@ -31282,7 +31287,7 @@ msgstr "Passer"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced inbox preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:141
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:145
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:459
 msgid "Skip \"Mark all as read\" confirmation"
 msgstr "Passer la confirmation « Tout marquer comme lu »"
@@ -31756,7 +31761,7 @@ msgstr "Un problème est survenu. Veuillez réessayer plus tard."
 #. Toast error shown when the mature content check request fails unexpectedly.
 #: src/features/auth/components/modals/MatureContentCheckModal.tsx:18
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:564
-#: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:31
+#: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:33
 msgid "Something went wrong. Try again."
 msgstr "Une erreur est survenue. Veuillez réessayer."
 
@@ -32186,7 +32191,7 @@ msgstr "La date de début doit être antérieure à la date de fin."
 msgid "Start drag and drop"
 msgstr "Démarrer le glisser-déposer"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:705
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:731
 msgid "Start Import"
 msgstr "Lancer l'importation"
 
@@ -32462,7 +32467,7 @@ msgid "Stop"
 msgstr "Arrêter"
 
 #. Confirmation prompt in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:161
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:165
 msgid "Stop hiding muted channels by default?"
 msgstr "Arrêter de masquer les salons mis en sourdine par défaut ?"
 
@@ -32773,7 +32778,7 @@ msgid "Success"
 msgstr "Succès"
 
 #. placeholder {0}: importResults.successCount
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:659
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:685
 msgid "Successfully imported {0} persona(s) into your account. All avatar images are safely stored on your local server."
 msgstr "Importation réussie de {0} persona(s) sur votre compte. Toutes les images d'avatar sont stockées en sécurité sur votre serveur local."
 
@@ -32804,7 +32809,7 @@ msgstr "Suggestions"
 msgid "Summary"
 msgstr "Résumé"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:506
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:532
 msgid "Supports PluralKit system export files"
 msgstr "Prend en charge les fichiers d'export de système PluralKit"
 
@@ -33181,7 +33186,7 @@ msgstr "Animations du système"
 msgid "System reduced motion"
 msgstr "Réduction des animations système"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:556
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:582
 msgid "System Tag (Applied to imported personas)"
 msgstr "Balise de système (Appliquée aux personas importées)"
 
@@ -35212,7 +35217,7 @@ msgctxt "channel-topic-field"
 msgid "Topic"
 msgstr "Sujet"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:540
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:566
 msgid "Total Members"
 msgstr "Total des membres"
 
@@ -36749,7 +36754,7 @@ msgstr "Importer des ressources"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced message input privacy preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:113
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:117
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:107
 msgid "Upload attachments before sending"
 msgstr "Envoyer les pièces jointes avant le message"

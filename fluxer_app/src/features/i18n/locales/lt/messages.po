@@ -37,7 +37,7 @@ msgid "(only visible to you)"
 msgstr "(matoma tik jums)"
 
 #. placeholder {0}: w.prefix
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:680
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:706
 msgid "(Prefix: {0})"
 msgstr "(Priešdėlis: {0})"
 
@@ -56,7 +56,7 @@ msgid "{0, plural, one {# member} other {# members}}"
 msgstr "{0, plural, one {# narys} few {# nariai} other {# narių}}"
 
 #. placeholder {0}: importResults.warnings.length
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:671
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:697
 msgid "{0} notice(s) during import"
 msgstr "{0} pranešimas(-ai) importuojant"
 
@@ -64,7 +64,7 @@ msgstr "{0} pranešimas(-ai) importuojant"
 #. placeholder {1}: progress.total
 #. placeholder {2}: progress.label ?? 'items'
 #. placeholder {3}: progress.percent
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:643
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:669
 msgid "{0} of {1} {2} ({3}%)"
 msgstr "{0} iš {1} {2} ({3}%)"
 
@@ -4433,7 +4433,7 @@ msgid "Apply theme"
 msgstr "Taikyti temą"
 
 #. Short confirmation button label in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:153
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:157
 msgid "Apply to all communities"
 msgstr "Taikyti visoms bendruomenėms"
 
@@ -4551,7 +4551,7 @@ msgstr "Ar tikrai norite išmesti <0>{targetUserTag}</0> iš bendruomenės? Šis
 msgid "Are you sure you want to remove <0>{engineName}</0>?"
 msgstr "Ar tikrai norite pašalinti „<0>{engineName}</0>“?"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:437
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:463
 msgid "Are you sure you want to replace all <0>{existingCount}</0> existing persona(s)? This will permanently delete them from your account and cannot be undone."
 msgstr "Ar tikrai norite pakeisti visas <0>{existingCount}</0> esamas personų (-as)? Tai negrįžtamai jas ištrins iš jūsų paskyros ir šio veiksmo atšaukti negalima."
 
@@ -5010,14 +5010,14 @@ msgstr "Automatiškai aptikti kalbą"
 #. Settings search synonym.
 #: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:103
 msgid "Auto-hide"
-msgstr "Auto-hide"
+msgstr "Automatinis slėpimas"
 
 #. Settings section label in Advanced Settings for edge hover peek preference.
 #. Short label for an advanced appearance preference that reveals collapsed sidebars on mouse hover.
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedAppearanceControls.tsx:100
 #: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:91
 msgid "Auto-peek hidden sidebars"
-msgstr "Auto-peek hidden sidebars"
+msgstr "Automatiškai dirstelėti į paslėptas šonines juostas"
 
 #. Short label in the voice tab. Keep it concise.
 #: src/features/user/components/modals/tabs/UserVoiceTab.tsx:116
@@ -6452,7 +6452,7 @@ msgstr "Čia negalima įkelti failų"
 #: src/features/moderation/components/modals/BanMemberModal.tsx:262
 #: src/features/moderation/components/modals/RemoveTimeoutModal.tsx:70
 #: src/features/moderation/components/modals/TimeoutMemberModal.tsx:126
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:698
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:724
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:1022
 #: src/features/theme/components/modals/ThemeAcceptModal.tsx:173
 #: src/features/user/components/modals/EmailChangeModal.tsx:278
@@ -6825,7 +6825,7 @@ msgstr "Slaptažodžio keitimo forma"
 #. Generic action label that opens the persona picker.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:712
 msgid "Change persona"
-msgstr "Change persona"
+msgstr "Keisti personą"
 
 #. Subscription status badge meaning a future billing plan change is scheduled.
 #: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:437
@@ -7511,7 +7511,7 @@ msgstr "Pasirinkite metodą"
 msgid "Choose a new password."
 msgstr "Pasirinkite naują slaptažodį."
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:503
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:529
 msgid "Choose a PluralKit export (.json) or drag & drop"
 msgstr "Pasirinkite PluralKit eksportą (.json) arba nuvilkite jį čia"
 
@@ -8083,7 +8083,7 @@ msgid "Click to open the color picker and choose a new color."
 msgstr "Spustelėkite, kad atidarytumėte spalvų parinkiklį ir pasirinktumėte naują spalvą."
 
 #. Tooltip on the add-reaction button in the inline message hover action bar.
-#: src/features/channel/components/MessageActionBar.tsx:69
+#: src/features/channel/components/MessageActionBar.tsx:72
 msgid "Click to react"
 msgstr "Spustelėkite, kad reaguotumėte"
 
@@ -11235,7 +11235,7 @@ msgstr "Derinti narį"
 #. Developer-mode action that opens the message debug modal.
 #. Developer-mode item in the message action bar overflow menu. Opens the message debug modal.
 #. Developer-mode message context menu item that opens an internal debug view for the message.
-#: src/features/channel/components/MessageActionBar.tsx:81
+#: src/features/channel/components/MessageActionBar.tsx:84
 #: src/features/channel/components/MessageActionMenu.tsx:106
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:66
 msgid "Debug message"
@@ -11959,7 +11959,7 @@ msgstr "Išsami informacija"
 msgid "Detect while typing"
 msgstr "Aptikti rašant"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:531
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:557
 msgid "Detected System Name / Tag"
 msgstr "Aptiktas sistemos pavadinimas / žyma"
 
@@ -12783,7 +12783,7 @@ msgstr "Daugiau nesiūlyti įrenginio „{deviceName}“"
 #: src/features/input/components/KeybindRecorder.tsx:470
 #: src/features/moderation/components/report_modal/IARModal.tsx:94
 #: src/features/moderation/components/report/ReportBreadcrumbs.tsx:31
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:718
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:744
 #: src/features/search/components/search/ChannelFilterSheet.tsx:165
 #: src/features/search/components/search/HasFilterSheet.tsx:206
 #: src/features/search/components/search/UserFilterSheet.tsx:186
@@ -12814,7 +12814,7 @@ msgstr "Dukart spustelėkite dalyvį, kad pradėtumėte žiūrėti jo srautą."
 
 #. Settings search entry label for double-clicking a message to edit it.
 #. Short label for an advanced message editing preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:298
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:309
 #: src/features/user/components/settings_utils/search_index/AdvancedSettingsIndex.ts:56
 msgid "Double-click to edit"
 msgstr "Dukart spustelėkite, norėdami redaguoti"
@@ -13894,7 +13894,7 @@ msgid "Enable self-hosted mode client-side. Hides all premium and billing UI."
 msgstr "Įjungti savarankiško talpinimo režimą kliento pusėje. Paslepia visą Premium ir atsiskaitymo sąsają."
 
 #. Short label for an advanced message action bar preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:61
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:65
 msgid "Enable Shift to expand"
 msgstr "Įjungti išplėtimą laikant „Shift“"
 
@@ -14725,7 +14725,7 @@ msgstr "Eksportuoti biblioteką"
 msgid "Export my data"
 msgstr "Eksportuoti mano duomenis"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:527
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:553
 msgid "Export Summary"
 msgstr "Eksporto santrauka"
 
@@ -15815,7 +15815,7 @@ msgstr "Formos"
 #. Message action label for forwarding the selected message to another channel or DM.
 #. Message context menu item that opens the forward-to-channel picker.
 #. Tooltip on the forward button in the inline message hover action bar.
-#: src/features/channel/components/MessageActionBar.tsx:85
+#: src/features/channel/components/MessageActionBar.tsx:88
 #: src/features/channel/components/MessageActionMenu.tsx:86
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:54
 msgid "Forward"
@@ -17169,7 +17169,7 @@ msgstr "Slėpti avatarus"
 #. Tooltip on the channel header channel list toggle when the channel list is currently shown.
 #: src/features/channel/components/channel_header/shared.ts:81
 msgid "Hide channel list"
-msgstr "Hide channel list"
+msgstr "Slėpti kanalų sąrašą"
 
 #. Settings search entry description. One-line summary of what the settings search entry controls.
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:507
@@ -17233,13 +17233,13 @@ msgstr "Slėpti nutildytus kanalus"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced sidebar preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:145
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:149
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:487
 msgid "Hide muted channels by default"
 msgstr "Slėpti nutildytus kanalus pagal numatytuosius nustatymus"
 
 #. Confirmation prompt in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:149
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:153
 msgid "Hide muted channels by default?"
 msgstr "Slėpti nutildytus kanalus pagal numatytuosius nustatymus?"
 
@@ -17270,7 +17270,7 @@ msgstr "Slėpti peržiūros miniatiūrą"
 #. Tooltip on the channel header server list toggle when the server rail is currently shown.
 #: src/features/channel/components/channel_header/shared.ts:73
 msgid "Hide server list"
-msgstr "Hide server list"
+msgstr "Slėpti serverių sąrašą"
 
 #. Settings search entry description. One-line summary of what the settings search entry controls.
 #: src/features/user/components/settings_utils/search_index/DesktopSettingsIndex.ts:198
@@ -17425,7 +17425,7 @@ msgstr "Užveskite pelę"
 #. Settings section description in Advanced Settings for edge hover peek preference.
 #: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:95
 msgid "Hover near window edges to temporarily reveal collapsed panels."
-msgstr "Hover near window edges to temporarily reveal collapsed panels."
+msgstr "Užveskite pelės žymeklį prie lango kraštų, kad laikinai pamatytumėte suskleistus skydelius."
 
 #: src/features/user/components/modals/tabs/component_gallery_tab/OverlaysTab.tsx:63
 msgid "Hover over buttons to see tooltips in different positions."
@@ -17864,11 +17864,11 @@ msgid "Import a .css file to get started, or paste your own CSS in Quick CSS."
 msgstr "Norėdami pradėti, importuokite .css failą arba įklijuokite savo CSS skiltyje „Greitasis CSS“."
 
 #. Modal title for PluralKit import step completed
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:472
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:498
 msgid "Import Complete"
 msgstr "Importavimas baigtas"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:656
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:682
 msgid "Import Complete!"
 msgstr "Importavimas baigtas!"
 
@@ -17899,7 +17899,7 @@ msgid "Import folder"
 msgstr "Importuoti aplanką"
 
 #. Modal title for PluralKit import step select
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:459
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:485
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:1044
 msgid "Import from PluralKit"
 msgstr "Importuoti iš PluralKit"
@@ -17918,7 +17918,7 @@ msgstr "Importuoti biblioteką"
 msgid "Import more"
 msgstr "Importuoti daugiau"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:571
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:597
 msgid "Import Strategy"
 msgstr "Importavimo strategija"
 
@@ -17972,11 +17972,11 @@ msgid "Imported theme has been applied."
 msgstr "Importuota tema pritaikyta."
 
 #. Modal title for PluralKit import step importing
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:466
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:492
 msgid "Importing Personas..."
 msgstr "Importuojamos personos..."
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:712
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:738
 msgid "Importing..."
 msgstr "Importuojama..."
 
@@ -18977,7 +18977,7 @@ msgstr "Pereiti tarp neskaitytų kanalų"
 msgid "Jump between unread channels with mentions"
 msgstr "Pereiti tarp neskaitytų kanalų su paminėjimais"
 
-#: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:75
+#: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:78
 msgid "Jump straight to the app to continue."
 msgstr "Pereikite tiesiai į programėlę, kad tęstumėte."
 
@@ -19112,7 +19112,7 @@ msgstr "Išsaugoti priedus"
 msgid "Keep attachments when clearing an edit"
 msgstr "Išsaugoti priedus išvalius redagavimą"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:586
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:612
 msgid "Keep existing and add new (Recommended)"
 msgstr "Palikti esamas ir pridėti naujas (Rekomenduojama)"
 
@@ -19155,7 +19155,7 @@ msgid "Keep window dimensions and placement between reloads"
 msgstr "Išsaugoti lango matmenis ir padėtį paleidžiant iš naujo"
 
 #. placeholder {0}: pkData.members?.length ?? 0
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:589
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:615
 msgid "Keep your {existingCount} current persona(s) and add all {0} imported personas alongside them as new entries."
 msgstr "Palikti {existingCount} esamą (-as) personą (-as) ir pridėti visas {0} importuotas personas kaip naujus įrašus."
 
@@ -20124,7 +20124,7 @@ msgstr "Tvarkyti paskyras"
 #. OAuth scope description shown on the consent screen for the personas.write scope.
 #: src/features/app/constants/AppConstants.ts:37
 msgid "Manage and create your personas"
-msgstr "Manage and create your personas"
+msgstr "Tvarkykite ir kurkite savo personas"
 
 #. Security settings section description for account access controls.
 #: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:92
@@ -20809,7 +20809,7 @@ msgstr "Nariai pašalinami, kai yra neprisijungę, nebent jiems priskirtas vaidm
 msgid "Members with \"{pinMessagesPermissionLabel}\" can pin messages for everyone."
 msgstr "Nariai, turintys leidimą „{pinMessagesPermissionLabel}“, gali prisegti žinutes visiems."
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:546
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:572
 msgid "Members with Avatars"
 msgstr "Nariai su avatarais"
 
@@ -21028,7 +21028,7 @@ msgstr "Žinutėje yra pridėta medija"
 #. Title of the developer-mode message debug modal opened from the message action bar.
 #. Title of the developer-mode message debug modal opened from the message context menu.
 #. Title of the developer-mode message debug modal.
-#: src/features/channel/components/MessageActionBar.tsx:73
+#: src/features/channel/components/MessageActionBar.tsx:76
 #: src/features/channel/components/MessageActionMenu.tsx:74
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:62
 msgid "Message debug"
@@ -21589,7 +21589,7 @@ msgstr "Mėnesio dovana"
 #: src/features/auth/components/accounts/AccountRow.tsx:23
 #: src/features/channel/components/bottomsheets/channel_details_bottom_sheet/ChannelDetailsBottomSheetShared.ts:142
 #: src/features/channel/components/friends/FriendListItem.tsx:63
-#: src/features/channel/components/MessageActionBar.tsx:77
+#: src/features/channel/components/MessageActionBar.tsx:80
 #: src/features/user/components/modals/tabs/component_gallery_tab/ComponentGalleryTabButtonsTab.tsx:125
 msgid "More"
 msgstr "Daugiau"
@@ -22417,15 +22417,15 @@ msgid "New category"
 msgstr "Nauja kategorija"
 
 #. Short confirmation button label in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:157
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:161
 msgid "New communities only"
 msgstr "Tik naujos bendruomenės"
 
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:679
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:690
 msgid "New communities you join will automatically have muted channels hidden. Would you also like to apply this setting to all your existing communities?"
 msgstr "Naujose bendruomenėse, prie kurių prisijungsite, nutildyti kanalai bus automatiškai paslėpti. Ar norėtumėte šį nustatymą pritaikyti ir visoms esamoms bendruomenėms?"
 
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:710
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:721
 msgid "New communities you join will no longer have muted channels hidden automatically. Would you also like to show muted channels in all your existing communities?"
 msgstr "Naujose bendruomenėse, prie kurių prisijungsite, nutildyti kanalai nebebus automatiškai slepiami. Ar norėtumėte rodyti nutildytus kanalus ir visose esamose bendruomenėse?"
 
@@ -23273,7 +23273,7 @@ msgstr "Non-convert"
 #: src/features/channel/components/channel_header_components/developer_tools/DeveloperToolsShared.ts:41
 #: src/features/guild/components/modals/guild_tabs/GuildModerationTab.tsx:47
 #: src/features/guild/utils/guild_tabs/audit_log/AuditLogSharedMessages.ts:52
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:534
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:560
 #: src/features/user/components/modals/tabs/accessibility_tab/VisualTab.tsx:37
 #: src/features/user/components/modals/tabs/components/EntranceSoundSection.tsx:146
 #: src/features/user/components/modals/tabs/privacy_safety_tab/data_request_modal/DataRequestModal.tsx:220
@@ -23836,7 +23836,7 @@ msgid "Open {macosSystemSettingsName} → {macosPrivacyAndSecuritySettingsName} 
 msgstr "Atidarykite „{macosSystemSettingsName}“ → „{macosPrivacyAndSecuritySettingsName}“ → „{macosScreenRecordingPermissionName}“, tada leiskite naudoti programai „{productName}“. Jei programa „{productName2}“ jau įgalinta, visiškai uždarykite ir iš naujo paleiskite programą „{productName3}“, kad macOS pritaikytų leidimą."
 
 #. Button label that opens the desktop app. productName is the app name.
-#: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:27
+#: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:29
 msgid "Open {productName}"
 msgstr "Atidaryti „{productName}“"
 
@@ -24074,7 +24074,7 @@ msgid "Open image link"
 msgstr "Atidaryti paveikslėlio nuorodą"
 
 #. Title in a web prompt that opens the same flow in the desktop app. productName is the app name.
-#: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:23
+#: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:25
 msgid "Open in {productName} for desktop"
 msgstr "Atidaryti darbalaukio programoje „{productName}“"
 
@@ -24847,7 +24847,7 @@ msgstr "Mokėjimai nepasiekiami"
 #. Settings search synonym.
 #: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:107
 msgid "Peek"
-msgstr "Peek"
+msgstr "Dirstelėti"
 
 #. Discovery application status badge in the community Discovery settings tab. The application is awaiting staff review.
 #. Tab label in the DM friends view showing pending friend requests.
@@ -24945,7 +24945,7 @@ msgstr "Visam laikui"
 msgid "Permanent deletion"
 msgstr "Visam laikui ištrinti"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:618
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:644
 msgid "Permanently delete all {existingCount} existing persona(s) and replace them completely with the imported personas."
 msgstr "Negrįžtamai ištrinti visas {existingCount} esamas personas ir visiškai jas pakeisti importuotomis personomis."
 
@@ -25933,7 +25933,7 @@ msgid "Processing"
 msgstr "Apdorojama"
 
 #. placeholder {0}: progress.currentName
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:637
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:663
 msgid "Processing: {0}"
 msgstr "Apdorojama: {0}"
 
@@ -27481,15 +27481,15 @@ msgstr "Atnaujinama <0>{renewalDate}.</0>"
 msgid "Replace"
 msgstr "Pakeisti"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:442
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:468
 msgid "Replace All"
 msgstr "Pakeisti viską"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:614
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:640
 msgid "Replace all existing personas (Destructive)"
 msgstr "Pakeisti visas esamas personas (Destruktyvu)"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:435
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:461
 msgid "Replace All Personas"
 msgstr "Pakeisti visas personas"
 
@@ -29049,7 +29049,7 @@ msgstr "Slinkti į apačią"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:137
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:141
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:443
 msgid "Scroll to bottom when sending a message"
 msgstr "Slinkti į apačią išsiunčiant žinutę"
@@ -29797,7 +29797,7 @@ msgstr "Siųsti DSA pranešimą"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:117
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:121
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:127
 msgid "Send file messages in order"
 msgstr "Siųsti failų žinutes iš eilės"
@@ -30601,7 +30601,7 @@ msgid "Show active now on the home screen to surface friends active in voice. Yo
 msgstr "Rodyti „Aktyvūs dabar“ pagrindiniame ekrane, kad matytumėte draugus, kurie aktyvūs balso pokalbiuose. Matysite peržiūrą, kanalo kontekstą, kas jau ten yra, ir greitą būdą prisijungti."
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:69
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:73
 msgid "Show attachment expiration indicator"
 msgstr "Rodyti priedo galiojimo pabaigos indikatorių"
 
@@ -30649,12 +30649,17 @@ msgstr "Rodyti ryšio garsumo valdiklius"
 msgid "Show context menu shortcuts"
 msgstr "Rodyti kontekstinio meniu sparčiuosius klavišus"
 
+#. Short label for an advanced message action bar preference.
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:61
+msgid "Show copy button"
+msgstr "Rodyti kopijavimo mygtuką"
+
 #: src/features/invite/components/InviteDateToggle.tsx:31
 msgid "Show creation date instead of expiration date"
 msgstr "Rodyti sukūrimo, o ne galiojimo datą"
 
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:93
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:97
 msgid "Show custom emojis in expression autocomplete"
 msgstr "Rodyti pasirinktinius jaustukus išraiškų automatiniame pildyme"
 
@@ -30664,17 +30669,17 @@ msgid "Show default avatar, ignoring your global profile"
 msgstr "Rodyti numatytąjį avatarą, ignoruojant jūsų visuotinį profilį"
 
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:89
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:93
 msgid "Show default emojis in expression autocomplete"
 msgstr "Rodyti numatytuosius jaustukus išraiškų automatiniame pildyme"
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:73
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:77
 msgid "Show delete button"
 msgstr "Rodyti ištrynimo mygtuką"
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:77
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:81
 msgid "Show download button"
 msgstr "Rodyti atsisiuntimo mygtuką"
 
@@ -30701,7 +30706,7 @@ msgstr "Rodyti įterptuosius elementus ir svetainių nuorodų peržiūras"
 #. Short label for an advanced message input preference.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:59
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:125
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:129
 msgid "Show emoji button"
 msgstr "Rodyti jaustukų mygtuką"
 
@@ -30711,7 +30716,7 @@ msgid "Show emoji reactions on messages"
 msgstr "Rodyti jaustukų reakcijas prie žinučių"
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:81
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:85
 msgid "Show favorite button"
 msgstr "Rodyti mėgstamiausių mygtuką"
 
@@ -30733,14 +30738,14 @@ msgid "Show focus ring on chat text area"
 msgstr "Rodyti fokusavimo žiedą pokalbio teksto laukelyje"
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:65
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:69
 msgid "Show GIF indicator"
 msgstr "Rodyti GIF indikatorių"
 
 #. Plus menu submenu toggle that shows the GIFs button next to the textarea.
 #. Short label for an advanced message input preference.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:43
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:105
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:109
 msgid "Show GIFs button"
 msgstr "Rodyti GIF mygtuką"
 
@@ -30750,7 +30755,7 @@ msgid "Show icon when collapsed"
 msgstr "Rodyti piktogramą sutraukus"
 
 #. Short confirmation button label in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:165
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:169
 msgid "Show in all communities"
 msgstr "Rodyti visose bendruomenėse"
 
@@ -30789,7 +30794,7 @@ msgstr "Rodyti daugiausia 5 (+5 ženklelis)"
 #. Plus menu submenu toggle that shows the saved media (memes) button next to the textarea.
 #. Short label for an advanced message input preference.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:47
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:109
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:113
 msgid "Show media button"
 msgstr "Rodyti medijos mygtuką"
 
@@ -30915,9 +30920,9 @@ msgstr "Rodyti atskirų įrenginių dalyvių garsumo slankiklius balso meniu"
 #. Plus menu submenu toggle that shows the persona selector next to the textarea.
 #. Short label for an advanced message input preference.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:51
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:129
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:133
 msgid "Show personas button"
-msgstr "Show personas button"
+msgstr "Rodyti personų mygtuką"
 
 #. Developer option label for exposing the staff-only profile timezone section in profile settings.
 #: src/features/devtools/components/DeveloperOptionsToggleGroups.ts:135
@@ -30935,7 +30940,7 @@ msgid "Show rich previews for YouTube links."
 msgstr "Rodyti išsamias YouTube nuorodų peržiūras."
 
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:101
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:105
 msgid "Show saved media in expression autocomplete"
 msgstr "Rodyti išsaugotą mediją išraiškų automatiniame pildyme"
 
@@ -30944,14 +30949,14 @@ msgstr "Rodyti išsaugotą mediją išraiškų automatiniame pildyme"
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #: src/features/channel/components/textarea/TextareaContextMenu.tsx:102
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:63
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:133
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:137
 msgid "Show send button"
 msgstr "Rodyti siuntimo mygtuką"
 
 #. Tooltip on the channel header server list toggle when the server rail is currently hidden.
 #: src/features/channel/components/channel_header/shared.ts:77
 msgid "Show server list"
-msgstr "Show server list"
+msgstr "Rodyti serverių sąrašą"
 
 #. Label in the display tab.
 #: src/features/user/components/modals/tabs/chat_settings_tab/DisplayTab.tsx:26
@@ -30961,12 +30966,12 @@ msgstr "Rodyti paslėptą turinį paspaudus"
 #. Short label for an advanced message input preference.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:55
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:121
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:125
 msgid "Show stickers button"
 msgstr "Rodyti lipdukų mygtuką"
 
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:97
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:101
 msgid "Show stickers in expression autocomplete"
 msgstr "Rodyti lipdukus išraiškų automatiniame pildyme"
 
@@ -30976,7 +30981,7 @@ msgid "Show strikethrough Markdown text in a slightly muted color."
 msgstr "Rodyti perbrauktą Markdown tekstą šiek tiek prislopinta spalva."
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:85
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:89
 msgid "Show suppress embeds button"
 msgstr "Rodyti mygtuką „Slėpti įterptąjį turinį“"
 
@@ -31282,7 +31287,7 @@ msgstr "Praleisti"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced inbox preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:141
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:145
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:459
 msgid "Skip \"Mark all as read\" confirmation"
 msgstr "Praleisti patvirtinimą „Pažymėti visus kaip perskaitytus“"
@@ -31756,7 +31761,7 @@ msgstr "Kažkas nepavyko. Bandykite dar kartą vėliau."
 #. Toast error shown when the mature content check request fails unexpectedly.
 #: src/features/auth/components/modals/MatureContentCheckModal.tsx:18
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:564
-#: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:31
+#: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:33
 msgid "Something went wrong. Try again."
 msgstr "Kažkas nepavyko. Bandykite dar kartą."
 
@@ -32186,7 +32191,7 @@ msgstr "Pradžios data turi būti ankstesnė už pabaigos datą."
 msgid "Start drag and drop"
 msgstr "Pradėti vilkti ir mesti"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:705
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:731
 msgid "Start Import"
 msgstr "Pradėti importavimą"
 
@@ -32462,7 +32467,7 @@ msgid "Stop"
 msgstr "Stabdyti"
 
 #. Confirmation prompt in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:161
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:165
 msgid "Stop hiding muted channels by default?"
 msgstr "Nebeslėpti nutildytų kanalų pagal numatytuosius nustatymus?"
 
@@ -32773,7 +32778,7 @@ msgid "Success"
 msgstr "Pavyko"
 
 #. placeholder {0}: importResults.successCount
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:659
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:685
 msgid "Successfully imported {0} persona(s) into your account. All avatar images are safely stored on your local server."
 msgstr "Sėkmingai importuota {0} persona(-ų) į jūsų paskyrą. Visi avatarų paveikslėliai saugiai išsaugoti jūsų vietiniame serveryje."
 
@@ -32804,7 +32809,7 @@ msgstr "Pasiūlymai"
 msgid "Summary"
 msgstr "Suvestinė"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:506
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:532
 msgid "Supports PluralKit system export files"
 msgstr "Palaiko PluralKit sistemos eksporto failus"
 
@@ -33181,7 +33186,7 @@ msgstr "Sistemos judesys"
 msgid "System reduced motion"
 msgstr "Sistemos sumažintas judesys"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:556
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:582
 msgid "System Tag (Applied to imported personas)"
 msgstr "Sistemos žyma (Taikoma importuotoms personoms)"
 
@@ -33327,7 +33332,7 @@ msgstr "Taikosi į žmones dėl saugomų savybių."
 #. Settings search synonym.
 #: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:99
 msgid "Taskbar"
-msgstr "Taskbar"
+msgstr "Užduočių juosta"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
@@ -35212,7 +35217,7 @@ msgctxt "channel-topic-field"
 msgid "Topic"
 msgstr "Tema"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:540
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:566
 msgid "Total Members"
 msgstr "Iš viso narių"
 
@@ -36749,7 +36754,7 @@ msgstr "Įkelti išteklius"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced message input privacy preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:113
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:117
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:107
 msgid "Upload attachments before sending"
 msgstr "Įkelti priedus prieš siunčiant"
@@ -38190,7 +38195,7 @@ msgstr "Peržiūrėti el. pašto adresą"
 #. OAuth scope description shown on the consent screen for the personas.read scope.
 #: src/features/app/constants/AppConstants.ts:33
 msgid "View your personas"
-msgstr "View your personas"
+msgstr "Peržiūrėti savo personas"
 
 #. Notification sound setting label. Sound played when a viewer joins your screen share or stream.
 #: src/features/notification/utils/SoundLabels.ts:36
