@@ -5,7 +5,6 @@ import {type ApiTestHarness, createApiTestHarness} from '@app/api/test/ApiTestHa
 import {HTTP_STATUS} from '@app/api/test/TestConstants';
 import {createBuilder} from '@app/api/test/TestRequestBuilder';
 import {createUserID} from '@app/api/BrandedTypes';
-import {UserFlags} from '@fluxer/constants/src/UserConstants';
 import {User} from '@app/api/models/User';
 import {UserRepository} from '@app/api/user/repositories/UserRepository';
 import {MAX_SYSTEM_DM_ALL_USERS_LIMIT} from '@app/api/admin/AdminService';
@@ -35,7 +34,7 @@ describe('Admin System DM all_users broadcast', () => {
 	test('successfully queues system DM for all active users', async () => {
 		const admin = await createTestAccount(harness);
 		const updated = await setUserACLs(harness, admin, ['admin:authenticate', 'system_dm:send']);
-		const recipient = await createTestAccount(harness);
+		await createTestAccount(harness);
 
 		const response = await createBuilder<SendSystemDmResponse>(harness, `${updated.token}`)
 			.post('/admin/system-dms')
