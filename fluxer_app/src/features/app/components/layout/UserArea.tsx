@@ -56,7 +56,6 @@ import {useEffect, useRef} from 'react';
 
 // Fork imports.
 
-import LayoutState from '@app/features/ui/state/LayoutState';
 import {useCallback, useState} from 'react';
 
 const PUSH_TO_TALK_IS_ON_HOLD_TO_SPEAK_DESCRIPTOR = msg({
@@ -303,8 +302,6 @@ const UserAreaInner = observer(
 			<section
 				className={wrapperClassName}
 				aria-label={i18n._(USER_CONTROLS_DESCRIPTOR)}
-				onMouseEnter={handleMouseEnter}
-				onMouseLeave={handleMouseLeave}
 				data-flx="app.user-area.user-area-inner.section"
 			>
 				{hasVoiceConnection && (
