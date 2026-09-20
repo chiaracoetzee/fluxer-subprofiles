@@ -1,9 +1,29 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-const userAgent = navigator.userAgent;
-const isIOSDevice = /iPad|iPhone|iPod/i.test(userAgent);
+import Bowser from 'bowser';
+
+const userAgent = typeof navigator !== 'undefined' ? navigator.userAgent : '';
+
+const getPlatformType = (): string => {
+	if (!userAgent) return 'desktop';
+	try {
+		return Bowser.getParser(userAgent).getPlatformType() || 'desktop';
+	} catch {
+		return 'desktop';
+	}
+};
+
+const platformType = getPlatformType();
+
+const isIPadOS =
+	typeof navigator !== 'undefined' &&
+	navigator.platform === 'MacIntel' &&
+	navigator.maxTouchPoints > 1;
+
+const isIOSDevice = /iPad|iPhone|iPod/i.test(userAgent) || isIPadOS;
 const isAndroidDevice = /Android/i.test(userAgent);
 const isElectron =
+	typeof window !== 'undefined' &&
 	(
 		window as {
 			electron?: unknown;
@@ -11,13 +31,19 @@ const isElectron =
 	).electron !== undefined;
 const isIOSWeb = isIOSDevice && !isElectron;
 const isPWA =
-	window.matchMedia?.('(display-mode: standalone)').matches ||
-	(
-		navigator as {
-			standalone?: boolean;
-		}
-	).standalone === true;
-const isMobileBrowser = isIOSDevice || isAndroidDevice;
+	typeof window !== 'undefined' &&
+	(window.matchMedia?.('(display-mode: standalone)').matches ||
+		(
+			navigator as {
+				standalone?: boolean;
+			}
+		).standalone === true);
+
+const isMobileDevice = platformType === 'mobile';
+const isTabletDevice = platformType === 'tablet' || isIPadOS;
+const isMobileBrowser = isMobileDevice || isTabletDevice;
+const isDesktop = !isMobileBrowser;
+
 
 type PlatformSelector<T> = {
 	web?: T;
@@ -53,6 +79,9 @@ export const Platform = {
 	isPWA,
 	isAppleDevice: isIOSDevice,
 	isMobileBrowser,
+	isMobileDevice,
+	isTabletDevice,
+	isDesktop,
 	select: selectValue,
 };
 
