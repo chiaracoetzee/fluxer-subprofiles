@@ -25010,6 +25010,16 @@ msgstr "ペルソナを作成しました"
 msgid "Persona deleted"
 msgstr "ペルソナを削除しました"
 
+#. Fallback screen reader label for the persona profile modal. Keep it concise.
+#: src/features/persona/components/PersonaProfileModal.tsx:18
+msgid "Persona profile"
+msgstr "ペルソナプロフィール"
+
+#. Screen reader label for the persona profile modal. Keep it concise. Preserve {name}; it is inserted by code.
+#: src/features/persona/components/PersonaProfileModal.tsx:14
+msgid "Persona profile: {name}"
+msgstr "ペルソナプロフィール: {name}"
+
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:971
 msgid "Persona Tags (Prefix & Suffix)"
 msgstr "ペルソナタグ (プレフィックスとサフィックス)"
