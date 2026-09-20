@@ -11,9 +11,9 @@ export interface MessageEmojiAnimationState {
 export function shouldAnimateMessageEmojiByDefault({
 	animateEmojiSetting,
 	animatedMediaPlaybackAllowed,
-	stayInteractiveWhenUnfocused,
-	windowFocused,
-	windowVisible,
+	stayInteractiveWhenUnfocused = false,
+	windowFocused = true,
+	windowVisible = true,
 }: MessageEmojiAnimationState): boolean {
 	if (!animateEmojiSetting) return false;
 	if (animatedMediaPlaybackAllowed !== undefined) return animatedMediaPlaybackAllowed;
