@@ -25100,6 +25100,16 @@ msgstr "人格已建立"
 msgid "Persona deleted"
 msgstr "人格已刪除"
 
+#. Fallback screen reader label for the persona profile modal. Keep it concise.
+#: src/features/persona/components/PersonaProfileModal.tsx:18
+msgid "Persona profile"
+msgstr "人格個人檔案"
+
+#. Screen reader label for the persona profile modal. Keep it concise. Preserve {name}; it is inserted by code.
+#: src/features/persona/components/PersonaProfileModal.tsx:14
+msgid "Persona profile: {name}"
+msgstr "人格個人檔案：{name}"
+
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:971
 msgid "Persona Tags (Prefix & Suffix)"
 msgstr "人格標籤 (前綴和後綴)"
