@@ -5,6 +5,10 @@ import {useSaveData} from '@app/features/app/hooks/useSaveData';
 import UserSettings from '@app/features/user/state/UserSettings';
 import {StickerAnimationOptions} from '@fluxer/constants/src/UserConstants';
 
+// Fork imports.
+
+import {useAnimatedMediaPlaybackAllowed} from '@app/features/app/hooks/useAnimatedMediaPlayback';
+
 export type ShouldAnimateKind =
 	| 'avatar'
 	| 'emoji'
@@ -20,6 +24,7 @@ export interface UseShouldAnimateOptions {
 	isHovering?: boolean;
 	isFocused?: boolean;
 	entitlementOk?: boolean;
+	animatedMediaPlaybackAllowed?: boolean;
 }
 
 function isKeptUnderReducedMotion(kind: ShouldAnimateKind): boolean {
@@ -59,6 +64,7 @@ interface ShouldAnimateDecisionInput {
 	isInteracting: boolean;
 	entitlementOk?: boolean;
 	saveData: boolean;
+	animatedMediaPlaybackAllowed?: boolean;
 }
 
 function resolveShouldAnimateDecision({
@@ -69,10 +75,12 @@ function resolveShouldAnimateDecision({
 	isInteracting,
 	entitlementOk,
 	saveData,
+	animatedMediaPlaybackAllowed = true,
 }: ShouldAnimateDecisionInput): boolean {
 	if (!isAnimated) return false;
 	if (entitlementOk === false) return false;
 	if (saveData) return false;
+	if (!animatedMediaPlaybackAllowed) return false;
 	if (allowance === 'NEVER') return false;
 	if (reducedMotion && !keptUnderReducedMotion) return isInteracting;
 	if (allowance === 'ALWAYS') return true;
@@ -85,8 +93,10 @@ export function useShouldAnimate({
 	isHovering = false,
 	isFocused = false,
 	entitlementOk,
+	animatedMediaPlaybackAllowed: explicitPlaybackAllowed,
 }: UseShouldAnimateOptions): boolean {
 	const saveData = useSaveData();
+	const mediaPlaybackAllowed = useAnimatedMediaPlaybackAllowed({isAnimated});
 	const allowance = getKindAllowance(kind);
 	return resolveShouldAnimateDecision({
 		isAnimated,
@@ -96,5 +106,6 @@ export function useShouldAnimate({
 		isInteracting: isHovering || isFocused,
 		entitlementOk,
 		saveData,
+		animatedMediaPlaybackAllowed: explicitPlaybackAllowed ?? mediaPlaybackAllowed,
 	});
 }
