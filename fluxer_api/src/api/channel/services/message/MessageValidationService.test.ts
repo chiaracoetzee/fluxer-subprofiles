@@ -111,7 +111,39 @@ describe('MessageValidationService.validateMessageContent', () => {
 		).not.toThrow();
 	});
 
-	it('allows updating subprofile even when content is empty', () => {
+	it('allows updating subprofile on existing message with content', () => {
+		const service = createValidationService();
+		expect(() =>
+			service.validateMessageContent(
+				{
+					subprofile: {id: 'p1', name: 'Alice'},
+				} as never,
+				null,
+				{
+					isUpdate: true,
+					existingMessage: {content: 'Hello world', attachments: [], embeds: []} as never,
+				},
+			),
+		).not.toThrow();
+	});
+
+	it('allows updating subprofile on existing message with attachments but no text', () => {
+		const service = createValidationService();
+		expect(() =>
+			service.validateMessageContent(
+				{
+					subprofile: {id: 'p1', name: 'Alice'},
+				} as never,
+				null,
+				{
+					isUpdate: true,
+					existingMessage: {content: '', attachments: [{filename: 'pic.png'}], embeds: []} as never,
+				},
+			),
+		).not.toThrow();
+	});
+
+	it('rejects clearing content when updating subprofile without remaining attachments or embeds', () => {
 		const service = createValidationService();
 		expect(() =>
 			service.validateMessageContent(
@@ -120,25 +152,15 @@ describe('MessageValidationService.validateMessageContent', () => {
 					subprofile: {id: 'p1', name: 'Alice'},
 				} as never,
 				null,
-				{isUpdate: true},
-			),
-		).not.toThrow();
-	});
-
-	it('allows updating subprofile only without content or attachments', () => {
-		const service = createValidationService();
-		expect(() =>
-			service.validateMessageContent(
 				{
-					subprofile: {id: 'p1', name: 'Alice'},
-				} as never,
-				null,
-				{isUpdate: true},
+					isUpdate: true,
+					existingMessage: {content: 'Original content', attachments: [], embeds: []} as never,
+				},
 			),
-		).not.toThrow();
+		).toThrow(CannotSendEmptyMessageError);
 	});
 
-	it('still rejects empty content when updating a message without attachments, embeds, flags, or subprofile', () => {
+	it('still rejects empty content when updating a message without attachments, embeds, or flags', () => {
 		const service = createValidationService();
 		expect(() =>
 			service.validateMessageContent({content: ''} as never, null, {
