@@ -35,7 +35,6 @@ import {
 	SEARCH_DESCRIPTOR,
 	SHOW_CHANNELS_DESCRIPTOR,
 	SHOW_MEMBERS_DESCRIPTOR,
-	SHOW_SERVER_LIST_DESCRIPTOR,
 	VIDEO_CALL_DESCRIPTOR,
 } from '@app/features/channel/components/channel_header/shared';
 import * as LayoutCommands from '@app/features/ui/commands/LayoutCommands';
