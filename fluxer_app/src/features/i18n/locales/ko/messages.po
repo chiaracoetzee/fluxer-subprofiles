@@ -25020,6 +25020,16 @@ msgstr "페르소나 생성됨"
 msgid "Persona deleted"
 msgstr "페르소나 삭제됨"
 
+#. Fallback screen reader label for the persona profile modal. Keep it concise.
+#: src/features/persona/components/PersonaProfileModal.tsx:18
+msgid "Persona profile"
+msgstr "페르소나 프로필"
+
+#. Screen reader label for the persona profile modal. Keep it concise. Preserve {name}; it is inserted by code.
+#: src/features/persona/components/PersonaProfileModal.tsx:14
+msgid "Persona profile: {name}"
+msgstr "페르소나 프로필: {name}"
+
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:971
 msgid "Persona Tags (Prefix & Suffix)"
 msgstr "페르소나 태그 (접두사 및 접미사)"
