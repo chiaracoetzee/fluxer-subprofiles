@@ -26,7 +26,6 @@ import {
 	CREATE_GROUP_DM_DESCRIPTOR,
 	EDIT_GROUP_DETAILS_DESCRIPTOR,
 	HIDE_MEMBERS_DESCRIPTOR,
-	HIDE_SERVER_LIST_DESCRIPTOR,
 	HIDE_CHANNELS_DESCRIPTOR,
 	OPEN_CHANNEL_DETAILS_FOR_DESCRIPTOR,
 	OPEN_DIRECT_MESSAGE_DETAILS_FOR_DESCRIPTOR,
@@ -121,7 +120,6 @@ import {
 	PencilIcon,
 	PhoneIcon,
 	SidebarSimpleIcon,
-	SquaresFourIcon,
 	StarIcon,
 	UserPlusIcon,
 	UsersIcon,
@@ -607,32 +605,19 @@ export const ChannelHeader = observer(
 							) : (
 								<div className={styles.desktopPanelControls}>
 									<ChannelHeaderIcon
-										icon={SquaresFourIcon}
-										isSelected={LayoutState.serverListVisible}
-										badgeCount={collapsedBadges.serverListMentionCount}
-										hasUnread={collapsedBadges.serverListHasUnread}
-										label={
-											LayoutState.serverListVisible
-												? i18n._(HIDE_SERVER_LIST_DESCRIPTOR)
-												: i18n._(SHOW_SERVER_LIST_DESCRIPTOR)
-										}
-										onClick={LayoutCommands.toggleServerList}
-										aria-pressed={LayoutState.serverListVisible}
-										data-flx="channel.channel-header.toggle-server-list"
-									/>
-									<ChannelHeaderIcon
 										icon={SidebarSimpleIcon}
-										isSelected={LayoutState.channelListVisible}
-										badgeCount={collapsedBadges.channelListMentionCount}
-										hasUnread={collapsedBadges.channelListHasUnread}
+										isSelected={LayoutState.leftSidebarVisible}
+										badgeCount={collapsedBadges.mentionCount}
+										hasUnread={collapsedBadges.hasUnread}
 										label={
-											LayoutState.channelListVisible
+											LayoutState.leftSidebarVisible
 												? i18n._(HIDE_CHANNELS_DESCRIPTOR)
 												: i18n._(SHOW_CHANNELS_DESCRIPTOR)
 										}
-										onClick={LayoutCommands.toggleChannelList}
-										aria-pressed={LayoutState.channelListVisible}
-										data-flx="channel.channel-header.toggle-channel-list"
+										onClick={LayoutCommands.toggleLeftSidebar}
+										aria-pressed={LayoutState.leftSidebarVisible}
+										keybindAction="chat_toggle_channel_list"
+										data-flx="channel.channel-header.toggle-channels"
 									/>
 								</div>
 							)}

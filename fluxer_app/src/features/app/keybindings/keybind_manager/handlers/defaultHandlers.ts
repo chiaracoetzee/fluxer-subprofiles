@@ -37,6 +37,7 @@ import * as ReadStateCommands from '@app/features/read_state/commands/ReadStateC
 import ReadStates from '@app/features/read_state/state/ReadStates';
 import QuickSwitcher from '@app/features/search/state/QuickSwitcher';
 import * as ThemeStudioCommands from '@app/features/theme_studio/commands/ThemeStudioCommands';
+import * as LayoutCommands from '@app/features/ui/commands/LayoutCommands';
 import * as ModalCommands from '@app/features/ui/commands/ModalCommands';
 import {modal} from '@app/features/ui/commands/ModalCommands';
 import * as TextCopyCommands from '@app/features/ui/commands/TextCopyCommands';
@@ -471,6 +472,10 @@ export function registerDefaultKeybindHandlers(host: HandlerHost, i18n: I18n): v
 	host.register('chat_toggle_inbox', ({type}) => {
 		if (type !== 'press') return;
 		ComponentBus.dispatch('INBOX_OPEN');
+	});
+	host.register('chat_toggle_channel_list', ({type}) => {
+		if (type !== 'press') return;
+		LayoutCommands.toggleLeftSidebar();
 	});
 	host.register('chat_toggle_member_list', ({type}) => {
 		if (type !== 'press') return;
