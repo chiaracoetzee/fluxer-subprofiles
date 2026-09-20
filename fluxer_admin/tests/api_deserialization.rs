@@ -447,7 +447,8 @@ fn deserialize_instance_config_response_with_unknown_keys() {
                 "theme_color": "#5865f2",
                 "future_asset_url": "https://cdn.example.com/future.png",
                 "premium_product_name": "Gold",
-                "premium_info_url": "https://example.com/gold"
+                "premium_info_url": "https://example.com/gold",
+                "desktop_app_prompt_enabled": true
             },
             "setup": {"configured": true},
             "legal": {
