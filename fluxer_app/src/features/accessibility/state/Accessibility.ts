@@ -612,6 +612,7 @@ export interface AccessibilitySettings {
 	showMessageActionBarQuickReactions: boolean;
 	showMessageActionBarShiftExpand: boolean;
 	showMessageActionBarOnlyMoreButton: boolean;
+	showMessageActionBarCopyButton: boolean;
 	showDefaultEmojisInExpressionAutocomplete: boolean;
 	showCustomEmojisInExpressionAutocomplete: boolean;
 	showStickersInExpressionAutocomplete: boolean;
@@ -723,6 +724,7 @@ class Accessibility {
 	showMessageActionBarQuickReactions = true;
 	showMessageActionBarShiftExpand = true;
 	showMessageActionBarOnlyMoreButton = false;
+	showMessageActionBarCopyButton = false;
 	showDefaultEmojisInExpressionAutocomplete = true;
 	showCustomEmojisInExpressionAutocomplete = true;
 	showStickersInExpressionAutocomplete = true;
@@ -840,6 +842,7 @@ class Accessibility {
 				'showMessageActionBarQuickReactions',
 				'showMessageActionBarShiftExpand',
 				'showMessageActionBarOnlyMoreButton',
+				'showMessageActionBarCopyButton',
 				'showDefaultEmojisInExpressionAutocomplete',
 				'showCustomEmojisInExpressionAutocomplete',
 				'showStickersInExpressionAutocomplete',
@@ -902,6 +905,7 @@ class Accessibility {
 				showMessageActionBarQuickReactions: s.showMessageActionBarQuickReactions,
 				showMessageActionBarShiftExpand: s.showMessageActionBarShiftExpand,
 				showMessageActionBarOnlyMoreButton: s.showMessageActionBarOnlyMoreButton,
+				showMessageActionBarCopyButton: s.showMessageActionBarCopyButton,
 				showDefaultEmojisInAutocomplete: s.showDefaultEmojisInExpressionAutocomplete,
 				showCustomEmojisInAutocomplete: s.showCustomEmojisInExpressionAutocomplete,
 				showStickersInAutocomplete: s.showStickersInExpressionAutocomplete,
@@ -988,6 +992,8 @@ class Accessibility {
 					s.showMessageActionBarShiftExpand = m.showMessageActionBarShiftExpand;
 				if (m.showMessageActionBarOnlyMoreButton !== undefined)
 					s.showMessageActionBarOnlyMoreButton = m.showMessageActionBarOnlyMoreButton;
+				if (m.showMessageActionBarCopyButton !== undefined)
+					s.showMessageActionBarCopyButton = m.showMessageActionBarCopyButton;
 				if (m.showDefaultEmojisInAutocomplete !== undefined)
 					s.showDefaultEmojisInExpressionAutocomplete = m.showDefaultEmojisInAutocomplete;
 				if (m.showCustomEmojisInAutocomplete !== undefined)
@@ -1321,6 +1327,8 @@ class Accessibility {
 			this.showMessageActionBarShiftExpand = validated.showMessageActionBarShiftExpand;
 		if (validated.showMessageActionBarOnlyMoreButton !== undefined)
 			this.showMessageActionBarOnlyMoreButton = validated.showMessageActionBarOnlyMoreButton;
+		if (validated.showMessageActionBarCopyButton !== undefined)
+			this.showMessageActionBarCopyButton = validated.showMessageActionBarCopyButton;
 		if (validated.showDefaultEmojisInExpressionAutocomplete !== undefined)
 			this.showDefaultEmojisInExpressionAutocomplete = validated.showDefaultEmojisInExpressionAutocomplete;
 		if (validated.showCustomEmojisInExpressionAutocomplete !== undefined)
@@ -1445,6 +1453,8 @@ class Accessibility {
 			showMessageActionBarShiftExpand: data.showMessageActionBarShiftExpand ?? this.showMessageActionBarShiftExpand,
 			showMessageActionBarOnlyMoreButton:
 				data.showMessageActionBarOnlyMoreButton ?? this.showMessageActionBarOnlyMoreButton,
+			showMessageActionBarCopyButton:
+				data.showMessageActionBarCopyButton ?? this.showMessageActionBarCopyButton,
 			showDefaultEmojisInExpressionAutocomplete:
 				data.showDefaultEmojisInExpressionAutocomplete ?? this.showDefaultEmojisInExpressionAutocomplete,
 			showCustomEmojisInExpressionAutocomplete:
