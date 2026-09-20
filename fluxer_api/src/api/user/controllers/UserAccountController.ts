@@ -412,7 +412,7 @@ export function UserAccountController(app: HonoApp) {
 		OpenAPI({
 			operationId: 'import_persona_batch_avatars',
 			summary: 'Batch import persona avatars from remote URLs with streaming progress',
-			responseSchema: z.any(),
+			responseSchema: SuccessResponse,
 			statusCode: 200,
 			security: ['bearerToken', 'sessionToken'],
 			tags: ['Users'],
@@ -430,7 +430,7 @@ export function UserAccountController(app: HonoApp) {
 		OpenAPI({
 			operationId: 'import_subprofile_batch_avatars',
 			summary: 'Batch import subprofile avatars from remote URLs (legacy alias)',
-			responseSchema: z.any(),
+			responseSchema: SuccessResponse,
 			statusCode: 200,
 			security: ['bearerToken', 'sessionToken'],
 			tags: ['Users'],

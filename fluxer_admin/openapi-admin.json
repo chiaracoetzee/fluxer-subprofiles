@@ -9877,14 +9877,17 @@
 						"description": "Message content to send to each recipient"
 					},
 					"user_ids": {
-						"minItems": 1,
+						"description": "Recipient user IDs. Each receives the same content as a system DM.",
 						"maxItems": 10000,
 						"type": "array",
-						"items": {"$ref": "#/components/schemas/SnowflakeType"},
-						"description": "Recipient user IDs. Each receives the same content as a system DM."
+						"items": {"$ref": "#/components/schemas/SnowflakeType"}
+					},
+					"all_users": {
+						"description": "Send to all active users on the server (excluding deleted accounts).",
+						"type": "boolean"
 					}
 				},
-				"required": ["content", "user_ids"]
+				"required": ["content"]
 			},
 			"SendSystemDmResponse": {
 				"type": "object",
@@ -10638,7 +10641,7 @@
 									"theme_color": {"nullable": true, "type": "string"},
 									"status_page_url": {"nullable": true, "type": "string"},
 									"status_page_incident_history_url": {"nullable": true, "type": "string"},
-									"desktop_app_prompt_enabled": {"type": "boolean"}
+									"desktop_app_prompt_enabled": {"default": true, "type": "boolean"}
 								},
 								"required": [
 									"product_name",
@@ -10649,7 +10652,8 @@
 									"favicon_url",
 									"theme_color",
 									"status_page_url",
-									"status_page_incident_history_url"
+									"status_page_incident_history_url",
+									"desktop_app_prompt_enabled"
 								],
 								"additionalProperties": false
 							},
@@ -11146,7 +11150,7 @@
 									"theme_color": {"nullable": true, "type": "string", "maxLength": 64},
 									"status_page_url": {"nullable": true, "type": "string", "maxLength": 2048},
 									"status_page_incident_history_url": {"nullable": true, "type": "string", "maxLength": 2048},
-									"desktop_app_prompt_enabled": {"nullable": true, "type": "boolean"}
+									"desktop_app_prompt_enabled": {"type": "boolean"}
 								}
 							},
 							"setup": {"nullable": true, "type": "object", "properties": {"configured": {"type": "boolean"}}},
@@ -13576,6 +13580,11 @@
 						"required": ["participants"],
 						"additionalProperties": false
 					},
+					"subprofile": {
+						"description": "Optional subprofile persona information",
+						"nullable": true,
+						"allOf": [{"$ref": "#/components/schemas/MessageSubprofileResponseSchema"}]
+					},
 					"referenced_message": {
 						"description": "The reply target. Present and populated when the target resolved, present and null when the target is gone, absent when this message carries no default reference. Clients must tell null apart from absent by key presence.",
 						"nullable": true,
@@ -13720,6 +13729,11 @@
 								},
 								"required": ["participants"],
 								"additionalProperties": false
+							},
+							"subprofile": {
+								"description": "Optional subprofile persona information",
+								"nullable": true,
+								"allOf": [{"$ref": "#/components/schemas/MessageSubprofileResponseSchema"}]
 							}
 						},
 						"required": [
@@ -13871,6 +13885,40 @@
 				"format": "int32",
 				"x-enumNames": ["SAFE", "AGE_RESTRICTED"],
 				"x-enumDescriptions": ["Guild is safe for all ages", "Guild is age-restricted"]
+			},
+			"MessageSubprofileResponseSchema": {
+				"type": "object",
+				"properties": {
+					"id": {"type": "string", "description": "Persona ID"},
+					"name": {"type": "string", "description": "Persona display name"},
+					"avatar": {"description": "Avatar asset URL or hash", "nullable": true, "type": "string"},
+					"avatar_color": {
+						"description": "Avatar accent color",
+						"nullable": true,
+						"type": "integer",
+						"minimum": -9007199254740991,
+						"maximum": 9007199254740991
+					},
+					"display_tag_text": {"description": "Display tag text", "nullable": true, "type": "string"},
+					"display_tag_icon": {"description": "Display tag icon URL or hash", "nullable": true, "type": "string"},
+					"system_name": {"description": "Legacy system name/tag (deprecated)", "nullable": true, "type": "string"},
+					"pronouns": {"description": "Pronouns", "nullable": true, "type": "string"},
+					"color": {
+						"description": "Custom color integer",
+						"nullable": true,
+						"type": "integer",
+						"minimum": -9007199254740991,
+						"maximum": 9007199254740991
+					},
+					"bio": {"description": "Persona bio (deprecated on message)", "nullable": true, "type": "string"},
+					"visibility": {
+						"description": "Persona visibility setting",
+						"nullable": true,
+						"allOf": [{"$ref": "#/components/schemas/PersonaVisibilitySchema"}]
+					}
+				},
+				"required": ["id", "name"],
+				"additionalProperties": false
 			},
 			"MessageSnapshotResponse": {
 				"type": "object",
@@ -14448,6 +14496,7 @@
 					{"name": "IS_ANIMATED", "value": "32", "description": "Attachment is animated"}
 				]
 			},
+			"PersonaVisibilitySchema": {"default": "unlisted", "type": "string", "enum": ["unlisted", "public", "private"]},
 			"DiscoveryAdminPendingApplicationResponse": {
 				"type": "object",
 				"properties": {

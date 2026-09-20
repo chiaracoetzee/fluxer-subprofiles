@@ -499,7 +499,7 @@ const AppPublicConfigResponse = z.object({
 		theme_color: z.string().nullable(),
 		status_page_url: z.string().nullable(),
 		status_page_incident_history_url: z.string().nullable(),
-		desktop_app_prompt_enabled: z.boolean(),
+		desktop_app_prompt_enabled: z.boolean().default(true),
 	}),
 	setup: z.object({
 		configured: z.boolean(),
@@ -895,9 +895,13 @@ export const SendSystemDmRequest = z.object({
 	content: z.string().min(1).max(4000).describe('Message content to send to each recipient'),
 	user_ids: z
 		.array(SnowflakeType)
-		.min(1)
 		.max(10000)
+		.optional()
 		.describe('Recipient user IDs. Each receives the same content as a system DM.'),
+	all_users: z
+		.boolean()
+		.optional()
+		.describe('Send to all active users on the server (excluding deleted accounts).'),
 });
 
 export type SendSystemDmRequest = z.infer<typeof SendSystemDmRequest>;
