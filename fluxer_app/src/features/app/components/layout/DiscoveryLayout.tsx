@@ -14,8 +14,8 @@ import {useEffect} from 'react';
 
 export const DiscoveryLayout = observer(function DiscoveryLayout() {
 	const mobileLayout = MobileLayout;
-	const isChannelListOpen = mobileLayout.enabled || LayoutState.channelListVisible;
-	const isChannelListPeeking = !mobileLayout.enabled && !LayoutState.channelListVisible && LayoutState.isLeftHoverPeeking;
+	const isChannelListOpen = mobileLayout.enabled || LayoutState.leftSidebarVisible;
+	const isChannelListPeeking = !mobileLayout.enabled && !LayoutState.leftSidebarVisible && LayoutState.isLeftHoverPeeking;
 
 	useEffect(() => {
 		void Discovery.loadCategories();
