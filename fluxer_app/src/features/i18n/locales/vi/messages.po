@@ -41523,3 +41523,8 @@ msgstr "Taskbar"
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:61
 msgid "Show copy button"
 msgstr "Hiện nút sao chép"
+
+#. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
+#: src/features/input/state/input_keybind/shared.ts:169
+msgid "Toggle the channel list"
+msgstr "Bật/tắt danh sách kênh"
