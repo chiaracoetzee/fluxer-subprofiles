@@ -41518,3 +41518,8 @@ msgstr "Afficher la liste des serveurs"
 #: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:99
 msgid "Taskbar"
 msgstr "Barre des tâches"
+
+#. Short label for an advanced message action bar preference.
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:61
+msgid "Show copy button"
+msgstr "Afficher le bouton de copie"
