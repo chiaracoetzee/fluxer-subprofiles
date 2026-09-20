@@ -7,6 +7,7 @@ import styles from '@app/features/channel/components/MessageActionBar.module.css
 import {useShiftKey} from '@app/features/channel/components/MessageActionBarShiftKey';
 import {
 	createMessageActionHandlers,
+	getCopyableMessageText,
 	isClientSystemMessage,
 	useMessagePermissions,
 } from '@app/features/channel/components/MessageActionUtils';
@@ -23,6 +24,7 @@ import {
 	ADD_REACTION_DESCRIPTOR,
 	COPY_MESSAGE_ID_DESCRIPTOR,
 	COPY_MESSAGE_LINK_DESCRIPTOR,
+	COPY_TEXT_DESCRIPTOR,
 	DELETE_MESSAGE_DESCRIPTOR,
 	EDIT_MESSAGE_DESCRIPTOR,
 	MARK_AS_UNREAD_DESCRIPTOR,
@@ -38,6 +40,7 @@ import {
 	AddReactionIcon,
 	CopyIdIcon,
 	CopyLinkIcon,
+	CopyMessageTextIcon,
 	DebugMessageIcon,
 	DeleteIcon,
 	EditMessageIcon,
@@ -255,6 +258,7 @@ export const MessageActionBarCore: React.FC<MessageActionBarCoreProps> = observe
 		const showQuickReactions = Accessibility.showMessageActionBarQuickReactions;
 		const showShiftExpand = Accessibility.showMessageActionBarShiftExpand;
 		const onlyMoreButton = Accessibility.showMessageActionBarOnlyMoreButton;
+		const showCopyButton = Accessibility.showMessageActionBarCopyButton;
 		const keyboardModeEnabled = KeyboardMode.keyboardModeEnabled;
 		const shouldListenForShift = showShiftExpand && showMessageActionBar && !onlyMoreButton && !keyboardModeEnabled;
 		const shiftPressed = useShiftKey(shouldListenForShift);
@@ -263,6 +267,7 @@ export const MessageActionBarCore: React.FC<MessageActionBarCoreProps> = observe
 			permissions;
 		const showsEditInTail = message.isUserMessage() && !message.messageSnapshots && canEditMessage;
 		const supportsInteractiveActions = useMemo(() => !isClientSystemMessage(message), [message]);
+		const copyableMessageText = useMemo(() => getCopyableMessageText(message, i18n), [message, i18n.locale]);
 		const handlers = useMemo(
 			() => createMessageActionHandlers(message, {i18n, channel: permissions.channel}),
 			[message, i18n.locale, permissions.channel],
@@ -572,6 +577,19 @@ export const MessageActionBarCore: React.FC<MessageActionBarCoreProps> = observe
 											data-flx="channel.message-action-bar.message-action-bar-core.message-action-bar-button"
 										/>
 									</Popout>
+								)}
+								{showCopyButton && Boolean(copyableMessageText) && (
+									<MessageActionBarButton
+										icon={
+											<CopyMessageTextIcon
+												size={20}
+												data-flx="channel.message-action-bar.message-action-bar-core.copy-message-text-icon"
+											/>
+										}
+										label={i18n._(COPY_TEXT_DESCRIPTOR)}
+										onClick={handlers.handleCopyMessage}
+										data-flx="channel.message-action-bar.message-action-bar-core.message-action-bar-button.copy-message"
+									/>
 								)}
 								{showsEditInTail && (
 									<MessageActionBarButton
