@@ -134,7 +134,6 @@ import {useCallback, useEffect, useRef, useState} from 'react';
 import {
 	HIDE_CHANNELS_DESCRIPTOR,
 	SHOW_CHANNELS_DESCRIPTOR,
-	SHOW_SERVER_LIST_DESCRIPTOR,
 } from '@app/features/channel/components/channel_header/shared';
 import {useCollapsedPanelBadges} from '@app/features/channel/components/channel_header/useCollapsedPanelBadges';
 import LayoutState from '@app/features/ui/state/LayoutState';
