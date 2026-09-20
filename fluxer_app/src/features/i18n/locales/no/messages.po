@@ -25004,6 +25004,16 @@ msgstr "Persona opprettet"
 msgid "Persona deleted"
 msgstr "Persona slettet"
 
+#. Fallback screen reader label for the persona profile modal. Keep it concise.
+#: src/features/persona/components/PersonaProfileModal.tsx:18
+msgid "Persona profile"
+msgstr "Personaprofil"
+
+#. Screen reader label for the persona profile modal. Keep it concise. Preserve {name}; it is inserted by code.
+#: src/features/persona/components/PersonaProfileModal.tsx:14
+msgid "Persona profile: {name}"
+msgstr "Personaprofil: {name}"
+
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:971
 msgid "Persona Tags (Prefix & Suffix)"
 msgstr "Personatagger (prefiks og suffiks)"
