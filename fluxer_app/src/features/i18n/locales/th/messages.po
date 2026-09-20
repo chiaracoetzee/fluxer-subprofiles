@@ -25100,6 +25100,16 @@ msgstr "สร้าง Persona แล้ว"
 msgid "Persona deleted"
 msgstr "ลบ Persona แล้ว"
 
+#. Fallback screen reader label for the persona profile modal. Keep it concise.
+#: src/features/persona/components/PersonaProfileModal.tsx:18
+msgid "Persona profile"
+msgstr "โปรไฟล์ Persona"
+
+#. Screen reader label for the persona profile modal. Keep it concise. Preserve {name}; it is inserted by code.
+#: src/features/persona/components/PersonaProfileModal.tsx:14
+msgid "Persona profile: {name}"
+msgstr "โปรไฟล์ Persona: {name}"
+
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:971
 msgid "Persona Tags (Prefix & Suffix)"
 msgstr "แท็ก Persona (คำนำหน้าและคำต่อท้าย)"
