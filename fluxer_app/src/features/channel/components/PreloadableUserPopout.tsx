@@ -25,8 +25,6 @@ import React, {useCallback, useState} from 'react';
 
 import {PersonaProfilePopout} from '@app/features/persona/components/PersonaProfilePopout';
 import PersonaProfileMobile from '@app/features/persona/state/PersonaProfileMobile';
-import * as ModalCommands from '@app/features/ui/commands/ModalCommands';
-import {modal} from '@app/features/ui/commands/ModalCommands';
 import type {MessageSubprofileResponse} from '@fluxer/schema/src/domains/persona/PersonaSchemas';
 
 type PreloadableChildProps = React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>;
