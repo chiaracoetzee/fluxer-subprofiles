@@ -435,6 +435,7 @@ fn deserialize_instance_config_response_with_unknown_keys() {
                 "wordmark_url": "https://cdn.example.com/wordmark.svg",
                 "favicon_url": "https://cdn.example.com/favicon.ico",
                 "theme_color": "#5865f2",
+                "desktop_app_prompt_enabled": true,
                 "future_asset_url": "https://cdn.example.com/future.png"
             },
             "setup": {"configured": true},

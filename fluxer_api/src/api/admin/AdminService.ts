@@ -41,9 +41,14 @@ import type {IRiskHistoryRepository} from '@app/api/risk/HistoricalOutcomeReposi
 import type {ISuspiciousIpRepository} from '@app/api/risk/SuspiciousIpRepository';
 import type {UserService} from '@app/api/user/services/UserService';
 import type {VoiceRepository} from '@app/api/voice/VoiceRepository';
+import {APIErrorCodes} from '@fluxer/constants/src/ApiErrorCodes';
+import {UserFlags} from '@fluxer/constants/src/UserConstants';
+import {BadRequestError} from '@fluxer/errors/src/domains/core/BadRequestError';
 import type {SendSystemDmResponse} from '@fluxer/schema/src/domains/admin/AdminSchemas';
 import type {IpInfoService} from '@pkgs/geoip/src/IpInfoService';
 import type Stripe from 'stripe';
+
+export const MAX_SYSTEM_DM_ALL_USERS_LIMIT = 1000;
 
 export class AdminService {
 	readonly auditService: AdminAuditService;
@@ -184,22 +189,60 @@ export class AdminService {
 	}
 
 	async sendSystemDm(
-		data: {content: string; userIds: Array<string>},
+		data: {content: string; userIds?: Array<string>; allUsers?: boolean},
 		adminUserId: UserID,
 		auditLogReason: string | null,
 	): Promise<SendSystemDmResponse> {
+		let userIds = data.userIds ?? [];
+		if (data.allUsers) {
+			const userRepository = this.apiContext.services.users;
+			let pageState: string | null = null;
+			userIds = [];
+			do {
+				const page = await userRepository.scanAllUsersPage(1000, pageState);
+				pageState = page.pageState;
+				for (const user of page.users) {
+					// Exclude system account, bots, and deleted/self-deleted accounts
+					if (user.id === 0n || user.isSystem || user.isBot) {
+						continue;
+					}
+					if (
+						(user.flags & UserFlags.DELETED) !== 0n ||
+						(user.flags & UserFlags.SELF_DELETED) !== 0n ||
+						user.pendingDeletionAt !== null
+					) {
+						continue;
+					}
+					userIds.push(user.id.toString());
+				}
+				if (userIds.length > MAX_SYSTEM_DM_ALL_USERS_LIMIT) {
+					throw new BadRequestError({
+						code: APIErrorCodes.INVALID_FORM_BODY,
+						message: `Broadcast to all users is limited to instances with at most ${MAX_SYSTEM_DM_ALL_USERS_LIMIT} active users (found ${userIds.length}). Please specify recipient user IDs directly.`,
+					});
+				}
+			} while (pageState);
+		}
+
+		if (userIds.length === 0) {
+			return {recipient_count: 0};
+		}
+
 		await this.apiContext.services.worker.addJob(
 			'sendSystemDm',
 			{
 				content: data.content,
-				user_ids: data.userIds,
+				user_ids: userIds,
 			},
 			{requireLedger: true},
 		);
 		const metadata = new Map<string, string>([
-			['recipient_count', data.userIds.length.toString()],
+			['recipient_count', userIds.length.toString()],
 			['content_length', data.content.length.toString()],
 		]);
+		if (data.allUsers) {
+			metadata.set('all_users', 'true');
+		}
 		await this.auditService.createAuditLog({
 			adminUserId,
 			targetType: 'system_dm',
@@ -208,6 +251,6 @@ export class AdminService {
 			auditLogReason,
 			metadata,
 		});
-		return {recipient_count: data.userIds.length};
+		return {recipient_count: userIds.length};
 	}
 }

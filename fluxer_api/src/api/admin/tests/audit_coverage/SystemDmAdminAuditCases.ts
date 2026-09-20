@@ -24,4 +24,22 @@ export const SystemDmAdminAuditCases: ReadonlyArray<AdminAuditCoverageCase> = [
 			};
 		},
 	},
+	{
+		method: 'POST',
+		route: '/admin/system-dms',
+		async prepare() {
+			return {
+				request: {
+					path: '/admin/system-dms',
+					body: {content: 'System-wide announcement', all_users: true},
+				},
+				expected: {
+					action: 'system_dm.send',
+					targetType: 'system_dm',
+					targetId: '0',
+					metadata: {recipient_count: '1', content_length: '24', all_users: 'true'},
+				},
+			};
+		},
+	},
 ];
