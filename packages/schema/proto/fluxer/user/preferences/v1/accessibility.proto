@@ -49,6 +49,7 @@ message AccessibilitySettings {
   optional bool show_message_action_bar_quick_reactions = 35;
   optional bool show_message_action_bar_shift_expand = 36;
   optional bool show_message_action_bar_only_more_button = 37;
+  optional bool show_message_action_bar_copy_button = 2222;
 
   optional bool show_default_emojis_in_autocomplete = 38;
   optional bool show_custom_emojis_in_autocomplete = 39;
