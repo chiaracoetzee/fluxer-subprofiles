@@ -6,7 +6,7 @@ import {GuildMemberActionsSheet} from '@app/features/guild/components/modals/gui
 import type {GuildMember} from '@app/features/member/models/GuildMember';
 import GuildMembers from '@app/features/member/state/GuildMembers';
 import type {Message} from '@app/features/messaging/models/MessagingMessage';
-import {PersonaProfileModal} from '@app/features/persona/components/PersonaProfileModal';
+import PersonaProfileMobile from '@app/features/persona/state/PersonaProfileMobile';
 import {PersonaProfilePopout} from '@app/features/persona/components/PersonaProfilePopout';
 import {ComponentBus} from '@app/features/platform/utils/ComponentBus';
 import {GuildMemberContextMenu} from '@app/features/ui/action_menu/GuildMemberContextMenu';
@@ -89,17 +89,7 @@ export const PreloadableUserPopout = React.forwardRef<
 		const handleMobileClick = useCallback(() => {
 			if (isWebhook) return;
 			if (subprofile) {
-				ModalCommands.push(
-					modal(() => (
-						<PersonaProfileModal
-							subprofile={subprofile}
-							user={user}
-							guildId={guildId}
-							guildMember={member}
-							onClose={ModalCommands.pop}
-						/>
-					)),
-				);
+				PersonaProfileMobile.open(subprofile, user, guildId, member);
 				return;
 			}
 			UserProfileCommands.openUserProfile(user.id, guildId);

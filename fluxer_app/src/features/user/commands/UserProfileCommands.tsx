@@ -13,6 +13,7 @@ import * as PopoutCommands from '@app/features/ui/commands/PopoutCommands';
 import MobileLayout from '@app/features/ui/state/MobileLayout';
 import {UserProfileModal} from '@app/features/user/components/modals/UserProfileModal';
 import {Profile, type ProfileWire} from '@app/features/user/models/Profile';
+import PersonaProfileMobile from '@app/features/persona/state/PersonaProfileMobile';
 import UserProfile from '@app/features/user/state/UserProfile';
 import UserProfileMobile from '@app/features/user/state/UserProfileMobile';
 import Users from '@app/features/user/state/Users';
@@ -139,6 +140,7 @@ export function closeUserProfileSurfaces(): void {
 	PopoutCommands.closeAll();
 	ContextMenuCommands.close();
 	UserProfileMobile.close();
+	PersonaProfileMobile.close();
 	ModalCommands.popAllByType(UserProfileModal);
 }
 
