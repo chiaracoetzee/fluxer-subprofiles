@@ -26,7 +26,6 @@ import {usePopout} from '@app/features/ui/hooks/usePopout';
 import {TooltipWithKeybind} from '@app/features/ui/keybind_hint/KeybindHint';
 import {Popout} from '@app/features/ui/popover/PopoverPopout';
 import MobileLayout from '@app/features/ui/state/MobileLayout';
-import LayoutState from '@app/features/ui/state/LayoutState';
 import {Tooltip} from '@app/features/ui/tooltip/Tooltip';
 import {UserSettingsModal} from '@app/features/user/components/modals/UserSettingsModal';
 import {USER_SETTINGS_LABEL_DESCRIPTOR} from '@app/features/user/components/settings_utils/SettingsConstants';
@@ -297,8 +296,6 @@ const UserAreaInner = observer(
 			<section
 				className={wrapperClassName}
 				aria-label={i18n._(USER_CONTROLS_DESCRIPTOR)}
-				onMouseEnter={handleMouseEnter}
-				onMouseLeave={handleMouseLeave}
 				data-flx="app.user-area.user-area-inner.section"
 			>
 				{hasVoiceConnection && (
