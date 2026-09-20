@@ -166,13 +166,21 @@ pub(crate) async fn system_dms_post(
         }
     };
     let client = AdminApiClient::new(state.http_client(), config, &auth.0.session);
+    let all_users = form
+        .clean("all_users")
+        .map(|v| v == "true" || v == "1" || v == "on")
+        .unwrap_or(false);
     let user_ids = form.list_values_any(&["user_ids[]", "user_ids"]);
     let content = form.clean("content");
     let flash = if let Some(content) = content.as_deref()
-        && !user_ids.is_empty()
+        && (!user_ids.is_empty() || all_users)
     {
-        match client.send_system_dm(&user_ids, content).await {
-            Ok(_) => FlashData::success("System DM sent"),
+        let ids_arg = if all_users { None } else { Some(user_ids.as_slice()) };
+        match client.send_system_dm(ids_arg, all_users, content).await {
+            Ok(resp) => FlashData::success(format!(
+                "System DM queued for {} recipient(s)",
+                resp.recipient_count
+            )),
             Err(error) => {
                 tracing::warn!(%error, "admin API request failed: send system DM");
                 FlashData::error("Failed to send system DM")

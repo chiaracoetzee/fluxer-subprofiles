@@ -5,7 +5,7 @@ import {RateLimitMiddleware} from '@app/api/middleware/RateLimitMiddleware';
 import {OpenAPI} from '@app/api/middleware/ResponseTypeMiddleware';
 import {RateLimitConfigs} from '@app/api/RateLimitConfig';
 import type {HonoApp} from '@app/api/types/HonoEnv';
-import {Validator} from '@app/api/Validator';
+import {inputValidationErrorFromZodIssues, Validator} from '@app/api/Validator';
 import {AdminACLs} from '@fluxer/constants/src/AdminACLs';
 import {SendSystemDmRequest, SendSystemDmResponse} from '@fluxer/schema/src/domains/admin/AdminSchemas';
 
@@ -30,8 +30,21 @@ export function SystemDmAdminController(app: HonoApp) {
 			const adminUserId = ctx.get('adminUserId');
 			const auditLogReason = ctx.get('auditLogReason');
 			const payload = ctx.req.valid('json');
+			if (!payload.all_users && (!payload.user_ids || payload.user_ids.length === 0)) {
+				throw inputValidationErrorFromZodIssues([
+					{
+						code: 'custom',
+						path: ['user_ids'],
+						message: 'Recipient user IDs are required unless all_users is true',
+					},
+				]);
+			}
 			const result = await adminService.sendSystemDm(
-				{content: payload.content, userIds: payload.user_ids.map((id) => id.toString())},
+				{
+					content: payload.content,
+					userIds: payload.user_ids?.map((id) => id.toString()),
+					allUsers: payload.all_users,
+				},
 				adminUserId,
 				auditLogReason,
 			);

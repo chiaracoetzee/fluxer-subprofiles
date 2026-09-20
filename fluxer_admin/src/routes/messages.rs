@@ -155,12 +155,23 @@ async fn system_dms_page(
     csrf: axum::Extension<CsrfToken>,
 ) -> Response {
     let config = state.config();
+    let client = AdminApiClient::new(state.http_client(), config, &auth.0.session);
+    let user_count = match client.search_users(None, None, None, 1, 0).await {
+        Ok(res) => Some(res.total),
+        Err(e) => {
+            tracing::warn!(error = %e, "failed to query user count for system DM page");
+            None
+        }
+    };
+    let can_send_to_all = user_count.map(|c| c <= 1000).unwrap_or(true);
     let markup = templates::pages::system_dm::system_dm_page(
         config,
         &auth.0,
         &templates::pages::system_dm::SystemDmParams {
             form_error: None,
             csrf_token: &csrf.0.0,
+            user_count,
+            can_send_to_all,
         },
     );
     Html(markup.into_string()).into_response()
