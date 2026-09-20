@@ -93,6 +93,7 @@ import {
 	TOGGLE_PINNED_MESSAGES_DESCRIPTOR,
 	TOGGLE_QUICK_SWITCHER_DESCRIPTOR,
 	TOGGLE_SAVED_MEDIA_DESCRIPTOR,
+	TOGGLE_THE_CHANNEL_LIST_DESCRIPTOR,
 	TOGGLE_THE_EMOJI_PICKER_DESCRIPTOR,
 	TOGGLE_THE_GIF_PICKER_DESCRIPTOR,
 	TOGGLE_THE_INBOX_DESCRIPTOR,
@@ -567,6 +568,14 @@ const getDefaultKeybinds = (
 			label: i18n._(MARK_ALL_INBOX_CHANNELS_AS_READ_DESCRIPTOR),
 			combo: {key: ''},
 			assignable: true,
+			section: 'chat',
+		},
+		{
+			action: 'chat_toggle_channel_list',
+			label: i18n._(TOGGLE_THE_CHANNEL_LIST_DESCRIPTOR),
+			combo: {key: ''},
+			assignable: true,
+			editableFocusBehavior: 'allow',
 			section: 'chat',
 		},
 		{
