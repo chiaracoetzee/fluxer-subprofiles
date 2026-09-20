@@ -3713,6 +3713,7 @@ fn convert_subprofile(s: udt::MessageSubprofileUdt) -> MessageSubprofile {
         pronouns: s.pronouns,
         color: s.color,
         bio: s.bio,
+        banner: s.banner,
     }
 }
 
