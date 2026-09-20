@@ -55,7 +55,6 @@ import {useEffect, useRef} from 'react';
 
 // Fork imports.
 
-import LayoutState from '@app/features/ui/state/LayoutState';
 import {useCallback, useState} from 'react';
 
 const PUSH_TO_TALK_IS_ON_HOLD_TO_SPEAK_DESCRIPTOR = msg({
