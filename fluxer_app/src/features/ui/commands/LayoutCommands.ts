@@ -26,6 +26,14 @@ export function toggleMembers(_isOpen?: boolean): void {
 	MemberList.toggleMembers();
 }
 
+export function toggleLeftSidebar(): void {
+	LayoutState.toggleLeftSidebar();
+}
+
+export function setLeftSidebarVisible(visible: boolean): void {
+	LayoutState.setLeftSidebarVisible(visible);
+}
+
 export function toggleServerList(): void {
 	LayoutState.toggleServerList();
 }
