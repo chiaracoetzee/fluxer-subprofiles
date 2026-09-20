@@ -37,9 +37,9 @@ msgid "(only visible to you)"
 msgstr "(सिर्फ आपको दिखेगा)"
 
 #. placeholder {0}: w.prefix
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:680
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:706
 msgid "(Prefix: {0})"
-msgstr "(Prefix: {0})"
+msgstr "(उपसर्ग: {0})"
 
 #. Short label in the keybinds tab. Keep it concise.
 #: src/features/user/components/modals/tabs/keybinds_tab/CustomKeybindsList.tsx:26
@@ -56,7 +56,7 @@ msgid "{0, plural, one {# member} other {# members}}"
 msgstr "{0, plural, one {# सदस्य} other {# सदस्य}}"
 
 #. placeholder {0}: importResults.warnings.length
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:671
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:697
 msgid "{0} notice(s) during import"
 msgstr "इंपोर्ट के दौरान {0} सूचना(एं)"
 
@@ -64,7 +64,7 @@ msgstr "इंपोर्ट के दौरान {0} सूचना(एं)
 #. placeholder {1}: progress.total
 #. placeholder {2}: progress.label ?? 'items'
 #. placeholder {3}: progress.percent
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:643
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:669
 msgid "{0} of {1} {2} ({3}%)"
 msgstr "{1} {2} में से {0} ({3}%)"
 
@@ -4433,7 +4433,7 @@ msgid "Apply theme"
 msgstr "थीम लागू करें"
 
 #. Short confirmation button label in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:153
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:157
 msgid "Apply to all communities"
 msgstr "सभी कम्युनिटी पर लागू करें"
 
@@ -4551,7 +4551,7 @@ msgstr "क्या आप वाकई <0>{targetUserTag}</0> को कम्
 msgid "Are you sure you want to remove <0>{engineName}</0>?"
 msgstr "क्या आप वाकई <0>{engineName}</0> हटाना चाहते हैं?"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:437
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:463
 msgid "Are you sure you want to replace all <0>{existingCount}</0> existing persona(s)? This will permanently delete them from your account and cannot be undone."
 msgstr "क्या आप वाकई सभी <0>{existingCount}</0> मौजूदा परसोना को बदलना चाहते हैं? यह उन्हें आपके अकाउंट से स्थायी रूप से हटा देगा और इसे पूर्ववत नहीं किया जा सकता है।"
 
@@ -5015,14 +5015,14 @@ msgstr "भाषा अपने आप पहचानें"
 #. Settings search synonym.
 #: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:103
 msgid "Auto-hide"
-msgstr "Auto-hide"
+msgstr "स्वतः छिपाएं"
 
 #. Settings section label in Advanced Settings for edge hover peek preference.
 #. Short label for an advanced appearance preference that reveals collapsed sidebars on mouse hover.
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedAppearanceControls.tsx:100
 #: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:91
 msgid "Auto-peek hidden sidebars"
-msgstr "Auto-peek hidden sidebars"
+msgstr "छिपे हुए साइडबार पर स्वतः झांकें"
 
 #. Short label in the voice tab. Keep it concise.
 #: src/features/user/components/modals/tabs/UserVoiceTab.tsx:116
@@ -6457,7 +6457,7 @@ msgstr "यहां फ़ाइलें अपलोड नहीं की �
 #: src/features/moderation/components/modals/BanMemberModal.tsx:262
 #: src/features/moderation/components/modals/RemoveTimeoutModal.tsx:70
 #: src/features/moderation/components/modals/TimeoutMemberModal.tsx:126
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:698
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:724
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:1022
 #: src/features/theme/components/modals/ThemeAcceptModal.tsx:173
 #: src/features/user/components/modals/EmailChangeModal.tsx:278
@@ -6830,7 +6830,7 @@ msgstr "पासवर्ड बदलने का फ़ॉर्म"
 #. Generic action label that opens the persona picker.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:712
 msgid "Change persona"
-msgstr "Change persona"
+msgstr "परसोना बदलें"
 
 #. Subscription status badge meaning a future billing plan change is scheduled.
 #: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:437
@@ -7516,7 +7516,7 @@ msgstr "कोई तरीका चुनें"
 msgid "Choose a new password."
 msgstr "नया पासवर्ड चुनें।"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:503
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:529
 msgid "Choose a PluralKit export (.json) or drag & drop"
 msgstr "PluralKit एक्सपोर्ट (.json) चुनें या ड्रैग और ड्रॉप करें"
 
@@ -8088,7 +8088,7 @@ msgid "Click to open the color picker and choose a new color."
 msgstr "कलर पिकर खोलने और नया रंग चुनने के लिए क्लिक करें।"
 
 #. Tooltip on the add-reaction button in the inline message hover action bar.
-#: src/features/channel/components/MessageActionBar.tsx:69
+#: src/features/channel/components/MessageActionBar.tsx:72
 msgid "Click to react"
 msgstr "रिएक्ट करने के लिए क्लिक करें"
 
@@ -11245,7 +11245,7 @@ msgstr "सदस्य को डीबग करें"
 #. Developer-mode action that opens the message debug modal.
 #. Developer-mode item in the message action bar overflow menu. Opens the message debug modal.
 #. Developer-mode message context menu item that opens an internal debug view for the message.
-#: src/features/channel/components/MessageActionBar.tsx:81
+#: src/features/channel/components/MessageActionBar.tsx:84
 #: src/features/channel/components/MessageActionMenu.tsx:106
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:66
 msgid "Debug message"
@@ -11969,7 +11969,7 @@ msgstr "विवरण"
 msgid "Detect while typing"
 msgstr "टाइप करते समय पता लगाएं"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:531
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:557
 msgid "Detected System Name / Tag"
 msgstr "सिस्टम का नाम / टैग मिला"
 
@@ -12793,7 +12793,7 @@ msgstr "{deviceName} का सुझाव दोबारा न दें"
 #: src/features/input/components/KeybindRecorder.tsx:470
 #: src/features/moderation/components/report_modal/IARModal.tsx:94
 #: src/features/moderation/components/report/ReportBreadcrumbs.tsx:31
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:718
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:744
 #: src/features/search/components/search/ChannelFilterSheet.tsx:165
 #: src/features/search/components/search/HasFilterSheet.tsx:206
 #: src/features/search/components/search/UserFilterSheet.tsx:186
@@ -12824,7 +12824,7 @@ msgstr "किसी की स्ट्रीम देखने के लि�
 
 #. Settings search entry label for double-clicking a message to edit it.
 #. Short label for an advanced message editing preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:298
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:309
 #: src/features/user/components/settings_utils/search_index/AdvancedSettingsIndex.ts:56
 msgid "Double-click to edit"
 msgstr "एडिट करने के लिए डबल-क्लिक करें"
@@ -13904,7 +13904,7 @@ msgid "Enable self-hosted mode client-side. Hides all premium and billing UI."
 msgstr "सेल्फ़-होस्टेड मोड क्लाइंट-साइड चालू करें। सभी प्रीमियम और बिलिंग UI को छिपाता है।"
 
 #. Short label for an advanced message action bar preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:61
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:65
 msgid "Enable Shift to expand"
 msgstr "शिफ़्ट दबाकर बड़ा करना चालू करें"
 
@@ -14735,7 +14735,7 @@ msgstr "लाइब्रेरी एक्सपोर्ट करें"
 msgid "Export my data"
 msgstr "मेरा डेटा एक्सपोर्ट करें"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:527
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:553
 msgid "Export Summary"
 msgstr "एक्सपोर्ट समरी"
 
@@ -15825,7 +15825,7 @@ msgstr "फ़ॉर्म"
 #. Message action label for forwarding the selected message to another channel or DM.
 #. Message context menu item that opens the forward-to-channel picker.
 #. Tooltip on the forward button in the inline message hover action bar.
-#: src/features/channel/components/MessageActionBar.tsx:85
+#: src/features/channel/components/MessageActionBar.tsx:88
 #: src/features/channel/components/MessageActionMenu.tsx:86
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:54
 msgid "Forward"
@@ -17179,7 +17179,7 @@ msgstr "अवतार छिपाएं"
 #. Tooltip on the channel header channel list toggle when the channel list is currently shown.
 #: src/features/channel/components/channel_header/shared.ts:81
 msgid "Hide channel list"
-msgstr "Hide channel list"
+msgstr "चैनल सूची छिपाएं"
 
 #. Settings search entry description. One-line summary of what the settings search entry controls.
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:507
@@ -17243,13 +17243,13 @@ msgstr "म्यूट किए गए चैनल छिपाएं"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced sidebar preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:145
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:149
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:487
 msgid "Hide muted channels by default"
 msgstr "म्यूट किए गए चैनल डिफ़ॉल्ट रूप से छिपाएँ"
 
 #. Confirmation prompt in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:149
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:153
 msgid "Hide muted channels by default?"
 msgstr "म्यूट किए गए चैनल डिफ़ॉल्ट रूप से छिपाएँ?"
 
@@ -17280,7 +17280,7 @@ msgstr "पूर्वावलोकन थंबनेल छिपाएँ"
 #. Tooltip on the channel header server list toggle when the server rail is currently shown.
 #: src/features/channel/components/channel_header/shared.ts:73
 msgid "Hide server list"
-msgstr "Hide server list"
+msgstr "सर्वर सूची छिपाएं"
 
 #. Settings search entry description. One-line summary of what the settings search entry controls.
 #: src/features/user/components/settings_utils/search_index/DesktopSettingsIndex.ts:198
@@ -17435,7 +17435,7 @@ msgstr "मुझ पर होवर करें"
 #. Settings section description in Advanced Settings for edge hover peek preference.
 #: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:95
 msgid "Hover near window edges to temporarily reveal collapsed panels."
-msgstr "Hover near window edges to temporarily reveal collapsed panels."
+msgstr "संकुचित पैनल को अस्थायी रूप से देखने के लिए विंडो के किनारों के पास होवर करें।"
 
 #: src/features/user/components/modals/tabs/component_gallery_tab/OverlaysTab.tsx:63
 msgid "Hover over buttons to see tooltips in different positions."
@@ -17874,11 +17874,11 @@ msgid "Import a .css file to get started, or paste your own CSS in Quick CSS."
 msgstr "शुरू करने के लिए एक .css फ़ाइल इंपोर्ट करें या क्विक CSS में अपना CSS पेस्ट करें।"
 
 #. Modal title for PluralKit import step completed
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:472
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:498
 msgid "Import Complete"
 msgstr "इंपोर्ट पूरा हुआ"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:656
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:682
 msgid "Import Complete!"
 msgstr "इंपोर्ट पूरा हुआ!"
 
@@ -17909,7 +17909,7 @@ msgid "Import folder"
 msgstr "फ़ोल्डर इंपोर्ट करें"
 
 #. Modal title for PluralKit import step select
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:459
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:485
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:1044
 msgid "Import from PluralKit"
 msgstr "PluralKit से इंपोर्ट करें"
@@ -17928,7 +17928,7 @@ msgstr "लाइब्रेरी इंपोर्ट करें"
 msgid "Import more"
 msgstr "और इंपोर्ट करें"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:571
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:597
 msgid "Import Strategy"
 msgstr "इंपोर्ट स्ट्रेटेजी"
 
@@ -17982,11 +17982,11 @@ msgid "Imported theme has been applied."
 msgstr "इंपोर्ट की गई थीम लागू कर दी गई है।"
 
 #. Modal title for PluralKit import step importing
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:466
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:492
 msgid "Importing Personas..."
 msgstr "परसोना इंपोर्ट किए जा रहे हैं..."
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:712
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:738
 msgid "Importing..."
 msgstr "इंपोर्ट किया जा रहा है..."
 
@@ -18987,7 +18987,7 @@ msgstr "अपठित चैनलों के बीच जाएं"
 msgid "Jump between unread channels with mentions"
 msgstr "मेंशन वाले अपठित चैनलों के बीच जाएं"
 
-#: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:75
+#: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:78
 msgid "Jump straight to the app to continue."
 msgstr "जारी रखने के लिए सीधे ऐप पर जाएं।"
 
@@ -19122,7 +19122,7 @@ msgstr "अटैचमेंट रखें"
 msgid "Keep attachments when clearing an edit"
 msgstr "एडिट साफ़ करते समय अटैचमेंट रखें"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:586
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:612
 msgid "Keep existing and add new (Recommended)"
 msgstr "मौजूदा को रखें और नए जोड़ें (अनुशंसित)"
 
@@ -19165,7 +19165,7 @@ msgid "Keep window dimensions and placement between reloads"
 msgstr "रीलोड के बीच विंडो के डाइमेंशन और प्लेसमेंट को बनाए रखें"
 
 #. placeholder {0}: pkData.members?.length ?? 0
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:589
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:615
 msgid "Keep your {existingCount} current persona(s) and add all {0} imported personas alongside them as new entries."
 msgstr "अपने {existingCount} मौजूदा परसोना रखें और सभी {0} इंपोर्ट किए गए परसोना को नई एंट्री के रूप में उनके साथ जोड़ें।"
 
@@ -20134,7 +20134,7 @@ msgstr "अकाउंट प्रबंधित करें"
 #. OAuth scope description shown on the consent screen for the personas.write scope.
 #: src/features/app/constants/AppConstants.ts:37
 msgid "Manage and create your personas"
-msgstr "Manage and create your personas"
+msgstr "अपने परसोना प्रबंधित करें और बनाएं"
 
 #. Security settings section description for account access controls.
 #: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:92
@@ -20819,7 +20819,7 @@ msgstr "सदस्यों को ऑफ़लाइन होने पर �
 msgid "Members with \"{pinMessagesPermissionLabel}\" can pin messages for everyone."
 msgstr "जिन सदस्यों के पास \"{pinMessagesPermissionLabel}\" है, वे सभी के लिए मैसेज पिन कर सकते हैं।"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:546
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:572
 msgid "Members with Avatars"
 msgstr "अवतार वाले मेंबर"
 
@@ -21038,7 +21038,7 @@ msgstr "मैसेज में अटैच किया गया मीड�
 #. Title of the developer-mode message debug modal opened from the message action bar.
 #. Title of the developer-mode message debug modal opened from the message context menu.
 #. Title of the developer-mode message debug modal.
-#: src/features/channel/components/MessageActionBar.tsx:73
+#: src/features/channel/components/MessageActionBar.tsx:76
 #: src/features/channel/components/MessageActionMenu.tsx:74
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:62
 msgid "Message debug"
@@ -21599,7 +21599,7 @@ msgstr "मासिक उपहार"
 #: src/features/auth/components/accounts/AccountRow.tsx:23
 #: src/features/channel/components/bottomsheets/channel_details_bottom_sheet/ChannelDetailsBottomSheetShared.ts:142
 #: src/features/channel/components/friends/FriendListItem.tsx:63
-#: src/features/channel/components/MessageActionBar.tsx:77
+#: src/features/channel/components/MessageActionBar.tsx:80
 #: src/features/user/components/modals/tabs/component_gallery_tab/ComponentGalleryTabButtonsTab.tsx:125
 msgid "More"
 msgstr "ज़्यादा"
@@ -22427,15 +22427,15 @@ msgid "New category"
 msgstr "नई श्रेणी"
 
 #. Short confirmation button label in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:157
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:161
 msgid "New communities only"
 msgstr "सिर्फ़ नई कम्युनिटी"
 
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:679
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:690
 msgid "New communities you join will automatically have muted channels hidden. Would you also like to apply this setting to all your existing communities?"
 msgstr "आप जिन नई कम्युनिटी में शामिल होंगे, उनमें म्यूट किए गए चैनल अपने आप छिपे रहेंगे। क्या आप यह सेटिंग अपनी सभी मौजूदा कम्युनिटी पर भी लागू करना चाहेंगे?"
 
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:710
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:721
 msgid "New communities you join will no longer have muted channels hidden automatically. Would you also like to show muted channels in all your existing communities?"
 msgstr "आप जिन नई कम्युनिटी में शामिल होंगे, उनमें म्यूट किए गए चैनल अब अपने आप नहीं छिपेंगे। क्या आप अपनी सभी मौजूदा कम्युनिटी में भी म्यूट किए गए चैनल दिखाना चाहेंगे?"
 
@@ -23283,7 +23283,7 @@ msgstr "रूपांतरण नहीं"
 #: src/features/channel/components/channel_header_components/developer_tools/DeveloperToolsShared.ts:41
 #: src/features/guild/components/modals/guild_tabs/GuildModerationTab.tsx:47
 #: src/features/guild/utils/guild_tabs/audit_log/AuditLogSharedMessages.ts:52
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:534
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:560
 #: src/features/user/components/modals/tabs/accessibility_tab/VisualTab.tsx:37
 #: src/features/user/components/modals/tabs/components/EntranceSoundSection.tsx:146
 #: src/features/user/components/modals/tabs/privacy_safety_tab/data_request_modal/DataRequestModal.tsx:220
@@ -23846,7 +23846,7 @@ msgid "Open {macosSystemSettingsName} → {macosPrivacyAndSecuritySettingsName} 
 msgstr "{macosSystemSettingsName} → {macosPrivacyAndSecuritySettingsName} → {macosScreenRecordingPermissionName} खोलें, फिर {productName} को अनुमति दें। अगर {productName2} पहले से चालू है, तो {productName3} को पूरी तरह बंद करके फिर से खोलें ताकि macOS अनुमति लागू कर सके।"
 
 #. Button label that opens the desktop app. productName is the app name.
-#: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:27
+#: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:29
 msgid "Open {productName}"
 msgstr "{productName} खोलें"
 
@@ -24084,7 +24084,7 @@ msgid "Open image link"
 msgstr "इमेज लिंक खोलें"
 
 #. Title in a web prompt that opens the same flow in the desktop app. productName is the app name.
-#: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:23
+#: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:25
 msgid "Open in {productName} for desktop"
 msgstr "डेस्कटॉप के लिए {productName} में खोलें"
 
@@ -24857,7 +24857,7 @@ msgstr "भुगतान अनुपलब्ध हैं"
 #. Settings search synonym.
 #: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:107
 msgid "Peek"
-msgstr "Peek"
+msgstr "झांकें"
 
 #. Discovery application status badge in the community Discovery settings tab. The application is awaiting staff review.
 #. Tab label in the DM friends view showing pending friend requests.
@@ -24955,7 +24955,7 @@ msgstr "स्थायी"
 msgid "Permanent deletion"
 msgstr "हमेशा के लिए मिटाना"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:618
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:644
 msgid "Permanently delete all {existingCount} existing persona(s) and replace them completely with the imported personas."
 msgstr "सभी {existingCount} मौजूदा परसोना को स्थायी रूप से डिलीट करें और उन्हें पूरी तरह से इंपोर्ट किए गए परसोना से बदलें।"
 
@@ -25943,7 +25943,7 @@ msgid "Processing"
 msgstr "प्रोसेस हो रहा है"
 
 #. placeholder {0}: progress.currentName
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:637
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:663
 msgid "Processing: {0}"
 msgstr "प्रोसेसिंग: {0}"
 
@@ -27491,15 +27491,15 @@ msgstr "<0>{renewalDate}</0> को रिन्यू होगा।"
 msgid "Replace"
 msgstr "बदलें"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:442
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:468
 msgid "Replace All"
 msgstr "सभी बदलें"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:614
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:640
 msgid "Replace all existing personas (Destructive)"
 msgstr "सभी मौजूदा परसोना बदलें (Destructive)"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:435
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:461
 msgid "Replace All Personas"
 msgstr "सभी परसोना बदलें"
 
@@ -29059,7 +29059,7 @@ msgstr "नीचे स्क्रॉल करें"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:137
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:141
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:443
 msgid "Scroll to bottom when sending a message"
 msgstr "मैसेज भेजने पर सबसे नीचे स्क्रॉल करें"
@@ -29807,7 +29807,7 @@ msgstr "DSA रिपोर्ट भेजें"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:117
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:121
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:127
 msgid "Send file messages in order"
 msgstr "फ़ाइल मैसेज क्रम में भेजें"
@@ -30615,7 +30615,7 @@ msgid "Show active now on the home screen to surface friends active in voice. Yo
 msgstr "होम स्क्रीन पर 'अभी सक्रिय' दिखाएं ताकि आप उन दोस्तों को देख सकें जो वॉइस चैट में सक्रिय हैं। आपको एक झलक, चैनल का संदर्भ, कौन पहले से मौजूद है, और तुरंत जुड़ने का एक आसान तरीका दिखाई देगा।"
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:69
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:73
 msgid "Show attachment expiration indicator"
 msgstr "अटैचमेंट की समय-सीमा खत्म होने का इंडिकेटर दिखाएं"
 
@@ -30663,12 +30663,17 @@ msgstr "कनेक्शन वॉल्यूम कंट्रोल दि
 msgid "Show context menu shortcuts"
 msgstr "कॉन्टेक्स्ट मेन्यू शॉर्टकट दिखाएं"
 
+#. Short label for an advanced message action bar preference.
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:61
+msgid "Show copy button"
+msgstr "कॉपी बटन दिखाएं"
+
 #: src/features/invite/components/InviteDateToggle.tsx:31
 msgid "Show creation date instead of expiration date"
 msgstr "एक्सपायरी की तारीख के बजाय बनने की तारीख दिखाएं"
 
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:93
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:97
 msgid "Show custom emojis in expression autocomplete"
 msgstr "एक्सप्रेशन ऑटो-कम्प्लीट में कस्टम इमोजी दिखाएं"
 
@@ -30678,17 +30683,17 @@ msgid "Show default avatar, ignoring your global profile"
 msgstr "डिफ़ॉल्ट अवतार दिखाएं, अपनी ग्लोबल प्रोफ़ाइल को अनदेखा करें"
 
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:89
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:93
 msgid "Show default emojis in expression autocomplete"
 msgstr "एक्सप्रेशन ऑटो-कम्प्लीट में डिफ़ॉल्ट इमोजी दिखाएं"
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:73
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:77
 msgid "Show delete button"
 msgstr "डिलीट बटन दिखाएं"
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:77
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:81
 msgid "Show download button"
 msgstr "डाउनलोड बटन दिखाएं"
 
@@ -30715,7 +30720,7 @@ msgstr "एम्बेड और वेबसाइट लिंक का प�
 #. Short label for an advanced message input preference.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:59
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:125
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:129
 msgid "Show emoji button"
 msgstr "इमोजी बटन दिखाएं"
 
@@ -30725,7 +30730,7 @@ msgid "Show emoji reactions on messages"
 msgstr "मैसेज पर इमोजी रिएक्शन दिखाएं"
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:81
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:85
 msgid "Show favorite button"
 msgstr "पसंदीदा बटन दिखाएं"
 
@@ -30747,14 +30752,14 @@ msgid "Show focus ring on chat text area"
 msgstr "चैट टेक्स्ट एरिया पर फ़ोकस रिंग दिखाएं"
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:65
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:69
 msgid "Show GIF indicator"
 msgstr "GIF इंडिकेटर दिखाएं"
 
 #. Plus menu submenu toggle that shows the GIFs button next to the textarea.
 #. Short label for an advanced message input preference.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:43
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:105
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:109
 msgid "Show GIFs button"
 msgstr "GIF बटन दिखाएं"
 
@@ -30764,7 +30769,7 @@ msgid "Show icon when collapsed"
 msgstr "छोटा करने पर आइकॉन दिखाएं"
 
 #. Short confirmation button label in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:165
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:169
 msgid "Show in all communities"
 msgstr "सभी कम्युनिटी में दिखाएं"
 
@@ -30803,7 +30808,7 @@ msgstr "अधिकतम 5 दिखाएं (+5 बैज)"
 #. Plus menu submenu toggle that shows the saved media (memes) button next to the textarea.
 #. Short label for an advanced message input preference.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:47
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:109
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:113
 msgid "Show media button"
 msgstr "मीडिया बटन दिखाएं"
 
@@ -30929,9 +30934,9 @@ msgstr "वॉइस मेन्यू में प्रति-डिवा�
 #. Plus menu submenu toggle that shows the persona selector next to the textarea.
 #. Short label for an advanced message input preference.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:51
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:129
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:133
 msgid "Show personas button"
-msgstr "Show personas button"
+msgstr "परसोना बटन दिखाएं"
 
 #. Developer option label for exposing the staff-only profile timezone section in profile settings.
 #: src/features/devtools/components/DeveloperOptionsToggleGroups.ts:135
@@ -30949,7 +30954,7 @@ msgid "Show rich previews for YouTube links."
 msgstr "YouTube लिंक के लिए रिच प्रीव्यू दिखाएं।"
 
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:101
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:105
 msgid "Show saved media in expression autocomplete"
 msgstr "एक्सप्रेशन ऑटो-कम्प्लीट में सेव किया गया मीडिया दिखाएं"
 
@@ -30958,14 +30963,14 @@ msgstr "एक्सप्रेशन ऑटो-कम्प्लीट मे
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #: src/features/channel/components/textarea/TextareaContextMenu.tsx:102
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:63
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:133
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:137
 msgid "Show send button"
 msgstr "भेजें बटन दिखाएं"
 
 #. Tooltip on the channel header server list toggle when the server rail is currently hidden.
 #: src/features/channel/components/channel_header/shared.ts:77
 msgid "Show server list"
-msgstr "Show server list"
+msgstr "सर्वर सूची दिखाएं"
 
 #. Label in the display tab.
 #: src/features/user/components/modals/tabs/chat_settings_tab/DisplayTab.tsx:26
@@ -30975,12 +30980,12 @@ msgstr "क्लिक करने पर स्पॉइलर कॉन्�
 #. Short label for an advanced message input preference.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:55
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:121
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:125
 msgid "Show stickers button"
 msgstr "स्टिकर बटन दिखाएं"
 
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:97
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:101
 msgid "Show stickers in expression autocomplete"
 msgstr "एक्सप्रेशन ऑटो-कम्प्लीट में स्टिकर दिखाएं"
 
@@ -30990,7 +30995,7 @@ msgid "Show strikethrough Markdown text in a slightly muted color."
 msgstr "स्ट्राइकथ्रू मार्कडाउन टेक्स्ट को हल्के म्यूट रंग में दिखाएं।"
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:85
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:89
 msgid "Show suppress embeds button"
 msgstr "एम्बेड छिपाने का बटन दिखाएं"
 
@@ -31296,7 +31301,7 @@ msgstr "छोड़ें"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced inbox preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:141
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:145
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:459
 msgid "Skip \"Mark all as read\" confirmation"
 msgstr "\"सभी को पढ़ा गया मार्क करें\" की पुष्टि छोड़ें"
@@ -31769,8 +31774,8 @@ msgstr "कुछ गड़बड़ हो गई। बाद में फि
 #. Inline error in the web deep-link prompt when opening the desktop app fails.
 #. Toast error shown when the mature content check request fails unexpectedly.
 #: src/features/auth/components/modals/MatureContentCheckModal.tsx:18
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:585
-#: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:31
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:564
+#: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:33
 msgid "Something went wrong. Try again."
 msgstr "कुछ गड़बड़ हो गई। फिर से कोशिश करें।"
 
@@ -32200,7 +32205,7 @@ msgstr "शुरुआती तारीख, आखिरी तारीख �
 msgid "Start drag and drop"
 msgstr "खींचकर छोड़ना शुरू करें"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:705
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:731
 msgid "Start Import"
 msgstr "इंपोर्ट शुरू करें"
 
@@ -32476,7 +32481,7 @@ msgid "Stop"
 msgstr "रोकें"
 
 #. Confirmation prompt in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:161
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:165
 msgid "Stop hiding muted channels by default?"
 msgstr "म्यूट किए गए चैनल को डिफ़ॉल्ट रूप से छिपाना बंद करें?"
 
@@ -32787,7 +32792,7 @@ msgid "Success"
 msgstr "सफलता"
 
 #. placeholder {0}: importResults.successCount
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:659
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:685
 msgid "Successfully imported {0} persona(s) into your account. All avatar images are safely stored on your local server."
 msgstr "आपके अकाउंट में {0} परसोना सफलतापूर्वक इंपोर्ट हो गए हैं। सभी अवतार इमेज आपके लोकल सर्वर पर सुरक्षित रूप से स्टोर हैं।"
 
@@ -32818,7 +32823,7 @@ msgstr "सुझाव"
 msgid "Summary"
 msgstr "सारांश"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:506
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:532
 msgid "Supports PluralKit system export files"
 msgstr "PluralKit सिस्टम एक्सपोर्ट फ़ाइलों को सपोर्ट करता है"
 
@@ -33195,7 +33200,7 @@ msgstr "सिस्टम मोशन"
 msgid "System reduced motion"
 msgstr "सिस्टम का कम मोशन"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:556
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:582
 msgid "System Tag (Applied to imported personas)"
 msgstr "सिस्टम टैग (इंपोर्ट किए गए परसोना पर लागू)"
 
@@ -33341,7 +33346,7 @@ msgstr "सुरक्षित विशेषताओं के आधार
 #. Settings search synonym.
 #: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:99
 msgid "Taskbar"
-msgstr "Taskbar"
+msgstr "टास्कबार"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
@@ -35231,7 +35236,7 @@ msgctxt "channel-topic-field"
 msgid "Topic"
 msgstr "विषय"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:540
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:566
 msgid "Total Members"
 msgstr "कुल मेंबर"
 
@@ -36768,7 +36773,7 @@ msgstr "एसेट अपलोड करें"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced message input privacy preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:113
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:117
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:107
 msgid "Upload attachments before sending"
 msgstr "भेजने से पहले अटैचमेंट अपलोड करें"
@@ -38209,7 +38214,7 @@ msgstr "अपना ईमेल पता देखें"
 #. OAuth scope description shown on the consent screen for the personas.read scope.
 #: src/features/app/constants/AppConstants.ts:33
 msgid "View your personas"
-msgstr "View your personas"
+msgstr "अपने परसोना देखें"
 
 #. Notification sound setting label. Sound played when a viewer joins your screen share or stream.
 #: src/features/notification/utils/SoundLabels.ts:36

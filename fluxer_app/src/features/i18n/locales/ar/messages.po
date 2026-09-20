@@ -37,7 +37,7 @@ msgid "(only visible to you)"
 msgstr "(مرئية لك فقط)"
 
 #. placeholder {0}: w.prefix
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:680
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:706
 msgid "(Prefix: {0})"
 msgstr "(البادئة: {0})"
 
@@ -56,7 +56,7 @@ msgid "{0, plural, one {# member} other {# members}}"
 msgstr "{0, plural, zero {# عضو} one {عضو واحد} two {عضوان} few {# أعضاء} many {# عضوًا} other {# عضو}}"
 
 #. placeholder {0}: importResults.warnings.length
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:671
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:697
 msgid "{0} notice(s) during import"
 msgstr "{0} إشعار (إشعارات) أثناء الاستيراد"
 
@@ -64,7 +64,7 @@ msgstr "{0} إشعار (إشعارات) أثناء الاستيراد"
 #. placeholder {1}: progress.total
 #. placeholder {2}: progress.label ?? 'items'
 #. placeholder {3}: progress.percent
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:643
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:669
 msgid "{0} of {1} {2} ({3}%)"
 msgstr "{0} من {1} {2} ({3}%)"
 
@@ -4433,7 +4433,7 @@ msgid "Apply theme"
 msgstr "تطبيق السمة"
 
 #. Short confirmation button label in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:153
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:157
 msgid "Apply to all communities"
 msgstr "تطبيق على جميع المجتمعات"
 
@@ -4551,7 +4551,7 @@ msgstr "هل أنت متأكد أنك تريد طرد <0>{targetUserTag}</0> م�
 msgid "Are you sure you want to remove <0>{engineName}</0>?"
 msgstr "هل أنت متأكد أنك تريد إزالة <0>{engineName}</0>؟"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:437
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:463
 msgid "Are you sure you want to replace all <0>{existingCount}</0> existing persona(s)? This will permanently delete them from your account and cannot be undone."
 msgstr "هل أنت متأكد أنك تريد استبدال كل الـ <0>{existingCount}</0> شخصية/شخصيات الموجودة؟ سيتم حذفهم نهائيًا من حسابك ولا يمكن التراجع عن هذا الإجراء."
 
@@ -5015,14 +5015,14 @@ msgstr "اكتشاف اللغة تلقائيًا"
 #. Settings search synonym.
 #: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:103
 msgid "Auto-hide"
-msgstr "Auto-hide"
+msgstr "إخفاء تلقائي"
 
 #. Settings section label in Advanced Settings for edge hover peek preference.
 #. Short label for an advanced appearance preference that reveals collapsed sidebars on mouse hover.
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedAppearanceControls.tsx:100
 #: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:91
 msgid "Auto-peek hidden sidebars"
-msgstr "Auto-peek hidden sidebars"
+msgstr "استراق النظر التلقائي للأشرطة الجانبية المخفية"
 
 #. Short label in the voice tab. Keep it concise.
 #: src/features/user/components/modals/tabs/UserVoiceTab.tsx:116
@@ -6457,7 +6457,7 @@ msgstr "لا يمكن تحميل الملفات هنا"
 #: src/features/moderation/components/modals/BanMemberModal.tsx:262
 #: src/features/moderation/components/modals/RemoveTimeoutModal.tsx:70
 #: src/features/moderation/components/modals/TimeoutMemberModal.tsx:126
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:698
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:724
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:1022
 #: src/features/theme/components/modals/ThemeAcceptModal.tsx:173
 #: src/features/user/components/modals/EmailChangeModal.tsx:278
@@ -6830,7 +6830,7 @@ msgstr "نموذج تغيير كلمة المرور"
 #. Generic action label that opens the persona picker.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:712
 msgid "Change persona"
-msgstr "Change persona"
+msgstr "تغيير الشخصية"
 
 #. Subscription status badge meaning a future billing plan change is scheduled.
 #: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:437
@@ -7516,7 +7516,7 @@ msgstr "اختر طريقة"
 msgid "Choose a new password."
 msgstr "اختر كلمة مرور جديدة."
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:503
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:529
 msgid "Choose a PluralKit export (.json) or drag & drop"
 msgstr "اختر ملف تصدير PluralKit (.json) أو قم بالسحب والإفلات"
 
@@ -8088,7 +8088,7 @@ msgid "Click to open the color picker and choose a new color."
 msgstr "انقر لفتح منتقي الألوان واختيار لون جديد."
 
 #. Tooltip on the add-reaction button in the inline message hover action bar.
-#: src/features/channel/components/MessageActionBar.tsx:69
+#: src/features/channel/components/MessageActionBar.tsx:72
 msgid "Click to react"
 msgstr "انقر لإضافة تفاعل"
 
@@ -11245,7 +11245,7 @@ msgstr "تصحيح أخطاء العضو"
 #. Developer-mode action that opens the message debug modal.
 #. Developer-mode item in the message action bar overflow menu. Opens the message debug modal.
 #. Developer-mode message context menu item that opens an internal debug view for the message.
-#: src/features/channel/components/MessageActionBar.tsx:81
+#: src/features/channel/components/MessageActionBar.tsx:84
 #: src/features/channel/components/MessageActionMenu.tsx:106
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:66
 msgid "Debug message"
@@ -11969,7 +11969,7 @@ msgstr "التفاصيل"
 msgid "Detect while typing"
 msgstr "اكتشاف أثناء الكتابة"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:531
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:557
 msgid "Detected System Name / Tag"
 msgstr "اسم / علامة النظام المكتشفة"
 
@@ -12793,7 +12793,7 @@ msgstr "عدم اقتراح {deviceName} مرة أخرى"
 #: src/features/input/components/KeybindRecorder.tsx:470
 #: src/features/moderation/components/report_modal/IARModal.tsx:94
 #: src/features/moderation/components/report/ReportBreadcrumbs.tsx:31
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:718
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:744
 #: src/features/search/components/search/ChannelFilterSheet.tsx:165
 #: src/features/search/components/search/HasFilterSheet.tsx:206
 #: src/features/search/components/search/UserFilterSheet.tsx:186
@@ -12824,7 +12824,7 @@ msgstr "انقر نقرًا مزدوجًا على شخص ما لمشاهدة ب�
 
 #. Settings search entry label for double-clicking a message to edit it.
 #. Short label for an advanced message editing preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:298
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:309
 #: src/features/user/components/settings_utils/search_index/AdvancedSettingsIndex.ts:56
 msgid "Double-click to edit"
 msgstr "نقر مزدوج للتعديل"
@@ -13904,7 +13904,7 @@ msgid "Enable self-hosted mode client-side. Hides all premium and billing UI."
 msgstr "تفعيل وضع الاستضافة الذاتية من جانب العميل. يخفي كل واجهات Premium والفوترة."
 
 #. Short label for an advanced message action bar preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:61
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:65
 msgid "Enable Shift to expand"
 msgstr "تفعيل التوسيع بمفتاح Shift"
 
@@ -14735,7 +14735,7 @@ msgstr "تصدير المكتبة"
 msgid "Export my data"
 msgstr "تصدير بياناتي"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:527
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:553
 msgid "Export Summary"
 msgstr "ملخص التصدير"
 
@@ -15825,7 +15825,7 @@ msgstr "النماذج"
 #. Message action label for forwarding the selected message to another channel or DM.
 #. Message context menu item that opens the forward-to-channel picker.
 #. Tooltip on the forward button in the inline message hover action bar.
-#: src/features/channel/components/MessageActionBar.tsx:85
+#: src/features/channel/components/MessageActionBar.tsx:88
 #: src/features/channel/components/MessageActionMenu.tsx:86
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:54
 msgid "Forward"
@@ -17179,7 +17179,7 @@ msgstr "إخفاء الصور الرمزية"
 #. Tooltip on the channel header channel list toggle when the channel list is currently shown.
 #: src/features/channel/components/channel_header/shared.ts:81
 msgid "Hide channel list"
-msgstr "Hide channel list"
+msgstr "إخفاء قائمة القنوات"
 
 #. Settings search entry description. One-line summary of what the settings search entry controls.
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:507
@@ -17243,13 +17243,13 @@ msgstr "إخفاء القنوات المكتومة"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced sidebar preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:145
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:149
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:487
 msgid "Hide muted channels by default"
 msgstr "إخفاء القنوات المكتومة افتراضيًا"
 
 #. Confirmation prompt in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:149
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:153
 msgid "Hide muted channels by default?"
 msgstr "إخفاء القنوات المكتومة افتراضيًا؟"
 
@@ -17280,7 +17280,7 @@ msgstr "إخفاء صورة المعاينة المصغرة"
 #. Tooltip on the channel header server list toggle when the server rail is currently shown.
 #: src/features/channel/components/channel_header/shared.ts:73
 msgid "Hide server list"
-msgstr "Hide server list"
+msgstr "إخفاء قائمة الخوادم"
 
 #. Settings search entry description. One-line summary of what the settings search entry controls.
 #: src/features/user/components/settings_utils/search_index/DesktopSettingsIndex.ts:198
@@ -17435,7 +17435,7 @@ msgstr "مرر مؤشر الفأرة فوقي"
 #. Settings section description in Advanced Settings for edge hover peek preference.
 #: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:95
 msgid "Hover near window edges to temporarily reveal collapsed panels."
-msgstr "Hover near window edges to temporarily reveal collapsed panels."
+msgstr "مرر بالقرب من حواف النافذة للكشف مؤقتًا عن اللوحات المطوية."
 
 #: src/features/user/components/modals/tabs/component_gallery_tab/OverlaysTab.tsx:63
 msgid "Hover over buttons to see tooltips in different positions."
@@ -17874,11 +17874,11 @@ msgid "Import a .css file to get started, or paste your own CSS in Quick CSS."
 msgstr "استورد ملف ‎.css للبدء، أو الصق CSS الخاص بك في CSS السريع."
 
 #. Modal title for PluralKit import step completed
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:472
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:498
 msgid "Import Complete"
 msgstr "اكتمل الاستيراد"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:656
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:682
 msgid "Import Complete!"
 msgstr "اكتمل الاستيراد!"
 
@@ -17909,7 +17909,7 @@ msgid "Import folder"
 msgstr "استيراد مجلد"
 
 #. Modal title for PluralKit import step select
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:459
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:485
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:1044
 msgid "Import from PluralKit"
 msgstr "استيراد من PluralKit"
@@ -17928,7 +17928,7 @@ msgstr "استيراد مكتبة"
 msgid "Import more"
 msgstr "استيراد المزيد"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:571
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:597
 msgid "Import Strategy"
 msgstr "استراتيجية الاستيراد"
 
@@ -17982,11 +17982,11 @@ msgid "Imported theme has been applied."
 msgstr "تم تطبيق السمة المستوردة."
 
 #. Modal title for PluralKit import step importing
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:466
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:492
 msgid "Importing Personas..."
 msgstr "جاري استيراد الشخصيات..."
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:712
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:738
 msgid "Importing..."
 msgstr "جاري الاستيراد..."
 
@@ -18987,7 +18987,7 @@ msgstr "التنقل بين القنوات غير المقروءة"
 msgid "Jump between unread channels with mentions"
 msgstr "التنقل بين القنوات غير المقروءة التي تحتوي على إشارات"
 
-#: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:75
+#: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:78
 msgid "Jump straight to the app to continue."
 msgstr "انتقل مباشرة إلى التطبيق للمتابعة."
 
@@ -19122,7 +19122,7 @@ msgstr "الاحتفاظ بالمرفقات"
 msgid "Keep attachments when clearing an edit"
 msgstr "الاحتفاظ بالمرفقات عند إفراغ نص الرسالة أثناء التعديل"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:586
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:612
 msgid "Keep existing and add new (Recommended)"
 msgstr "الاحتفاظ بالموجود وإضافة الجديد (موصى به)"
 
@@ -19165,7 +19165,7 @@ msgid "Keep window dimensions and placement between reloads"
 msgstr "الاحتفاظ بأبعاد النافذة وموضعها بين عمليات إعادة التحميل"
 
 #. placeholder {0}: pkData.members?.length ?? 0
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:589
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:615
 msgid "Keep your {existingCount} current persona(s) and add all {0} imported personas alongside them as new entries."
 msgstr "احتفظ بشخصيتك/شخصياتك الحالية البالغ عددها {existingCount} وأضف جميع الشخصيات المستوردة البالغ عددها {0} بجانبها كإدخالات جديدة."
 
@@ -20134,7 +20134,7 @@ msgstr "إدارة الحسابات"
 #. OAuth scope description shown on the consent screen for the personas.write scope.
 #: src/features/app/constants/AppConstants.ts:37
 msgid "Manage and create your personas"
-msgstr "Manage and create your personas"
+msgstr "إدارة وإنشاء شخصياتك"
 
 #. Security settings section description for account access controls.
 #: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:92
@@ -20819,7 +20819,7 @@ msgstr "تتم إزالة الأعضاء عند عدم الاتصال بالإن
 msgid "Members with \"{pinMessagesPermissionLabel}\" can pin messages for everyone."
 msgstr "يمكن للأعضاء الذين لديهم إذن \"{pinMessagesPermissionLabel}\" تثبيت الرسائل للجميع."
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:546
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:572
 msgid "Members with Avatars"
 msgstr "أعضاء لديهم صور رمزية"
 
@@ -21038,7 +21038,7 @@ msgstr "تحتوي الرسالة على وسائط مرفقة"
 #. Title of the developer-mode message debug modal opened from the message action bar.
 #. Title of the developer-mode message debug modal opened from the message context menu.
 #. Title of the developer-mode message debug modal.
-#: src/features/channel/components/MessageActionBar.tsx:73
+#: src/features/channel/components/MessageActionBar.tsx:76
 #: src/features/channel/components/MessageActionMenu.tsx:74
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:62
 msgid "Message debug"
@@ -21599,7 +21599,7 @@ msgstr "هدية شهرية"
 #: src/features/auth/components/accounts/AccountRow.tsx:23
 #: src/features/channel/components/bottomsheets/channel_details_bottom_sheet/ChannelDetailsBottomSheetShared.ts:142
 #: src/features/channel/components/friends/FriendListItem.tsx:63
-#: src/features/channel/components/MessageActionBar.tsx:77
+#: src/features/channel/components/MessageActionBar.tsx:80
 #: src/features/user/components/modals/tabs/component_gallery_tab/ComponentGalleryTabButtonsTab.tsx:125
 msgid "More"
 msgstr "المزيد"
@@ -22427,15 +22427,15 @@ msgid "New category"
 msgstr "فئة جديدة"
 
 #. Short confirmation button label in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:157
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:161
 msgid "New communities only"
 msgstr "للمجتمعات الجديدة فقط"
 
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:679
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:690
 msgid "New communities you join will automatically have muted channels hidden. Would you also like to apply this setting to all your existing communities?"
 msgstr "سيتم إخفاء القنوات المكتومة تلقائيًا في المجتمعات الجديدة التي تنضم إليها. هل ترغب أيضًا في تطبيق هذا الإعداد على جميع مجتمعاتك الحالية؟"
 
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:710
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:721
 msgid "New communities you join will no longer have muted channels hidden automatically. Would you also like to show muted channels in all your existing communities?"
 msgstr "لن يتم إخفاء القنوات المكتومة تلقائيًا في المجتمعات الجديدة التي تنضم إليها. هل ترغب أيضًا في إظهار القنوات المكتومة في جميع مجتمعاتك الحالية؟"
 
@@ -23283,7 +23283,7 @@ msgstr "عدم التحويل"
 #: src/features/channel/components/channel_header_components/developer_tools/DeveloperToolsShared.ts:41
 #: src/features/guild/components/modals/guild_tabs/GuildModerationTab.tsx:47
 #: src/features/guild/utils/guild_tabs/audit_log/AuditLogSharedMessages.ts:52
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:534
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:560
 #: src/features/user/components/modals/tabs/accessibility_tab/VisualTab.tsx:37
 #: src/features/user/components/modals/tabs/components/EntranceSoundSection.tsx:146
 #: src/features/user/components/modals/tabs/privacy_safety_tab/data_request_modal/DataRequestModal.tsx:220
@@ -23846,7 +23846,7 @@ msgid "Open {macosSystemSettingsName} → {macosPrivacyAndSecuritySettingsName} 
 msgstr "افتح {macosSystemSettingsName} ← {macosPrivacyAndSecuritySettingsName} ← {macosScreenRecordingPermissionName}، ثم اسمح لـ {productName}. إذا كان {productName2} مفعّلًا بالفعل، فأغلقه تمامًا ثم أعد تشغيل {productName3} حتى يطبّق macOS الإذن."
 
 #. Button label that opens the desktop app. productName is the app name.
-#: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:27
+#: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:29
 msgid "Open {productName}"
 msgstr "فتح {productName}"
 
@@ -24084,7 +24084,7 @@ msgid "Open image link"
 msgstr "فتح رابط الصورة"
 
 #. Title in a web prompt that opens the same flow in the desktop app. productName is the app name.
-#: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:23
+#: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:25
 msgid "Open in {productName} for desktop"
 msgstr "فتح في {productName} لسطح المكتب"
 
@@ -24857,7 +24857,7 @@ msgstr "المدفوعات غير متاحة"
 #. Settings search synonym.
 #: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:107
 msgid "Peek"
-msgstr "Peek"
+msgstr "استراق النظر"
 
 #. Discovery application status badge in the community Discovery settings tab. The application is awaiting staff review.
 #. Tab label in the DM friends view showing pending friend requests.
@@ -24955,7 +24955,7 @@ msgstr "دائم"
 msgid "Permanent deletion"
 msgstr "حذف دائم"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:618
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:644
 msgid "Permanently delete all {existingCount} existing persona(s) and replace them completely with the imported personas."
 msgstr "احذف نهائيًا جميع الشخصيات الموجودة البالغ عددها {existingCount} واستبدلها تمامًا بالشخصيات المستوردة."
 
@@ -25943,7 +25943,7 @@ msgid "Processing"
 msgstr "جارٍ المعالجة"
 
 #. placeholder {0}: progress.currentName
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:637
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:663
 msgid "Processing: {0}"
 msgstr "جاري المعالجة: {0}"
 
@@ -27491,15 +27491,15 @@ msgstr "يتجدد في <0>{renewalDate}.</0>"
 msgid "Replace"
 msgstr "استبدال"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:442
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:468
 msgid "Replace All"
 msgstr "استبدال الكل"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:614
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:640
 msgid "Replace all existing personas (Destructive)"
 msgstr "استبدال جميع الشخصيات الموجودة (إجراء إتلافي)"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:435
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:461
 msgid "Replace All Personas"
 msgstr "استبدال جميع الشخصيات"
 
@@ -29059,7 +29059,7 @@ msgstr "التمرير للأسفل"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:137
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:141
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:443
 msgid "Scroll to bottom when sending a message"
 msgstr "التمرير للأسفل عند إرسال رسالة"
@@ -29807,7 +29807,7 @@ msgstr "إرسال بلاغ DSA"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:117
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:121
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:127
 msgid "Send file messages in order"
 msgstr "إرسال رسائل الملفات بالترتيب"
@@ -30615,7 +30615,7 @@ msgid "Show active now on the home screen to surface friends active in voice. Yo
 msgstr "اعرض «نشط الآن» على الشاشة الرئيسية لإبراز الأصدقاء النشطين في القنوات الصوتية. سترى معاينة وسياق القناة ومن هناك بالفعل وطريقة سريعة للانضمام."
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:69
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:73
 msgid "Show attachment expiration indicator"
 msgstr "إظهار مؤشر انتهاء صلاحية المرفق"
 
@@ -30663,12 +30663,17 @@ msgstr "إظهار عناصر تحكم مستوى الصوت للاتصال"
 msgid "Show context menu shortcuts"
 msgstr "إظهار اختصارات قائمة السياق"
 
+#. Short label for an advanced message action bar preference.
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:61
+msgid "Show copy button"
+msgstr "إظهار زر النسخ"
+
 #: src/features/invite/components/InviteDateToggle.tsx:31
 msgid "Show creation date instead of expiration date"
 msgstr "إظهار تاريخ الإنشاء بدلاً من تاريخ انتهاء الصلاحية"
 
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:93
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:97
 msgid "Show custom emojis in expression autocomplete"
 msgstr "إظهار الرموز التعبيرية المخصصة في الإكمال التلقائي للتعبيرات"
 
@@ -30678,17 +30683,17 @@ msgid "Show default avatar, ignoring your global profile"
 msgstr "إظهار الصورة الرمزية الافتراضية، مع تجاهل ملفك الشخصي العام"
 
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:89
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:93
 msgid "Show default emojis in expression autocomplete"
 msgstr "إظهار الرموز التعبيرية الافتراضية في الإكمال التلقائي للتعبيرات"
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:73
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:77
 msgid "Show delete button"
 msgstr "إظهار زر الحذف"
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:77
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:81
 msgid "Show download button"
 msgstr "إظهار زر التنزيل"
 
@@ -30715,7 +30720,7 @@ msgstr "إظهار التضمينات ومعاينة روابط المواقع"
 #. Short label for an advanced message input preference.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:59
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:125
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:129
 msgid "Show emoji button"
 msgstr "إظهار زر الرموز التعبيرية"
 
@@ -30725,7 +30730,7 @@ msgid "Show emoji reactions on messages"
 msgstr "إظهار التفاعلات بالرموز التعبيرية على الرسائل"
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:81
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:85
 msgid "Show favorite button"
 msgstr "إظهار زر المفضلة"
 
@@ -30747,14 +30752,14 @@ msgid "Show focus ring on chat text area"
 msgstr "إظهار حلقة التركيز على مربع نص الدردشة"
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:65
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:69
 msgid "Show GIF indicator"
 msgstr "إظهار مؤشر GIF"
 
 #. Plus menu submenu toggle that shows the GIFs button next to the textarea.
 #. Short label for an advanced message input preference.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:43
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:105
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:109
 msgid "Show GIFs button"
 msgstr "إظهار زر صور GIF"
 
@@ -30764,7 +30769,7 @@ msgid "Show icon when collapsed"
 msgstr "إظهار الأيقونة عند الطي"
 
 #. Short confirmation button label in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:165
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:169
 msgid "Show in all communities"
 msgstr "إظهار في كل المجتمعات"
 
@@ -30803,7 +30808,7 @@ msgstr "عرض 5 كحد أقصى (شارة +5)"
 #. Plus menu submenu toggle that shows the saved media (memes) button next to the textarea.
 #. Short label for an advanced message input preference.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:47
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:109
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:113
 msgid "Show media button"
 msgstr "إظهار زر الوسائط"
 
@@ -30929,9 +30934,9 @@ msgstr "إظهار عناصر تحكم مستوى صوت المشاركين لك
 #. Plus menu submenu toggle that shows the persona selector next to the textarea.
 #. Short label for an advanced message input preference.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:51
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:129
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:133
 msgid "Show personas button"
-msgstr "Show personas button"
+msgstr "إظهار زر الشخصيات"
 
 #. Developer option label for exposing the staff-only profile timezone section in profile settings.
 #: src/features/devtools/components/DeveloperOptionsToggleGroups.ts:135
@@ -30949,7 +30954,7 @@ msgid "Show rich previews for YouTube links."
 msgstr "عرض معاينات غنية لروابط يوتيوب."
 
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:101
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:105
 msgid "Show saved media in expression autocomplete"
 msgstr "إظهار الوسائط المحفوظة في الإكمال التلقائي للتعبيرات"
 
@@ -30958,14 +30963,14 @@ msgstr "إظهار الوسائط المحفوظة في الإكمال التل�
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #: src/features/channel/components/textarea/TextareaContextMenu.tsx:102
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:63
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:133
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:137
 msgid "Show send button"
 msgstr "إظهار زر الإرسال"
 
 #. Tooltip on the channel header server list toggle when the server rail is currently hidden.
 #: src/features/channel/components/channel_header/shared.ts:77
 msgid "Show server list"
-msgstr "Show server list"
+msgstr "عرض قائمة الخوادم"
 
 #. Label in the display tab.
 #: src/features/user/components/modals/tabs/chat_settings_tab/DisplayTab.tsx:26
@@ -30975,12 +30980,12 @@ msgstr "إظهار المحتوى المخفي عند النقر"
 #. Short label for an advanced message input preference.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:55
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:121
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:125
 msgid "Show stickers button"
 msgstr "إظهار زر الملصقات"
 
 #. Short label for an advanced message input preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:97
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:101
 msgid "Show stickers in expression autocomplete"
 msgstr "إظهار الملصقات في الإكمال التلقائي للتعبيرات"
 
@@ -30990,7 +30995,7 @@ msgid "Show strikethrough Markdown text in a slightly muted color."
 msgstr "إظهار نص Markdown المشطوب بلون باهت قليلًا."
 
 #. Short label for an advanced media button preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:85
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:89
 msgid "Show suppress embeds button"
 msgstr "إظهار زر «إخفاء التضمينات»"
 
@@ -31296,7 +31301,7 @@ msgstr "تخطي"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced inbox preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:141
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:145
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:459
 msgid "Skip \"Mark all as read\" confirmation"
 msgstr "تخطي تأكيد «وضع علامة على الكل كمقروء»"
@@ -31769,8 +31774,8 @@ msgstr "حدث خطأ ما. يُرجى المحاولة مرة أخرى لاحق
 #. Inline error in the web deep-link prompt when opening the desktop app fails.
 #. Toast error shown when the mature content check request fails unexpectedly.
 #: src/features/auth/components/modals/MatureContentCheckModal.tsx:18
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:585
-#: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:31
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:564
+#: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:33
 msgid "Something went wrong. Try again."
 msgstr "حدث خطأ ما. يُرجى المحاولة مرة أخرى."
 
@@ -32200,7 +32205,7 @@ msgstr "يجب أن يكون تاريخ البدء قبل تاريخ الانت�
 msgid "Start drag and drop"
 msgstr "بدء السحب والإفلات"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:705
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:731
 msgid "Start Import"
 msgstr "بدء الاستيراد"
 
@@ -32476,7 +32481,7 @@ msgid "Stop"
 msgstr "إيقاف"
 
 #. Confirmation prompt in advanced settings.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:161
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:165
 msgid "Stop hiding muted channels by default?"
 msgstr "إيقاف إخفاء القنوات المكتومة افتراضيًا؟"
 
@@ -32787,7 +32792,7 @@ msgid "Success"
 msgstr "تم بنجاح"
 
 #. placeholder {0}: importResults.successCount
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:659
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:685
 msgid "Successfully imported {0} persona(s) into your account. All avatar images are safely stored on your local server."
 msgstr "تم استيراد {0} شخصية/شخصيات بنجاح إلى حسابك. جميع صور الصور الرمزية مخزنة بأمان على الخادم المحلي الخاص بك."
 
@@ -32818,7 +32823,7 @@ msgstr "اقتراحات"
 msgid "Summary"
 msgstr "ملخص"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:506
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:532
 msgid "Supports PluralKit system export files"
 msgstr "يدعم ملفات تصدير نظام PluralKit"
 
@@ -33195,7 +33200,7 @@ msgstr "حركة النظام"
 msgid "System reduced motion"
 msgstr "تقليل الحركة في النظام"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:556
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:582
 msgid "System Tag (Applied to imported personas)"
 msgstr "علامة النظام (مطبقة على الشخصيات المستوردة)"
 
@@ -33341,7 +33346,7 @@ msgstr "يستهدف الأشخاص بناءً على خصائص محمية."
 #. Settings search synonym.
 #: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:99
 msgid "Taskbar"
-msgstr "Taskbar"
+msgstr "شريط المهام"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
@@ -35231,7 +35236,7 @@ msgctxt "channel-topic-field"
 msgid "Topic"
 msgstr "الموضوع"
 
-#: src/features/persona/components/modals/PluralKitImportModal.tsx:540
+#: src/features/persona/components/modals/PluralKitImportModal.tsx:566
 msgid "Total Members"
 msgstr "إجمالي الأعضاء"
 
@@ -36768,7 +36773,7 @@ msgstr "تحميل الأصول"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced message input privacy preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:113
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:117
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:107
 msgid "Upload attachments before sending"
 msgstr "تحميل المرفقات قبل الإرسال"
@@ -38209,7 +38214,7 @@ msgstr "عرض عنوان بريدك الإلكتروني"
 #. OAuth scope description shown on the consent screen for the personas.read scope.
 #: src/features/app/constants/AppConstants.ts:33
 msgid "View your personas"
-msgstr "View your personas"
+msgstr "عرض شخصياتك"
 
 #. Notification sound setting label. Sound played when a viewer joins your screen share or stream.
 #: src/features/notification/utils/SoundLabels.ts:36
