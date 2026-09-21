@@ -44,8 +44,10 @@ interface UseTextareaExpressionHandlersOptions {
 		sendOptions: {
 			hasAttachments: boolean;
 			favoriteMemeId?: string;
+			draftOverride?: string;
 		},
 	) => void;
+	clearComposer?: () => void;
 	enabled?: boolean;
 	channelId?: string;
 }
@@ -59,6 +61,7 @@ export const useTextareaExpressionHandlers = ({
 	prepareTextChange,
 	segmentManagerRef,
 	sendOptimisticMessage,
+	clearComposer,
 	enabled = true,
 	channelId,
 }: UseTextareaExpressionHandlersOptions) => {
@@ -91,13 +94,19 @@ export const useTextareaExpressionHandlers = ({
 			if (!gif) return;
 			const gifUrl = GifSlugUtils.resolveShareUrl(gif.provider, {url: gif.url, slug: gif.slug});
 			if (autoSend) {
-				sendOptimisticMessage({content: gifUrl}, {hasAttachments: false});
+				const currentDraft = previousValueRef.current || textareaRef.current?.value || '';
+				sendOptimisticMessage({content: gifUrl}, {hasAttachments: false, draftOverride: currentDraft});
+				if (clearComposer) {
+					clearComposer();
+				} else {
+					setValue('');
+				}
 			} else {
 				appendText(gifUrl);
 			}
 		};
 		return ComponentBus.subscribe('GIF_SELECT', handleGifSelect);
-	}, [appendText, sendOptimisticMessage, enabled, channelId]);
+	}, [appendText, sendOptimisticMessage, setValue, clearComposer, enabled, previousValueRef, textareaRef, channelId]);
 	useEffect(() => {
 		const handleStickerSelect = (payload?: unknown) => {
 			if (!enabled || (channelId != null && !ActiveComposer.accepts(channelId))) return;
@@ -105,10 +114,19 @@ export const useTextareaExpressionHandlers = ({
 				sticker?: GuildSticker;
 			};
 			if (!sticker) return;
-			sendOptimisticMessage({content: '', stickers: [sticker.toJSON()]}, {hasAttachments: false});
+			const currentDraft = previousValueRef.current || textareaRef.current?.value || '';
+			sendOptimisticMessage(
+				{content: '', stickers: [sticker.toJSON()]},
+				{hasAttachments: false, draftOverride: currentDraft},
+			);
+			if (clearComposer) {
+				clearComposer();
+			} else {
+				setValue('');
+			}
 		};
 		return ComponentBus.subscribe('STICKER_SELECT', handleStickerSelect);
-	}, [sendOptimisticMessage, enabled, channelId]);
+	}, [sendOptimisticMessage, setValue, clearComposer, enabled, previousValueRef, textareaRef, channelId]);
 	useEffect(() => {
 		const handleFavoriteMemeSelect = (payload?: unknown) => {
 			if (!enabled || (channelId != null && !ActiveComposer.accepts(channelId))) return;
@@ -123,8 +141,17 @@ export const useTextareaExpressionHandlers = ({
 			const providerShareUrl =
 				meme.gifProvider && meme.gifSlug ? GifSlugUtils.buildShareUrl(meme.gifProvider, meme.gifSlug) : null;
 			if (autoSend) {
+				const currentDraft = previousValueRef.current || textareaRef.current?.value || '';
 				if (providerShareUrl) {
-					sendOptimisticMessage({content: providerShareUrl}, {hasAttachments: false});
+					sendOptimisticMessage(
+						{content: providerShareUrl},
+						{hasAttachments: false, draftOverride: currentDraft},
+					);
+					if (clearComposer) {
+						clearComposer();
+					} else {
+						setValue('');
+					}
 				} else if (canSendFavoriteMemeId) {
 					const uploadingAttachment = UploadingAttachment.fromDescriptor({
 						filename: meme.filename,
@@ -134,8 +161,13 @@ export const useTextareaExpressionHandlers = ({
 					}).toJSON();
 					sendOptimisticMessage(
 						{content: '', attachments: [uploadingAttachment]},
-						{hasAttachments: false, favoriteMemeId: meme.id},
+						{hasAttachments: false, favoriteMemeId: meme.id, draftOverride: currentDraft},
 					);
+					if (clearComposer) {
+						clearComposer();
+					} else {
+						setValue('');
+					}
 				} else {
 					insertMemeUrl();
 				}
@@ -148,7 +180,17 @@ export const useTextareaExpressionHandlers = ({
 			}
 		};
 		return ComponentBus.subscribe('FAVORITE_MEME_SELECT', handleFavoriteMemeSelect);
-	}, [appendText, canSendFavoriteMemeId, sendOptimisticMessage, enabled, channelId]);
+	}, [
+		appendText,
+		canSendFavoriteMemeId,
+		sendOptimisticMessage,
+		setValue,
+		clearComposer,
+		enabled,
+		previousValueRef,
+		textareaRef,
+		channelId,
+	]);
 	useEffect(() => {
 		const handleInsertMention = (payload?: unknown) => {
 			if (!enabled || (channelId != null && !ActiveComposer.accepts(channelId))) return;
