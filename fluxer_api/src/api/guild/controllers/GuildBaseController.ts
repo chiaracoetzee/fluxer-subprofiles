@@ -16,6 +16,8 @@ import type {HonoApp} from '@app/api/types/HonoEnv';
 import {assertAccountNotLimited} from '@app/api/user/AccountLimit';
 import {Validator} from '@app/api/Validator';
 import {AdminACLs} from '@fluxer/constants/src/AdminACLs';
+import {UserFlags} from '@fluxer/constants/src/UserConstants';
+import {MissingPermissionsError} from '@fluxer/errors/src/domains/core/MissingPermissionsError';
 import {GuildCreationPermissionRequiredError} from '@fluxer/errors/src/domains/guild/GuildCreationPermissionRequiredError';
 import {SingleCommunityCannotCreateGuildsError} from '@fluxer/errors/src/domains/guild/SingleCommunityCannotCreateGuildsError';
 import {SingleCommunityCannotDeleteError} from '@fluxer/errors/src/domains/guild/SingleCommunityCannotDeleteError';
@@ -59,6 +61,10 @@ export function GuildBaseController(app: HonoApp) {
 			const policy = await ctx.get('instanceConfigRepository').getInstancePolicyConfig();
 			if (policy.single_community_enabled) {
 				throw new SingleCommunityCannotCreateGuildsError();
+			}
+			const isStaff = (user.flags & UserFlags.STAFF) === UserFlags.STAFF;
+			if (policy.community_creation_staff_only && !isStaff) {
+				throw new MissingPermissionsError();
 			}
 			if (!user.isUnclaimedAccount()) {
 				requireEmailVerified(user, 'guild_creation');
