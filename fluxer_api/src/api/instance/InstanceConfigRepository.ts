@@ -114,6 +114,7 @@ interface LimitConfigInputs {
 export interface InstancePolicyConfig {
 	single_community_enabled: boolean;
 	single_community_guild_id: string | null;
+	community_creation_staff_only: boolean;
 	direct_messages_disabled: boolean;
 	direct_messages_locked: boolean;
 	premium_mode: InstancePremiumMode;
@@ -598,6 +599,7 @@ const StoredSnowflakeStringSchema = z
 const StoredInstancePolicySchema = z.object({
 	single_community_enabled: InstancePolicyUpdateSchema.shape.single_community_enabled.default(false),
 	single_community_guild_id: StoredSnowflakeStringSchema.nullable().default(null),
+	community_creation_staff_only: InstancePolicyUpdateSchema.shape.community_creation_staff_only.default(false),
 	direct_messages_disabled: InstancePolicyUpdateSchema.shape.direct_messages_disabled.default(false),
 	direct_messages_locked: z.boolean().default(false),
 	premium_mode: InstancePolicyUpdateSchema.shape.premium_mode.default('everyone'),
@@ -1689,6 +1691,7 @@ export class InstanceConfigRepository {
 			single_community: policy.single_community_enabled,
 			single_community_guild_id: policy.single_community_enabled ? policy.single_community_guild_id : null,
 			direct_messages_disabled: policy.direct_messages_disabled,
+			community_creation_staff_only: policy.community_creation_staff_only,
 		};
 	}
 

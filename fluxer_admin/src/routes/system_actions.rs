@@ -816,6 +816,9 @@ fn build_app_registration_update(form: &MultiValueForm) -> InstanceConfigUpdateR
 }
 
 fn build_policy_update(form: &MultiValueForm) -> InstanceConfigUpdateRequest {
+    let community_creation_staff_only = form
+        .first("policy_community_creation_staff_only")
+        .map(|value| value == "true");
     let direct_messages_disabled = form
         .first("policy_direct_messages_disabled")
         .map(|value| value == "true");
@@ -830,6 +833,7 @@ fn build_policy_update(form: &MultiValueForm) -> InstanceConfigUpdateRequest {
         policy: Some(InstancePolicyUpdateRequest {
             single_community_enabled: None,
             single_community_name: None,
+            community_creation_staff_only,
             direct_messages_disabled,
             premium_mode,
             services,
@@ -994,6 +998,7 @@ fn build_single_community_update(enabled: bool) -> InstanceConfigUpdateRequest {
         policy: Some(InstancePolicyUpdateRequest {
             single_community_enabled: Some(enabled),
             single_community_name: None,
+            community_creation_staff_only: None,
             direct_messages_disabled: None,
             premium_mode: None,
             services: None,
