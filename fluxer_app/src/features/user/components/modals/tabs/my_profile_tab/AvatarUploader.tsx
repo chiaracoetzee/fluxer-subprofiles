@@ -118,6 +118,7 @@ interface AvatarUploaderProps {
 	errorMessage?: string;
 	avatarMode?: AvatarMode;
 	onAvatarModeChange?: (mode: AvatarMode) => void;
+	hideLabel?: boolean;
 }
 
 export const AvatarUploader = observer(
@@ -132,6 +133,7 @@ export const AvatarUploader = observer(
 		errorMessage,
 		avatarMode = 'inherit',
 		onAvatarModeChange,
+		hideLabel = false,
 	}: AvatarUploaderProps) => {
 		const {i18n} = useLingui();
 		const hasAnimatedAvatarEntitlement = isLimitToggleEnabled(
@@ -389,9 +391,11 @@ export const AvatarUploader = observer(
 		}
 		return (
 			<div data-flx="user.my-profile-tab.avatar-uploader.div--2">
-				<div className={styles.label} data-flx="user.my-profile-tab.avatar-uploader.label--2">
-					<Trans>Avatar</Trans>
-				</div>
+				{!hideLabel && (
+					<div className={styles.label} data-flx="user.my-profile-tab.avatar-uploader.label--2">
+						<Trans>Avatar</Trans>
+					</div>
+				)}
 				<div className={styles.buttonGroup} data-flx="user.my-profile-tab.avatar-uploader.button-group--2">
 					<Button
 						variant="primary"
