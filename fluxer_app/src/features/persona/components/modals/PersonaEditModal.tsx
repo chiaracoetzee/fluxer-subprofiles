@@ -15,8 +15,9 @@ import * as ModalCommands from '@app/features/ui/commands/ModalCommands';
 import {modal} from '@app/features/ui/commands/ModalCommands';
 import * as ToastCommands from '@app/features/ui/commands/ToastCommands';
 import {Avatar} from '@app/features/ui/components/Avatar';
-import {ColorPickerField} from '@app/features/ui/components/form/ColorPickerField';
+import {Input, Textarea} from '@app/features/ui/components/form/FormInput';
 import {type SegmentedTab, SegmentedTabs} from '@app/features/ui/segmented_tabs/SegmentedTabs';
+import {AccentColorPicker} from '@app/features/user/components/modals/tabs/my_profile_tab/AccentColorPicker';
 import {AvatarUploader} from '@app/features/user/components/modals/tabs/my_profile_tab/AvatarUploader';
 import {BannerUploader} from '@app/features/user/components/modals/tabs/my_profile_tab/BannerUploader';
 import popoutStyles from '@app/features/user/components/popouts/UserProfilePopout.module.css';
@@ -27,6 +28,7 @@ import {ProfileCardLayout} from '@app/features/user/components/profile/profile_c
 import {ProfileCardUserInfo} from '@app/features/user/components/profile/profile_card/ProfileCardUserInfo';
 import {PROFILE_POPOUT_GEOMETRY_STYLE} from '@app/features/user/constants/UserProfileSurfaceGeometry';
 import Users from '@app/features/user/state/Users';
+import * as AvatarUtils from '@app/features/user/utils/AvatarUtils';
 import type {PersonaVisibility} from '@fluxer/schema/src/domains/persona/PersonaApiSchemas';
 import type {I18n} from '@lingui/core';
 import {msg} from '@lingui/core/macro';
@@ -93,10 +95,6 @@ const VISIBILITY_PUBLIC_DESC = msg({
 const VISIBILITY_PRIVATE_DESC = msg({
 	message: 'Only visible to you. Others cannot view this persona’s full bio or profile details.',
 	comment: 'Helper description for private persona visibility',
-});
-const ACCENT_COLOR_DESCRIPTION_DESCRIPTOR = msg({
-	message: "Customizes the border and banner color on this persona's profile",
-	comment: 'Description for persona accent color picker',
 });
 const NAME_PLACEHOLDER_DESCRIPTOR = msg({
 	message: 'e.g. Alice',
@@ -530,7 +528,6 @@ export const PersonaEditModal: React.FC<PersonaEditModalProps> = observer(({pers
 	const handleDeletePersona = () => {
 		if (!formData.id) return;
 		const personaId = formData.id;
-		const personaName = formData.name;
 
 		ModalCommands.push(
 			modal(() => (
@@ -538,7 +535,7 @@ export const PersonaEditModal: React.FC<PersonaEditModalProps> = observer(({pers
 					title={<Trans>Delete Persona</Trans>}
 					description={
 						<Trans>
-							Are you sure you want to delete <strong>{personaName}</strong>? This action cannot be undone.
+							Are you sure you want to delete <strong>{formData.name}</strong>? This action cannot be undone.
 						</Trans>
 					}
 					primaryText={<Trans>Delete</Trans>}
@@ -550,7 +547,7 @@ export const PersonaEditModal: React.FC<PersonaEditModalProps> = observer(({pers
 								type: 'success',
 								children: i18n._(PERSONA_DELETED_DESCRIPTOR),
 							});
-							onClose();
+							ModalCommands.popWithKey(PERSONA_EDIT_MODAL_KEY);
 						} catch {
 							ToastCommands.createToast({
 								type: 'error',
@@ -658,136 +655,145 @@ export const PersonaEditModal: React.FC<PersonaEditModalProps> = observer(({pers
 					<div className={styles.layout}>
 						{/* Left column: Form */}
 						<div className={styles.formColumn}>
-							<div className={styles.formGrid}>
-								<div className={styles.formField}>
-									<div className={styles.formLabel}>
-										<Trans>Name *</Trans>
-									</div>
-									<input
-										type="text"
-										className={styles.textInput}
-										placeholder={i18n._(NAME_PLACEHOLDER_DESCRIPTOR)}
-										maxLength={100}
-										value={formData.name}
-										onChange={(e) => setFormData({...formData, name: e.target.value})}
-									/>
-								</div>
+							{/* 1. Display name */}
+							<Input
+								label={<Trans>Display name</Trans>}
+								placeholder={i18n._(NAME_PLACEHOLDER_DESCRIPTOR)}
+								maxLength={100}
+								value={formData.name}
+								onChange={(e) => setFormData((prev) => ({...prev, name: e.target.value}))}
+								data-flx="persona.persona-edit-modal.input.name"
+							/>
 
-								<div className={styles.formField}>
-									<div className={styles.formLabel}>
-										<Trans>Pronouns</Trans>
-									</div>
-									<input
-										type="text"
-										className={styles.textInput}
-										placeholder={i18n._(PRONOUNS_PLACEHOLDER_DESCRIPTOR)}
-										maxLength={100}
-										value={formData.pronouns}
-										onChange={(e) => setFormData({...formData, pronouns: e.target.value})}
-									/>
-								</div>
+							{/* 2. Pronouns */}
+							<Input
+								label={<Trans>Pronouns</Trans>}
+								placeholder={i18n._(PRONOUNS_PLACEHOLDER_DESCRIPTOR)}
+								maxLength={100}
+								value={formData.pronouns}
+								onChange={(e) => setFormData((prev) => ({...prev, pronouns: e.target.value}))}
+								data-flx="persona.persona-edit-modal.input.pronouns"
+							/>
 
-								<div className={styles.formField}>
-									<div className={styles.formLabel}>
-										<Trans>Accent color</Trans>
-									</div>
-									<ColorPickerField
-										description={i18n._(ACCENT_COLOR_DESCRIPTION_DESCRIPTOR)}
-										value={formData.accentColor ?? 0}
-										onChange={(accentColor) =>
-											setFormData((prev) => ({...prev, accentColor: accentColor === 0 ? null : accentColor}))
-										}
-										onReset={() => setFormData((prev) => ({...prev, accentColor: null}))}
-										data-flx="persona.persona-edit-modal.accent-color-picker-field"
-									/>
-								</div>
+							{/* 3. Avatar */}
+							<AvatarUploader
+								hasAvatar={Boolean(formData.avatarUrl)}
+								onAvatarChange={handleAvatarUpload}
+								onAvatarClear={handleAvatarClear}
+								isPerGuildProfile={false}
+								disabled={isUploadingAvatar}
+								data-flx="persona.persona-edit-modal.avatar-uploader"
+							/>
 
-								<div className={styles.formField} style={{gridColumn: '1 / -1'}}>
-									<div className={styles.formLabel}>
-										<Trans>Bio</Trans>
-									</div>
-									<textarea
-										className={styles.textareaInput}
-										placeholder={i18n._(BIO_PLACEHOLDER_DESCRIPTOR)}
-										maxLength={4096}
-										rows={4}
-										value={formData.bio}
-										onChange={(e) => setFormData({...formData, bio: e.target.value})}
-									/>
-								</div>
+							{/* 4. Banner */}
+							<BannerUploader
+								hasBanner={Boolean(formData.bannerUrl)}
+								onBannerChange={handleBannerUpload}
+								onBannerClear={handleBannerClear}
+								disabled={isUploadingBanner}
+								disableModeSelection={true}
+								requireBannerEntitlement={false}
+								isPerGuildProfile={false}
+								data-flx="persona.persona-edit-modal.banner-uploader"
+							/>
 
-								<div className={styles.formField} style={{gridColumn: '1 / -1'}}>
-									<div className={styles.formLabel}>
-										<Trans>Visibility</Trans>
-									</div>
-									<SegmentedTabs<PersonaVisibility>
-										tabs={visibilityTabs}
-										selectedTab={formData.visibility}
-										onTabChange={(vis) => setFormData((prev) => ({...prev, visibility: vis}))}
-										ariaLabel={i18n._(PERSONA_VISIBILITY_ARIA_DESCRIPTOR)}
-									/>
-									<div className={styles.modeHelperText} style={{marginTop: 6}}>
-										<Info size={16} weight="bold" className={styles.modeHelperIcon} />
-										<span>{visibilityDescriptions[formData.visibility]}</span>
-									</div>
-								</div>
+							{/* 5. Accent color */}
+							<AccentColorPicker
+								value={formData.accentColor}
+								onChange={(accentColor) => setFormData((prev) => ({...prev, accentColor}))}
+								disabled={isSubmitting}
+								data-flx="persona.persona-edit-modal.accent-color-picker"
+							/>
 
-								<div className={styles.formField} style={{gridColumn: '1 / -1'}}>
-									<div
-										style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4}}
+							{/* 6. About me */}
+							<Textarea
+								label={<Trans>About me</Trans>}
+								placeholder={i18n._(BIO_PLACEHOLDER_DESCRIPTOR)}
+								maxLength={4096}
+								minRows={3}
+								maxRows={8}
+								showCharacterCount={true}
+								footer={
+									<div className={styles.inputFooter}>
+										<Trans>You can use links, emoji, and Markdown.</Trans>
+									</div>
+								}
+								value={formData.bio}
+								onChange={(e) => setFormData((prev) => ({...prev, bio: e.target.value}))}
+								data-flx="persona.persona-edit-modal.textarea.bio"
+							/>
+
+							{/* 7. Persona Tags (Prefix & Suffix) */}
+							<div className={styles.sectionBlock}>
+								<div className={styles.tagsHeader}>
+									<label className={styles.fieldLabel}>
+										<Trans>Persona Tags (Prefix & Suffix)</Trans>
+									</label>
+									<Button
+										variant="secondary"
+										small
+										leftIcon={<Plus size={14} />}
+										onClick={handleAddTagRow}
+										disabled={formData.tags.length >= 5}
 									>
-										<div className={styles.formLabel}>
-											<Trans>Persona Tags (Prefix & Suffix)</Trans>
-										</div>
-										<Button
-											variant="secondary"
-											small
-											leftIcon={<Plus size={14} />}
-											onClick={handleAddTagRow}
-											disabled={formData.tags.length >= 5}
-										>
-											<Trans>Add Tag Pair ({formData.tags.length}/5)</Trans>
-										</Button>
-									</div>
-									{formData.tags.map((tag, idx) => {
-										const tagError = getTagRowError(idx);
-										return (
-											<div key={idx} style={{marginBottom: 6}}>
-												<div className={styles.tagRow} style={{marginBottom: tagError ? 2 : 0}}>
-													<input
-														type="text"
-														className={`${styles.tagInput} ${tagError ? styles.tagInputError : ''}`}
-														placeholder={i18n._(PREFIX_PLACEHOLDER_DESCRIPTOR)}
-														value={tag.prefix}
-														onChange={(e) => handleTagChange(idx, 'prefix', e.target.value)}
+										<Trans>Add Tag Pair ({formData.tags.length}/5)</Trans>
+									</Button>
+								</div>
+								{formData.tags.map((tag, idx) => {
+									const tagError = getTagRowError(idx);
+									return (
+										<div key={idx} style={{marginBottom: 6}}>
+											<div className={styles.tagRow} style={{marginBottom: tagError ? 2 : 0}}>
+												<input
+													type="text"
+													className={`${styles.tagInput} ${tagError ? styles.tagInputError : ''}`}
+													placeholder={i18n._(PREFIX_PLACEHOLDER_DESCRIPTOR)}
+													value={tag.prefix}
+													onChange={(e) => handleTagChange(idx, 'prefix', e.target.value)}
+												/>
+												<span style={{color: 'var(--text-primary-muted)'}}>text</span>
+												<input
+													type="text"
+													className={`${styles.tagInput} ${tagError ? styles.tagInputError : ''}`}
+													placeholder={i18n._(SUFFIX_PLACEHOLDER_DESCRIPTOR)}
+													value={tag.suffix}
+													onChange={(e) => handleTagChange(idx, 'suffix', e.target.value)}
+												/>
+												{formData.tags.length > 1 && (
+													<Button
+														variant="danger"
+														small
+														square
+														icon={<Trash size={14} />}
+														onClick={() => handleRemoveTagRow(idx)}
+														aria-label={i18n._(REMOVE_TAG_PAIR_ARIA_DESCRIPTOR)}
 													/>
-													<span style={{color: 'var(--text-primary-muted)'}}>text</span>
-													<input
-														type="text"
-														className={`${styles.tagInput} ${tagError ? styles.tagInputError : ''}`}
-														placeholder={i18n._(SUFFIX_PLACEHOLDER_DESCRIPTOR)}
-														value={tag.suffix}
-														onChange={(e) => handleTagChange(idx, 'suffix', e.target.value)}
-													/>
-													{formData.tags.length > 1 && (
-														<Button
-															variant="danger"
-															small
-															square
-															icon={<Trash size={14} />}
-															onClick={() => handleRemoveTagRow(idx)}
-															aria-label={i18n._(REMOVE_TAG_PAIR_ARIA_DESCRIPTOR)}
-														/>
-													)}
-												</div>
-												{tagError && <div className={styles.tagErrorText}>{tagError}</div>}
+												)}
 											</div>
-										);
-									})}
+											{tagError && <div className={styles.tagErrorText}>{tagError}</div>}
+										</div>
+									);
+								})}
+							</div>
+
+							{/* 8. Visibility */}
+							<div className={styles.sectionBlock}>
+								<label className={styles.fieldLabel} style={{marginBottom: '0.5rem', display: 'block'}}>
+									<Trans>Visibility</Trans>
+								</label>
+								<SegmentedTabs<PersonaVisibility>
+									tabs={visibilityTabs}
+									selectedTab={formData.visibility}
+									onTabChange={(vis) => setFormData((prev) => ({...prev, visibility: vis}))}
+									ariaLabel={i18n._(PERSONA_VISIBILITY_ARIA_DESCRIPTOR)}
+								/>
+								<div className={styles.modeHelperText} style={{marginTop: 6}}>
+									<Info size={16} weight="bold" className={styles.modeHelperIcon} />
+									<span>{visibilityDescriptions[formData.visibility]}</span>
 								</div>
 							</div>
 
-							{/* Bottom actions: Delete button only when editing existing persona */}
+							{/* 9. Bottom actions: Delete button only when editing existing persona */}
 							{formData.id && (
 								<div className={styles.detailBottomActions}>
 									<Button
@@ -802,17 +808,15 @@ export const PersonaEditModal: React.FC<PersonaEditModalProps> = observer(({pers
 							)}
 						</div>
 
-						{/* Right column: Live Profile Preview + Buttons only for Avatar/Banner */}
+						{/* Right column: Live Profile Preview */}
 						{currentUser && (
 							<div className={styles.previewColumn}>
-								<div className={styles.previewColumnHeader}>
-									<Trans>Profile preview</Trans>
-								</div>
 								<div className={styles.liveCardWrapper}>
 									<ProfileCardLayout
 										borderColor={
 											formData.accentColor != null ? ColorUtils.int2hex(formData.accentColor) : 'var(--border-color)'
 										}
+										showPreviewLabel={true}
 										className={popoutStyles.profilePopoutCard}
 										style={PROFILE_POPOUT_GEOMETRY_STYLE}
 									>
@@ -823,7 +827,7 @@ export const PersonaEditModal: React.FC<PersonaEditModalProps> = observer(({pers
 												formData.accentColor != null ? ColorUtils.int2hex(formData.accentColor) : 'var(--bg-secondary)'
 											}
 											user={currentUser}
-											avatarUrl={formData.avatarUrl || null}
+											avatarUrl={formData.avatarUrl.trim() || AvatarUtils.getUserAvatarURL(currentUser, false)}
 											hoverAvatarUrl={null}
 											disablePresence={true}
 											isClickable={false}
@@ -885,29 +889,6 @@ export const PersonaEditModal: React.FC<PersonaEditModalProps> = observer(({pers
 										</ProfileCardContent>
 									</ProfileCardLayout>
 								</div>
-
-								{/* Avatar & Banner Controls: Button-only with hideLabel={true} */}
-								<div className={styles.previewUploadersSection}>
-									<AvatarUploader
-										hasAvatar={Boolean(formData.avatarUrl)}
-										onAvatarChange={handleAvatarUpload}
-										onAvatarClear={handleAvatarClear}
-										isPerGuildProfile={false}
-										disabled={isUploadingAvatar}
-										hideLabel={true}
-									/>
-									<BannerUploader
-										hasBanner={Boolean(formData.bannerUrl)}
-										onBannerChange={handleBannerUpload}
-										onBannerClear={handleBannerClear}
-										disabled={isUploadingBanner}
-										disableModeSelection={true}
-										requireBannerEntitlement={false}
-										isPerGuildProfile={false}
-										hideLabel={true}
-										data-flx="persona.persona-edit-modal.banner-uploader"
-									/>
-								</div>
 							</div>
 						)}
 					</div>
@@ -919,6 +900,16 @@ export const PersonaEditModal: React.FC<PersonaEditModalProps> = observer(({pers
 
 PersonaEditModal.displayName = 'PersonaEditModal';
 
+export const PERSONA_EDIT_MODAL_KEY = 'persona-edit-modal';
+
 export function openPersonaEditModal(persona?: Persona | null): void {
-	ModalCommands.push(ModalCommands.modal(() => <PersonaEditModal persona={persona} onClose={() => ModalCommands.pop()} />));
+	ModalCommands.pushWithKey(
+		ModalCommands.modal(() => (
+			<PersonaEditModal
+				persona={persona}
+				onClose={() => ModalCommands.popWithKey(PERSONA_EDIT_MODAL_KEY)}
+			/>
+		)),
+		PERSONA_EDIT_MODAL_KEY,
+	);
 }
