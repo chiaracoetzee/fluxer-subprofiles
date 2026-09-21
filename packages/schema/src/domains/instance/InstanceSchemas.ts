@@ -159,6 +159,10 @@ export const InstanceCommunitySchema = z
 		direct_messages_disabled: z
 			.boolean()
 			.describe('Whether direct messages and friend requests are disabled instance-wide'),
+		community_creation_staff_only: z
+			.boolean()
+			.default(false)
+			.describe('Whether community creation is restricted to staff members'),
 	})
 	.describe('Community topology and direct-message policy for this instance');
 export type InstanceCommunity = z.infer<typeof InstanceCommunitySchema>;
