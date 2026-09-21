@@ -144,6 +144,13 @@ export const useTextareaDraftAndTyping = ({
 		if (isEditingMessageInComposer || isRestoringDraftRef.current) {
 			return;
 		}
+		if (!value) {
+			pendingDraftRef.current = null;
+			if (currentDraftRef.current) {
+				DraftCommands.deleteDraft(channelId);
+			}
+			return;
+		}
 		pendingDraftRef.current = {
 			channelId,
 			value,
