@@ -658,8 +658,22 @@ export const LexicalChannelTextareaContent = observer(
 				handle.focus();
 			}
 		}, [textareaInputDisabled, value, channel, uploadAttachments.length, maxAttachments]);
+		const clearComposer = useCallback(() => {
+			const handle = handleRef.current;
+			if (handle !== null) {
+				handle.clear();
+			}
+			editorDisplayRef.current = '';
+			if (previousValueRef.current !== undefined && previousValueRef.current !== null) {
+				previousValueRef.current = '';
+			}
+			clearSegments();
+			setValue('');
+			DraftCommands.deleteDraft(channel.id);
+		}, [channel.id, clearSegments, previousValueRef]);
 		useTextareaExpressionHandlers({
 			setValue,
+			clearComposer,
 			textareaRef: nullTextareaRef,
 			canSendFavoriteMemeId: true,
 			insertSegment,
