@@ -4,10 +4,12 @@ import {GuildListActionButton} from '@app/features/app/components/layout/sidebar
 import styles from '@app/features/app/components/layout/sidebar_nav/GuildListActionButton.module.css';
 import RuntimeConfig from '@app/features/app/state/RuntimeConfig';
 import {AddGuildModal, type AddGuildModalView} from '@app/features/guild/components/modals/AddGuildModal';
+import {JOIN_A_COMMUNITY_DESCRIPTOR} from '@app/features/guild/components/modals/add_guild_modal/shared';
 import {
 	CREATE_COMMUNITY_DESCRIPTOR,
 	JOIN_COMMUNITY_DESCRIPTOR,
 } from '@app/features/i18n/utils/CommonMessageDescriptors';
+import Users from '@app/features/user/state/Users';
 import {MenuGroup} from '@app/features/ui/action_menu/MenuGroup';
 import {MenuItem} from '@app/features/ui/action_menu/MenuItem';
 import * as ContextMenuCommands from '@app/features/ui/commands/ContextMenuCommands';
@@ -26,12 +28,16 @@ const CREATE_OR_JOIN_A_COMMUNITY_DESCRIPTOR = msg({
 });
 export const AddGuildButton = observer(() => {
 	const {i18n} = useLingui();
-	const buttonLabel = i18n._(CREATE_OR_JOIN_A_COMMUNITY_DESCRIPTOR);
+	const canCreate = !RuntimeConfig.communityCreationStaffOnly || (Users.currentUser?.isStaff() ?? false);
+	const buttonLabel = canCreate
+		? i18n._(CREATE_OR_JOIN_A_COMMUNITY_DESCRIPTOR)
+		: i18n._(JOIN_A_COMMUNITY_DESCRIPTOR);
 	const handleAddGuild = (view?: AddGuildModalView) => {
+		const targetView = view ?? (canCreate ? 'landing' : 'join_guild');
 		ModalCommands.push(
 			modal(() => (
 				<AddGuildModal
-					initialView={view}
+					initialView={targetView}
 					data-flx="app.sidebar-nav.add-guild-button.handle-add-guild.add-guild-modal"
 				/>
 			)),
@@ -42,21 +48,23 @@ export const AddGuildButton = observer(() => {
 		e.stopPropagation();
 		ContextMenuCommands.openFromEvent(e, ({onClose}) => (
 			<MenuGroup data-flx="app.sidebar-nav.add-guild-button.handle-context-menu.menu-group">
-				<MenuItem
-					icon={
-						<HouseIcon
-							className={styles.menuIcon}
-							data-flx="app.sidebar-nav.add-guild-button.handle-context-menu.menu-icon"
-						/>
-					}
-					onClick={() => {
-						handleAddGuild('create_guild');
-						onClose();
-					}}
-					data-flx="app.sidebar-nav.add-guild-button.handle-context-menu.menu-item.add-guild"
-				>
-					{i18n._(CREATE_COMMUNITY_DESCRIPTOR)}
-				</MenuItem>
+				{canCreate && (
+					<MenuItem
+						icon={
+							<HouseIcon
+								className={styles.menuIcon}
+								data-flx="app.sidebar-nav.add-guild-button.handle-context-menu.menu-icon"
+							/>
+						}
+						onClick={() => {
+							handleAddGuild('create_guild');
+							onClose();
+						}}
+						data-flx="app.sidebar-nav.add-guild-button.handle-context-menu.menu-item.add-guild"
+					>
+						{i18n._(CREATE_COMMUNITY_DESCRIPTOR)}
+					</MenuItem>
+				)}
 				<MenuItem
 					icon={
 						<LinkIcon
