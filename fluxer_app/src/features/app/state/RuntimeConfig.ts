@@ -111,6 +111,7 @@ export const DEFAULT_INSTANCE_COMMUNITY: InstanceCommunity = {
 	single_community: false,
 	single_community_guild_id: null,
 	direct_messages_disabled: false,
+	community_creation_staff_only: false,
 };
 
 export function normalizeInstanceCommunity(community?: InstanceCommunity | null): InstanceCommunity {
@@ -435,6 +436,7 @@ class RuntimeConfig {
 					? config.policy.single_community_guild_id
 					: null,
 				direct_messages_disabled: config.policy.direct_messages_disabled,
+				community_creation_staff_only: config.policy.community_creation_staff_only,
 			});
 			this.services = normalizeInstanceServices({
 				gif_enabled: config.policy.services_resolved.gif_enabled,
@@ -609,6 +611,10 @@ class RuntimeConfig {
 
 	get directMessagesDisabled(): boolean {
 		return this.community.direct_messages_disabled;
+	}
+
+	get communityCreationStaffOnly(): boolean {
+		return this.community.community_creation_staff_only;
 	}
 
 	get gifEnabled(): boolean {
