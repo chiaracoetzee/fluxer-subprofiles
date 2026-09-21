@@ -82,6 +82,10 @@ export class MessageValidationService {
 			isUpdate && existingMessage && data.embeds === undefined
 				? Boolean(existingMessage.embeds && existingMessage.embeds.length > 0)
 				: hasEmbeds;
+		const effectiveHasStickers =
+			isUpdate && existingMessage
+				? Boolean(existingMessage.stickers && existingMessage.stickers.length > 0)
+				: hasStickers;
 
 		const guildFeatures = options?.guildFeatures ?? null;
 		const hasVoiceMessageFlag = !!(data.flags && data.flags & MessageFlags.VOICE_MESSAGE);
@@ -101,7 +105,7 @@ export class MessageValidationService {
 			!effectiveHasEmbeds &&
 			!effectiveHasAttachments &&
 			!hasFavoriteMeme &&
-			!hasStickers &&
+			!effectiveHasStickers &&
 			(!isUpdate || !hasFlags)
 		) {
 			throw new CannotSendEmptyMessageError();
