@@ -16,6 +16,7 @@ import {
 import {EditBar} from '@app/features/channel/components/ChannelEditBar';
 import {ReplyBar} from '@app/features/channel/components/ChannelReplyBar';
 import {ChannelStickersArea} from '@app/features/channel/components/ChannelStickersArea';
+import {openTimestampModal} from '@app/features/channel/components/modals/TimestampModal';
 import {
 	CHANNEL_DESCRIPTOR,
 	MESSAGE_CHANNEL_DESCRIPTOR,
@@ -1055,6 +1056,21 @@ export const LexicalChannelTextareaContent = observer(
 			return unsubscribe;
 		}, [composerKey, editingMessageId, textareaInputDisabled, mobileLayout.enabled]);
 		const wasEditingInlineRef = useRef(false);
+		const handleInsertTimestamp = useCallback(() => {
+			ContextMenuCommands.close();
+			if (!textareaInputDisabled) {
+				openTimestampModal({
+					onInsert: (markdown, meta) => {
+						if (meta && handleRef.current?.insertTimestamp) {
+							handleRef.current.insertTimestamp(meta.epoch, meta.format);
+						} else {
+							handleRef.current?.insertTextAtCursor(markdown);
+						}
+						handleRef.current?.focus();
+					},
+				});
+			}
+		}, [textareaInputDisabled]);
 		useEffect(() => {
 			const isEditingInline = editingMessageId != null && !mobileLayout.enabled;
 			if (wasEditingInlineRef.current && !isEditingInline && !textareaInputDisabled) {
@@ -1157,6 +1173,7 @@ export const LexicalChannelTextareaContent = observer(
 					() => (
 						<TextareaPlusMenu
 							onUploadFile={handleFileButtonClick}
+							onInsertTimestamp={handleInsertTimestamp}
 							canAttachFiles={canAttachFilesInChannel(channel)}
 							canSendMessages={!textareaInputDisabled}
 							textareaValue={value}
@@ -1195,6 +1212,7 @@ export const LexicalChannelTextareaContent = observer(
 			[
 				channel.id,
 				handleFileButtonClick,
+				handleInsertTimestamp,
 				handlePlusMenuBackdropMouseDown,
 				handlePlusMenuClosed,
 				handleUploadMessageAsFile,
@@ -1523,6 +1541,7 @@ export const LexicalChannelTextareaContent = observer(
 							isOpen={mobilePlusSheetOpen}
 							onClose={handleCloseMobilePlusSheet}
 							onUploadFile={handleFileButtonClick}
+							onInsertTimestamp={handleInsertTimestamp}
 							textareaValue={value}
 							onUploadAsFile={handleUploadMessageAsFile}
 							data-flx="channel.lexical-channel-textarea-content.mobile-textarea-plus-bottom-sheet"

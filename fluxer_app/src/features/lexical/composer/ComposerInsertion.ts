@@ -10,6 +10,10 @@ import {
 	getReactionShortcodeName,
 	isReactionShorthandPrefix,
 } from '@app/features/messaging/utils/ReactionShorthandUtils';
+import {
+	getTimestampWire,
+	normalizeTimestampFormat,
+} from '@app/features/lexical/composer/nodes/ComposerTimestampUtils';
 import {type MentionSegment, TextareaSegmentManager} from '@app/features/messaging/utils/TextareaSegmentManager';
 
 interface ComposerReplacementPlan {
@@ -54,7 +58,13 @@ function normalizeSelection(display: string, selection: ComposerSelectionRange |
 }
 
 function getPayloadDisplay(payload: ComposerInsertPayload): string {
-	return payload.kind === 'text' ? payload.text : payload.display;
+	if (payload.kind === 'text') {
+		return payload.text;
+	}
+	if (payload.kind === 'timestamp') {
+		return getTimestampWire(payload.epoch, normalizeTimestampFormat(payload.format));
+	}
+	return payload.display;
 }
 
 function getPayloadSegment(payload: ComposerInsertPayload): ComposerPayloadSegment | null {
