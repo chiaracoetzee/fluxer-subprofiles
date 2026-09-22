@@ -19,3 +19,22 @@ pub use media::{
     fixture_audio_only_mp4, fixture_h264_mp4, fixture_jpeg, fixture_mkv_with_png_video_stream,
     fixture_mp4_with_undecodable_video, synthetic_wav,
 };
+
+static TRACING_TEST_LOCK: std::sync::Mutex<()> = std::sync::Mutex::new(());
+static INIT_TEST_TRACING: std::sync::Once = std::sync::Once::new();
+
+pub fn init_test_tracing() {
+    INIT_TEST_TRACING.call_once(|| {
+        let subscriber = tracing_subscriber::fmt()
+            .with_writer(std::io::sink)
+            .with_max_level(tracing::Level::TRACE)
+            .finish();
+        let _ = tracing::subscriber::set_global_default(subscriber);
+    });
+}
+
+pub fn lock_test_tracing() -> std::sync::MutexGuard<'static, ()> {
+    init_test_tracing();
+    TRACING_TEST_LOCK.lock().unwrap_or_else(|err| err.into_inner())
+}
+
