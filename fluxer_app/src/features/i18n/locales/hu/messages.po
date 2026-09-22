@@ -42056,3 +42056,54 @@ msgstr "Persona-profil"
 #: src/features/persona/components/PersonaProfileModal.tsx:14
 msgid "Persona profile: {name}"
 msgstr "Persona-profil: {name}"
+
+#. Section header for all time zones in the timestamp modal.
+#: src/features/ui/components/form/SearchableTimeZonePicker.tsx:42
+msgid "All time zones"
+msgstr "Összes időzóna"
+
+#. Context menu action to copy a timestamp markdown tag in the message composer.
+#: src/features/lexical/composer/nodes/ComposerTimestampContextMenu.tsx:15
+msgid "Copy timestamp"
+msgstr \"Időbélyegző másolása\"
+
+#. Context menu action to delete a timestamp from the message composer.
+#: src/features/lexical/composer/nodes/ComposerTimestampContextMenu.tsx:20
+msgid "Delete timestamp"
+msgstr \"Időbélyegző törlése\"
+
+#. Placeholder text for natural language timestamp input.
+#: src/features/channel/components/modals/TimestampModal.tsx:32
+msgid "e.g. tomorrow at 3pm, in 2 hours, now"
+msgstr "pl. holnap 15:00-kor, 2 óra múlva, most"
+
+#. Context menu action to edit a timestamp in the message composer.
+#. Title of the timestamp modal when editing an existing timestamp.
+#: src/features/channel/components/modals/TimestampModal.tsx:28
+#: src/features/lexical/composer/nodes/ComposerTimestampContextMenu.tsx:10
+msgid "Edit timestamp"
+msgstr \"Időbélyegző szerkesztése\"
+
+#. Label for format preview selection in timestamp modal.
+#: src/features/channel/components/modals/TimestampModal.tsx:48
+msgid "Format preview"
+msgstr "Formátum előnézete"
+
+#. Button to insert timestamp into message composer.
+#: src/features/channel/components/modals/TimestampModal.tsx:52
+msgid "Insert"
+msgstr "Beszúrás"
+
+#. Button or menu action label in the channel and chat mobile textarea plus bottom sheet. Keep it concise.
+#. Plus menu item that opens the dynamic timestamp insertion modal.
+#. Title of the timestamp insertion modal.
+#: src/features/channel/components/modals/TimestampModal.tsx:24
+#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:13
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:19
+msgid "Insert timestamp"
+msgstr "Időbélyegző beszúrása"
+
+#. Section header for suggested time zones in the timestamp modal.
+#: src/features/ui/components/form/SearchableTimeZonePicker.tsx:38
+msgid "Suggested"
+msgstr "Javasolt"
