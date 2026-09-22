@@ -30,6 +30,7 @@ export type {
 	InstanceServices,
 	InstanceSetup,
 	InstanceSso,
+	ServerListButtons,
 } from '@fluxer/schema/src/domains/instance/InstanceSchemas';
 
 export type InstanceLegal = InstanceAppPublic['legal'];
