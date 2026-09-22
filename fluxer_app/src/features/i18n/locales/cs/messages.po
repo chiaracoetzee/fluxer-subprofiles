@@ -14,7 +14,7 @@ msgstr ""
 "Plural-Forms: \n"
 "X-Generator: @lingui/cli\n"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:484
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:482
 msgid "— Today at 12:00 PM"
 msgstr "— Dnes ve 12:00"
 
@@ -960,7 +960,7 @@ msgstr "{count, plural, one {# zablokovaná zpráva} few {# zablokované zprávy
 msgid "{count, plural, one {# community found} other {# communities found}}"
 msgstr "{count, plural, one {Nalezena # komunita} few {Nalezeny # komunity} many {Nalezeno # komunity} other {Nalezeno # komunit}}"
 
-#: src/features/app/components/layout/GuildsLayout.tsx:1968
+#: src/features/app/components/layout/GuildsLayout.tsx:1972
 msgid "{count, plural, one {# community is temporarily unavailable due to a flux capacitor malfunction.} other {# communities are temporarily unavailable due to a flux capacitor malfunction.}}"
 msgstr "{count, plural, one {# komunita je dočasně nedostupná kvůli poruše fluxkondenzátoru.} few {# komunity jsou dočasně nedostupné kvůli poruše fluxkondenzátoru.} many {# komunity je dočasně nedostupných kvůli poruše fluxkondenzátoru.} other {# komunit je dočasně nedostupných kvůli poruše fluxkondenzátoru.}}"
 
@@ -2547,6 +2547,7 @@ msgstr "O aplikaci {appName}"
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Short label in the user profile shared popout. Keep it concise.
 #: src/features/app/components/pages/YouPage.tsx:166
+#: src/features/persona/components/modals/PersonaEditModal.tsx:710
 #: src/features/persona/components/PersonaProfileMobileSheet.tsx:349
 #: src/features/persona/components/PersonaProfileMobileSheet.tsx:358
 #: src/features/user/components/modals/tabs/my_profile_tab/BioEditor.tsx:26
@@ -2578,7 +2579,6 @@ msgstr "Zvýraznění"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label in the accent color picker. Keep it concise.
-#: src/features/persona/components/modals/PersonaEditModal.tsx:692
 #: src/features/user/components/modals/tabs/my_profile_tab/AccentColorPicker.tsx:12
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:153
 msgid "Accent color"
@@ -2773,7 +2773,7 @@ msgstr "Akce"
 #. Subscription status badge meaning the paid subscription is active.
 #: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:445
 #: src/features/channel/components/channel_header_components/developer_tools/DeveloperToolsShared.ts:37
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:639
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:637
 #: src/features/user/components/settings_utils/search_index/DevicesIndex.ts:19
 msgid "Active"
 msgstr "Aktivní"
@@ -2833,7 +2833,7 @@ msgstr "Právě aktivní"
 msgid "Active persona mode"
 msgstr "Režim aktivní persony"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:372
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:370
 msgid "Active Persona Mode"
 msgstr "Režim aktivní persony"
 
@@ -3119,7 +3119,7 @@ msgstr "Přidat vlastní oprávnění"
 msgid "Add passkey"
 msgstr "Přidat přístupový klíč"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:513
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:511
 msgid "Add Persona"
 msgstr "Přidat personu"
 
@@ -3194,7 +3194,7 @@ msgid "Add stream"
 msgstr "Přidat stream"
 
 #. placeholder {0}: formData.tags.length
-#: src/features/persona/components/modals/PersonaEditModal.tsx:749
+#: src/features/persona/components/modals/PersonaEditModal.tsx:739
 msgid "Add Tag Pair ({0}/5)"
 msgstr "Přidat pár značek ({0}/5)"
 
@@ -3607,6 +3607,11 @@ msgstr "Všechny typy stavu"
 msgid "All time"
 msgstr "Za celou dobu"
 
+#. Section header for all time zones in the timestamp modal.
+#: src/features/ui/components/form/SearchableTimeZonePicker.tsx:42
+msgid "All time zones"
+msgstr "Všechna časová pásma"
+
 #. Default option in the activity log "Filter by user" dropdown. Means no user filter is applied. Short standalone label.
 #: src/features/guild/components/modals/guild_tabs/GuildAuditLogTab.tsx:72
 msgid "All users"
@@ -3644,7 +3649,7 @@ msgid "Allow anyone to see this connection on your profile"
 msgstr "Povolit komukoli zobrazit toto propojení na vašem profilu"
 
 #. Profile timezone privacy option description for the Everyone switch.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:59
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:54
 msgid "Allow anyone who can view your full profile to see your local time"
 msgstr "Povolit všem, kdo si mohou zobrazit váš celý profil, zobrazit také váš místní čas"
 
@@ -3719,7 +3724,7 @@ msgid "Allow members from communities you're in to see this connection"
 msgstr "Povolit členům komunit, ve kterých jste, zobrazit toto propojení"
 
 #. Profile timezone privacy option description for the Community members switch.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:71
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:66
 msgid "Allow members from communities you're in to see your local time"
 msgstr "Povolit členům komunit, ve kterých jste, aby viděli místní čas ve vašem profilu"
 
@@ -3768,7 +3773,7 @@ msgid "Allow your friends to see this connection"
 msgstr "Povolit přátelům zobrazit toto propojení"
 
 #. Profile timezone privacy option description for the Friends switch.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:67
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:62
 msgid "Allow your friends to see your local time"
 msgstr "Povolit přátelům, aby viděli váš místní čas v profilu"
 
@@ -4011,11 +4016,11 @@ msgstr "Animované soubory {AVIF_FORMAT_LABEL} nejsou podporovány. Nahrajte mí
 msgid "Animated {avifFormatLabel} not supported"
 msgstr "Animovaný formát {avifFormatLabel} není podporován"
 
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:208
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:206
 msgid "Animated avatars ({ANIMATED_AVATAR_FORMATS}) are exclusively available to {PREMIUM_PRODUCT_NAME} subscribers."
 msgstr "Animované avatary ({ANIMATED_AVATAR_FORMATS}) jsou dostupné pouze předplatitelům {PREMIUM_PRODUCT_NAME}."
 
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:242
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:240
 msgid "Animated avatars ({ANIMATED_AVATAR_FORMATS}) are not available on this instance. Upload a static image instead."
 msgstr "Animované avatary ({ANIMATED_AVATAR_FORMATS}) nejsou na této instanci dostupné. Nahrajte místo toho statický obrázek."
 
@@ -4478,7 +4483,7 @@ msgid "Are you sure you want to delete <0>{0}</0>?"
 msgstr "Opravdu chcete smazat <0>{0}</0>?"
 
 #. placeholder {0}: formData.name
-#: src/features/persona/components/modals/PersonaEditModal.tsx:540
+#: src/features/persona/components/modals/PersonaEditModal.tsx:537
 msgid "Are you sure you want to delete <0>{0}</0>? This action cannot be undone."
 msgstr "Opravdu chcete smazat <0>{0}</0>? Tuto akci nelze vrátit zpět."
 
@@ -5208,8 +5213,8 @@ msgstr "K dispozici v desktopové aplikaci."
 #. Form label for a webhook avatar image.
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #: src/features/ui/components/BaseAvatar.tsx:18
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:375
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:424
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:373
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:421
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:13
 #: src/features/webhook/components/WebhookListItem.tsx:252
 msgid "Avatar"
@@ -5519,8 +5524,8 @@ msgstr "Zabanovaní uživatelé"
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildBannerUploadField.tsx:28
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildBannerUploadField.tsx:125
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:282
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:333
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:280
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:330
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:37
 msgid "Banner"
 msgstr "Banner"
@@ -5629,7 +5634,6 @@ msgstr "Přiřazení"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/persona/components/modals/PersonaEditModal.tsx:707
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:129
 #: src/features/user/components/settings_utils/section_registry/PrivacySafetySections.ts:156
 msgid "Bio"
@@ -6708,8 +6712,8 @@ msgstr "Na střed"
 
 #. Title of the modal where the user picks an avatar source (file upload or GIF provider). Keep it concise.
 #: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:111
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:397
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:435
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:395
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:431
 msgid "Change avatar"
 msgstr "Změnit avatar"
 
@@ -6721,8 +6725,8 @@ msgstr "Změnit pozadí"
 #. Title of the modal where the user picks a community banner source (file upload or GIF provider). Keep it concise.
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildBannerUploadField.tsx:43
 #: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:94
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:305
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:346
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:303
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:342
 msgid "Change banner"
 msgstr "Změnit banner"
 
@@ -6769,7 +6773,7 @@ msgstr "Změnit přezdívku skupiny"
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:86
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:626
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildIconUploadField.tsx:35
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:438
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:436
 msgid "Change icon"
 msgstr "Změnit ikonu"
 
@@ -7613,7 +7617,7 @@ msgstr "Vyberte, jak se ukládají oblíbené GIFy s hvězdičkou"
 msgid "Choose how times are displayed throughout the app"
 msgstr "Zvolte, jak se má zobrazovat čas v celé aplikaci"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:375
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:373
 msgid "Choose how untagged messages and persona tags interact with your active persona."
 msgstr "Zvolte, jak budou zprávy bez značek a značky person interagovat s vaší aktivní personou."
 
@@ -7666,7 +7670,7 @@ msgid "Choose the tab or window in your browser"
 msgstr "Vyberte kartu nebo okno v prohlížeči"
 
 #. Helper text under the profile timezone picker. productName is the app name.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:45
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:40
 msgid "Choose the time zone {productName} uses to calculate your UTC offset for profile local time."
 msgstr "Vyberte časové pásmo, které aplikace {productName} používá pro výpočet vašeho UTC posunu a zobrazení místního času v profilu."
 
@@ -7926,7 +7930,7 @@ msgstr "Vymazat simulované přílohy"
 
 #. Accessible label for the button that clears the slash command being composed in the message box.
 #. Accessible label for the composer button that clears the slash command currently being composed.
-#: src/features/channel/components/LexicalChannelTextareaContent.tsx:136
+#: src/features/channel/components/LexicalChannelTextareaContent.tsx:137
 #: src/features/channel/components/SlashCommandParamBar.tsx:16
 msgid "Clear command"
 msgstr "Vymazat příkaz"
@@ -8685,7 +8689,7 @@ msgstr "Název komunity"
 
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:126
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:125
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:113
 msgid "Community nickname"
 msgstr "Přezdívka v komunitě"
@@ -8738,7 +8742,7 @@ msgid "Community profile"
 msgstr "Profil v komunitě"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:73
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:72
 msgid "Community profile updated"
 msgstr "Profil v komunitě aktualizován"
 
@@ -9705,6 +9709,11 @@ msgstr "Kopírovat text"
 #: src/features/auth/components/modals/MfaTotpEnableModal.tsx:95
 msgid "Copy the setup key into your authenticator app."
 msgstr "Zkopírujte klíč pro nastavení do své ověřovací aplikace."
+
+#. Context menu action to copy a timestamp markdown tag in the message composer.
+#: src/features/lexical/composer/nodes/ComposerTimestampContextMenu.tsx:15
+msgid "Copy timestamp"
+msgstr \"Kopírovat časové razítko\"
 
 #. Developer-mode action that copies a user snowflake/ID to the clipboard.
 #: src/features/app/components/floating/UserAreaPopout.tsx:692
@@ -10936,7 +10945,7 @@ msgid "Customer portal"
 msgstr "Zákaznický portál"
 
 #. Plus menu submenu label for visibility toggles on textarea adornment buttons.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:39
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:43
 msgid "Customize"
 msgstr "Přizpůsobit"
 
@@ -10973,11 +10982,6 @@ msgstr "Přizpůsobte si čtyřmístný identifikátor ({discriminatorLabel}) po
 #: src/features/user/components/modals/FluxerTagChangeModal.tsx:386
 msgid "Customize your tag or keep it when changing your username"
 msgstr "Upravte si čtyřmístný identifikátor nebo si ho ponechte při změně uživatelského jména"
-
-#. Description for persona accent color picker
-#: src/features/persona/components/modals/PersonaEditModal.tsx:98
-msgid "Customizes the border and banner color on this persona's profile"
-msgstr "Přizpůsobí barvu okraje a banneru na profilu této persony"
 
 #. Label in the accent color picker. Keep the tone plain and specific.
 #: src/features/user/components/modals/tabs/my_profile_tab/AccentColorPicker.tsx:16
@@ -11111,8 +11115,10 @@ msgid "Data export"
 msgstr "Export dat"
 
 #. Column header for invoice payment or creation date.
+#. Label for date input in timestamp modal.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/app/components/dialogs/components/plutonium/InvoiceList.tsx:120
+#: src/features/channel/components/modals/TimestampModal.tsx:36
 #: src/features/user/components/settings_utils/section_registry/AppearanceSections.ts:286
 msgid "Date"
 msgstr "Datum"
@@ -11403,7 +11409,7 @@ msgstr "Delaware"
 #: src/features/emoji/components/stickers/StickerGridItem.tsx:35
 #: src/features/messaging/commands/MessageCommands.tsx:81
 #: src/features/moderation/components/report_modal/IARModalCopy.ts:109
-#: src/features/persona/components/modals/PersonaEditModal.tsx:544
+#: src/features/persona/components/modals/PersonaEditModal.tsx:541
 #: src/features/platform/utils/DesktopLocaleBridge.ts:76
 #: src/features/theme_studio/sections/LibrarySection.tsx:514
 #: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:517
@@ -11584,12 +11590,12 @@ msgid "Delete passkey"
 msgstr "Smazat přístupový klíč"
 
 #. Aria label for deleting persona
-#: src/features/persona/components/modals/PersonaEditModal.tsx:126
+#: src/features/persona/components/modals/PersonaEditModal.tsx:123
 msgid "Delete persona"
 msgstr "Smazat personu"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:538
-#: src/features/persona/components/modals/PersonaEditModal.tsx:799
+#: src/features/persona/components/modals/PersonaEditModal.tsx:535
+#: src/features/persona/components/modals/PersonaEditModal.tsx:805
 msgid "Delete Persona"
 msgstr "Smazat personu"
 
@@ -11664,6 +11670,11 @@ msgstr "Smazat tuto zprávu"
 #: src/features/messaging/commands/MessageCommands.tsx:77
 msgid "Delete this message? Can't be undone."
 msgstr "Smazat tuto zprávu? Nelze vrátit zpět."
+
+#. Context menu action to delete a timestamp from the message composer.
+#: src/features/lexical/composer/nodes/ComposerTimestampContextMenu.tsx:20
+msgid "Delete timestamp"
+msgstr \"Smazat časové razítko\"
 
 #. Danger action in the channel permissions overwrite context menu that removes a member permission override from the channel.
 #: src/features/channel/components/modals/channel_tabs/channel_permissions_tab/OverwriteContextMenu.tsx:19
@@ -12533,8 +12544,9 @@ msgstr "Režim zobrazení"
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Short label in the inputs tab. Keep it concise.
 #. Short label in the my profile tab. Keep it concise.
+#: src/features/persona/components/modals/PersonaEditModal.tsx:660
 #: src/features/user/components/modals/tabs/component_gallery_tab/ComponentGalleryTabInputsTab.tsx:22
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:138
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:137
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:61
 msgid "Display name"
 msgstr "Zobrazované jméno"
@@ -12552,7 +12564,7 @@ msgstr "Zobrazované jméno (volitelné)"
 msgid "Display scaling"
 msgstr "Měřítko zobrazení"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:398
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:396
 msgid "Display Tag"
 msgstr "Zobrazovaná značka"
 
@@ -12566,7 +12578,7 @@ msgstr "Ikona zobrazované značky byla odstraněna"
 msgid "Display tag icon updated"
 msgstr "Ikona zobrazované značky byla aktualizována"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:401
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:399
 msgid "Display tag will appear next to all persona names in messages. If no display tag is set, your account profile picture will be shown."
 msgstr "Zobrazovaná značka se objeví vedle jmen všech person ve zprávách. Pokud není nastavena žádná zobrazovaná značka, zobrazí se vaše profilová fotka účtu."
 
@@ -12698,7 +12710,7 @@ msgstr "Chceš se připojit do komunity {communityName}?"
 #. Label in the accessibility tab.
 #. Label in the my profile tab.
 #: src/features/user/components/modals/tabs/AccessibilityTab.tsx:54
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:146
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:145
 msgid "Doc, I'm from the future. I came here in a time machine that you invented. Now, I need your help to get back to the year 1985."
 msgstr "Doktore, jsem z budoucnosti. Přicestoval jsem sem ve stroji času, který jste vynalezl. Teď potřebuji vaši pomoc, abych se dostal zpět do roku 1985."
 
@@ -12824,6 +12836,8 @@ msgstr "Dvojitým kliknutím na někoho se připojíte k jeho streamu."
 
 #. Settings search entry label for double-clicking a message to edit it.
 #. Short label for an advanced message editing preference.
+#. Tooltip hint on timestamp pill in message composer.
+#: src/features/lexical/composer/nodes/ComposerTimestampPill.tsx:28
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:309
 #: src/features/user/components/settings_utils/search_index/AdvancedSettingsIndex.ts:56
 msgid "Double-click to edit"
@@ -13109,7 +13123,7 @@ msgid "Duplicate role"
 msgstr "Duplikovat roli"
 
 #. Validation error when tag pair is duplicated within the same persona
-#: src/features/persona/components/modals/PersonaEditModal.tsx:134
+#: src/features/persona/components/modals/PersonaEditModal.tsx:131
 msgid "Duplicate tag pair on this persona"
 msgstr "Tato persona už tento pár značek má"
 
@@ -13124,14 +13138,19 @@ msgid "Dutch"
 msgstr "Nizozemština"
 
 #. Placeholder for persona name
-#: src/features/persona/components/modals/PersonaEditModal.tsx:102
+#: src/features/persona/components/modals/PersonaEditModal.tsx:99
 msgid "e.g. Alice"
 msgstr "např. Alice"
 
 #. Placeholder for persona pronouns
-#: src/features/persona/components/modals/PersonaEditModal.tsx:106
+#: src/features/persona/components/modals/PersonaEditModal.tsx:103
 msgid "e.g. she/her"
 msgstr "např. ona/její"
+
+#. Placeholder text for natural language timestamp input.
+#: src/features/channel/components/modals/TimestampModal.tsx:32
+msgid "e.g. tomorrow at 3pm, in 2 hours, now"
+msgstr "např. zítra v 15:00, za 2 hodiny, teď"
 
 #. Placeholder or example text in the authentication passkey name modal. Keep the tone plain and specific.
 #: src/features/auth/components/modals/PasskeyNameModal.tsx:27
@@ -13317,7 +13336,7 @@ msgid "Edit persona"
 msgstr "Upravit personu"
 
 #. Title for edit persona modal
-#: src/features/persona/components/modals/PersonaEditModal.tsx:50
+#: src/features/persona/components/modals/PersonaEditModal.tsx:51
 msgid "Edit Persona"
 msgstr "Upravit personu"
 
@@ -13330,7 +13349,7 @@ msgid "Edit profile"
 msgstr "Upravit profil"
 
 #. Button label in profile settings. Opens the profile local time modal.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:33
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:32
 msgid "Edit profile local time"
 msgstr "Upravit místní čas profilu"
 
@@ -13377,13 +13396,20 @@ msgstr "Upravit samolepku {stickerName}"
 msgid "Edit the bot avatar, tag, bio, banner, and friend request behavior"
 msgstr "Upravit avatar, uživatelský tag, popis, banner a přijímání žádostí o přátelství u bota"
 
+#. Context menu action to edit a timestamp in the message composer.
+#. Title of the timestamp modal when editing an existing timestamp.
+#: src/features/channel/components/modals/TimestampModal.tsx:28
+#: src/features/lexical/composer/nodes/ComposerTimestampContextMenu.tsx:10
+msgid "Edit timestamp"
+msgstr \"Upravit časové razítko\"
+
 #. Button or menu action label in the add custom search engine modal. Keep it concise.
 #: src/features/user/components/modals/tabs/chat_settings_tab/AddCustomSearchEngineModal.tsx:34
 msgid "Edit translation provider"
 msgstr "Upravit poskytovatele překladu"
 
 #. Button or menu action label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:93
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:92
 msgid "Edit your profile appearance and see a live preview"
 msgstr "Upravte si vzhled profilu a podívejte se na živý náhled"
 
@@ -14477,7 +14503,7 @@ msgstr "Všechny kanály"
 
 #. Profile timezone privacy option label. Allows anyone who can view the full profile to see local time.
 #: src/features/connection/components/modals/EditConnectionModal.tsx:79
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:55
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:50
 #: src/features/user/components/modals/tabs/privacy_safety_tab/ConnectionsTab.tsx:234
 msgid "Everyone"
 msgstr "Všichni"
@@ -14883,7 +14909,7 @@ msgid "Failed to delete channel"
 msgstr "Nepodařilo se smazat kanál"
 
 #. Toast when persona deletion fails
-#: src/features/persona/components/modals/PersonaEditModal.tsx:70
+#: src/features/persona/components/modals/PersonaEditModal.tsx:71
 msgid "Failed to delete persona"
 msgstr "Smazání persony se nezdařilo"
 
@@ -15058,7 +15084,7 @@ msgid "Failed to reset premium state."
 msgstr "Nepodařilo se resetovat stav prémiového účtu."
 
 #. Toast when persona save fails
-#: src/features/persona/components/modals/PersonaEditModal.tsx:62
+#: src/features/persona/components/modals/PersonaEditModal.tsx:63
 msgid "Failed to save persona"
 msgstr "Uložení persony se nezdařilo"
 
@@ -15816,6 +15842,11 @@ msgstr "Zapomenuté heslo"
 msgid "Forgot your password?"
 msgstr "Zapomněli jste heslo?"
 
+#. Label for format preview selection in timestamp modal.
+#: src/features/channel/components/modals/TimestampModal.tsx:48
+msgid "Format preview"
+msgstr "Náhled formátu"
+
 #. Collapsible group heading in the Theme Studio tokens list, for form input tokens.
 #: src/features/theme_studio/sections/TokenGroups.ts:90
 msgid "Forms"
@@ -15979,7 +16010,7 @@ msgstr "Přátelský bot"
 #: src/features/channel/components/direct_message/DirectMessageList.tsx:555
 #: src/features/connection/components/modals/EditConnectionModal.tsx:86
 #: src/features/search/utils/QuickSwitcherModalUtils.tsx:49
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:63
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:58
 #: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:89
 msgid "Friends"
 msgstr "Přátelé"
@@ -17909,7 +17940,7 @@ msgstr "Importovat složku"
 
 #. Modal title for PluralKit import step select
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:485
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:510
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:508
 msgid "Import from PluralKit"
 msgstr "Importovat z PluralKit"
 
@@ -18342,6 +18373,11 @@ msgstr "Vstupní pole a text"
 msgid "Inputs with icons"
 msgstr "Vstupní pole s ikonami"
 
+#. Button to insert timestamp into message composer.
+#: src/features/channel/components/modals/TimestampModal.tsx:52
+msgid "Insert"
+msgstr "Vložit"
+
 #: src/features/input/utils/KeybindUtils.ts:87
 msgctxt "keyboard-key-name"
 msgid "Insert"
@@ -18351,6 +18387,15 @@ msgstr "Insert"
 #: src/features/channel/components/modals/channel_tabs/channel_overview_tab/ChannelOverviewTopicEditor.tsx:44
 msgid "Insert emoji"
 msgstr "Vložit emoji"
+
+#. Button or menu action label in the channel and chat mobile textarea plus bottom sheet. Keep it concise.
+#. Plus menu item that opens the dynamic timestamp insertion modal.
+#. Title of the timestamp insertion modal.
+#: src/features/channel/components/modals/TimestampModal.tsx:24
+#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:13
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:19
+msgid "Insert timestamp"
+msgstr "Vložit časové razítko"
 
 #. CTA card body in the screen-share picker promoting the desktop app. {productName} is Fluxer.
 #: src/features/voice/components/modals/screen_share_picker_modal/DesktopDownloadCta.tsx:16
@@ -20051,7 +20096,7 @@ msgstr "Kanál byl nastaven tak, aby dědil nastavení obsahu pro dospělé"
 msgid "Mail"
 msgstr "Pošta"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:873
+#: src/features/persona/components/modals/PersonaEditModal.tsx:877
 #: src/features/persona/components/PersonaProfileMobileSheet.tsx:369
 #: src/features/persona/components/PersonaProfilePopout.tsx:264
 msgid "Main account"
@@ -22209,10 +22254,6 @@ msgstr "Přepsání lišty oznámení"
 msgid "Name"
 msgstr "Název"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:664
-msgid "Name *"
-msgstr "Jméno *"
-
 #. Form validation error shown when the name field is empty.
 #. Form validation error shown when the name field is empty.
 #: src/features/expressions/components/modals/meme_form/MemeFormFields.tsx:16
@@ -22516,7 +22557,7 @@ msgid "New password"
 msgstr "Nové heslo"
 
 #. Title for new persona modal
-#: src/features/persona/components/modals/PersonaEditModal.tsx:46
+#: src/features/persona/components/modals/PersonaEditModal.tsx:47
 msgid "New Persona"
 msgstr "Nová persona"
 
@@ -22818,7 +22859,7 @@ msgstr "Bez popisu."
 msgid "No desktop update is available."
 msgstr "Není k dispozici žádná aktualizace desktopové aplikace."
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:491
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:489
 msgid "No display tag configured. Messages will show your account profile picture."
 msgstr "Není nastavena žádná zobrazovaná značka. Zprávy budou zobrazovat vaši profilovou fotku účtu."
 
@@ -22948,7 +22989,7 @@ msgid "No matches found"
 msgstr "Nic nebylo nalezeno"
 
 #: src/features/persona/components/PersonaPickerSheet.tsx:202
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:550
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:548
 msgid "No matching personas found."
 msgstr "Nebyly nalezeny žádné odpovídající persony."
 
@@ -23011,7 +23052,7 @@ msgstr "Zatím žádná vlastní slova."
 msgid "No personas configured yet. Create one in Settings."
 msgstr "Zatím nejsou nastaveny žádné persony. Vytvořte si nějakou v Nastavení."
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:546
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:544
 msgid "No personas created yet. Click \"Add Persona\" to create your first persona!"
 msgstr "No personas created yet. Click \"Add Persona\" to create your first persona!"
 
@@ -23071,8 +23112,10 @@ msgstr "Žádné výsledky"
 
 #. Empty state shown when a combobox search returns no matches.
 #. Empty state shown when a combobox search returns no matches.
+#. Empty state shown when a combobox search returns no matches.
 #: src/features/channel/components/embeds/attachments/TextualAttachmentLanguageCombobox.tsx:30
 #: src/features/ui/components/form/FormCombobox.tsx:83
+#: src/features/ui/components/form/SearchableTimeZonePicker.tsx:46
 msgid "No results found"
 msgstr "Nebyly nalezeny žádné výsledky"
 
@@ -23387,7 +23430,7 @@ msgstr "Není to žádná z voleb"
 #. Option in the profile timezone picker. Means no timezone has been selected.
 #. Status chip for a macOS permission that has not been requested.
 #: src/features/permissions/system/components/modals/MacPermissionsModal.tsx:64
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:41
+#: src/features/ui/components/form/SearchableTimeZonePicker.tsx:50
 msgid "Not set"
 msgstr "Nenastaveno"
 
@@ -23784,7 +23827,7 @@ msgid "Only the selected ones"
 msgstr "Pouze vybrané"
 
 #. Helper description for private persona visibility
-#: src/features/persona/components/modals/PersonaEditModal.tsx:94
+#: src/features/persona/components/modals/PersonaEditModal.tsx:95
 msgid "Only visible to you. Others cannot view this persona’s full bio or profile details."
 msgstr "Viditelné pouze pro vás. Ostatní neuvidí úplné bio ani detaily profilu této persony."
 
@@ -24450,7 +24493,7 @@ msgid "Other methods"
 msgstr "Jiné metody"
 
 #. Privacy note in profile timezone settings. Preserve {timezoneIdentifierExample}; it is inserted by code as an IANA timezone identifier example. productName is the app name. Users should understand that only the UTC offset is shown to other people.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:49
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:44
 msgid "Other people can only see your current UTC offset when you choose to share profile local time. They do not see your exact time zone identifier, such as {timezoneIdentifierExample}. {productName} stores that identifier only so the offset can update automatically when daylight saving time changes."
 msgstr "Ostatní uživatelé vidí pouze váš aktuální UTC posun, pokud se rozhodnete sdílet místní čas ve svém profilu. Neuvidí přesný identifikátor vašeho časového pásma, například {timezoneIdentifierExample}. Aplikace {productName} si tento identifikátor ukládá pouze proto, aby mohl posun automaticky aktualizovat při změnách letního času."
 
@@ -25017,12 +25060,12 @@ msgid "Permissions for {0}"
 msgstr "Oprávnění pro {0}"
 
 #. Toast when persona is created
-#: src/features/persona/components/modals/PersonaEditModal.tsx:58
+#: src/features/persona/components/modals/PersonaEditModal.tsx:59
 msgid "Persona created"
 msgstr "Persona vytvořena"
 
 #. Toast when persona is deleted
-#: src/features/persona/components/modals/PersonaEditModal.tsx:66
+#: src/features/persona/components/modals/PersonaEditModal.tsx:67
 msgid "Persona deleted"
 msgstr "Persona smazána"
 
@@ -25040,17 +25083,17 @@ msgstr "Profil persony"
 msgid "Persona profile: {name}"
 msgstr "Profil persony: {name}"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:740
+#: src/features/persona/components/modals/PersonaEditModal.tsx:730
 msgid "Persona Tags (Prefix & Suffix)"
 msgstr "Značky persony (Předpona a přípona)"
 
 #. Toast when persona is updated
-#: src/features/persona/components/modals/PersonaEditModal.tsx:54
+#: src/features/persona/components/modals/PersonaEditModal.tsx:55
 msgid "Persona updated"
 msgstr "Persona aktualizována"
 
 #. Aria label for persona visibility tabs
-#: src/features/persona/components/modals/PersonaEditModal.tsx:130
+#: src/features/persona/components/modals/PersonaEditModal.tsx:127
 msgid "Persona visibility"
 msgstr "Viditelnost persony"
 
@@ -25598,7 +25641,7 @@ msgid "Prefers reduced motion"
 msgstr "Preferuje omezené animace"
 
 #. Placeholder for persona tag prefix
-#: src/features/persona/components/modals/PersonaEditModal.tsx:114
+#: src/features/persona/components/modals/PersonaEditModal.tsx:111
 msgid "Prefix (e.g. [)"
 msgstr "Předpona (např. [)"
 
@@ -25715,7 +25758,7 @@ msgstr "Zabránit členům po určenou dobu odesílat zprávy, reagovat a připo
 
 #: src/features/expressions/components/modals/sticker_form/StickerPreview.tsx:21
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildInviteSplashSettingsField.tsx:45
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:465
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:463
 #: src/features/user/components/modals/tabs/EmbedDebuggerTab.tsx:276
 msgid "Preview"
 msgstr "Náhled"
@@ -25924,7 +25967,7 @@ msgid "Privacy violation or stalking"
 msgstr "Porušení soukromí nebo pronásledování"
 
 #. Persona visibility private
-#: src/features/persona/components/modals/PersonaEditModal.tsx:82
+#: src/features/persona/components/modals/PersonaEditModal.tsx:83
 msgid "Private"
 msgstr "Soukromé"
 
@@ -25984,7 +26027,7 @@ msgstr "Profil"
 msgid "Profile badge"
 msgstr "Odznak profilu"
 
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:165
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:163
 msgid "Profile banners are a {PREMIUM_PRODUCT_NAME} feature. Get {PREMIUM_PRODUCT_NAME} to add a banner to your profile."
 msgstr "Profilové bannery jsou funkce {PREMIUM_PRODUCT_NAME}. Získejte {PREMIUM_PRODUCT_NAME} a přidejte si banner do svého profilu."
 
@@ -26004,12 +26047,12 @@ msgid "Profile banners require {premiumProductName}."
 msgstr "Bannery profilu vyžadují {premiumProductName}."
 
 #. Helper description for unlisted persona visibility
-#: src/features/persona/components/modals/PersonaEditModal.tsx:86
+#: src/features/persona/components/modals/PersonaEditModal.tsx:87
 msgid "Profile cards are accessible only when clicking on messages sent by this persona. Not listed in your public persona list."
 msgstr "Karty profilu jsou dostupné pouze po kliknutí na zprávy odeslané touto personou. Nejsou uvedeny ve vašem veřejném seznamu person."
 
 #. Helper description for public persona visibility
-#: src/features/persona/components/modals/PersonaEditModal.tsx:90
+#: src/features/persona/components/modals/PersonaEditModal.tsx:91
 msgid "Profile cards are accessible when clicking on messages and visible in your public personas list to friends and mutual servers."
 msgstr "Karty profilu jsou dostupné po kliknutí na zprávy a vaši přátelé a společné servery je uvidí ve vašem veřejném seznamu person."
 
@@ -26020,18 +26063,18 @@ msgstr "Barva profilu"
 
 #. Settings section label for editing profile appearance and identity.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:105
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:104
 #: src/features/user/components/settings_utils/section_registry/GeneralSettingsSections.ts:6
 msgid "Profile customization"
 msgstr "Přizpůsobení profilu"
 
 #. Label in the my profile tab. Preserve {selectedGuildName}; it is inserted by code.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:101
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:100
 msgid "Profile customization for {selectedGuildName}"
 msgstr "Přizpůsobení profilu pro {selectedGuildName}"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:97
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:96
 msgid "Profile customization form"
 msgstr "Formulář pro úpravu profilu"
 
@@ -26041,7 +26084,7 @@ msgid "Profile data warning"
 msgstr "Upozornění na data profilu"
 
 #. Profile settings row title for choosing whether profile viewers can see the user local time.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:23
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:22
 msgid "Profile local time"
 msgstr "Místní čas v profilu"
 
@@ -26065,7 +26108,6 @@ msgstr "Profilový obrázek"
 msgid "Profile pictures"
 msgstr "Profilové obrázky"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:809
 #: src/features/user/components/profile/profile_card/ProfileCardLayout.tsx:26
 msgid "Profile preview"
 msgstr "Náhled profilu"
@@ -26097,7 +26139,7 @@ msgid "Profile type"
 msgstr "Typ profilu"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:77
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:76
 msgid "Profile updated"
 msgstr "Profil aktualizován"
 
@@ -26134,8 +26176,8 @@ msgstr "Nabídnout přepnutí při připojení nového zvukového zařízení"
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/persona/components/modals/PersonaEditModal.tsx:678
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:142
+#: src/features/persona/components/modals/PersonaEditModal.tsx:670
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:141
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:177
 #: src/features/user/components/settings_utils/section_registry/PrivacySafetySections.ts:160
 msgid "Pronouns"
@@ -26176,7 +26218,7 @@ msgid "PTT"
 msgstr "PTT"
 
 #. Persona visibility public
-#: src/features/persona/components/modals/PersonaEditModal.tsx:78
+#: src/features/persona/components/modals/PersonaEditModal.tsx:79
 msgid "Public"
 msgstr "Veřejné"
 
@@ -27069,8 +27111,8 @@ msgstr "Odebrat přílohu"
 msgid "Remove authenticator app"
 msgstr "Odebrat ověřovací aplikaci"
 
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:407
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:445
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:405
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:441
 msgid "Remove avatar"
 msgstr "Odebrat avatar"
 
@@ -27079,8 +27121,8 @@ msgstr "Odebrat avatar"
 msgid "Remove background"
 msgstr "Odebrat pozadí"
 
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:316
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:357
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:314
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:353
 msgid "Remove banner"
 msgstr "Odebrat banner"
 
@@ -27147,7 +27189,7 @@ msgstr "Odebrat z oblíbených GIFů uložených pouze jako URL"
 #: src/features/channel/components/modals/EditGroupModal.tsx:293
 #: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:314
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:635
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:446
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:444
 msgid "Remove icon"
 msgstr "Odebrat ikonu"
 
@@ -27225,7 +27267,7 @@ msgid "Remove tag {tag}"
 msgstr "Odebrat značku {tag}"
 
 #. Aria label for removing a tag pair
-#: src/features/persona/components/modals/PersonaEditModal.tsx:122
+#: src/features/persona/components/modals/PersonaEditModal.tsx:119
 msgid "Remove tag pair"
 msgstr "Odstranit pár značek"
 
@@ -27868,7 +27910,7 @@ msgstr "Znovu odesláno"
 #: src/features/app/components/floating/ColorPickerPopover.tsx:190
 #: src/features/input/components/KeybindRecorder.tsx:459
 #: src/features/messaging/components/modals/ImageCropModal.tsx:936
-#: src/features/persona/components/modals/PersonaEditModal.tsx:615
+#: src/features/persona/components/modals/PersonaEditModal.tsx:612
 msgid "Reset"
 msgstr "Resetovat"
 
@@ -28745,7 +28787,7 @@ msgid "Save banner"
 msgstr "Uložit banner"
 
 #: src/features/app/components/dialogs/shared/UnsavedChangesBannerContent.tsx:60
-#: src/features/persona/components/modals/PersonaEditModal.tsx:624
+#: src/features/persona/components/modals/PersonaEditModal.tsx:621
 msgid "Save changes"
 msgstr "Uložit změny"
 
@@ -29375,7 +29417,9 @@ msgid "Search themes…"
 msgstr "Hledat motivy…"
 
 #. Placeholder in the profile timezone picker.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:37
+#. Placeholder in timezone combobox.
+#: src/features/ui/components/form/SearchableTimeZonePicker.tsx:34
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:36
 msgid "Search time zones"
 msgstr "Hledat časová pásma"
 
@@ -29849,8 +29893,8 @@ msgstr "Odeslat GIF {title}"
 #. Action label for sending a gift to a friend.
 #. Button or menu action label in the channel and chat mobile textarea plus bottom sheet. Keep it concise.
 #. Plus menu item that opens the gift purchase flow.
-#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:21
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:31
+#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:25
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:35
 #: src/features/expressions/components/modals/GiftSendToFriendModal.tsx:30
 msgid "Send gift"
 msgstr "Poslat dárek"
@@ -29949,7 +29993,7 @@ msgstr "Odeslat ověřovací kód"
 #. Accessible label and tooltip for the send button after recording a voice message.
 #. Keyboard shortcut action label that opens the desktop voice message composer.
 #. Plus menu item that opens the desktop voice message composer to record and send a voice clip.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:35
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:39
 #: src/features/channel/components/VoiceMessageRecorder.tsx:69
 #: src/features/input/state/input_keybind/shared.ts:289
 msgid "Send voice message"
@@ -30107,7 +30151,7 @@ msgstr "Nastavit vlastní stav"
 msgid "Set a member list position for the role"
 msgstr "Nastavena pozice role v seznamu členů"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:639
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:637
 msgid "Set Active"
 msgstr "Nastavit jako aktivní"
 
@@ -30322,7 +30366,7 @@ msgid "Set your status"
 msgstr "Nastavit stav"
 
 #. Description in profile settings for the button that opens timezone settings. productName is the app name. A timezone identifier means values like America/New_York; only the UTC offset can be visible to others.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:27
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:26
 msgid "Set your time zone once so {productName} can keep your UTC offset current when daylight saving time changes. Other people can only see your UTC offset, not your exact time zone identifier."
 msgstr "Nastavte si časové pásmo jednou a {productName} bude průběžně aktualizovat váš UTC posun při změnách letního času. Ostatní uživatelé uvidí pouze váš UTC posun, nikoli přesný identifikátor vašeho časového pásma."
 
@@ -30738,7 +30782,7 @@ msgstr "Zobrazovat náhledy odkazů a vložený obsah"
 
 #. Short label for an advanced message input preference.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:59
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:63
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:129
 msgid "Show emoji button"
 msgstr "Zobrazit tlačítko emoji"
@@ -30777,7 +30821,7 @@ msgstr "Zobrazit indikátor GIF"
 
 #. Plus menu submenu toggle that shows the GIFs button next to the textarea.
 #. Short label for an advanced message input preference.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:43
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:47
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:109
 msgid "Show GIFs button"
 msgstr "Zobrazit tlačítko GIFů"
@@ -30826,7 +30870,7 @@ msgstr "Zobrazit nejvýše 5 (odznak +5)"
 
 #. Plus menu submenu toggle that shows the saved media (memes) button next to the textarea.
 #. Short label for an advanced message input preference.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:47
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:51
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:113
 msgid "Show media button"
 msgstr "Zobrazit tlačítko médií"
@@ -30952,7 +30996,7 @@ msgstr "Zobrazit posuvníky hlasitosti účastníků pro každé zařízení v n
 
 #. Plus menu submenu toggle that shows the persona selector next to the textarea.
 #. Short label for an advanced message input preference.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:51
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:55
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:133
 msgid "Show personas button"
 msgstr "Zobrazit tlačítko Persony"
@@ -30981,7 +31025,7 @@ msgstr "Zobrazovat uložená média v automatickém doplňování výrazů"
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #: src/features/channel/components/textarea/TextareaContextMenu.tsx:102
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:63
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:67
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:137
 msgid "Show send button"
 msgstr "Zobrazit tlačítko Odeslat"
@@ -30998,7 +31042,7 @@ msgstr "Zobrazit obsah se spoilerem po kliknutí"
 
 #. Short label for an advanced message input preference.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:55
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:59
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:125
 msgid "Show stickers button"
 msgstr "Zobrazit tlačítko samolepek"
@@ -32816,9 +32860,14 @@ msgid "Successfully imported {0} persona(s) into your account. All avatar images
 msgstr "Úspěšně importováno {0} person na váš účet. Všechny obrázky avatarů jsou bezpečně uloženy na vašem místním serveru."
 
 #. Placeholder for persona tag suffix
-#: src/features/persona/components/modals/PersonaEditModal.tsx:118
+#: src/features/persona/components/modals/PersonaEditModal.tsx:115
 msgid "Suffix (e.g. ])"
 msgstr "Přípona (např. ])"
+
+#. Section header for suggested time zones in the timestamp modal.
+#: src/features/ui/components/form/SearchableTimeZonePicker.tsx:38
+msgid "Suggested"
+msgstr "Doporučené"
 
 #. Helper text under the "Filter members without roles" explicit content filter option in the community moderation settings tab.
 #: src/features/guild/components/modals/guild_tabs/GuildModerationTab.tsx:112
@@ -33282,16 +33331,16 @@ msgstr "Tabulky"
 msgid "Tag"
 msgstr "Štítek"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:426
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:424
 msgid "Tag Icon"
 msgstr "Ikona značky"
 
 #. Validation error when tag pair is already used by another persona
-#: src/features/persona/components/modals/PersonaEditModal.tsx:138
+#: src/features/persona/components/modals/PersonaEditModal.tsx:135
 msgid "Tag pair already in use by persona \"{name}\""
 msgstr "Tag pair already in use by persona \"{name}\""
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:413
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:411
 msgid "Tag Text"
 msgstr "Text značky"
 
@@ -33385,7 +33434,7 @@ msgid "Teleporting you to another voice region..."
 msgstr "Přesouváme vás do jiného hlasového regionu..."
 
 #. Placeholder for persona bio
-#: src/features/persona/components/modals/PersonaEditModal.tsx:110
+#: src/features/persona/components/modals/PersonaEditModal.tsx:107
 msgid "Tell us about this persona..."
 msgstr "Napište nám něco o této personě..."
 
@@ -34457,7 +34506,7 @@ msgstr "Toto je vlastní emoji z komunity."
 msgid "This is a custom sticker from a community."
 msgstr "Toto je vlastní samolepka z komunity."
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:489
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:487
 msgid "This is a preview of how your display tag will look in chat."
 msgstr "Tohle je náhled, jak bude vaše zobrazovaná značka vypadat v chatu."
 
@@ -34615,7 +34664,7 @@ msgid "This message no longer exists."
 msgstr "Tato zpráva již neexistuje."
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:130
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:129
 msgid "This nickname will only be visible in this community"
 msgstr "Tato přezdívka bude viditelná pouze v této komunitě"
 
@@ -34945,8 +34994,10 @@ msgid "Thumbnail preview"
 msgstr "Náhled miniatur"
 
 #. Form field label for a time value.
+#. Label for time input in timestamp modal.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
+#: src/features/channel/components/modals/TimestampModal.tsx:40
 #: src/features/ui/components/form/DateTimePickerField.tsx:34
 #: src/features/user/components/settings_utils/search_index/LanguageIndex.ts:30
 #: src/features/user/components/settings_utils/section_registry/AppearanceSections.ts:282
@@ -34988,7 +35039,9 @@ msgid "Time range"
 msgstr "Časové období"
 
 #. Field label in profile settings for choosing the timezone used to show local time on the profile.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:19
+#. Label for time zone input in timestamp modal.
+#: src/features/channel/components/modals/TimestampModal.tsx:44
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:18
 msgid "Time zone"
 msgstr "Časové pásmo"
 
@@ -36281,7 +36334,7 @@ msgid "unknown-role"
 msgstr "neznámá-role"
 
 #. Persona visibility unlisted
-#: src/features/persona/components/modals/PersonaEditModal.tsx:74
+#: src/features/persona/components/modals/PersonaEditModal.tsx:75
 msgid "Unlisted"
 msgstr "Neuvedeno"
 
@@ -36833,8 +36886,8 @@ msgstr "Nahrát emoji"
 
 #. Button or menu action label in the channel and chat mobile textarea plus bottom sheet. Keep it concise.
 #. Plus menu item that opens the system file picker to attach a file.
-#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:13
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:23
+#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:17
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:27
 msgid "Upload file"
 msgstr "Nahrát soubor"
 
@@ -36853,7 +36906,7 @@ msgstr "Nahrávat soubory a média v tomto kanálu."
 #: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:305
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:626
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildIconUploadField.tsx:130
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:456
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:454
 msgid "Upload icon"
 msgstr "Nahrát ikonu"
 
@@ -36893,8 +36946,8 @@ msgstr "Nahrát do {displayName}"
 
 #. Button or menu action label in the channel and chat mobile textarea plus bottom sheet. Keep it concise.
 #. Plus menu item that uploads the current textarea content as a .txt file when it exceeds the size limit.
-#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:17
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:27
+#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:21
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:31
 msgid "Upload your message as a file"
 msgstr "Nahrát zprávu jako soubor"
 
@@ -37784,22 +37837,22 @@ msgid "Verify your email before adding an authenticator app."
 msgstr "Před přidáním ověřovací aplikace si ověřte svůj e-mail."
 
 #. Description text in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:117
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:116
 msgid "Verify your email before changing your community nickname, avatar, banner, bio, pronouns, or accent color."
 msgstr "Před změnou přezdívky, avataru, banneru, popisu profilu, zájmen nebo barvy zvýraznění pro tuto komunitu ověřte svůj e-mail."
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:121
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:120
 msgid "Verify your email before changing your username, display name, avatar, banner, bio, pronouns, time zone, or {premiumProductName} badge privacy."
 msgstr "Před změnou uživatelského jména, zobrazovaného jména, avataru, banneru, popisu profilu, zájmen, časového pásma nebo soukromí odznaku {premiumProductName} ověřte svůj e-mail."
 
 #. Description text in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:85
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:84
 msgid "Verify your email before editing this community profile. You can still preview it here."
 msgstr "Před úpravou tohoto komunitního profilu si ověřte svůj e-mail. Stále si ho můžete prohlédnout zde."
 
 #. Description text in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:89
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:88
 msgid "Verify your email before editing your profile. You can still preview it here."
 msgstr "Před úpravou profilu si ověřte svůj e-mail. Stále si ho zde můžete prohlédnout."
 
@@ -37831,12 +37884,12 @@ msgid "Verify your email to continue using {productName}."
 msgstr "Ověřte svůj e-mail, abyste mohli nadále používat {productName}."
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:109
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:108
 msgid "Verify your email to edit this community profile"
 msgstr "Ověřte svůj e-mail, abyste mohli upravit tento komunitní profil"
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:113
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:112
 msgid "Verify your email to edit your profile"
 msgstr "Ověřte svůj e-mail pro úpravu profilu"
 
@@ -38273,7 +38326,7 @@ msgid "Virginia"
 msgstr "Virginie"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/persona/components/modals/PersonaEditModal.tsx:721
+#: src/features/persona/components/modals/PersonaEditModal.tsx:782
 #: src/features/user/components/settings_utils/section_registry/AccessibilitySections.ts:39
 msgid "Visibility"
 msgstr "Viditelnost"
@@ -39384,7 +39437,7 @@ msgctxt "us-state"
 msgid "Wisconsin"
 msgstr "Wisconsin"
 
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:217
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:215
 msgid "With {PREMIUM_PRODUCT_NAME}, you can use animated avatars ({ANIMATED_AVATAR_FORMATS}) and profile banners, customize your tag, and unlock many other {PREMIUM_PRODUCT_NAME} perks."
 msgstr "S {PREMIUM_PRODUCT_NAME} můžete používat animované avatary ({ANIMATED_AVATAR_FORMATS}) a profilové bannery, přizpůsobit si uživatelskou značku a odemknout mnoho dalších výhod {PREMIUM_PRODUCT_NAME}."
 
@@ -39649,6 +39702,7 @@ msgstr "Účet si stále můžete vytvořit nebo se přihlásit. Pokud budou poz
 msgid "You can still email {supportEmail} for a human review at any time."
 msgstr "Kdykoli můžete napsat na {supportEmail} a požádat o posouzení pracovníkem podpory."
 
+#: src/features/persona/components/modals/PersonaEditModal.tsx:718
 #: src/features/user/components/modals/tabs/my_profile_tab/BioEditor.tsx:288
 msgid "You can use links, emoji, and Markdown."
 msgstr "Můžete použít odkazy, emoji a Markdown."
@@ -39674,7 +39728,7 @@ msgid "You can't befriend yourself"
 msgstr "Nemůžete si přidat sami sebe do přátel"
 
 #. Label in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:134
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:133
 msgid "You can't change your nickname here"
 msgstr "Zde si nemůžete změnit přezdívku"
 
@@ -39792,7 +39846,7 @@ msgid "You can't unmute yourself because a moderator muted you."
 msgstr "Nemůžete si zapnout mikrofon, protože vám ho ztlumil moderátor."
 
 #. Tooltip on the disabled upload file item when the user lacks Attach Files permission. Calm, factual tone.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:19
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:23
 msgid "You can't upload files in this channel."
 msgstr "Do tohoto kanálu nemůžete nahrávat soubory."
 
@@ -39920,12 +39974,12 @@ msgid "You have refunded recently"
 msgstr "Nedávno jste provedli vrácení peněz"
 
 #: src/features/app/components/dialogs/shared/UnsavedChangesBannerContent.tsx:37
-#: src/features/persona/components/modals/PersonaEditModal.tsx:604
+#: src/features/persona/components/modals/PersonaEditModal.tsx:601
 msgid "You have unsaved changes."
 msgstr "Máte neuložené změny."
 
 #. Warning text in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:81
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:80
 msgid "You have unsaved changes. Save or reset before leaving."
 msgstr "Máte neuložené změny. Před odchodem je uložte nebo resetujte."
 

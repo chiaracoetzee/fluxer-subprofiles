@@ -14,7 +14,7 @@ msgstr ""
 "Plural-Forms: \n"
 "X-Generator: @lingui/cli\n"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:484
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:482
 msgid "— Today at 12:00 PM"
 msgstr "— 오늘 오후 12:00"
 
@@ -960,7 +960,7 @@ msgstr "{count, plural, one {#개 차단된 메시지} other {#개 차단된 메
 msgid "{count, plural, one {# community found} other {# communities found}}"
 msgstr "{count, plural, one {#개 커뮤니티 찾음} other {#개 커뮤니티 찾음}}"
 
-#: src/features/app/components/layout/GuildsLayout.tsx:1968
+#: src/features/app/components/layout/GuildsLayout.tsx:1972
 msgid "{count, plural, one {# community is temporarily unavailable due to a flux capacitor malfunction.} other {# communities are temporarily unavailable due to a flux capacitor malfunction.}}"
 msgstr "{count, plural, one {#개 커뮤니티가 플럭스 캐패시터 오작동으로 인해 일시적으로 이용할 수 없습니다.} other {#개 커뮤니티가 플럭스 캐패시터 오작동으로 인해 일시적으로 이용할 수 없습니다.}}"
 
@@ -2547,6 +2547,7 @@ msgstr "{appName} 정보"
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Short label in the user profile shared popout. Keep it concise.
 #: src/features/app/components/pages/YouPage.tsx:166
+#: src/features/persona/components/modals/PersonaEditModal.tsx:710
 #: src/features/persona/components/PersonaProfileMobileSheet.tsx:349
 #: src/features/persona/components/PersonaProfileMobileSheet.tsx:358
 #: src/features/user/components/modals/tabs/my_profile_tab/BioEditor.tsx:26
@@ -2578,7 +2579,6 @@ msgstr "강조 색상"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label in the accent color picker. Keep it concise.
-#: src/features/persona/components/modals/PersonaEditModal.tsx:692
 #: src/features/user/components/modals/tabs/my_profile_tab/AccentColorPicker.tsx:12
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:153
 msgid "Accent color"
@@ -2773,7 +2773,7 @@ msgstr "작업"
 #. Subscription status badge meaning the paid subscription is active.
 #: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:445
 #: src/features/channel/components/channel_header_components/developer_tools/DeveloperToolsShared.ts:37
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:639
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:637
 #: src/features/user/components/settings_utils/search_index/DevicesIndex.ts:19
 msgid "Active"
 msgstr "활성"
@@ -2833,7 +2833,7 @@ msgstr "활동 중"
 msgid "Active persona mode"
 msgstr "활성 페르소나 모드"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:372
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:370
 msgid "Active Persona Mode"
 msgstr "활성 페르소나 모드"
 
@@ -3119,7 +3119,7 @@ msgstr "권한 재정의 추가"
 msgid "Add passkey"
 msgstr "패스키 추가"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:513
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:511
 msgid "Add Persona"
 msgstr "페르소나 추가"
 
@@ -3194,7 +3194,7 @@ msgid "Add stream"
 msgstr "스트림 추가"
 
 #. placeholder {0}: formData.tags.length
-#: src/features/persona/components/modals/PersonaEditModal.tsx:749
+#: src/features/persona/components/modals/PersonaEditModal.tsx:739
 msgid "Add Tag Pair ({0}/5)"
 msgstr "태그 쌍 추가 ({0}/5)"
 
@@ -3607,6 +3607,11 @@ msgstr "모든 상태 유형"
 msgid "All time"
 msgstr "전체 기간"
 
+#. Section header for all time zones in the timestamp modal.
+#: src/features/ui/components/form/SearchableTimeZonePicker.tsx:42
+msgid "All time zones"
+msgstr "모든 시간대"
+
 #. Default option in the activity log "Filter by user" dropdown. Means no user filter is applied. Short standalone label.
 #: src/features/guild/components/modals/guild_tabs/GuildAuditLogTab.tsx:72
 msgid "All users"
@@ -3644,7 +3649,7 @@ msgid "Allow anyone to see this connection on your profile"
 msgstr "내 프로필에서 이 연결을 모든 사람이 볼 수 있도록 허용"
 
 #. Profile timezone privacy option description for the Everyone switch.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:59
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:54
 msgid "Allow anyone who can view your full profile to see your local time"
 msgstr "전체 프로필을 볼 수 있는 모든 사람이 내 프로필 현지 시간을 볼 수 있도록 허용합니다"
 
@@ -3719,7 +3724,7 @@ msgid "Allow members from communities you're in to see this connection"
 msgstr "내가 속한 커뮤니티의 멤버가 이 연결을 볼 수 있도록 허용합니다"
 
 #. Profile timezone privacy option description for the Community members switch.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:71
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:66
 msgid "Allow members from communities you're in to see your local time"
 msgstr "내가 속한 커뮤니티의 멤버가 내 현지 시간을 볼 수 있도록 허용합니다"
 
@@ -3768,7 +3773,7 @@ msgid "Allow your friends to see this connection"
 msgstr "친구가 이 연결을 볼 수 있도록 허용합니다"
 
 #. Profile timezone privacy option description for the Friends switch.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:67
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:62
 msgid "Allow your friends to see your local time"
 msgstr "친구가 내 현지 시간을 볼 수 있도록 허용합니다"
 
@@ -4011,11 +4016,11 @@ msgstr "움직이는 {AVIF_FORMAT_LABEL} 파일은 지원되지 않습니다. �
 msgid "Animated {avifFormatLabel} not supported"
 msgstr "움직이는 {avifFormatLabel}은(는) 지원되지 않습니다"
 
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:208
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:206
 msgid "Animated avatars ({ANIMATED_AVATAR_FORMATS}) are exclusively available to {PREMIUM_PRODUCT_NAME} subscribers."
 msgstr "움직이는 아바타({ANIMATED_AVATAR_FORMATS})는 {PREMIUM_PRODUCT_NAME} 구독자에게만 제공됩니다."
 
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:242
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:240
 msgid "Animated avatars ({ANIMATED_AVATAR_FORMATS}) are not available on this instance. Upload a static image instead."
 msgstr "이 인스턴스에서는 움직이는 아바타({ANIMATED_AVATAR_FORMATS})를 사용할 수 없습니다. 대신 정적 이미지를 업로드하세요."
 
@@ -4478,7 +4483,7 @@ msgid "Are you sure you want to delete <0>{0}</0>?"
 msgstr "<0>{0}</0>을(를) 정말 삭제하시겠어요?"
 
 #. placeholder {0}: formData.name
-#: src/features/persona/components/modals/PersonaEditModal.tsx:540
+#: src/features/persona/components/modals/PersonaEditModal.tsx:537
 msgid "Are you sure you want to delete <0>{0}</0>? This action cannot be undone."
 msgstr "<0>{0}</0> 페르소나를 삭제하시겠습니까? 이 작업은 실행 취소할 수 없습니다."
 
@@ -5208,8 +5213,8 @@ msgstr "데스크톱 앱에서 사용 가능합니다."
 #. Form label for a webhook avatar image.
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #: src/features/ui/components/BaseAvatar.tsx:18
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:375
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:424
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:373
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:421
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:13
 #: src/features/webhook/components/WebhookListItem.tsx:252
 msgid "Avatar"
@@ -5519,8 +5524,8 @@ msgstr "차단된 사용자"
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildBannerUploadField.tsx:28
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildBannerUploadField.tsx:125
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:282
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:333
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:280
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:330
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:37
 msgid "Banner"
 msgstr "배너"
@@ -5629,7 +5634,6 @@ msgstr "단축키"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/persona/components/modals/PersonaEditModal.tsx:707
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:129
 #: src/features/user/components/settings_utils/section_registry/PrivacySafetySections.ts:156
 msgid "Bio"
@@ -6708,8 +6712,8 @@ msgstr "가운데 정렬"
 
 #. Title of the modal where the user picks an avatar source (file upload or GIF provider). Keep it concise.
 #: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:111
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:397
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:435
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:395
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:431
 msgid "Change avatar"
 msgstr "프로필 사진 변경"
 
@@ -6721,8 +6725,8 @@ msgstr "배경 변경"
 #. Title of the modal where the user picks a community banner source (file upload or GIF provider). Keep it concise.
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildBannerUploadField.tsx:43
 #: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:94
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:305
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:346
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:303
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:342
 msgid "Change banner"
 msgstr "배너 변경"
 
@@ -6769,7 +6773,7 @@ msgstr "그룹 닉네임 변경"
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:86
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:626
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildIconUploadField.tsx:35
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:438
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:436
 msgid "Change icon"
 msgstr "아이콘 변경"
 
@@ -7613,7 +7617,7 @@ msgstr "즐겨찾는 GIF 저장 방식 선택"
 msgid "Choose how times are displayed throughout the app"
 msgstr "앱 전반에 걸쳐 시간이 표시되는 방식을 선택하세요"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:375
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:373
 msgid "Choose how untagged messages and persona tags interact with your active persona."
 msgstr "태그가 없는 메시지와 페르소나 태그가 활성 페르소나와 상호작용하는 방식을 선택하세요."
 
@@ -7666,7 +7670,7 @@ msgid "Choose the tab or window in your browser"
 msgstr "브라우저에서 탭 또는 창을 선택하세요"
 
 #. Helper text under the profile timezone picker. productName is the app name.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:45
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:40
 msgid "Choose the time zone {productName} uses to calculate your UTC offset for profile local time."
 msgstr "{productName}에서 프로필 현지 시간의 UTC 오프셋을 계산하는 데 사용할 시간대를 선택하세요."
 
@@ -7926,7 +7930,7 @@ msgstr "첨부 파일 모의 데이터 지우기"
 
 #. Accessible label for the button that clears the slash command being composed in the message box.
 #. Accessible label for the composer button that clears the slash command currently being composed.
-#: src/features/channel/components/LexicalChannelTextareaContent.tsx:136
+#: src/features/channel/components/LexicalChannelTextareaContent.tsx:137
 #: src/features/channel/components/SlashCommandParamBar.tsx:16
 msgid "Clear command"
 msgstr "명령어 지우기"
@@ -8685,7 +8689,7 @@ msgstr "커뮤니티 이름"
 
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:126
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:125
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:113
 msgid "Community nickname"
 msgstr "커뮤니티 닉네임"
@@ -8738,7 +8742,7 @@ msgid "Community profile"
 msgstr "커뮤니티 프로필"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:73
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:72
 msgid "Community profile updated"
 msgstr "커뮤니티 프로필 업데이트 완료"
 
@@ -9705,6 +9709,11 @@ msgstr "텍스트 복사"
 #: src/features/auth/components/modals/MfaTotpEnableModal.tsx:95
 msgid "Copy the setup key into your authenticator app."
 msgstr "인증 앱에 설정 키를 복사하세요."
+
+#. Context menu action to copy a timestamp markdown tag in the message composer.
+#: src/features/lexical/composer/nodes/ComposerTimestampContextMenu.tsx:15
+msgid "Copy timestamp"
+msgstr \"타임스탬프 복사\"
 
 #. Developer-mode action that copies a user snowflake/ID to the clipboard.
 #: src/features/app/components/floating/UserAreaPopout.tsx:692
@@ -10936,7 +10945,7 @@ msgid "Customer portal"
 msgstr "고객 포털"
 
 #. Plus menu submenu label for visibility toggles on textarea adornment buttons.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:39
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:43
 msgid "Customize"
 msgstr "맞춤 설정"
 
@@ -10973,11 +10982,6 @@ msgstr "{premiumProductName}으로 태그({discriminatorLabel})를 원하는 대
 #: src/features/user/components/modals/FluxerTagChangeModal.tsx:386
 msgid "Customize your tag or keep it when changing your username"
 msgstr "태그를 맞춤 설정하거나 사용자 이름을 변경할 때 현재 태그를 유지할 수 있습니다"
-
-#. Description for persona accent color picker
-#: src/features/persona/components/modals/PersonaEditModal.tsx:98
-msgid "Customizes the border and banner color on this persona's profile"
-msgstr "이 페르소나 프로필의 테두리 및 배너 색상을 사용자 지정합니다"
 
 #. Label in the accent color picker. Keep the tone plain and specific.
 #: src/features/user/components/modals/tabs/my_profile_tab/AccentColorPicker.tsx:16
@@ -11111,8 +11115,10 @@ msgid "Data export"
 msgstr "데이터 내보내기"
 
 #. Column header for invoice payment or creation date.
+#. Label for date input in timestamp modal.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/app/components/dialogs/components/plutonium/InvoiceList.tsx:120
+#: src/features/channel/components/modals/TimestampModal.tsx:36
 #: src/features/user/components/settings_utils/section_registry/AppearanceSections.ts:286
 msgid "Date"
 msgstr "날짜"
@@ -11403,7 +11409,7 @@ msgstr "델라웨어"
 #: src/features/emoji/components/stickers/StickerGridItem.tsx:35
 #: src/features/messaging/commands/MessageCommands.tsx:81
 #: src/features/moderation/components/report_modal/IARModalCopy.ts:109
-#: src/features/persona/components/modals/PersonaEditModal.tsx:544
+#: src/features/persona/components/modals/PersonaEditModal.tsx:541
 #: src/features/platform/utils/DesktopLocaleBridge.ts:76
 #: src/features/theme_studio/sections/LibrarySection.tsx:514
 #: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:517
@@ -11584,12 +11590,12 @@ msgid "Delete passkey"
 msgstr "패스키 삭제"
 
 #. Aria label for deleting persona
-#: src/features/persona/components/modals/PersonaEditModal.tsx:126
+#: src/features/persona/components/modals/PersonaEditModal.tsx:123
 msgid "Delete persona"
 msgstr "페르소나 삭제"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:538
-#: src/features/persona/components/modals/PersonaEditModal.tsx:799
+#: src/features/persona/components/modals/PersonaEditModal.tsx:535
+#: src/features/persona/components/modals/PersonaEditModal.tsx:805
 msgid "Delete Persona"
 msgstr "페르소나 삭제"
 
@@ -11664,6 +11670,11 @@ msgstr "이 메시지 삭제"
 #: src/features/messaging/commands/MessageCommands.tsx:77
 msgid "Delete this message? Can't be undone."
 msgstr "이 메시지를 삭제할까요? 이 작업은 되돌릴 수 없습니다."
+
+#. Context menu action to delete a timestamp from the message composer.
+#: src/features/lexical/composer/nodes/ComposerTimestampContextMenu.tsx:20
+msgid "Delete timestamp"
+msgstr \"타임스탬프 삭제\"
 
 #. Danger action in the channel permissions overwrite context menu that removes a member permission override from the channel.
 #: src/features/channel/components/modals/channel_tabs/channel_permissions_tab/OverwriteContextMenu.tsx:19
@@ -12533,8 +12544,9 @@ msgstr "화면 모드"
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Short label in the inputs tab. Keep it concise.
 #. Short label in the my profile tab. Keep it concise.
+#: src/features/persona/components/modals/PersonaEditModal.tsx:660
 #: src/features/user/components/modals/tabs/component_gallery_tab/ComponentGalleryTabInputsTab.tsx:22
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:138
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:137
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:61
 msgid "Display name"
 msgstr "표시 이름"
@@ -12552,7 +12564,7 @@ msgstr "표시 이름 (선택 사항)"
 msgid "Display scaling"
 msgstr "화면 배율"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:398
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:396
 msgid "Display Tag"
 msgstr "표시 태그"
 
@@ -12566,7 +12578,7 @@ msgstr "표시 태그 아이콘 삭제됨"
 msgid "Display tag icon updated"
 msgstr "표시 태그 아이콘 업데이트됨"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:401
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:399
 msgid "Display tag will appear next to all persona names in messages. If no display tag is set, your account profile picture will be shown."
 msgstr "메시지의 모든 페르소나 이름 옆에 표시 태그가 나타납니다. 표시 태그를 설정하지 않으면 계정 프로필 사진이 표시됩니다."
 
@@ -12698,7 +12710,7 @@ msgstr "{communityName}에 참여하시겠어요?"
 #. Label in the accessibility tab.
 #. Label in the my profile tab.
 #: src/features/user/components/modals/tabs/AccessibilityTab.tsx:54
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:146
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:145
 msgid "Doc, I'm from the future. I came here in a time machine that you invented. Now, I need your help to get back to the year 1985."
 msgstr "박사님, 저는 미래에서 왔어요. 박사님이 발명한 타임머신을 타고 여기로 왔습니다. 이제 1985년으로 돌아가려면 박사님의 도움이 필요해요."
 
@@ -12824,6 +12836,8 @@ msgstr "다른 사람을 더블 클릭하여 스트림을 시청하세요."
 
 #. Settings search entry label for double-clicking a message to edit it.
 #. Short label for an advanced message editing preference.
+#. Tooltip hint on timestamp pill in message composer.
+#: src/features/lexical/composer/nodes/ComposerTimestampPill.tsx:28
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:309
 #: src/features/user/components/settings_utils/search_index/AdvancedSettingsIndex.ts:56
 msgid "Double-click to edit"
@@ -13109,7 +13123,7 @@ msgid "Duplicate role"
 msgstr "역할 복제"
 
 #. Validation error when tag pair is duplicated within the same persona
-#: src/features/persona/components/modals/PersonaEditModal.tsx:134
+#: src/features/persona/components/modals/PersonaEditModal.tsx:131
 msgid "Duplicate tag pair on this persona"
 msgstr "이 페르소나에 중복된 태그 쌍이 있습니다"
 
@@ -13124,14 +13138,19 @@ msgid "Dutch"
 msgstr "네덜란드어"
 
 #. Placeholder for persona name
-#: src/features/persona/components/modals/PersonaEditModal.tsx:102
+#: src/features/persona/components/modals/PersonaEditModal.tsx:99
 msgid "e.g. Alice"
 msgstr "예: Alice"
 
 #. Placeholder for persona pronouns
-#: src/features/persona/components/modals/PersonaEditModal.tsx:106
+#: src/features/persona/components/modals/PersonaEditModal.tsx:103
 msgid "e.g. she/her"
 msgstr "예: she/her"
+
+#. Placeholder text for natural language timestamp input.
+#: src/features/channel/components/modals/TimestampModal.tsx:32
+msgid "e.g. tomorrow at 3pm, in 2 hours, now"
+msgstr "예: 내일 오후 3시, 2시간 후, 지금"
 
 #. Placeholder or example text in the authentication passkey name modal. Keep the tone plain and specific.
 #: src/features/auth/components/modals/PasskeyNameModal.tsx:27
@@ -13317,7 +13336,7 @@ msgid "Edit persona"
 msgstr "페르소나 편집"
 
 #. Title for edit persona modal
-#: src/features/persona/components/modals/PersonaEditModal.tsx:50
+#: src/features/persona/components/modals/PersonaEditModal.tsx:51
 msgid "Edit Persona"
 msgstr "페르소나 편집"
 
@@ -13330,7 +13349,7 @@ msgid "Edit profile"
 msgstr "프로필 편집"
 
 #. Button label in profile settings. Opens the profile local time modal.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:33
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:32
 msgid "Edit profile local time"
 msgstr "프로필 현지 시간 편집"
 
@@ -13377,13 +13396,20 @@ msgstr "{stickerName} 스티커 편집"
 msgid "Edit the bot avatar, tag, bio, banner, and friend request behavior"
 msgstr "봇 아바타, 태그, 소개, 배너, 친구 요청 동작 편집"
 
+#. Context menu action to edit a timestamp in the message composer.
+#. Title of the timestamp modal when editing an existing timestamp.
+#: src/features/channel/components/modals/TimestampModal.tsx:28
+#: src/features/lexical/composer/nodes/ComposerTimestampContextMenu.tsx:10
+msgid "Edit timestamp"
+msgstr \"타임스탬프 수정\"
+
 #. Button or menu action label in the add custom search engine modal. Keep it concise.
 #: src/features/user/components/modals/tabs/chat_settings_tab/AddCustomSearchEngineModal.tsx:34
 msgid "Edit translation provider"
 msgstr "번역 서비스 편집"
 
 #. Button or menu action label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:93
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:92
 msgid "Edit your profile appearance and see a live preview"
 msgstr "프로필 모양을 편집하고 실시간 미리보기를 확인하세요"
 
@@ -14477,7 +14503,7 @@ msgstr "모든 채널"
 
 #. Profile timezone privacy option label. Allows anyone who can view the full profile to see local time.
 #: src/features/connection/components/modals/EditConnectionModal.tsx:79
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:55
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:50
 #: src/features/user/components/modals/tabs/privacy_safety_tab/ConnectionsTab.tsx:234
 msgid "Everyone"
 msgstr "모든 사람"
@@ -14883,7 +14909,7 @@ msgid "Failed to delete channel"
 msgstr "채널 삭제 실패"
 
 #. Toast when persona deletion fails
-#: src/features/persona/components/modals/PersonaEditModal.tsx:70
+#: src/features/persona/components/modals/PersonaEditModal.tsx:71
 msgid "Failed to delete persona"
 msgstr "페르소나 삭제 실패"
 
@@ -15058,7 +15084,7 @@ msgid "Failed to reset premium state."
 msgstr "프리미엄 상태 초기화에 실패했습니다."
 
 #. Toast when persona save fails
-#: src/features/persona/components/modals/PersonaEditModal.tsx:62
+#: src/features/persona/components/modals/PersonaEditModal.tsx:63
 msgid "Failed to save persona"
 msgstr "페르소나 저장 실패"
 
@@ -15816,6 +15842,11 @@ msgstr "비밀번호 찾기"
 msgid "Forgot your password?"
 msgstr "비밀번호를 잊으셨나요?"
 
+#. Label for format preview selection in timestamp modal.
+#: src/features/channel/components/modals/TimestampModal.tsx:48
+msgid "Format preview"
+msgstr "형식 미리보기"
+
 #. Collapsible group heading in the Theme Studio tokens list, for form input tokens.
 #: src/features/theme_studio/sections/TokenGroups.ts:90
 msgid "Forms"
@@ -15979,7 +16010,7 @@ msgstr "친구 추가 가능 봇"
 #: src/features/channel/components/direct_message/DirectMessageList.tsx:555
 #: src/features/connection/components/modals/EditConnectionModal.tsx:86
 #: src/features/search/utils/QuickSwitcherModalUtils.tsx:49
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:63
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:58
 #: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:89
 msgid "Friends"
 msgstr "친구"
@@ -17909,7 +17940,7 @@ msgstr "폴더 가져오기"
 
 #. Modal title for PluralKit import step select
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:485
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:510
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:508
 msgid "Import from PluralKit"
 msgstr "PluralKit에서 가져오기"
 
@@ -18342,6 +18373,11 @@ msgstr "입력 및 텍스트"
 msgid "Inputs with icons"
 msgstr "아이콘이 있는 입력란"
 
+#. Button to insert timestamp into message composer.
+#: src/features/channel/components/modals/TimestampModal.tsx:52
+msgid "Insert"
+msgstr "삽입"
+
 #: src/features/input/utils/KeybindUtils.ts:87
 msgctxt "keyboard-key-name"
 msgid "Insert"
@@ -18351,6 +18387,15 @@ msgstr "Insert"
 #: src/features/channel/components/modals/channel_tabs/channel_overview_tab/ChannelOverviewTopicEditor.tsx:44
 msgid "Insert emoji"
 msgstr "이모티콘 삽입"
+
+#. Button or menu action label in the channel and chat mobile textarea plus bottom sheet. Keep it concise.
+#. Plus menu item that opens the dynamic timestamp insertion modal.
+#. Title of the timestamp insertion modal.
+#: src/features/channel/components/modals/TimestampModal.tsx:24
+#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:13
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:19
+msgid "Insert timestamp"
+msgstr "타임스탬프 삽입"
 
 #. CTA card body in the screen-share picker promoting the desktop app. {productName} is Fluxer.
 #: src/features/voice/components/modals/screen_share_picker_modal/DesktopDownloadCta.tsx:16
@@ -20051,7 +20096,7 @@ msgstr "채널의 성인 콘텐츠 설정이 상속되도록 변경했습니다"
 msgid "Mail"
 msgstr "메일"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:873
+#: src/features/persona/components/modals/PersonaEditModal.tsx:877
 #: src/features/persona/components/PersonaProfileMobileSheet.tsx:369
 #: src/features/persona/components/PersonaProfilePopout.tsx:264
 msgid "Main account"
@@ -22209,10 +22254,6 @@ msgstr "알림 표시줄 재정의"
 msgid "Name"
 msgstr "이름"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:664
-msgid "Name *"
-msgstr "이름 *"
-
 #. Form validation error shown when the name field is empty.
 #. Form validation error shown when the name field is empty.
 #: src/features/expressions/components/modals/meme_form/MemeFormFields.tsx:16
@@ -22516,7 +22557,7 @@ msgid "New password"
 msgstr "새 비밀번호"
 
 #. Title for new persona modal
-#: src/features/persona/components/modals/PersonaEditModal.tsx:46
+#: src/features/persona/components/modals/PersonaEditModal.tsx:47
 msgid "New Persona"
 msgstr "새 페르소나"
 
@@ -22818,7 +22859,7 @@ msgstr "설명 없음."
 msgid "No desktop update is available."
 msgstr "사용 가능한 데스크톱 업데이트가 없습니다."
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:491
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:489
 msgid "No display tag configured. Messages will show your account profile picture."
 msgstr "표시 태그가 구성되지 않았습니다. 메시지에 계정 프로필 사진이 표시됩니다."
 
@@ -22948,7 +22989,7 @@ msgid "No matches found"
 msgstr "일치하는 항목 없음"
 
 #: src/features/persona/components/PersonaPickerSheet.tsx:202
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:550
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:548
 msgid "No matching personas found."
 msgstr "일치하는 페르소나를 찾을 수 없습니다."
 
@@ -23011,7 +23052,7 @@ msgstr "아직 추가한 단어가 없어요."
 msgid "No personas configured yet. Create one in Settings."
 msgstr "아직 구성된 페르소나가 없습니다. 설정에서 페르소나를 생성하세요."
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:546
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:544
 msgid "No personas created yet. Click \"Add Persona\" to create your first persona!"
 msgstr "No personas created yet. Click \"Add Persona\" to create your first persona!"
 
@@ -23071,8 +23112,10 @@ msgstr "결과 없음"
 
 #. Empty state shown when a combobox search returns no matches.
 #. Empty state shown when a combobox search returns no matches.
+#. Empty state shown when a combobox search returns no matches.
 #: src/features/channel/components/embeds/attachments/TextualAttachmentLanguageCombobox.tsx:30
 #: src/features/ui/components/form/FormCombobox.tsx:83
+#: src/features/ui/components/form/SearchableTimeZonePicker.tsx:46
 msgid "No results found"
 msgstr "검색 결과 없음"
 
@@ -23387,7 +23430,7 @@ msgstr "선택지에 없습니다"
 #. Option in the profile timezone picker. Means no timezone has been selected.
 #. Status chip for a macOS permission that has not been requested.
 #: src/features/permissions/system/components/modals/MacPermissionsModal.tsx:64
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:41
+#: src/features/ui/components/form/SearchableTimeZonePicker.tsx:50
 msgid "Not set"
 msgstr "설정 안 됨"
 
@@ -23784,7 +23827,7 @@ msgid "Only the selected ones"
 msgstr "선택한 항목만"
 
 #. Helper description for private persona visibility
-#: src/features/persona/components/modals/PersonaEditModal.tsx:94
+#: src/features/persona/components/modals/PersonaEditModal.tsx:95
 msgid "Only visible to you. Others cannot view this persona’s full bio or profile details."
 msgstr "나에게만 보입니다. 다른 사람은 이 페르소나의 전체 소개나 프로필 세부 정보를 볼 수 없습니다."
 
@@ -24450,7 +24493,7 @@ msgid "Other methods"
 msgstr "다른 결제 수단"
 
 #. Privacy note in profile timezone settings. Preserve {timezoneIdentifierExample}; it is inserted by code as an IANA timezone identifier example. productName is the app name. Users should understand that only the UTC offset is shown to other people.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:49
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:44
 msgid "Other people can only see your current UTC offset when you choose to share profile local time. They do not see your exact time zone identifier, such as {timezoneIdentifierExample}. {productName} stores that identifier only so the offset can update automatically when daylight saving time changes."
 msgstr "프로필의 현지 시간을 공유하도록 선택하면 다른 사용자는 현재 UTC 오프셋만 볼 수 있습니다. 정확한 시간대 식별자(예: {timezoneIdentifierExample})는 표시되지 않습니다. 해당 식별자는 일광 절약 시간이 바뀔 때 오프셋을 자동으로 업데이트하기 위해서만 {productName}에 저장됩니다."
 
@@ -25017,12 +25060,12 @@ msgid "Permissions for {0}"
 msgstr "{0}에 대한 권한"
 
 #. Toast when persona is created
-#: src/features/persona/components/modals/PersonaEditModal.tsx:58
+#: src/features/persona/components/modals/PersonaEditModal.tsx:59
 msgid "Persona created"
 msgstr "페르소나 생성됨"
 
 #. Toast when persona is deleted
-#: src/features/persona/components/modals/PersonaEditModal.tsx:66
+#: src/features/persona/components/modals/PersonaEditModal.tsx:67
 msgid "Persona deleted"
 msgstr "페르소나 삭제됨"
 
@@ -25040,17 +25083,17 @@ msgstr "페르소나 프로필"
 msgid "Persona profile: {name}"
 msgstr "페르소나 프로필: {name}"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:740
+#: src/features/persona/components/modals/PersonaEditModal.tsx:730
 msgid "Persona Tags (Prefix & Suffix)"
 msgstr "페르소나 태그 (접두사 및 접미사)"
 
 #. Toast when persona is updated
-#: src/features/persona/components/modals/PersonaEditModal.tsx:54
+#: src/features/persona/components/modals/PersonaEditModal.tsx:55
 msgid "Persona updated"
 msgstr "페르소나 업데이트됨"
 
 #. Aria label for persona visibility tabs
-#: src/features/persona/components/modals/PersonaEditModal.tsx:130
+#: src/features/persona/components/modals/PersonaEditModal.tsx:127
 msgid "Persona visibility"
 msgstr "페르소나 공개 범위"
 
@@ -25598,7 +25641,7 @@ msgid "Prefers reduced motion"
 msgstr "동작 줄이기 선호"
 
 #. Placeholder for persona tag prefix
-#: src/features/persona/components/modals/PersonaEditModal.tsx:114
+#: src/features/persona/components/modals/PersonaEditModal.tsx:111
 msgid "Prefix (e.g. [)"
 msgstr "접두사 (예: [)"
 
@@ -25715,7 +25758,7 @@ msgstr "일정 기간 동안 멤버가 메시지를 보내거나, 반응하거�
 
 #: src/features/expressions/components/modals/sticker_form/StickerPreview.tsx:21
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildInviteSplashSettingsField.tsx:45
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:465
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:463
 #: src/features/user/components/modals/tabs/EmbedDebuggerTab.tsx:276
 msgid "Preview"
 msgstr "미리보기"
@@ -25924,7 +25967,7 @@ msgid "Privacy violation or stalking"
 msgstr "개인정보 침해 또는 스토킹"
 
 #. Persona visibility private
-#: src/features/persona/components/modals/PersonaEditModal.tsx:82
+#: src/features/persona/components/modals/PersonaEditModal.tsx:83
 msgid "Private"
 msgstr "비공개"
 
@@ -25984,7 +26027,7 @@ msgstr "프로필"
 msgid "Profile badge"
 msgstr "프로필 배지"
 
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:165
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:163
 msgid "Profile banners are a {PREMIUM_PRODUCT_NAME} feature. Get {PREMIUM_PRODUCT_NAME} to add a banner to your profile."
 msgstr "프로필 배너는 {PREMIUM_PRODUCT_NAME} 기능입니다. 프로필에 배너를 추가하려면 {PREMIUM_PRODUCT_NAME}을(를) 구독하세요."
 
@@ -26004,12 +26047,12 @@ msgid "Profile banners require {premiumProductName}."
 msgstr "프로필 배너를 사용하려면 {premiumProductName}이(가) 필요합니다."
 
 #. Helper description for unlisted persona visibility
-#: src/features/persona/components/modals/PersonaEditModal.tsx:86
+#: src/features/persona/components/modals/PersonaEditModal.tsx:87
 msgid "Profile cards are accessible only when clicking on messages sent by this persona. Not listed in your public persona list."
 msgstr "프로필 카드는 이 페르소나가 보낸 메시지를 클릭할 때만 액세스할 수 있습니다. 공개 페르소나 목록에는 표시되지 않습니다."
 
 #. Helper description for public persona visibility
-#: src/features/persona/components/modals/PersonaEditModal.tsx:90
+#: src/features/persona/components/modals/PersonaEditModal.tsx:91
 msgid "Profile cards are accessible when clicking on messages and visible in your public personas list to friends and mutual servers."
 msgstr "프로필 카드는 메시지를 클릭할 때 액세스할 수 있으며 친구 및 공통 커뮤니티의 공개 페르소나 목록에 표시됩니다."
 
@@ -26020,18 +26063,18 @@ msgstr "프로필 색상"
 
 #. Settings section label for editing profile appearance and identity.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:105
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:104
 #: src/features/user/components/settings_utils/section_registry/GeneralSettingsSections.ts:6
 msgid "Profile customization"
 msgstr "프로필 맞춤 설정"
 
 #. Label in the my profile tab. Preserve {selectedGuildName}; it is inserted by code.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:101
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:100
 msgid "Profile customization for {selectedGuildName}"
 msgstr "{selectedGuildName} 프로필 맞춤 설정"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:97
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:96
 msgid "Profile customization form"
 msgstr "프로필 맞춤 설정 양식"
 
@@ -26041,7 +26084,7 @@ msgid "Profile data warning"
 msgstr "프로필 데이터 경고"
 
 #. Profile settings row title for choosing whether profile viewers can see the user local time.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:23
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:22
 msgid "Profile local time"
 msgstr "프로필 현지 시간"
 
@@ -26065,7 +26108,6 @@ msgstr "프로필 사진"
 msgid "Profile pictures"
 msgstr "프로필 사진"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:809
 #: src/features/user/components/profile/profile_card/ProfileCardLayout.tsx:26
 msgid "Profile preview"
 msgstr "프로필 미리보기"
@@ -26097,7 +26139,7 @@ msgid "Profile type"
 msgstr "프로필 유형"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:77
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:76
 msgid "Profile updated"
 msgstr "프로필 업데이트 완료"
 
@@ -26134,8 +26176,8 @@ msgstr "새 오디오 장치가 연결되면 알림 표시"
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/persona/components/modals/PersonaEditModal.tsx:678
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:142
+#: src/features/persona/components/modals/PersonaEditModal.tsx:670
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:141
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:177
 #: src/features/user/components/settings_utils/section_registry/PrivacySafetySections.ts:160
 msgid "Pronouns"
@@ -26176,7 +26218,7 @@ msgid "PTT"
 msgstr "PTT"
 
 #. Persona visibility public
-#: src/features/persona/components/modals/PersonaEditModal.tsx:78
+#: src/features/persona/components/modals/PersonaEditModal.tsx:79
 msgid "Public"
 msgstr "공개"
 
@@ -27069,8 +27111,8 @@ msgstr "첨부파일 삭제"
 msgid "Remove authenticator app"
 msgstr "인증 앱 제거"
 
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:407
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:445
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:405
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:441
 msgid "Remove avatar"
 msgstr "아바타 삭제"
 
@@ -27079,8 +27121,8 @@ msgstr "아바타 삭제"
 msgid "Remove background"
 msgstr "배경 제거"
 
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:316
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:357
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:314
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:353
 msgid "Remove banner"
 msgstr "배너 삭제"
 
@@ -27147,7 +27189,7 @@ msgstr "URL 전용 GIF 즐겨찾기에서 제거"
 #: src/features/channel/components/modals/EditGroupModal.tsx:293
 #: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:314
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:635
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:446
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:444
 msgid "Remove icon"
 msgstr "아이콘 삭제"
 
@@ -27225,7 +27267,7 @@ msgid "Remove tag {tag}"
 msgstr "태그 {tag} 삭제"
 
 #. Aria label for removing a tag pair
-#: src/features/persona/components/modals/PersonaEditModal.tsx:122
+#: src/features/persona/components/modals/PersonaEditModal.tsx:119
 msgid "Remove tag pair"
 msgstr "태그 쌍 삭제"
 
@@ -27868,7 +27910,7 @@ msgstr "다시 보냄"
 #: src/features/app/components/floating/ColorPickerPopover.tsx:190
 #: src/features/input/components/KeybindRecorder.tsx:459
 #: src/features/messaging/components/modals/ImageCropModal.tsx:936
-#: src/features/persona/components/modals/PersonaEditModal.tsx:615
+#: src/features/persona/components/modals/PersonaEditModal.tsx:612
 msgid "Reset"
 msgstr "초기화"
 
@@ -28745,7 +28787,7 @@ msgid "Save banner"
 msgstr "배너 저장"
 
 #: src/features/app/components/dialogs/shared/UnsavedChangesBannerContent.tsx:60
-#: src/features/persona/components/modals/PersonaEditModal.tsx:624
+#: src/features/persona/components/modals/PersonaEditModal.tsx:621
 msgid "Save changes"
 msgstr "변경 사항 저장"
 
@@ -29375,7 +29417,9 @@ msgid "Search themes…"
 msgstr "테마 검색…"
 
 #. Placeholder in the profile timezone picker.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:37
+#. Placeholder in timezone combobox.
+#: src/features/ui/components/form/SearchableTimeZonePicker.tsx:34
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:36
 msgid "Search time zones"
 msgstr "시간대 검색"
 
@@ -29849,8 +29893,8 @@ msgstr "GIF {title} 보내기"
 #. Action label for sending a gift to a friend.
 #. Button or menu action label in the channel and chat mobile textarea plus bottom sheet. Keep it concise.
 #. Plus menu item that opens the gift purchase flow.
-#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:21
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:31
+#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:25
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:35
 #: src/features/expressions/components/modals/GiftSendToFriendModal.tsx:30
 msgid "Send gift"
 msgstr "선물하기"
@@ -29949,7 +29993,7 @@ msgstr "인증 코드 전송"
 #. Accessible label and tooltip for the send button after recording a voice message.
 #. Keyboard shortcut action label that opens the desktop voice message composer.
 #. Plus menu item that opens the desktop voice message composer to record and send a voice clip.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:35
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:39
 #: src/features/channel/components/VoiceMessageRecorder.tsx:69
 #: src/features/input/state/input_keybind/shared.ts:289
 msgid "Send voice message"
@@ -30107,7 +30151,7 @@ msgstr "상태 메시지 설정"
 msgid "Set a member list position for the role"
 msgstr "역할의 멤버 목록 위치를 설정했습니다"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:639
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:637
 msgid "Set Active"
 msgstr "활성 상태로 설정"
 
@@ -30322,7 +30366,7 @@ msgid "Set your status"
 msgstr "상태 설정"
 
 #. Description in profile settings for the button that opens timezone settings. productName is the app name. A timezone identifier means values like America/New_York; only the UTC offset can be visible to others.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:27
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:26
 msgid "Set your time zone once so {productName} can keep your UTC offset current when daylight saving time changes. Other people can only see your UTC offset, not your exact time zone identifier."
 msgstr "시간대를 한 번 설정하면 {productName}에서 일광 절약 시간 변경 시 UTC 오프셋을 최신 상태로 유지할 수 있습니다. 다른 사용자는 정확한 시간대 식별자가 아닌 UTC 오프셋만 볼 수 있습니다."
 
@@ -30738,7 +30782,7 @@ msgstr "임베드 표시 및 웹사이트 링크 미리보기"
 
 #. Short label for an advanced message input preference.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:59
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:63
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:129
 msgid "Show emoji button"
 msgstr "이모티콘 버튼 표시"
@@ -30777,7 +30821,7 @@ msgstr "GIF 표시기 보기"
 
 #. Plus menu submenu toggle that shows the GIFs button next to the textarea.
 #. Short label for an advanced message input preference.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:43
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:47
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:109
 msgid "Show GIFs button"
 msgstr "GIF 버튼 표시"
@@ -30826,7 +30870,7 @@ msgstr "최대 5개 표시 (+5개 배지)"
 
 #. Plus menu submenu toggle that shows the saved media (memes) button next to the textarea.
 #. Short label for an advanced message input preference.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:47
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:51
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:113
 msgid "Show media button"
 msgstr "미디어 버튼 표시"
@@ -30952,7 +30996,7 @@ msgstr "음성 메뉴에서 기기별 참여자 볼륨 슬라이더 표시"
 
 #. Plus menu submenu toggle that shows the persona selector next to the textarea.
 #. Short label for an advanced message input preference.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:51
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:55
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:133
 msgid "Show personas button"
 msgstr "페르소나 버튼 표시"
@@ -30981,7 +31025,7 @@ msgstr "표현 자동 완성에 저장된 미디어 표시"
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #: src/features/channel/components/textarea/TextareaContextMenu.tsx:102
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:63
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:67
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:137
 msgid "Show send button"
 msgstr "전송 버튼 표시"
@@ -30998,7 +31042,7 @@ msgstr "클릭하면 스포일러 콘텐츠 표시"
 
 #. Short label for an advanced message input preference.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:55
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:59
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:125
 msgid "Show stickers button"
 msgstr "스티커 버튼 표시"
@@ -32816,9 +32860,14 @@ msgid "Successfully imported {0} persona(s) into your account. All avatar images
 msgstr "{0}개의 페르소나를 계정으로 성공적으로 가져왔습니다. 모든 아바타 이미지는 로컬 서버에 안전하게 저장됩니다."
 
 #. Placeholder for persona tag suffix
-#: src/features/persona/components/modals/PersonaEditModal.tsx:118
+#: src/features/persona/components/modals/PersonaEditModal.tsx:115
 msgid "Suffix (e.g. ])"
 msgstr "접미사 (예: ])"
+
+#. Section header for suggested time zones in the timestamp modal.
+#: src/features/ui/components/form/SearchableTimeZonePicker.tsx:38
+msgid "Suggested"
+msgstr "추천"
 
 #. Helper text under the "Filter members without roles" explicit content filter option in the community moderation settings tab.
 #: src/features/guild/components/modals/guild_tabs/GuildModerationTab.tsx:112
@@ -33282,16 +33331,16 @@ msgstr "표"
 msgid "Tag"
 msgstr "태그"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:426
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:424
 msgid "Tag Icon"
 msgstr "태그 아이콘"
 
 #. Validation error when tag pair is already used by another persona
-#: src/features/persona/components/modals/PersonaEditModal.tsx:138
+#: src/features/persona/components/modals/PersonaEditModal.tsx:135
 msgid "Tag pair already in use by persona \"{name}\""
 msgstr "Tag pair already in use by persona \"{name}\""
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:413
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:411
 msgid "Tag Text"
 msgstr "태그 텍스트"
 
@@ -33385,7 +33434,7 @@ msgid "Teleporting you to another voice region..."
 msgstr "다른 음성 리전으로 이동 중..."
 
 #. Placeholder for persona bio
-#: src/features/persona/components/modals/PersonaEditModal.tsx:110
+#: src/features/persona/components/modals/PersonaEditModal.tsx:107
 msgid "Tell us about this persona..."
 msgstr "이 페르소나에 대해 알려주세요..."
 
@@ -34457,7 +34506,7 @@ msgstr "커뮤니티의 맞춤 이모티콘입니다."
 msgid "This is a custom sticker from a community."
 msgstr "이 스티커는 커뮤니티의 맞춤 스티커입니다."
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:489
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:487
 msgid "This is a preview of how your display tag will look in chat."
 msgstr "이것은 채팅에서 표시 태그가 어떻게 보일지 보여주는 미리보기입니다."
 
@@ -34615,7 +34664,7 @@ msgid "This message no longer exists."
 msgstr "이 메시지는 더 이상 존재하지 않습니다."
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:130
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:129
 msgid "This nickname will only be visible in this community"
 msgstr "이 닉네임은 이 커뮤니티에서만 표시됩니다"
 
@@ -34945,8 +34994,10 @@ msgid "Thumbnail preview"
 msgstr "썸네일 미리보기"
 
 #. Form field label for a time value.
+#. Label for time input in timestamp modal.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
+#: src/features/channel/components/modals/TimestampModal.tsx:40
 #: src/features/ui/components/form/DateTimePickerField.tsx:34
 #: src/features/user/components/settings_utils/search_index/LanguageIndex.ts:30
 #: src/features/user/components/settings_utils/section_registry/AppearanceSections.ts:282
@@ -34988,7 +35039,9 @@ msgid "Time range"
 msgstr "기간"
 
 #. Field label in profile settings for choosing the timezone used to show local time on the profile.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:19
+#. Label for time zone input in timestamp modal.
+#: src/features/channel/components/modals/TimestampModal.tsx:44
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:18
 msgid "Time zone"
 msgstr "시간대"
 
@@ -36281,7 +36334,7 @@ msgid "unknown-role"
 msgstr "unknown-role"
 
 #. Persona visibility unlisted
-#: src/features/persona/components/modals/PersonaEditModal.tsx:74
+#: src/features/persona/components/modals/PersonaEditModal.tsx:75
 msgid "Unlisted"
 msgstr "일부 공개"
 
@@ -36833,8 +36886,8 @@ msgstr "이모티콘 업로드"
 
 #. Button or menu action label in the channel and chat mobile textarea plus bottom sheet. Keep it concise.
 #. Plus menu item that opens the system file picker to attach a file.
-#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:13
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:23
+#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:17
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:27
 msgid "Upload file"
 msgstr "파일 업로드"
 
@@ -36853,7 +36906,7 @@ msgstr "이 채널에 파일 및 미디어를 업로드합니다."
 #: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:305
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:626
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildIconUploadField.tsx:130
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:456
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:454
 msgid "Upload icon"
 msgstr "아이콘 업로드"
 
@@ -36893,8 +36946,8 @@ msgstr "{displayName}에 업로드"
 
 #. Button or menu action label in the channel and chat mobile textarea plus bottom sheet. Keep it concise.
 #. Plus menu item that uploads the current textarea content as a .txt file when it exceeds the size limit.
-#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:17
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:27
+#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:21
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:31
 msgid "Upload your message as a file"
 msgstr "메시지를 파일로 업로드"
 
@@ -37784,22 +37837,22 @@ msgid "Verify your email before adding an authenticator app."
 msgstr "인증 앱을 추가하기 전에 이메일을 인증하세요."
 
 #. Description text in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:117
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:116
 msgid "Verify your email before changing your community nickname, avatar, banner, bio, pronouns, or accent color."
 msgstr "커뮤니티 닉네임, 아바타, 배너, 자기소개, 대명사 또는 강조 색상을 변경하기 전에 이메일을 인증하세요."
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:121
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:120
 msgid "Verify your email before changing your username, display name, avatar, banner, bio, pronouns, time zone, or {premiumProductName} badge privacy."
 msgstr "사용자 이름, 표시 이름, 아바타, 배너, 자기소개, 대명사, 시간대 또는 {premiumProductName} 배지 공개 설정을 변경하기 전에 이메일을 인증하세요."
 
 #. Description text in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:85
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:84
 msgid "Verify your email before editing this community profile. You can still preview it here."
 msgstr "커뮤니티 프로필을 수정하려면 이메일을 인증해야 합니다. 그래도 여기에서 미리 볼 수 있습니다."
 
 #. Description text in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:89
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:88
 msgid "Verify your email before editing your profile. You can still preview it here."
 msgstr "프로필을 수정하려면 이메일을 인증해야 합니다. 그래도 여기에서 미리 볼 수 있습니다."
 
@@ -37831,12 +37884,12 @@ msgid "Verify your email to continue using {productName}."
 msgstr "{productName}을(를) 계속 사용하려면 이메일을 인증하세요."
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:109
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:108
 msgid "Verify your email to edit this community profile"
 msgstr "커뮤니티 프로필을 수정하려면 이메일을 인증하세요"
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:113
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:112
 msgid "Verify your email to edit your profile"
 msgstr "프로필을 수정하려면 이메일을 인증하세요"
 
@@ -38273,7 +38326,7 @@ msgid "Virginia"
 msgstr "버지니아"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/persona/components/modals/PersonaEditModal.tsx:721
+#: src/features/persona/components/modals/PersonaEditModal.tsx:782
 #: src/features/user/components/settings_utils/section_registry/AccessibilitySections.ts:39
 msgid "Visibility"
 msgstr "가시성"
@@ -39384,7 +39437,7 @@ msgctxt "us-state"
 msgid "Wisconsin"
 msgstr "위스콘신"
 
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:217
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:215
 msgid "With {PREMIUM_PRODUCT_NAME}, you can use animated avatars ({ANIMATED_AVATAR_FORMATS}) and profile banners, customize your tag, and unlock many other {PREMIUM_PRODUCT_NAME} perks."
 msgstr "{PREMIUM_PRODUCT_NAME}을 사용하면 애니메이션 아바타({ANIMATED_AVATAR_FORMATS})와 프로필 배너를 쓰고, 태그를 원하는 대로 바꾸고, 그 밖의 여러 {PREMIUM_PRODUCT_NAME} 혜택을 이용할 수 있습니다."
 
@@ -39649,6 +39702,7 @@ msgstr "계정을 만들거나 로그인할 수 있습니다. 나중에 초대 �
 msgid "You can still email {supportEmail} for a human review at any time."
 msgstr "언제든지 {supportEmail}로 문의하여 직접 검토를 요청하실 수 있습니다."
 
+#: src/features/persona/components/modals/PersonaEditModal.tsx:718
 #: src/features/user/components/modals/tabs/my_profile_tab/BioEditor.tsx:288
 msgid "You can use links, emoji, and Markdown."
 msgstr "링크, 이모티콘, 마크다운을 사용할 수 있습니다."
@@ -39674,7 +39728,7 @@ msgid "You can't befriend yourself"
 msgstr "자신을 친구로 추가할 수 없습니다"
 
 #. Label in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:134
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:133
 msgid "You can't change your nickname here"
 msgstr "여기서는 닉네임을 변경할 수 없습니다"
 
@@ -39792,7 +39846,7 @@ msgid "You can't unmute yourself because a moderator muted you."
 msgstr "모더레이터가 음소거했기 때문에 직접 해제할 수 없습니다."
 
 #. Tooltip on the disabled upload file item when the user lacks Attach Files permission. Calm, factual tone.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:19
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:23
 msgid "You can't upload files in this channel."
 msgstr "이 채널에는 파일을 업로드할 수 없습니다."
 
@@ -39920,12 +39974,12 @@ msgid "You have refunded recently"
 msgstr "최근에 환불하셨습니다"
 
 #: src/features/app/components/dialogs/shared/UnsavedChangesBannerContent.tsx:37
-#: src/features/persona/components/modals/PersonaEditModal.tsx:604
+#: src/features/persona/components/modals/PersonaEditModal.tsx:601
 msgid "You have unsaved changes."
 msgstr "저장되지 않은 변경사항이 있습니다."
 
 #. Warning text in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:81
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:80
 msgid "You have unsaved changes. Save or reset before leaving."
 msgstr "저장되지 않은 변경사항이 있습니다. 나가기 전에 저장하거나 재설정하세요."
 

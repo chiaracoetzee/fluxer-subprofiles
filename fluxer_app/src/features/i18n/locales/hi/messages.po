@@ -14,7 +14,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 2026.7.dev0\n"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:484
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:482
 msgid "— Today at 12:00 PM"
 msgstr "— आज दोपहर 12:00 बजे"
 
@@ -960,7 +960,7 @@ msgstr "{count, plural, one {# ब्लॉक किया गया मैस�
 msgid "{count, plural, one {# community found} other {# communities found}}"
 msgstr "{count, plural, one {# कम्युनिटी मिली} other {# कम्युनिटी मिलीं}}"
 
-#: src/features/app/components/layout/GuildsLayout.tsx:1968
+#: src/features/app/components/layout/GuildsLayout.tsx:1972
 msgid "{count, plural, one {# community is temporarily unavailable due to a flux capacitor malfunction.} other {# communities are temporarily unavailable due to a flux capacitor malfunction.}}"
 msgstr "{count, plural, one {# कम्युनिटी फ्लक्स कैपेसिटर में खराबी के कारण अस्थायी रूप से अनुपलब्ध है।} other {# कम्युनिटी फ्लक्स कैपेसिटर में खराबी के कारण अस्थायी रूप से अनुपलब्ध हैं।}}"
 
@@ -2547,6 +2547,7 @@ msgstr "{appName} के बारे में"
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Short label in the user profile shared popout. Keep it concise.
 #: src/features/app/components/pages/YouPage.tsx:166
+#: src/features/persona/components/modals/PersonaEditModal.tsx:710
 #: src/features/persona/components/PersonaProfileMobileSheet.tsx:349
 #: src/features/persona/components/PersonaProfileMobileSheet.tsx:358
 #: src/features/user/components/modals/tabs/my_profile_tab/BioEditor.tsx:26
@@ -2578,7 +2579,6 @@ msgstr "एक्सेंट"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label in the accent color picker. Keep it concise.
-#: src/features/persona/components/modals/PersonaEditModal.tsx:692
 #: src/features/user/components/modals/tabs/my_profile_tab/AccentColorPicker.tsx:12
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:153
 msgid "Accent color"
@@ -2773,7 +2773,7 @@ msgstr "कार्रवाइयाँ"
 #. Subscription status badge meaning the paid subscription is active.
 #: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:445
 #: src/features/channel/components/channel_header_components/developer_tools/DeveloperToolsShared.ts:37
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:639
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:637
 #: src/features/user/components/settings_utils/search_index/DevicesIndex.ts:19
 msgid "Active"
 msgstr "सक्रिय"
@@ -2833,7 +2833,7 @@ msgstr "अभी सक्रिय"
 msgid "Active persona mode"
 msgstr "एक्टिव परसोना मोड"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:372
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:370
 msgid "Active Persona Mode"
 msgstr "एक्टिव परसोना मोड"
 
@@ -3119,7 +3119,7 @@ msgstr "ओवरराइड जोड़ें"
 msgid "Add passkey"
 msgstr "पासकी जोड़ें"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:513
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:511
 msgid "Add Persona"
 msgstr "परसोना जोड़ें"
 
@@ -3194,7 +3194,7 @@ msgid "Add stream"
 msgstr "स्ट्रीम जोड़ें"
 
 #. placeholder {0}: formData.tags.length
-#: src/features/persona/components/modals/PersonaEditModal.tsx:749
+#: src/features/persona/components/modals/PersonaEditModal.tsx:739
 msgid "Add Tag Pair ({0}/5)"
 msgstr "टैग पेयर जोड़ें ({0}/5)"
 
@@ -3607,6 +3607,11 @@ msgstr "सभी स्टेटस प्रकार"
 msgid "All time"
 msgstr "सभी समय"
 
+#. Section header for all time zones in the timestamp modal.
+#: src/features/ui/components/form/SearchableTimeZonePicker.tsx:42
+msgid "All time zones"
+msgstr "सभी समय क्षेत्र"
+
 #. Default option in the activity log "Filter by user" dropdown. Means no user filter is applied. Short standalone label.
 #: src/features/guild/components/modals/guild_tabs/GuildAuditLogTab.tsx:72
 msgid "All users"
@@ -3644,7 +3649,7 @@ msgid "Allow anyone to see this connection on your profile"
 msgstr "किसी को भी अपनी प्रोफ़ाइल पर यह कनेक्शन देखने दें"
 
 #. Profile timezone privacy option description for the Everyone switch.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:59
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:54
 msgid "Allow anyone who can view your full profile to see your local time"
 msgstr "जो कोई भी आपकी पूरी प्रोफ़ाइल देख सकता है, उसे आपका स्थानीय समय देखने की अनुमति दें"
 
@@ -3719,7 +3724,7 @@ msgid "Allow members from communities you're in to see this connection"
 msgstr "आप जिन कम्युनिटी में हैं, उनके सदस्यों को यह कनेक्शन देखने दें"
 
 #. Profile timezone privacy option description for the Community members switch.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:71
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:66
 msgid "Allow members from communities you're in to see your local time"
 msgstr "आप जिन कम्युनिटी में हैं, उनके सदस्यों को अपना स्थानीय समय देखने दें"
 
@@ -3768,7 +3773,7 @@ msgid "Allow your friends to see this connection"
 msgstr "अपने दोस्तों को यह कनेक्शन देखने दें"
 
 #. Profile timezone privacy option description for the Friends switch.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:67
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:62
 msgid "Allow your friends to see your local time"
 msgstr "अपने दोस्तों को अपना स्थानीय समय देखने दें"
 
@@ -4011,11 +4016,11 @@ msgstr "एनिमेटेड {AVIF_FORMAT_LABEL} फ़ाइलें स�
 msgid "Animated {avifFormatLabel} not supported"
 msgstr "एनिमेटेड {avifFormatLabel} समर्थित नहीं है"
 
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:208
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:206
 msgid "Animated avatars ({ANIMATED_AVATAR_FORMATS}) are exclusively available to {PREMIUM_PRODUCT_NAME} subscribers."
 msgstr "एनिमेटेड अवतार ({ANIMATED_AVATAR_FORMATS}) विशेष रूप से {PREMIUM_PRODUCT_NAME} सब्सक्राइबर के लिए उपलब्ध हैं।"
 
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:242
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:240
 msgid "Animated avatars ({ANIMATED_AVATAR_FORMATS}) are not available on this instance. Upload a static image instead."
 msgstr "एनिमेटेड अवतार ({ANIMATED_AVATAR_FORMATS}) इस इंस्टेंस पर उपलब्ध नहीं हैं। इसके बजाय एक स्थिर इमेज अपलोड करें।"
 
@@ -4478,7 +4483,7 @@ msgid "Are you sure you want to delete <0>{0}</0>?"
 msgstr "क्या आप वाकई <0>{0}</0> को हटाना चाहते हैं?"
 
 #. placeholder {0}: formData.name
-#: src/features/persona/components/modals/PersonaEditModal.tsx:540
+#: src/features/persona/components/modals/PersonaEditModal.tsx:537
 msgid "Are you sure you want to delete <0>{0}</0>? This action cannot be undone."
 msgstr "क्या आप वाकई <0>{0}</0> को हटाना चाहते हैं? इसे पूर्ववत नहीं किया जा सकता है।"
 
@@ -5208,8 +5213,8 @@ msgstr "डेस्कटॉप ऐप में उपलब्ध है।"
 #. Form label for a webhook avatar image.
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #: src/features/ui/components/BaseAvatar.tsx:18
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:375
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:424
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:373
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:421
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:13
 #: src/features/webhook/components/WebhookListItem.tsx:252
 msgid "Avatar"
@@ -5519,8 +5524,8 @@ msgstr "बैन किए गए यूज़र"
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildBannerUploadField.tsx:28
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildBannerUploadField.tsx:125
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:282
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:333
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:280
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:330
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:37
 msgid "Banner"
 msgstr "बैनर"
@@ -5629,7 +5634,6 @@ msgstr "बाइंडिंग"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/persona/components/modals/PersonaEditModal.tsx:707
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:129
 #: src/features/user/components/settings_utils/section_registry/PrivacySafetySections.ts:156
 msgid "Bio"
@@ -6708,8 +6712,8 @@ msgstr "केंद्रित"
 
 #. Title of the modal where the user picks an avatar source (file upload or GIF provider). Keep it concise.
 #: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:111
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:397
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:435
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:395
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:431
 msgid "Change avatar"
 msgstr "अवतार बदलें"
 
@@ -6721,8 +6725,8 @@ msgstr "बैकग्राउंड बदलें"
 #. Title of the modal where the user picks a community banner source (file upload or GIF provider). Keep it concise.
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildBannerUploadField.tsx:43
 #: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:94
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:305
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:346
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:303
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:342
 msgid "Change banner"
 msgstr "बैनर बदलें"
 
@@ -6769,7 +6773,7 @@ msgstr "ग्रुप का उपनाम बदलें"
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:86
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:626
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildIconUploadField.tsx:35
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:438
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:436
 msgid "Change icon"
 msgstr "आइकॉन बदलें"
 
@@ -7613,7 +7617,7 @@ msgstr "चुनें कि स्टार किए गए GIF पसंद
 msgid "Choose how times are displayed throughout the app"
 msgstr "चुनें कि ऐप में समय कैसे दिखाया जाए"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:375
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:373
 msgid "Choose how untagged messages and persona tags interact with your active persona."
 msgstr "चुनें कि बिना टैग वाले मैसेज और परसोना टैग आपके एक्टिव परसोना के साथ कैसे इंटरैक्ट करते हैं।"
 
@@ -7666,7 +7670,7 @@ msgid "Choose the tab or window in your browser"
 msgstr "अपने ब्राउज़र में टैब या विंडो चुनें"
 
 #. Helper text under the profile timezone picker. productName is the app name.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:45
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:40
 msgid "Choose the time zone {productName} uses to calculate your UTC offset for profile local time."
 msgstr "वह समय क्षेत्र चुनें जिससे {productName} आपकी प्रोफ़ाइल के स्थानीय समय के लिए यूटीसी ऑफ़सेट निकालता है।"
 
@@ -7926,7 +7930,7 @@ msgstr "अटैचमेंट मॉक साफ़ करें"
 
 #. Accessible label for the button that clears the slash command being composed in the message box.
 #. Accessible label for the composer button that clears the slash command currently being composed.
-#: src/features/channel/components/LexicalChannelTextareaContent.tsx:136
+#: src/features/channel/components/LexicalChannelTextareaContent.tsx:137
 #: src/features/channel/components/SlashCommandParamBar.tsx:16
 msgid "Clear command"
 msgstr "कमांड साफ़ करें"
@@ -8685,7 +8689,7 @@ msgstr "कम्युनिटी का नाम"
 
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:126
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:125
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:113
 msgid "Community nickname"
 msgstr "कम्युनिटी उपनाम"
@@ -8738,7 +8742,7 @@ msgid "Community profile"
 msgstr "कम्युनिटी प्रोफ़ाइल"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:73
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:72
 msgid "Community profile updated"
 msgstr "कम्युनिटी प्रोफ़ाइल अपडेट की गई"
 
@@ -9705,6 +9709,11 @@ msgstr "टेक्स्ट कॉपी करें"
 #: src/features/auth/components/modals/MfaTotpEnableModal.tsx:95
 msgid "Copy the setup key into your authenticator app."
 msgstr "अपने ऑथेंटिकेटर ऐप में सेटअप कुंजी कॉपी करें।"
+
+#. Context menu action to copy a timestamp markdown tag in the message composer.
+#: src/features/lexical/composer/nodes/ComposerTimestampContextMenu.tsx:15
+msgid "Copy timestamp"
+msgstr \"समय टिकट कॉपी करें\"
 
 #. Developer-mode action that copies a user snowflake/ID to the clipboard.
 #: src/features/app/components/floating/UserAreaPopout.tsx:692
@@ -10936,7 +10945,7 @@ msgid "Customer portal"
 msgstr "ग्राहक पोर्टल"
 
 #. Plus menu submenu label for visibility toggles on textarea adornment buttons.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:39
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:43
 msgid "Customize"
 msgstr "कस्टमाइज़ करें"
 
@@ -10973,11 +10982,6 @@ msgstr "{premiumProductName} के साथ अपना टैग ({discrimin
 #: src/features/user/components/modals/FluxerTagChangeModal.tsx:386
 msgid "Customize your tag or keep it when changing your username"
 msgstr "अपना टैग कस्टमाइज़ करें या यूज़रनेम बदलते समय इसे रखें"
-
-#. Description for persona accent color picker
-#: src/features/persona/components/modals/PersonaEditModal.tsx:98
-msgid "Customizes the border and banner color on this persona's profile"
-msgstr "इस परसोना की प्रोफ़ाइल पर बॉर्डर और बैनर का रंग कस्टमाइज़ करें"
 
 #. Label in the accent color picker. Keep the tone plain and specific.
 #: src/features/user/components/modals/tabs/my_profile_tab/AccentColorPicker.tsx:16
@@ -11111,8 +11115,10 @@ msgid "Data export"
 msgstr "डेटा एक्सपोर्ट"
 
 #. Column header for invoice payment or creation date.
+#. Label for date input in timestamp modal.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/app/components/dialogs/components/plutonium/InvoiceList.tsx:120
+#: src/features/channel/components/modals/TimestampModal.tsx:36
 #: src/features/user/components/settings_utils/section_registry/AppearanceSections.ts:286
 msgid "Date"
 msgstr "तारीख"
@@ -11403,7 +11409,7 @@ msgstr "डेलावेयर"
 #: src/features/emoji/components/stickers/StickerGridItem.tsx:35
 #: src/features/messaging/commands/MessageCommands.tsx:81
 #: src/features/moderation/components/report_modal/IARModalCopy.ts:109
-#: src/features/persona/components/modals/PersonaEditModal.tsx:544
+#: src/features/persona/components/modals/PersonaEditModal.tsx:541
 #: src/features/platform/utils/DesktopLocaleBridge.ts:76
 #: src/features/theme_studio/sections/LibrarySection.tsx:514
 #: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:517
@@ -11584,12 +11590,12 @@ msgid "Delete passkey"
 msgstr "पासकी मिटाएँ"
 
 #. Aria label for deleting persona
-#: src/features/persona/components/modals/PersonaEditModal.tsx:126
+#: src/features/persona/components/modals/PersonaEditModal.tsx:123
 msgid "Delete persona"
 msgstr "परसोना डिलीट करें"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:538
-#: src/features/persona/components/modals/PersonaEditModal.tsx:799
+#: src/features/persona/components/modals/PersonaEditModal.tsx:535
+#: src/features/persona/components/modals/PersonaEditModal.tsx:805
 msgid "Delete Persona"
 msgstr "परसोना डिलीट करें"
 
@@ -11664,6 +11670,11 @@ msgstr "यह मैसेज मिटाएँ"
 #: src/features/messaging/commands/MessageCommands.tsx:77
 msgid "Delete this message? Can't be undone."
 msgstr "यह मैसेज मिटाएँ? इसे पूर्ववत नहीं किया जा सकता।"
+
+#. Context menu action to delete a timestamp from the message composer.
+#: src/features/lexical/composer/nodes/ComposerTimestampContextMenu.tsx:20
+msgid "Delete timestamp"
+msgstr \"समय टिकट मिटाएँ\"
 
 #. Danger action in the channel permissions overwrite context menu that removes a member permission override from the channel.
 #: src/features/channel/components/modals/channel_tabs/channel_permissions_tab/OverwriteContextMenu.tsx:19
@@ -12533,8 +12544,9 @@ msgstr "डिस्प्ले मोड"
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Short label in the inputs tab. Keep it concise.
 #. Short label in the my profile tab. Keep it concise.
+#: src/features/persona/components/modals/PersonaEditModal.tsx:660
 #: src/features/user/components/modals/tabs/component_gallery_tab/ComponentGalleryTabInputsTab.tsx:22
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:138
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:137
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:61
 msgid "Display name"
 msgstr "डिस्प्ले नाम"
@@ -12552,7 +12564,7 @@ msgstr "डिस्प्ले नाम (वैकल्पिक)"
 msgid "Display scaling"
 msgstr "डिस्प्ले स्केलिंग"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:398
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:396
 msgid "Display Tag"
 msgstr "डिस्प्ले टैग"
 
@@ -12566,7 +12578,7 @@ msgstr "डिस्प्ले टैग आइकॉन हटा दिय�
 msgid "Display tag icon updated"
 msgstr "डिस्प्ले टैग आइकॉन अपडेट कर दिया गया"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:401
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:399
 msgid "Display tag will appear next to all persona names in messages. If no display tag is set, your account profile picture will be shown."
 msgstr "डिस्प्ले टैग मैसेज में सभी परसोना नाम के आगे दिखाई देगा। यदि कोई डिस्प्ले टैग सेट नहीं है, तो आपकी अकाउंट प्रोफ़ाइल पिक्चर दिखाई जाएगी।"
 
@@ -12698,7 +12710,7 @@ msgstr "क्या आप {communityName} में शामिल होन�
 #. Label in the accessibility tab.
 #. Label in the my profile tab.
 #: src/features/user/components/modals/tabs/AccessibilityTab.tsx:54
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:146
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:145
 msgid "Doc, I'm from the future. I came here in a time machine that you invented. Now, I need your help to get back to the year 1985."
 msgstr "डॉक्टर, मैं भविष्य से आया हूँ। मैं आपकी बनाई टाइम मशीन से यहाँ आया हूँ। अब, मुझे 1985 में वापस जाने के लिए आपकी मदद चाहिए।"
 
@@ -12824,6 +12836,8 @@ msgstr "किसी की स्ट्रीम देखने के लि�
 
 #. Settings search entry label for double-clicking a message to edit it.
 #. Short label for an advanced message editing preference.
+#. Tooltip hint on timestamp pill in message composer.
+#: src/features/lexical/composer/nodes/ComposerTimestampPill.tsx:28
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:309
 #: src/features/user/components/settings_utils/search_index/AdvancedSettingsIndex.ts:56
 msgid "Double-click to edit"
@@ -13109,7 +13123,7 @@ msgid "Duplicate role"
 msgstr "रोल डुप्लिकेट करें"
 
 #. Validation error when tag pair is duplicated within the same persona
-#: src/features/persona/components/modals/PersonaEditModal.tsx:134
+#: src/features/persona/components/modals/PersonaEditModal.tsx:131
 msgid "Duplicate tag pair on this persona"
 msgstr "इस परसोना पर डुप्लीकेट टैग पेयर है"
 
@@ -13124,14 +13138,19 @@ msgid "Dutch"
 msgstr "डच"
 
 #. Placeholder for persona name
-#: src/features/persona/components/modals/PersonaEditModal.tsx:102
+#: src/features/persona/components/modals/PersonaEditModal.tsx:99
 msgid "e.g. Alice"
 msgstr "उदा. Alice"
 
 #. Placeholder for persona pronouns
-#: src/features/persona/components/modals/PersonaEditModal.tsx:106
+#: src/features/persona/components/modals/PersonaEditModal.tsx:103
 msgid "e.g. she/her"
 msgstr "उदा. she/her"
+
+#. Placeholder text for natural language timestamp input.
+#: src/features/channel/components/modals/TimestampModal.tsx:32
+msgid "e.g. tomorrow at 3pm, in 2 hours, now"
+msgstr "उदा. कल दोपहर 3 बजे, 2 घंटे में, अभी"
 
 #. Placeholder or example text in the authentication passkey name modal. Keep the tone plain and specific.
 #: src/features/auth/components/modals/PasskeyNameModal.tsx:27
@@ -13317,7 +13336,7 @@ msgid "Edit persona"
 msgstr "परसोना एडिट करें"
 
 #. Title for edit persona modal
-#: src/features/persona/components/modals/PersonaEditModal.tsx:50
+#: src/features/persona/components/modals/PersonaEditModal.tsx:51
 msgid "Edit Persona"
 msgstr "परसोना एडिट करें"
 
@@ -13330,7 +13349,7 @@ msgid "Edit profile"
 msgstr "प्रोफ़ाइल एडिट करें"
 
 #. Button label in profile settings. Opens the profile local time modal.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:33
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:32
 msgid "Edit profile local time"
 msgstr "प्रोफ़ाइल का स्थानीय समय बदलें"
 
@@ -13377,13 +13396,20 @@ msgstr "स्टिकर {stickerName} एडिट करें"
 msgid "Edit the bot avatar, tag, bio, banner, and friend request behavior"
 msgstr "बॉट अवतार, टैग, बायो, बैनर और फ्रेंड रिक्वेस्ट व्यवहार को एडिट करें"
 
+#. Context menu action to edit a timestamp in the message composer.
+#. Title of the timestamp modal when editing an existing timestamp.
+#: src/features/channel/components/modals/TimestampModal.tsx:28
+#: src/features/lexical/composer/nodes/ComposerTimestampContextMenu.tsx:10
+msgid "Edit timestamp"
+msgstr \"समय टिकट एडिट करें\"
+
 #. Button or menu action label in the add custom search engine modal. Keep it concise.
 #: src/features/user/components/modals/tabs/chat_settings_tab/AddCustomSearchEngineModal.tsx:34
 msgid "Edit translation provider"
 msgstr "अनुवाद प्रदाता एडिट करें"
 
 #. Button or menu action label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:93
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:92
 msgid "Edit your profile appearance and see a live preview"
 msgstr "अपनी प्रोफ़ाइल का स्वरूप बदलें और लाइव प्रीव्यू देखें"
 
@@ -14477,7 +14503,7 @@ msgstr "हर चैनल"
 
 #. Profile timezone privacy option label. Allows anyone who can view the full profile to see local time.
 #: src/features/connection/components/modals/EditConnectionModal.tsx:79
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:55
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:50
 #: src/features/user/components/modals/tabs/privacy_safety_tab/ConnectionsTab.tsx:234
 msgid "Everyone"
 msgstr "हर कोई"
@@ -14883,7 +14909,7 @@ msgid "Failed to delete channel"
 msgstr "चैनल नहीं मिटाया जा सका"
 
 #. Toast when persona deletion fails
-#: src/features/persona/components/modals/PersonaEditModal.tsx:70
+#: src/features/persona/components/modals/PersonaEditModal.tsx:71
 msgid "Failed to delete persona"
 msgstr "परसोना डिलीट नहीं हो सका"
 
@@ -15058,7 +15084,7 @@ msgid "Failed to reset premium state."
 msgstr "प्रीमियम स्थिति रीसेट नहीं हो पाई।"
 
 #. Toast when persona save fails
-#: src/features/persona/components/modals/PersonaEditModal.tsx:62
+#: src/features/persona/components/modals/PersonaEditModal.tsx:63
 msgid "Failed to save persona"
 msgstr "परसोना सेव नहीं हो सका"
 
@@ -15816,6 +15842,11 @@ msgstr "पासवर्ड भूल गए"
 msgid "Forgot your password?"
 msgstr "पासवर्ड भूल गए?"
 
+#. Label for format preview selection in timestamp modal.
+#: src/features/channel/components/modals/TimestampModal.tsx:48
+msgid "Format preview"
+msgstr "प्रारूप पूर्वावलोकन"
+
 #. Collapsible group heading in the Theme Studio tokens list, for form input tokens.
 #: src/features/theme_studio/sections/TokenGroups.ts:90
 msgid "Forms"
@@ -15979,7 +16010,7 @@ msgstr "फ्रेंडली बॉट"
 #: src/features/channel/components/direct_message/DirectMessageList.tsx:555
 #: src/features/connection/components/modals/EditConnectionModal.tsx:86
 #: src/features/search/utils/QuickSwitcherModalUtils.tsx:49
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:63
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:58
 #: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:89
 msgid "Friends"
 msgstr "दोस्त"
@@ -17909,7 +17940,7 @@ msgstr "फ़ोल्डर इंपोर्ट करें"
 
 #. Modal title for PluralKit import step select
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:485
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:510
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:508
 msgid "Import from PluralKit"
 msgstr "PluralKit से इंपोर्ट करें"
 
@@ -18342,6 +18373,11 @@ msgstr "इनपुट और टेक्स्ट"
 msgid "Inputs with icons"
 msgstr "आइकॉन के साथ इनपुट"
 
+#. Button to insert timestamp into message composer.
+#: src/features/channel/components/modals/TimestampModal.tsx:52
+msgid "Insert"
+msgstr "डालें"
+
 #: src/features/input/utils/KeybindUtils.ts:87
 msgctxt "keyboard-key-name"
 msgid "Insert"
@@ -18351,6 +18387,15 @@ msgstr "इन्सर्ट"
 #: src/features/channel/components/modals/channel_tabs/channel_overview_tab/ChannelOverviewTopicEditor.tsx:44
 msgid "Insert emoji"
 msgstr "इमोजी डालें"
+
+#. Button or menu action label in the channel and chat mobile textarea plus bottom sheet. Keep it concise.
+#. Plus menu item that opens the dynamic timestamp insertion modal.
+#. Title of the timestamp insertion modal.
+#: src/features/channel/components/modals/TimestampModal.tsx:24
+#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:13
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:19
+msgid "Insert timestamp"
+msgstr "समय टिकट डालें"
 
 #. CTA card body in the screen-share picker promoting the desktop app. {productName} is Fluxer.
 #: src/features/voice/components/modals/screen_share_picker_modal/DesktopDownloadCta.tsx:16
@@ -20051,7 +20096,7 @@ msgstr "चैनल की वयस्क सामग्री सेटि�
 msgid "Mail"
 msgstr "मेल"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:873
+#: src/features/persona/components/modals/PersonaEditModal.tsx:877
 #: src/features/persona/components/PersonaProfileMobileSheet.tsx:369
 #: src/features/persona/components/PersonaProfilePopout.tsx:264
 msgid "Main account"
@@ -22209,10 +22254,6 @@ msgstr "नैगबार ओवरराइड"
 msgid "Name"
 msgstr "नाम"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:664
-msgid "Name *"
-msgstr "नाम *"
-
 #. Form validation error shown when the name field is empty.
 #. Form validation error shown when the name field is empty.
 #: src/features/expressions/components/modals/meme_form/MemeFormFields.tsx:16
@@ -22516,7 +22557,7 @@ msgid "New password"
 msgstr "नया पासवर्ड"
 
 #. Title for new persona modal
-#: src/features/persona/components/modals/PersonaEditModal.tsx:46
+#: src/features/persona/components/modals/PersonaEditModal.tsx:47
 msgid "New Persona"
 msgstr "नया परसोना"
 
@@ -22818,7 +22859,7 @@ msgstr "कोई विवरण नहीं।"
 msgid "No desktop update is available."
 msgstr "कोई डेस्कटॉप अपडेट उपलब्ध नहीं है।"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:491
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:489
 msgid "No display tag configured. Messages will show your account profile picture."
 msgstr "कोई डिस्प्ले टैग कॉन्फ़िगर नहीं किया गया है। मैसेज में आपके अकाउंट की प्रोफ़ाइल पिक्चर दिखाई जाएगी।"
 
@@ -22948,7 +22989,7 @@ msgid "No matches found"
 msgstr "कोई मिलान नहीं मिला"
 
 #: src/features/persona/components/PersonaPickerSheet.tsx:202
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:550
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:548
 msgid "No matching personas found."
 msgstr "कोई मेल खाने वाला परसोना नहीं मिला।"
 
@@ -23011,7 +23052,7 @@ msgstr "अभी तक कोई निजी शब्द नहीं है
 msgid "No personas configured yet. Create one in Settings."
 msgstr "अभी तक कोई परसोना कॉन्फ़िगर नहीं किया गया है। सेटिंग में जाकर एक बनाएं।"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:546
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:544
 msgid "No personas created yet. Click \"Add Persona\" to create your first persona!"
 msgstr "No personas created yet. Click \"Add Persona\" to create your first persona!"
 
@@ -23071,8 +23112,10 @@ msgstr "कोई परिणाम नहीं"
 
 #. Empty state shown when a combobox search returns no matches.
 #. Empty state shown when a combobox search returns no matches.
+#. Empty state shown when a combobox search returns no matches.
 #: src/features/channel/components/embeds/attachments/TextualAttachmentLanguageCombobox.tsx:30
 #: src/features/ui/components/form/FormCombobox.tsx:83
+#: src/features/ui/components/form/SearchableTimeZonePicker.tsx:46
 msgid "No results found"
 msgstr "कोई परिणाम नहीं मिला"
 
@@ -23387,7 +23430,7 @@ msgstr "दिए गए विकल्पों में से नहीं 
 #. Option in the profile timezone picker. Means no timezone has been selected.
 #. Status chip for a macOS permission that has not been requested.
 #: src/features/permissions/system/components/modals/MacPermissionsModal.tsx:64
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:41
+#: src/features/ui/components/form/SearchableTimeZonePicker.tsx:50
 msgid "Not set"
 msgstr "सेट नहीं है"
 
@@ -23784,7 +23827,7 @@ msgid "Only the selected ones"
 msgstr "सिर्फ़ चुने हुए"
 
 #. Helper description for private persona visibility
-#: src/features/persona/components/modals/PersonaEditModal.tsx:94
+#: src/features/persona/components/modals/PersonaEditModal.tsx:95
 msgid "Only visible to you. Others cannot view this persona’s full bio or profile details."
 msgstr "केवल आपको दिखाई देगा। अन्य लोग इस परसोना का पूरा बायो या प्रोफ़ाइल विवरण नहीं देख सकते हैं।"
 
@@ -24450,7 +24493,7 @@ msgid "Other methods"
 msgstr "अन्य तरीके"
 
 #. Privacy note in profile timezone settings. Preserve {timezoneIdentifierExample}; it is inserted by code as an IANA timezone identifier example. productName is the app name. Users should understand that only the UTC offset is shown to other people.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:49
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:44
 msgid "Other people can only see your current UTC offset when you choose to share profile local time. They do not see your exact time zone identifier, such as {timezoneIdentifierExample}. {productName} stores that identifier only so the offset can update automatically when daylight saving time changes."
 msgstr "जब आप प्रोफ़ाइल पर लोकल समय शेयर करना चुनते हैं, तभी दूसरे लोग आपका मौजूदा UTC ऑफ़सेट देख पाते हैं। उन्हें आपका सटीक टाइमज़ोन आईडी नहीं दिखता, जैसे {timezoneIdentifierExample}। {productName} वह आईडी सिर्फ़ इसलिए सेव रखता है ताकि डेलाइट सेविंग टाइम बदलने पर ऑफ़सेट अपने आप अपडेट हो सके।"
 
@@ -25017,12 +25060,12 @@ msgid "Permissions for {0}"
 msgstr "{0} के लिए अनुमतियाँ"
 
 #. Toast when persona is created
-#: src/features/persona/components/modals/PersonaEditModal.tsx:58
+#: src/features/persona/components/modals/PersonaEditModal.tsx:59
 msgid "Persona created"
 msgstr "परसोना बन गया"
 
 #. Toast when persona is deleted
-#: src/features/persona/components/modals/PersonaEditModal.tsx:66
+#: src/features/persona/components/modals/PersonaEditModal.tsx:67
 msgid "Persona deleted"
 msgstr "परसोना डिलीट हो गया"
 
@@ -25040,17 +25083,17 @@ msgstr "परसोना प्रोफ़ाइल"
 msgid "Persona profile: {name}"
 msgstr "परसोना प्रोफ़ाइल: {name}"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:740
+#: src/features/persona/components/modals/PersonaEditModal.tsx:730
 msgid "Persona Tags (Prefix & Suffix)"
 msgstr "परसोना टैग (Prefix और Suffix)"
 
 #. Toast when persona is updated
-#: src/features/persona/components/modals/PersonaEditModal.tsx:54
+#: src/features/persona/components/modals/PersonaEditModal.tsx:55
 msgid "Persona updated"
 msgstr "परसोना अपडेट हो गया"
 
 #. Aria label for persona visibility tabs
-#: src/features/persona/components/modals/PersonaEditModal.tsx:130
+#: src/features/persona/components/modals/PersonaEditModal.tsx:127
 msgid "Persona visibility"
 msgstr "परसोना विज़िबिलिटी"
 
@@ -25598,7 +25641,7 @@ msgid "Prefers reduced motion"
 msgstr "कम गति की प्राथमिकता"
 
 #. Placeholder for persona tag prefix
-#: src/features/persona/components/modals/PersonaEditModal.tsx:114
+#: src/features/persona/components/modals/PersonaEditModal.tsx:111
 msgid "Prefix (e.g. [)"
 msgstr "Prefix (उदा. [)"
 
@@ -25715,7 +25758,7 @@ msgstr "सदस्यों को एक तय समय के लिए �
 
 #: src/features/expressions/components/modals/sticker_form/StickerPreview.tsx:21
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildInviteSplashSettingsField.tsx:45
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:465
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:463
 #: src/features/user/components/modals/tabs/EmbedDebuggerTab.tsx:276
 msgid "Preview"
 msgstr "प्रीव्यू"
@@ -25924,7 +25967,7 @@ msgid "Privacy violation or stalking"
 msgstr "गोपनीयता का उल्लंघन या पीछा करना"
 
 #. Persona visibility private
-#: src/features/persona/components/modals/PersonaEditModal.tsx:82
+#: src/features/persona/components/modals/PersonaEditModal.tsx:83
 msgid "Private"
 msgstr "प्राइवेट"
 
@@ -25984,7 +26027,7 @@ msgstr "प्रोफ़ाइल"
 msgid "Profile badge"
 msgstr "प्रोफ़ाइल बैज"
 
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:165
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:163
 msgid "Profile banners are a {PREMIUM_PRODUCT_NAME} feature. Get {PREMIUM_PRODUCT_NAME} to add a banner to your profile."
 msgstr "प्रोफ़ाइल बैनर एक {PREMIUM_PRODUCT_NAME} सुविधा है। अपनी प्रोफ़ाइल में बैनर जोड़ने के लिए {PREMIUM_PRODUCT_NAME} प्राप्त करें।"
 
@@ -26004,12 +26047,12 @@ msgid "Profile banners require {premiumProductName}."
 msgstr "प्रोफ़ाइल बैनर के लिए {premiumProductName} ज़रूरी है।"
 
 #. Helper description for unlisted persona visibility
-#: src/features/persona/components/modals/PersonaEditModal.tsx:86
+#: src/features/persona/components/modals/PersonaEditModal.tsx:87
 msgid "Profile cards are accessible only when clicking on messages sent by this persona. Not listed in your public persona list."
 msgstr "प्रोफ़ाइल कार्ड केवल इस परसोना द्वारा भेजे गए मैसेज पर क्लिक करने पर ही एक्सेस किए जा सकते हैं। यह आपकी सार्वजनिक परसोना लिस्ट में नहीं है।"
 
 #. Helper description for public persona visibility
-#: src/features/persona/components/modals/PersonaEditModal.tsx:90
+#: src/features/persona/components/modals/PersonaEditModal.tsx:91
 msgid "Profile cards are accessible when clicking on messages and visible in your public personas list to friends and mutual servers."
 msgstr "मैसेज पर क्लिक करने पर प्रोफ़ाइल कार्ड एक्सेस किए जा सकते हैं और दोस्तों और म्यूच्यूअल सर्वर को आपकी सार्वजनिक परसोना लिस्ट में दिखाई देते हैं।"
 
@@ -26020,18 +26063,18 @@ msgstr "प्रोफ़ाइल रंग"
 
 #. Settings section label for editing profile appearance and identity.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:105
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:104
 #: src/features/user/components/settings_utils/section_registry/GeneralSettingsSections.ts:6
 msgid "Profile customization"
 msgstr "प्रोफ़ाइल कस्टमाइज़ेशन"
 
 #. Label in the my profile tab. Preserve {selectedGuildName}; it is inserted by code.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:101
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:100
 msgid "Profile customization for {selectedGuildName}"
 msgstr "{selectedGuildName} के लिए प्रोफ़ाइल कस्टमाइज़ेशन"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:97
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:96
 msgid "Profile customization form"
 msgstr "प्रोफ़ाइल कस्टमाइज़ेशन फ़ॉर्म"
 
@@ -26041,7 +26084,7 @@ msgid "Profile data warning"
 msgstr "प्रोफ़ाइल डेटा चेतावनी"
 
 #. Profile settings row title for choosing whether profile viewers can see the user local time.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:23
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:22
 msgid "Profile local time"
 msgstr "प्रोफ़ाइल का स्थानीय समय"
 
@@ -26065,7 +26108,6 @@ msgstr "प्रोफ़ाइल फ़ोटो"
 msgid "Profile pictures"
 msgstr "प्रोफ़ाइल फ़ोटो"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:809
 #: src/features/user/components/profile/profile_card/ProfileCardLayout.tsx:26
 msgid "Profile preview"
 msgstr "प्रोफ़ाइल प्रीव्यू"
@@ -26097,7 +26139,7 @@ msgid "Profile type"
 msgstr "प्रोफ़ाइल प्रकार"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:77
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:76
 msgid "Profile updated"
 msgstr "प्रोफ़ाइल अपडेट की गई"
 
@@ -26134,8 +26176,8 @@ msgstr "नया ऑडियो डिवाइस कनेक्ट हो�
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/persona/components/modals/PersonaEditModal.tsx:678
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:142
+#: src/features/persona/components/modals/PersonaEditModal.tsx:670
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:141
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:177
 #: src/features/user/components/settings_utils/section_registry/PrivacySafetySections.ts:160
 msgid "Pronouns"
@@ -26176,7 +26218,7 @@ msgid "PTT"
 msgstr "PTT"
 
 #. Persona visibility public
-#: src/features/persona/components/modals/PersonaEditModal.tsx:78
+#: src/features/persona/components/modals/PersonaEditModal.tsx:79
 msgid "Public"
 msgstr "पब्लिक"
 
@@ -27069,8 +27111,8 @@ msgstr "अटैचमेंट हटाएँ"
 msgid "Remove authenticator app"
 msgstr "ऑथेंटिकेटर ऐप हटाएँ"
 
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:407
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:445
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:405
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:441
 msgid "Remove avatar"
 msgstr "अवतार हटाएँ"
 
@@ -27079,8 +27121,8 @@ msgstr "अवतार हटाएँ"
 msgid "Remove background"
 msgstr "बैकग्राउंड हटाएँ"
 
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:316
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:357
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:314
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:353
 msgid "Remove banner"
 msgstr "बैनर हटाएँ"
 
@@ -27147,7 +27189,7 @@ msgstr "सिर्फ़ URL वाले पसंदीदा GIF से ह
 #: src/features/channel/components/modals/EditGroupModal.tsx:293
 #: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:314
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:635
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:446
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:444
 msgid "Remove icon"
 msgstr "आइकॉन हटाएँ"
 
@@ -27225,7 +27267,7 @@ msgid "Remove tag {tag}"
 msgstr "{tag} टैग हटाएँ"
 
 #. Aria label for removing a tag pair
-#: src/features/persona/components/modals/PersonaEditModal.tsx:122
+#: src/features/persona/components/modals/PersonaEditModal.tsx:119
 msgid "Remove tag pair"
 msgstr "टैग पेयर हटाएं"
 
@@ -27868,7 +27910,7 @@ msgstr "फिर से भेजा गया"
 #: src/features/app/components/floating/ColorPickerPopover.tsx:190
 #: src/features/input/components/KeybindRecorder.tsx:459
 #: src/features/messaging/components/modals/ImageCropModal.tsx:936
-#: src/features/persona/components/modals/PersonaEditModal.tsx:615
+#: src/features/persona/components/modals/PersonaEditModal.tsx:612
 msgid "Reset"
 msgstr "रीसेट करें"
 
@@ -28745,7 +28787,7 @@ msgid "Save banner"
 msgstr "बैनर सेव करें"
 
 #: src/features/app/components/dialogs/shared/UnsavedChangesBannerContent.tsx:60
-#: src/features/persona/components/modals/PersonaEditModal.tsx:624
+#: src/features/persona/components/modals/PersonaEditModal.tsx:621
 msgid "Save changes"
 msgstr "बदलाव सेव करें"
 
@@ -29375,7 +29417,9 @@ msgid "Search themes…"
 msgstr "थीम खोजें…"
 
 #. Placeholder in the profile timezone picker.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:37
+#. Placeholder in timezone combobox.
+#: src/features/ui/components/form/SearchableTimeZonePicker.tsx:34
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:36
 msgid "Search time zones"
 msgstr "समय क्षेत्र खोजें"
 
@@ -29849,8 +29893,8 @@ msgstr "GIF {title} भेजें"
 #. Action label for sending a gift to a friend.
 #. Button or menu action label in the channel and chat mobile textarea plus bottom sheet. Keep it concise.
 #. Plus menu item that opens the gift purchase flow.
-#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:21
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:31
+#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:25
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:35
 #: src/features/expressions/components/modals/GiftSendToFriendModal.tsx:30
 msgid "Send gift"
 msgstr "उपहार भेजें"
@@ -29949,7 +29993,7 @@ msgstr "वेरिफ़िकेशन कोड भेजें"
 #. Accessible label and tooltip for the send button after recording a voice message.
 #. Keyboard shortcut action label that opens the desktop voice message composer.
 #. Plus menu item that opens the desktop voice message composer to record and send a voice clip.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:35
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:39
 #: src/features/channel/components/VoiceMessageRecorder.tsx:69
 #: src/features/input/state/input_keybind/shared.ts:289
 msgid "Send voice message"
@@ -30107,7 +30151,7 @@ msgstr "कस्टम स्टेटस सेट करें"
 msgid "Set a member list position for the role"
 msgstr "रोल के लिए सदस्य सूची में एक स्थान सेट किया गया"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:639
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:637
 msgid "Set Active"
 msgstr "एक्टिव सेट करें"
 
@@ -30322,7 +30366,7 @@ msgid "Set your status"
 msgstr "अपना स्टेटस सेट करें"
 
 #. Description in profile settings for the button that opens timezone settings. productName is the app name. A timezone identifier means values like America/New_York; only the UTC offset can be visible to others.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:27
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:26
 msgid "Set your time zone once so {productName} can keep your UTC offset current when daylight saving time changes. Other people can only see your UTC offset, not your exact time zone identifier."
 msgstr "अपना समय क्षेत्र एक बार सेट कर दें ताकि डेलाइट सेविंग समय बदलने पर {productName} आपका यूटीसी ऑफ़सेट सही रख सके। दूसरे लोग सिर्फ़ आपका यूटीसी ऑफ़सेट देख सकते हैं, आपका सटीक समय क्षेत्र पहचानकर्ता नहीं।"
 
@@ -30738,7 +30782,7 @@ msgstr "एम्बेड और वेबसाइट लिंक का प�
 
 #. Short label for an advanced message input preference.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:59
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:63
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:129
 msgid "Show emoji button"
 msgstr "इमोजी बटन दिखाएं"
@@ -30777,7 +30821,7 @@ msgstr "GIF इंडिकेटर दिखाएं"
 
 #. Plus menu submenu toggle that shows the GIFs button next to the textarea.
 #. Short label for an advanced message input preference.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:43
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:47
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:109
 msgid "Show GIFs button"
 msgstr "GIF बटन दिखाएं"
@@ -30826,7 +30870,7 @@ msgstr "अधिकतम 5 दिखाएं (+5 बैज)"
 
 #. Plus menu submenu toggle that shows the saved media (memes) button next to the textarea.
 #. Short label for an advanced message input preference.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:47
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:51
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:113
 msgid "Show media button"
 msgstr "मीडिया बटन दिखाएं"
@@ -30952,7 +30996,7 @@ msgstr "वॉइस मेन्यू में प्रति-डिवा�
 
 #. Plus menu submenu toggle that shows the persona selector next to the textarea.
 #. Short label for an advanced message input preference.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:51
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:55
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:133
 msgid "Show personas button"
 msgstr "परसोना बटन दिखाएं"
@@ -30981,7 +31025,7 @@ msgstr "एक्सप्रेशन ऑटो-कम्प्लीट मे
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #: src/features/channel/components/textarea/TextareaContextMenu.tsx:102
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:63
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:67
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:137
 msgid "Show send button"
 msgstr "भेजें बटन दिखाएं"
@@ -30998,7 +31042,7 @@ msgstr "क्लिक करने पर स्पॉइलर कॉन्�
 
 #. Short label for an advanced message input preference.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:55
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:59
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:125
 msgid "Show stickers button"
 msgstr "स्टिकर बटन दिखाएं"
@@ -32816,9 +32860,14 @@ msgid "Successfully imported {0} persona(s) into your account. All avatar images
 msgstr "आपके अकाउंट में {0} परसोना सफलतापूर्वक इंपोर्ट हो गए हैं। सभी अवतार इमेज आपके लोकल सर्वर पर सुरक्षित रूप से स्टोर हैं।"
 
 #. Placeholder for persona tag suffix
-#: src/features/persona/components/modals/PersonaEditModal.tsx:118
+#: src/features/persona/components/modals/PersonaEditModal.tsx:115
 msgid "Suffix (e.g. ])"
 msgstr "Suffix (उदा. ])"
+
+#. Section header for suggested time zones in the timestamp modal.
+#: src/features/ui/components/form/SearchableTimeZonePicker.tsx:38
+msgid "Suggested"
+msgstr "सुझाए गए"
 
 #. Helper text under the "Filter members without roles" explicit content filter option in the community moderation settings tab.
 #: src/features/guild/components/modals/guild_tabs/GuildModerationTab.tsx:112
@@ -33282,16 +33331,16 @@ msgstr "टेबल"
 msgid "Tag"
 msgstr "टैग"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:426
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:424
 msgid "Tag Icon"
 msgstr "टैग आइकॉन"
 
 #. Validation error when tag pair is already used by another persona
-#: src/features/persona/components/modals/PersonaEditModal.tsx:138
+#: src/features/persona/components/modals/PersonaEditModal.tsx:135
 msgid "Tag pair already in use by persona \"{name}\""
 msgstr "Tag pair already in use by persona \"{name}\""
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:413
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:411
 msgid "Tag Text"
 msgstr "टैग टेक्स्ट"
 
@@ -33385,7 +33434,7 @@ msgid "Teleporting you to another voice region..."
 msgstr "दूसरे वॉइस रीजन में टेलीपोर्ट कर रहे हैं..."
 
 #. Placeholder for persona bio
-#: src/features/persona/components/modals/PersonaEditModal.tsx:110
+#: src/features/persona/components/modals/PersonaEditModal.tsx:107
 msgid "Tell us about this persona..."
 msgstr "इस परसोना के बारे में बताएं..."
 
@@ -34457,7 +34506,7 @@ msgstr "यह किसी कम्युनिटी का कस्टम �
 msgid "This is a custom sticker from a community."
 msgstr "यह एक कस्टम स्टिकर है जो एक समुदाय से है।"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:489
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:487
 msgid "This is a preview of how your display tag will look in chat."
 msgstr "चैट में आपका डिस्प्ले टैग कैसा दिखेगा, यह उसका प्रीव्यू है।"
 
@@ -34615,7 +34664,7 @@ msgid "This message no longer exists."
 msgstr "यह मैसेज अब मौजूद नहीं है।"
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:130
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:129
 msgid "This nickname will only be visible in this community"
 msgstr "यह निकनेम सिर्फ़ इस कम्युनिटी में दिखेगा"
 
@@ -34945,8 +34994,10 @@ msgid "Thumbnail preview"
 msgstr "थंबनेल प्रीव्यू"
 
 #. Form field label for a time value.
+#. Label for time input in timestamp modal.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
+#: src/features/channel/components/modals/TimestampModal.tsx:40
 #: src/features/ui/components/form/DateTimePickerField.tsx:34
 #: src/features/user/components/settings_utils/search_index/LanguageIndex.ts:30
 #: src/features/user/components/settings_utils/section_registry/AppearanceSections.ts:282
@@ -34988,7 +35039,9 @@ msgid "Time range"
 msgstr "समय अवधि"
 
 #. Field label in profile settings for choosing the timezone used to show local time on the profile.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:19
+#. Label for time zone input in timestamp modal.
+#: src/features/channel/components/modals/TimestampModal.tsx:44
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:18
 msgid "Time zone"
 msgstr "समय क्षेत्र"
 
@@ -36281,7 +36334,7 @@ msgid "unknown-role"
 msgstr "unknown-role"
 
 #. Persona visibility unlisted
-#: src/features/persona/components/modals/PersonaEditModal.tsx:74
+#: src/features/persona/components/modals/PersonaEditModal.tsx:75
 msgid "Unlisted"
 msgstr "अनलिस्टेड"
 
@@ -36833,8 +36886,8 @@ msgstr "इमोजी अपलोड करें"
 
 #. Button or menu action label in the channel and chat mobile textarea plus bottom sheet. Keep it concise.
 #. Plus menu item that opens the system file picker to attach a file.
-#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:13
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:23
+#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:17
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:27
 msgid "Upload file"
 msgstr "फ़ाइल अपलोड करें"
 
@@ -36853,7 +36906,7 @@ msgstr "इस चैनल में फ़ाइलें और मीडि�
 #: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:305
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:626
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildIconUploadField.tsx:130
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:456
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:454
 msgid "Upload icon"
 msgstr "आइकॉन अपलोड करें"
 
@@ -36893,8 +36946,8 @@ msgstr "{displayName} पर अपलोड करें"
 
 #. Button or menu action label in the channel and chat mobile textarea plus bottom sheet. Keep it concise.
 #. Plus menu item that uploads the current textarea content as a .txt file when it exceeds the size limit.
-#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:17
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:27
+#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:21
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:31
 msgid "Upload your message as a file"
 msgstr "अपने मैसेज को फ़ाइल के तौर पर अपलोड करें"
 
@@ -37784,22 +37837,22 @@ msgid "Verify your email before adding an authenticator app."
 msgstr "ऑथेंटिकेटर ऐप जोड़ने से पहले अपना ईमेल वेरिफ़ाई करें।"
 
 #. Description text in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:117
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:116
 msgid "Verify your email before changing your community nickname, avatar, banner, bio, pronouns, or accent color."
 msgstr "अपना कम्युनिटी निकनेम, अवतार, बैनर, बायो, सर्वनाम या एक्सेंट कलर बदलने से पहले अपना ईमेल वेरिफ़ाई करें।"
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:121
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:120
 msgid "Verify your email before changing your username, display name, avatar, banner, bio, pronouns, time zone, or {premiumProductName} badge privacy."
 msgstr "अपना यूज़रनेम, डिसप्ले नेम, अवतार, बैनर, बायो, सर्वनाम, टाइमज़ोन या {premiumProductName} बैज की प्राइवेसी बदलने से पहले अपना ईमेल वेरिफ़ाई करें।"
 
 #. Description text in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:85
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:84
 msgid "Verify your email before editing this community profile. You can still preview it here."
 msgstr "इस कम्युनिटी प्रोफ़ाइल को एडिट करने से पहले अपना ईमेल वेरिफ़ाई करें। आप इसे अभी भी यहाँ देख सकते हैं।"
 
 #. Description text in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:89
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:88
 msgid "Verify your email before editing your profile. You can still preview it here."
 msgstr "प्रोफ़ाइल एडिट करने से पहले अपना ईमेल वेरिफ़ाई करें। आप इसे अभी भी यहाँ देख सकते हैं।"
 
@@ -37831,12 +37884,12 @@ msgid "Verify your email to continue using {productName}."
 msgstr "{productName} का उपयोग जारी रखने के लिए अपना ईमेल वेरिफ़ाई करें।"
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:109
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:108
 msgid "Verify your email to edit this community profile"
 msgstr "इस कम्युनिटी प्रोफ़ाइल को एडिट करने के लिए अपना ईमेल वेरिफ़ाई करें"
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:113
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:112
 msgid "Verify your email to edit your profile"
 msgstr "अपनी प्रोफ़ाइल एडिट करने के लिए अपना ईमेल वेरिफ़ाई करें"
 
@@ -38273,7 +38326,7 @@ msgid "Virginia"
 msgstr "वर्जीनिया"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/persona/components/modals/PersonaEditModal.tsx:721
+#: src/features/persona/components/modals/PersonaEditModal.tsx:782
 #: src/features/user/components/settings_utils/section_registry/AccessibilitySections.ts:39
 msgid "Visibility"
 msgstr "विज़िबिलिटी"
@@ -39384,7 +39437,7 @@ msgctxt "us-state"
 msgid "Wisconsin"
 msgstr "विस्कॉन्सिन"
 
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:217
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:215
 msgid "With {PREMIUM_PRODUCT_NAME}, you can use animated avatars ({ANIMATED_AVATAR_FORMATS}) and profile banners, customize your tag, and unlock many other {PREMIUM_PRODUCT_NAME} perks."
 msgstr "{PREMIUM_PRODUCT_NAME} के साथ आप एनिमेटेड अवतार ({ANIMATED_AVATAR_FORMATS}) और प्रोफ़ाइल बैनर इस्तेमाल कर सकते हैं, अपना टैग कस्टमाइज़ कर सकते हैं और {PREMIUM_PRODUCT_NAME} के कई दूसरे पर्क अनलॉक कर सकते हैं।"
 
@@ -39649,6 +39702,7 @@ msgstr "आप अभी भी अकाउंट बना सकते है
 msgid "You can still email {supportEmail} for a human review at any time."
 msgstr "आप अभी भी किसी भी समय मानवीय समीक्षा के लिए {supportEmail} पर ईमेल कर सकते हैं।"
 
+#: src/features/persona/components/modals/PersonaEditModal.tsx:718
 #: src/features/user/components/modals/tabs/my_profile_tab/BioEditor.tsx:288
 msgid "You can use links, emoji, and Markdown."
 msgstr "आप लिंक, इमोजी और मार्कडाउन का इस्तेमाल कर सकते हैं।"
@@ -39674,7 +39728,7 @@ msgid "You can't befriend yourself"
 msgstr "आप खुद को दोस्त नहीं बना सकते"
 
 #. Label in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:134
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:133
 msgid "You can't change your nickname here"
 msgstr "आप अपना उपनाम यहां नहीं बदल सकते"
 
@@ -39792,7 +39846,7 @@ msgid "You can't unmute yourself because a moderator muted you."
 msgstr "आप खुद को अनम्यूट नहीं कर सकते, क्योंकि किसी मॉडरेटर ने आपको म्यूट किया है।"
 
 #. Tooltip on the disabled upload file item when the user lacks Attach Files permission. Calm, factual tone.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:19
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:23
 msgid "You can't upload files in this channel."
 msgstr "आप इस चैनल में फ़ाइलें अपलोड नहीं कर सकते।"
 
@@ -39920,12 +39974,12 @@ msgid "You have refunded recently"
 msgstr "आपने हाल ही में रिफंड किया है"
 
 #: src/features/app/components/dialogs/shared/UnsavedChangesBannerContent.tsx:37
-#: src/features/persona/components/modals/PersonaEditModal.tsx:604
+#: src/features/persona/components/modals/PersonaEditModal.tsx:601
 msgid "You have unsaved changes."
 msgstr "आपके कुछ बदलाव सेव नहीं हुए हैं।"
 
 #. Warning text in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:81
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:80
 msgid "You have unsaved changes. Save or reset before leaving."
 msgstr "आपके कुछ बदलाव सेव नहीं हुए हैं। जाने से पहले सेव करें या रीसेट करें।"
 

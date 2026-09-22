@@ -8,7 +8,6 @@ import {PREMIUM_PRODUCT_NAME} from '@app/features/app/config/I18nDisplayConstant
 import {useFormSubmit} from '@app/features/app/hooks/useFormSubmit';
 import {LimitResolver} from '@app/features/app/utils/LimitResolverAdapter';
 import {isLimitToggleEnabled} from '@app/features/app/utils/LimitUtils';
-import DeveloperOptions from '@app/features/devtools/state/DeveloperOptions';
 import type {FlatEmoji} from '@app/features/emoji/types/EmojiTypes';
 import {ExpressionPickerSheet} from '@app/features/expressions/components/modals/ExpressionPickerSheet';
 import Guilds from '@app/features/guild/state/Guilds';
@@ -411,7 +410,7 @@ const MyProfileTabComponent = observer(function MyProfileTabComponent({
 	);
 	const showPremiumFeatures = shouldShowPremiumFeatures();
 	const hasPremium = useMemo(() => showPremiumFeatures && (user?.isPremium() ?? false), [showPremiumFeatures, user]);
-	const hasProfileTimezoneAccess = (user?.isStaff() ?? false) && DeveloperOptions.showProfileTimezoneSettings;
+	const hasProfileTimezoneAccess = true;
 	const hasPerGuildProfiles = useMemo(
 		() =>
 			isLimitToggleEnabled(
