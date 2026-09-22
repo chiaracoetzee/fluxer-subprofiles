@@ -6,6 +6,10 @@ import * as EmojiImageUtils from '@app/features/expressions/utils/EmojiUtils';
 import {getSkinTonedSurrogate} from '@app/features/expressions/utils/SkinToneUtils';
 import type {ComposerHandle, ComposerSelectionRange} from '@app/features/lexical/composer/ComposerHandle';
 import type {ComposerInsertPayload, ComposerInsertSpacing} from '@app/features/lexical/composer/composerOffsets';
+import {
+	getTimestampWire,
+	normalizeTimestampFormat,
+} from '@app/features/lexical/composer/nodes/ComposerTimestampUtils';
 import {type MentionSegment, TextareaSegmentManager} from '@app/features/messaging/utils/TextareaSegmentManager';
 
 export interface ComposerReplacementPlan {
@@ -46,7 +50,13 @@ function normalizeSelection(display: string, selection: ComposerSelectionRange |
 }
 
 function getPayloadDisplay(payload: ComposerInsertPayload): string {
-	return payload.kind === 'text' ? payload.text : payload.display;
+	if (payload.kind === 'text') {
+		return payload.text;
+	}
+	if (payload.kind === 'timestamp') {
+		return getTimestampWire(payload.epoch, normalizeTimestampFormat(payload.format));
+	}
+	return payload.display;
 }
 
 function getPayloadSegment(payload: ComposerInsertPayload): ComposerPayloadSegment | null {

@@ -148,25 +148,23 @@ describe('User Profile Timezone Visibility', () => {
 		expect(profile.profile_limited).toBe(true);
 		expect(profile.timezone_offset).toBeNull();
 	});
-	it('ignores profile timezone updates from non-staff users', async () => {
-		const targetAccount = await createTestAccount(harness, {skipEmailVerification: true});
+	it('allows profile timezone updates from non-staff users', async () => {
+		const targetAccount = await createTestAccount(harness);
 		const updated = await updateProfileTimezone(harness, targetAccount.token, {timezone: TEST_TIMEZONE});
-		expect(updated).not.toHaveProperty('timezone');
-		expect(updated).not.toHaveProperty('timezone_privacy_flags');
+		expect(updated.timezone).toBe(TEST_TIMEZONE);
+		expect(updated.timezone_privacy_flags).toBe(ProfileFieldPrivacyFlags.EVERYONE);
 	});
-	it('hides stored profile timezone after the user no longer has the staff flag', async () => {
+	it('keeps profile timezone visible for non-staff users', async () => {
 		const targetAccount = await createTestAccount(harness);
 		const viewerAccount = await createTestAccount(harness);
-		await setUserFlags(harness, targetAccount.userId, UserFlags.STAFF);
 		await updateProfileTimezone(harness, targetAccount.token, {timezone: TEST_TIMEZONE});
-		await setUserFlags(harness, targetAccount.userId, 0n);
 		const currentUser = await createBuilder<UserPrivateResponse>(harness, targetAccount.token)
 			.get('/users/@me')
 			.execute();
-		expect(currentUser).not.toHaveProperty('timezone');
-		expect(currentUser).not.toHaveProperty('timezone_privacy_flags');
+		expect(currentUser.timezone).toBe(TEST_TIMEZONE);
+		expect(currentUser.timezone_privacy_flags).toBe(ProfileFieldPrivacyFlags.EVERYONE);
 		await createFriendship(harness, targetAccount, viewerAccount);
 		const profile = await getUserProfile(harness, viewerAccount.token, targetAccount.userId);
-		expect(profile.timezone_offset).toBeNull();
+		expect(profile.timezone_offset).toBe(TEST_TIMEZONE_OFFSET);
 	});
 });
