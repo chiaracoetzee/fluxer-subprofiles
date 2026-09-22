@@ -24,6 +24,11 @@ on:
         required: false
         default: false
         type: boolean
+      force_e2e_tests:
+        description: 'Force execution of unit and E2E tests even if 0 commits behind upstream'
+        required: false
+        default: false
+        type: boolean
       verify_push_permissions:
         description: 'Test remote write & workflow push permissions on a scratch branch'
         required: false
@@ -37,7 +42,7 @@ permissions:
 jobs:
   nightly-rebase:
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
+    timeout-minutes: 60
 
     steps:
       - name: Checkout automation tools
@@ -90,7 +95,7 @@ jobs:
           COMMITS_BEHIND=$(git rev-list HEAD..upstream/main --count)
           echo "Commits behind upstream/main: $COMMITS_BEHIND"
           echo "commits_behind=$COMMITS_BEHIND" >> "$GITHUB_OUTPUT"
-          if [ "$COMMITS_BEHIND" -eq 0 ] && [ "${{ inputs.force_test_agent }}" != "true" ]; then
+          if [ "$COMMITS_BEHIND" -eq 0 ] && [ "${{ inputs.force_test_agent }}" != "true" ] && [ "${{ inputs.force_e2e_tests }}" != "true" ]; then
             echo "Branch is already up to date with upstream/main. Nothing to rebase."
             echo "skip_rebase=true" >> "$GITHUB_OUTPUT"
           else
@@ -237,6 +242,35 @@ jobs:
           echo "Running frontend typecheck & production bundle verification..."
           pnpm --filter fluxer_app typecheck:only
           pnpm --filter fluxer_app build
+
+      - name: Free Disk Space for Docker Images
+        if: steps.check_upstream.outputs.skip_rebase != 'true'
+        run: |
+          echo "Freeing disk space on runner for Docker builds..."
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache
+          sudo docker image prune -af
+          df -h /
+
+      - name: Set up Docker Buildx
+        if: steps.check_upstream.outputs.skip_rebase != 'true'
+        uses: docker/setup-buildx-action@v3
+
+      - name: Run E2E Playwright Integration Test Gate
+        id: e2e_gate
+        if: steps.check_upstream.outputs.skip_rebase != 'true'
+        run: |
+          echo "Starting full-stack E2E Playwright test gate..."
+          ./e2e/scripts/ci-run.sh
+
+      - name: Upload E2E Test Report & Artifacts
+        if: always() && steps.e2e_gate.outcome != 'skipped'
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-e2e-report
+          path: |
+            e2e/playwright-report
+            e2e/test-results
+          retention-days: 14
 
       - name: Push Rebased Branch
         if: steps.check_upstream.outputs.skip_rebase != 'true' && (github.event_name == 'schedule' || inputs.dry_run == false || inputs.dry_run == 'false')
