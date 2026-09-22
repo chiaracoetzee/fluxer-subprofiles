@@ -14,7 +14,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 2026.7.dev0\n"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:484
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:482
 msgid "— Today at 12:00 PM"
 msgstr "— Hari ini pukul 12:00"
 
@@ -960,7 +960,7 @@ msgstr "{count, plural, one {# pesan diblokir} other {# pesan diblokir}}"
 msgid "{count, plural, one {# community found} other {# communities found}}"
 msgstr "{count, plural, one {# komunitas ditemukan} other {# komunitas ditemukan}}"
 
-#: src/features/app/components/layout/GuildsLayout.tsx:1968
+#: src/features/app/components/layout/GuildsLayout.tsx:1972
 msgid "{count, plural, one {# community is temporarily unavailable due to a flux capacitor malfunction.} other {# communities are temporarily unavailable due to a flux capacitor malfunction.}}"
 msgstr "{count, plural, one {# komunitas sementara tidak tersedia karena kerusakan kapasitor fluks.} other {# komunitas sementara tidak tersedia karena kerusakan kapasitor fluks.}}"
 
@@ -2549,6 +2549,7 @@ msgstr "Tentang {appName}"
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Short label in the user profile shared popout. Keep it concise.
 #: src/features/app/components/pages/YouPage.tsx:166
+#: src/features/persona/components/modals/PersonaEditModal.tsx:710
 #: src/features/persona/components/PersonaProfileMobileSheet.tsx:349
 #: src/features/persona/components/PersonaProfileMobileSheet.tsx:358
 #: src/features/user/components/modals/tabs/my_profile_tab/BioEditor.tsx:26
@@ -2580,7 +2581,6 @@ msgstr "Aksen"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label in the accent color picker. Keep it concise.
-#: src/features/persona/components/modals/PersonaEditModal.tsx:692
 #: src/features/user/components/modals/tabs/my_profile_tab/AccentColorPicker.tsx:12
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:153
 msgid "Accent color"
@@ -2775,7 +2775,7 @@ msgstr "Tindakan"
 #. Subscription status badge meaning the paid subscription is active.
 #: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:445
 #: src/features/channel/components/channel_header_components/developer_tools/DeveloperToolsShared.ts:37
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:639
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:637
 #: src/features/user/components/settings_utils/search_index/DevicesIndex.ts:19
 msgid "Active"
 msgstr "Aktif"
@@ -2836,7 +2836,7 @@ msgstr "Aktif sekarang"
 msgid "Active persona mode"
 msgstr "Mode persona aktif"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:372
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:370
 msgid "Active Persona Mode"
 msgstr "Mode persona aktif"
 
@@ -3122,7 +3122,7 @@ msgstr "Tambah penggantian"
 msgid "Add passkey"
 msgstr "Tambahkan passkey"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:513
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:511
 msgid "Add Persona"
 msgstr "Tambah Persona"
 
@@ -3197,7 +3197,7 @@ msgid "Add stream"
 msgstr "Tambahkan streaming"
 
 #. placeholder {0}: formData.tags.length
-#: src/features/persona/components/modals/PersonaEditModal.tsx:749
+#: src/features/persona/components/modals/PersonaEditModal.tsx:739
 msgid "Add Tag Pair ({0}/5)"
 msgstr "Tambah Pasangan Tag ({0}/5)"
 
@@ -3610,6 +3610,11 @@ msgstr "Semua jenis status"
 msgid "All time"
 msgstr "Sepanjang waktu"
 
+#. Section header for all time zones in the timestamp modal.
+#: src/features/ui/components/form/SearchableTimeZonePicker.tsx:42
+msgid "All time zones"
+msgstr "Semua zona waktu"
+
 #. Default option in the activity log "Filter by user" dropdown. Means no user filter is applied. Short standalone label.
 #: src/features/guild/components/modals/guild_tabs/GuildAuditLogTab.tsx:72
 msgid "All users"
@@ -3647,7 +3652,7 @@ msgid "Allow anyone to see this connection on your profile"
 msgstr "Izinkan siapa pun melihat koneksi ini di profilmu"
 
 #. Profile timezone privacy option description for the Everyone switch.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:59
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:54
 msgid "Allow anyone who can view your full profile to see your local time"
 msgstr "Izinkan siapa pun yang dapat melihat profil lengkapmu untuk melihat waktu lokalmu"
 
@@ -3722,7 +3727,7 @@ msgid "Allow members from communities you're in to see this connection"
 msgstr "Izinkan anggota dari komunitas yang kamu ikuti melihat koneksi ini"
 
 #. Profile timezone privacy option description for the Community members switch.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:71
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:66
 msgid "Allow members from communities you're in to see your local time"
 msgstr "Izinkan anggota dari komunitas yang kamu ikuti melihat waktu lokalmu"
 
@@ -3771,7 +3776,7 @@ msgid "Allow your friends to see this connection"
 msgstr "Izinkan temanmu melihat koneksi ini"
 
 #. Profile timezone privacy option description for the Friends switch.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:67
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:62
 msgid "Allow your friends to see your local time"
 msgstr "Izinkan temanmu melihat waktu lokalmu"
 
@@ -4014,11 +4019,11 @@ msgstr "File {AVIF_FORMAT_LABEL} animasi tidak didukung. Unggah file {AVIF_FORMA
 msgid "Animated {avifFormatLabel} not supported"
 msgstr "{avifFormatLabel} animasi tidak didukung"
 
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:208
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:206
 msgid "Animated avatars ({ANIMATED_AVATAR_FORMATS}) are exclusively available to {PREMIUM_PRODUCT_NAME} subscribers."
 msgstr "Avatar animasi ({ANIMATED_AVATAR_FORMATS}) hanya tersedia untuk pelanggan {PREMIUM_PRODUCT_NAME}."
 
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:242
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:240
 msgid "Animated avatars ({ANIMATED_AVATAR_FORMATS}) are not available on this instance. Upload a static image instead."
 msgstr "Avatar animasi ({ANIMATED_AVATAR_FORMATS}) tidak tersedia di instance ini. Unggah gambar statis sebagai gantinya."
 
@@ -4487,7 +4492,7 @@ msgid "Are you sure you want to delete <0>{0}</0>?"
 msgstr "Yakin ingin menghapus <0>{0}</0>?"
 
 #. placeholder {0}: formData.name
-#: src/features/persona/components/modals/PersonaEditModal.tsx:540
+#: src/features/persona/components/modals/PersonaEditModal.tsx:537
 msgid "Are you sure you want to delete <0>{0}</0>? This action cannot be undone."
 msgstr "Apakah Anda yakin ingin menghapus <0>{0}</0>? Tindakan ini tidak dapat dibatalkan."
 
@@ -5218,8 +5223,8 @@ msgstr "Tersedia di aplikasi desktop."
 #. Form label for a webhook avatar image.
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #: src/features/ui/components/BaseAvatar.tsx:18
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:375
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:424
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:373
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:421
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:13
 #: src/features/webhook/components/WebhookListItem.tsx:252
 msgid "Avatar"
@@ -5535,8 +5540,8 @@ msgstr "Pengguna yang diblokir"
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildBannerUploadField.tsx:28
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildBannerUploadField.tsx:125
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:282
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:333
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:280
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:330
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:37
 msgid "Banner"
 msgstr "Banner"
@@ -5645,7 +5650,6 @@ msgstr "Pintasan"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/persona/components/modals/PersonaEditModal.tsx:707
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:129
 #: src/features/user/components/settings_utils/section_registry/PrivacySafetySections.ts:156
 msgid "Bio"
@@ -6730,8 +6734,8 @@ msgstr "Tengah"
 
 #. Title of the modal where the user picks an avatar source (file upload or GIF provider). Keep it concise.
 #: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:111
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:397
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:435
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:395
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:431
 msgid "Change avatar"
 msgstr "Ganti avatar"
 
@@ -6743,8 +6747,8 @@ msgstr "Ganti latar belakang"
 #. Title of the modal where the user picks a community banner source (file upload or GIF provider). Keep it concise.
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildBannerUploadField.tsx:43
 #: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:94
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:305
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:346
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:303
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:342
 msgid "Change banner"
 msgstr "Ganti banner"
 
@@ -6791,7 +6795,7 @@ msgstr "Ubah nama panggilan grup"
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:86
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:626
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildIconUploadField.tsx:35
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:438
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:436
 msgid "Change icon"
 msgstr "Ubah ikon"
 
@@ -7638,7 +7642,7 @@ msgstr "Pilih cara favorit GIF berbintang disimpan"
 msgid "Choose how times are displayed throughout the app"
 msgstr "Pilih cara waktu ditampilkan di seluruh aplikasi"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:375
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:373
 msgid "Choose how untagged messages and persona tags interact with your active persona."
 msgstr "Pilih bagaimana pesan tanpa tag dan tag persona berinteraksi dengan persona aktif Anda."
 
@@ -7691,7 +7695,7 @@ msgid "Choose the tab or window in your browser"
 msgstr "Pilih tab atau jendela di browsermu"
 
 #. Helper text under the profile timezone picker. productName is the app name.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:45
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:40
 msgid "Choose the time zone {productName} uses to calculate your UTC offset for profile local time."
 msgstr "Pilih zona waktu yang digunakan {productName} untuk menghitung selisih UTC-mu guna menampilkan waktu lokal di profilmu."
 
@@ -7951,7 +7955,7 @@ msgstr "Hapus lampiran tiruan"
 
 #. Accessible label for the button that clears the slash command being composed in the message box.
 #. Accessible label for the composer button that clears the slash command currently being composed.
-#: src/features/channel/components/LexicalChannelTextareaContent.tsx:136
+#: src/features/channel/components/LexicalChannelTextareaContent.tsx:137
 #: src/features/channel/components/SlashCommandParamBar.tsx:16
 msgid "Clear command"
 msgstr "Hapus perintah"
@@ -8711,7 +8715,7 @@ msgstr "Nama komunitas"
 
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:126
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:125
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:113
 msgid "Community nickname"
 msgstr "Nama panggilan komunitas"
@@ -8764,7 +8768,7 @@ msgid "Community profile"
 msgstr "Profil komunitas"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:73
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:72
 msgid "Community profile updated"
 msgstr "Profil komunitas diperbarui"
 
@@ -9744,6 +9748,11 @@ msgstr "Salin teks"
 #: src/features/auth/components/modals/MfaTotpEnableModal.tsx:95
 msgid "Copy the setup key into your authenticator app."
 msgstr "Salin kunci penyiapan ke aplikasi autentikatormu."
+
+#. Context menu action to copy a timestamp markdown tag in the message composer.
+#: src/features/lexical/composer/nodes/ComposerTimestampContextMenu.tsx:15
+msgid "Copy timestamp"
+msgstr \"Salin stempel waktu\"
 
 #. Developer-mode action that copies a user snowflake/ID to the clipboard.
 #: src/features/app/components/floating/UserAreaPopout.tsx:692
@@ -10984,7 +10993,7 @@ msgid "Customer portal"
 msgstr "Portal pelanggan"
 
 #. Plus menu submenu label for visibility toggles on textarea adornment buttons.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:39
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:43
 msgid "Customize"
 msgstr "Sesuaikan"
 
@@ -11021,11 +11030,6 @@ msgstr "Sesuaikan tagmu ({discriminatorLabel}) sesuai keinginanmu dengan {premiu
 #: src/features/user/components/modals/FluxerTagChangeModal.tsx:386
 msgid "Customize your tag or keep it when changing your username"
 msgstr "Sesuaikan tagmu atau pertahankan saat mengubah nama penggunamu"
-
-#. Description for persona accent color picker
-#: src/features/persona/components/modals/PersonaEditModal.tsx:98
-msgid "Customizes the border and banner color on this persona's profile"
-msgstr "Menyesuaikan warna batas dan spanduk pada profil persona ini"
 
 #. Label in the accent color picker. Keep the tone plain and specific.
 #: src/features/user/components/modals/tabs/my_profile_tab/AccentColorPicker.tsx:16
@@ -11159,8 +11163,10 @@ msgid "Data export"
 msgstr "Ekspor data"
 
 #. Column header for invoice payment or creation date.
+#. Label for date input in timestamp modal.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/app/components/dialogs/components/plutonium/InvoiceList.tsx:120
+#: src/features/channel/components/modals/TimestampModal.tsx:36
 #: src/features/user/components/settings_utils/section_registry/AppearanceSections.ts:286
 msgid "Date"
 msgstr "Tanggal"
@@ -11451,7 +11457,7 @@ msgstr "Delaware"
 #: src/features/emoji/components/stickers/StickerGridItem.tsx:35
 #: src/features/messaging/commands/MessageCommands.tsx:81
 #: src/features/moderation/components/report_modal/IARModalCopy.ts:109
-#: src/features/persona/components/modals/PersonaEditModal.tsx:544
+#: src/features/persona/components/modals/PersonaEditModal.tsx:541
 #: src/features/platform/utils/DesktopLocaleBridge.ts:76
 #: src/features/theme_studio/sections/LibrarySection.tsx:514
 #: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:517
@@ -11633,12 +11639,12 @@ msgid "Delete passkey"
 msgstr "Hapus passkey"
 
 #. Aria label for deleting persona
-#: src/features/persona/components/modals/PersonaEditModal.tsx:126
+#: src/features/persona/components/modals/PersonaEditModal.tsx:123
 msgid "Delete persona"
 msgstr "Hapus persona"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:538
-#: src/features/persona/components/modals/PersonaEditModal.tsx:799
+#: src/features/persona/components/modals/PersonaEditModal.tsx:535
+#: src/features/persona/components/modals/PersonaEditModal.tsx:805
 msgid "Delete Persona"
 msgstr "Hapus Persona"
 
@@ -11713,6 +11719,11 @@ msgstr "Hapus pesan ini"
 #: src/features/messaging/commands/MessageCommands.tsx:77
 msgid "Delete this message? Can't be undone."
 msgstr "Hapus pesan ini? Tidak dapat dibatalkan."
+
+#. Context menu action to delete a timestamp from the message composer.
+#: src/features/lexical/composer/nodes/ComposerTimestampContextMenu.tsx:20
+msgid "Delete timestamp"
+msgstr \"Hapus stempel waktu\"
 
 #. Danger action in the channel permissions overwrite context menu that removes a member permission override from the channel.
 #: src/features/channel/components/modals/channel_tabs/channel_permissions_tab/OverwriteContextMenu.tsx:19
@@ -12582,8 +12593,9 @@ msgstr "Mode tampilan"
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Short label in the inputs tab. Keep it concise.
 #. Short label in the my profile tab. Keep it concise.
+#: src/features/persona/components/modals/PersonaEditModal.tsx:660
 #: src/features/user/components/modals/tabs/component_gallery_tab/ComponentGalleryTabInputsTab.tsx:22
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:138
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:137
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:61
 msgid "Display name"
 msgstr "Nama tampilan"
@@ -12601,7 +12613,7 @@ msgstr "Nama tampilan (opsional)"
 msgid "Display scaling"
 msgstr "Skala tampilan"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:398
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:396
 msgid "Display Tag"
 msgstr "Tag Tampilan"
 
@@ -12615,7 +12627,7 @@ msgstr "Ikon tag tampilan dihapus"
 msgid "Display tag icon updated"
 msgstr "Ikon tag tampilan diperbarui"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:401
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:399
 msgid "Display tag will appear next to all persona names in messages. If no display tag is set, your account profile picture will be shown."
 msgstr "Tag tampilan akan muncul di sebelah semua nama persona dalam pesan. Jika tag tampilan tidak diatur, foto profil akun Anda akan ditampilkan."
 
@@ -12747,7 +12759,7 @@ msgstr "Apakah Anda ingin bergabung dengan {communityName}?"
 #. Label in the accessibility tab.
 #. Label in the my profile tab.
 #: src/features/user/components/modals/tabs/AccessibilityTab.tsx:54
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:146
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:145
 msgid "Doc, I'm from the future. I came here in a time machine that you invented. Now, I need your help to get back to the year 1985."
 msgstr "Dok, saya dari masa depan. Saya datang ke sini dengan mesin waktu yang kamu ciptakan. Sekarang, saya butuh bantuanmu untuk kembali ke tahun 1985."
 
@@ -12874,6 +12886,8 @@ msgstr "Klik ganda seseorang untuk menonton streaming mereka."
 
 #. Settings search entry label for double-clicking a message to edit it.
 #. Short label for an advanced message editing preference.
+#. Tooltip hint on timestamp pill in message composer.
+#: src/features/lexical/composer/nodes/ComposerTimestampPill.tsx:28
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:309
 #: src/features/user/components/settings_utils/search_index/AdvancedSettingsIndex.ts:56
 msgid "Double-click to edit"
@@ -13159,7 +13173,7 @@ msgid "Duplicate role"
 msgstr "Duplikat peran"
 
 #. Validation error when tag pair is duplicated within the same persona
-#: src/features/persona/components/modals/PersonaEditModal.tsx:134
+#: src/features/persona/components/modals/PersonaEditModal.tsx:131
 msgid "Duplicate tag pair on this persona"
 msgstr "Pasangan tag duplikat pada persona ini"
 
@@ -13174,14 +13188,19 @@ msgid "Dutch"
 msgstr "Belanda"
 
 #. Placeholder for persona name
-#: src/features/persona/components/modals/PersonaEditModal.tsx:102
+#: src/features/persona/components/modals/PersonaEditModal.tsx:99
 msgid "e.g. Alice"
 msgstr "mis. Alice"
 
 #. Placeholder for persona pronouns
-#: src/features/persona/components/modals/PersonaEditModal.tsx:106
+#: src/features/persona/components/modals/PersonaEditModal.tsx:103
 msgid "e.g. she/her"
 msgstr "mis. dia/nya"
+
+#. Placeholder text for natural language timestamp input.
+#: src/features/channel/components/modals/TimestampModal.tsx:32
+msgid "e.g. tomorrow at 3pm, in 2 hours, now"
+msgstr "mis. besok jam 3 sore, dalam 2 jam, sekarang"
 
 #. Placeholder or example text in the authentication passkey name modal. Keep the tone plain and specific.
 #: src/features/auth/components/modals/PasskeyNameModal.tsx:27
@@ -13368,7 +13387,7 @@ msgid "Edit persona"
 msgstr "Ubah persona"
 
 #. Title for edit persona modal
-#: src/features/persona/components/modals/PersonaEditModal.tsx:50
+#: src/features/persona/components/modals/PersonaEditModal.tsx:51
 msgid "Edit Persona"
 msgstr "Ubah Persona"
 
@@ -13381,7 +13400,7 @@ msgid "Edit profile"
 msgstr "Edit profil"
 
 #. Button label in profile settings. Opens the profile local time modal.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:33
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:32
 msgid "Edit profile local time"
 msgstr "Edit waktu lokal profil"
 
@@ -13428,13 +13447,20 @@ msgstr "Edit stiker {stickerName}"
 msgid "Edit the bot avatar, tag, bio, banner, and friend request behavior"
 msgstr "Edit avatar, tag, bio, banner, dan perilaku permintaan pertemanan bot"
 
+#. Context menu action to edit a timestamp in the message composer.
+#. Title of the timestamp modal when editing an existing timestamp.
+#: src/features/channel/components/modals/TimestampModal.tsx:28
+#: src/features/lexical/composer/nodes/ComposerTimestampContextMenu.tsx:10
+msgid "Edit timestamp"
+msgstr \"Edit stempel waktu\"
+
 #. Button or menu action label in the add custom search engine modal. Keep it concise.
 #: src/features/user/components/modals/tabs/chat_settings_tab/AddCustomSearchEngineModal.tsx:34
 msgid "Edit translation provider"
 msgstr "Edit penyedia terjemahan"
 
 #. Button or menu action label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:93
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:92
 msgid "Edit your profile appearance and see a live preview"
 msgstr "Edit tampilan profilmu dan lihat pratinjau langsung"
 
@@ -14533,7 +14559,7 @@ msgstr "Setiap saluran"
 
 #. Profile timezone privacy option label. Allows anyone who can view the full profile to see local time.
 #: src/features/connection/components/modals/EditConnectionModal.tsx:79
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:55
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:50
 #: src/features/user/components/modals/tabs/privacy_safety_tab/ConnectionsTab.tsx:234
 msgid "Everyone"
 msgstr "Semua orang"
@@ -14940,7 +14966,7 @@ msgid "Failed to delete channel"
 msgstr "Gagal menghapus saluran"
 
 #. Toast when persona deletion fails
-#: src/features/persona/components/modals/PersonaEditModal.tsx:70
+#: src/features/persona/components/modals/PersonaEditModal.tsx:71
 msgid "Failed to delete persona"
 msgstr "Gagal menghapus persona"
 
@@ -15115,7 +15141,7 @@ msgid "Failed to reset premium state."
 msgstr "Gagal mengatur ulang status premium."
 
 #. Toast when persona save fails
-#: src/features/persona/components/modals/PersonaEditModal.tsx:62
+#: src/features/persona/components/modals/PersonaEditModal.tsx:63
 msgid "Failed to save persona"
 msgstr "Gagal menyimpan persona"
 
@@ -15881,6 +15907,11 @@ msgstr "Lupa kata sandi"
 msgid "Forgot your password?"
 msgstr "Lupa kata sandimu?"
 
+#. Label for format preview selection in timestamp modal.
+#: src/features/channel/components/modals/TimestampModal.tsx:48
+msgid "Format preview"
+msgstr "Pratinjau format"
+
 #. Collapsible group heading in the Theme Studio tokens list, for form input tokens.
 #: src/features/theme_studio/sections/TokenGroups.ts:90
 msgid "Forms"
@@ -16044,7 +16075,7 @@ msgstr "Bot ramah"
 #: src/features/channel/components/direct_message/DirectMessageList.tsx:555
 #: src/features/connection/components/modals/EditConnectionModal.tsx:86
 #: src/features/search/utils/QuickSwitcherModalUtils.tsx:49
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:63
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:58
 #: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:89
 msgid "Friends"
 msgstr "Teman"
@@ -17980,7 +18011,7 @@ msgstr "Impor folder"
 
 #. Modal title for PluralKit import step select
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:485
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:510
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:508
 msgid "Import from PluralKit"
 msgstr "Impor dari PluralKit"
 
@@ -18413,6 +18444,11 @@ msgstr "Input & teks"
 msgid "Inputs with icons"
 msgstr "Input dengan ikon"
 
+#. Button to insert timestamp into message composer.
+#: src/features/channel/components/modals/TimestampModal.tsx:52
+msgid "Insert"
+msgstr "Sisipkan"
+
 #: src/features/input/utils/KeybindUtils.ts:87
 msgctxt "keyboard-key-name"
 msgid "Insert"
@@ -18422,6 +18458,15 @@ msgstr "Insert"
 #: src/features/channel/components/modals/channel_tabs/channel_overview_tab/ChannelOverviewTopicEditor.tsx:44
 msgid "Insert emoji"
 msgstr "Sisipkan emoji"
+
+#. Button or menu action label in the channel and chat mobile textarea plus bottom sheet. Keep it concise.
+#. Plus menu item that opens the dynamic timestamp insertion modal.
+#. Title of the timestamp insertion modal.
+#: src/features/channel/components/modals/TimestampModal.tsx:24
+#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:13
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:19
+msgid "Insert timestamp"
+msgstr "Sisipkan stempel waktu"
 
 #. CTA card body in the screen-share picker promoting the desktop app. {productName} is Fluxer.
 #: src/features/voice/components/modals/screen_share_picker_modal/DesktopDownloadCta.tsx:16
@@ -20122,7 +20167,7 @@ msgstr "Membuat saluran mewarisi setelan konten dewasa"
 msgid "Mail"
 msgstr "Email"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:873
+#: src/features/persona/components/modals/PersonaEditModal.tsx:877
 #: src/features/persona/components/PersonaProfileMobileSheet.tsx:369
 #: src/features/persona/components/PersonaProfilePopout.tsx:264
 msgid "Main account"
@@ -22280,10 +22325,6 @@ msgstr "Penggantian bilah notifikasi"
 msgid "Name"
 msgstr "Nama"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:664
-msgid "Name *"
-msgstr "Nama *"
-
 #. Form validation error shown when the name field is empty.
 #. Form validation error shown when the name field is empty.
 #: src/features/expressions/components/modals/meme_form/MemeFormFields.tsx:16
@@ -22587,7 +22628,7 @@ msgid "New password"
 msgstr "Kata sandi baru"
 
 #. Title for new persona modal
-#: src/features/persona/components/modals/PersonaEditModal.tsx:46
+#: src/features/persona/components/modals/PersonaEditModal.tsx:47
 msgid "New Persona"
 msgstr "Persona Baru"
 
@@ -22890,7 +22931,7 @@ msgstr "Tidak ada deskripsi."
 msgid "No desktop update is available."
 msgstr "Tidak ada pembaruan desktop yang tersedia."
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:491
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:489
 msgid "No display tag configured. Messages will show your account profile picture."
 msgstr "Tidak ada tag tampilan yang dikonfigurasi. Pesan akan menampilkan foto profil akun Anda."
 
@@ -23020,7 +23061,7 @@ msgid "No matches found"
 msgstr "Tidak ada yang cocok"
 
 #: src/features/persona/components/PersonaPickerSheet.tsx:202
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:550
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:548
 msgid "No matching personas found."
 msgstr "Tidak ditemukan persona yang cocok."
 
@@ -23083,7 +23124,7 @@ msgstr "Belum ada kata pribadi."
 msgid "No personas configured yet. Create one in Settings."
 msgstr "Belum ada persona yang dikonfigurasi. Buat satu di Pengaturan."
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:546
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:544
 msgid "No personas created yet. Click \"Add Persona\" to create your first persona!"
 msgstr "No personas created yet. Click \"Add Persona\" to create your first persona!"
 
@@ -23143,8 +23184,10 @@ msgstr "Tidak ada hasil"
 
 #. Empty state shown when a combobox search returns no matches.
 #. Empty state shown when a combobox search returns no matches.
+#. Empty state shown when a combobox search returns no matches.
 #: src/features/channel/components/embeds/attachments/TextualAttachmentLanguageCombobox.tsx:30
 #: src/features/ui/components/form/FormCombobox.tsx:83
+#: src/features/ui/components/form/SearchableTimeZonePicker.tsx:46
 msgid "No results found"
 msgstr "Tidak ada hasil"
 
@@ -23462,7 +23505,7 @@ msgstr "Bukan salah satu pilihan"
 #. Option in the profile timezone picker. Means no timezone has been selected.
 #. Status chip for a macOS permission that has not been requested.
 #: src/features/permissions/system/components/modals/MacPermissionsModal.tsx:64
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:41
+#: src/features/ui/components/form/SearchableTimeZonePicker.tsx:50
 msgid "Not set"
 msgstr "Belum diatur"
 
@@ -23859,7 +23902,7 @@ msgid "Only the selected ones"
 msgstr "Hanya yang dipilih"
 
 #. Helper description for private persona visibility
-#: src/features/persona/components/modals/PersonaEditModal.tsx:94
+#: src/features/persona/components/modals/PersonaEditModal.tsx:95
 msgid "Only visible to you. Others cannot view this persona’s full bio or profile details."
 msgstr "Hanya terlihat oleh Anda. Orang lain tidak dapat melihat bio lengkap atau detail profil persona ini."
 
@@ -24525,7 +24568,7 @@ msgid "Other methods"
 msgstr "Metode lain"
 
 #. Privacy note in profile timezone settings. Preserve {timezoneIdentifierExample}; it is inserted by code as an IANA timezone identifier example. productName is the app name. Users should understand that only the UTC offset is shown to other people.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:49
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:44
 msgid "Other people can only see your current UTC offset when you choose to share profile local time. They do not see your exact time zone identifier, such as {timezoneIdentifierExample}. {productName} stores that identifier only so the offset can update automatically when daylight saving time changes."
 msgstr "Orang lain hanya bisa melihat selisih UTC-mu saat ini ketika kamu memilih untuk membagikan waktu lokal profil. Mereka tidak melihat pengidentifikasi zona waktu yang tepat, seperti {timezoneIdentifierExample}. {productName} menyimpan pengidentifikasi itu hanya agar selisihnya bisa diperbarui otomatis ketika waktu musim panas berubah."
 
@@ -25098,12 +25141,12 @@ msgid "Permissions for {0}"
 msgstr "Izin untuk {0}"
 
 #. Toast when persona is created
-#: src/features/persona/components/modals/PersonaEditModal.tsx:58
+#: src/features/persona/components/modals/PersonaEditModal.tsx:59
 msgid "Persona created"
 msgstr "Persona dibuat"
 
 #. Toast when persona is deleted
-#: src/features/persona/components/modals/PersonaEditModal.tsx:66
+#: src/features/persona/components/modals/PersonaEditModal.tsx:67
 msgid "Persona deleted"
 msgstr "Persona dihapus"
 
@@ -25121,17 +25164,17 @@ msgstr "Profil persona"
 msgid "Persona profile: {name}"
 msgstr "Profil persona: {name}"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:740
+#: src/features/persona/components/modals/PersonaEditModal.tsx:730
 msgid "Persona Tags (Prefix & Suffix)"
 msgstr "Tag Persona (Awalan & Akhiran)"
 
 #. Toast when persona is updated
-#: src/features/persona/components/modals/PersonaEditModal.tsx:54
+#: src/features/persona/components/modals/PersonaEditModal.tsx:55
 msgid "Persona updated"
 msgstr "Persona diperbarui"
 
 #. Aria label for persona visibility tabs
-#: src/features/persona/components/modals/PersonaEditModal.tsx:130
+#: src/features/persona/components/modals/PersonaEditModal.tsx:127
 msgid "Persona visibility"
 msgstr "Visibilitas persona"
 
@@ -25681,7 +25724,7 @@ msgid "Prefers reduced motion"
 msgstr "Preferensi gerakan dikurangi"
 
 #. Placeholder for persona tag prefix
-#: src/features/persona/components/modals/PersonaEditModal.tsx:114
+#: src/features/persona/components/modals/PersonaEditModal.tsx:111
 msgid "Prefix (e.g. [)"
 msgstr "Awalan (mis. [)"
 
@@ -25803,7 +25846,7 @@ msgstr "Mencegah anggota mengirim pesan, bereaksi, dan bergabung ke saluran suar
 
 #: src/features/expressions/components/modals/sticker_form/StickerPreview.tsx:21
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildInviteSplashSettingsField.tsx:45
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:465
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:463
 #: src/features/user/components/modals/tabs/EmbedDebuggerTab.tsx:276
 msgid "Preview"
 msgstr "Pratinjau"
@@ -26012,7 +26055,7 @@ msgid "Privacy violation or stalking"
 msgstr "Pelanggaran privasi atau penguntitan"
 
 #. Persona visibility private
-#: src/features/persona/components/modals/PersonaEditModal.tsx:82
+#: src/features/persona/components/modals/PersonaEditModal.tsx:83
 msgid "Private"
 msgstr "Privat"
 
@@ -26072,7 +26115,7 @@ msgstr "Profil"
 msgid "Profile badge"
 msgstr "Lencana profil"
 
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:165
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:163
 msgid "Profile banners are a {PREMIUM_PRODUCT_NAME} feature. Get {PREMIUM_PRODUCT_NAME} to add a banner to your profile."
 msgstr "Banner profil adalah fitur {PREMIUM_PRODUCT_NAME}. Dapatkan {PREMIUM_PRODUCT_NAME} untuk menambahkan banner ke profilmu."
 
@@ -26092,12 +26135,12 @@ msgid "Profile banners require {premiumProductName}."
 msgstr "Banner profil memerlukan {premiumProductName}."
 
 #. Helper description for unlisted persona visibility
-#: src/features/persona/components/modals/PersonaEditModal.tsx:86
+#: src/features/persona/components/modals/PersonaEditModal.tsx:87
 msgid "Profile cards are accessible only when clicking on messages sent by this persona. Not listed in your public persona list."
 msgstr "Kartu profil hanya dapat diakses saat mengeklik pesan yang dikirim oleh persona ini. Tidak terdaftar dalam daftar persona publik Anda."
 
 #. Helper description for public persona visibility
-#: src/features/persona/components/modals/PersonaEditModal.tsx:90
+#: src/features/persona/components/modals/PersonaEditModal.tsx:91
 msgid "Profile cards are accessible when clicking on messages and visible in your public personas list to friends and mutual servers."
 msgstr "Kartu profil dapat diakses saat mengeklik pesan dan terlihat dalam daftar persona publik Anda oleh teman dan server bersama."
 
@@ -26108,18 +26151,18 @@ msgstr "Warna profil"
 
 #. Settings section label for editing profile appearance and identity.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:105
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:104
 #: src/features/user/components/settings_utils/section_registry/GeneralSettingsSections.ts:6
 msgid "Profile customization"
 msgstr "Kustomisasi profil"
 
 #. Label in the my profile tab. Preserve {selectedGuildName}; it is inserted by code.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:101
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:100
 msgid "Profile customization for {selectedGuildName}"
 msgstr "Kustomisasi profil untuk {selectedGuildName}"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:97
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:96
 msgid "Profile customization form"
 msgstr "Formulir kustomisasi profil"
 
@@ -26129,7 +26172,7 @@ msgid "Profile data warning"
 msgstr "Peringatan data profil"
 
 #. Profile settings row title for choosing whether profile viewers can see the user local time.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:23
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:22
 msgid "Profile local time"
 msgstr "Waktu lokal profil"
 
@@ -26153,7 +26196,6 @@ msgstr "Foto profil"
 msgid "Profile pictures"
 msgstr "Foto profil"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:809
 #: src/features/user/components/profile/profile_card/ProfileCardLayout.tsx:26
 msgid "Profile preview"
 msgstr "Pratinjau profil"
@@ -26185,7 +26227,7 @@ msgid "Profile type"
 msgstr "Jenis profil"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:77
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:76
 msgid "Profile updated"
 msgstr "Profil diperbarui"
 
@@ -26222,8 +26264,8 @@ msgstr "Tanya saat ada perangkat audio baru"
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/persona/components/modals/PersonaEditModal.tsx:678
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:142
+#: src/features/persona/components/modals/PersonaEditModal.tsx:670
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:141
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:177
 #: src/features/user/components/settings_utils/section_registry/PrivacySafetySections.ts:160
 msgid "Pronouns"
@@ -26264,7 +26306,7 @@ msgid "PTT"
 msgstr "PTT"
 
 #. Persona visibility public
-#: src/features/persona/components/modals/PersonaEditModal.tsx:78
+#: src/features/persona/components/modals/PersonaEditModal.tsx:79
 msgid "Public"
 msgstr "Publik"
 
@@ -27157,8 +27199,8 @@ msgstr "Hapus lampiran"
 msgid "Remove authenticator app"
 msgstr "Hapus aplikasi autentikator"
 
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:407
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:445
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:405
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:441
 msgid "Remove avatar"
 msgstr "Hapus avatar"
 
@@ -27167,8 +27209,8 @@ msgstr "Hapus avatar"
 msgid "Remove background"
 msgstr "Hapus latar belakang"
 
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:316
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:357
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:314
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:353
 msgid "Remove banner"
 msgstr "Hapus banner"
 
@@ -27235,7 +27277,7 @@ msgstr "Hapus dari GIF favorit khusus URL"
 #: src/features/channel/components/modals/EditGroupModal.tsx:293
 #: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:314
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:635
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:446
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:444
 msgid "Remove icon"
 msgstr "Hapus ikon"
 
@@ -27313,7 +27355,7 @@ msgid "Remove tag {tag}"
 msgstr "Hapus tag {tag}"
 
 #. Aria label for removing a tag pair
-#: src/features/persona/components/modals/PersonaEditModal.tsx:122
+#: src/features/persona/components/modals/PersonaEditModal.tsx:119
 msgid "Remove tag pair"
 msgstr "Hapus pasangan tag"
 
@@ -27956,7 +27998,7 @@ msgstr "Dikirim ulang"
 #: src/features/app/components/floating/ColorPickerPopover.tsx:190
 #: src/features/input/components/KeybindRecorder.tsx:459
 #: src/features/messaging/components/modals/ImageCropModal.tsx:936
-#: src/features/persona/components/modals/PersonaEditModal.tsx:615
+#: src/features/persona/components/modals/PersonaEditModal.tsx:612
 msgid "Reset"
 msgstr "Setel ulang"
 
@@ -28835,7 +28877,7 @@ msgid "Save banner"
 msgstr "Simpan banner"
 
 #: src/features/app/components/dialogs/shared/UnsavedChangesBannerContent.tsx:60
-#: src/features/persona/components/modals/PersonaEditModal.tsx:624
+#: src/features/persona/components/modals/PersonaEditModal.tsx:621
 msgid "Save changes"
 msgstr "Simpan perubahan"
 
@@ -29465,7 +29507,9 @@ msgid "Search themes…"
 msgstr "Cari tema…"
 
 #. Placeholder in the profile timezone picker.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:37
+#. Placeholder in timezone combobox.
+#: src/features/ui/components/form/SearchableTimeZonePicker.tsx:34
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:36
 msgid "Search time zones"
 msgstr "Cari zona waktu"
 
@@ -29939,8 +29983,8 @@ msgstr "Kirim GIF {title}"
 #. Action label for sending a gift to a friend.
 #. Button or menu action label in the channel and chat mobile textarea plus bottom sheet. Keep it concise.
 #. Plus menu item that opens the gift purchase flow.
-#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:21
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:31
+#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:25
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:35
 #: src/features/expressions/components/modals/GiftSendToFriendModal.tsx:30
 msgid "Send gift"
 msgstr "Kirim hadiah"
@@ -30039,7 +30083,7 @@ msgstr "Kirim kode verifikasi"
 #. Accessible label and tooltip for the send button after recording a voice message.
 #. Keyboard shortcut action label that opens the desktop voice message composer.
 #. Plus menu item that opens the desktop voice message composer to record and send a voice clip.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:35
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:39
 #: src/features/channel/components/VoiceMessageRecorder.tsx:69
 #: src/features/input/state/input_keybind/shared.ts:289
 msgid "Send voice message"
@@ -30199,7 +30243,7 @@ msgstr "Atur status kustom"
 msgid "Set a member list position for the role"
 msgstr "Mengatur posisi daftar anggota untuk peran tersebut"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:639
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:637
 msgid "Set Active"
 msgstr "Jadikan Aktif"
 
@@ -30414,7 +30458,7 @@ msgid "Set your status"
 msgstr "Atur statusmu"
 
 #. Description in profile settings for the button that opens timezone settings. productName is the app name. A timezone identifier means values like America/New_York; only the UTC offset can be visible to others.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:27
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:26
 msgid "Set your time zone once so {productName} can keep your UTC offset current when daylight saving time changes. Other people can only see your UTC offset, not your exact time zone identifier."
 msgstr "Atur zona waktumu sekali agar {productName} dapat menjaga selisih UTC kamu tetap akurat saat waktu musim panas berubah. Orang lain hanya dapat melihat selisih UTC kamu, bukan pengenal zona waktu kamu yang persis."
 
@@ -30830,7 +30874,7 @@ msgstr "Tampilkan sematan dan pratinjau tautan situs web"
 
 #. Short label for an advanced message input preference.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:59
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:63
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:129
 msgid "Show emoji button"
 msgstr "Tampilkan tombol emoji"
@@ -30869,7 +30913,7 @@ msgstr "Tampilkan indikator GIF"
 
 #. Plus menu submenu toggle that shows the GIFs button next to the textarea.
 #. Short label for an advanced message input preference.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:43
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:47
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:109
 msgid "Show GIFs button"
 msgstr "Tampilkan tombol GIF"
@@ -30918,7 +30962,7 @@ msgstr "Tampilkan maks. 5 (lencana +5)"
 
 #. Plus menu submenu toggle that shows the saved media (memes) button next to the textarea.
 #. Short label for an advanced message input preference.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:47
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:51
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:113
 msgid "Show media button"
 msgstr "Tampilkan tombol media"
@@ -31044,7 +31088,7 @@ msgstr "Tampilkan penggeser volume peserta per perangkat di menu suara"
 
 #. Plus menu submenu toggle that shows the persona selector next to the textarea.
 #. Short label for an advanced message input preference.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:51
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:55
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:133
 msgid "Show personas button"
 msgstr "Tampilkan tombol persona"
@@ -31073,7 +31117,7 @@ msgstr "Tampilkan media tersimpan di pelengkapan otomatis ekspresi"
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #: src/features/channel/components/textarea/TextareaContextMenu.tsx:102
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:63
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:67
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:137
 msgid "Show send button"
 msgstr "Tampilkan tombol kirim"
@@ -31090,7 +31134,7 @@ msgstr "Tampilkan konten spoiler saat diklik"
 
 #. Short label for an advanced message input preference.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:55
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:59
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:125
 msgid "Show stickers button"
 msgstr "Tampilkan tombol stiker"
@@ -32913,9 +32957,14 @@ msgid "Successfully imported {0} persona(s) into your account. All avatar images
 msgstr "Berhasil mengimpor {0} persona ke akun Anda. Semua gambar avatar disimpan dengan aman di server lokal Anda."
 
 #. Placeholder for persona tag suffix
-#: src/features/persona/components/modals/PersonaEditModal.tsx:118
+#: src/features/persona/components/modals/PersonaEditModal.tsx:115
 msgid "Suffix (e.g. ])"
 msgstr "Akhiran (mis. ])"
+
+#. Section header for suggested time zones in the timestamp modal.
+#: src/features/ui/components/form/SearchableTimeZonePicker.tsx:38
+msgid "Suggested"
+msgstr "Disarankan"
 
 #. Helper text under the "Filter members without roles" explicit content filter option in the community moderation settings tab.
 #: src/features/guild/components/modals/guild_tabs/GuildModerationTab.tsx:112
@@ -33379,16 +33428,16 @@ msgstr "Tabel"
 msgid "Tag"
 msgstr "Tag"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:426
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:424
 msgid "Tag Icon"
 msgstr "Ikon Tag"
 
 #. Validation error when tag pair is already used by another persona
-#: src/features/persona/components/modals/PersonaEditModal.tsx:138
+#: src/features/persona/components/modals/PersonaEditModal.tsx:135
 msgid "Tag pair already in use by persona \"{name}\""
 msgstr "Tag pair already in use by persona \"{name}\""
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:413
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:411
 msgid "Tag Text"
 msgstr "Teks Tag"
 
@@ -33482,7 +33531,7 @@ msgid "Teleporting you to another voice region..."
 msgstr "Memindahkanmu ke wilayah suara lain..."
 
 #. Placeholder for persona bio
-#: src/features/persona/components/modals/PersonaEditModal.tsx:110
+#: src/features/persona/components/modals/PersonaEditModal.tsx:107
 msgid "Tell us about this persona..."
 msgstr "Ceritakan kepada kami tentang persona ini..."
 
@@ -34559,7 +34608,7 @@ msgstr "Ini adalah emoji kustom dari komunitas."
 msgid "This is a custom sticker from a community."
 msgstr "Ini adalah stiker kustom dari sebuah komunitas."
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:489
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:487
 msgid "This is a preview of how your display tag will look in chat."
 msgstr "Ini adalah pratinjau tampilan tag tampilan Anda dalam obrolan."
 
@@ -34717,7 +34766,7 @@ msgid "This message no longer exists."
 msgstr "Pesan ini sudah tidak ada."
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:130
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:129
 msgid "This nickname will only be visible in this community"
 msgstr "Nama panggilan ini hanya akan terlihat di komunitas ini"
 
@@ -35052,8 +35101,10 @@ msgid "Thumbnail preview"
 msgstr "Pratinjau gambar mini"
 
 #. Form field label for a time value.
+#. Label for time input in timestamp modal.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
+#: src/features/channel/components/modals/TimestampModal.tsx:40
 #: src/features/ui/components/form/DateTimePickerField.tsx:34
 #: src/features/user/components/settings_utils/search_index/LanguageIndex.ts:30
 #: src/features/user/components/settings_utils/section_registry/AppearanceSections.ts:282
@@ -35095,7 +35146,9 @@ msgid "Time range"
 msgstr "Rentang waktu"
 
 #. Field label in profile settings for choosing the timezone used to show local time on the profile.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:19
+#. Label for time zone input in timestamp modal.
+#: src/features/channel/components/modals/TimestampModal.tsx:44
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:18
 msgid "Time zone"
 msgstr "Zona waktu"
 
@@ -36393,7 +36446,7 @@ msgid "unknown-role"
 msgstr "unknown-role"
 
 #. Persona visibility unlisted
-#: src/features/persona/components/modals/PersonaEditModal.tsx:74
+#: src/features/persona/components/modals/PersonaEditModal.tsx:75
 msgid "Unlisted"
 msgstr "Tidak terdaftar"
 
@@ -36955,8 +37008,8 @@ msgstr "Unggah emoji"
 
 #. Button or menu action label in the channel and chat mobile textarea plus bottom sheet. Keep it concise.
 #. Plus menu item that opens the system file picker to attach a file.
-#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:13
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:23
+#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:17
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:27
 msgid "Upload file"
 msgstr "Unggah file"
 
@@ -36975,7 +37028,7 @@ msgstr "Unggah file dan media di saluran ini."
 #: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:305
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:626
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildIconUploadField.tsx:130
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:456
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:454
 msgid "Upload icon"
 msgstr "Unggah ikon"
 
@@ -37015,8 +37068,8 @@ msgstr "Unggah ke {displayName}"
 
 #. Button or menu action label in the channel and chat mobile textarea plus bottom sheet. Keep it concise.
 #. Plus menu item that uploads the current textarea content as a .txt file when it exceeds the size limit.
-#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:17
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:27
+#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:21
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:31
 msgid "Upload your message as a file"
 msgstr "Unggah pesanmu sebagai file"
 
@@ -37914,22 +37967,22 @@ msgid "Verify your email before adding an authenticator app."
 msgstr "Verifikasi emailmu sebelum menambahkan aplikasi autentikator."
 
 #. Description text in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:117
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:116
 msgid "Verify your email before changing your community nickname, avatar, banner, bio, pronouns, or accent color."
 msgstr "Verifikasi emailmu sebelum mengubah nama panggilan komunitas, avatar, banner, bio, kata ganti, atau warna aksenmu."
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:121
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:120
 msgid "Verify your email before changing your username, display name, avatar, banner, bio, pronouns, time zone, or {premiumProductName} badge privacy."
 msgstr "Verifikasi emailmu sebelum mengubah nama pengguna, nama tampilan, avatar, banner, bio, kata ganti, zona waktu, atau privasi lencana {premiumProductName} milikmu."
 
 #. Description text in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:85
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:84
 msgid "Verify your email before editing this community profile. You can still preview it here."
 msgstr "Verifikasi emailmu sebelum mengedit profil komunitas ini. Kamu masih bisa melihat pratinjaunya di sini."
 
 #. Description text in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:89
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:88
 msgid "Verify your email before editing your profile. You can still preview it here."
 msgstr "Verifikasi emailmu sebelum mengedit profil. Kamu masih bisa melihat pratinjaunya di sini."
 
@@ -37961,12 +38014,12 @@ msgid "Verify your email to continue using {productName}."
 msgstr "Verifikasi emailmu untuk terus menggunakan {productName}."
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:109
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:108
 msgid "Verify your email to edit this community profile"
 msgstr "Verifikasi emailmu untuk mengedit profil komunitas ini"
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:113
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:112
 msgid "Verify your email to edit your profile"
 msgstr "Verifikasi emailmu untuk mengedit profil"
 
@@ -38403,7 +38456,7 @@ msgid "Virginia"
 msgstr "Virginia"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/persona/components/modals/PersonaEditModal.tsx:721
+#: src/features/persona/components/modals/PersonaEditModal.tsx:782
 #: src/features/user/components/settings_utils/section_registry/AccessibilitySections.ts:39
 msgid "Visibility"
 msgstr "Visibilitas"
@@ -39516,7 +39569,7 @@ msgctxt "us-state"
 msgid "Wisconsin"
 msgstr "Wisconsin"
 
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:217
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:215
 msgid "With {PREMIUM_PRODUCT_NAME}, you can use animated avatars ({ANIMATED_AVATAR_FORMATS}) and profile banners, customize your tag, and unlock many other {PREMIUM_PRODUCT_NAME} perks."
 msgstr "Dengan {PREMIUM_PRODUCT_NAME}, kamu bisa memakai avatar animasi ({ANIMATED_AVATAR_FORMATS}) dan banner profil, menyesuaikan tag-mu, dan membuka banyak keuntungan {PREMIUM_PRODUCT_NAME} lainnya."
 
@@ -39786,6 +39839,7 @@ msgstr "Kamu masih bisa membuat akun atau masuk. Jika undangan diaktifkan kembal
 msgid "You can still email {supportEmail} for a human review at any time."
 msgstr "Kamu masih dapat mengirim email ke {supportEmail} untuk peninjauan manual kapan saja."
 
+#: src/features/persona/components/modals/PersonaEditModal.tsx:718
 #: src/features/user/components/modals/tabs/my_profile_tab/BioEditor.tsx:288
 msgid "You can use links, emoji, and Markdown."
 msgstr "Kamu bisa pakai tautan, emoji, dan Markdown."
@@ -39811,7 +39865,7 @@ msgid "You can't befriend yourself"
 msgstr "Kamu tidak bisa berteman dengan diri sendiri"
 
 #. Label in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:134
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:133
 msgid "You can't change your nickname here"
 msgstr "Kamu tidak dapat mengubah nama panggilan di sini"
 
@@ -39929,7 +39983,7 @@ msgid "You can't unmute yourself because a moderator muted you."
 msgstr "Kamu tidak dapat mengaktifkan mikrofon sendiri karena moderator yang membisukanmu."
 
 #. Tooltip on the disabled upload file item when the user lacks Attach Files permission. Calm, factual tone.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:19
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:23
 msgid "You can't upload files in this channel."
 msgstr "Kamu tidak dapat mengunggah file di saluran ini."
 
@@ -40057,12 +40111,12 @@ msgid "You have refunded recently"
 msgstr "Kamu baru saja melakukan pengembalian dana"
 
 #: src/features/app/components/dialogs/shared/UnsavedChangesBannerContent.tsx:37
-#: src/features/persona/components/modals/PersonaEditModal.tsx:604
+#: src/features/persona/components/modals/PersonaEditModal.tsx:601
 msgid "You have unsaved changes."
 msgstr "Ada perubahan yang belum disimpan."
 
 #. Warning text in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:81
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:80
 msgid "You have unsaved changes. Save or reset before leaving."
 msgstr "Ada perubahan yang belum disimpan. Simpan atau setel ulang sebelum keluar."
 

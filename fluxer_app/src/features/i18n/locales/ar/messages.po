@@ -14,7 +14,7 @@ msgstr ""
 "Plural-Forms: \n"
 "X-Generator: @lingui/cli\n"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:484
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:482
 msgid "— Today at 12:00 PM"
 msgstr "— اليوم الساعة 12:00 م"
 
@@ -960,7 +960,7 @@ msgstr "{count, plural, zero {# رسالة محظورة} one {رسالة محظ�
 msgid "{count, plural, one {# community found} other {# communities found}}"
 msgstr "{count, plural, zero {لم يُعثر على أي مجتمع} one {تم العثور على مجتمع واحد} two {تم العثور على مجتمعين} few {تم العثور على # مجتمعات} many {تم العثور على # مجتمعًا} other {تم العثور على # مجتمع}}"
 
-#: src/features/app/components/layout/GuildsLayout.tsx:1968
+#: src/features/app/components/layout/GuildsLayout.tsx:1972
 msgid "{count, plural, one {# community is temporarily unavailable due to a flux capacitor malfunction.} other {# communities are temporarily unavailable due to a flux capacitor malfunction.}}"
 msgstr "{count, plural, zero {# مجتمع غير متاح مؤقتًا بسبب عطل في مكثف التدفق.} one {مجتمع واحد غير متاح مؤقتًا بسبب عطل في مكثف التدفق.} two {مجتمعان غير متاحين مؤقتًا بسبب عطل في مكثف التدفق.} few {# مجتمعات غير متاحة مؤقتًا بسبب عطل في مكثف التدفق.} many {# مجتمعًا غير متاح مؤقتًا بسبب عطل في مكثف التدفق.} other {# مجتمع غير متاح مؤقتًا بسبب عطل في مكثف التدفق.}}"
 
@@ -2549,6 +2549,7 @@ msgstr "حول {appName}"
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Short label in the user profile shared popout. Keep it concise.
 #: src/features/app/components/pages/YouPage.tsx:166
+#: src/features/persona/components/modals/PersonaEditModal.tsx:710
 #: src/features/persona/components/PersonaProfileMobileSheet.tsx:349
 #: src/features/persona/components/PersonaProfileMobileSheet.tsx:358
 #: src/features/user/components/modals/tabs/my_profile_tab/BioEditor.tsx:26
@@ -2580,7 +2581,6 @@ msgstr "تمييز"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label in the accent color picker. Keep it concise.
-#: src/features/persona/components/modals/PersonaEditModal.tsx:692
 #: src/features/user/components/modals/tabs/my_profile_tab/AccentColorPicker.tsx:12
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:153
 msgid "Accent color"
@@ -2775,7 +2775,7 @@ msgstr "إجراءات"
 #. Subscription status badge meaning the paid subscription is active.
 #: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:445
 #: src/features/channel/components/channel_header_components/developer_tools/DeveloperToolsShared.ts:37
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:639
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:637
 #: src/features/user/components/settings_utils/search_index/DevicesIndex.ts:19
 msgid "Active"
 msgstr "نشط"
@@ -2836,7 +2836,7 @@ msgstr "نشط الآن"
 msgid "Active persona mode"
 msgstr "وضع الشخصية النشطة"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:372
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:370
 msgid "Active Persona Mode"
 msgstr "وضع الشخصية النشطة"
 
@@ -3122,7 +3122,7 @@ msgstr "إضافة تجاوز"
 msgid "Add passkey"
 msgstr "إضافة مفتاح مرور"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:513
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:511
 msgid "Add Persona"
 msgstr "إضافة شخصية"
 
@@ -3197,7 +3197,7 @@ msgid "Add stream"
 msgstr "إضافة بث"
 
 #. placeholder {0}: formData.tags.length
-#: src/features/persona/components/modals/PersonaEditModal.tsx:749
+#: src/features/persona/components/modals/PersonaEditModal.tsx:739
 msgid "Add Tag Pair ({0}/5)"
 msgstr "إضافة زوج علامات ({0}/5)"
 
@@ -3610,6 +3610,11 @@ msgstr "جميع أنواع الحالات"
 msgid "All time"
 msgstr "كل الأوقات"
 
+#. Section header for all time zones in the timestamp modal.
+#: src/features/ui/components/form/SearchableTimeZonePicker.tsx:42
+msgid "All time zones"
+msgstr "كل المناطق الزمنية"
+
 #. Default option in the activity log "Filter by user" dropdown. Means no user filter is applied. Short standalone label.
 #: src/features/guild/components/modals/guild_tabs/GuildAuditLogTab.tsx:72
 msgid "All users"
@@ -3647,7 +3652,7 @@ msgid "Allow anyone to see this connection on your profile"
 msgstr "السماح لأي شخص برؤية هذا الاتصال في ملفك الشخصي"
 
 #. Profile timezone privacy option description for the Everyone switch.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:59
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:54
 msgid "Allow anyone who can view your full profile to see your local time"
 msgstr "السماح لأي شخص يمكنه عرض ملفك الشخصي بالكامل برؤية وقتك المحلي"
 
@@ -3722,7 +3727,7 @@ msgid "Allow members from communities you're in to see this connection"
 msgstr "السماح لأعضاء المجتمعات التي تنتمي إليها برؤية هذا الاتصال"
 
 #. Profile timezone privacy option description for the Community members switch.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:71
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:66
 msgid "Allow members from communities you're in to see your local time"
 msgstr "السماح لأعضاء المجتمعات التي تنتمي إليها برؤية توقيتك المحلي"
 
@@ -3771,7 +3776,7 @@ msgid "Allow your friends to see this connection"
 msgstr "السماح لأصدقائك برؤية هذا الاتصال"
 
 #. Profile timezone privacy option description for the Friends switch.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:67
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:62
 msgid "Allow your friends to see your local time"
 msgstr "السماح لأصدقائك برؤية توقيتك المحلي"
 
@@ -4014,11 +4019,11 @@ msgstr "ملفات {AVIF_FORMAT_LABEL} المتحركة غير مدعومة. ح�
 msgid "Animated {avifFormatLabel} not supported"
 msgstr "صيغة {avifFormatLabel} المتحركة غير مدعومة"
 
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:208
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:206
 msgid "Animated avatars ({ANIMATED_AVATAR_FORMATS}) are exclusively available to {PREMIUM_PRODUCT_NAME} subscribers."
 msgstr "تتوفر الصور الرمزية المتحركة ({ANIMATED_AVATAR_FORMATS}) حصريًا لمشتركي {PREMIUM_PRODUCT_NAME}."
 
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:242
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:240
 msgid "Animated avatars ({ANIMATED_AVATAR_FORMATS}) are not available on this instance. Upload a static image instead."
 msgstr "الصور الرمزية المتحركة ({ANIMATED_AVATAR_FORMATS}) غير متاحة في هذا المثيل. حمّل صورة ثابتة بدلاً من ذلك."
 
@@ -4487,7 +4492,7 @@ msgid "Are you sure you want to delete <0>{0}</0>?"
 msgstr "هل أنت متأكد أنك تريد حذف <0>{0}</0>؟"
 
 #. placeholder {0}: formData.name
-#: src/features/persona/components/modals/PersonaEditModal.tsx:540
+#: src/features/persona/components/modals/PersonaEditModal.tsx:537
 msgid "Are you sure you want to delete <0>{0}</0>? This action cannot be undone."
 msgstr "هل أنت متأكد أنك تريد حذف <0>{0}</0>؟ لا يمكن التراجع عن هذا الإجراء."
 
@@ -5218,8 +5223,8 @@ msgstr "متوفر في تطبيق سطح المكتب."
 #. Form label for a webhook avatar image.
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #: src/features/ui/components/BaseAvatar.tsx:18
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:375
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:424
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:373
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:421
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:13
 #: src/features/webhook/components/WebhookListItem.tsx:252
 msgid "Avatar"
@@ -5535,8 +5540,8 @@ msgstr "المستخدمون المحظورون"
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildBannerUploadField.tsx:28
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildBannerUploadField.tsx:125
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:282
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:333
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:280
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:330
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:37
 msgid "Banner"
 msgstr "لافتة"
@@ -5645,7 +5650,6 @@ msgstr "تعيينات المفاتيح"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/persona/components/modals/PersonaEditModal.tsx:707
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:129
 #: src/features/user/components/settings_utils/section_registry/PrivacySafetySections.ts:156
 msgid "Bio"
@@ -6730,8 +6734,8 @@ msgstr "في المنتصف"
 
 #. Title of the modal where the user picks an avatar source (file upload or GIF provider). Keep it concise.
 #: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:111
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:397
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:435
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:395
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:431
 msgid "Change avatar"
 msgstr "تغيير الصورة الرمزية"
 
@@ -6743,8 +6747,8 @@ msgstr "تغيير الخلفية"
 #. Title of the modal where the user picks a community banner source (file upload or GIF provider). Keep it concise.
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildBannerUploadField.tsx:43
 #: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:94
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:305
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:346
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:303
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:342
 msgid "Change banner"
 msgstr "تغيير اللافتة"
 
@@ -6791,7 +6795,7 @@ msgstr "تغيير الاسم المستعار في المجموعة"
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:86
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:626
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildIconUploadField.tsx:35
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:438
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:436
 msgid "Change icon"
 msgstr "تغيير الأيقونة"
 
@@ -7638,7 +7642,7 @@ msgstr "اختر طريقة تخزين صور GIF المفضلة المميزة 
 msgid "Choose how times are displayed throughout the app"
 msgstr "اختر كيفية عرض الأوقات في جميع أنحاء التطبيق"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:375
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:373
 msgid "Choose how untagged messages and persona tags interact with your active persona."
 msgstr "اختر كيف تتفاعل الرسائل بدون علامات وعلامات الشخصية مع شخصيتك النشطة."
 
@@ -7691,7 +7695,7 @@ msgid "Choose the tab or window in your browser"
 msgstr "اختر علامة التبويب أو النافذة في متصفحك"
 
 #. Helper text under the profile timezone picker. productName is the app name.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:45
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:40
 msgid "Choose the time zone {productName} uses to calculate your UTC offset for profile local time."
 msgstr "اختر المنطقة الزمنية التي يستخدمها {productName} لحساب الإزاحة عن التوقيت العالمي المنسق (UTC) لعرض الوقت المحلي في ملفك الشخصي."
 
@@ -7951,7 +7955,7 @@ msgstr "مسح نماذج المرفقات"
 
 #. Accessible label for the button that clears the slash command being composed in the message box.
 #. Accessible label for the composer button that clears the slash command currently being composed.
-#: src/features/channel/components/LexicalChannelTextareaContent.tsx:136
+#: src/features/channel/components/LexicalChannelTextareaContent.tsx:137
 #: src/features/channel/components/SlashCommandParamBar.tsx:16
 msgid "Clear command"
 msgstr "مسح الأمر"
@@ -8711,7 +8715,7 @@ msgstr "اسم المجتمع"
 
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:126
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:125
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:113
 msgid "Community nickname"
 msgstr "الاسم المستعار في المجتمع"
@@ -8764,7 +8768,7 @@ msgid "Community profile"
 msgstr "الملف الشخصي في المجتمع"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:73
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:72
 msgid "Community profile updated"
 msgstr "تم تحديث الملف الشخصي في المجتمع"
 
@@ -9744,6 +9748,11 @@ msgstr "نسخ النص"
 #: src/features/auth/components/modals/MfaTotpEnableModal.tsx:95
 msgid "Copy the setup key into your authenticator app."
 msgstr "انسخ مفتاح الإعداد إلى تطبيق المصادقة."
+
+#. Context menu action to copy a timestamp markdown tag in the message composer.
+#: src/features/lexical/composer/nodes/ComposerTimestampContextMenu.tsx:15
+msgid "Copy timestamp"
+msgstr \"نسخ الطابع الزمني\"
 
 #. Developer-mode action that copies a user snowflake/ID to the clipboard.
 #: src/features/app/components/floating/UserAreaPopout.tsx:692
@@ -10984,7 +10993,7 @@ msgid "Customer portal"
 msgstr "بوابة العملاء"
 
 #. Plus menu submenu label for visibility toggles on textarea adornment buttons.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:39
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:43
 msgid "Customize"
 msgstr "تخصيص"
 
@@ -11021,11 +11030,6 @@ msgstr "خصّص علامتك ({discriminatorLabel}) كما تحب مع {premium
 #: src/features/user/components/modals/FluxerTagChangeModal.tsx:386
 msgid "Customize your tag or keep it when changing your username"
 msgstr "خصّص علامتك أو احتفظ بها عند تغيير اسم المستخدم الخاص بك"
-
-#. Description for persona accent color picker
-#: src/features/persona/components/modals/PersonaEditModal.tsx:98
-msgid "Customizes the border and banner color on this persona's profile"
-msgstr "يخصص لون الحدود واللافتة في ملف تعريف هذه الشخصية"
 
 #. Label in the accent color picker. Keep the tone plain and specific.
 #: src/features/user/components/modals/tabs/my_profile_tab/AccentColorPicker.tsx:16
@@ -11159,8 +11163,10 @@ msgid "Data export"
 msgstr "تصدير البيانات"
 
 #. Column header for invoice payment or creation date.
+#. Label for date input in timestamp modal.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/app/components/dialogs/components/plutonium/InvoiceList.tsx:120
+#: src/features/channel/components/modals/TimestampModal.tsx:36
 #: src/features/user/components/settings_utils/section_registry/AppearanceSections.ts:286
 msgid "Date"
 msgstr "التاريخ"
@@ -11451,7 +11457,7 @@ msgstr "ديلاوير"
 #: src/features/emoji/components/stickers/StickerGridItem.tsx:35
 #: src/features/messaging/commands/MessageCommands.tsx:81
 #: src/features/moderation/components/report_modal/IARModalCopy.ts:109
-#: src/features/persona/components/modals/PersonaEditModal.tsx:544
+#: src/features/persona/components/modals/PersonaEditModal.tsx:541
 #: src/features/platform/utils/DesktopLocaleBridge.ts:76
 #: src/features/theme_studio/sections/LibrarySection.tsx:514
 #: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:517
@@ -11633,12 +11639,12 @@ msgid "Delete passkey"
 msgstr "حذف مفتاح المرور"
 
 #. Aria label for deleting persona
-#: src/features/persona/components/modals/PersonaEditModal.tsx:126
+#: src/features/persona/components/modals/PersonaEditModal.tsx:123
 msgid "Delete persona"
 msgstr "حذف الشخصية"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:538
-#: src/features/persona/components/modals/PersonaEditModal.tsx:799
+#: src/features/persona/components/modals/PersonaEditModal.tsx:535
+#: src/features/persona/components/modals/PersonaEditModal.tsx:805
 msgid "Delete Persona"
 msgstr "حذف الشخصية"
 
@@ -11713,6 +11719,11 @@ msgstr "حذف هذه الرسالة"
 #: src/features/messaging/commands/MessageCommands.tsx:77
 msgid "Delete this message? Can't be undone."
 msgstr "هل تريد حذف هذه الرسالة؟ لا يمكن التراجع عن هذا الإجراء."
+
+#. Context menu action to delete a timestamp from the message composer.
+#: src/features/lexical/composer/nodes/ComposerTimestampContextMenu.tsx:20
+msgid "Delete timestamp"
+msgstr \"حذف الطابع الزمني\"
 
 #. Danger action in the channel permissions overwrite context menu that removes a member permission override from the channel.
 #: src/features/channel/components/modals/channel_tabs/channel_permissions_tab/OverwriteContextMenu.tsx:19
@@ -12582,8 +12593,9 @@ msgstr "وضع العرض"
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Short label in the inputs tab. Keep it concise.
 #. Short label in the my profile tab. Keep it concise.
+#: src/features/persona/components/modals/PersonaEditModal.tsx:660
 #: src/features/user/components/modals/tabs/component_gallery_tab/ComponentGalleryTabInputsTab.tsx:22
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:138
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:137
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:61
 msgid "Display name"
 msgstr "اسم العرض"
@@ -12601,7 +12613,7 @@ msgstr "اسم العرض (اختياري)"
 msgid "Display scaling"
 msgstr "حجم العرض"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:398
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:396
 msgid "Display Tag"
 msgstr "علامة العرض"
 
@@ -12615,7 +12627,7 @@ msgstr "تمت إزالة رمز علامة العرض"
 msgid "Display tag icon updated"
 msgstr "تم تحديث رمز علامة العرض"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:401
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:399
 msgid "Display tag will appear next to all persona names in messages. If no display tag is set, your account profile picture will be shown."
 msgstr "ستظهر علامة العرض بجوار جميع أسماء الشخصيات في الرسائل. إذا لم يتم تعيين علامة عرض، فستظهر صورة ملف تعريف حسابك."
 
@@ -12747,7 +12759,7 @@ msgstr "هل تريد الانضمام إلى {communityName}؟"
 #. Label in the accessibility tab.
 #. Label in the my profile tab.
 #: src/features/user/components/modals/tabs/AccessibilityTab.tsx:54
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:146
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:145
 msgid "Doc, I'm from the future. I came here in a time machine that you invented. Now, I need your help to get back to the year 1985."
 msgstr "يا دكتور، أنا من المستقبل. جئت إلى هنا بآلة زمن اخترعتها أنت. والآن، أحتاج مساعدتك للعودة إلى عام 1985."
 
@@ -12874,6 +12886,8 @@ msgstr "انقر نقرًا مزدوجًا على شخص ما لمشاهدة ب�
 
 #. Settings search entry label for double-clicking a message to edit it.
 #. Short label for an advanced message editing preference.
+#. Tooltip hint on timestamp pill in message composer.
+#: src/features/lexical/composer/nodes/ComposerTimestampPill.tsx:28
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:309
 #: src/features/user/components/settings_utils/search_index/AdvancedSettingsIndex.ts:56
 msgid "Double-click to edit"
@@ -13159,7 +13173,7 @@ msgid "Duplicate role"
 msgstr "تكرار الدور"
 
 #. Validation error when tag pair is duplicated within the same persona
-#: src/features/persona/components/modals/PersonaEditModal.tsx:134
+#: src/features/persona/components/modals/PersonaEditModal.tsx:131
 msgid "Duplicate tag pair on this persona"
 msgstr "زوج علامات مكرر في هذه الشخصية"
 
@@ -13174,14 +13188,19 @@ msgid "Dutch"
 msgstr "الهولندية"
 
 #. Placeholder for persona name
-#: src/features/persona/components/modals/PersonaEditModal.tsx:102
+#: src/features/persona/components/modals/PersonaEditModal.tsx:99
 msgid "e.g. Alice"
 msgstr "مثال: أليس"
 
 #. Placeholder for persona pronouns
-#: src/features/persona/components/modals/PersonaEditModal.tsx:106
+#: src/features/persona/components/modals/PersonaEditModal.tsx:103
 msgid "e.g. she/her"
 msgstr "مثال: هي/لها"
+
+#. Placeholder text for natural language timestamp input.
+#: src/features/channel/components/modals/TimestampModal.tsx:32
+msgid "e.g. tomorrow at 3pm, in 2 hours, now"
+msgstr "مثال: غدًا في 3 مساءً، خلال ساعتين، الآن"
 
 #. Placeholder or example text in the authentication passkey name modal. Keep the tone plain and specific.
 #: src/features/auth/components/modals/PasskeyNameModal.tsx:27
@@ -13368,7 +13387,7 @@ msgid "Edit persona"
 msgstr "تعديل الشخصية"
 
 #. Title for edit persona modal
-#: src/features/persona/components/modals/PersonaEditModal.tsx:50
+#: src/features/persona/components/modals/PersonaEditModal.tsx:51
 msgid "Edit Persona"
 msgstr "تعديل الشخصية"
 
@@ -13381,7 +13400,7 @@ msgid "Edit profile"
 msgstr "تعديل الملف الشخصي"
 
 #. Button label in profile settings. Opens the profile local time modal.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:33
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:32
 msgid "Edit profile local time"
 msgstr "تعديل التوقيت المحلي للملف الشخصي"
 
@@ -13428,13 +13447,20 @@ msgstr "تعديل الملصق {stickerName}"
 msgid "Edit the bot avatar, tag, bio, banner, and friend request behavior"
 msgstr "تعديل صورة البوت الرمزية، والعلامة، والنبذة، واللافتة، وسلوك طلبات الصداقة"
 
+#. Context menu action to edit a timestamp in the message composer.
+#. Title of the timestamp modal when editing an existing timestamp.
+#: src/features/channel/components/modals/TimestampModal.tsx:28
+#: src/features/lexical/composer/nodes/ComposerTimestampContextMenu.tsx:10
+msgid "Edit timestamp"
+msgstr \"تعديل الطابع الزمني\"
+
 #. Button or menu action label in the add custom search engine modal. Keep it concise.
 #: src/features/user/components/modals/tabs/chat_settings_tab/AddCustomSearchEngineModal.tsx:34
 msgid "Edit translation provider"
 msgstr "تعديل مزود الترجمة"
 
 #. Button or menu action label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:93
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:92
 msgid "Edit your profile appearance and see a live preview"
 msgstr "عدّل مظهر ملفك الشخصي وشاهد معاينة مباشرة"
 
@@ -14533,7 +14559,7 @@ msgstr "كل القنوات"
 
 #. Profile timezone privacy option label. Allows anyone who can view the full profile to see local time.
 #: src/features/connection/components/modals/EditConnectionModal.tsx:79
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:55
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:50
 #: src/features/user/components/modals/tabs/privacy_safety_tab/ConnectionsTab.tsx:234
 msgid "Everyone"
 msgstr "الجميع"
@@ -14940,7 +14966,7 @@ msgid "Failed to delete channel"
 msgstr "تعذّر حذف القناة"
 
 #. Toast when persona deletion fails
-#: src/features/persona/components/modals/PersonaEditModal.tsx:70
+#: src/features/persona/components/modals/PersonaEditModal.tsx:71
 msgid "Failed to delete persona"
 msgstr "فشل حذف الشخصية"
 
@@ -15115,7 +15141,7 @@ msgid "Failed to reset premium state."
 msgstr "تعذّر إعادة تعيين حالة Premium."
 
 #. Toast when persona save fails
-#: src/features/persona/components/modals/PersonaEditModal.tsx:62
+#: src/features/persona/components/modals/PersonaEditModal.tsx:63
 msgid "Failed to save persona"
 msgstr "فشل حفظ الشخصية"
 
@@ -15881,6 +15907,11 @@ msgstr "نسيت كلمة المرور"
 msgid "Forgot your password?"
 msgstr "هل نسيت كلمة المرور؟"
 
+#. Label for format preview selection in timestamp modal.
+#: src/features/channel/components/modals/TimestampModal.tsx:48
+msgid "Format preview"
+msgstr "معاينة التنسيق"
+
 #. Collapsible group heading in the Theme Studio tokens list, for form input tokens.
 #: src/features/theme_studio/sections/TokenGroups.ts:90
 msgid "Forms"
@@ -16044,7 +16075,7 @@ msgstr "بوت يقبل الصداقة"
 #: src/features/channel/components/direct_message/DirectMessageList.tsx:555
 #: src/features/connection/components/modals/EditConnectionModal.tsx:86
 #: src/features/search/utils/QuickSwitcherModalUtils.tsx:49
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:63
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:58
 #: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:89
 msgid "Friends"
 msgstr "الأصدقاء"
@@ -17980,7 +18011,7 @@ msgstr "استيراد مجلد"
 
 #. Modal title for PluralKit import step select
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:485
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:510
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:508
 msgid "Import from PluralKit"
 msgstr "استيراد من PluralKit"
 
@@ -18413,6 +18444,11 @@ msgstr "حقول الإدخال والنص"
 msgid "Inputs with icons"
 msgstr "حقول بأيقونات"
 
+#. Button to insert timestamp into message composer.
+#: src/features/channel/components/modals/TimestampModal.tsx:52
+msgid "Insert"
+msgstr "إدراج"
+
 #: src/features/input/utils/KeybindUtils.ts:87
 msgctxt "keyboard-key-name"
 msgid "Insert"
@@ -18422,6 +18458,15 @@ msgstr "إدراج"
 #: src/features/channel/components/modals/channel_tabs/channel_overview_tab/ChannelOverviewTopicEditor.tsx:44
 msgid "Insert emoji"
 msgstr "إدراج رمز تعبيري"
+
+#. Button or menu action label in the channel and chat mobile textarea plus bottom sheet. Keep it concise.
+#. Plus menu item that opens the dynamic timestamp insertion modal.
+#. Title of the timestamp insertion modal.
+#: src/features/channel/components/modals/TimestampModal.tsx:24
+#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:13
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:19
+msgid "Insert timestamp"
+msgstr "إدراج طابع زمني"
 
 #. CTA card body in the screen-share picker promoting the desktop app. {productName} is Fluxer.
 #: src/features/voice/components/modals/screen_share_picker_modal/DesktopDownloadCta.tsx:16
@@ -20122,7 +20167,7 @@ msgstr "تم جعل القناة ترث إعداد المحتوى للبالغي
 msgid "Mail"
 msgstr "البريد"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:873
+#: src/features/persona/components/modals/PersonaEditModal.tsx:877
 #: src/features/persona/components/PersonaProfileMobileSheet.tsx:369
 #: src/features/persona/components/PersonaProfilePopout.tsx:264
 msgid "Main account"
@@ -22280,10 +22325,6 @@ msgstr "تجاوزات شريط التنبيه"
 msgid "Name"
 msgstr "الاسم"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:664
-msgid "Name *"
-msgstr "الاسم *"
-
 #. Form validation error shown when the name field is empty.
 #. Form validation error shown when the name field is empty.
 #: src/features/expressions/components/modals/meme_form/MemeFormFields.tsx:16
@@ -22587,7 +22628,7 @@ msgid "New password"
 msgstr "كلمة مرور جديدة"
 
 #. Title for new persona modal
-#: src/features/persona/components/modals/PersonaEditModal.tsx:46
+#: src/features/persona/components/modals/PersonaEditModal.tsx:47
 msgid "New Persona"
 msgstr "شخصية جديدة"
 
@@ -22890,7 +22931,7 @@ msgstr "لا يوجد وصف."
 msgid "No desktop update is available."
 msgstr "لا يتوفر تحديث لتطبيق سطح المكتب."
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:491
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:489
 msgid "No display tag configured. Messages will show your account profile picture."
 msgstr "لم يتم تكوين علامة عرض. ستُظهر الرسائل صورة ملف تعريف حسابك."
 
@@ -23020,7 +23061,7 @@ msgid "No matches found"
 msgstr "لم يتم العثور على نتائج مطابقة"
 
 #: src/features/persona/components/PersonaPickerSheet.tsx:202
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:550
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:548
 msgid "No matching personas found."
 msgstr "لم يتم العثور على شخصيات مطابقة."
 
@@ -23083,7 +23124,7 @@ msgstr "لا توجد كلمات في قاموسك الشخصي بعد."
 msgid "No personas configured yet. Create one in Settings."
 msgstr "لم يتم تكوين شخصيات بعد. أنشئ واحدة في الإعدادات."
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:546
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:544
 msgid "No personas created yet. Click \"Add Persona\" to create your first persona!"
 msgstr "No personas created yet. Click \"Add Persona\" to create your first persona!"
 
@@ -23143,8 +23184,10 @@ msgstr "لا توجد نتائج"
 
 #. Empty state shown when a combobox search returns no matches.
 #. Empty state shown when a combobox search returns no matches.
+#. Empty state shown when a combobox search returns no matches.
 #: src/features/channel/components/embeds/attachments/TextualAttachmentLanguageCombobox.tsx:30
 #: src/features/ui/components/form/FormCombobox.tsx:83
+#: src/features/ui/components/form/SearchableTimeZonePicker.tsx:46
 msgid "No results found"
 msgstr "لم يتم العثور على نتائج"
 
@@ -23462,7 +23505,7 @@ msgstr "ليس من ضمن الاختيارات"
 #. Option in the profile timezone picker. Means no timezone has been selected.
 #. Status chip for a macOS permission that has not been requested.
 #: src/features/permissions/system/components/modals/MacPermissionsModal.tsx:64
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:41
+#: src/features/ui/components/form/SearchableTimeZonePicker.tsx:50
 msgid "Not set"
 msgstr "غير محدد"
 
@@ -23859,7 +23902,7 @@ msgid "Only the selected ones"
 msgstr "المحددة فقط"
 
 #. Helper description for private persona visibility
-#: src/features/persona/components/modals/PersonaEditModal.tsx:94
+#: src/features/persona/components/modals/PersonaEditModal.tsx:95
 msgid "Only visible to you. Others cannot view this persona’s full bio or profile details."
 msgstr "مرئي لك فقط. لا يمكن للآخرين عرض السيرة الذاتية الكاملة أو تفاصيل الملف الشخصي لهذه الشخصية."
 
@@ -24525,7 +24568,7 @@ msgid "Other methods"
 msgstr "طرق أخرى"
 
 #. Privacy note in profile timezone settings. Preserve {timezoneIdentifierExample}; it is inserted by code as an IANA timezone identifier example. productName is the app name. Users should understand that only the UTC offset is shown to other people.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:49
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:44
 msgid "Other people can only see your current UTC offset when you choose to share profile local time. They do not see your exact time zone identifier, such as {timezoneIdentifierExample}. {productName} stores that identifier only so the offset can update automatically when daylight saving time changes."
 msgstr "لا يرى الآخرون إزاحتك الحالية عن التوقيت العالمي المنسق (UTC) إلا عندما تختار مشاركة الوقت المحلي في ملفك الشخصي. ولا يرون معرف منطقتك الزمنية الدقيق، مثل {timezoneIdentifierExample}. يخزّن {productName} هذا المعرف فقط لكي تُحدَّث الإزاحة تلقائيًا عند تغيّر التوقيت الصيفي."
 
@@ -25098,12 +25141,12 @@ msgid "Permissions for {0}"
 msgstr "أذونات {0}"
 
 #. Toast when persona is created
-#: src/features/persona/components/modals/PersonaEditModal.tsx:58
+#: src/features/persona/components/modals/PersonaEditModal.tsx:59
 msgid "Persona created"
 msgstr "تم إنشاء الشخصية"
 
 #. Toast when persona is deleted
-#: src/features/persona/components/modals/PersonaEditModal.tsx:66
+#: src/features/persona/components/modals/PersonaEditModal.tsx:67
 msgid "Persona deleted"
 msgstr "تم حذف الشخصية"
 
@@ -25121,17 +25164,17 @@ msgstr "ملف تعريف الشخصية"
 msgid "Persona profile: {name}"
 msgstr "ملف تعريف الشخصية: {name}"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:740
+#: src/features/persona/components/modals/PersonaEditModal.tsx:730
 msgid "Persona Tags (Prefix & Suffix)"
 msgstr "علامات الشخصية (البادئة واللاحقة)"
 
 #. Toast when persona is updated
-#: src/features/persona/components/modals/PersonaEditModal.tsx:54
+#: src/features/persona/components/modals/PersonaEditModal.tsx:55
 msgid "Persona updated"
 msgstr "تم تحديث الشخصية"
 
 #. Aria label for persona visibility tabs
-#: src/features/persona/components/modals/PersonaEditModal.tsx:130
+#: src/features/persona/components/modals/PersonaEditModal.tsx:127
 msgid "Persona visibility"
 msgstr "رؤية الشخصية"
 
@@ -25681,7 +25724,7 @@ msgid "Prefers reduced motion"
 msgstr "يفضل تقليل الحركة"
 
 #. Placeholder for persona tag prefix
-#: src/features/persona/components/modals/PersonaEditModal.tsx:114
+#: src/features/persona/components/modals/PersonaEditModal.tsx:111
 msgid "Prefix (e.g. [)"
 msgstr "بادئة (مثال: [)"
 
@@ -25803,7 +25846,7 @@ msgstr "منع الأعضاء من إرسال الرسائل وإضافة ردو
 
 #: src/features/expressions/components/modals/sticker_form/StickerPreview.tsx:21
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildInviteSplashSettingsField.tsx:45
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:465
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:463
 #: src/features/user/components/modals/tabs/EmbedDebuggerTab.tsx:276
 msgid "Preview"
 msgstr "معاينة"
@@ -26012,7 +26055,7 @@ msgid "Privacy violation or stalking"
 msgstr "انتهاك الخصوصية أو الملاحقة"
 
 #. Persona visibility private
-#: src/features/persona/components/modals/PersonaEditModal.tsx:82
+#: src/features/persona/components/modals/PersonaEditModal.tsx:83
 msgid "Private"
 msgstr "خاص"
 
@@ -26072,7 +26115,7 @@ msgstr "الملف الشخصي"
 msgid "Profile badge"
 msgstr "شارة الملف الشخصي"
 
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:165
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:163
 msgid "Profile banners are a {PREMIUM_PRODUCT_NAME} feature. Get {PREMIUM_PRODUCT_NAME} to add a banner to your profile."
 msgstr "لافتات الملف الشخصي ميزة من {PREMIUM_PRODUCT_NAME}. احصل على {PREMIUM_PRODUCT_NAME} لإضافة لافتة إلى ملفك الشخصي."
 
@@ -26092,12 +26135,12 @@ msgid "Profile banners require {premiumProductName}."
 msgstr "تتطلب لافتات الملف الشخصي {premiumProductName}."
 
 #. Helper description for unlisted persona visibility
-#: src/features/persona/components/modals/PersonaEditModal.tsx:86
+#: src/features/persona/components/modals/PersonaEditModal.tsx:87
 msgid "Profile cards are accessible only when clicking on messages sent by this persona. Not listed in your public persona list."
 msgstr "بطاقات الملف الشخصي يمكن الوصول إليها فقط عند النقر على الرسائل المرسلة من هذه الشخصية. غير مدرجة في قائمة شخصياتك العامة."
 
 #. Helper description for public persona visibility
-#: src/features/persona/components/modals/PersonaEditModal.tsx:90
+#: src/features/persona/components/modals/PersonaEditModal.tsx:91
 msgid "Profile cards are accessible when clicking on messages and visible in your public personas list to friends and mutual servers."
 msgstr "بطاقات الملف الشخصي يمكن الوصول إليها عند النقر على الرسائل وهي مرئية في قائمة شخصياتك العامة للأصدقاء والخوادم المشتركة."
 
@@ -26108,18 +26151,18 @@ msgstr "لون الملف الشخصي"
 
 #. Settings section label for editing profile appearance and identity.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:105
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:104
 #: src/features/user/components/settings_utils/section_registry/GeneralSettingsSections.ts:6
 msgid "Profile customization"
 msgstr "تخصيص الملف الشخصي"
 
 #. Label in the my profile tab. Preserve {selectedGuildName}; it is inserted by code.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:101
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:100
 msgid "Profile customization for {selectedGuildName}"
 msgstr "تخصيص الملف الشخصي لـ {selectedGuildName}"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:97
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:96
 msgid "Profile customization form"
 msgstr "نموذج تخصيص الملف الشخصي"
 
@@ -26129,7 +26172,7 @@ msgid "Profile data warning"
 msgstr "تحذير بيانات الملف الشخصي"
 
 #. Profile settings row title for choosing whether profile viewers can see the user local time.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:23
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:22
 msgid "Profile local time"
 msgstr "الوقت المحلي في الملف الشخصي"
 
@@ -26153,7 +26196,6 @@ msgstr "صورة الملف الشخصي"
 msgid "Profile pictures"
 msgstr "صور الملف الشخصي"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:809
 #: src/features/user/components/profile/profile_card/ProfileCardLayout.tsx:26
 msgid "Profile preview"
 msgstr "معاينة الملف الشخصي"
@@ -26185,7 +26227,7 @@ msgid "Profile type"
 msgstr "نوع الملف الشخصي"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:77
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:76
 msgid "Profile updated"
 msgstr "تم تحديث الملف الشخصي"
 
@@ -26222,8 +26264,8 @@ msgstr "السؤال عند توصيل أجهزة صوت جديدة"
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/persona/components/modals/PersonaEditModal.tsx:678
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:142
+#: src/features/persona/components/modals/PersonaEditModal.tsx:670
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:141
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:177
 #: src/features/user/components/settings_utils/section_registry/PrivacySafetySections.ts:160
 msgid "Pronouns"
@@ -26264,7 +26306,7 @@ msgid "PTT"
 msgstr "PTT"
 
 #. Persona visibility public
-#: src/features/persona/components/modals/PersonaEditModal.tsx:78
+#: src/features/persona/components/modals/PersonaEditModal.tsx:79
 msgid "Public"
 msgstr "عام"
 
@@ -27157,8 +27199,8 @@ msgstr "إزالة المرفق"
 msgid "Remove authenticator app"
 msgstr "إزالة تطبيق المصادقة"
 
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:407
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:445
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:405
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:441
 msgid "Remove avatar"
 msgstr "إزالة الصورة الرمزية"
 
@@ -27167,8 +27209,8 @@ msgstr "إزالة الصورة الرمزية"
 msgid "Remove background"
 msgstr "إزالة الخلفية"
 
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:316
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:357
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:314
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:353
 msgid "Remove banner"
 msgstr "إزالة اللافتة"
 
@@ -27235,7 +27277,7 @@ msgstr "إزالة من صور GIF المفضلة (بالرابط فقط)"
 #: src/features/channel/components/modals/EditGroupModal.tsx:293
 #: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:314
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:635
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:446
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:444
 msgid "Remove icon"
 msgstr "إزالة الأيقونة"
 
@@ -27313,7 +27355,7 @@ msgid "Remove tag {tag}"
 msgstr "إزالة الوسم {tag}"
 
 #. Aria label for removing a tag pair
-#: src/features/persona/components/modals/PersonaEditModal.tsx:122
+#: src/features/persona/components/modals/PersonaEditModal.tsx:119
 msgid "Remove tag pair"
 msgstr "إزالة زوج العلامات"
 
@@ -27956,7 +27998,7 @@ msgstr "أُعيد الإرسال"
 #: src/features/app/components/floating/ColorPickerPopover.tsx:190
 #: src/features/input/components/KeybindRecorder.tsx:459
 #: src/features/messaging/components/modals/ImageCropModal.tsx:936
-#: src/features/persona/components/modals/PersonaEditModal.tsx:615
+#: src/features/persona/components/modals/PersonaEditModal.tsx:612
 msgid "Reset"
 msgstr "إعادة تعيين"
 
@@ -28835,7 +28877,7 @@ msgid "Save banner"
 msgstr "حفظ اللافتة"
 
 #: src/features/app/components/dialogs/shared/UnsavedChangesBannerContent.tsx:60
-#: src/features/persona/components/modals/PersonaEditModal.tsx:624
+#: src/features/persona/components/modals/PersonaEditModal.tsx:621
 msgid "Save changes"
 msgstr "حفظ التغييرات"
 
@@ -29465,7 +29507,9 @@ msgid "Search themes…"
 msgstr "البحث عن السمات…"
 
 #. Placeholder in the profile timezone picker.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:37
+#. Placeholder in timezone combobox.
+#: src/features/ui/components/form/SearchableTimeZonePicker.tsx:34
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:36
 msgid "Search time zones"
 msgstr "البحث عن المناطق الزمنية"
 
@@ -29939,8 +29983,8 @@ msgstr "إرسال GIF {title}"
 #. Action label for sending a gift to a friend.
 #. Button or menu action label in the channel and chat mobile textarea plus bottom sheet. Keep it concise.
 #. Plus menu item that opens the gift purchase flow.
-#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:21
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:31
+#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:25
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:35
 #: src/features/expressions/components/modals/GiftSendToFriendModal.tsx:30
 msgid "Send gift"
 msgstr "إرسال هدية"
@@ -30039,7 +30083,7 @@ msgstr "إرسال رمز التحقق"
 #. Accessible label and tooltip for the send button after recording a voice message.
 #. Keyboard shortcut action label that opens the desktop voice message composer.
 #. Plus menu item that opens the desktop voice message composer to record and send a voice clip.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:35
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:39
 #: src/features/channel/components/VoiceMessageRecorder.tsx:69
 #: src/features/input/state/input_keybind/shared.ts:289
 msgid "Send voice message"
@@ -30199,7 +30243,7 @@ msgstr "تعيين حالة مخصصة"
 msgid "Set a member list position for the role"
 msgstr "تم تعيين موضع في قائمة الأعضاء للدور"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:639
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:637
 msgid "Set Active"
 msgstr "تعيين كنشط"
 
@@ -30414,7 +30458,7 @@ msgid "Set your status"
 msgstr "تعيين حالتك"
 
 #. Description in profile settings for the button that opens timezone settings. productName is the app name. A timezone identifier means values like America/New_York; only the UTC offset can be visible to others.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:27
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:26
 msgid "Set your time zone once so {productName} can keep your UTC offset current when daylight saving time changes. Other people can only see your UTC offset, not your exact time zone identifier."
 msgstr "حدّد منطقتك الزمنية مرة واحدة ليُبقي {productName} فارق توقيتك عن UTC محدّثًا عند تغيّر التوقيت الصيفي. لا يرى الآخرون إلا فارق توقيتك عن UTC، وليس معرف منطقتك الزمنية الدقيق."
 
@@ -30830,7 +30874,7 @@ msgstr "إظهار التضمينات ومعاينة روابط المواقع"
 
 #. Short label for an advanced message input preference.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:59
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:63
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:129
 msgid "Show emoji button"
 msgstr "إظهار زر الرموز التعبيرية"
@@ -30869,7 +30913,7 @@ msgstr "إظهار مؤشر GIF"
 
 #. Plus menu submenu toggle that shows the GIFs button next to the textarea.
 #. Short label for an advanced message input preference.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:43
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:47
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:109
 msgid "Show GIFs button"
 msgstr "إظهار زر صور GIF"
@@ -30918,7 +30962,7 @@ msgstr "عرض 5 كحد أقصى (شارة +5)"
 
 #. Plus menu submenu toggle that shows the saved media (memes) button next to the textarea.
 #. Short label for an advanced message input preference.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:47
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:51
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:113
 msgid "Show media button"
 msgstr "إظهار زر الوسائط"
@@ -31044,7 +31088,7 @@ msgstr "إظهار عناصر تحكم مستوى صوت المشاركين لك
 
 #. Plus menu submenu toggle that shows the persona selector next to the textarea.
 #. Short label for an advanced message input preference.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:51
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:55
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:133
 msgid "Show personas button"
 msgstr "إظهار زر الشخصيات"
@@ -31073,7 +31117,7 @@ msgstr "إظهار الوسائط المحفوظة في الإكمال التل�
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #: src/features/channel/components/textarea/TextareaContextMenu.tsx:102
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:63
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:67
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:137
 msgid "Show send button"
 msgstr "إظهار زر الإرسال"
@@ -31090,7 +31134,7 @@ msgstr "إظهار المحتوى المخفي عند النقر"
 
 #. Short label for an advanced message input preference.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:55
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:59
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:125
 msgid "Show stickers button"
 msgstr "إظهار زر الملصقات"
@@ -32913,9 +32957,14 @@ msgid "Successfully imported {0} persona(s) into your account. All avatar images
 msgstr "تم استيراد {0} شخصية/شخصيات بنجاح إلى حسابك. جميع صور الصور الرمزية مخزنة بأمان على الخادم المحلي الخاص بك."
 
 #. Placeholder for persona tag suffix
-#: src/features/persona/components/modals/PersonaEditModal.tsx:118
+#: src/features/persona/components/modals/PersonaEditModal.tsx:115
 msgid "Suffix (e.g. ])"
 msgstr "لاحقة (مثال: ])"
+
+#. Section header for suggested time zones in the timestamp modal.
+#: src/features/ui/components/form/SearchableTimeZonePicker.tsx:38
+msgid "Suggested"
+msgstr "مقترح"
 
 #. Helper text under the "Filter members without roles" explicit content filter option in the community moderation settings tab.
 #: src/features/guild/components/modals/guild_tabs/GuildModerationTab.tsx:112
@@ -33379,16 +33428,16 @@ msgstr "الجداول"
 msgid "Tag"
 msgstr "العلامة"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:426
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:424
 msgid "Tag Icon"
 msgstr "رمز العلامة"
 
 #. Validation error when tag pair is already used by another persona
-#: src/features/persona/components/modals/PersonaEditModal.tsx:138
+#: src/features/persona/components/modals/PersonaEditModal.tsx:135
 msgid "Tag pair already in use by persona \"{name}\""
 msgstr "Tag pair already in use by persona \"{name}\""
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:413
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:411
 msgid "Tag Text"
 msgstr "نص العلامة"
 
@@ -33482,7 +33531,7 @@ msgid "Teleporting you to another voice region..."
 msgstr "جارٍ نقلك إلى منطقة صوتية أخرى..."
 
 #. Placeholder for persona bio
-#: src/features/persona/components/modals/PersonaEditModal.tsx:110
+#: src/features/persona/components/modals/PersonaEditModal.tsx:107
 msgid "Tell us about this persona..."
 msgstr "حدثنا عن هذه الشخصية..."
 
@@ -34559,7 +34608,7 @@ msgstr "هذا رمز تعبيري مخصص من أحد المجتمعات."
 msgid "This is a custom sticker from a community."
 msgstr "هذا ملصق مخصص من مجتمع."
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:489
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:487
 msgid "This is a preview of how your display tag will look in chat."
 msgstr "هذه معاينة لكيفية ظهور علامة العرض الخاصة بك في الدردشة."
 
@@ -34717,7 +34766,7 @@ msgid "This message no longer exists."
 msgstr "لم تعد هذه الرسالة موجودة."
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:130
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:129
 msgid "This nickname will only be visible in this community"
 msgstr "سيظهر هذا الاسم المستعار في هذا المجتمع فقط"
 
@@ -35052,8 +35101,10 @@ msgid "Thumbnail preview"
 msgstr "معاينة الصورة المصغرة"
 
 #. Form field label for a time value.
+#. Label for time input in timestamp modal.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
+#: src/features/channel/components/modals/TimestampModal.tsx:40
 #: src/features/ui/components/form/DateTimePickerField.tsx:34
 #: src/features/user/components/settings_utils/search_index/LanguageIndex.ts:30
 #: src/features/user/components/settings_utils/section_registry/AppearanceSections.ts:282
@@ -35095,7 +35146,9 @@ msgid "Time range"
 msgstr "النطاق الزمني"
 
 #. Field label in profile settings for choosing the timezone used to show local time on the profile.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:19
+#. Label for time zone input in timestamp modal.
+#: src/features/channel/components/modals/TimestampModal.tsx:44
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:18
 msgid "Time zone"
 msgstr "المنطقة الزمنية"
 
@@ -36393,7 +36446,7 @@ msgid "unknown-role"
 msgstr "unknown-role"
 
 #. Persona visibility unlisted
-#: src/features/persona/components/modals/PersonaEditModal.tsx:74
+#: src/features/persona/components/modals/PersonaEditModal.tsx:75
 msgid "Unlisted"
 msgstr "غير مدرج"
 
@@ -36955,8 +37008,8 @@ msgstr "تحميل رمز تعبيري"
 
 #. Button or menu action label in the channel and chat mobile textarea plus bottom sheet. Keep it concise.
 #. Plus menu item that opens the system file picker to attach a file.
-#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:13
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:23
+#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:17
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:27
 msgid "Upload file"
 msgstr "تحميل ملف"
 
@@ -36975,7 +37028,7 @@ msgstr "تحميل الملفات والوسائط في هذه القناة."
 #: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:305
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:626
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildIconUploadField.tsx:130
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:456
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:454
 msgid "Upload icon"
 msgstr "تحميل أيقونة"
 
@@ -37015,8 +37068,8 @@ msgstr "التحميل إلى {displayName}"
 
 #. Button or menu action label in the channel and chat mobile textarea plus bottom sheet. Keep it concise.
 #. Plus menu item that uploads the current textarea content as a .txt file when it exceeds the size limit.
-#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:17
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:27
+#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:21
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:31
 msgid "Upload your message as a file"
 msgstr "تحميل رسالتك كملف"
 
@@ -37914,22 +37967,22 @@ msgid "Verify your email before adding an authenticator app."
 msgstr "تحقق من بريدك الإلكتروني قبل إضافة تطبيق مصادقة."
 
 #. Description text in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:117
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:116
 msgid "Verify your email before changing your community nickname, avatar, banner, bio, pronouns, or accent color."
 msgstr "تحقق من بريدك الإلكتروني قبل تغيير اسمك المستعار في المجتمع أو صورتك الرمزية أو لافتتك أو نبذتك الشخصية أو الضمائر أو لون التمييز."
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:121
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:120
 msgid "Verify your email before changing your username, display name, avatar, banner, bio, pronouns, time zone, or {premiumProductName} badge privacy."
 msgstr "تحقق من بريدك الإلكتروني قبل تغيير اسم المستخدم أو اسم العرض أو الصورة الرمزية أو اللافتة أو النبذة الشخصية أو الضمائر أو المنطقة الزمنية أو خصوصية شارة {premiumProductName}."
 
 #. Description text in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:85
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:84
 msgid "Verify your email before editing this community profile. You can still preview it here."
 msgstr "تحقق من بريدك الإلكتروني قبل تعديل ملفك الشخصي في هذا المجتمع. لا يزال بإمكانك معاينته هنا."
 
 #. Description text in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:89
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:88
 msgid "Verify your email before editing your profile. You can still preview it here."
 msgstr "تحقق من بريدك الإلكتروني قبل تعديل ملفك الشخصي. لا يزال بإمكانك معاينته هنا."
 
@@ -37961,12 +38014,12 @@ msgid "Verify your email to continue using {productName}."
 msgstr "تحقق من بريدك الإلكتروني لمتابعة استخدام {productName}."
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:109
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:108
 msgid "Verify your email to edit this community profile"
 msgstr "تحقق من بريدك الإلكتروني لتعديل ملفك الشخصي في هذا المجتمع"
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:113
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:112
 msgid "Verify your email to edit your profile"
 msgstr "تحقق من بريدك الإلكتروني لتعديل ملفك الشخصي"
 
@@ -38403,7 +38456,7 @@ msgid "Virginia"
 msgstr "فرجينيا"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/persona/components/modals/PersonaEditModal.tsx:721
+#: src/features/persona/components/modals/PersonaEditModal.tsx:782
 #: src/features/user/components/settings_utils/section_registry/AccessibilitySections.ts:39
 msgid "Visibility"
 msgstr "الرؤية"
@@ -39516,7 +39569,7 @@ msgctxt "us-state"
 msgid "Wisconsin"
 msgstr "ويسكونسن"
 
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:217
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:215
 msgid "With {PREMIUM_PRODUCT_NAME}, you can use animated avatars ({ANIMATED_AVATAR_FORMATS}) and profile banners, customize your tag, and unlock many other {PREMIUM_PRODUCT_NAME} perks."
 msgstr "مع {PREMIUM_PRODUCT_NAME}، يمكنك استخدام صور رمزية متحركة ({ANIMATED_AVATAR_FORMATS}) ولافتات الملف الشخصي، وتخصيص علامتك، وفتح الكثير من مزايا {PREMIUM_PRODUCT_NAME} الأخرى."
 
@@ -39786,6 +39839,7 @@ msgstr "لا يزال بإمكانك إنشاء حساب أو تسجيل الد�
 msgid "You can still email {supportEmail} for a human review at any time."
 msgstr "لا يزال بإمكانك مراسلة {supportEmail} للمراجعة البشرية في أي وقت."
 
+#: src/features/persona/components/modals/PersonaEditModal.tsx:718
 #: src/features/user/components/modals/tabs/my_profile_tab/BioEditor.tsx:288
 msgid "You can use links, emoji, and Markdown."
 msgstr "يمكنك استخدام الروابط والرموز التعبيرية وتنسيق ماركداون."
@@ -39811,7 +39865,7 @@ msgid "You can't befriend yourself"
 msgstr "لا يمكنك إضافة نفسك كصديق"
 
 #. Label in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:134
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:133
 msgid "You can't change your nickname here"
 msgstr "لا يمكنك تغيير اسمك المستعار هنا"
 
@@ -39929,7 +39983,7 @@ msgid "You can't unmute yourself because a moderator muted you."
 msgstr "لا يمكنك إلغاء كتم صوتك لأن أحد المشرفين كتم صوتك."
 
 #. Tooltip on the disabled upload file item when the user lacks Attach Files permission. Calm, factual tone.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:19
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:23
 msgid "You can't upload files in this channel."
 msgstr "لا يمكنك تحميل الملفات في هذه القناة."
 
@@ -40057,12 +40111,12 @@ msgid "You have refunded recently"
 msgstr "لقد استرددت أموالك مؤخرًا"
 
 #: src/features/app/components/dialogs/shared/UnsavedChangesBannerContent.tsx:37
-#: src/features/persona/components/modals/PersonaEditModal.tsx:604
+#: src/features/persona/components/modals/PersonaEditModal.tsx:601
 msgid "You have unsaved changes."
 msgstr "لديك تغييرات غير محفوظة."
 
 #. Warning text in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:81
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:80
 msgid "You have unsaved changes. Save or reset before leaving."
 msgstr "لديك تغييرات غير محفوظة. احفظها أو أعد تعيينها قبل المغادرة."
 
