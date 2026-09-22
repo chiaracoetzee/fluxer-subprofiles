@@ -1490,6 +1490,9 @@ importers:
       bowser:
         specifier: 'catalog:'
         version: 2.14.1
+      chrono-node:
+        specifier: ^2.7.5
+        version: 2.10.1
       clsx:
         specifier: 'catalog:'
         version: 2.1.1
@@ -7275,6 +7278,10 @@ packages:
   chromium-pickle-js@0.2.0:
     resolution: {integrity: sha512-1R5Fho+jBq0DDydt+/vHWj5KJNJCKdARKOCwZUen84I5BreWoLqRLANH1U87eJy1tiASPtMnGqJJq0ZsLoRPOw==}
 
+  chrono-node@2.10.1:
+    resolution: {integrity: sha512-tPOsBzYVAK5zth+CiHCgp5NGeqRc4mMD8FPthQ5IxkgjPWWxIFdM5odnmfw//IRAzl6C++Xy8olQW7wn5qBR1g==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+
   ci-info@4.3.1:
     resolution: {integrity: sha512-Wdy2Igu8OcBpI2pZePZ5oWjPC38tmDVx5WKUXKwlLYkA0ozo85sLsLvkBbBn/sZaSCMFOGZJ14fvW9t5/d7kdA==}
     engines: {node: '>=8'}
@@ -8297,6 +8304,7 @@ packages:
   idna-uts46-hx@6.2.1:
     resolution: {integrity: sha512-ywCsEJObClsvgOeiUaV70O4sGZvwX+w2Svr1I+KECCtPelsuANcLK4Y1n+TZ3KNAlnQYMF6Te8rTZ2xbIuK8WQ==}
     engines: {node: ^24.15.0 || ^26.0.0, npm: '>=12.0.0'}
+    deprecated: contains no types file, upgrade to 6.2.2
     hasBin: true
 
   ieee754@1.2.1:
@@ -15480,7 +15488,7 @@ snapshots:
 
   '@types/set-cookie-parser@2.4.10':
     dependencies:
-      '@types/node': 26.6.1
+      '@types/node': 24.13.5
 
   '@types/statuses@2.0.6': {}
 
@@ -15496,7 +15504,7 @@ snapshots:
 
   '@types/ws@8.18.1':
     dependencies:
-      '@types/node': 26.6.1
+      '@types/node': 24.13.5
 
   '@types/yargs-parser@21.0.3': {}
 
@@ -16167,7 +16175,7 @@ snapshots:
 
   buffer-image-size@0.6.4:
     dependencies:
-      '@types/node': 26.6.1
+      '@types/node': 24.13.5
 
   buffer@5.6.0:
     dependencies:
@@ -16272,6 +16280,8 @@ snapshots:
   chownr@3.0.0: {}
 
   chromium-pickle-js@0.2.0: {}
+
+  chrono-node@2.10.1: {}
 
   ci-info@4.3.1: {}
 
@@ -17194,7 +17204,7 @@ snapshots:
 
   happy-dom@20.14.5:
     dependencies:
-      '@types/node': 26.6.1
+      '@types/node': 24.13.5
       '@types/whatwg-mimetype': 3.0.2
       '@types/ws': 8.18.1
       buffer-image-size: 0.6.4
