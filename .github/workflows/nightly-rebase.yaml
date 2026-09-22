@@ -224,7 +224,7 @@ jobs:
 
       - name: Stage 1 - Gemini Flash Conflict Resolution
         if: steps.attempt_rebase.outputs.has_conflicts == 'true'
-        timeout-minutes: 15
+        timeout-minutes: 25
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |

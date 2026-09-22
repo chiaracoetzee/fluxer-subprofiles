@@ -39,7 +39,7 @@ MD_TRANSCRIPT_FILE = "/tmp/rebase_transcript.md"
 APP_DATA_DIR = "/tmp/antigravity_data"
 LOG_SAVE_DIR = "/tmp/antigravity_data/sessions"
 CONVERSATION_ID = "fluxer-rebase-automation-session"
-TIMEOUT_SECONDS = 600  # 10 minute internal timeout
+TIMEOUT_SECONDS = 1200  # 20 minute internal timeout
 
 
 class MarkdownLogger:
