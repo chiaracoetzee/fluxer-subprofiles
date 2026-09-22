@@ -19,6 +19,7 @@ import type {
 	InstanceRegistration,
 	InstanceServices,
 	InstanceSso as InstanceSsoConfig,
+	ServerListButtons,
 } from '@fluxer/instance_bootstrap/src/Types';
 import {expandWireFormat} from '@fluxer/limits/src/LimitDiffer';
 import type {LimitConfigSnapshot, LimitConfigWireFormat} from '@fluxer/limits/src/LimitTypes';
@@ -35,6 +36,7 @@ export type {
 	InstanceRegistration,
 	InstanceServices,
 	InstanceSsoConfig,
+	ServerListButtons,
 };
 
 export interface RuntimeConfigSnapshot {
@@ -110,17 +112,30 @@ export const DEFAULT_INSTANCE_REGISTRATION: InstanceRegistration = {
 	admin_registration_urls_enabled: true,
 };
 
+export const DEFAULT_SERVER_LIST_BUTTONS: ServerListButtons = {
+	favorites: true,
+	explore: true,
+	create_join: true,
+	download: true,
+	help: true,
+};
+
 export const DEFAULT_INSTANCE_COMMUNITY: InstanceCommunity = {
 	single_community: false,
 	single_community_guild_id: null,
 	direct_messages_disabled: false,
 	community_creation_staff_only: false,
+	server_list_buttons: DEFAULT_SERVER_LIST_BUTTONS,
 };
 
 export function normalizeInstanceCommunity(community?: InstanceCommunity | null): InstanceCommunity {
 	return {
 		...DEFAULT_INSTANCE_COMMUNITY,
 		...(community ?? {}),
+		server_list_buttons: {
+			...DEFAULT_SERVER_LIST_BUTTONS,
+			...(community?.server_list_buttons ?? {}),
+		},
 	};
 }
 
@@ -441,6 +456,7 @@ class RuntimeConfig {
 					: null,
 				direct_messages_disabled: config.policy.direct_messages_disabled,
 				community_creation_staff_only: config.policy.community_creation_staff_only,
+				server_list_buttons: config.policy.server_list_buttons,
 			});
 			this.services = normalizeInstanceServices({
 				gif_enabled: config.policy.services_resolved.gif_enabled,
@@ -600,6 +616,10 @@ class RuntimeConfig {
 
 	get communityCreationStaffOnly(): boolean {
 		return this.community.community_creation_staff_only;
+	}
+
+	get serverListButtons(): ServerListButtons {
+		return this.community.server_list_buttons;
 	}
 
 	get gifEnabled(): boolean {

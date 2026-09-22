@@ -141,6 +141,7 @@ async function buildInstanceConfigResponse(): Promise<InstanceConfigResponse> {
 				youtube: integrations.youtube.effective_available,
 				bluesky: integrations.bluesky.effective_enabled,
 			},
+			server_list_buttons: policy.server_list_buttons,
 		},
 		integrations,
 		media,
@@ -747,6 +748,12 @@ function planInstancePolicyPatch(
 		if (policy.deferred_phone_gate.member_threshold !== undefined) {
 			patch.deferred_phone_gate_member_threshold = policy.deferred_phone_gate.member_threshold;
 		}
+	}
+	if (policy.server_list_buttons) {
+		patch.server_list_buttons = {
+			...current.server_list_buttons,
+			...policy.server_list_buttons,
+		};
 	}
 	return {patch, enablesSingleCommunity};
 }
