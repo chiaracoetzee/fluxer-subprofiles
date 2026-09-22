@@ -41223,3 +41223,54 @@ msgstr "人格资料"
 #: src/features/persona/components/PersonaProfileModal.tsx:14
 msgid "Persona profile: {name}"
 msgstr "人格资料：{name}"
+
+#. Section header for all time zones in the timestamp modal.
+#: src/features/ui/components/form/SearchableTimeZonePicker.tsx:42
+msgid "All time zones"
+msgstr "所有时区"
+
+#. Context menu action to copy a timestamp markdown tag in the message composer.
+#: src/features/lexical/composer/nodes/ComposerTimestampContextMenu.tsx:15
+msgid "Copy timestamp"
+msgstr \"复制时间戳\"
+
+#. Context menu action to delete a timestamp from the message composer.
+#: src/features/lexical/composer/nodes/ComposerTimestampContextMenu.tsx:20
+msgid "Delete timestamp"
+msgstr \"删除时间戳\"
+
+#. Placeholder text for natural language timestamp input.
+#: src/features/channel/components/modals/TimestampModal.tsx:32
+msgid "e.g. tomorrow at 3pm, in 2 hours, now"
+msgstr "例如：明天下午3点、2小时后、现在"
+
+#. Context menu action to edit a timestamp in the message composer.
+#. Title of the timestamp modal when editing an existing timestamp.
+#: src/features/channel/components/modals/TimestampModal.tsx:28
+#: src/features/lexical/composer/nodes/ComposerTimestampContextMenu.tsx:10
+msgid "Edit timestamp"
+msgstr \"编辑时间戳\"
+
+#. Label for format preview selection in timestamp modal.
+#: src/features/channel/components/modals/TimestampModal.tsx:48
+msgid "Format preview"
+msgstr "格式预览"
+
+#. Button to insert timestamp into message composer.
+#: src/features/channel/components/modals/TimestampModal.tsx:52
+msgid "Insert"
+msgstr "插入"
+
+#. Button or menu action label in the channel and chat mobile textarea plus bottom sheet. Keep it concise.
+#. Plus menu item that opens the dynamic timestamp insertion modal.
+#. Title of the timestamp insertion modal.
+#: src/features/channel/components/modals/TimestampModal.tsx:24
+#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:13
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:19
+msgid "Insert timestamp"
+msgstr "插入时间戳"
+
+#. Section header for suggested time zones in the timestamp modal.
+#: src/features/ui/components/form/SearchableTimeZonePicker.tsx:38
+msgid "Suggested"
+msgstr "推荐"
