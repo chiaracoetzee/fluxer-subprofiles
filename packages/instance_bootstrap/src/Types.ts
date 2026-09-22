@@ -19,6 +19,7 @@ export type {
 	InstanceRegistration,
 	InstanceServices,
 	InstanceSso,
+	ServerListButtons,
 } from '@fluxer/schema/src/domains/instance/InstanceSchemas';
 
 export interface InstanceDiscoveryResponse extends Omit<WellKnownFluxerResponse, 'limits'> {
