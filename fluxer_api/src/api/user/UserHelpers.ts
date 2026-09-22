@@ -285,6 +285,6 @@ export function isBugHunterBotUser(user: Pick<User, 'flags' | 'isBot'>): boolean
 	return user.isBot && (user.flags & UserFlags.BUG_HUNTER) !== 0n;
 }
 
-export function canUseProfileTimezone(user: Pick<PremiumCheckable, 'flags'>): boolean {
-	return (user.flags & UserFlags.STAFF) !== 0n;
+export function canUseProfileTimezone(_user: Pick<PremiumCheckable, 'flags'>): boolean {
+	return true;
 }

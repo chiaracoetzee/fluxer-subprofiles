@@ -14,7 +14,7 @@ msgstr ""
 "Plural-Forms: \n"
 "X-Generator: @lingui/cli\n"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:484
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:482
 msgid "— Today at 12:00 PM"
 msgstr "— Hôm nay lúc 12:00 PM"
 
@@ -960,7 +960,7 @@ msgstr "{count, plural, one {# tin nhắn bị chặn} other {# tin nhắn bị 
 msgid "{count, plural, one {# community found} other {# communities found}}"
 msgstr "{count, plural, one {# cộng đồng được tìm thấy} other {# cộng đồng được tìm thấy}}"
 
-#: src/features/app/components/layout/GuildsLayout.tsx:1968
+#: src/features/app/components/layout/GuildsLayout.tsx:1972
 msgid "{count, plural, one {# community is temporarily unavailable due to a flux capacitor malfunction.} other {# communities are temporarily unavailable due to a flux capacitor malfunction.}}"
 msgstr "{count, plural, one {# cộng đồng hiện không khả dụng do lỗi bộ biến đổi dòng chảy.} other {# cộng đồng hiện không khả dụng do lỗi bộ biến đổi dòng chảy.}}"
 
@@ -2547,6 +2547,7 @@ msgstr "Giới thiệu về {appName}"
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Short label in the user profile shared popout. Keep it concise.
 #: src/features/app/components/pages/YouPage.tsx:166
+#: src/features/persona/components/modals/PersonaEditModal.tsx:710
 #: src/features/persona/components/PersonaProfileMobileSheet.tsx:349
 #: src/features/persona/components/PersonaProfileMobileSheet.tsx:358
 #: src/features/user/components/modals/tabs/my_profile_tab/BioEditor.tsx:26
@@ -2578,7 +2579,6 @@ msgstr "Màu nhấn"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label in the accent color picker. Keep it concise.
-#: src/features/persona/components/modals/PersonaEditModal.tsx:692
 #: src/features/user/components/modals/tabs/my_profile_tab/AccentColorPicker.tsx:12
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:153
 msgid "Accent color"
@@ -2773,7 +2773,7 @@ msgstr "Thao tác"
 #. Subscription status badge meaning the paid subscription is active.
 #: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:445
 #: src/features/channel/components/channel_header_components/developer_tools/DeveloperToolsShared.ts:37
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:639
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:637
 #: src/features/user/components/settings_utils/search_index/DevicesIndex.ts:19
 msgid "Active"
 msgstr "Đang hoạt động"
@@ -2833,7 +2833,7 @@ msgstr "Đang hoạt động"
 msgid "Active persona mode"
 msgstr "Chế độ persona đang hoạt động"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:372
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:370
 msgid "Active Persona Mode"
 msgstr "Chế độ persona đang hoạt động"
 
@@ -2848,7 +2848,7 @@ msgid "Active yearly subscriber (cancellation scheduled)"
 msgstr "Người đăng ký gói năm đang hoạt động (đã lên lịch hủy)"
 
 #. Unicode emoji category label.
-#: src/features/expressions/utils/UnicodeEmojis.ts:33
+#: src/features/expressions/utils/UnicodeEmojis.ts:34
 msgid "Activities"
 msgstr "Hoạt động"
 
@@ -3119,7 +3119,7 @@ msgstr "Thêm quyền ghi đè"
 msgid "Add passkey"
 msgstr "Thêm khóa truy cập"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:513
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:511
 msgid "Add Persona"
 msgstr "Thêm persona"
 
@@ -3194,7 +3194,7 @@ msgid "Add stream"
 msgstr "Thêm luồng phát"
 
 #. placeholder {0}: formData.tags.length
-#: src/features/persona/components/modals/PersonaEditModal.tsx:749
+#: src/features/persona/components/modals/PersonaEditModal.tsx:739
 msgid "Add Tag Pair ({0}/5)"
 msgstr "Thêm cặp thẻ ({0}/5)"
 
@@ -3607,6 +3607,11 @@ msgstr "Tất cả các loại trạng thái"
 msgid "All time"
 msgstr "Toàn bộ thời gian"
 
+#. Section header for all time zones in the timestamp modal.
+#: src/features/ui/components/form/SearchableTimeZonePicker.tsx:42
+msgid "All time zones"
+msgstr "Tất cả múi giờ"
+
 #. Default option in the activity log "Filter by user" dropdown. Means no user filter is applied. Short standalone label.
 #: src/features/guild/components/modals/guild_tabs/GuildAuditLogTab.tsx:72
 msgid "All users"
@@ -3644,7 +3649,7 @@ msgid "Allow anyone to see this connection on your profile"
 msgstr "Cho phép mọi người xem kết nối này trên hồ sơ của bạn"
 
 #. Profile timezone privacy option description for the Everyone switch.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:59
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:54
 msgid "Allow anyone who can view your full profile to see your local time"
 msgstr "Cho phép bất kỳ ai xem được hồ sơ đầy đủ của bạn thấy giờ địa phương của bạn"
 
@@ -3719,7 +3724,7 @@ msgid "Allow members from communities you're in to see this connection"
 msgstr "Cho phép thành viên từ các cộng đồng bạn tham gia xem kết nối này"
 
 #. Profile timezone privacy option description for the Community members switch.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:71
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:66
 msgid "Allow members from communities you're in to see your local time"
 msgstr "Cho phép thành viên từ các cộng đồng bạn tham gia xem giờ địa phương của bạn"
 
@@ -3768,7 +3773,7 @@ msgid "Allow your friends to see this connection"
 msgstr "Cho phép bạn bè xem kết nối này"
 
 #. Profile timezone privacy option description for the Friends switch.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:67
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:62
 msgid "Allow your friends to see your local time"
 msgstr "Cho phép bạn bè xem giờ địa phương của bạn"
 
@@ -4011,11 +4016,11 @@ msgstr "Không hỗ trợ tệp {AVIF_FORMAT_LABEL} động. Vui lòng tải lê
 msgid "Animated {avifFormatLabel} not supported"
 msgstr "Không hỗ trợ {avifFormatLabel} động"
 
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:208
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:206
 msgid "Animated avatars ({ANIMATED_AVATAR_FORMATS}) are exclusively available to {PREMIUM_PRODUCT_NAME} subscribers."
 msgstr "Ảnh đại diện động ({ANIMATED_AVATAR_FORMATS}) chỉ dành riêng cho người đăng ký {PREMIUM_PRODUCT_NAME}."
 
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:242
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:240
 msgid "Animated avatars ({ANIMATED_AVATAR_FORMATS}) are not available on this instance. Upload a static image instead."
 msgstr "Ảnh đại diện động ({ANIMATED_AVATAR_FORMATS}) không khả dụng trên máy chủ này. Vui lòng tải lên ảnh tĩnh."
 
@@ -4478,7 +4483,7 @@ msgid "Are you sure you want to delete <0>{0}</0>?"
 msgstr "Bạn có chắc chắn muốn xóa <0>{0}</0> không?"
 
 #. placeholder {0}: formData.name
-#: src/features/persona/components/modals/PersonaEditModal.tsx:540
+#: src/features/persona/components/modals/PersonaEditModal.tsx:537
 msgid "Are you sure you want to delete <0>{0}</0>? This action cannot be undone."
 msgstr "Bạn có chắc chắn muốn xóa <0>{0}</0> không? Hành động này không thể hoàn tác."
 
@@ -5203,8 +5208,8 @@ msgstr "Có sẵn trong ứng dụng dành cho máy tính."
 #. Form label for a webhook avatar image.
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #: src/features/ui/components/BaseAvatar.tsx:18
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:375
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:424
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:373
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:421
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:13
 #: src/features/webhook/components/WebhookListItem.tsx:252
 msgid "Avatar"
@@ -5514,8 +5519,8 @@ msgstr "Người dùng bị cấm"
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildBannerUploadField.tsx:28
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildBannerUploadField.tsx:125
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:282
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:333
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:280
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:330
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:37
 msgid "Banner"
 msgstr "Ảnh bìa"
@@ -5624,7 +5629,6 @@ msgstr "Phím tắt"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/persona/components/modals/PersonaEditModal.tsx:707
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:129
 #: src/features/user/components/settings_utils/section_registry/PrivacySafetySections.ts:156
 msgid "Bio"
@@ -6703,8 +6707,8 @@ msgstr "Căn giữa"
 
 #. Title of the modal where the user picks an avatar source (file upload or GIF provider). Keep it concise.
 #: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:111
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:397
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:435
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:395
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:431
 msgid "Change avatar"
 msgstr "Đổi ảnh đại diện"
 
@@ -6716,8 +6720,8 @@ msgstr "Đổi hình nền"
 #. Title of the modal where the user picks a community banner source (file upload or GIF provider). Keep it concise.
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildBannerUploadField.tsx:43
 #: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:94
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:305
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:346
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:303
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:342
 msgid "Change banner"
 msgstr "Đổi ảnh bìa"
 
@@ -6764,7 +6768,7 @@ msgstr "Đổi biệt danh nhóm"
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:86
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:626
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildIconUploadField.tsx:35
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:438
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:436
 msgid "Change icon"
 msgstr "Đổi biểu tượng"
 
@@ -7608,7 +7612,7 @@ msgstr "Chọn cách lưu trữ GIF yêu thích đã gắn dấu sao"
 msgid "Choose how times are displayed throughout the app"
 msgstr "Chọn cách hiển thị thời gian trong ứng dụng"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:375
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:373
 msgid "Choose how untagged messages and persona tags interact with your active persona."
 msgstr "Chọn cách các tin nhắn không gắn thẻ và thẻ persona tương tác với persona đang hoạt động của bạn."
 
@@ -7661,7 +7665,7 @@ msgid "Choose the tab or window in your browser"
 msgstr "Chọn thẻ hoặc cửa sổ trong trình duyệt của bạn"
 
 #. Helper text under the profile timezone picker. productName is the app name.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:45
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:40
 msgid "Choose the time zone {productName} uses to calculate your UTC offset for profile local time."
 msgstr "Chọn múi giờ mà {productName} sử dụng để tính toán độ lệch UTC cho thời gian hiển thị trên hồ sơ của bạn."
 
@@ -7921,7 +7925,7 @@ msgstr "Xóa mô phỏng tệp đính kèm"
 
 #. Accessible label for the button that clears the slash command being composed in the message box.
 #. Accessible label for the composer button that clears the slash command currently being composed.
-#: src/features/channel/components/LexicalChannelTextareaContent.tsx:136
+#: src/features/channel/components/LexicalChannelTextareaContent.tsx:137
 #: src/features/channel/components/SlashCommandParamBar.tsx:16
 msgid "Clear command"
 msgstr "Xóa lệnh"
@@ -8680,7 +8684,7 @@ msgstr "Tên cộng đồng"
 
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:126
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:125
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:113
 msgid "Community nickname"
 msgstr "Biệt danh cộng đồng"
@@ -8733,7 +8737,7 @@ msgid "Community profile"
 msgstr "Hồ sơ cộng đồng"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:73
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:72
 msgid "Community profile updated"
 msgstr "Đã cập nhật hồ sơ cộng đồng"
 
@@ -9695,6 +9699,11 @@ msgstr "Sao chép văn bản"
 #: src/features/auth/components/modals/MfaTotpEnableModal.tsx:95
 msgid "Copy the setup key into your authenticator app."
 msgstr "Sao chép khóa thiết lập vào ứng dụng xác thực của bạn."
+
+#. Context menu action to copy a timestamp markdown tag in the message composer.
+#: src/features/lexical/composer/nodes/ComposerTimestampContextMenu.tsx:15
+msgid "Copy timestamp"
+msgstr \"Sao chép dấu thời gian\"
 
 #. Developer-mode action that copies a user snowflake/ID to the clipboard.
 #: src/features/app/components/floating/UserAreaPopout.tsx:692
@@ -10926,7 +10935,7 @@ msgid "Customer portal"
 msgstr "Cổng thông tin khách hàng"
 
 #. Plus menu submenu label for visibility toggles on textarea adornment buttons.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:39
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:43
 msgid "Customize"
 msgstr "Tùy chỉnh"
 
@@ -10963,11 +10972,6 @@ msgstr "Tùy chỉnh thẻ của bạn ({discriminatorLabel}) theo ý muốn v�
 #: src/features/user/components/modals/FluxerTagChangeModal.tsx:386
 msgid "Customize your tag or keep it when changing your username"
 msgstr "Tùy chỉnh hoặc giữ nguyên thẻ khi đổi tên người dùng"
-
-#. Description for persona accent color picker
-#: src/features/persona/components/modals/PersonaEditModal.tsx:98
-msgid "Customizes the border and banner color on this persona's profile"
-msgstr "Tùy chỉnh màu viền và ảnh bìa trên hồ sơ của persona này"
 
 #. Label in the accent color picker. Keep the tone plain and specific.
 #: src/features/user/components/modals/tabs/my_profile_tab/AccentColorPicker.tsx:16
@@ -11101,8 +11105,10 @@ msgid "Data export"
 msgstr "Xuất dữ liệu"
 
 #. Column header for invoice payment or creation date.
+#. Label for date input in timestamp modal.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/app/components/dialogs/components/plutonium/InvoiceList.tsx:120
+#: src/features/channel/components/modals/TimestampModal.tsx:36
 #: src/features/user/components/settings_utils/section_registry/AppearanceSections.ts:286
 msgid "Date"
 msgstr "Ngày"
@@ -11393,7 +11399,7 @@ msgstr "Delaware"
 #: src/features/emoji/components/stickers/StickerGridItem.tsx:35
 #: src/features/messaging/commands/MessageCommands.tsx:81
 #: src/features/moderation/components/report_modal/IARModalCopy.ts:109
-#: src/features/persona/components/modals/PersonaEditModal.tsx:544
+#: src/features/persona/components/modals/PersonaEditModal.tsx:541
 #: src/features/platform/utils/DesktopLocaleBridge.ts:76
 #: src/features/theme_studio/sections/LibrarySection.tsx:514
 #: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:517
@@ -11574,12 +11580,12 @@ msgid "Delete passkey"
 msgstr "Xóa khóa truy cập"
 
 #. Aria label for deleting persona
-#: src/features/persona/components/modals/PersonaEditModal.tsx:126
+#: src/features/persona/components/modals/PersonaEditModal.tsx:123
 msgid "Delete persona"
 msgstr "Xóa persona"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:538
-#: src/features/persona/components/modals/PersonaEditModal.tsx:799
+#: src/features/persona/components/modals/PersonaEditModal.tsx:535
+#: src/features/persona/components/modals/PersonaEditModal.tsx:805
 msgid "Delete Persona"
 msgstr "Xóa persona"
 
@@ -11654,6 +11660,11 @@ msgstr "Xóa tin nhắn này"
 #: src/features/messaging/commands/MessageCommands.tsx:77
 msgid "Delete this message? Can't be undone."
 msgstr "Xóa tin nhắn này? Không thể hoàn tác."
+
+#. Context menu action to delete a timestamp from the message composer.
+#: src/features/lexical/composer/nodes/ComposerTimestampContextMenu.tsx:20
+msgid "Delete timestamp"
+msgstr \"Xóa dấu thời gian\"
 
 #. Danger action in the channel permissions overwrite context menu that removes a member permission override from the channel.
 #: src/features/channel/components/modals/channel_tabs/channel_permissions_tab/OverwriteContextMenu.tsx:19
@@ -12523,8 +12534,9 @@ msgstr "Chế độ hiển thị"
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Short label in the inputs tab. Keep it concise.
 #. Short label in the my profile tab. Keep it concise.
+#: src/features/persona/components/modals/PersonaEditModal.tsx:660
 #: src/features/user/components/modals/tabs/component_gallery_tab/ComponentGalleryTabInputsTab.tsx:22
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:138
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:137
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:61
 msgid "Display name"
 msgstr "Tên hiển thị"
@@ -12542,7 +12554,7 @@ msgstr "Tên hiển thị (không bắt buộc)"
 msgid "Display scaling"
 msgstr "Tỉ lệ hiển thị"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:398
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:396
 msgid "Display Tag"
 msgstr "Thẻ hiển thị"
 
@@ -12556,7 +12568,7 @@ msgstr "Đã xóa biểu tượng thẻ hiển thị"
 msgid "Display tag icon updated"
 msgstr "Đã cập nhật biểu tượng thẻ hiển thị"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:401
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:399
 msgid "Display tag will appear next to all persona names in messages. If no display tag is set, your account profile picture will be shown."
 msgstr "Thẻ hiển thị sẽ xuất hiện cạnh tất cả tên persona trong tin nhắn. Nếu không có thẻ hiển thị, ảnh đại diện tài khoản của bạn sẽ được hiển thị."
 
@@ -12688,7 +12700,7 @@ msgstr "Bạn có muốn tham gia {communityName} không?"
 #. Label in the accessibility tab.
 #. Label in the my profile tab.
 #: src/features/user/components/modals/tabs/AccessibilityTab.tsx:54
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:146
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:145
 msgid "Doc, I'm from the future. I came here in a time machine that you invented. Now, I need your help to get back to the year 1985."
 msgstr "Bác sĩ, tôi đến từ tương lai. Tôi đến đây bằng cỗ máy thời gian do chính bác sĩ phát minh. Giờ thì tôi cần bác sĩ giúp để quay về năm 1985."
 
@@ -12814,6 +12826,8 @@ msgstr "Nhấp đúp vào ai đó để xem luồng của họ."
 
 #. Settings search entry label for double-clicking a message to edit it.
 #. Short label for an advanced message editing preference.
+#. Tooltip hint on timestamp pill in message composer.
+#: src/features/lexical/composer/nodes/ComposerTimestampPill.tsx:28
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:309
 #: src/features/user/components/settings_utils/search_index/AdvancedSettingsIndex.ts:56
 msgid "Double-click to edit"
@@ -13099,7 +13113,7 @@ msgid "Duplicate role"
 msgstr "Tạo bản sao vai trò"
 
 #. Validation error when tag pair is duplicated within the same persona
-#: src/features/persona/components/modals/PersonaEditModal.tsx:134
+#: src/features/persona/components/modals/PersonaEditModal.tsx:131
 msgid "Duplicate tag pair on this persona"
 msgstr "Cặp thẻ trùng lặp trên persona này"
 
@@ -13114,14 +13128,19 @@ msgid "Dutch"
 msgstr "Tiếng Hà Lan"
 
 #. Placeholder for persona name
-#: src/features/persona/components/modals/PersonaEditModal.tsx:102
+#: src/features/persona/components/modals/PersonaEditModal.tsx:99
 msgid "e.g. Alice"
 msgstr "vd. Alice"
 
 #. Placeholder for persona pronouns
-#: src/features/persona/components/modals/PersonaEditModal.tsx:106
+#: src/features/persona/components/modals/PersonaEditModal.tsx:103
 msgid "e.g. she/her"
 msgstr "vd. cô ấy/chị ấy"
+
+#. Placeholder text for natural language timestamp input.
+#: src/features/channel/components/modals/TimestampModal.tsx:32
+msgid "e.g. tomorrow at 3pm, in 2 hours, now"
+msgstr "ví dụ: ngày mai lúc 15h, trong 2 giờ nữa, bây giờ"
 
 #. Placeholder or example text in the authentication passkey name modal. Keep the tone plain and specific.
 #: src/features/auth/components/modals/PasskeyNameModal.tsx:27
@@ -13307,7 +13326,7 @@ msgid "Edit persona"
 msgstr "Chỉnh sửa persona"
 
 #. Title for edit persona modal
-#: src/features/persona/components/modals/PersonaEditModal.tsx:50
+#: src/features/persona/components/modals/PersonaEditModal.tsx:51
 msgid "Edit Persona"
 msgstr "Chỉnh sửa persona"
 
@@ -13320,7 +13339,7 @@ msgid "Edit profile"
 msgstr "Chỉnh sửa hồ sơ"
 
 #. Button label in profile settings. Opens the profile local time modal.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:33
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:32
 msgid "Edit profile local time"
 msgstr "Chỉnh sửa giờ địa phương trên hồ sơ"
 
@@ -13367,13 +13386,20 @@ msgstr "Chỉnh sửa nhãn dán {stickerName}"
 msgid "Edit the bot avatar, tag, bio, banner, and friend request behavior"
 msgstr "Chỉnh sửa ảnh đại diện, thẻ, tiểu sử, ảnh bìa và hành vi yêu cầu kết bạn của bot"
 
+#. Context menu action to edit a timestamp in the message composer.
+#. Title of the timestamp modal when editing an existing timestamp.
+#: src/features/channel/components/modals/TimestampModal.tsx:28
+#: src/features/lexical/composer/nodes/ComposerTimestampContextMenu.tsx:10
+msgid "Edit timestamp"
+msgstr \"Chỉnh sửa dấu thời gian\"
+
 #. Button or menu action label in the add custom search engine modal. Keep it concise.
 #: src/features/user/components/modals/tabs/chat_settings_tab/AddCustomSearchEngineModal.tsx:34
 msgid "Edit translation provider"
 msgstr "Chỉnh sửa nhà cung cấp dịch thuật"
 
 #. Button or menu action label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:93
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:92
 msgid "Edit your profile appearance and see a live preview"
 msgstr "Chỉnh sửa giao diện hồ sơ và xem trước trực tiếp"
 
@@ -14467,7 +14493,7 @@ msgstr "Mọi kênh"
 
 #. Profile timezone privacy option label. Allows anyone who can view the full profile to see local time.
 #: src/features/connection/components/modals/EditConnectionModal.tsx:79
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:55
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:50
 #: src/features/user/components/modals/tabs/privacy_safety_tab/ConnectionsTab.tsx:234
 msgid "Everyone"
 msgstr "Mọi người"
@@ -14873,7 +14899,7 @@ msgid "Failed to delete channel"
 msgstr "Không thể xóa kênh"
 
 #. Toast when persona deletion fails
-#: src/features/persona/components/modals/PersonaEditModal.tsx:70
+#: src/features/persona/components/modals/PersonaEditModal.tsx:71
 msgid "Failed to delete persona"
 msgstr "Không thể xóa persona"
 
@@ -15048,7 +15074,7 @@ msgid "Failed to reset premium state."
 msgstr "Không thể đặt lại trạng thái premium."
 
 #. Toast when persona save fails
-#: src/features/persona/components/modals/PersonaEditModal.tsx:62
+#: src/features/persona/components/modals/PersonaEditModal.tsx:63
 msgid "Failed to save persona"
 msgstr "Không thể lưu persona"
 
@@ -15503,7 +15529,7 @@ msgid "First option"
 msgstr "Tùy chọn đầu tiên"
 
 #. Unicode emoji category label.
-#: src/features/expressions/utils/UnicodeEmojis.ts:49
+#: src/features/expressions/utils/UnicodeEmojis.ts:50
 msgid "Flags"
 msgstr "Cờ"
 
@@ -15612,7 +15638,7 @@ msgid "Fonts"
 msgstr "Phông chữ"
 
 #. Unicode emoji category label.
-#: src/features/expressions/utils/UnicodeEmojis.ts:29
+#: src/features/expressions/utils/UnicodeEmojis.ts:30
 msgid "Food & drink"
 msgstr "Đồ ăn & thức uống"
 
@@ -15806,6 +15832,11 @@ msgstr "Quên mật khẩu"
 msgid "Forgot your password?"
 msgstr "Quên mật khẩu?"
 
+#. Label for format preview selection in timestamp modal.
+#: src/features/channel/components/modals/TimestampModal.tsx:48
+msgid "Format preview"
+msgstr "Xem trước định dạng"
+
 #. Collapsible group heading in the Theme Studio tokens list, for form input tokens.
 #: src/features/theme_studio/sections/TokenGroups.ts:90
 msgid "Forms"
@@ -15969,7 +16000,7 @@ msgstr "Bot thân thiện"
 #: src/features/channel/components/direct_message/DirectMessageList.tsx:555
 #: src/features/connection/components/modals/EditConnectionModal.tsx:86
 #: src/features/search/utils/QuickSwitcherModalUtils.tsx:49
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:63
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:58
 #: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:89
 msgid "Friends"
 msgstr "Bạn bè"
@@ -17899,7 +17930,7 @@ msgstr "Nhập thư mục"
 
 #. Modal title for PluralKit import step select
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:485
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:510
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:508
 msgid "Import from PluralKit"
 msgstr "Nhập từ PluralKit"
 
@@ -18332,6 +18363,11 @@ msgstr "Ô nhập & văn bản"
 msgid "Inputs with icons"
 msgstr "Ô nhập có biểu tượng"
 
+#. Button to insert timestamp into message composer.
+#: src/features/channel/components/modals/TimestampModal.tsx:52
+msgid "Insert"
+msgstr "Chèn"
+
 #: src/features/input/utils/KeybindUtils.ts:87
 msgctxt "keyboard-key-name"
 msgid "Insert"
@@ -18341,6 +18377,15 @@ msgstr "Insert"
 #: src/features/channel/components/modals/channel_tabs/channel_overview_tab/ChannelOverviewTopicEditor.tsx:44
 msgid "Insert emoji"
 msgstr "Chèn biểu tượng cảm xúc"
+
+#. Button or menu action label in the channel and chat mobile textarea plus bottom sheet. Keep it concise.
+#. Plus menu item that opens the dynamic timestamp insertion modal.
+#. Title of the timestamp insertion modal.
+#: src/features/channel/components/modals/TimestampModal.tsx:24
+#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:13
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:19
+msgid "Insert timestamp"
+msgstr "Chèn dấu thời gian"
 
 #. CTA card body in the screen-share picker promoting the desktop app. {productName} is Fluxer.
 #: src/features/voice/components/modals/screen_share_picker_modal/DesktopDownloadCta.tsx:16
@@ -20041,7 +20086,7 @@ msgstr "Đã đặt kênh kế thừa cài đặt nội dung người lớn"
 msgid "Mail"
 msgstr "Thư"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:873
+#: src/features/persona/components/modals/PersonaEditModal.tsx:877
 #: src/features/persona/components/PersonaProfileMobileSheet.tsx:369
 #: src/features/persona/components/PersonaProfilePopout.tsx:264
 msgid "Main account"
@@ -22199,10 +22244,6 @@ msgstr "Ghi đè thanh thông báo"
 msgid "Name"
 msgstr "Tên"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:664
-msgid "Name *"
-msgstr "Tên *"
-
 #. Form validation error shown when the name field is empty.
 #. Form validation error shown when the name field is empty.
 #: src/features/expressions/components/modals/meme_form/MemeFormFields.tsx:16
@@ -22271,7 +22312,7 @@ msgid "Native updater ready"
 msgstr "Trình cập nhật gốc đã sẵn sàng"
 
 #. Unicode emoji category label.
-#: src/features/expressions/utils/UnicodeEmojis.ts:25
+#: src/features/expressions/utils/UnicodeEmojis.ts:26
 msgid "Nature"
 msgstr "Thiên nhiên"
 
@@ -22506,7 +22547,7 @@ msgid "New password"
 msgstr "Mật khẩu mới"
 
 #. Title for new persona modal
-#: src/features/persona/components/modals/PersonaEditModal.tsx:46
+#: src/features/persona/components/modals/PersonaEditModal.tsx:47
 msgid "New Persona"
 msgstr "Persona mới"
 
@@ -22808,7 +22849,7 @@ msgstr "Không có mô tả."
 msgid "No desktop update is available."
 msgstr "Không có bản cập nhật nào cho ứng dụng máy tính."
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:491
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:489
 msgid "No display tag configured. Messages will show your account profile picture."
 msgstr "Chưa cấu hình thẻ hiển thị. Tin nhắn sẽ hiển thị ảnh đại diện tài khoản của bạn."
 
@@ -22938,7 +22979,7 @@ msgid "No matches found"
 msgstr "Không tìm thấy kết quả nào"
 
 #: src/features/persona/components/PersonaPickerSheet.tsx:202
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:550
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:548
 msgid "No matching personas found."
 msgstr "Không tìm thấy persona nào phù hợp."
 
@@ -23001,7 +23042,7 @@ msgstr "Chưa có từ cá nhân nào."
 msgid "No personas configured yet. Create one in Settings."
 msgstr "Chưa cấu hình persona nào. Hãy tạo một persona trong Cài đặt."
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:546
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:544
 msgid "No personas created yet. Click \"Add Persona\" to create your first persona!"
 msgstr "No personas created yet. Click \"Add Persona\" to create your first persona!"
 
@@ -23061,8 +23102,10 @@ msgstr "Không có kết quả"
 
 #. Empty state shown when a combobox search returns no matches.
 #. Empty state shown when a combobox search returns no matches.
+#. Empty state shown when a combobox search returns no matches.
 #: src/features/channel/components/embeds/attachments/TextualAttachmentLanguageCombobox.tsx:30
 #: src/features/ui/components/form/FormCombobox.tsx:83
+#: src/features/ui/components/form/SearchableTimeZonePicker.tsx:46
 msgid "No results found"
 msgstr "Không tìm thấy kết quả nào"
 
@@ -23377,7 +23420,7 @@ msgstr "Không thuộc các lựa chọn"
 #. Option in the profile timezone picker. Means no timezone has been selected.
 #. Status chip for a macOS permission that has not been requested.
 #: src/features/permissions/system/components/modals/MacPermissionsModal.tsx:64
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:41
+#: src/features/ui/components/form/SearchableTimeZonePicker.tsx:50
 msgid "Not set"
 msgstr "Chưa đặt"
 
@@ -23545,7 +23588,7 @@ msgid "OAuth2 URL builder"
 msgstr "Trình tạo URL OAuth2"
 
 #. Unicode emoji category label.
-#: src/features/expressions/utils/UnicodeEmojis.ts:41
+#: src/features/expressions/utils/UnicodeEmojis.ts:42
 msgid "Objects"
 msgstr "Đồ vật"
 
@@ -23774,7 +23817,7 @@ msgid "Only the selected ones"
 msgstr "Chỉ những mục đã chọn"
 
 #. Helper description for private persona visibility
-#: src/features/persona/components/modals/PersonaEditModal.tsx:94
+#: src/features/persona/components/modals/PersonaEditModal.tsx:95
 msgid "Only visible to you. Others cannot view this persona’s full bio or profile details."
 msgstr "Chỉ hiển thị với bạn. Người khác không thể xem toàn bộ tiểu sử hoặc chi tiết hồ sơ của persona này."
 
@@ -24440,7 +24483,7 @@ msgid "Other methods"
 msgstr "Phương thức khác"
 
 #. Privacy note in profile timezone settings. Preserve {timezoneIdentifierExample}; it is inserted by code as an IANA timezone identifier example. productName is the app name. Users should understand that only the UTC offset is shown to other people.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:49
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:44
 msgid "Other people can only see your current UTC offset when you choose to share profile local time. They do not see your exact time zone identifier, such as {timezoneIdentifierExample}. {productName} stores that identifier only so the offset can update automatically when daylight saving time changes."
 msgstr "Những người khác chỉ thấy được độ lệch UTC hiện tại của bạn khi bạn chọn chia sẻ giờ địa phương trong hồ sơ. Họ không thấy mã định danh múi giờ chính xác của bạn, chẳng hạn như {timezoneIdentifierExample}. {productName} chỉ lưu mã định danh đó để độ lệch có thể tự động cập nhật khi giờ mùa hè thay đổi."
 
@@ -24877,7 +24920,7 @@ msgstr "Pennsylvania"
 #. Quick switcher section header for user results.
 #. Quick switcher section header listing user candidates.
 #. Unicode emoji category label.
-#: src/features/expressions/utils/UnicodeEmojis.ts:21
+#: src/features/expressions/utils/UnicodeEmojis.ts:22
 #: src/features/search/state/QuickSwitcherResultConverters.ts:22
 #: src/features/search/utils/QuickSwitcherModalUtils.tsx:53
 #: src/features/user/components/settings_utils/GuildSettingsConstants.ts:261
@@ -25007,12 +25050,12 @@ msgid "Permissions for {0}"
 msgstr "Quyền cho {0}"
 
 #. Toast when persona is created
-#: src/features/persona/components/modals/PersonaEditModal.tsx:58
+#: src/features/persona/components/modals/PersonaEditModal.tsx:59
 msgid "Persona created"
 msgstr "Đã tạo persona"
 
 #. Toast when persona is deleted
-#: src/features/persona/components/modals/PersonaEditModal.tsx:66
+#: src/features/persona/components/modals/PersonaEditModal.tsx:67
 msgid "Persona deleted"
 msgstr "Đã xóa persona"
 
@@ -25030,17 +25073,17 @@ msgstr "Hồ sơ persona"
 msgid "Persona profile: {name}"
 msgstr "Hồ sơ persona: {name}"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:740
+#: src/features/persona/components/modals/PersonaEditModal.tsx:730
 msgid "Persona Tags (Prefix & Suffix)"
 msgstr "Thẻ persona (Tiền tố & Hậu tố)"
 
 #. Toast when persona is updated
-#: src/features/persona/components/modals/PersonaEditModal.tsx:54
+#: src/features/persona/components/modals/PersonaEditModal.tsx:55
 msgid "Persona updated"
 msgstr "Đã cập nhật persona"
 
 #. Aria label for persona visibility tabs
-#: src/features/persona/components/modals/PersonaEditModal.tsx:130
+#: src/features/persona/components/modals/PersonaEditModal.tsx:127
 msgid "Persona visibility"
 msgstr "Chế độ hiển thị của persona"
 
@@ -25588,7 +25631,7 @@ msgid "Prefers reduced motion"
 msgstr "Ưu tiên giảm chuyển động"
 
 #. Placeholder for persona tag prefix
-#: src/features/persona/components/modals/PersonaEditModal.tsx:114
+#: src/features/persona/components/modals/PersonaEditModal.tsx:111
 msgid "Prefix (e.g. [)"
 msgstr "Tiền tố (vd. [)"
 
@@ -25705,7 +25748,7 @@ msgstr "Ngăn thành viên gửi tin nhắn, bày tỏ cảm xúc và tham gia k
 
 #: src/features/expressions/components/modals/sticker_form/StickerPreview.tsx:21
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildInviteSplashSettingsField.tsx:45
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:465
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:463
 #: src/features/user/components/modals/tabs/EmbedDebuggerTab.tsx:276
 msgid "Preview"
 msgstr "Xem trước"
@@ -25914,7 +25957,7 @@ msgid "Privacy violation or stalking"
 msgstr "Vi phạm quyền riêng tư hoặc rình rập"
 
 #. Persona visibility private
-#: src/features/persona/components/modals/PersonaEditModal.tsx:82
+#: src/features/persona/components/modals/PersonaEditModal.tsx:83
 msgid "Private"
 msgstr "Riêng tư"
 
@@ -25974,7 +26017,7 @@ msgstr "Hồ sơ"
 msgid "Profile badge"
 msgstr "Huy hiệu hồ sơ"
 
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:165
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:163
 msgid "Profile banners are a {PREMIUM_PRODUCT_NAME} feature. Get {PREMIUM_PRODUCT_NAME} to add a banner to your profile."
 msgstr "Ảnh bìa hồ sơ là tính năng {PREMIUM_PRODUCT_NAME}. Nâng cấp lên {PREMIUM_PRODUCT_NAME} để thêm ảnh bìa vào hồ sơ của bạn."
 
@@ -25994,12 +26037,12 @@ msgid "Profile banners require {premiumProductName}."
 msgstr "Ảnh bìa hồ sơ yêu cầu {premiumProductName}."
 
 #. Helper description for unlisted persona visibility
-#: src/features/persona/components/modals/PersonaEditModal.tsx:86
+#: src/features/persona/components/modals/PersonaEditModal.tsx:87
 msgid "Profile cards are accessible only when clicking on messages sent by this persona. Not listed in your public persona list."
 msgstr "Thẻ hồ sơ chỉ có thể truy cập khi nhấn vào tin nhắn được gửi bởi persona này. Không được liệt kê trong danh sách persona công khai của bạn."
 
 #. Helper description for public persona visibility
-#: src/features/persona/components/modals/PersonaEditModal.tsx:90
+#: src/features/persona/components/modals/PersonaEditModal.tsx:91
 msgid "Profile cards are accessible when clicking on messages and visible in your public personas list to friends and mutual servers."
 msgstr "Thẻ hồ sơ có thể truy cập khi nhấn vào tin nhắn và hiển thị trong danh sách persona công khai của bạn với bạn bè và các máy chủ chung."
 
@@ -26010,18 +26053,18 @@ msgstr "Màu sắc hồ sơ"
 
 #. Settings section label for editing profile appearance and identity.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:105
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:104
 #: src/features/user/components/settings_utils/section_registry/GeneralSettingsSections.ts:6
 msgid "Profile customization"
 msgstr "Tùy chỉnh hồ sơ"
 
 #. Label in the my profile tab. Preserve {selectedGuildName}; it is inserted by code.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:101
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:100
 msgid "Profile customization for {selectedGuildName}"
 msgstr "Tùy chỉnh hồ sơ cho {selectedGuildName}"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:97
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:96
 msgid "Profile customization form"
 msgstr "Biểu mẫu tùy chỉnh hồ sơ"
 
@@ -26031,7 +26074,7 @@ msgid "Profile data warning"
 msgstr "Cảnh báo dữ liệu hồ sơ"
 
 #. Profile settings row title for choosing whether profile viewers can see the user local time.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:23
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:22
 msgid "Profile local time"
 msgstr "Giờ địa phương trên hồ sơ"
 
@@ -26055,7 +26098,6 @@ msgstr "Ảnh đại diện"
 msgid "Profile pictures"
 msgstr "Ảnh đại diện"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:809
 #: src/features/user/components/profile/profile_card/ProfileCardLayout.tsx:26
 msgid "Profile preview"
 msgstr "Xem trước hồ sơ"
@@ -26087,7 +26129,7 @@ msgid "Profile type"
 msgstr "Loại hồ sơ"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:77
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:76
 msgid "Profile updated"
 msgstr "Đã cập nhật hồ sơ"
 
@@ -26124,8 +26166,8 @@ msgstr "Hỏi khi phát hiện thiết bị âm thanh mới"
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/persona/components/modals/PersonaEditModal.tsx:678
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:142
+#: src/features/persona/components/modals/PersonaEditModal.tsx:670
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:141
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:177
 #: src/features/user/components/settings_utils/section_registry/PrivacySafetySections.ts:160
 msgid "Pronouns"
@@ -26166,7 +26208,7 @@ msgid "PTT"
 msgstr "PTT"
 
 #. Persona visibility public
-#: src/features/persona/components/modals/PersonaEditModal.tsx:78
+#: src/features/persona/components/modals/PersonaEditModal.tsx:79
 msgid "Public"
 msgstr "Công khai"
 
@@ -27059,8 +27101,8 @@ msgstr "Xóa tệp đính kèm"
 msgid "Remove authenticator app"
 msgstr "Gỡ ứng dụng xác thực"
 
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:407
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:445
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:405
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:441
 msgid "Remove avatar"
 msgstr "Xóa ảnh đại diện"
 
@@ -27069,8 +27111,8 @@ msgstr "Xóa ảnh đại diện"
 msgid "Remove background"
 msgstr "Xóa ảnh nền"
 
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:316
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:357
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:314
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:353
 msgid "Remove banner"
 msgstr "Xóa ảnh bìa"
 
@@ -27137,7 +27179,7 @@ msgstr "Xóa khỏi GIF yêu thích lưu theo URL"
 #: src/features/channel/components/modals/EditGroupModal.tsx:293
 #: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:314
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:635
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:446
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:444
 msgid "Remove icon"
 msgstr "Xóa biểu tượng"
 
@@ -27205,7 +27247,7 @@ msgid "Remove spoiler"
 msgstr "Bỏ đánh dấu ẩn"
 
 #. Button or menu action label in the channel stickers area. Keep it concise. Keep the tone plain and specific.
-#: src/features/channel/components/ChannelStickersArea.tsx:21
+#: src/features/channel/components/ChannelStickersArea.tsx:19
 msgid "Remove sticker"
 msgstr "Xóa nhãn dán"
 
@@ -27215,7 +27257,7 @@ msgid "Remove tag {tag}"
 msgstr "Xóa thẻ {tag}"
 
 #. Aria label for removing a tag pair
-#: src/features/persona/components/modals/PersonaEditModal.tsx:122
+#: src/features/persona/components/modals/PersonaEditModal.tsx:119
 msgid "Remove tag pair"
 msgstr "Xóa cặp thẻ"
 
@@ -27858,7 +27900,7 @@ msgstr "Đã gửi lại"
 #: src/features/app/components/floating/ColorPickerPopover.tsx:190
 #: src/features/input/components/KeybindRecorder.tsx:459
 #: src/features/messaging/components/modals/ImageCropModal.tsx:936
-#: src/features/persona/components/modals/PersonaEditModal.tsx:615
+#: src/features/persona/components/modals/PersonaEditModal.tsx:612
 msgid "Reset"
 msgstr "Đặt lại"
 
@@ -28735,7 +28777,7 @@ msgid "Save banner"
 msgstr "Lưu ảnh bìa"
 
 #: src/features/app/components/dialogs/shared/UnsavedChangesBannerContent.tsx:60
-#: src/features/persona/components/modals/PersonaEditModal.tsx:624
+#: src/features/persona/components/modals/PersonaEditModal.tsx:621
 msgid "Save changes"
 msgstr "Lưu thay đổi"
 
@@ -29365,7 +29407,9 @@ msgid "Search themes…"
 msgstr "Tìm kiếm giao diện…"
 
 #. Placeholder in the profile timezone picker.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:37
+#. Placeholder in timezone combobox.
+#: src/features/ui/components/form/SearchableTimeZonePicker.tsx:34
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:36
 msgid "Search time zones"
 msgstr "Tìm múi giờ"
 
@@ -29839,8 +29883,8 @@ msgstr "Gửi GIF {title}"
 #. Action label for sending a gift to a friend.
 #. Button or menu action label in the channel and chat mobile textarea plus bottom sheet. Keep it concise.
 #. Plus menu item that opens the gift purchase flow.
-#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:21
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:31
+#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:25
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:35
 #: src/features/expressions/components/modals/GiftSendToFriendModal.tsx:30
 msgid "Send gift"
 msgstr "Gửi quà"
@@ -29939,7 +29983,7 @@ msgstr "Gửi mã xác minh"
 #. Accessible label and tooltip for the send button after recording a voice message.
 #. Keyboard shortcut action label that opens the desktop voice message composer.
 #. Plus menu item that opens the desktop voice message composer to record and send a voice clip.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:35
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:39
 #: src/features/channel/components/VoiceMessageRecorder.tsx:69
 #: src/features/input/state/input_keybind/shared.ts:289
 msgid "Send voice message"
@@ -30093,7 +30137,7 @@ msgstr "Đặt trạng thái tùy chỉnh"
 msgid "Set a member list position for the role"
 msgstr "Đã đặt vị trí của vai trò trong danh sách thành viên"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:639
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:637
 msgid "Set Active"
 msgstr "Đặt làm hoạt động"
 
@@ -30308,7 +30352,7 @@ msgid "Set your status"
 msgstr "Đặt trạng thái của bạn"
 
 #. Description in profile settings for the button that opens timezone settings. productName is the app name. A timezone identifier means values like America/New_York; only the UTC offset can be visible to others.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:27
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:26
 msgid "Set your time zone once so {productName} can keep your UTC offset current when daylight saving time changes. Other people can only see your UTC offset, not your exact time zone identifier."
 msgstr "Đặt múi giờ một lần để {productName} luôn cập nhật độ lệch UTC của bạn khi giờ mùa hè thay đổi. Những người khác chỉ thấy độ lệch UTC của bạn, không thấy mã định danh múi giờ chính xác."
 
@@ -30724,7 +30768,7 @@ msgstr "Hiển thị nội dung nhúng và xem trước liên kết web"
 
 #. Short label for an advanced message input preference.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:59
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:63
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:129
 msgid "Show emoji button"
 msgstr "Hiện nút biểu tượng cảm xúc"
@@ -30763,7 +30807,7 @@ msgstr "Hiển thị chỉ báo GIF"
 
 #. Plus menu submenu toggle that shows the GIFs button next to the textarea.
 #. Short label for an advanced message input preference.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:43
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:47
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:109
 msgid "Show GIFs button"
 msgstr "Hiện nút GIF"
@@ -30812,7 +30856,7 @@ msgstr "Hiển thị tối đa 5 (huy hiệu +5)"
 
 #. Plus menu submenu toggle that shows the saved media (memes) button next to the textarea.
 #. Short label for an advanced message input preference.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:47
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:51
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:113
 msgid "Show media button"
 msgstr "Hiện nút phương tiện"
@@ -30938,7 +30982,7 @@ msgstr "Hiển thị thanh trượt âm lượng người tham gia theo từng t
 
 #. Plus menu submenu toggle that shows the persona selector next to the textarea.
 #. Short label for an advanced message input preference.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:51
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:55
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:133
 msgid "Show personas button"
 msgstr "Hiện nút persona"
@@ -30967,7 +31011,7 @@ msgstr "Hiển thị media đã lưu trong tự động hoàn tất biểu cảm
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #: src/features/channel/components/textarea/TextareaContextMenu.tsx:102
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:63
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:67
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:137
 msgid "Show send button"
 msgstr "Hiện nút gửi"
@@ -30984,7 +31028,7 @@ msgstr "Hiện nội dung ẩn khi nhấp"
 
 #. Short label for an advanced message input preference.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:55
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:59
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:125
 msgid "Show stickers button"
 msgstr "Hiện nút nhãn dán"
@@ -32802,9 +32846,14 @@ msgid "Successfully imported {0} persona(s) into your account. All avatar images
 msgstr "Đã nhập thành công {0} persona vào tài khoản của bạn. Tất cả ảnh đại diện được lưu trữ an toàn trên máy chủ cục bộ của bạn."
 
 #. Placeholder for persona tag suffix
-#: src/features/persona/components/modals/PersonaEditModal.tsx:118
+#: src/features/persona/components/modals/PersonaEditModal.tsx:115
 msgid "Suffix (e.g. ])"
 msgstr "Hậu tố (vd. ])"
+
+#. Section header for suggested time zones in the timestamp modal.
+#: src/features/ui/components/form/SearchableTimeZonePicker.tsx:38
+msgid "Suggested"
+msgstr "Được gợi ý"
 
 #. Helper text under the "Filter members without roles" explicit content filter option in the community moderation settings tab.
 #: src/features/guild/components/modals/guild_tabs/GuildModerationTab.tsx:112
@@ -33065,7 +33114,7 @@ msgid "Symbol"
 msgstr "Biểu tượng"
 
 #. Unicode emoji category label.
-#: src/features/expressions/utils/UnicodeEmojis.ts:45
+#: src/features/expressions/utils/UnicodeEmojis.ts:46
 msgid "Symbols"
 msgstr "Ký hiệu"
 
@@ -33268,16 +33317,16 @@ msgstr "Bảng"
 msgid "Tag"
 msgstr "Thẻ"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:426
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:424
 msgid "Tag Icon"
 msgstr "Biểu tượng thẻ"
 
 #. Validation error when tag pair is already used by another persona
-#: src/features/persona/components/modals/PersonaEditModal.tsx:138
+#: src/features/persona/components/modals/PersonaEditModal.tsx:135
 msgid "Tag pair already in use by persona \"{name}\""
 msgstr "Tag pair already in use by persona \"{name}\""
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:413
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:411
 msgid "Tag Text"
 msgstr "Văn bản thẻ"
 
@@ -33371,7 +33420,7 @@ msgid "Teleporting you to another voice region..."
 msgstr "Đang chuyển bạn sang khu vực thoại khác..."
 
 #. Placeholder for persona bio
-#: src/features/persona/components/modals/PersonaEditModal.tsx:110
+#: src/features/persona/components/modals/PersonaEditModal.tsx:107
 msgid "Tell us about this persona..."
 msgstr "Giới thiệu về persona này..."
 
@@ -34443,7 +34492,7 @@ msgstr "Đây là biểu tượng cảm xúc tùy chỉnh từ một cộng đ�
 msgid "This is a custom sticker from a community."
 msgstr "Đây là một nhãn dán tùy chỉnh từ một cộng đồng."
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:489
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:487
 msgid "This is a preview of how your display tag will look in chat."
 msgstr "Đây là bản xem trước cách thẻ hiển thị của bạn sẽ xuất hiện trong đoạn chat."
 
@@ -34596,7 +34645,7 @@ msgid "This message no longer exists."
 msgstr "Tin nhắn này không còn tồn tại."
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:130
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:129
 msgid "This nickname will only be visible in this community"
 msgstr "Biệt danh này sẽ chỉ hiển thị trong cộng đồng này"
 
@@ -34926,8 +34975,10 @@ msgid "Thumbnail preview"
 msgstr "Xem trước hình thu nhỏ"
 
 #. Form field label for a time value.
+#. Label for time input in timestamp modal.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
+#: src/features/channel/components/modals/TimestampModal.tsx:40
 #: src/features/ui/components/form/DateTimePickerField.tsx:34
 #: src/features/user/components/settings_utils/search_index/LanguageIndex.ts:30
 #: src/features/user/components/settings_utils/section_registry/AppearanceSections.ts:282
@@ -34969,7 +35020,9 @@ msgid "Time range"
 msgstr "Khoảng thời gian"
 
 #. Field label in profile settings for choosing the timezone used to show local time on the profile.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:19
+#. Label for time zone input in timestamp modal.
+#: src/features/channel/components/modals/TimestampModal.tsx:44
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:18
 msgid "Time zone"
 msgstr "Múi giờ"
 
@@ -35324,7 +35377,7 @@ msgid "Translators"
 msgstr "Công cụ dịch"
 
 #. Unicode emoji category label.
-#: src/features/expressions/utils/UnicodeEmojis.ts:37
+#: src/features/expressions/utils/UnicodeEmojis.ts:38
 msgid "Travel & places"
 msgstr "Du lịch & địa điểm"
 
@@ -36262,7 +36315,7 @@ msgid "unknown-role"
 msgstr "unknown-role"
 
 #. Persona visibility unlisted
-#: src/features/persona/components/modals/PersonaEditModal.tsx:74
+#: src/features/persona/components/modals/PersonaEditModal.tsx:75
 msgid "Unlisted"
 msgstr "Không được liệt kê"
 
@@ -36814,8 +36867,8 @@ msgstr "Tải biểu tượng cảm xúc lên"
 
 #. Button or menu action label in the channel and chat mobile textarea plus bottom sheet. Keep it concise.
 #. Plus menu item that opens the system file picker to attach a file.
-#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:13
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:23
+#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:17
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:27
 msgid "Upload file"
 msgstr "Tải tệp lên"
 
@@ -36834,7 +36887,7 @@ msgstr "Tải tệp và phương tiện lên kênh này."
 #: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:305
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:626
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildIconUploadField.tsx:130
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:456
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:454
 msgid "Upload icon"
 msgstr "Tải biểu tượng lên"
 
@@ -36874,8 +36927,8 @@ msgstr "Tải lên {displayName}"
 
 #. Button or menu action label in the channel and chat mobile textarea plus bottom sheet. Keep it concise.
 #. Plus menu item that uploads the current textarea content as a .txt file when it exceeds the size limit.
-#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:17
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:27
+#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:21
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:31
 msgid "Upload your message as a file"
 msgstr "Tải tin nhắn của bạn lên dưới dạng tệp"
 
@@ -37765,22 +37818,22 @@ msgid "Verify your email before adding an authenticator app."
 msgstr "Xác minh email của bạn trước khi thêm ứng dụng xác thực."
 
 #. Description text in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:117
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:116
 msgid "Verify your email before changing your community nickname, avatar, banner, bio, pronouns, or accent color."
 msgstr "Xác minh email của bạn trước khi thay đổi biệt danh cộng đồng, ảnh đại diện, ảnh bìa, tiểu sử, đại từ hoặc màu nhấn."
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:121
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:120
 msgid "Verify your email before changing your username, display name, avatar, banner, bio, pronouns, time zone, or {premiumProductName} badge privacy."
 msgstr "Xác minh email của bạn trước khi thay đổi tên người dùng, tên hiển thị, ảnh đại diện, ảnh bìa, tiểu sử, đại từ, múi giờ hoặc quyền riêng tư huy hiệu {premiumProductName} của bạn."
 
 #. Description text in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:85
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:84
 msgid "Verify your email before editing this community profile. You can still preview it here."
 msgstr "Xác minh email của bạn trước khi chỉnh sửa hồ sơ cộng đồng này. Bạn vẫn có thể xem trước tại đây."
 
 #. Description text in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:89
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:88
 msgid "Verify your email before editing your profile. You can still preview it here."
 msgstr "Xác minh email trước khi chỉnh sửa hồ sơ. Bạn vẫn có thể xem trước tại đây."
 
@@ -37812,12 +37865,12 @@ msgid "Verify your email to continue using {productName}."
 msgstr "Xác minh email của bạn để tiếp tục sử dụng {productName}."
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:109
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:108
 msgid "Verify your email to edit this community profile"
 msgstr "Xác minh email để chỉnh sửa hồ sơ cộng đồng này"
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:113
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:112
 msgid "Verify your email to edit your profile"
 msgstr "Xác minh email để chỉnh sửa hồ sơ"
 
@@ -38254,7 +38307,7 @@ msgid "Virginia"
 msgstr "Virginia"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/persona/components/modals/PersonaEditModal.tsx:721
+#: src/features/persona/components/modals/PersonaEditModal.tsx:782
 #: src/features/user/components/settings_utils/section_registry/AccessibilitySections.ts:39
 msgid "Visibility"
 msgstr "Độ rõ"
@@ -39361,7 +39414,7 @@ msgctxt "us-state"
 msgid "Wisconsin"
 msgstr "Wisconsin"
 
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:217
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:215
 msgid "With {PREMIUM_PRODUCT_NAME}, you can use animated avatars ({ANIMATED_AVATAR_FORMATS}) and profile banners, customize your tag, and unlock many other {PREMIUM_PRODUCT_NAME} perks."
 msgstr "Với {PREMIUM_PRODUCT_NAME}, bạn có thể sử dụng ảnh đại diện động ({ANIMATED_AVATAR_FORMATS}), ảnh bìa hồ sơ, tùy chỉnh thẻ của mình và mở khóa nhiều đặc quyền {PREMIUM_PRODUCT_NAME} khác."
 
@@ -39621,6 +39674,7 @@ msgstr "Bạn vẫn có thể tạo tài khoản hoặc đăng nhập. Nếu l�
 msgid "You can still email {supportEmail} for a human review at any time."
 msgstr "Bạn vẫn có thể gửi email cho {supportEmail} để được xem xét thủ công bất cứ lúc nào."
 
+#: src/features/persona/components/modals/PersonaEditModal.tsx:718
 #: src/features/user/components/modals/tabs/my_profile_tab/BioEditor.tsx:288
 msgid "You can use links, emoji, and Markdown."
 msgstr "Bạn có thể dùng liên kết, biểu tượng cảm xúc và Markdown."
@@ -39646,7 +39700,7 @@ msgid "You can't befriend yourself"
 msgstr "Bạn không thể kết bạn với chính mình"
 
 #. Label in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:134
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:133
 msgid "You can't change your nickname here"
 msgstr "Bạn không thể thay đổi biệt danh của mình tại đây"
 
@@ -39764,7 +39818,7 @@ msgid "You can't unmute yourself because a moderator muted you."
 msgstr "Bạn không thể tự bật micrô vì người điều hành đã tắt micrô của bạn."
 
 #. Tooltip on the disabled upload file item when the user lacks Attach Files permission. Calm, factual tone.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:19
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:23
 msgid "You can't upload files in this channel."
 msgstr "Bạn không thể tải tệp lên kênh này."
 
@@ -39892,12 +39946,12 @@ msgid "You have refunded recently"
 msgstr "Bạn vừa yêu cầu hoàn tiền gần đây"
 
 #: src/features/app/components/dialogs/shared/UnsavedChangesBannerContent.tsx:37
-#: src/features/persona/components/modals/PersonaEditModal.tsx:604
+#: src/features/persona/components/modals/PersonaEditModal.tsx:601
 msgid "You have unsaved changes."
 msgstr "Bạn có thay đổi chưa lưu."
 
 #. Warning text in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:81
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:80
 msgid "You have unsaved changes. Save or reset before leaving."
 msgstr "Bạn có thay đổi chưa lưu. Hãy lưu hoặc đặt lại trước khi rời đi."
 
