@@ -30,7 +30,10 @@ import {
 	ExperimentDeliveryConfigUpdateRequest,
 } from '@fluxer/schema/src/domains/experiment/ExperimentSchemas';
 import {GuildMemberResponse} from '@fluxer/schema/src/domains/guild/GuildMemberSchemas';
-import {InstanceRegistrationModeSchema} from '@fluxer/schema/src/domains/instance/InstanceSchemas';
+import {
+	InstanceRegistrationModeSchema,
+	ServerListButtonsSchema,
+} from '@fluxer/schema/src/domains/instance/InstanceSchemas';
 import {MessageResponseSchema} from '@fluxer/schema/src/domains/message/MessageResponseSchemas';
 import {GiftCodeDurationTypeSchema} from '@fluxer/schema/src/domains/premium/GiftCodeSchemas';
 import {ChannelTypeSchema} from '@fluxer/schema/src/primitives/ChannelValidators';
@@ -567,6 +570,13 @@ const InstancePolicyResponse = z.object({
 		youtube: z.boolean(),
 		bluesky: z.boolean(),
 	}),
+	server_list_buttons: ServerListButtonsSchema.default({
+		favorites: true,
+		explore: true,
+		create_join: true,
+		download: true,
+		help: true,
+	}),
 });
 
 const EmailProviderSchema = z.enum(['smtp', 'none']);
@@ -654,6 +664,15 @@ export const InstanceConfigResponse = z.object({
 
 export type InstanceConfigResponse = z.infer<typeof InstanceConfigResponse>;
 
+export const ServerListButtonsUpdateSchema = z.object({
+	favorites: z.boolean().optional(),
+	explore: z.boolean().optional(),
+	create_join: z.boolean().optional(),
+	download: z.boolean().optional(),
+	help: z.boolean().optional(),
+});
+export type ServerListButtonsUpdate = z.infer<typeof ServerListButtonsUpdateSchema>;
+
 const InstancePolicyUpdateSchema = z.object({
 	single_community_enabled: z.boolean().optional(),
 	single_community_name: z.string().trim().min(1).max(100).optional(),
@@ -669,6 +688,7 @@ const InstancePolicyUpdateSchema = z.object({
 			bluesky_enabled: z.boolean().nullish(),
 		})
 		.nullish(),
+	server_list_buttons: ServerListButtonsUpdateSchema.optional(),
 });
 
 export const InstanceConfigUpdateRequest = z.object({
