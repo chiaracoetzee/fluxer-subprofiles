@@ -344,6 +344,7 @@ mod tests {
 
     #[test]
     fn the_would_deny_line_carries_the_verdict_and_a_clipped_user_agent() {
+        let _tracing_lock = crate::test_fixtures::lock_test_tracing();
         let mut headers = HeaderMap::new();
         headers.insert(
             header::USER_AGENT,
@@ -383,6 +384,7 @@ mod tests {
 
     #[test]
     fn a_request_without_an_id_or_user_agent_still_logs_one_line() {
+        let _tracing_lock = crate::test_fixtures::lock_test_tracing();
         let captured = CapturedLog::default();
         let subscriber = tracing_subscriber::fmt()
             .with_writer(captured.clone())
