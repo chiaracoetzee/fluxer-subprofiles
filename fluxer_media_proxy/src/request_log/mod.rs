@@ -594,6 +594,7 @@ mod tests {
 
     #[tokio::test]
     async fn a_successful_sniff_writes_its_own_request_line_and_series() {
+        let _tracing_lock = crate::test_fixtures::lock_test_tracing();
         let metrics = Metrics::new();
         let app = Router::new()
             .route("/_sniff", post(|| async { "{\"content_type\":null}" }))
