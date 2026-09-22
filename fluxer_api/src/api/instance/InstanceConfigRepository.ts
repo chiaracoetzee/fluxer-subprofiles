@@ -51,6 +51,8 @@ import {
 	InstanceRegistrationSchema,
 	type InstanceServices,
 	type InstanceSetup,
+	type ServerListButtons,
+	ServerListButtonsSchema,
 } from '@fluxer/schema/src/domains/instance/InstanceSchemas';
 import {normalizeString, SnowflakeType} from '@fluxer/schema/src/primitives/SchemaPrimitives';
 import type {IKVProvider} from '@pkgs/kv_client/src/IKVProvider';
@@ -99,6 +101,7 @@ export interface InstancePolicyConfig {
 	deferred_phone_gate_enabled: boolean;
 	deferred_phone_gate_window_hours: number;
 	deferred_phone_gate_member_threshold: number;
+	server_list_buttons: ServerListButtons;
 }
 
 type InstanceEmailProvider = 'smtp' | 'none';
@@ -574,6 +577,13 @@ const StoredInstancePolicySchema = z.object({
 	deferred_phone_gate_enabled: InstancePolicyPhoneGateUpdateSchema.shape.enabled.default(false),
 	deferred_phone_gate_window_hours: InstancePolicyPhoneGateUpdateSchema.shape.window_hours.default(6),
 	deferred_phone_gate_member_threshold: InstancePolicyPhoneGateUpdateSchema.shape.member_threshold.default(50),
+	server_list_buttons: ServerListButtonsSchema.default({
+		favorites: true,
+		explore: true,
+		create_join: true,
+		download: true,
+		help: true,
+	}),
 }) satisfies z.ZodType<InstancePolicyConfig>;
 
 function decodeInstancePolicyConfig(value: unknown): InstancePolicyConfig {
@@ -1470,6 +1480,7 @@ export class InstanceConfigRepository {
 			single_community_guild_id: policy.single_community_enabled ? policy.single_community_guild_id : null,
 			direct_messages_disabled: policy.direct_messages_disabled,
 			community_creation_staff_only: policy.community_creation_staff_only,
+			server_list_buttons: policy.server_list_buttons,
 		};
 	}
 

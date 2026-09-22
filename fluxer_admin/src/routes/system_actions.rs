@@ -19,8 +19,8 @@ use crate::{
             InstanceServicesUpdateRequest, InstanceYoutubeIntegrationUpdateRequest,
             LimitConfigUpdateRequest, LimitRule, LimitRuleFilters, NoiseSuppressionBackend,
             PremiumMode, RegistrationMode, ScreenShareDeliveryConfigUpdateRequest,
-            SsoConfigUpdateRequest, VOICE_NS_MAX_GUILD_OVERRIDES, VoiceE2eeScope,
-            VoiceNoiseSuppressionConfigUpdateRequest, VoiceNoiseSuppressionGuildOverride,
+            ServerListButtonsUpdateRequest, SsoConfigUpdateRequest, VOICE_NS_MAX_GUILD_OVERRIDES,
+            VoiceE2eeScope, VoiceNoiseSuppressionConfigUpdateRequest, VoiceNoiseSuppressionGuildOverride,
         },
     },
     config::AdminConfig,
@@ -193,6 +193,10 @@ pub async fn instance_config_post(
         }
         "update_policy" => {
             let update = build_policy_update(&form);
+            instance_config_result(client.update_instance_config(&update).await)
+        }
+        "update_server_list_buttons" => {
+            let update = build_server_list_buttons_update(&form);
             instance_config_result(client.update_instance_config(&update).await)
         }
         "update_integrations" => {
@@ -786,6 +790,24 @@ fn build_policy_update(form: &MultiValueForm) -> InstanceConfigUpdateRequest {
             premium_mode,
             services,
             deferred_phone_gate,
+            server_list_buttons: None,
+        }),
+        ..Default::default()
+    }
+}
+
+fn build_server_list_buttons_update(form: &MultiValueForm) -> InstanceConfigUpdateRequest {
+    let flag = |key: &str| form.bool_value(key);
+    InstanceConfigUpdateRequest {
+        policy: Some(InstancePolicyUpdateRequest {
+            server_list_buttons: Some(ServerListButtonsUpdateRequest {
+                favorites: Some(flag("server_list_button_favorites")),
+                explore: Some(flag("server_list_button_explore")),
+                create_join: Some(flag("server_list_button_create_join")),
+                download: Some(flag("server_list_button_download")),
+                help: Some(flag("server_list_button_help")),
+            }),
+            ..Default::default()
         }),
         ..Default::default()
     }
@@ -945,12 +967,7 @@ fn build_single_community_update(enabled: bool) -> InstanceConfigUpdateRequest {
     InstanceConfigUpdateRequest {
         policy: Some(InstancePolicyUpdateRequest {
             single_community_enabled: Some(enabled),
-            single_community_name: None,
-            community_creation_staff_only: None,
-            direct_messages_disabled: None,
-            premium_mode: None,
-            services: None,
-            deferred_phone_gate: None,
+            ..Default::default()
         }),
         ..Default::default()
     }
