@@ -14,7 +14,7 @@ msgstr ""
 "Plural-Forms: \n"
 "X-Generator: @lingui/cli\n"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:484
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:482
 msgid "— Today at 12:00 PM"
 msgstr "— Σήμερα στις 12:00"
 
@@ -960,7 +960,7 @@ msgstr "{count, plural, one {# αποκλεισμένο μήνυμα} other {# �
 msgid "{count, plural, one {# community found} other {# communities found}}"
 msgstr "{count, plural, one {# κοινότητα βρέθηκε} other {# κοινότητες βρέθηκαν}}"
 
-#: src/features/app/components/layout/GuildsLayout.tsx:1968
+#: src/features/app/components/layout/GuildsLayout.tsx:1972
 msgid "{count, plural, one {# community is temporarily unavailable due to a flux capacitor malfunction.} other {# communities are temporarily unavailable due to a flux capacitor malfunction.}}"
 msgstr "{count, plural, one {# κοινότητα είναι προσωρινά μη διαθέσιμη λόγω δυσλειτουργίας του πυκνωτή ροής.} other {# κοινότητες είναι προσωρινά μη διαθέσιμες λόγω δυσλειτουργίας του πυκνωτή ροής.}}"
 
@@ -2547,6 +2547,7 @@ msgstr "Σχετικά με το {appName}"
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Short label in the user profile shared popout. Keep it concise.
 #: src/features/app/components/pages/YouPage.tsx:166
+#: src/features/persona/components/modals/PersonaEditModal.tsx:710
 #: src/features/persona/components/PersonaProfileMobileSheet.tsx:349
 #: src/features/persona/components/PersonaProfileMobileSheet.tsx:358
 #: src/features/user/components/modals/tabs/my_profile_tab/BioEditor.tsx:26
@@ -2578,7 +2579,6 @@ msgstr "Έμφαση"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label in the accent color picker. Keep it concise.
-#: src/features/persona/components/modals/PersonaEditModal.tsx:692
 #: src/features/user/components/modals/tabs/my_profile_tab/AccentColorPicker.tsx:12
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:153
 msgid "Accent color"
@@ -2773,7 +2773,7 @@ msgstr "Ενέργειες"
 #. Subscription status badge meaning the paid subscription is active.
 #: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:445
 #: src/features/channel/components/channel_header_components/developer_tools/DeveloperToolsShared.ts:37
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:639
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:637
 #: src/features/user/components/settings_utils/search_index/DevicesIndex.ts:19
 msgid "Active"
 msgstr "Ενεργό"
@@ -2833,7 +2833,7 @@ msgstr "Ενεργοί τώρα"
 msgid "Active persona mode"
 msgstr "Λειτουργία ενεργής persona"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:372
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:370
 msgid "Active Persona Mode"
 msgstr "Λειτουργία ενεργής persona"
 
@@ -2848,7 +2848,7 @@ msgid "Active yearly subscriber (cancellation scheduled)"
 msgstr "Ενεργός ετήσιος συνδρομητής (έχει προγραμματιστεί ακύρωση)"
 
 #. Unicode emoji category label.
-#: src/features/expressions/utils/UnicodeEmojis.ts:33
+#: src/features/expressions/utils/UnicodeEmojis.ts:34
 msgid "Activities"
 msgstr "Δραστηριότητες"
 
@@ -3119,7 +3119,7 @@ msgstr "Προσθήκη παράκαμψης"
 msgid "Add passkey"
 msgstr "Προσθήκη κλειδιού πρόσβασης"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:513
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:511
 msgid "Add Persona"
 msgstr "Προσθήκη persona"
 
@@ -3194,7 +3194,7 @@ msgid "Add stream"
 msgstr "Προσθήκη ροής"
 
 #. placeholder {0}: formData.tags.length
-#: src/features/persona/components/modals/PersonaEditModal.tsx:749
+#: src/features/persona/components/modals/PersonaEditModal.tsx:739
 msgid "Add Tag Pair ({0}/5)"
 msgstr "Προσθήκη ζεύγους ετικετών ({0}/5)"
 
@@ -3607,6 +3607,11 @@ msgstr "Όλοι οι τύποι κατάστασης"
 msgid "All time"
 msgstr "Όλο το διάστημα"
 
+#. Section header for all time zones in the timestamp modal.
+#: src/features/ui/components/form/SearchableTimeZonePicker.tsx:42
+msgid "All time zones"
+msgstr "Όλες οι ζώνες ώρας"
+
 #. Default option in the activity log "Filter by user" dropdown. Means no user filter is applied. Short standalone label.
 #: src/features/guild/components/modals/guild_tabs/GuildAuditLogTab.tsx:72
 msgid "All users"
@@ -3644,7 +3649,7 @@ msgid "Allow anyone to see this connection on your profile"
 msgstr "Να επιτρέπεται σε οποιονδήποτε να βλέπει αυτήν τη σύνδεση στο προφίλ σου"
 
 #. Profile timezone privacy option description for the Everyone switch.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:59
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:54
 msgid "Allow anyone who can view your full profile to see your local time"
 msgstr "Να επιτρέπεται σε οποιονδήποτε μπορεί να δει το πλήρες προφίλ σας να βλέπει την τοπική σας ώρα"
 
@@ -3719,7 +3724,7 @@ msgid "Allow members from communities you're in to see this connection"
 msgstr "Να επιτρέπεται στα μέλη των κοινοτήτων στις οποίες ανήκετε να βλέπουν αυτήν τη σύνδεση"
 
 #. Profile timezone privacy option description for the Community members switch.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:71
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:66
 msgid "Allow members from communities you're in to see your local time"
 msgstr "Να επιτρέπεται στα μέλη των κοινοτήτων σας να βλέπουν την τοπική ώρα του προφίλ σας"
 
@@ -3768,7 +3773,7 @@ msgid "Allow your friends to see this connection"
 msgstr "Να επιτρέπεται στους φίλους σας να βλέπουν αυτήν τη σύνδεση"
 
 #. Profile timezone privacy option description for the Friends switch.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:67
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:62
 msgid "Allow your friends to see your local time"
 msgstr "Να επιτρέπεται στους φίλους σας να βλέπουν την τοπική ώρα του προφίλ σας"
 
@@ -4011,11 +4016,11 @@ msgstr "Τα κινούμενα αρχεία {AVIF_FORMAT_LABEL} δεν υποσ
 msgid "Animated {avifFormatLabel} not supported"
 msgstr "Τα κινούμενα {avifFormatLabel} δεν υποστηρίζονται"
 
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:208
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:206
 msgid "Animated avatars ({ANIMATED_AVATAR_FORMATS}) are exclusively available to {PREMIUM_PRODUCT_NAME} subscribers."
 msgstr "Τα κινούμενα avatar ({ANIMATED_AVATAR_FORMATS}) είναι διαθέσιμα αποκλειστικά στους συνδρομητές {PREMIUM_PRODUCT_NAME}."
 
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:242
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:240
 msgid "Animated avatars ({ANIMATED_AVATAR_FORMATS}) are not available on this instance. Upload a static image instead."
 msgstr "Τα κινούμενα avatar ({ANIMATED_AVATAR_FORMATS}) δεν είναι διαθέσιμα σε αυτήν την παρουσία. Ανεβάστε μια στατική εικόνα αντ' αυτού."
 
@@ -4478,7 +4483,7 @@ msgid "Are you sure you want to delete <0>{0}</0>?"
 msgstr "Είστε σίγουροι ότι θέλετε να διαγράψετε το <0>{0}</0>;"
 
 #. placeholder {0}: formData.name
-#: src/features/persona/components/modals/PersonaEditModal.tsx:540
+#: src/features/persona/components/modals/PersonaEditModal.tsx:537
 msgid "Are you sure you want to delete <0>{0}</0>? This action cannot be undone."
 msgstr "Είστε σίγουροι ότι θέλετε να διαγράψετε το <0>{0}</0>; Αυτή η ενέργεια δεν μπορεί να αναιρεθεί."
 
@@ -5203,8 +5208,8 @@ msgstr "Διαθέσιμο στην εφαρμογή για υπολογιστέ
 #. Form label for a webhook avatar image.
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #: src/features/ui/components/BaseAvatar.tsx:18
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:375
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:424
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:373
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:421
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:13
 #: src/features/webhook/components/WebhookListItem.tsx:252
 msgid "Avatar"
@@ -5514,8 +5519,8 @@ msgstr "Αποκλεισμένοι χρήστες"
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildBannerUploadField.tsx:28
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildBannerUploadField.tsx:125
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:282
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:333
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:280
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:330
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:37
 msgid "Banner"
 msgstr "Banner"
@@ -5624,7 +5629,6 @@ msgstr "Αντιστοιχίσεις πλήκτρων"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/persona/components/modals/PersonaEditModal.tsx:707
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:129
 #: src/features/user/components/settings_utils/section_registry/PrivacySafetySections.ts:156
 msgid "Bio"
@@ -6703,8 +6707,8 @@ msgstr "Στο κέντρο"
 
 #. Title of the modal where the user picks an avatar source (file upload or GIF provider). Keep it concise.
 #: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:111
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:397
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:435
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:395
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:431
 msgid "Change avatar"
 msgstr "Αλλαγή avatar"
 
@@ -6716,8 +6720,8 @@ msgstr "Αλλαγή φόντου"
 #. Title of the modal where the user picks a community banner source (file upload or GIF provider). Keep it concise.
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildBannerUploadField.tsx:43
 #: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:94
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:305
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:346
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:303
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:342
 msgid "Change banner"
 msgstr "Αλλαγή banner"
 
@@ -6764,7 +6768,7 @@ msgstr "Αλλαγή ψευδώνυμου στην ομάδα"
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:86
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:626
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildIconUploadField.tsx:35
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:438
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:436
 msgid "Change icon"
 msgstr "Αλλαγή εικονιδίου"
 
@@ -7608,7 +7612,7 @@ msgstr "Επιλέξτε πώς αποθηκεύονται τα αγαπημέν
 msgid "Choose how times are displayed throughout the app"
 msgstr "Επιλέξτε πώς θα εμφανίζονται οι ώρες στην εφαρμογή"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:375
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:373
 msgid "Choose how untagged messages and persona tags interact with your active persona."
 msgstr "Επιλέξτε πώς τα μηνύματα χωρίς ετικέτα και οι ετικέτες persona αλληλεπιδρούν με την ενεργή persona σας."
 
@@ -7661,7 +7665,7 @@ msgid "Choose the tab or window in your browser"
 msgstr "Επιλέξτε την καρτέλα ή το παράθυρο στο πρόγραμμα περιήγησής σας"
 
 #. Helper text under the profile timezone picker. productName is the app name.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:45
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:40
 msgid "Choose the time zone {productName} uses to calculate your UTC offset for profile local time."
 msgstr "Επιλέξτε τη ζώνη ώρας που χρησιμοποιεί το {productName} για να υπολογίσει την απόκλιση UTC και να εμφανίσει την τοπική ώρα στο προφίλ σας."
 
@@ -7921,7 +7925,7 @@ msgstr "Εκκαθάριση εικονικών συνημμένων"
 
 #. Accessible label for the button that clears the slash command being composed in the message box.
 #. Accessible label for the composer button that clears the slash command currently being composed.
-#: src/features/channel/components/LexicalChannelTextareaContent.tsx:136
+#: src/features/channel/components/LexicalChannelTextareaContent.tsx:137
 #: src/features/channel/components/SlashCommandParamBar.tsx:16
 msgid "Clear command"
 msgstr "Εκκαθάριση εντολής"
@@ -8680,7 +8684,7 @@ msgstr "Όνομα κοινότητας"
 
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:126
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:125
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:113
 msgid "Community nickname"
 msgstr "Ψευδώνυμο κοινότητας"
@@ -8733,7 +8737,7 @@ msgid "Community profile"
 msgstr "Προφίλ κοινότητας"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:73
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:72
 msgid "Community profile updated"
 msgstr "Το προφίλ κοινότητας ενημερώθηκε"
 
@@ -9695,6 +9699,11 @@ msgstr "Αντιγραφή κειμένου"
 #: src/features/auth/components/modals/MfaTotpEnableModal.tsx:95
 msgid "Copy the setup key into your authenticator app."
 msgstr "Αντιγράψτε το κλειδί εγκατάστασης στην εφαρμογή ελέγχου ταυτότητας."
+
+#. Context menu action to copy a timestamp markdown tag in the message composer.
+#: src/features/lexical/composer/nodes/ComposerTimestampContextMenu.tsx:15
+msgid "Copy timestamp"
+msgstr \"Αντιγραφή χρονικής σήμανσης\"
 
 #. Developer-mode action that copies a user snowflake/ID to the clipboard.
 #: src/features/app/components/floating/UserAreaPopout.tsx:692
@@ -10926,7 +10935,7 @@ msgid "Customer portal"
 msgstr "Πύλη πελατών"
 
 #. Plus menu submenu label for visibility toggles on textarea adornment buttons.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:39
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:43
 msgid "Customize"
 msgstr "Προσαρμογή"
 
@@ -10963,11 +10972,6 @@ msgstr "Προσαρμόστε την ετικέτα σας ({discriminatorLabel
 #: src/features/user/components/modals/FluxerTagChangeModal.tsx:386
 msgid "Customize your tag or keep it when changing your username"
 msgstr "Προσαρμόστε την ετικέτα σας ή διατηρήστε την όταν αλλάζετε το όνομα χρήστη σας"
-
-#. Description for persona accent color picker
-#: src/features/persona/components/modals/PersonaEditModal.tsx:98
-msgid "Customizes the border and banner color on this persona's profile"
-msgstr "Προσαρμόζει το χρώμα περιγράμματος και banner στο προφίλ αυτής της persona"
 
 #. Label in the accent color picker. Keep the tone plain and specific.
 #: src/features/user/components/modals/tabs/my_profile_tab/AccentColorPicker.tsx:16
@@ -11101,8 +11105,10 @@ msgid "Data export"
 msgstr "Εξαγωγή δεδομένων"
 
 #. Column header for invoice payment or creation date.
+#. Label for date input in timestamp modal.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/app/components/dialogs/components/plutonium/InvoiceList.tsx:120
+#: src/features/channel/components/modals/TimestampModal.tsx:36
 #: src/features/user/components/settings_utils/section_registry/AppearanceSections.ts:286
 msgid "Date"
 msgstr "Ημερομηνία"
@@ -11393,7 +11399,7 @@ msgstr "Ντέλαγουερ"
 #: src/features/emoji/components/stickers/StickerGridItem.tsx:35
 #: src/features/messaging/commands/MessageCommands.tsx:81
 #: src/features/moderation/components/report_modal/IARModalCopy.ts:109
-#: src/features/persona/components/modals/PersonaEditModal.tsx:544
+#: src/features/persona/components/modals/PersonaEditModal.tsx:541
 #: src/features/platform/utils/DesktopLocaleBridge.ts:76
 #: src/features/theme_studio/sections/LibrarySection.tsx:514
 #: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:517
@@ -11574,12 +11580,12 @@ msgid "Delete passkey"
 msgstr "Διαγραφή κλειδιού πρόσβασης"
 
 #. Aria label for deleting persona
-#: src/features/persona/components/modals/PersonaEditModal.tsx:126
+#: src/features/persona/components/modals/PersonaEditModal.tsx:123
 msgid "Delete persona"
 msgstr "Διαγραφή persona"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:538
-#: src/features/persona/components/modals/PersonaEditModal.tsx:799
+#: src/features/persona/components/modals/PersonaEditModal.tsx:535
+#: src/features/persona/components/modals/PersonaEditModal.tsx:805
 msgid "Delete Persona"
 msgstr "Διαγραφή persona"
 
@@ -11654,6 +11660,11 @@ msgstr "Διαγραφή αυτού του μηνύματος"
 #: src/features/messaging/commands/MessageCommands.tsx:77
 msgid "Delete this message? Can't be undone."
 msgstr "Διαγραφή αυτού του μηνύματος; Δεν μπορεί να αναιρεθεί."
+
+#. Context menu action to delete a timestamp from the message composer.
+#: src/features/lexical/composer/nodes/ComposerTimestampContextMenu.tsx:20
+msgid "Delete timestamp"
+msgstr \"Διαγραφή χρονικής σήμανσης\"
 
 #. Danger action in the channel permissions overwrite context menu that removes a member permission override from the channel.
 #: src/features/channel/components/modals/channel_tabs/channel_permissions_tab/OverwriteContextMenu.tsx:19
@@ -12523,8 +12534,9 @@ msgstr "Λειτουργία εμφάνισης"
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Short label in the inputs tab. Keep it concise.
 #. Short label in the my profile tab. Keep it concise.
+#: src/features/persona/components/modals/PersonaEditModal.tsx:660
 #: src/features/user/components/modals/tabs/component_gallery_tab/ComponentGalleryTabInputsTab.tsx:22
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:138
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:137
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:61
 msgid "Display name"
 msgstr "Όνομα εμφάνισης"
@@ -12542,7 +12554,7 @@ msgstr "Όνομα εμφάνισης (προαιρετικό)"
 msgid "Display scaling"
 msgstr "Κλιμάκωση οθόνης"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:398
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:396
 msgid "Display Tag"
 msgstr "Ετικέτα εμφάνισης"
 
@@ -12556,7 +12568,7 @@ msgstr "Το εικονίδιο ετικέτας εμφάνισης αφαιρέ
 msgid "Display tag icon updated"
 msgstr "Το εικονίδιο ετικέτας εμφάνισης ενημερώθηκε"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:401
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:399
 msgid "Display tag will appear next to all persona names in messages. If no display tag is set, your account profile picture will be shown."
 msgstr "Η ετικέτα εμφάνισης θα εμφανίζεται δίπλα σε όλα τα ονόματα persona στα μηνύματα. Αν δεν οριστεί ετικέτα εμφάνισης, θα εμφανίζεται η εικόνα προφίλ του λογαριασμού σας."
 
@@ -12688,7 +12700,7 @@ msgstr "Θέλεις να μπεις στο {communityName};"
 #. Label in the accessibility tab.
 #. Label in the my profile tab.
 #: src/features/user/components/modals/tabs/AccessibilityTab.tsx:54
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:146
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:145
 msgid "Doc, I'm from the future. I came here in a time machine that you invented. Now, I need your help to get back to the year 1985."
 msgstr "Γιατρέ, έρχομαι από το μέλλον. Ήρθα εδώ με μια χρονομηχανή που εφηύρατε εσείς. Τώρα, χρειάζομαι τη βοήθειά σας για να επιστρέψω στο έτος 1985."
 
@@ -12814,6 +12826,8 @@ msgstr "Κάντε διπλό κλικ σε κάποιον για να παρα�
 
 #. Settings search entry label for double-clicking a message to edit it.
 #. Short label for an advanced message editing preference.
+#. Tooltip hint on timestamp pill in message composer.
+#: src/features/lexical/composer/nodes/ComposerTimestampPill.tsx:28
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:309
 #: src/features/user/components/settings_utils/search_index/AdvancedSettingsIndex.ts:56
 msgid "Double-click to edit"
@@ -13099,7 +13113,7 @@ msgid "Duplicate role"
 msgstr "Αντιγραφή ρόλου"
 
 #. Validation error when tag pair is duplicated within the same persona
-#: src/features/persona/components/modals/PersonaEditModal.tsx:134
+#: src/features/persona/components/modals/PersonaEditModal.tsx:131
 msgid "Duplicate tag pair on this persona"
 msgstr "Διπλότυπο ζεύγος ετικετών σε αυτήν την persona"
 
@@ -13114,14 +13128,19 @@ msgid "Dutch"
 msgstr "Ολλανδικά"
 
 #. Placeholder for persona name
-#: src/features/persona/components/modals/PersonaEditModal.tsx:102
+#: src/features/persona/components/modals/PersonaEditModal.tsx:99
 msgid "e.g. Alice"
 msgstr "π.χ. Αλίκη"
 
 #. Placeholder for persona pronouns
-#: src/features/persona/components/modals/PersonaEditModal.tsx:106
+#: src/features/persona/components/modals/PersonaEditModal.tsx:103
 msgid "e.g. she/her"
 msgstr "π.χ. αυτή/της"
+
+#. Placeholder text for natural language timestamp input.
+#: src/features/channel/components/modals/TimestampModal.tsx:32
+msgid "e.g. tomorrow at 3pm, in 2 hours, now"
+msgstr "π.χ. αύριο στις 3 μ.μ., σε 2 ώρες, τώρα"
 
 #. Placeholder or example text in the authentication passkey name modal. Keep the tone plain and specific.
 #: src/features/auth/components/modals/PasskeyNameModal.tsx:27
@@ -13307,7 +13326,7 @@ msgid "Edit persona"
 msgstr "Επεξεργασία persona"
 
 #. Title for edit persona modal
-#: src/features/persona/components/modals/PersonaEditModal.tsx:50
+#: src/features/persona/components/modals/PersonaEditModal.tsx:51
 msgid "Edit Persona"
 msgstr "Επεξεργασία persona"
 
@@ -13320,7 +13339,7 @@ msgid "Edit profile"
 msgstr "Επεξεργασία προφίλ"
 
 #. Button label in profile settings. Opens the profile local time modal.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:33
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:32
 msgid "Edit profile local time"
 msgstr "Επεξεργασία τοπικής ώρας προφίλ"
 
@@ -13367,13 +13386,20 @@ msgstr "Επεξεργασία αυτοκόλλητου {stickerName}"
 msgid "Edit the bot avatar, tag, bio, banner, and friend request behavior"
 msgstr "Επεξεργασία του avatar, της ετικέτας, του βιογραφικού, του banner και της συμπεριφοράς αιτήματος φιλίας του bot"
 
+#. Context menu action to edit a timestamp in the message composer.
+#. Title of the timestamp modal when editing an existing timestamp.
+#: src/features/channel/components/modals/TimestampModal.tsx:28
+#: src/features/lexical/composer/nodes/ComposerTimestampContextMenu.tsx:10
+msgid "Edit timestamp"
+msgstr \"Επεξεργασία χρονικής σήμανσης\"
+
 #. Button or menu action label in the add custom search engine modal. Keep it concise.
 #: src/features/user/components/modals/tabs/chat_settings_tab/AddCustomSearchEngineModal.tsx:34
 msgid "Edit translation provider"
 msgstr "Επεξεργασία παρόχου μετάφρασης"
 
 #. Button or menu action label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:93
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:92
 msgid "Edit your profile appearance and see a live preview"
 msgstr "Επεξεργαστείτε την εμφάνιση του προφίλ σας και δείτε μια ζωντανή προεπισκόπηση"
 
@@ -14467,7 +14493,7 @@ msgstr "Όλα τα κανάλια"
 
 #. Profile timezone privacy option label. Allows anyone who can view the full profile to see local time.
 #: src/features/connection/components/modals/EditConnectionModal.tsx:79
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:55
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:50
 #: src/features/user/components/modals/tabs/privacy_safety_tab/ConnectionsTab.tsx:234
 msgid "Everyone"
 msgstr "Όλοι"
@@ -14873,7 +14899,7 @@ msgid "Failed to delete channel"
 msgstr "Αποτυχία διαγραφής καναλιού"
 
 #. Toast when persona deletion fails
-#: src/features/persona/components/modals/PersonaEditModal.tsx:70
+#: src/features/persona/components/modals/PersonaEditModal.tsx:71
 msgid "Failed to delete persona"
 msgstr "Αποτυχία διαγραφής persona"
 
@@ -15048,7 +15074,7 @@ msgid "Failed to reset premium state."
 msgstr "Αποτυχία επαναφοράς της κατάστασης premium."
 
 #. Toast when persona save fails
-#: src/features/persona/components/modals/PersonaEditModal.tsx:62
+#: src/features/persona/components/modals/PersonaEditModal.tsx:63
 msgid "Failed to save persona"
 msgstr "Αποτυχία αποθήκευσης persona"
 
@@ -15503,7 +15529,7 @@ msgid "First option"
 msgstr "Πρώτη επιλογή"
 
 #. Unicode emoji category label.
-#: src/features/expressions/utils/UnicodeEmojis.ts:49
+#: src/features/expressions/utils/UnicodeEmojis.ts:50
 msgid "Flags"
 msgstr "Σημαίες"
 
@@ -15612,7 +15638,7 @@ msgid "Fonts"
 msgstr "Γραμματοσειρές"
 
 #. Unicode emoji category label.
-#: src/features/expressions/utils/UnicodeEmojis.ts:29
+#: src/features/expressions/utils/UnicodeEmojis.ts:30
 msgid "Food & drink"
 msgstr "Φαγητό & ποτό"
 
@@ -15806,6 +15832,11 @@ msgstr "Ξεχάσατε τον κωδικό πρόσβασης"
 msgid "Forgot your password?"
 msgstr "Ξεχάσατε τον κωδικό σας;"
 
+#. Label for format preview selection in timestamp modal.
+#: src/features/channel/components/modals/TimestampModal.tsx:48
+msgid "Format preview"
+msgstr "Προεπισκόπηση μορφής"
+
 #. Collapsible group heading in the Theme Studio tokens list, for form input tokens.
 #: src/features/theme_studio/sections/TokenGroups.ts:90
 msgid "Forms"
@@ -15969,7 +16000,7 @@ msgstr "Φιλικό bot"
 #: src/features/channel/components/direct_message/DirectMessageList.tsx:555
 #: src/features/connection/components/modals/EditConnectionModal.tsx:86
 #: src/features/search/utils/QuickSwitcherModalUtils.tsx:49
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:63
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:58
 #: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:89
 msgid "Friends"
 msgstr "Φίλοι"
@@ -17899,7 +17930,7 @@ msgstr "Εισαγωγή φακέλου"
 
 #. Modal title for PluralKit import step select
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:485
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:510
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:508
 msgid "Import from PluralKit"
 msgstr "Εισαγωγή από PluralKit"
 
@@ -18332,6 +18363,11 @@ msgstr "Πεδία εισαγωγής και κείμενο"
 msgid "Inputs with icons"
 msgstr "Πεδία εισαγωγής με εικονίδια"
 
+#. Button to insert timestamp into message composer.
+#: src/features/channel/components/modals/TimestampModal.tsx:52
+msgid "Insert"
+msgstr "Εισαγωγή"
+
 #: src/features/input/utils/KeybindUtils.ts:87
 msgctxt "keyboard-key-name"
 msgid "Insert"
@@ -18341,6 +18377,15 @@ msgstr "Insert"
 #: src/features/channel/components/modals/channel_tabs/channel_overview_tab/ChannelOverviewTopicEditor.tsx:44
 msgid "Insert emoji"
 msgstr "Εισαγωγή emoji"
+
+#. Button or menu action label in the channel and chat mobile textarea plus bottom sheet. Keep it concise.
+#. Plus menu item that opens the dynamic timestamp insertion modal.
+#. Title of the timestamp insertion modal.
+#: src/features/channel/components/modals/TimestampModal.tsx:24
+#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:13
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:19
+msgid "Insert timestamp"
+msgstr "Εισαγωγή χρονικής σήμανσης"
 
 #. CTA card body in the screen-share picker promoting the desktop app. {productName} is Fluxer.
 #: src/features/voice/components/modals/screen_share_picker_modal/DesktopDownloadCta.tsx:16
@@ -20041,7 +20086,7 @@ msgstr "Το κανάλι ορίστηκε να κληρονομεί τη ρύθ
 msgid "Mail"
 msgstr "Email"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:873
+#: src/features/persona/components/modals/PersonaEditModal.tsx:877
 #: src/features/persona/components/PersonaProfileMobileSheet.tsx:369
 #: src/features/persona/components/PersonaProfilePopout.tsx:264
 msgid "Main account"
@@ -22199,10 +22244,6 @@ msgstr "Παρακάμψεις γραμμών ειδοποιήσεων"
 msgid "Name"
 msgstr "Όνομα"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:664
-msgid "Name *"
-msgstr "Όνομα *"
-
 #. Form validation error shown when the name field is empty.
 #. Form validation error shown when the name field is empty.
 #: src/features/expressions/components/modals/meme_form/MemeFormFields.tsx:16
@@ -22271,7 +22312,7 @@ msgid "Native updater ready"
 msgstr "Η εγγενής ενημέρωση είναι έτοιμη"
 
 #. Unicode emoji category label.
-#: src/features/expressions/utils/UnicodeEmojis.ts:25
+#: src/features/expressions/utils/UnicodeEmojis.ts:26
 msgid "Nature"
 msgstr "Φύση"
 
@@ -22506,7 +22547,7 @@ msgid "New password"
 msgstr "Νέος κωδικός πρόσβασης"
 
 #. Title for new persona modal
-#: src/features/persona/components/modals/PersonaEditModal.tsx:46
+#: src/features/persona/components/modals/PersonaEditModal.tsx:47
 msgid "New Persona"
 msgstr "Νέα persona"
 
@@ -22808,7 +22849,7 @@ msgstr "Χωρίς περιγραφή."
 msgid "No desktop update is available."
 msgstr "Δεν υπάρχει διαθέσιμη ενημέρωση για την εφαρμογή υπολογιστή."
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:491
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:489
 msgid "No display tag configured. Messages will show your account profile picture."
 msgstr "Δεν έχει ρυθμιστεί ετικέτα εμφάνισης. Τα μηνύματα θα εμφανίζουν την εικόνα προφίλ του λογαριασμού σας."
 
@@ -22938,7 +22979,7 @@ msgid "No matches found"
 msgstr "Δεν βρέθηκαν αποτελέσματα"
 
 #: src/features/persona/components/PersonaPickerSheet.tsx:202
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:550
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:548
 msgid "No matching personas found."
 msgstr "Δεν βρέθηκαν αντίστοιχες persona."
 
@@ -23001,7 +23042,7 @@ msgstr "Δεν υπάρχουν ακόμα προσωπικές λέξεις."
 msgid "No personas configured yet. Create one in Settings."
 msgstr "Δεν έχουν ρυθμιστεί ακόμη persona. Δημιουργήστε μία στις Ρυθμίσεις."
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:546
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:544
 msgid "No personas created yet. Click \"Add Persona\" to create your first persona!"
 msgstr "No personas created yet. Click \"Add Persona\" to create your first persona!"
 
@@ -23061,8 +23102,10 @@ msgstr "Κανένα αποτέλεσμα"
 
 #. Empty state shown when a combobox search returns no matches.
 #. Empty state shown when a combobox search returns no matches.
+#. Empty state shown when a combobox search returns no matches.
 #: src/features/channel/components/embeds/attachments/TextualAttachmentLanguageCombobox.tsx:30
 #: src/features/ui/components/form/FormCombobox.tsx:83
+#: src/features/ui/components/form/SearchableTimeZonePicker.tsx:46
 msgid "No results found"
 msgstr "Δεν βρέθηκαν αποτελέσματα"
 
@@ -23377,7 +23420,7 @@ msgstr "Δεν είναι μία από τις επιλογές"
 #. Option in the profile timezone picker. Means no timezone has been selected.
 #. Status chip for a macOS permission that has not been requested.
 #: src/features/permissions/system/components/modals/MacPermissionsModal.tsx:64
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:41
+#: src/features/ui/components/form/SearchableTimeZonePicker.tsx:50
 msgid "Not set"
 msgstr "Δεν έχει οριστεί"
 
@@ -23545,7 +23588,7 @@ msgid "OAuth2 URL builder"
 msgstr "Δημιουργία URL OAuth2"
 
 #. Unicode emoji category label.
-#: src/features/expressions/utils/UnicodeEmojis.ts:41
+#: src/features/expressions/utils/UnicodeEmojis.ts:42
 msgid "Objects"
 msgstr "Αντικείμενα"
 
@@ -23774,7 +23817,7 @@ msgid "Only the selected ones"
 msgstr "Μόνο οι επιλεγμένες"
 
 #. Helper description for private persona visibility
-#: src/features/persona/components/modals/PersonaEditModal.tsx:94
+#: src/features/persona/components/modals/PersonaEditModal.tsx:95
 msgid "Only visible to you. Others cannot view this persona’s full bio or profile details."
 msgstr "Ορατό μόνο σε εσάς. Άλλοι δεν μπορούν να δουν το πλήρες βιογραφικό ή τις λεπτομέρειες του προφίλ αυτής της persona."
 
@@ -24440,7 +24483,7 @@ msgid "Other methods"
 msgstr "Άλλες μέθοδοι"
 
 #. Privacy note in profile timezone settings. Preserve {timezoneIdentifierExample}; it is inserted by code as an IANA timezone identifier example. productName is the app name. Users should understand that only the UTC offset is shown to other people.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:49
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:44
 msgid "Other people can only see your current UTC offset when you choose to share profile local time. They do not see your exact time zone identifier, such as {timezoneIdentifierExample}. {productName} stores that identifier only so the offset can update automatically when daylight saving time changes."
 msgstr "Οι άλλοι χρήστες μπορούν να δουν μόνο την τρέχουσα μετατόπιση ώρας UTC όταν επιλέγετε να μοιραστείτε την τοπική ώρα του προφίλ σας. Δεν βλέπουν το ακριβές αναγνωριστικό της ζώνης ώρας σας, όπως {timezoneIdentifierExample}. Το {productName} αποθηκεύει αυτό το αναγνωριστικό μόνο για να ενημερώνεται αυτόματα η μετατόπιση όταν αλλάζει η θερινή ώρα."
 
@@ -24877,7 +24920,7 @@ msgstr "Πενσιλβάνια"
 #. Quick switcher section header for user results.
 #. Quick switcher section header listing user candidates.
 #. Unicode emoji category label.
-#: src/features/expressions/utils/UnicodeEmojis.ts:21
+#: src/features/expressions/utils/UnicodeEmojis.ts:22
 #: src/features/search/state/QuickSwitcherResultConverters.ts:22
 #: src/features/search/utils/QuickSwitcherModalUtils.tsx:53
 #: src/features/user/components/settings_utils/GuildSettingsConstants.ts:261
@@ -25007,12 +25050,12 @@ msgid "Permissions for {0}"
 msgstr "Δικαιώματα για {0}"
 
 #. Toast when persona is created
-#: src/features/persona/components/modals/PersonaEditModal.tsx:58
+#: src/features/persona/components/modals/PersonaEditModal.tsx:59
 msgid "Persona created"
 msgstr "Η persona δημιουργήθηκε"
 
 #. Toast when persona is deleted
-#: src/features/persona/components/modals/PersonaEditModal.tsx:66
+#: src/features/persona/components/modals/PersonaEditModal.tsx:67
 msgid "Persona deleted"
 msgstr "Η persona διαγράφηκε"
 
@@ -25030,17 +25073,17 @@ msgstr "Προφίλ persona"
 msgid "Persona profile: {name}"
 msgstr "Προφίλ persona: {name}"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:740
+#: src/features/persona/components/modals/PersonaEditModal.tsx:730
 msgid "Persona Tags (Prefix & Suffix)"
 msgstr "Ετικέτες persona (Πρόθεμα & Επίθημα)"
 
 #. Toast when persona is updated
-#: src/features/persona/components/modals/PersonaEditModal.tsx:54
+#: src/features/persona/components/modals/PersonaEditModal.tsx:55
 msgid "Persona updated"
 msgstr "Η persona ενημερώθηκε"
 
 #. Aria label for persona visibility tabs
-#: src/features/persona/components/modals/PersonaEditModal.tsx:130
+#: src/features/persona/components/modals/PersonaEditModal.tsx:127
 msgid "Persona visibility"
 msgstr "Ορατότητα persona"
 
@@ -25588,7 +25631,7 @@ msgid "Prefers reduced motion"
 msgstr "Προτιμά μειωμένη κίνηση"
 
 #. Placeholder for persona tag prefix
-#: src/features/persona/components/modals/PersonaEditModal.tsx:114
+#: src/features/persona/components/modals/PersonaEditModal.tsx:111
 msgid "Prefix (e.g. [)"
 msgstr "Πρόθεμα (π.χ. [)"
 
@@ -25705,7 +25748,7 @@ msgstr "Αποτροπή των μελών από την αποστολή μην
 
 #: src/features/expressions/components/modals/sticker_form/StickerPreview.tsx:21
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildInviteSplashSettingsField.tsx:45
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:465
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:463
 #: src/features/user/components/modals/tabs/EmbedDebuggerTab.tsx:276
 msgid "Preview"
 msgstr "Προεπισκόπηση"
@@ -25914,7 +25957,7 @@ msgid "Privacy violation or stalking"
 msgstr "Παραβίαση απορρήτου ή καταδίωξη"
 
 #. Persona visibility private
-#: src/features/persona/components/modals/PersonaEditModal.tsx:82
+#: src/features/persona/components/modals/PersonaEditModal.tsx:83
 msgid "Private"
 msgstr "Ιδιωτικό"
 
@@ -25974,7 +26017,7 @@ msgstr "Προφίλ"
 msgid "Profile badge"
 msgstr "Σήμα προφίλ"
 
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:165
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:163
 msgid "Profile banners are a {PREMIUM_PRODUCT_NAME} feature. Get {PREMIUM_PRODUCT_NAME} to add a banner to your profile."
 msgstr "Τα banner προφίλ είναι λειτουργία του {PREMIUM_PRODUCT_NAME}. Αποκτήστε το {PREMIUM_PRODUCT_NAME} για να προσθέσετε banner στο προφίλ σας."
 
@@ -25994,12 +26037,12 @@ msgid "Profile banners require {premiumProductName}."
 msgstr "Τα banner προφίλ απαιτούν {premiumProductName}."
 
 #. Helper description for unlisted persona visibility
-#: src/features/persona/components/modals/PersonaEditModal.tsx:86
+#: src/features/persona/components/modals/PersonaEditModal.tsx:87
 msgid "Profile cards are accessible only when clicking on messages sent by this persona. Not listed in your public persona list."
 msgstr "Οι κάρτες προφίλ είναι προσβάσιμες μόνο κάνοντας κλικ σε μηνύματα που έχουν σταλεί από αυτήν την persona. Δεν αναφέρονται στη δημόσια λίστα persona σας."
 
 #. Helper description for public persona visibility
-#: src/features/persona/components/modals/PersonaEditModal.tsx:90
+#: src/features/persona/components/modals/PersonaEditModal.tsx:91
 msgid "Profile cards are accessible when clicking on messages and visible in your public personas list to friends and mutual servers."
 msgstr "Οι κάρτες προφίλ είναι προσβάσιμες κάνοντας κλικ σε μηνύματα και ορατές στη δημόσια λίστα persona σας σε φίλους και κοινούς διακομιστές."
 
@@ -26010,18 +26053,18 @@ msgstr "Χρώμα προφίλ"
 
 #. Settings section label for editing profile appearance and identity.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:105
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:104
 #: src/features/user/components/settings_utils/section_registry/GeneralSettingsSections.ts:6
 msgid "Profile customization"
 msgstr "Προσαρμογή προφίλ"
 
 #. Label in the my profile tab. Preserve {selectedGuildName}; it is inserted by code.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:101
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:100
 msgid "Profile customization for {selectedGuildName}"
 msgstr "Προσαρμογή προφίλ για το {selectedGuildName}"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:97
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:96
 msgid "Profile customization form"
 msgstr "Φόρμα προσαρμογής προφίλ"
 
@@ -26031,7 +26074,7 @@ msgid "Profile data warning"
 msgstr "Προειδοποίηση δεδομένων προφίλ"
 
 #. Profile settings row title for choosing whether profile viewers can see the user local time.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:23
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:22
 msgid "Profile local time"
 msgstr "Τοπική ώρα προφίλ"
 
@@ -26055,7 +26098,6 @@ msgstr "Εικόνα προφίλ"
 msgid "Profile pictures"
 msgstr "Φωτογραφίες προφίλ"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:809
 #: src/features/user/components/profile/profile_card/ProfileCardLayout.tsx:26
 msgid "Profile preview"
 msgstr "Προεπισκόπηση προφίλ"
@@ -26087,7 +26129,7 @@ msgid "Profile type"
 msgstr "Τύπος προφίλ"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:77
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:76
 msgid "Profile updated"
 msgstr "Το προφίλ ενημερώθηκε"
 
@@ -26124,8 +26166,8 @@ msgstr "Εμφάνιση ειδοποίησης για νέες συσκευές
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/persona/components/modals/PersonaEditModal.tsx:678
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:142
+#: src/features/persona/components/modals/PersonaEditModal.tsx:670
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:141
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:177
 #: src/features/user/components/settings_utils/section_registry/PrivacySafetySections.ts:160
 msgid "Pronouns"
@@ -26166,7 +26208,7 @@ msgid "PTT"
 msgstr "PTT"
 
 #. Persona visibility public
-#: src/features/persona/components/modals/PersonaEditModal.tsx:78
+#: src/features/persona/components/modals/PersonaEditModal.tsx:79
 msgid "Public"
 msgstr "Δημόσιο"
 
@@ -27059,8 +27101,8 @@ msgstr "Κατάργηση συνημμένου"
 msgid "Remove authenticator app"
 msgstr "Κατάργηση εφαρμογής ελέγχου ταυτότητας"
 
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:407
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:445
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:405
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:441
 msgid "Remove avatar"
 msgstr "Κατάργηση avatar"
 
@@ -27069,8 +27111,8 @@ msgstr "Κατάργηση avatar"
 msgid "Remove background"
 msgstr "Κατάργηση φόντου"
 
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:316
-#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:357
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:314
+#: src/features/user/components/modals/tabs/my_profile_tab/BannerUploader.tsx:353
 msgid "Remove banner"
 msgstr "Κατάργηση banner"
 
@@ -27137,7 +27179,7 @@ msgstr "Αφαίρεση από τα αγαπημένα GIF που αποθηκ�
 #: src/features/channel/components/modals/EditGroupModal.tsx:293
 #: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:314
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:635
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:446
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:444
 msgid "Remove icon"
 msgstr "Αφαίρεση εικονιδίου"
 
@@ -27205,7 +27247,7 @@ msgid "Remove spoiler"
 msgstr "Κατάργηση spoiler"
 
 #. Button or menu action label in the channel stickers area. Keep it concise. Keep the tone plain and specific.
-#: src/features/channel/components/ChannelStickersArea.tsx:21
+#: src/features/channel/components/ChannelStickersArea.tsx:19
 msgid "Remove sticker"
 msgstr "Αφαίρεση αυτοκόλλητου"
 
@@ -27215,7 +27257,7 @@ msgid "Remove tag {tag}"
 msgstr "Κατάργηση ετικέτας {tag}"
 
 #. Aria label for removing a tag pair
-#: src/features/persona/components/modals/PersonaEditModal.tsx:122
+#: src/features/persona/components/modals/PersonaEditModal.tsx:119
 msgid "Remove tag pair"
 msgstr "Αφαίρεση ζεύγους ετικετών"
 
@@ -27858,7 +27900,7 @@ msgstr "Εστάλη ξανά"
 #: src/features/app/components/floating/ColorPickerPopover.tsx:190
 #: src/features/input/components/KeybindRecorder.tsx:459
 #: src/features/messaging/components/modals/ImageCropModal.tsx:936
-#: src/features/persona/components/modals/PersonaEditModal.tsx:615
+#: src/features/persona/components/modals/PersonaEditModal.tsx:612
 msgid "Reset"
 msgstr "Επαναφορά"
 
@@ -28735,7 +28777,7 @@ msgid "Save banner"
 msgstr "Αποθήκευση banner"
 
 #: src/features/app/components/dialogs/shared/UnsavedChangesBannerContent.tsx:60
-#: src/features/persona/components/modals/PersonaEditModal.tsx:624
+#: src/features/persona/components/modals/PersonaEditModal.tsx:621
 msgid "Save changes"
 msgstr "Αποθήκευση αλλαγών"
 
@@ -29365,7 +29407,9 @@ msgid "Search themes…"
 msgstr "Αναζήτηση θεμάτων…"
 
 #. Placeholder in the profile timezone picker.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:37
+#. Placeholder in timezone combobox.
+#: src/features/ui/components/form/SearchableTimeZonePicker.tsx:34
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:36
 msgid "Search time zones"
 msgstr "Αναζήτηση ζωνών ώρας"
 
@@ -29839,8 +29883,8 @@ msgstr "Αποστολή GIF {title}"
 #. Action label for sending a gift to a friend.
 #. Button or menu action label in the channel and chat mobile textarea plus bottom sheet. Keep it concise.
 #. Plus menu item that opens the gift purchase flow.
-#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:21
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:31
+#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:25
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:35
 #: src/features/expressions/components/modals/GiftSendToFriendModal.tsx:30
 msgid "Send gift"
 msgstr "Αποστολή δώρου"
@@ -29939,7 +29983,7 @@ msgstr "Αποστολή κωδικού επαλήθευσης"
 #. Accessible label and tooltip for the send button after recording a voice message.
 #. Keyboard shortcut action label that opens the desktop voice message composer.
 #. Plus menu item that opens the desktop voice message composer to record and send a voice clip.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:35
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:39
 #: src/features/channel/components/VoiceMessageRecorder.tsx:69
 #: src/features/input/state/input_keybind/shared.ts:289
 msgid "Send voice message"
@@ -30093,7 +30137,7 @@ msgstr "Ορισμός προσαρμοσμένης κατάστασης"
 msgid "Set a member list position for the role"
 msgstr "Ορίστηκε θέση στη λίστα μελών για τον ρόλο"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:639
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:637
 msgid "Set Active"
 msgstr "Ορισμός ως ενεργό"
 
@@ -30308,7 +30352,7 @@ msgid "Set your status"
 msgstr "Όρισε την κατάστασή σου"
 
 #. Description in profile settings for the button that opens timezone settings. productName is the app name. A timezone identifier means values like America/New_York; only the UTC offset can be visible to others.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:27
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:26
 msgid "Set your time zone once so {productName} can keep your UTC offset current when daylight saving time changes. Other people can only see your UTC offset, not your exact time zone identifier."
 msgstr "Ορίστε τη ζώνη ώρας σας μία φορά, ώστε το {productName} να διατηρεί ενημερωμένη την τρέχουσα μετατόπιση ώρας UTC όταν αλλάζει η θερινή ώρα. Άλλοι χρήστες μπορούν να δουν μόνο τη μετατόπιση ώρας UTC και όχι το ακριβές αναγνωριστικό της ζώνης ώρας σας."
 
@@ -30724,7 +30768,7 @@ msgstr "Εμφάνιση ενσωματώσεων και προεπισκόπη�
 
 #. Short label for an advanced message input preference.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:59
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:63
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:129
 msgid "Show emoji button"
 msgstr "Εμφάνιση κουμπιού emoji"
@@ -30763,7 +30807,7 @@ msgstr "Εμφάνιση ένδειξης GIF"
 
 #. Plus menu submenu toggle that shows the GIFs button next to the textarea.
 #. Short label for an advanced message input preference.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:43
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:47
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:109
 msgid "Show GIFs button"
 msgstr "Εμφάνιση κουμπιού GIF"
@@ -30812,7 +30856,7 @@ msgstr "Εμφάνιση έως 5 (σήμα +5)"
 
 #. Plus menu submenu toggle that shows the saved media (memes) button next to the textarea.
 #. Short label for an advanced message input preference.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:47
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:51
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:113
 msgid "Show media button"
 msgstr "Εμφάνιση κουμπιού πολυμέσων"
@@ -30938,7 +30982,7 @@ msgstr "Εμφάνιση ρυθμιστικών έντασης ήχου συμμ
 
 #. Plus menu submenu toggle that shows the persona selector next to the textarea.
 #. Short label for an advanced message input preference.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:51
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:55
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:133
 msgid "Show personas button"
 msgstr "Εμφάνιση κουμπιού persona"
@@ -30967,7 +31011,7 @@ msgstr "Εμφάνιση αποθηκευμένων πολυμέσων στην 
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #: src/features/channel/components/textarea/TextareaContextMenu.tsx:102
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:63
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:67
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:137
 msgid "Show send button"
 msgstr "Εμφάνιση κουμπιού αποστολής"
@@ -30984,7 +31028,7 @@ msgstr "Εμφάνιση περιεχομένου spoiler όταν πατηθε�
 
 #. Short label for an advanced message input preference.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:55
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:59
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:125
 msgid "Show stickers button"
 msgstr "Εμφάνιση κουμπιού αυτοκόλλητων"
@@ -32802,9 +32846,14 @@ msgid "Successfully imported {0} persona(s) into your account. All avatar images
 msgstr "Επιτυχής εισαγωγή {0} persona στον λογαριασμό σας. Όλες οι εικόνες άβαταρ αποθηκεύονται με ασφάλεια στον τοπικό διακομιστή σας."
 
 #. Placeholder for persona tag suffix
-#: src/features/persona/components/modals/PersonaEditModal.tsx:118
+#: src/features/persona/components/modals/PersonaEditModal.tsx:115
 msgid "Suffix (e.g. ])"
 msgstr "Επίθημα (π.χ. ])"
+
+#. Section header for suggested time zones in the timestamp modal.
+#: src/features/ui/components/form/SearchableTimeZonePicker.tsx:38
+msgid "Suggested"
+msgstr "Προτεινόμενα"
 
 #. Helper text under the "Filter members without roles" explicit content filter option in the community moderation settings tab.
 #: src/features/guild/components/modals/guild_tabs/GuildModerationTab.tsx:112
@@ -33065,7 +33114,7 @@ msgid "Symbol"
 msgstr "Σύμβολο"
 
 #. Unicode emoji category label.
-#: src/features/expressions/utils/UnicodeEmojis.ts:45
+#: src/features/expressions/utils/UnicodeEmojis.ts:46
 msgid "Symbols"
 msgstr "Σύμβολα"
 
@@ -33268,16 +33317,16 @@ msgstr "Πίνακες"
 msgid "Tag"
 msgstr "Ετικέτα"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:426
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:424
 msgid "Tag Icon"
 msgstr "Εικονίδιο ετικέτας"
 
 #. Validation error when tag pair is already used by another persona
-#: src/features/persona/components/modals/PersonaEditModal.tsx:138
+#: src/features/persona/components/modals/PersonaEditModal.tsx:135
 msgid "Tag pair already in use by persona \"{name}\""
 msgstr "Tag pair already in use by persona \"{name}\""
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:413
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:411
 msgid "Tag Text"
 msgstr "Κείμενο ετικέτας"
 
@@ -33371,7 +33420,7 @@ msgid "Teleporting you to another voice region..."
 msgstr "Σας μεταφέρουμε σε άλλη περιοχή φωνής..."
 
 #. Placeholder for persona bio
-#: src/features/persona/components/modals/PersonaEditModal.tsx:110
+#: src/features/persona/components/modals/PersonaEditModal.tsx:107
 msgid "Tell us about this persona..."
 msgstr "Πείτε μας για αυτήν την persona..."
 
@@ -34443,7 +34492,7 @@ msgstr "Αυτό είναι ένα προσαρμοσμένο emoji από μι�
 msgid "This is a custom sticker from a community."
 msgstr "Αυτό είναι ένα προσαρμοσμένο αυτοκόλλητο από μια κοινότητα."
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:489
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:487
 msgid "This is a preview of how your display tag will look in chat."
 msgstr "Αυτή είναι μια προεπισκόπηση του πώς θα φαίνεται η ετικέτα εμφάνισής σας στη συνομιλία."
 
@@ -34596,7 +34645,7 @@ msgid "This message no longer exists."
 msgstr "Αυτό το μήνυμα δεν υπάρχει πλέον."
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:130
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:129
 msgid "This nickname will only be visible in this community"
 msgstr "Αυτό το ψευδώνυμο θα είναι ορατό μόνο σε αυτήν την κοινότητα"
 
@@ -34926,8 +34975,10 @@ msgid "Thumbnail preview"
 msgstr "Προεπισκόπηση μικρογραφίας"
 
 #. Form field label for a time value.
+#. Label for time input in timestamp modal.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
+#: src/features/channel/components/modals/TimestampModal.tsx:40
 #: src/features/ui/components/form/DateTimePickerField.tsx:34
 #: src/features/user/components/settings_utils/search_index/LanguageIndex.ts:30
 #: src/features/user/components/settings_utils/section_registry/AppearanceSections.ts:282
@@ -34969,7 +35020,9 @@ msgid "Time range"
 msgstr "Εύρος χρόνου"
 
 #. Field label in profile settings for choosing the timezone used to show local time on the profile.
-#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:19
+#. Label for time zone input in timestamp modal.
+#: src/features/channel/components/modals/TimestampModal.tsx:44
+#: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:18
 msgid "Time zone"
 msgstr "Ζώνη ώρας"
 
@@ -35324,7 +35377,7 @@ msgid "Translators"
 msgstr "Μεταφραστές"
 
 #. Unicode emoji category label.
-#: src/features/expressions/utils/UnicodeEmojis.ts:37
+#: src/features/expressions/utils/UnicodeEmojis.ts:38
 msgid "Travel & places"
 msgstr "Ταξίδια και μέρη"
 
@@ -36262,7 +36315,7 @@ msgid "unknown-role"
 msgstr "unknown-role"
 
 #. Persona visibility unlisted
-#: src/features/persona/components/modals/PersonaEditModal.tsx:74
+#: src/features/persona/components/modals/PersonaEditModal.tsx:75
 msgid "Unlisted"
 msgstr "Μη καταχωρισμένο"
 
@@ -36814,8 +36867,8 @@ msgstr "Ανέβασμα emoji"
 
 #. Button or menu action label in the channel and chat mobile textarea plus bottom sheet. Keep it concise.
 #. Plus menu item that opens the system file picker to attach a file.
-#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:13
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:23
+#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:17
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:27
 msgid "Upload file"
 msgstr "Ανέβασμα αρχείου"
 
@@ -36834,7 +36887,7 @@ msgstr "Ανέβασμα αρχείων και πολυμέσων σε αυτό 
 #: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:305
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:626
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildIconUploadField.tsx:130
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:456
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:454
 msgid "Upload icon"
 msgstr "Ανέβασμα εικονιδίου"
 
@@ -36874,8 +36927,8 @@ msgstr "Ανέβασμα σε {displayName}"
 
 #. Button or menu action label in the channel and chat mobile textarea plus bottom sheet. Keep it concise.
 #. Plus menu item that uploads the current textarea content as a .txt file when it exceeds the size limit.
-#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:17
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:27
+#: src/features/channel/components/textarea/MobileTextareaPlusBottomSheet.tsx:21
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:31
 msgid "Upload your message as a file"
 msgstr "Ανέβασμα του μηνύματος ως αρχείο"
 
@@ -37765,22 +37818,22 @@ msgid "Verify your email before adding an authenticator app."
 msgstr "Επαληθεύστε το email σας πριν προσθέσετε μια εφαρμογή ελέγχου ταυτότητας."
 
 #. Description text in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:117
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:116
 msgid "Verify your email before changing your community nickname, avatar, banner, bio, pronouns, or accent color."
 msgstr "Επαληθεύστε το email σας πριν αλλάξετε το ψευδώνυμο κοινότητας, το avatar, το banner, το βιογραφικό, τις αντωνυμίες ή το χρώμα έμφασης."
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:121
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:120
 msgid "Verify your email before changing your username, display name, avatar, banner, bio, pronouns, time zone, or {premiumProductName} badge privacy."
 msgstr "Επαληθεύστε το email σας πριν αλλάξετε το όνομα χρήστη, το όνομα εμφάνισης, το avatar, το banner, το βιογραφικό, τις αντωνυμίες, τη ζώνη ώρας ή το απόρρητο του σήματος {premiumProductName}."
 
 #. Description text in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:85
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:84
 msgid "Verify your email before editing this community profile. You can still preview it here."
 msgstr "Επαληθεύστε το email σας πριν επεξεργαστείτε αυτό το προφίλ κοινότητας. Μπορείτε ακόμα να το δείτε εδώ."
 
 #. Description text in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:89
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:88
 msgid "Verify your email before editing your profile. You can still preview it here."
 msgstr "Επαληθεύστε το email σας πριν επεξεργαστείτε το προφίλ σας. Μπορείτε ακόμα να το δείτε εδώ."
 
@@ -37812,12 +37865,12 @@ msgid "Verify your email to continue using {productName}."
 msgstr "Επαληθεύστε το email σας για να συνεχίσετε να χρησιμοποιείτε το {productName}."
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:109
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:108
 msgid "Verify your email to edit this community profile"
 msgstr "Επαληθεύστε το email σας για να επεξεργαστείτε αυτό το προφίλ κοινότητας"
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:113
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:112
 msgid "Verify your email to edit your profile"
 msgstr "Επαληθεύστε το email σας για να επεξεργαστείτε το προφίλ σας"
 
@@ -38254,7 +38307,7 @@ msgid "Virginia"
 msgstr "Βιρτζίνια"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/persona/components/modals/PersonaEditModal.tsx:721
+#: src/features/persona/components/modals/PersonaEditModal.tsx:782
 #: src/features/user/components/settings_utils/section_registry/AccessibilitySections.ts:39
 msgid "Visibility"
 msgstr "Ορατότητα"
@@ -39361,7 +39414,7 @@ msgctxt "us-state"
 msgid "Wisconsin"
 msgstr "Ουισκόνσιν"
 
-#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:217
+#: src/features/user/components/modals/tabs/my_profile_tab/AvatarUploader.tsx:215
 msgid "With {PREMIUM_PRODUCT_NAME}, you can use animated avatars ({ANIMATED_AVATAR_FORMATS}) and profile banners, customize your tag, and unlock many other {PREMIUM_PRODUCT_NAME} perks."
 msgstr "Με το {PREMIUM_PRODUCT_NAME}, μπορείτε να χρησιμοποιείτε κινούμενα avatar ({ANIMATED_AVATAR_FORMATS}) και banner προφίλ, να προσαρμόζετε την ετικέτα σας και να ξεκλειδώνετε πολλά άλλα προνόμια του {PREMIUM_PRODUCT_NAME}."
 
@@ -39621,6 +39674,7 @@ msgstr "Μπορείτε ωστόσο να δημιουργήσετε λογαρ
 msgid "You can still email {supportEmail} for a human review at any time."
 msgstr "Μπορείτε πάντα να στείλετε email στο {supportEmail} για έλεγχο από άνθρωπο."
 
+#: src/features/persona/components/modals/PersonaEditModal.tsx:718
 #: src/features/user/components/modals/tabs/my_profile_tab/BioEditor.tsx:288
 msgid "You can use links, emoji, and Markdown."
 msgstr "Μπορείτε να χρησιμοποιήσετε συνδέσμους, emoji και μορφοποίηση κειμένου (markdown)."
@@ -39646,7 +39700,7 @@ msgid "You can't befriend yourself"
 msgstr "Δεν μπορείτε να κάνετε φίλο τον εαυτό σας"
 
 #. Label in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:134
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:133
 msgid "You can't change your nickname here"
 msgstr "Δεν μπορείτε να αλλάξετε το ψευδώνυμό σας εδώ"
 
@@ -39764,7 +39818,7 @@ msgid "You can't unmute yourself because a moderator muted you."
 msgstr "Δεν μπορείτε να καταργήσετε τη σίγαση του μικροφώνου σας, επειδή την εφάρμοσε συντονιστής."
 
 #. Tooltip on the disabled upload file item when the user lacks Attach Files permission. Calm, factual tone.
-#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:19
+#: src/features/channel/components/textarea/TextareaPlusMenu.tsx:23
 msgid "You can't upload files in this channel."
 msgstr "Δεν μπορείτε να ανεβάσετε αρχεία σε αυτό το κανάλι."
 
@@ -39892,12 +39946,12 @@ msgid "You have refunded recently"
 msgstr "Έχετε κάνει πρόσφατα επιστροφή χρημάτων"
 
 #: src/features/app/components/dialogs/shared/UnsavedChangesBannerContent.tsx:37
-#: src/features/persona/components/modals/PersonaEditModal.tsx:604
+#: src/features/persona/components/modals/PersonaEditModal.tsx:601
 msgid "You have unsaved changes."
 msgstr "Έχετε μη αποθηκευμένες αλλαγές."
 
 #. Warning text in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:81
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:80
 msgid "You have unsaved changes. Save or reset before leaving."
 msgstr "Έχετε μη αποθηκευμένες αλλαγές. Αποθηκεύστε ή επαναφέρετε πριν φύγετε."
 
