@@ -14,6 +14,7 @@ import {
 	TIMESTAMP_COMBO_REGEX,
 	TIMESTAMP_SINGLE_REGEX,
 } from '@app/features/lexical/composer/nodes/ComposerTimestampUtils';
+import {$isComposerCaretAnchorNode} from '@app/features/lexical/composer/nodes/ComposerCaretAnchorNode';
 import {$isSyntaxMarkerNode} from '@app/features/lexical/composer/nodes/SyntaxMarkerNode';
 import {type LexicalEditor, TextNode} from 'lexical';
 
@@ -73,7 +74,7 @@ function findNextTimestampToken(text: string): TimestampTokenMatch | null {
 }
 
 function $convertTimestampTokens(node: TextNode): void {
-	if (!node.isAttached() || $isSyntaxMarkerNode(node) || node.hasFormat('code')) {
+	if (!node.isAttached() || $isComposerCaretAnchorNode(node) || $isSyntaxMarkerNode(node) || node.hasFormat('code')) {
 		return;
 	}
 	const text = node.getTextContent();
