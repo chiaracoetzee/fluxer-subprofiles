@@ -66,6 +66,7 @@ export function ChannelPersonaMentionController(app: HonoApp) {
 				for (const u of users) {
 					userMap.set(u.id, {
 						username: u.username,
+						discriminator: u.discriminator != null ? u.discriminator.toString().padStart(4, '0') : null,
 						globalName: u.globalName,
 						nickname: memberNickMap.get(u.id) ?? null,
 					});
@@ -77,6 +78,7 @@ export function ChannelPersonaMentionController(app: HonoApp) {
 					candidateUserIds.push(u.id);
 					userMap.set(u.id, {
 						username: u.username,
+						discriminator: u.discriminator != null ? u.discriminator.toString().padStart(4, '0') : null,
 						globalName: u.globalName,
 						nickname: null,
 					});
@@ -86,6 +88,7 @@ export function ChannelPersonaMentionController(app: HonoApp) {
 				candidateUserIds.push(user.id);
 				userMap.set(user.id, {
 					username: user.username,
+					discriminator: user.discriminator != null ? user.discriminator.toString().padStart(4, '0') : null,
 					globalName: user.globalName,
 					nickname: null,
 				});
@@ -96,6 +99,7 @@ export function ChannelPersonaMentionController(app: HonoApp) {
 				candidateUserIds.push(user.id);
 				userMap.set(user.id, {
 					username: user.username,
+					discriminator: user.discriminator != null ? user.discriminator.toString().padStart(4, '0') : null,
 					globalName: user.globalName,
 					nickname: null,
 				});
