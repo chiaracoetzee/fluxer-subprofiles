@@ -1,15 +1,17 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-import type {AttachmentID, ChannelID, GuildID, MessageID, RoleID, UserID} from '@app/api/BrandedTypes';
+import type {AttachmentID, ChannelID, GuildID, MessageID, PersonaID, RoleID, UserID} from '@app/api/BrandedTypes';
 import {
 	createAttachmentID,
 	createChannelID,
 	createGuildID,
 	createMessageID,
+	createPersonaID,
 	createStickerID,
 	createUserID,
 } from '@app/api/BrandedTypes';
 import {Config} from '@app/api/Config';
+import type {IPersonaRepository} from '@app/api/persona/IPersonaRepository';
 import type {AttachmentRequestData, AttachmentToProcess} from '@app/api/channel/AttachmentDTOs';
 import type {MessageRequest, MessageUpdateRequest} from '@app/api/channel/MessageTypes';
 import type {IChannelRepositoryAggregate} from '@app/api/channel/repositories/IChannelRepositoryAggregate';
@@ -98,6 +100,7 @@ interface MessageSendServiceDeps {
 	attachmentUploadTraceRepository: AttachmentUploadTraceRepository;
 	limitConfigService: LimitConfigService;
 	directMessageSpamMitigationService: DirectMessageSpamMitigationService;
+	personaRepository?: IPersonaRepository;
 }
 
 interface SendMessageResult {
@@ -1043,6 +1046,16 @@ export class MessageSendService {
 		if (searchIndexOptions && !suppressDmRecipientDelivery) {
 			void this.deps.searchService.indexMessage(message, user.isBot, searchIndexOptions);
 		}
+		if (message.subprofile?.id && this.deps.personaRepository && /^\d+$/.test(message.subprofile.id)) {
+			try {
+				const pId = createPersonaID(BigInt(message.subprofile.id));
+				void this.deps.personaRepository.recordUsage(user.id, pId).catch((error) => {
+					Logger.warn({error, userId: user.id.toString(), personaId: message.subprofile?.id}, 'Failed to record persona usage');
+				});
+			} catch {
+				// Ignore non-numeric test IDs
+			}
+		}
 		return {message, authChannel};
 	}
 
@@ -1381,6 +1394,16 @@ export class MessageSendService {
 		const searchIndexOptions = this.getSearchIndexOptions(channel);
 		if (searchIndexOptions) {
 			void this.deps.searchService.indexMessage(message, user.isBot, searchIndexOptions);
+		}
+		if (message.subprofile?.id && this.deps.personaRepository && /^\d+$/.test(message.subprofile.id)) {
+			try {
+				const pId = createPersonaID(BigInt(message.subprofile.id));
+				void this.deps.personaRepository.recordUsage(user.id, pId).catch((error) => {
+					Logger.warn({error, userId: user.id.toString(), personaId: message.subprofile?.id}, 'Failed to record persona usage');
+				});
+			} catch {
+				// Ignore non-numeric test IDs
+			}
 		}
 		return message;
 	}
