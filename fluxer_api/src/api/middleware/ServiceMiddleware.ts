@@ -6,6 +6,7 @@ import {AdminService} from '@app/api/admin/AdminService';
 import {AuthRequestService} from '@app/api/auth/AuthRequestService';
 import {DesktopHandoffService} from '@app/api/auth/services/DesktopHandoffService';
 import {PersonaService} from '@app/api/persona/PersonaService';
+import {UserGuildRepository} from '@app/api/user/repositories/account/UserGuildRepository';
 import {SsoService} from '@app/api/auth/services/SsoService';
 import {buildIpInfoCache, buildIpInfoRequestAuditLogger} from '@app/api/ban/IpInfoCacheFactory';
 import type {IBlueskyOAuthService} from '@app/api/bluesky/IBlueskyOAuthService';
@@ -349,6 +350,7 @@ class RequestServices implements RequestScopedServices {
 			liveKitService: this.liveKit,
 			voiceAvailabilityService: getVoiceAvailabilityService(),
 			ipInfoService: getIpInfoService(),
+			personaRepository: getPersonaRepository(),
 		});
 		return this.cachedGuildStack;
 	}
@@ -665,6 +667,7 @@ class RequestServices implements RequestScopedServices {
 			personaRepository: getPersonaRepository(),
 			userAccountLookupService: this.userService.accountService.lookupService,
 			gatewayService: this.gatewayService,
+			userGuildRepository: new UserGuildRepository(),
 		});
 		return this.cachedPersonaService;
 	}
