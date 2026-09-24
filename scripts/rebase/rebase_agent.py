@@ -213,7 +213,12 @@ async def main():
         "5. RUN TESTS & FIX REGRESSIONS: Run test suites (`pnpm --filter @fluxer/schema test src/domains/persona/`, `pnpm --filter fluxer_app test src/features/persona/ src/features/messaging/models/MessagingMessagePersona.test.ts src/features/messaging/state/MessageChangePersona.test.ts`, `pnpm --filter fluxer_api test src/api/persona/tests/ src/api/channel/tests/MessagePersona.test.ts src/api/user/tests/PersonaAvatarUpload.test.ts`). "
         "Also run frontend typecheck and production bundling verification (`pnpm --filter fluxer_app typecheck:only` and `pnpm --filter fluxer_app build`) to ensure there are no missing library exports, broken imports, or bundle linking regressions. "
         "If tests fail, inspect the failures, view related files across the repo, fix the code, and re-run tests until green.\n\n"
-        "6. HUMAN INTERVENTION ESCALATION CRITERIA:\n"
+        "6. COMMIT POST-REBASE ADJUSTMENTS & ENSURE CLEAN WORKING TREE:\n"
+        "   If you make any file edits or code fixes after the rebase finishes to resolve test failures, linter/typecheck errors, or compiler issues:\n"
+        "   - You MUST stage and commit those changes with a descriptive conventional commit message (e.g. `git commit -am 'fix(persona): ...'`).\n"
+        "   - Do NOT finish with uncommitted or unstaged changes in the repository.\n"
+        "   - Run `git status --porcelain` to verify that the working tree is completely clean before concluding.\n\n"
+        "7. HUMAN INTERVENTION ESCALATION CRITERIA:\n"
         "If you determine that a conflict or regression CANNOT be safely resolved autonomously—for example:\n"
         "   - Upstream has fundamentally rewritten or removed a core architectural subsystem that subprofiles depend on,\n"
         "   - Conflicting changes require a product design or business decision that cannot be inferred from code,\n"
@@ -235,6 +240,7 @@ async def main():
         f"Begin immediately by using your tools: inspect the conflicted files, check their context, "
         f"resolve the conflicts, stage them with git add, continue the rebase, and verify all test suites along with "
         f"`pnpm --filter fluxer_app typecheck:only` and `pnpm --filter fluxer_app build`.\n"
+        f"Ensure that any code fixes are committed with descriptive commit messages and that the working tree is completely clean before finishing.\n"
         f"If human intervention is required, write your diagnostic report to `/tmp/rebase_escalation_reason.md` and exit."
     )
 
@@ -267,12 +273,19 @@ async def main():
     async def run_resolution():
         max_turns = 10
         turn = 0
+        next_prompt = None
         while turn < max_turns:
             turn += 1
             if turn > 1:
                 print("[Antigravity Agent] Pausing 5s between turns for rate-limit safety...", file=sys.stderr)
                 await asyncio.sleep(5)
-            curr_prompt = prompt if turn == 1 else "Please continue advancing the rebase and verifying tests until completely finished."
+            if turn == 1:
+                curr_prompt = prompt
+            elif next_prompt:
+                curr_prompt = next_prompt
+                next_prompt = None
+            else:
+                curr_prompt = "Please continue advancing the rebase, verifying tests, committing any code adjustments, and ensuring the working tree is clean until completely finished."
             try:
                 print(f"[Antigravity Agent] Active resolution turn {turn}/{max_turns}...")
                 full_output = []
@@ -304,15 +317,26 @@ async def main():
                     print(f"\n[Antigravity Agent] Escalation flagged: {reason}\n", file=sys.stderr)
                     sys.exit(1)
 
-                # Post-check: Verify if rebase has completed
+                # Post-check: Verify if rebase has completed and working tree is clean
                 git_dir = run_cmd(["git", "rev-parse", "--git-dir"])
                 rebase_merge = os.path.join(git_dir, "rebase-merge")
                 rebase_apply = os.path.join(git_dir, "rebase-apply")
                 if not os.path.exists(rebase_merge) and not os.path.exists(rebase_apply):
                     unmerged = run_cmd(["git", "diff", "--name-only", "--diff-filter=U"])
                     if not unmerged:
-                        logger.log_section("✅ Success", "All rebase commits and tests completed cleanly!")
-                        print("[Antigravity Agent] All rebase steps completed cleanly!")
+                        dirty_status = run_cmd(["git", "status", "--porcelain", "--ignore-submodules=all"])
+                        if dirty_status:
+                            print(f"[Antigravity Agent] Rebase completed, but uncommitted changes remain in working directory:\n{dirty_status}")
+                            next_prompt = (
+                                "Git rebase has completed, but uncommitted modifications or untracked files remain in the working tree:\n"
+                                f"```text\n{dirty_status}\n```\n"
+                                "Please review these changes, stage them with `git add`, and commit them with an appropriate conventional commit message "
+                                "(e.g. `git commit -m 'fix(rebase): ...'`). Ensure that `git status --porcelain` is completely clean before finishing."
+                            )
+                            continue
+
+                        logger.log_section("✅ Success", "All rebase commits, test verifications, and clean working tree checks completed cleanly!")
+                        print("[Antigravity Agent] All rebase steps completed cleanly and working tree is clean!")
                         return
                     else:
                         print(f"[Antigravity Agent] Unmerged files remain: {unmerged}. Continuing...")

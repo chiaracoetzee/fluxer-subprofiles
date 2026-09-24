@@ -231,6 +231,18 @@ jobs:
           echo "Invoking Gemini 3.8 Flash Rebase Agent..."
           python /tmp/rebase_tools/rebase_agent.py
 
+      - name: Ensure Clean Working Tree
+        if: steps.check_upstream.outputs.skip_rebase != 'true'
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "Uncommitted changes detected in working tree. Committing changes..."
+            git status --short
+            git add -A
+            git commit -m "fix(rebase): commit agent post-rebase adjustments"
+          else
+            echo "Working tree is completely clean."
+          fi
+
       - name: Run Post-Rebase Test Verification Gate
         id: test_gate
         if: steps.check_upstream.outputs.skip_rebase != 'true'
