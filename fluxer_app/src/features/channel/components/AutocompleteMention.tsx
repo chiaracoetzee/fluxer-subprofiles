@@ -17,6 +17,7 @@ import {
 } from '@app/features/channel/components/AutocompleteTypes';
 import Guilds from '@app/features/guild/state/Guilds';
 import {useParams} from '@app/features/platform/components/router/RouterReact';
+import tagStyles from '@app/features/persona/components/PersonaTag.module.css';
 import * as ColorUtils from '@app/features/theme/utils/ColorUtils';
 import {openRoleContextMenu} from '@app/features/ui/action_menu/RoleContextMenu';
 import {Avatar} from '@app/features/ui/components/Avatar';
@@ -146,6 +147,15 @@ export const AutocompleteMention = observer(function AutocompleteMention({
 	const renderPersona = (option: AutocompleteMentionPersonaOption, index: number) => {
 		const currentIndex = members.length + users.length + index;
 		const user = Users.getUser(option.persona.owner_user_id);
+		const ownerTag =
+			user != null
+				? DisplayNameUtils.formatUserTagForStreamerMode(user)
+				: DisplayNameUtils.formatTagForStreamerMode(
+						option.persona.owner_discriminator
+							? `${option.persona.owner_username}#${option.persona.owner_discriminator}`
+							: option.persona.owner_username,
+				  );
+		const systemTag = option.persona.system_name?.trim();
 		return (
 			<AutocompleteItem
 				key={`persona-${option.persona.id}`}
@@ -169,8 +179,34 @@ export const AutocompleteMention = observer(function AutocompleteMention({
 						/>
 					)
 				}
-				name={option.persona.name}
-				description={`@${option.persona.owner_username}`}
+				name={
+					<span className={styles.personaNameWrapper}>
+						<span className={styles.personaName}>{option.persona.name}</span>
+						{systemTag ? (
+							<span className={tagStyles.tag} data-flx="persona.tag">
+								<span className={tagStyles.text}>{systemTag}</span>
+							</span>
+						) : user != null ? (
+							<Avatar
+								user={user}
+								size={16}
+								className={tagStyles.standaloneIcon}
+								guildId={guildId}
+								disableStatusTooltip={true}
+								data-flx="channel.autocomplete-mention.persona-owner-avatar"
+							/>
+						) : (
+							<BaseAvatar
+								size={16}
+								avatarUrl={AvatarUtils.getDefaultAvatarURL(option.persona.owner_user_id)}
+								className={tagStyles.standaloneIcon}
+								disableStatusTooltip={true}
+								data-flx="channel.autocomplete-mention.persona-owner-avatar"
+							/>
+						)}
+					</span>
+				}
+				description={ownerTag}
 				isKeyboardSelected={currentIndex === keyboardFocusIndex}
 				isHovered={currentIndex === hoverIndex}
 				onSelect={() => onSelect(option)}
