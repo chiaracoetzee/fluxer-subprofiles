@@ -2,6 +2,7 @@
 
 import type {AutocompleteOption, AutocompleteType} from '@app/features/channel/components/AutocompleteTypes';
 import {registerComposerBlockquote} from '@app/features/lexical/composer/ComposerBlockquote';
+import {registerComposerCaretAnchors} from '@app/features/lexical/composer/registerComposerCaretAnchors';
 import {registerComposerClipboardCommands} from '@app/features/lexical/composer/ComposerClipboard';
 import {registerComposerCodeIndent} from '@app/features/lexical/composer/ComposerCodeIndent';
 import {
@@ -45,6 +46,7 @@ import {openTimestampModal} from '@app/features/channel/components/modals/Timest
 import {registerComposerTimestampTransform} from '@app/features/lexical/composer/ComposerTimestampTransform';
 import {ComposerBlockquoteLineNode} from '@app/features/lexical/composer/nodes/ComposerBlockquoteLineNode';
 import {ComposerBlockquoteMarkerNode} from '@app/features/lexical/composer/nodes/ComposerBlockquoteMarkerNode';
+import {ComposerCaretAnchorNode} from '@app/features/lexical/composer/nodes/ComposerCaretAnchorNode';
 import {ComposerCommandNode} from '@app/features/lexical/composer/nodes/ComposerCommandNode';
 import {ComposerCustomEmojiNode} from '@app/features/lexical/composer/nodes/ComposerCustomEmojiNode';
 import {ComposerMentionNode} from '@app/features/lexical/composer/nodes/ComposerMentionNode';
@@ -226,6 +228,7 @@ export const LexicalComposerInput = observer((props: LexicalComposerInputProps) 
 			ComposerCommandNode,
 			SlashSlotNode,
 			SlashSlotPlaceholderNode,
+			ComposerCaretAnchorNode,
 			SlashSeparatorNode,
 			SlashOptionalHintNode,
 			SyntaxMarkerNode,
@@ -566,6 +569,7 @@ const ComposerInner = ({
 				}),
 			);
 			cleanups.push(registerComposerTimestampTransform(editor));
+			cleanups.push(registerComposerCaretAnchors(editor));
 		}
 		const modeChanged = previousPlainTextRef.current !== plainText;
 		if (modeChanged) {
