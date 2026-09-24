@@ -11,6 +11,7 @@ import {
 } from '@app/api/auth/services/InboundSmsChallengeService';
 import type {IRegistrationRiskEvaluator} from '@app/api/auth/services/IRegistrationRiskEvaluator';
 import {PersonaService} from '@app/api/persona/PersonaService';
+import {UserGuildRepository} from '@app/api/user/repositories/account/UserGuildRepository';
 import {
 	noopRegistrationRiskEvaluator,
 	RegistrationRiskEvaluator,
@@ -486,6 +487,7 @@ class RequestServices implements RequestScopedServices {
 			liveKitService: this.liveKit,
 			voiceAvailabilityService: getVoiceAvailabilityService(),
 			ipInfoService: getIpInfoService(),
+			personaRepository: getPersonaRepository(),
 		});
 		return this.cachedGuildStack;
 	}
@@ -813,6 +815,7 @@ class RequestServices implements RequestScopedServices {
 			personaRepository: getPersonaRepository(),
 			userAccountLookupService: this.userService.accountService.lookupService,
 			gatewayService: this.gatewayService,
+			userGuildRepository: new UserGuildRepository(),
 		});
 		return this.cachedPersonaService;
 	}
