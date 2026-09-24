@@ -50,6 +50,7 @@ import {handleSavedMessageCreate} from '@app/features/messaging/events/SavedMess
 import {handleSavedMessageDelete} from '@app/features/messaging/events/SavedMessageDelete';
 import {handleTypingStart} from '@app/features/messaging/events/TypingStart';
 import {
+	handleGuildPersonasDirty,
 	handleUserPersonaCreate,
 	handleUserPersonaDelete,
 	handleUserPersonasUpdate,
@@ -109,6 +110,7 @@ export function createHandlerRegistry(): GatewayHandlerRegistry {
 	registry.set('USER_PERSONA_DELETE', handleUserPersonaDelete as GatewayEventHandler);
 	registry.set('USER_PERSONAS_UPDATE', handleUserPersonasUpdate as GatewayEventHandler);
 	registry.set('USER_PERSONA_SETTINGS_UPDATE', handleUserPersonaSettingsUpdate as GatewayEventHandler);
+	registry.set('GUILD_PERSONAS_DIRTY', handleGuildPersonasDirty as GatewayEventHandler);
 	registry.set('WEBAUTHN_CREDENTIALS_UPDATE', handleWebAuthnCredentialsUpdate as GatewayEventHandler);
 	registry.set('GUILD_CREATE', handleGuildCreate as GatewayEventHandler);
 	registry.set('GUILD_UPDATE', handleGuildUpdate as GatewayEventHandler);
