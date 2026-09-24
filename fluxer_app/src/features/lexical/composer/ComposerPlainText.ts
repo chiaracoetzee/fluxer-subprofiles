@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+import {$isComposerCaretAnchorNode} from '@app/features/lexical/composer/nodes/ComposerCaretAnchorNode';
 import {ComposerPlainSegmentNode} from '@app/features/lexical/composer/nodes/ComposerPlainSegmentNode';
 import {$isSyntaxMarkerNode, SyntaxMarkerNode} from '@app/features/lexical/composer/nodes/SyntaxMarkerNode';
 import {isSlashSlotStateSegmentId} from '@app/features/lexical/composer/SlashSlotPersistence';
@@ -29,7 +30,7 @@ export function registerComposerPlainText(editor: LexicalEditor): () => void {
 			}
 		}),
 		editor.registerNodeTransform(TextNode, (node) => {
-			if (editor.isComposing() || $isSyntaxMarkerNode(node)) {
+			if (editor.isComposing() || $isSyntaxMarkerNode(node) || $isComposerCaretAnchorNode(node)) {
 				return;
 			}
 			if (node.getFormat() !== 0) {
