@@ -38,6 +38,7 @@ import {
 	$isComposerBlockquoteLineNode,
 } from '@app/features/lexical/composer/nodes/ComposerBlockquoteLineNode';
 import {$isComposerBlockquoteMarkerNode} from '@app/features/lexical/composer/nodes/ComposerBlockquoteMarkerNode';
+import {$isComposerCaretAnchorNode} from '@app/features/lexical/composer/nodes/ComposerCaretAnchorNode';
 import {$isComposerCommandNode} from '@app/features/lexical/composer/nodes/ComposerCommandNode';
 import {$isComposerPlainSegmentNode} from '@app/features/lexical/composer/nodes/ComposerPlainSegmentNode';
 import {isIMEComposing} from '@app/features/messaging/utils/IMECompositionUtils';
@@ -345,7 +346,12 @@ export function $syncComposerBlockquoteLines(paragraph: ElementNode, quoted: Rea
 }
 
 function isPlainTextLeaf(node: LexicalNode | undefined): node is TextNode {
-	return node instanceof TextNode && !$isComposerPlainSegmentNode(node) && !$isComposerCommandNode(node);
+	return (
+		node instanceof TextNode &&
+		!$isComposerPlainSegmentNode(node) &&
+		!$isComposerCommandNode(node) &&
+		!$isComposerCaretAnchorNode(node)
+	);
 }
 
 function $spliceLeadingText(
