@@ -8,6 +8,7 @@ import {
 	$selectComposerRange,
 } from '@app/features/lexical/composer/composerOffsets';
 import {$isComposerBlockquoteLineNode} from '@app/features/lexical/composer/nodes/ComposerBlockquoteLineNode';
+import {$isComposerCaretAnchorNode} from '@app/features/lexical/composer/nodes/ComposerCaretAnchorNode';
 import {$createComposerCustomEmojiNode} from '@app/features/lexical/composer/nodes/ComposerCustomEmojiNode';
 import {
 	$createComposerStandardEmojiNode,
@@ -71,7 +72,7 @@ function isEscapedAt(text: string, index: number): boolean {
 }
 
 export function $convertEmojiShortcode(node: TextNode, resolve: ComposerEmojiResolver): void {
-	if ($isSyntaxMarkerNode(node) || node.hasFormat('code')) {
+	if ($isComposerCaretAnchorNode(node) || $isSyntaxMarkerNode(node) || node.hasFormat('code')) {
 		return;
 	}
 	const parent = node.getParent();
