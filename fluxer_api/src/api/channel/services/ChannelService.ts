@@ -31,6 +31,7 @@ import type {ReadStateService} from '@app/api/read_state/ReadStateService';
 import type {UserRepository} from '@app/api/user/repositories/UserRepository';
 import type {VoiceAvailabilityService} from '@app/api/voice/VoiceAvailabilityService';
 import type {WebhookRepository} from '@app/api/webhook/WebhookRepository';
+import type {IPersonaRepository} from '@app/api/persona/IPersonaRepository';
 import {Permissions} from '@fluxer/constants/src/ChannelConstants';
 import {TEXT_THREAD_PARENT_CHANNEL_TYPES} from '@fluxer/constants/src/ThreadConstants';
 import type {IRateLimitService} from '@pkgs/rate_limit/src/IRateLimitService';
@@ -79,6 +80,7 @@ export class ChannelService {
 		webhookRepository: WebhookRepository,
 		limitConfigService: LimitConfigService,
 		voiceAvailabilityService: VoiceAvailabilityService | null,
+		personaRepository?: IPersonaRepository,
 	) {
 		const {
 			cache: cacheService,
@@ -149,6 +151,7 @@ export class ChannelService {
 			messagePersistenceService,
 			attachmentUploadTraceRepository,
 			limitConfigService,
+			personaRepository,
 		);
 		this.interactions = new MessageInteractionService(
 			channelRepository,

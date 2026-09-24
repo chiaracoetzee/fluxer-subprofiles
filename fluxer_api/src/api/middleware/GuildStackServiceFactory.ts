@@ -24,6 +24,7 @@ import type {ReadStateService} from '@app/api/read_state/ReadStateService';
 import type {UserRepository} from '@app/api/user/repositories/UserRepository';
 import type {VoiceAvailabilityService} from '@app/api/voice/VoiceAvailabilityService';
 import type {WebhookRepository} from '@app/api/webhook/WebhookRepository';
+import type {IPersonaRepository} from '@app/api/persona/IPersonaRepository';
 import type {IVirusScanService} from '@pkgs/virus_scan/src/IVirusScanService';
 
 interface GuildStackServiceFactoryDependencies {
@@ -49,6 +50,7 @@ interface GuildStackServiceFactoryDependencies {
 	voiceRoomStore: IVoiceRoomStore;
 	liveKitService: ILiveKitService;
 	voiceAvailabilityService: VoiceAvailabilityService | null;
+	personaRepository?: IPersonaRepository;
 }
 
 export interface GuildStackServices {
@@ -86,6 +88,7 @@ class LazyGuildStackServices implements GuildStackServices {
 			this.dependencies.webhookRepository,
 			this.dependencies.limitConfigService,
 			this.dependencies.voiceAvailabilityService,
+			this.dependencies.personaRepository,
 		);
 		return this.cachedChannelService;
 	}
