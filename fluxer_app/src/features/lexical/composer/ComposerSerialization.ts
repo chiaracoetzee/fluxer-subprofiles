@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 import {$getComposerLineNodes} from '@app/features/lexical/composer/nodes/ComposerBlockquoteLineNode';
+import {$isComposerCaretAnchorNode} from '@app/features/lexical/composer/nodes/ComposerCaretAnchorNode';
 import {
 	$createComposerCommandNode,
 	$isComposerCommandNode,
@@ -397,6 +398,8 @@ export function $projectComposer(): ComposerProjection {
 					}
 				}
 				wire += slotWire;
+			} else if ($isComposerCaretAnchorNode(child)) {
+				// Ephemeral zero-width caret anchor for line-leading inline decorators; ignored in serialization
 			} else {
 				display += child.getTextContent();
 				wire += child.getTextContent();
