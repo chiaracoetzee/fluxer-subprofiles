@@ -7,7 +7,7 @@ import styles from '@app/features/channel/components/MessageActionBar.module.css
 import {useShiftKey} from '@app/features/channel/components/MessageActionBarShiftKey';
 import {
 	createMessageActionHandlers,
-	getCopyableMessageText,
+	getEffectiveContent,
 	isClientSystemMessage,
 	useMessagePermissions,
 } from '@app/features/channel/components/MessageActionUtils';
@@ -267,7 +267,7 @@ export const MessageActionBarCore: React.FC<MessageActionBarCoreProps> = observe
 			permissions;
 		const showsEditInTail = message.isUserMessage() && !message.messageSnapshots && canEditMessage;
 		const supportsInteractiveActions = useMemo(() => !isClientSystemMessage(message), [message]);
-		const copyableMessageText = useMemo(() => getCopyableMessageText(message, i18n), [message, i18n.locale]);
+		const copyableMessageText = useMemo(() => getEffectiveContent(message), [message]);
 		const handlers = useMemo(
 			() => createMessageActionHandlers(message, {i18n, channel: permissions.channel}),
 			[message, i18n.locale, permissions.channel],
