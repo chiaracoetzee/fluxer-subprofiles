@@ -6,6 +6,7 @@ import DeveloperOptions from '@app/features/devtools/state/DeveloperOptions';
 import {getPremiumGraceEndDate} from '@app/features/premium/utils/PremiumGrace';
 import type {LimitKey} from '@fluxer/constants/src/LimitConfigMetadata';
 import {
+	DELETED_USER_USERNAME,
 	type MentionReplyPreference,
 	ProfileFieldPrivacyFlags,
 	PublicUserFlags,
@@ -268,6 +269,10 @@ export class User {
 		this._termsAgreedAt = hasKey(user, 'terms_agreed_at') ? parseDateOrNull(user.terms_agreed_at) : undefined;
 		this._privacyAgreedAt = hasKey(user, 'privacy_agreed_at') ? parseDateOrNull(user.privacy_agreed_at) : undefined;
 		this._traits = mergeTraitsArray(EMPTY_STRING_ARRAY, user, {clearMissing: true});
+	}
+
+	get isDeleted(): boolean {
+		return this.username === DELETED_USER_USERNAME;
 	}
 
 	get email(): string | null | undefined {
