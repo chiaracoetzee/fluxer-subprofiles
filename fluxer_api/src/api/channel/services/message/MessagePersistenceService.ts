@@ -2,8 +2,8 @@
 
 import assert from 'node:assert/strict';
 import {AttachmentDecayService} from '@app/api/attachment/AttachmentDecayService';
-import type {ChannelID, GuildID, MessageID, RoleID, StickerID, UserID, WebhookID} from '@app/api/BrandedTypes';
-import {createAttachmentID, createGuildID} from '@app/api/BrandedTypes';
+import type {ChannelID, GuildID, MessageID, PersonaID, RoleID, StickerID, UserID, WebhookID} from '@app/api/BrandedTypes';
+import {createAttachmentID, createGuildID, createPersonaID} from '@app/api/BrandedTypes';
 import {Config} from '@app/api/Config';
 import type {AttachmentToProcess} from '@app/api/channel/AttachmentDTOs';
 import type {MessageUpdateRequest} from '@app/api/channel/MessageTypes';
@@ -115,6 +115,7 @@ interface CreateMessageParams {
 	allowEmbeds?: boolean;
 	dmNsfwContext?: DmNsfwContext;
 	subprofile?: MessageSubprofileRow | null;
+	personaId?: PersonaID | null;
 }
 
 export class MessagePersistenceService {
@@ -242,7 +243,7 @@ export class MessagePersistenceService {
 			call: null,
 			has_reaction: false,
 			version: 1,
-			subprofile: params.subprofile ?? null,
+			persona_id: params.personaId ?? (params.subprofile?.id ? createPersonaID(BigInt(params.subprofile.id)) : null),
 		};
 		const message = await this.channelRepository.messages.upsertMessage(messageRowData, null);
 		const enqueueDeferredEmbeds = await this.runPostPersistenceOperations({
@@ -420,8 +421,9 @@ export class MessagePersistenceService {
 			updatedRowData.flags = preservedFlags | newFlags;
 			hasChanges = true;
 		}
-		if (data.subprofile !== undefined) {
-			updatedRowData.subprofile = normalizeMessageSubprofile(data.subprofile);
+		if (data.subprofile !== undefined || (data as any).persona_id !== undefined) {
+			const rawId = (data as any).persona_id ?? data.subprofile?.id;
+			updatedRowData.persona_id = rawId ? createPersonaID(BigInt(rawId)) : null;
 			hasChanges = true;
 		}
 		if (data.attachments !== undefined) {
