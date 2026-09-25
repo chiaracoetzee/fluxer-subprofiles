@@ -33,6 +33,7 @@ import {AccentColorPicker} from '@app/features/user/components/modals/tabs/my_pr
 import {AvatarUploader} from '@app/features/user/components/modals/tabs/my_profile_tab/AvatarUploader';
 import {BannerUploader} from '@app/features/user/components/modals/tabs/my_profile_tab/BannerUploader';
 import {BIO_MARKDOWN_PARSER_FLAGS, BioEditor} from '@app/features/user/components/modals/tabs/my_profile_tab/BioEditor';
+import * as AvatarUtils from '@app/features/user/utils/AvatarUtils';
 import {UsernameSection} from '@app/features/user/components/modals/tabs/my_profile_tab/MyProfileTabUsernameSection';
 import {PerGuildPremiumUpsell} from '@app/features/user/components/modals/tabs/my_profile_tab/PerGuildPremiumUpsell';
 import {PremiumBadgeSettings} from '@app/features/user/components/modals/tabs/my_profile_tab/PremiumBadgeSettings';
@@ -250,10 +251,23 @@ const MyProfileTabComponent = observer(function MyProfileTabComponent({
 	const flashTrigger = unsavedChangesState.flashTriggers[MY_PROFILE_TAB_ID] || 0;
 	const [lastFlashTrigger, setLastFlashTrigger] = useState(0);
 	const [ariaAnnouncement, setAriaAnnouncement] = useState('');
-	const isClaimed = user?.isClaimed() ?? false;
 	const isProfileEmailLocked = isClaimed && user?.verified === false;
 	const isProfileAccountLimited = user?.accountLimited === true;
 	const isProfileCustomizationLocked = isProfileEmailLocked || isProfileAccountLimited;
+	const effectiveProfileDefaultColor = useMemo(() => {
+		if (isPerGuildProfile) {
+			if (typeof user?.accentColor === 'number' && user.accentColor !== 0) {
+				return user.accentColor;
+			}
+		}
+		if (!avatarAsset.hasCleared && user && typeof user.avatarColor === 'number' && user.avatarColor !== 0) {
+			return user.avatarColor;
+		}
+		if (user) {
+			return AvatarUtils.getDefaultAvatarPrimaryColor(user.id);
+		}
+		return 0x4641d9;
+	}, [isPerGuildProfile, avatarAsset.hasCleared, user?.accentColor, user?.avatarColor, user?.id, user]);
 	const form = useForm<FormInputs>({
 		defaultValues: {
 			bio: null,
@@ -881,6 +895,7 @@ const MyProfileTabComponent = observer(function MyProfileTabComponent({
 									>
 										<AccentColorPicker
 											value={form.watch('accent_color') ?? null}
+											defaultColor={effectiveProfileDefaultColor}
 											onChange={(value: number | null) => form.setValue('accent_color', value, {shouldDirty: true})}
 											disabled={isProfileCustomizationLocked || isPerGuildProfileCustomizationDisabled}
 											errorMessage={form.formState.errors.accent_color?.message}
