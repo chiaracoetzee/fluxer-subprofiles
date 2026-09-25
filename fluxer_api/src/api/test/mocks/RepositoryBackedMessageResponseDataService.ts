@@ -137,13 +137,15 @@ export class RepositoryBackedMessageResponseDataService extends MessageResponseD
 		tts?: boolean;
 		includeReactions?: boolean;
 	}): Promise<MessageResponse> {
-		return this.mapMessage(params.message, {
+		const res = await this.mapMessage(params.message, {
 			currentUserId: params.userId,
 			nonce: params.nonce,
 			tts: params.tts,
 			includeReactions: params.includeReactions ?? true,
 			depth: 0,
 		});
+		await this.hydratePersonas([res]);
+		return res;
 	}
 
 	override async buildMessageForChannel(params: {
@@ -170,13 +172,15 @@ export class RepositoryBackedMessageResponseDataService extends MessageResponseD
 		tts?: boolean;
 		sourceGuildId?: GuildID | null;
 	}): Promise<MessageResponse> {
-		return this.mapMessage(params.message, {
+		const res = await this.mapMessage(params.message, {
 			currentUserId: params.userId ?? params.message.authorId ?? undefined,
 			nonce: params.nonce,
 			tts: params.tts,
 			includeReactions: false,
 			depth: 0,
 		});
+		await this.hydratePersonas([res]);
+		return res;
 	}
 
 	override async buildMessages(params: {
@@ -185,7 +189,7 @@ export class RepositoryBackedMessageResponseDataService extends MessageResponseD
 		access: MessageResponseAccessContext;
 		includeReactions?: boolean;
 	}): Promise<Array<MessageResponse>> {
-		return Promise.all(
+		const responses = await Promise.all(
 			this.filterByAccess(params.messages, params.access).map((message) =>
 				this.mapMessage(message, {
 					currentUserId: params.userId,
@@ -194,6 +198,8 @@ export class RepositoryBackedMessageResponseDataService extends MessageResponseD
 				}),
 			),
 		);
+		await this.hydratePersonas(responses);
+		return responses;
 	}
 
 	override async buildMessagesForChannels(params: {
@@ -202,7 +208,7 @@ export class RepositoryBackedMessageResponseDataService extends MessageResponseD
 		channelById: ReadonlyMap<string, {guildId: GuildID | null}>;
 		includeReactions?: boolean;
 	}): Promise<Array<MessageResponse>> {
-		return Promise.all(
+		const responses = await Promise.all(
 			params.messages.map((message) =>
 				this.mapMessage(message, {
 					currentUserId: params.userId,
@@ -211,6 +217,8 @@ export class RepositoryBackedMessageResponseDataService extends MessageResponseD
 				}),
 			),
 		);
+		await this.hydratePersonas(responses);
+		return responses;
 	}
 
 	private async listMessagesAround(channelId: ChannelID, around: MessageID, limit: number): Promise<Array<Message>> {
@@ -281,20 +289,8 @@ export class RepositoryBackedMessageResponseDataService extends MessageResponseD
 			nonce: options.nonce ?? null,
 			call: this.mapCall(message.call),
 			referenced_message: referencedMessage,
-			subprofile: message.subprofile
-				? {
-						id: message.subprofile.id,
-						name: message.subprofile.name,
-						avatar: message.subprofile.avatar ?? null,
-						avatar_color: message.subprofile.avatar_color ?? null,
-						display_tag_text: message.subprofile.display_tag_text ?? null,
-						display_tag_icon: message.subprofile.display_tag_icon ?? null,
-						system_name: message.subprofile.system_name ?? null,
-						pronouns: message.subprofile.pronouns ?? null,
-						color: message.subprofile.color ?? null,
-						bio: message.subprofile.bio ?? null,
-					}
-				: null,
+			persona_id: message.personaId?.toString() ?? null,
+			subprofile: null,
 		};
 	}
 
