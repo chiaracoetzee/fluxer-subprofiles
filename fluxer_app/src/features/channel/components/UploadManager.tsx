@@ -20,6 +20,7 @@ import Modal from '@app/features/ui/state/Modal';
 import Users from '@app/features/user/state/Users';
 import {MessageStates, MessageTypes} from '@fluxer/constants/src/ChannelConstants';
 import {MAX_ATTACHMENTS_PER_MESSAGE} from '@fluxer/constants/src/LimitConstants';
+import {PersonaStore} from '@app/features/persona/state/PersonaStore';
 import * as SnowflakeUtils from '@fluxer/snowflake/src/SnowflakeUtils';
 import {useLingui} from '@lingui/react/macro';
 import {observer} from 'mobx-react-lite';
@@ -108,6 +109,25 @@ export const UploadManager = observer(({channel, canAttachFiles, canSendMessages
 					formatMultipleFileLabel: (count) => formatUploadingAttachmentSummary(i18n, count),
 				})?.toJSON();
 				if (!uploadingAttachment) return;
+				const subprofile = PersonaStore.getActiveSubprofileRequest();
+				if (subprofile) {
+					void PersonaStore.recordPersonaUse(subprofile.id);
+				}
+				const optimisticSubprofile = subprofile
+					? {
+							id: subprofile.id,
+							name: subprofile.name,
+							avatar: subprofile.avatar ?? null,
+							avatar_color: subprofile.avatar_color ?? null,
+							display_tag_text: subprofile.display_tag_text ?? subprofile.system_name ?? null,
+							display_tag_icon: subprofile.display_tag_icon ?? null,
+							system_name: subprofile.system_name ?? subprofile.display_tag_text ?? null,
+							pronouns: subprofile.pronouns ?? null,
+							color: subprofile.color ?? null,
+							bio: subprofile.bio ?? null,
+							visibility: subprofile.visibility ?? null,
+						}
+					: null;
 				const message = new Message({
 					id: nonce,
 					channel_id: channel.id,
@@ -122,12 +142,14 @@ export const UploadManager = observer(({channel, canAttachFiles, canSendMessages
 					state: MessageStates.SENDING,
 					nonce,
 					attachments: [uploadingAttachment],
+					subprofile: optimisticSubprofile,
 				});
 				MessageCommands.createOptimistic(channel.id, message.toJSON());
 				MessageCommands.send(channel.id, {
 					content: '',
 					nonce,
 					hasAttachments: true,
+					subprofile: subprofile ?? undefined,
 				});
 			} else {
 				const existingAttachments = CloudUpload.getTextareaAttachments(channel.id);
