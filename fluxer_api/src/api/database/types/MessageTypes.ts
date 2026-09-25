@@ -6,6 +6,7 @@ import type {
 	EmojiID,
 	GuildID,
 	MessageID,
+	PersonaID,
 	RoleID,
 	StickerID,
 	UserID,
@@ -149,12 +150,12 @@ export interface MessageRow {
 	call: Nullish<MessageCall>;
 	has_reaction: Nullish<boolean>;
 	version: number;
-	subprofile?: Nullish<MessageSubprofileRow>;
+	persona_id?: Nullish<PersonaID | string>;
 }
 
 export interface MessageSubprofileRow {
 	id: string;
-	name: string;
+	name?: Nullish<string>;
 	avatar?: Nullish<string>;
 	avatar_color?: Nullish<number>;
 	banner?: Nullish<string>;
@@ -191,7 +192,7 @@ export const MESSAGE_COLUMNS = [
 	'call',
 	'has_reaction',
 	'version',
-	'subprofile',
+	'persona_id',
 ] as const satisfies ReadonlyArray<keyof MessageRow>;
 
 export interface ChannelPinRow {

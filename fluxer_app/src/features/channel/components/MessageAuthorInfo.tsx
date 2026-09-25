@@ -89,6 +89,7 @@ export const MessageAuthorInfo = observer((props: MessageAuthorInfoProps) => {
 					className={styles.messageAvatar}
 					isHovering={isHovering}
 					isPreview={isPreview}
+					ignoreSubprofile={author.isDeleted}
 					data-flx="channel.message-author-info.message-avatar"
 				/>
 				<div className={styles.messageGutterRight} data-flx="channel.message-author-info.message-gutter-right" />
@@ -120,7 +121,7 @@ export const MessageAuthorInfo = observer((props: MessageAuthorInfoProps) => {
 									data-flx="channel.message-author-info.user-tag-offset--op1"
 								/>
 							)}
-							{message.subprofile && (
+							{message.subprofile && !author.isDeleted && (
 								<PersonaTag
 									subprofile={message.subprofile}
 									rootUser={author}
