@@ -23,6 +23,7 @@ import {UserFlags} from '@fluxer/constants/src/UserConstants';
 import {MissingAccessError} from '@fluxer/errors/src/domains/core/MissingAccessError';
 import {UnknownUserError} from '@fluxer/errors/src/domains/user/UnknownUserError';
 import {validateOutboundEndpointUrl} from '@fluxer/hono/src/security/OutboundEndpoint';
+import {deriveDominantAvatarColor} from '@app/api/utils/AvatarColorUtils';
 import {streamText} from 'hono/streaming';
 import {SudoVerificationSchema} from '@fluxer/schema/src/domains/auth/AuthSchemas';
 import {
@@ -91,6 +92,7 @@ const PersonaAvatarUploadRequest = z.object({
 const SubprofileAvatarUploadRequest = PersonaAvatarUploadRequest;
 const PersonaAvatarUploadResponse = z.object({
 	avatar_url: z.string().describe('CDN URL of the uploaded avatar'),
+	avatar_color: z.number().int().nullish().optional().describe('Dominant avatar color'),
 });
 const SubprofileAvatarUploadResponse = PersonaAvatarUploadResponse;
 
@@ -109,6 +111,7 @@ const PersonaAvatarImportRequest = z.object({
 const SubprofileAvatarImportRequest = PersonaAvatarImportRequest;
 const PersonaAvatarImportResponse = z.object({
 	avatar_url: z.string().describe('CDN URL of the imported avatar'),
+	avatar_color: z.number().int().nullish().optional().describe('Dominant avatar color'),
 });
 const SubprofileAvatarImportResponse = PersonaAvatarImportResponse;
 
@@ -189,7 +192,8 @@ export function UserAccountController(app: HonoApp) {
 			errorPath: 'avatar',
 		});
 		await entityAssetService.commitAssetChange({prepared});
-		return ctx.json({avatar_url: prepared.newCdnUrl ?? ''});
+		const avatarColor = prepared.imageBuffer ? await deriveDominantAvatarColor(prepared.imageBuffer) : null;
+		return ctx.json({avatar_url: prepared.newCdnUrl ?? '', avatar_color: avatarColor});
 	};
 
 	const handlePersonaBannerUpload = async (ctx: any) => {
@@ -212,7 +216,7 @@ export function UserAccountController(app: HonoApp) {
 		rawUrl: string,
 		userId: string,
 		entityAssetService: any,
-	): Promise<{avatar_url?: string; error?: string}> {
+	): Promise<{avatar_url?: string; avatar_color?: number | null; error?: string}> {
 		try {
 			validateOutboundEndpointUrl(rawUrl, {
 				name: 'Avatar URL',
@@ -268,7 +272,8 @@ export function UserAccountController(app: HonoApp) {
 				errorPath: 'avatar',
 			});
 			await entityAssetService.commitAssetChange({prepared});
-			return {avatar_url: prepared.newCdnUrl ?? ''};
+			const avatarColor = prepared.imageBuffer ? await deriveDominantAvatarColor(prepared.imageBuffer) : null;
+			return {avatar_url: prepared.newCdnUrl ?? '', avatar_color: avatarColor};
 		} catch (err: unknown) {
 			const errorMsg = err instanceof Error ? err.message : 'Failed to process image';
 			return {error: errorMsg};
@@ -284,7 +289,7 @@ export function UserAccountController(app: HonoApp) {
 		if (result.error) {
 			return ctx.json({message: result.error}, 400 as any);
 		}
-		return ctx.json({avatar_url: result.avatar_url ?? ''});
+		return ctx.json({avatar_url: result.avatar_url ?? '', avatar_color: result.avatar_color ?? null});
 	};
 
 	const handlePersonaBatchAvatarImport = async (ctx: any) => {
@@ -309,7 +314,7 @@ export function UserAccountController(app: HonoApp) {
 				}),
 			);
 
-			const results: Record<string, {avatar_url?: string; error?: string}> = {};
+			const results: Record<string, {avatar_url?: string; avatar_color?: number | null; error?: string}> = {};
 			let completedCount = 0;
 			let currentIndex = 0;
 			const CONCURRENCY = 4;
@@ -331,6 +336,7 @@ export function UserAccountController(app: HonoApp) {
 									total,
 									url,
 									avatar_url: r.avatar_url,
+									avatar_color: r.avatar_color,
 									error: r.error,
 								}),
 							);
