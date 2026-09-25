@@ -4,9 +4,11 @@ import * as MessageCommands from '@app/features/messaging/commands/MessageComman
 import {Message} from '@app/features/messaging/models/MessagingMessage';
 import {UploadingAttachment} from '@app/features/messaging/models/UploadingAttachment';
 import {CloudUpload} from '@app/features/messaging/upload/CloudUpload';
+import {PersonaStore} from '@app/features/persona/state/PersonaStore';
 import {Logger} from '@app/features/platform/utils/AppLogger';
 import Users from '@app/features/user/state/Users';
 import {MessageFlags, MessageStates, MessageTypes} from '@fluxer/constants/src/ChannelConstants';
+import type {MessageSubprofileRequest} from '@fluxer/schema/src/domains/persona/PersonaSchemas';
 import * as SnowflakeUtils from '@fluxer/snowflake/src/SnowflakeUtils';
 
 const logger = new Logger('VoiceMessageSendUtils');
@@ -17,6 +19,7 @@ export interface SendVoiceMessageParams {
 	waveform: string;
 	duration: number;
 	title?: string;
+	subprofile?: MessageSubprofileRequest | null;
 }
 
 export async function sendVoiceMessage(params: SendVoiceMessageParams): Promise<void> {
@@ -40,6 +43,31 @@ export async function sendVoiceMessage(params: SendVoiceMessageParams): Promise<
 		size: file.size,
 		contentType: file.type,
 	}).toJSON();
+
+	let subprofile: MessageSubprofileRequest | undefined | null = params.subprofile;
+	if (subprofile === undefined) {
+		subprofile = PersonaStore.getActiveSubprofileRequest();
+		if (subprofile) {
+			void PersonaStore.recordPersonaUse(subprofile.id);
+		}
+	}
+
+	const optimisticSubprofile = subprofile
+		? {
+				id: subprofile.id,
+				name: subprofile.name,
+				avatar: subprofile.avatar ?? null,
+				avatar_color: subprofile.avatar_color ?? null,
+				display_tag_text: subprofile.display_tag_text ?? subprofile.system_name ?? null,
+				display_tag_icon: subprofile.display_tag_icon ?? null,
+				system_name: subprofile.system_name ?? subprofile.display_tag_text ?? null,
+				pronouns: subprofile.pronouns ?? null,
+				color: subprofile.color ?? null,
+				bio: subprofile.bio ?? null,
+				visibility: subprofile.visibility ?? null,
+			}
+		: null;
+
 	const message = new Message({
 		id: nonce,
 		channel_id: channelId,
@@ -54,6 +82,7 @@ export async function sendVoiceMessage(params: SendVoiceMessageParams): Promise<
 		state: MessageStates.SENDING,
 		nonce,
 		attachments: [uploadingAttachment],
+		subprofile: optimisticSubprofile,
 	});
 	MessageCommands.createOptimistic(channelId, {...message.toJSON(), attachments: [uploadingAttachment]});
 	try {
@@ -62,6 +91,7 @@ export async function sendVoiceMessage(params: SendVoiceMessageParams): Promise<
 			nonce,
 			hasAttachments: true,
 			flags: MessageFlags.VOICE_MESSAGE,
+			subprofile: subprofile ?? undefined,
 		});
 	} catch (error) {
 		logger.error({error}, 'Failed to dispatch voice message');
