@@ -1,13 +1,16 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-import type {ChannelID, GuildID, MessageID, UserID} from '@app/api/BrandedTypes';
-import {createUserID} from '@app/api/BrandedTypes';
+import type {ChannelID, GuildID, MessageID, PersonaID, UserID} from '@app/api/BrandedTypes';
+import {createPersonaID, createUserID} from '@app/api/BrandedTypes';
 import {Config} from '@app/api/Config';
 import {throwForSvcErrorReply} from '@app/api/infrastructure/SvcErrorReply';
 import {Logger} from '@app/api/Logger';
+import {getPersonaRepository} from '@app/api/middleware/ServiceSingletons';
 import type {Channel} from '@app/api/models/Channel';
 import type {Message} from '@app/api/models/Message';
+import type {IPersonaRepository} from '@app/api/persona/IPersonaRepository';
 import {isJsonRecord, parseJsonRecord, parseJsonWithGuard} from '@app/api/utils/JsonBoundaryUtils';
+import {DELETED_USER_USERNAME, UserFlags} from '@fluxer/constants/src/UserConstants';
 import type {MessageResponse} from '@fluxer/schema/src/domains/message/MessageResponseSchemas';
 import type {INatsConnectionManager} from '@pkgs/nats/src/INatsConnectionManager';
 import {NatsConnectionManager} from '@pkgs/nats/src/NatsConnectionManager';
@@ -87,8 +90,99 @@ function normalizeMessageSubprofileResponse(message: MessageResponse): MessageRe
 	return message;
 }
 
+function isDeletedAuthor(author: unknown): boolean {
+	if (!author || typeof author !== 'object') return false;
+	const record = author as Record<string, unknown>;
+	if (record.username === DELETED_USER_USERNAME) return true;
+	if (record.flags !== undefined && record.flags !== null) {
+		try {
+			const flagsBig = BigInt(record.flags as number | string | bigint);
+			if ((flagsBig & UserFlags.DELETED) === UserFlags.DELETED) return true;
+		} catch {}
+	}
+	return false;
+}
+
 export class MessageResponseDataService {
-	constructor(private readonly connectionManager: INatsConnectionManager) {}
+	constructor(
+		private readonly connectionManager: INatsConnectionManager,
+		private readonly personaRepository?: IPersonaRepository,
+	) {}
+
+	private getPersonaRepository(): IPersonaRepository {
+		return this.personaRepository ?? getPersonaRepository();
+	}
+
+	protected async hydratePersonas(messages: Array<MessageResponse>): Promise<void> {
+		if (!messages || messages.length === 0) return;
+
+		const lookupPairs: Array<{userId: UserID; personaId: PersonaID}> = [];
+
+		for (const msg of messages) {
+			const anyMsg = msg as unknown as Record<string, unknown>;
+			// Case 1: Root user account deleted -> Anonymize message, suppress persona
+			if (isDeletedAuthor(msg.author)) {
+				msg.subprofile = null;
+				delete anyMsg.persona_id;
+				continue;
+			}
+
+			// Case 2: Persona ID present on message
+			const rawPersonaId = anyMsg.persona_id ?? msg.subprofile?.id;
+			const personaIdStr =
+				typeof rawPersonaId === 'string'
+					? rawPersonaId
+					: typeof rawPersonaId === 'bigint' || typeof rawPersonaId === 'number'
+						? String(rawPersonaId)
+						: null;
+			if (!personaIdStr) {
+				msg.subprofile = null;
+				continue;
+			}
+
+			const authorIdStr = msg.author?.id;
+			if (!authorIdStr || !/^\d+$/.test(authorIdStr) || !/^\d+$/.test(personaIdStr)) {
+				msg.subprofile = null;
+				delete anyMsg.persona_id;
+				continue;
+			}
+
+			lookupPairs.push({
+				userId: createUserID(BigInt(authorIdStr)),
+				personaId: createPersonaID(BigInt(personaIdStr)),
+			});
+		}
+
+		const repo = lookupPairs.length > 0 ? this.getPersonaRepository() : null;
+		const personasById = repo ? await repo.findByUserAndPersonaIds(lookupPairs) : new Map<string, Persona>();
+
+		for (const msg of messages) {
+			const anyMsg = msg as unknown as Record<string, unknown>;
+			const rawPersonaId = anyMsg.persona_id ?? msg.subprofile?.id;
+			const personaIdStr =
+				typeof rawPersonaId === 'string'
+					? rawPersonaId
+					: typeof rawPersonaId === 'bigint' || typeof rawPersonaId === 'number'
+						? String(rawPersonaId)
+						: null;
+			if (!personaIdStr) continue;
+
+			const persona = personasById.get(personaIdStr);
+			if (persona) {
+				msg.subprofile = persona.toSubprofileResponse();
+			} else {
+				msg.subprofile = {
+					id: personaIdStr,
+					name: 'Unknown Persona',
+					avatar: null,
+					avatar_color: null,
+					pronouns: null,
+					color: null,
+				};
+			}
+			delete anyMsg.persona_id;
+		}
+	}
 
 	async listMessages(params: {
 		userId: UserID;
@@ -121,6 +215,7 @@ export class MessageResponseDataService {
 			for (const msg of response.FoundApiMany) {
 				normalizeMessageSubprofileResponse(msg);
 			}
+			await this.hydratePersonas(response.FoundApiMany);
 			return response.FoundApiMany;
 		}
 		throw new Error(`[message-response-service] unexpected ListResponses response: ${JSON.stringify(response)}`);
@@ -165,7 +260,9 @@ export class MessageResponseDataService {
 		});
 		if (response === 'NotFound') return null;
 		if (typeof response === 'object' && 'FoundApi' in response) {
-			return normalizeMessageSubprofileResponse(response.FoundApi);
+			const msg = normalizeMessageSubprofileResponse(response.FoundApi);
+			await this.hydratePersonas([msg]);
+			return msg;
 		}
 		throw new Error(`[message-response-service] unexpected GetResponseById response: ${JSON.stringify(response)}`);
 	}
@@ -195,7 +292,9 @@ export class MessageResponseDataService {
 			tts: params.tts,
 		});
 		if (typeof response === 'object' && 'FoundApi' in response) {
-			return normalizeMessageSubprofileResponse(response.FoundApi);
+			const msg = normalizeMessageSubprofileResponse(response.FoundApi);
+			await this.hydratePersonas([msg]);
+			return msg;
 		}
 		throw new Error(`[message-response-service] unexpected BuildResponse response: ${JSON.stringify(response)}`);
 	}
@@ -266,6 +365,7 @@ export class MessageResponseDataService {
 			for (const msg of response.FoundApiMany) {
 				normalizeMessageSubprofileResponse(msg);
 			}
+			await this.hydratePersonas(response.FoundApiMany);
 			responses.push(...response.FoundApiMany);
 		}
 		return responses;
