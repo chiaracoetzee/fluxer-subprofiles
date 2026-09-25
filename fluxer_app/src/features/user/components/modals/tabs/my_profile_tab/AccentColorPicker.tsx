@@ -8,6 +8,12 @@ import {msg} from '@lingui/core/macro';
 import {useLingui} from '@lingui/react/macro';
 import {observer} from 'mobx-react-lite';
 
+// Fork imports.
+
+import Users from '@app/features/user/state/Users';
+import * as AvatarUtils from '@app/features/user/utils/AvatarUtils';
+import {useMemo} from 'react';
+
 const DEFAULT_PROFILE_ACCENT_COLOR = 0x4641d9;
 
 const CUSTOMIZES_THE_BORDER_AND_BANNER_COLOR_ON_YOUR_DESCRIPTOR = msg({
@@ -20,24 +26,40 @@ interface AccentColorPickerProps {
 	onChange: (value: number | null) => void;
 	disabled?: boolean;
 	errorMessage?: string;
+	defaultColor?: number | null;
 }
 
-export const AccentColorPicker = observer(({value, onChange, disabled, errorMessage}: AccentColorPickerProps) => {
-	const {i18n} = useLingui();
-	return (
-		<div data-flx="user.my-profile-tab.accent-color-picker.div">
-			<ColorPickerField
-				label={i18n._(ACCENT_COLOR_DESCRIPTOR)}
-				description={i18n._(CUSTOMIZES_THE_BORDER_AND_BANNER_COLOR_ON_YOUR_DESCRIPTOR)}
-				descriptionClassName={myProfileTabStyles.inputFooter}
-				value={value ?? DEFAULT_PROFILE_ACCENT_COLOR}
-				onChange={onChange}
-				defaultValue={DEFAULT_PROFILE_ACCENT_COLOR}
-				isDefaultValue={value === null}
-				onReset={() => onChange(null)}
-				disabled={disabled}
-				data-flx="user.my-profile-tab.accent-color-picker.color-picker-field.change"
-			/>
+export const AccentColorPicker = observer(
+	({value, onChange, disabled, errorMessage, defaultColor}: AccentColorPickerProps) => {
+		const {i18n} = useLingui();
+		const currentUser = Users.currentUser;
+		const effectiveDefault = useMemo(() => {
+			if (defaultColor != null) {
+				return defaultColor;
+			}
+			if (currentUser && typeof currentUser.avatarColor === 'number' && currentUser.avatarColor !== 0) {
+				return currentUser.avatarColor;
+			}
+			if (currentUser && !currentUser.avatar) {
+				return AvatarUtils.getDefaultAvatarPrimaryColor(currentUser.id);
+			}
+			return DEFAULT_PROFILE_ACCENT_COLOR;
+		}, [defaultColor, currentUser?.avatarColor, currentUser?.avatar, currentUser?.id]);
+
+		return (
+			<div data-flx="user.my-profile-tab.accent-color-picker.div">
+				<ColorPickerField
+					label={i18n._(ACCENT_COLOR_DESCRIPTOR)}
+					description={i18n._(CUSTOMIZES_THE_BORDER_AND_BANNER_COLOR_ON_YOUR_DESCRIPTOR)}
+					descriptionClassName={myProfileTabStyles.inputFooter}
+					value={value ?? effectiveDefault}
+					onChange={onChange}
+					defaultValue={effectiveDefault}
+					isDefaultValue={value === null}
+					onReset={() => onChange(null)}
+					disabled={disabled}
+					data-flx="user.my-profile-tab.accent-color-picker.color-picker-field.change"
+				/>
 			{errorMessage && (
 				<p className={styles.errorMessage} data-flx="user.my-profile-tab.accent-color-picker.error-message">
 					{errorMessage}
