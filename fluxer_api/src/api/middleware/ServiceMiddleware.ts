@@ -12,6 +12,7 @@ import {
 import type {IRegistrationRiskEvaluator} from '@app/api/auth/services/IRegistrationRiskEvaluator';
 import {PersonaService} from '@app/api/persona/PersonaService';
 import {UserGuildRepository} from '@app/api/user/repositories/account/UserGuildRepository';
+import {UserChannelRepository} from '@app/api/user/repositories/UserChannelRepository';
 import {
 	noopRegistrationRiskEvaluator,
 	RegistrationRiskEvaluator,
@@ -816,6 +817,7 @@ class RequestServices implements RequestScopedServices {
 			userAccountLookupService: this.userService.accountService.lookupService,
 			gatewayService: this.gatewayService,
 			userGuildRepository: new UserGuildRepository(),
+			userChannelRepository: new UserChannelRepository(),
 		});
 		return this.cachedPersonaService;
 	}
