@@ -231,6 +231,22 @@ jobs:
           echo "Invoking Gemini 3.8 Flash Rebase Agent..."
           python /tmp/rebase_tools/rebase_agent.py
 
+      - name: Post-Rebase Dependencies & Workspace Asset Regeneration
+        if: steps.check_upstream.outputs.skip_rebase != 'true'
+        run: |
+          echo "Installing/linking newly added upstream workspace packages and dependencies..."
+          pnpm install --frozen-lockfile
+          echo "Compiling app wasm parser & codecs (including libfluxwebp)..."
+          pnpm --filter fluxer_app wasm:codegen
+          echo "Compiling i18n locales..."
+          pnpm --filter fluxer_app lingui:compile
+          echo "Pre-generating UI masks, message layout, theme variables, and CSS types..."
+          pnpm --filter fluxer_app generate:masks
+          pnpm --filter fluxer_app generate:colors
+          pnpm --filter fluxer_app generate:message-layout
+          pnpm --filter fluxer_app generate:theme-variables
+          pnpm --filter fluxer_app generate:css-types
+
       - name: Ensure Clean Working Tree
         if: steps.check_upstream.outputs.skip_rebase != 'true'
         run: |
