@@ -9,7 +9,7 @@ import type {
 	PersonaUpdateRequest,
 	PublicPersonaResponse,
 } from '@fluxer/schema/src/domains/persona/PersonaApiSchemas';
-import type {PersonaID, UserID} from '../BrandedTypes';
+import {createPersonaID, type PersonaID, type UserID} from '../BrandedTypes';
 import type {UserPersonaSettingsRow} from '../database/types/PersonaTypes';
 import type {IGatewayService} from '../infrastructure/IGatewayService';
 import type {Persona} from '../models/Persona';
