@@ -14,10 +14,6 @@ import {PersonaStore} from '../state/PersonaStore';
 import styles from './PersonaComposerPill.module.css';
 import {PersonaPickerSheet} from './PersonaPickerSheet';
 
-const MODE_OFF_DESCRIPTOR = msg({
-	message: 'Off',
-	comment: 'Active persona mode off',
-});
 const MODE_MANUAL_DESCRIPTOR = msg({
 	message: 'Manual',
 	comment: 'Active persona mode manual',
@@ -68,9 +64,7 @@ export const PersonaComposerPill: React.FC<PersonaComposerPillProps> = observer(
 		const modeLabel =
 			mode === 'last'
 				? i18n._(MODE_LAST_DESCRIPTOR)
-				: mode === 'manual'
-					? i18n._(MODE_MANUAL_DESCRIPTOR)
-					: i18n._(MODE_OFF_DESCRIPTOR);
+				: i18n._(MODE_MANUAL_DESCRIPTOR);
 
 		let tooltipText: string;
 		if (isFromTag && effectivePersona) {
