@@ -13901,7 +13901,6 @@
 					},
 					"display_tag_text": {"description": "Display tag text", "nullable": true, "type": "string"},
 					"display_tag_icon": {"description": "Display tag icon URL or hash", "nullable": true, "type": "string"},
-					"system_name": {"description": "Legacy system name/tag (deprecated)", "nullable": true, "type": "string"},
 					"pronouns": {"description": "Pronouns", "nullable": true, "type": "string"},
 					"color": {
 						"description": "Custom color integer",
