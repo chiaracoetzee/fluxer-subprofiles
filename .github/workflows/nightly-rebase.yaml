@@ -58,7 +58,13 @@ jobs:
           repository: chiaracoetzee/fluxer-mobile-tools
           ref: main
           token: ${{ secrets.WORKFLOW_TOKEN || secrets.GH_PAT || secrets.GITHUB_TOKEN }}
-          path: /tmp/rebase_tools
+          path: .shared_tools
+
+      - name: Stage shared rebase tools to /tmp
+        run: |
+          mkdir -p /tmp/rebase_tools
+          cp -r .shared_tools/* /tmp/rebase_tools/
+          rm -rf .shared_tools
 
       - name: Set up Python for AI Resolver
         uses: actions/setup-python@v5
