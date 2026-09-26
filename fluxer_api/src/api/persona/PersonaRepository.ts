@@ -21,13 +21,13 @@ const FETCH_PERSONAS_BY_USER_IDS_CQL = Personas.selectCql({
 	where: Personas.where.in('user_id', 'user_ids'),
 });
 
-const COUNT_PERSONAS_CQL = Personas.selectCountCql({
-	where: Personas.where.eq('user_id'),
-});
-
 const FETCH_SETTINGS_CQL = UserPersonaSettings.selectCql({
 	where: [UserPersonaSettings.where.eq('user_id')],
 	limit: 1,
+});
+
+const FETCH_SETTINGS_BY_USER_IDS_CQL = UserPersonaSettings.selectCql({
+	where: UserPersonaSettings.where.in('user_id', 'user_ids'),
 });
 
 export class PersonaRepository extends IPersonaRepository {
@@ -198,6 +198,22 @@ export class PersonaRepository extends IPersonaRepository {
 			user_id: userId,
 		});
 		return row ?? null;
+	}
+
+	override async findSettingsByUserIds(userIds: Array<UserID>): Promise<Map<string, UserPersonaSettingsRow>> {
+		if (!userIds || userIds.length === 0) return new Map();
+		const chunkSize = 100;
+		const results = new Map<string, UserPersonaSettingsRow>();
+		for (let i = 0; i < userIds.length; i += chunkSize) {
+			const chunk = userIds.slice(i, i + chunkSize);
+			const rows = await fetchMany<UserPersonaSettingsRow>(FETCH_SETTINGS_BY_USER_IDS_CQL, {
+				user_ids: chunk,
+			});
+			for (const r of rows) {
+				results.set(r.user_id.toString(), r);
+			}
+		}
+		return results;
 	}
 
 	async upsertSettings(row: UserPersonaSettingsRow): Promise<UserPersonaSettingsRow> {
