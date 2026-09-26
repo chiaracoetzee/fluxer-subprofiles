@@ -112,7 +112,7 @@ describe('PersonaProfileMobileSheet', () => {
 		id: 'sub_123',
 		name: 'Caelum',
 		avatar: null,
-		system_name: 'Starlight',
+		display_tag_text: 'Starlight',
 		pronouns: 'they/them',
 		bio: 'Hello from Caelum!',
 	};
