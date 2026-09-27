@@ -114,6 +114,11 @@ import type {IVirusScanService} from '@pkgs/virus_scan/src/IVirusScanService';
 import type {IWorkerService} from '@pkgs/worker/src/contracts/IWorkerService';
 import type Stripe from 'stripe';
 
+// Fork imports.
+
+import {getPersonaRepository} from '@app/api/middleware/ServiceSingletons';
+import type {IPersonaRepository} from '@app/api/persona/IPersonaRepository';
+
 export interface WorkerDependencies {
 	kvClient: IKVProvider;
 	snowflakeService: ISnowflakeService;
@@ -121,6 +126,7 @@ export interface WorkerDependencies {
 	userRepository: UserRepository;
 	channelRepository: ChannelRepository;
 	guildRepository: GuildRepository;
+	personaRepository: IPersonaRepository;
 	favoriteMemeRepository: FavoriteMemeRepository;
 	applicationRepository: ApplicationRepository;
 	oauth2TokenRepository: OAuth2TokenRepository;
@@ -277,6 +283,7 @@ export async function initializeWorkerDependencies(snowflakeService: ISnowflakeS
 		userRepository,
 		channelRepository,
 		guildRepository,
+		personaRepository: getPersonaRepository(),
 		favoriteMemeRepository,
 		applicationRepository,
 		oauth2TokenRepository,

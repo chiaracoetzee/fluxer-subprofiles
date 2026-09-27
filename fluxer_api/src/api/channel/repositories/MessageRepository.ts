@@ -9,6 +9,10 @@ import {MessageDeletionRepository} from '@app/api/channel/repositories/message/M
 import type {MessageRow} from '@app/api/database/types/MessageTypes';
 import type {Message} from '@app/api/models/Message';
 
+// Fork imports.
+
+import type {PersonaID} from '@app/api/BrandedTypes';
+
 export interface ListMessagesOptions {
 	restrictToBeforeBucket?: boolean;
 	immediateAfter?: boolean;
@@ -90,8 +94,13 @@ export class MessageRepository {
 		return this.authorRepo.listMessagesByAuthor(authorId, limit, lastMessageId);
 	}
 
-	async anonymizeMessage(channelId: ChannelID, messageId: MessageID, newAuthorId: UserID): Promise<void> {
-		return this.authorRepo.anonymizeMessage(channelId, messageId, newAuthorId);
+	async anonymizeMessage(
+		channelId: ChannelID,
+		messageId: MessageID,
+		newAuthorId: UserID,
+		personaIdMapping?: ReadonlyMap<string, PersonaID>,
+	): Promise<void> {
+		return this.authorRepo.anonymizeMessage(channelId, messageId, newAuthorId, personaIdMapping);
 	}
 
 	async lookupAttachmentByChannelAndFilename(
