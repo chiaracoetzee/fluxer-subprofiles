@@ -176,7 +176,7 @@ export const PersonaPickerSheet: React.FC<PersonaPickerSheetProps> = observer(
 										role="button"
 										tabIndex={0}
 									>
-										{currentUser && <Avatar user={currentUser} avatarUrl={p.avatarUrl} size={18} />}
+										{currentUser && <Avatar user={currentUser} avatarUrl={p.avatar_hash ?? p.avatarHash} size={18} />}
 										<span>{p.name}</span>
 									</div>
 								))}
@@ -217,7 +217,7 @@ export const PersonaPickerSheet: React.FC<PersonaPickerSheetProps> = observer(
 									role="button"
 									tabIndex={0}
 								>
-									{currentUser && <Avatar user={currentUser} avatarUrl={p.avatarUrl} size={28} />}
+									{currentUser && <Avatar user={currentUser} avatarUrl={p.avatar_hash ?? p.avatarHash} size={28} />}
 									<div className={styles.personaDetails}>
 										<div className={styles.personaPrimaryRow}>
 											<span className={styles.personaName}>{p.name}</span>
