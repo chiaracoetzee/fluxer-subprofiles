@@ -46,7 +46,7 @@ describe('instance policy server list buttons', () => {
 			help: true,
 		});
 
-		const discovery = await createBuilder<InstanceDiscoveryResponse>(harness)
+		const discovery = await createBuilder<InstanceDiscoveryResponse>(harness, '')
 			.get('/.well-known/fluxer')
 			.execute();
 
@@ -83,7 +83,7 @@ describe('instance policy server list buttons', () => {
 			help: false,
 		});
 
-		const discovery = await createBuilder<InstanceDiscoveryResponse>(harness)
+		const discovery = await createBuilder<InstanceDiscoveryResponse>(harness, '')
 			.get('/.well-known/fluxer')
 			.execute();
 
