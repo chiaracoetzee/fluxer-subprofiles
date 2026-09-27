@@ -550,3 +550,142 @@ describe('ReactionStateMachine: XState transition surface', () => {
 		}
 	});
 });
+
+describe('ReactionStateMachine: persona reactions', () => {
+	it('tracks reactions per persona independently for the same user', () => {
+		let m = applyAdd(emptyMap(), FIRE, ME, true, 'persona-a');
+		let rec = getRecord(m, FIRE);
+		expect(rec).toBeDefined();
+		expect(rec!.count).toBe(1);
+		expect(rec!.me).toBe(true);
+		expect(rec!.me_root).toBeUndefined();
+		expect(rec!.persona_reactions).toEqual([{persona_id: 'persona-a', count: 1, me: true}]);
+
+		// Add second persona for same user
+		m = applyAdd(m, FIRE, ME, true, 'persona-b');
+		rec = getRecord(m, FIRE);
+		expect(rec!.count).toBe(2);
+		expect(rec!.me).toBe(true);
+		expect(rec!.persona_reactions).toEqual([
+			{persona_id: 'persona-a', count: 1, me: true},
+			{persona_id: 'persona-b', count: 1, me: true},
+		]);
+
+		// Remove persona-b
+		m = applyRemove(m, FIRE, ME, true, 'persona-b');
+		rec = getRecord(m, FIRE);
+		expect(rec!.count).toBe(1);
+		expect(rec!.me).toBe(true);
+		expect(rec!.persona_reactions).toEqual([{persona_id: 'persona-a', count: 1, me: true}]);
+
+		// Remove persona-a
+		m = applyRemove(m, FIRE, ME, true, 'persona-a');
+		expect(getRecord(m, FIRE)).toBeUndefined();
+	});
+
+	it('tracks root reaction alongside persona reactions', () => {
+		// Root reaction
+		let m = applyAdd(emptyMap(), FIRE, ME, true, null);
+		let rec = getRecord(m, FIRE);
+		expect(rec!.count).toBe(1);
+		expect(rec!.me).toBe(true);
+		expect(rec!.me_root).toBe(true);
+		expect(rec!.persona_reactions).toBeUndefined();
+
+		// Persona reaction alongside root
+		m = applyAdd(m, FIRE, ME, true, 'persona-a');
+		rec = getRecord(m, FIRE);
+		expect(rec!.count).toBe(2);
+		expect(rec!.me).toBe(true);
+		expect(rec!.me_root).toBe(true);
+		expect(rec!.persona_reactions).toEqual([{persona_id: 'persona-a', count: 1, me: true}]);
+
+		// Remove root reaction
+		m = applyRemove(m, FIRE, ME, true, '0');
+		rec = getRecord(m, FIRE);
+		expect(rec!.count).toBe(1);
+		expect(rec!.me).toBe(true);
+		expect(rec!.me_root).toBe(false);
+		expect(rec!.persona_reactions).toEqual([{persona_id: 'persona-a', count: 1, me: true}]);
+
+		// Remove persona reaction
+		m = applyRemove(m, FIRE, ME, true, 'persona-a');
+		expect(getRecord(m, FIRE)).toBeUndefined();
+	});
+
+	it('hydrates persona_reactions and me_root correctly into message reactions', () => {
+		const wireReactions = [
+			{
+				emoji: FIRE,
+				count: 2,
+				me: true as const,
+				me_root: false,
+				persona_reactions: [
+					{persona_id: 'persona-a', count: 1, me: true},
+					{persona_id: 'persona-b', count: 1, me: false},
+				],
+			},
+		];
+		const m = hydrate(emptyMap(), wireReactions, ME);
+		const rec = getRecord(m, FIRE);
+		expect(rec).toBeDefined();
+		expect(rec!.count).toBe(2);
+		expect(rec!.me).toBe(true);
+		expect(rec!.me_root).toBeUndefined();
+		expect(rec!.persona_reactions).toEqual([
+			{persona_id: 'persona-a', count: 1, me: true},
+			{persona_id: 'persona-b', count: 1, me: false},
+		]);
+
+		const output = mapToReactions(m);
+		expect(output).toHaveLength(1);
+		expect(output[0].me_root).toBeUndefined();
+		expect(output[0].persona_reactions).toEqual([
+			{persona_id: 'persona-a', count: 1, me: true},
+			{persona_id: 'persona-b', count: 1, me: false},
+		]);
+	});
+
+	it('transitions through reaction machine snapshot with personaId', () => {
+		let snapshot = createReactionMachineSnapshot(emptyMap(), ME);
+		snapshot = transitionReactionSnapshot(snapshot, {
+			type: 'reaction.add',
+			emoji: FIRE,
+			userId: ME,
+			isCurrentUser: true,
+			personaId: 'persona-a',
+		});
+		expect(getReactionStateValue(snapshot)).toBe('active');
+		expect(getRecord(snapshot.context.map, FIRE)!.count).toBe(1);
+
+		snapshot = transitionReactionSnapshot(snapshot, {
+			type: 'reaction.add',
+			emoji: FIRE,
+			userId: ME,
+			isCurrentUser: true,
+			personaId: 'persona-b',
+		});
+		expect(getRecord(snapshot.context.map, FIRE)!.count).toBe(2);
+
+		snapshot = transitionReactionSnapshot(snapshot, {
+			type: 'reaction.remove',
+			emoji: FIRE,
+			userId: ME,
+			isCurrentUser: true,
+			personaId: 'persona-a',
+		});
+		expect(getRecord(snapshot.context.map, FIRE)!.count).toBe(1);
+		expect(getReactionStateValue(snapshot)).toBe('active');
+
+		snapshot = transitionReactionSnapshot(snapshot, {
+			type: 'reaction.remove',
+			emoji: FIRE,
+			userId: ME,
+			isCurrentUser: true,
+			personaId: 'persona-b',
+		});
+		expect(getRecord(snapshot.context.map, FIRE)).toBeUndefined();
+		expect(getReactionStateValue(snapshot)).toBe('empty');
+	});
+});
+
