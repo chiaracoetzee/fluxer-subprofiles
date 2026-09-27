@@ -35,6 +35,7 @@ import NavigationSideEffects from '@app/features/navigation/state/NavigationSide
 import MentionFeed from '@app/features/notification/state/MentionFeed';
 import Permission from '@app/features/permissions/state/Permission';
 import * as PersonaCommands from '@app/features/persona/commands/PersonaCommands';
+import {PersonaStore} from '@app/features/persona/state/PersonaStore';
 import {Logger} from '@app/features/platform/utils/AppLogger';
 import Presence from '@app/features/presence/state/Presence';
 import ReadStates, {type GatewayReadState} from '@app/features/read_state/state/ReadStates';
@@ -121,6 +122,8 @@ function handleReadyInternal(data: ReadyPayload, context: GatewayHandlerContext,
 		MemberSidebar.handleSessionInvalidated();
 		GuildCount.handleSessionInvalidated();
 		ChannelMemberCount.handleSessionInvalidated();
+		PersonaStore.reset();
+		PersonaCommands.resetFetchPersonasCooldown();
 	}
 	context.setPreviousSessionId(currentSessionId);
 	const guilds = data.guilds;
@@ -153,7 +156,7 @@ function handleReadyInternal(data: ReadyPayload, context: GatewayHandlerContext,
 	Users.handleGatewayReady(accountKey, data.user);
 	Users.cacheUsers(data.users ?? []);
 	syncAccountUserData(accountKey, data.user);
-	void PersonaCommands.fetchPersonas().catch((error) => {
+	void PersonaCommands.fetchPersonas(true).catch((error) => {
 		logger.warn('Failed to fetch personas after READY', error);
 	});
 	void PersonaCommands.fetchPersonaSettings().catch((error) => {
