@@ -27,9 +27,17 @@ import {ProfileCardContent} from '@app/features/user/components/profile/profile_
 import {ProfileCardLayout} from '@app/features/user/components/profile/profile_card/ProfileCardLayout';
 import {ProfileCardUserInfo} from '@app/features/user/components/profile/profile_card/ProfileCardUserInfo';
 import {PROFILE_POPOUT_GEOMETRY_STYLE} from '@app/features/user/constants/UserProfileSurfaceGeometry';
+import {EmojiPickerPopout} from '@app/features/emoji/components/popouts/EmojiPickerPopout';
+import type {FlatEmoji} from '@app/features/emoji/types/EmojiTypes';
+import {toReactionEmoji, useEmojiURL} from '@app/features/messaging/utils/ReactionUtils';
+import {Popout} from '@app/features/ui/popover/PopoverPopout';
 import Users from '@app/features/user/state/Users';
 import * as AvatarUtils from '@app/features/user/utils/AvatarUtils';
-import type {PersonaVisibility} from '@fluxer/schema/src/domains/persona/PersonaApiSchemas';
+import {
+	MAX_SIGNATURE_EMOJIS_PER_PERSONA,
+	type PersonaVisibility,
+	type SignatureEmoji,
+} from '@fluxer/schema/src/domains/persona/PersonaApiSchemas';
 import type {I18n} from '@lingui/core';
 import {msg} from '@lingui/core/macro';
 import {Trans, useLingui} from '@lingui/react/macro';
@@ -136,6 +144,22 @@ const TAG_PAIR_IN_USE_DESCRIPTOR = msg({
 	message: 'Tag pair already in use by persona "{name}"',
 	comment: 'Validation error when tag pair is already used by another persona',
 });
+const SIGNATURE_EMOJI_IN_USE_DESCRIPTOR = msg({
+	message: 'Signature emoji already in use by persona "{name}"',
+	comment: 'Validation error when signature emoji is already used by another persona',
+});
+const DUPLICATE_SIGNATURE_EMOJI_DESCRIPTOR = msg({
+	message: 'This emoji is already added as a signature emoji',
+	comment: 'Validation error when signature emoji is duplicated within the same persona',
+});
+const SIGNATURE_EMOJIS_LIMIT_DESCRIPTOR = msg({
+	message: 'Maximum {max} signature emojis allowed per persona',
+	comment: 'Validation error when signature emoji limit is reached',
+});
+const REMOVE_SIGNATURE_EMOJI_ARIA = msg({
+	message: 'Remove signature emoji',
+	comment: 'Aria label for removing signature emoji',
+});
 
 const getVisibilityTabs = (i18n: I18n): Array<SegmentedTab<PersonaVisibility>> => [
 	{id: 'unlisted', label: i18n._(VISIBILITY_UNLISTED_DESCRIPTOR)},
@@ -149,6 +173,49 @@ const getVisibilityDescriptions = (i18n: I18n): Record<PersonaVisibility, string
 	private: i18n._(VISIBILITY_PRIVATE_DESC),
 });
 
+const SignatureEmojiChip: React.FC<{
+	emoji: SignatureEmoji;
+	onRemove: () => void;
+}> = ({emoji, onRemove}) => {
+	const {i18n} = useLingui();
+	const emojiUrl = useEmojiURL({
+		emoji: {
+			id: emoji.id ?? null,
+			name: emoji.name,
+			animated: Boolean(emoji.animated),
+		},
+	});
+
+	return (
+		<div className={styles.signatureEmojiChip} title={emoji.name}>
+			{emojiUrl ? (
+				<img src={emojiUrl} alt={emoji.name} className={styles.signatureEmojiImg} />
+			) : (
+				<span>{emoji.name}</span>
+			)}
+			<span>{emoji.name}</span>
+			<button
+				type="button"
+				className={styles.signatureEmojiRemove}
+				onClick={onRemove}
+				aria-label={i18n._(REMOVE_SIGNATURE_EMOJI_ARIA)}
+			>
+				<X size={12} weight="bold" />
+			</button>
+		</div>
+	);
+};
+
+function signatureEmojisEqual(a: ReadonlyArray<SignatureEmoji>, b: ReadonlyArray<SignatureEmoji>): boolean {
+	if (a.length !== b.length) return false;
+	for (let i = 0; i < a.length; i++) {
+		const left = a[i];
+		const right = b[i];
+		if (left.id !== right.id || left.name !== right.name) return false;
+	}
+	return true;
+}
+
 interface PersonaFormState {
 	id?: string;
 	name: string;
@@ -160,6 +227,7 @@ interface PersonaFormState {
 	bio: string;
 	visibility: PersonaVisibility;
 	tags: Array<{prefix: string; suffix: string}>;
+	signatureEmojis: Array<SignatureEmoji>;
 }
 
 const emptyFormState = (): PersonaFormState => ({
@@ -172,6 +240,7 @@ const emptyFormState = (): PersonaFormState => ({
 	bio: '',
 	visibility: 'unlisted',
 	tags: [{prefix: '', suffix: ''}],
+	signatureEmojis: [],
 });
 
 function normalizeTag(tag: {prefix?: string | null; suffix?: string | null}) {
@@ -225,6 +294,12 @@ export const PersonaEditModal: React.FC<PersonaEditModalProps> = observer(({pers
 							suffix: t.suffix ?? '',
 						}))
 					: [{prefix: '', suffix: ''}],
+			signatureEmojis:
+				(persona.signature_emojis ?? persona.signatureEmojis ?? []).map((e) => ({
+					id: e.id ?? null,
+					name: e.name,
+					animated: e.animated ?? null,
+				})),
 		};
 	}, [persona]);
 
@@ -270,7 +345,8 @@ export const PersonaEditModal: React.FC<PersonaEditModalProps> = observer(({pers
 				formData.accentColor !== null ||
 				formData.bio.trim() !== '' ||
 				formData.visibility !== 'unlisted' ||
-				hasNonEmptyTag
+				hasNonEmptyTag ||
+				formData.signatureEmojis.length > 0
 			);
 		}
 		if (formData.name.trim() !== initial.name.trim()) return true;
@@ -280,6 +356,7 @@ export const PersonaEditModal: React.FC<PersonaEditModalProps> = observer(({pers
 		if (formData.accentColor !== initial.accentColor) return true;
 		if (formData.bio.trim() !== initial.bio.trim()) return true;
 		if (formData.visibility !== initial.visibility) return true;
+		if (!signatureEmojisEqual(formData.signatureEmojis, initial.signatureEmojis)) return true;
 
 		const formTags = formData.tags.map(normalizeTag).filter((t) => t.prefix || t.suffix);
 		const initTags = initial.tags.map(normalizeTag).filter((t) => t.prefix || t.suffix);
@@ -339,6 +416,64 @@ export const PersonaEditModal: React.FC<PersonaEditModalProps> = observer(({pers
 	);
 
 	const hasTagErrors = formData.tags.some((_, idx) => Boolean(getTagRowError(idx)));
+
+	const handleAddSignatureEmoji = useCallback(
+		(selectedEmoji: FlatEmoji) => {
+			const reactionEmoji = toReactionEmoji(selectedEmoji as any);
+			const newSig: SignatureEmoji = {
+				id: reactionEmoji.id ?? null,
+				name: reactionEmoji.name,
+				animated: reactionEmoji.animated ?? null,
+			};
+
+			const isDuplicate = formData.signatureEmojis.some(
+				(s) => (s.id && s.id === newSig.id) || (!s.id && !newSig.id && s.name === newSig.name),
+			);
+			if (isDuplicate) {
+				ToastCommands.createToast({
+					type: 'info',
+					children: i18n._(DUPLICATE_SIGNATURE_EMOJI_DESCRIPTOR),
+				});
+				return;
+			}
+
+			for (const p of personas) {
+				if (formData.id && p.id === formData.id) continue;
+				const otherSigs = p.signature_emojis ?? p.signatureEmojis ?? [];
+				const collision = otherSigs.some(
+					(s) => (s.id && s.id === newSig.id) || (!s.id && !newSig.id && s.name === newSig.name),
+				);
+				if (collision) {
+					ToastCommands.createToast({
+						type: 'error',
+						children: i18n._(SIGNATURE_EMOJI_IN_USE_DESCRIPTOR, {name: p.name}),
+					});
+					return;
+				}
+			}
+
+			if (formData.signatureEmojis.length >= MAX_SIGNATURE_EMOJIS_PER_PERSONA) {
+				ToastCommands.createToast({
+					type: 'error',
+					children: i18n._(SIGNATURE_EMOJIS_LIMIT_DESCRIPTOR, {max: MAX_SIGNATURE_EMOJIS_PER_PERSONA}),
+				});
+				return;
+			}
+
+			setFormData((prev) => ({
+				...prev,
+				signatureEmojis: [...prev.signatureEmojis, newSig],
+			}));
+		},
+		[formData.signatureEmojis, formData.id, personas, i18n],
+	);
+
+	const handleRemoveSignatureEmoji = useCallback((idx: number) => {
+		setFormData((prev) => ({
+			...prev,
+			signatureEmojis: prev.signatureEmojis.filter((_, i) => i !== idx),
+		}));
+	}, []);
 
 	const handleAvatarUpload = async (base64: string) => {
 		setFormData((prev) => ({...prev, avatarHash: base64}));
@@ -518,6 +653,7 @@ export const PersonaEditModal: React.FC<PersonaEditModalProps> = observer(({pers
 					bio: formData.bio.trim() || null,
 					visibility: formData.visibility,
 					persona_tags: validTags,
+					signature_emojis: formData.signatureEmojis,
 				});
 				ToastCommands.createToast({
 					type: 'success',
@@ -534,6 +670,7 @@ export const PersonaEditModal: React.FC<PersonaEditModalProps> = observer(({pers
 					bio: formData.bio.trim() || null,
 					visibility: formData.visibility,
 					persona_tags: validTags,
+					signature_emojis: formData.signatureEmojis,
 				});
 				ToastCommands.createToast({
 					type: 'success',
@@ -803,6 +940,59 @@ export const PersonaEditModal: React.FC<PersonaEditModalProps> = observer(({pers
 										</div>
 									);
 								})}
+							</div>
+
+							{/* 7b. Signature Emojis */}
+							<div className={styles.sectionBlock}>
+								<div className={styles.tagsHeader}>
+									<label className={styles.fieldLabel} style={{margin: 0}}>
+										<Trans>Signature Emojis</Trans>
+									</label>
+									<Popout
+										render={({onClose}) => (
+											<EmojiPickerPopout
+												channelId={null}
+												handleSelect={(selectedEmoji) => {
+													handleAddSignatureEmoji(selectedEmoji);
+													onClose();
+												}}
+												onClose={onClose}
+												data-flx="persona.persona-edit-modal.signature-emoji-picker"
+											/>
+										)}
+										position="top-start"
+										uniqueId={`persona-signature-emoji-picker-${formData.id ?? 'new'}`}
+									>
+										<Button
+											variant="secondary"
+											small
+											leftIcon={<Plus size={14} />}
+											disabled={formData.signatureEmojis.length >= MAX_SIGNATURE_EMOJIS_PER_PERSONA}
+											data-flx="persona.persona-edit-modal.add-signature-emoji-button"
+										>
+											<Trans>Add Emoji ({formData.signatureEmojis.length}/{MAX_SIGNATURE_EMOJIS_PER_PERSONA})</Trans>
+										</Button>
+									</Popout>
+								</div>
+								<div className={styles.modeHelperText} style={{marginTop: 4, marginBottom: 8}}>
+									<Info size={16} weight="bold" className={styles.modeHelperIcon} />
+									<span>
+										<Trans>
+											Reacting with a signature emoji will always react as this persona, regardless of active persona.
+										</Trans>
+									</span>
+								</div>
+								{formData.signatureEmojis.length > 0 && (
+									<div className={styles.signatureEmojiGrid}>
+										{formData.signatureEmojis.map((sigEmoji, idx) => (
+											<SignatureEmojiChip
+												key={sigEmoji.id ? `custom_${sigEmoji.id}` : `unicode_${sigEmoji.name}`}
+												emoji={sigEmoji}
+												onRemove={() => handleRemoveSignatureEmoji(idx)}
+											/>
+										))}
+									</div>
+								)}
 							</div>
 
 							{/* 8. Visibility */}
