@@ -31,7 +31,6 @@ import {threadWriteBlock} from '@fluxer/constants/src/ThreadPermissionUtils';
 import {InvalidChannelTypeError} from '@fluxer/errors/src/domains/channel/InvalidChannelTypeError';
 import {NewConversationsLimitedError} from '@fluxer/errors/src/domains/user/NewConversationsLimitedError';
 import type {ChannelPinResponse, MessageResponse} from '@fluxer/schema/src/domains/message/MessageResponseSchemas';
-import type {UserPartialResponse} from '@fluxer/schema/src/domains/user/UserResponseSchemas';
 
 // Fork imports.
 
