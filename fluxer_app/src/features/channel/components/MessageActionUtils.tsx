@@ -18,11 +18,13 @@ import * as SavedMessageCommands from '@app/features/messaging/commands/SavedMes
 import {ForwardModal, type ForwardModalSuccess} from '@app/features/messaging/components/modals/ForwardModal';
 import type {Message} from '@app/features/messaging/models/MessagingMessage';
 import MessageChangePersona from '@app/features/messaging/state/MessageChangePersona';
+import Drafts from '@app/features/messaging/state/MessagingDrafts';
 import SavedMessages from '@app/features/messaging/state/SavedMessages';
 import {buildMessageJumpLink} from '@app/features/messaging/utils/MessageLinkUtils';
 import {retryFailedMessage} from '@app/features/messaging/utils/MessageRetryUtils';
-import {type ReactionEmoji, toReactionEmoji} from '@app/features/messaging/utils/ReactionUtils';
+import {hasPersonaReacted, type ReactionEmoji, toReactionEmoji} from '@app/features/messaging/utils/ReactionUtils';
 import {getDefaultReplyMention} from '@app/features/notification/utils/MentionReplyPreferenceUtils';
+import {PersonaStore} from '@app/features/persona/state/PersonaStore';
 import Permission from '@app/features/permissions/state/Permission';
 import {ComponentBus} from '@app/features/platform/utils/ComponentBus';
 import * as ReadStateCommands from '@app/features/read_state/commands/ReadStateCommands';
@@ -310,10 +312,14 @@ export function createMessageActionHandlers(
 			return;
 		}
 		const reactionEmoji = toReactionEmoji(emoji);
-		if (message.getReaction(reactionEmoji)?.me) {
-			ReactionCommands.removeReaction(i18n, message.channelId, message.id, reactionEmoji);
+		const draft = Drafts.getDraft(message.channelId);
+		const effectivePersona = PersonaStore.getEffectiveReactionPersona(reactionEmoji, draft);
+		const effectivePersonaId = effectivePersona?.id ?? null;
+		const hasEffectivePersonaReacted = hasPersonaReacted(message.getReaction(reactionEmoji), effectivePersonaId);
+		if (hasEffectivePersonaReacted) {
+			ReactionCommands.removeReaction(i18n, message.channelId, message.id, reactionEmoji, undefined, effectivePersonaId);
 		} else {
-			ReactionCommands.addReaction(i18n, message.channelId, message.id, reactionEmoji);
+			ReactionCommands.addReaction(i18n, message.channelId, message.id, reactionEmoji, effectivePersonaId);
 		}
 	};
 	const handleCopyMessageId = () => {
