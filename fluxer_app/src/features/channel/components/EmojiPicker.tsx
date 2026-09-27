@@ -36,8 +36,11 @@ import {
 	shouldShowEmojiPremiumUpsell,
 } from '@app/features/expressions/utils/ExpressionPermissionUtils';
 import {getEmojiDisplayDataWithSkinTone} from '@app/features/expressions/utils/SkinToneUtils';
+import Drafts from '@app/features/messaging/state/MessagingDrafts';
 import {getEmojiRenderUrl} from '@app/features/messaging/utils/markdown/EmojiDetector';
+import {toReactionEmoji} from '@app/features/messaging/utils/ReactionUtils';
 import Permission from '@app/features/permissions/state/Permission';
+import {PersonaStore} from '@app/features/persona/state/PersonaStore';
 import {ComponentBus} from '@app/features/platform/utils/ComponentBus';
 import {usePremiumUpsellData} from '@app/features/premium/hooks/usePremiumUpsellData';
 import {shouldShowPremiumFeatures} from '@app/features/premium/utils/PremiumUtils';
@@ -158,6 +161,7 @@ export const EmojiPicker = observer(
 		const {favoriteEmojis, frequentlyUsedEmojis, customEmojisByGuildId, unicodeEmojisByCategory} = useEmojiCategories(
 			allUpsell.accessibleItems,
 			renderedEmojis,
+			channelId,
 		);
 		const showFrequentlyUsedButton = frequentlyUsedEmojis.length > 0 && !normalizedSearchTerm;
 		const pickerRows = useVirtualRows(
@@ -260,10 +264,13 @@ export const EmojiPicker = observer(
 				if (!availability.canUse) {
 					return;
 				}
-				EmojiPickerCommands.trackEmojiUsage(emoji);
+				const draft = channelId ? Drafts.getDraft(channelId) : undefined;
+				const reactionEmoji = toReactionEmoji(emoji as any);
+				const effectivePersona = PersonaStore.getEffectiveReactionPersona(reactionEmoji, draft);
+				EmojiPickerCommands.trackEmojiUsage(emoji, effectivePersona?.id);
 				handleSelect(emoji, shiftKey);
 			},
-			[channel, handleSelect, i18n],
+			[channel, channelId, handleSelect, i18n],
 		);
 		const handleSelectionChange = useCallback(
 			(row: number, column: number, shouldScroll = false) => {
@@ -425,7 +432,11 @@ export const EmojiPicker = observer(
 							)}
 						</div>
 					</div>
-					<EmojiPickerInspector hoveredEmoji={hoveredEmoji} data-flx="channel.emoji-picker.emoji-picker-inspector" />
+					<EmojiPickerInspector
+						hoveredEmoji={hoveredEmoji}
+						channelId={channelId}
+						data-flx="channel.emoji-picker.emoji-picker-inspector"
+					/>
 				</div>
 				<EmojiPickerCategoryList
 					customEmojisByGuildId={customEmojisByGuildId}
