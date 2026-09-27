@@ -11,16 +11,21 @@ import type {FlatEmoji} from '@app/features/emoji/types/EmojiTypes';
 import {getEmojiDisplayDataWithSkinTone} from '@app/features/expressions/utils/SkinToneUtils';
 import UnicodeEmojis, {EMOJI_SPRITES} from '@app/features/expressions/utils/UnicodeEmojis';
 import Guilds from '@app/features/guild/state/Guilds';
+import Drafts from '@app/features/messaging/state/MessagingDrafts';
 import {getEmojiRenderUrl} from '@app/features/messaging/utils/markdown/EmojiDetector';
+import {toReactionEmoji} from '@app/features/messaging/utils/ReactionUtils';
+import {PersonaStore} from '@app/features/persona/state/PersonaStore';
 import {isFirefoxBrowser} from '@app/features/ui/utils/NativeUtils';
+import Users from '@app/features/user/state/Users';
 import {Trans} from '@lingui/react/macro';
 import {observer} from 'mobx-react-lite';
 
 interface EmojiPickerInspectorProps {
 	hoveredEmoji: FlatEmoji | null;
+	channelId?: string;
 }
 
-export const EmojiPickerInspector = observer(({hoveredEmoji}: EmojiPickerInspectorProps) => {
+export const EmojiPickerInspector = observer(({hoveredEmoji, channelId}: EmojiPickerInspectorProps) => {
 	const skinTone = Emoji.skinTone;
 	const shouldAnimateEmoji = useShouldAnimate({
 		kind: 'emoji',
@@ -87,6 +92,14 @@ export const EmojiPickerInspector = observer(({hoveredEmoji}: EmojiPickerInspect
 			/>
 		);
 	};
+	const hasPersonas = PersonaStore.personas.length > 0;
+	const draft = channelId ? Drafts.getDraft(channelId) : undefined;
+	const reactionEmoji = hoveredEmoji ? toReactionEmoji(hoveredEmoji as any) : null;
+	const effectivePersona = hasPersonas ? PersonaStore.getEffectiveReactionPersona(reactionEmoji, draft) : null;
+	const reactorName = hasPersonas
+		? (effectivePersona?.name ?? Users.currentUser?.displayName ?? Users.currentUser?.username)
+		: null;
+
 	return (
 		<div className={styles.inspector} data-flx="channel.emoji-picker.emoji-picker-inspector.inspector">
 			{hoveredEmoji && (
@@ -109,6 +122,16 @@ export const EmojiPickerInspector = observer(({hoveredEmoji}: EmojiPickerInspect
 							>
 								<Trans>
 									from <strong data-flx="channel.emoji-picker.emoji-picker-inspector.strong">{sourceGuild.name}</strong>
+								</Trans>
+							</span>
+						)}
+						{hasPersonas && reactorName && (
+							<span
+								className={styles.inspectorPersonaText}
+								data-flx="channel.emoji-picker.emoji-picker-inspector.inspector-persona-text"
+							>
+								<Trans>
+									Reacting as <strong data-flx="channel.emoji-picker.emoji-picker-inspector.persona-strong">{reactorName}</strong>
 								</Trans>
 							</span>
 						)}

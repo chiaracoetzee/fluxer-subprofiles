@@ -4,14 +4,14 @@ import EmojiPicker, {getEmojiUsageKey} from '@app/features/emoji/state/EmojiPick
 import type {FlatEmoji} from '@app/features/emoji/types/EmojiTypes';
 
 type EmojiPickerIntent =
-	| {kind: 'track'; emoji: FlatEmoji}
+	| {kind: 'track'; emoji: FlatEmoji; personaId?: string | null}
 	| {kind: 'favorite'; emoji: FlatEmoji}
 	| {kind: 'category'; category: string};
 
 function dispatchEmojiPickerIntent(intent: EmojiPickerIntent): void {
 	switch (intent.kind) {
 		case 'track':
-			EmojiPicker.trackEmojiUsage(getEmojiUsageKey(intent.emoji));
+			EmojiPicker.trackEmojiUsage(getEmojiUsageKey(intent.emoji), intent.personaId);
 			return;
 		case 'favorite':
 			EmojiPicker.toggleFavorite(getEmojiUsageKey(intent.emoji));
@@ -22,8 +22,8 @@ function dispatchEmojiPickerIntent(intent: EmojiPickerIntent): void {
 	}
 }
 
-export function trackEmojiUsage(emoji: FlatEmoji): void {
-	dispatchEmojiPickerIntent({kind: 'track', emoji});
+export function trackEmojiUsage(emoji: FlatEmoji, personaId?: string | null): void {
+	dispatchEmojiPickerIntent({kind: 'track', emoji, personaId});
 }
 
 export function toggleFavorite(emoji: FlatEmoji): void {

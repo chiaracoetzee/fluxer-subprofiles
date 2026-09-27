@@ -17,6 +17,7 @@ import {
 	createStringType,
 	createUnboundedStringType,
 	Int32Type,
+	SnowflakeStringType,
 	SnowflakeType,
 	withOpenApiType,
 } from '@fluxer/schema/src/primitives/SchemaPrimitives';
@@ -485,3 +486,18 @@ export const ReactionUsersQuerySchema = z.object({
 });
 
 export type ReactionUsersQuerySchema = z.infer<typeof ReactionUsersQuerySchema>;
+
+export const AddReactionBodySchema = z
+	.object({
+		persona_id: SnowflakeStringType.nullish().optional().describe('Persona ID to attribute the reaction to'),
+	})
+	.optional();
+
+export type AddReactionBodySchema = z.infer<typeof AddReactionBodySchema>;
+
+export const RemoveReactionQuerySchema = z.object({
+	session_id: z.string().optional().describe('Session ID to avoid echo'),
+	persona_id: SnowflakeStringType.nullish().optional().describe('Persona ID whose reaction should be removed'),
+});
+
+export type RemoveReactionQuerySchema = z.infer<typeof RemoveReactionQuerySchema>;

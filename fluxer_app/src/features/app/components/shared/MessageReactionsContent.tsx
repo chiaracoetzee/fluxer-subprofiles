@@ -12,12 +12,14 @@ import {
 	getReactionKey,
 	useEmojiURL,
 } from '@app/features/messaging/utils/ReactionUtils';
+import {PersonaTag} from '@app/features/persona/components/PersonaTag';
 import {Avatar} from '@app/features/ui/components/Avatar';
 import {Scroller} from '@app/features/ui/components/Scroller';
 import {Spinner} from '@app/features/ui/components/Spinner';
 import FocusRing from '@app/features/ui/focus_ring/FocusRing';
 import {Tooltip} from '@app/features/ui/tooltip/Tooltip';
 import type {User} from '@app/features/user/models/User';
+import * as AvatarUtils from '@app/features/user/utils/AvatarUtils';
 import * as NicknameUtils from '@app/features/user/utils/NicknameUtils';
 import type {MessageReaction} from '@fluxer/schema/src/domains/message/MessageResponseSchemas';
 import {msg, plural} from '@lingui/core/macro';
@@ -234,19 +236,33 @@ const ReactorListItem = observer(
 		const isOwnReaction = currentUserId != null && reactor.id === currentUserId;
 		const showRemoveButton = Boolean(onRemoveReactor) && (canManageMessages || isOwnReaction);
 		const itemClassName = clsx(styles.reactorItem, !isFirst && styles.reactorItemBorder);
-		const displayName = NicknameUtils.getNickname(reactor, guildId, channelId);
+		const displayName = reactor.subprofile?.name ?? NicknameUtils.getNickname(reactor, guildId, channelId);
+		const avatarUrl = reactor.subprofile?.avatar
+			? AvatarUtils.getPersonaAvatarURL({
+					userId: reactor.id,
+					avatar: reactor.subprofile.avatar,
+			  })
+			: undefined;
 		const content = (
 			<>
 				<Avatar
 					user={reactor}
 					size={avatarSize}
 					guildId={guildId}
+					avatarUrl={avatarUrl}
 					data-flx="app.message-reactions-content.reactor-list-item.avatar"
 				/>
 				<div className={styles.reactorInfo} data-flx="app.message-reactions-content.reactor-list-item.reactor-info">
 					<span className={styles.reactorName} data-flx="app.message-reactions-content.reactor-list-item.reactor-name">
 						{displayName}
 					</span>
+					{reactor.subprofile && (
+						<PersonaTag
+							subprofile={reactor.subprofile}
+							rootUser={reactor}
+							guild={undefined}
+						/>
+					)}
 					<span className={styles.reactorTag} data-flx="app.message-reactions-content.reactor-list-item.reactor-tag">
 						{reactor.tag}
 					</span>
@@ -362,7 +378,7 @@ export const MessageReactionsReactorsList = observer(
 				>
 					{reactors.map((reactor, index) => (
 						<ReactorListItem
-							key={reactor.id}
+							key={reactor.personaId ? `${reactor.id}:${reactor.personaId}` : (reactor.subprofile?.id ? `${reactor.id}:${reactor.subprofile.id}` : reactor.id)}
 							channelId={channelId}
 							reactor={reactor}
 							canManageMessages={canManageMessages}
