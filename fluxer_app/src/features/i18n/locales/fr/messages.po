@@ -41362,3 +41362,50 @@ msgstr "Insérer un horodatage"
 #: src/features/ui/components/form/SearchableTimeZonePicker.tsx:38
 msgid "Suggested"
 msgstr "Suggérées"
+
+#. placeholder {0}: formData.signatureEmojis.length
+#: src/features/persona/components/modals/PersonaEditModal.tsx:973
+msgid "Add Emoji ({0}/{MAX_SIGNATURE_EMOJIS_PER_PERSONA})"
+msgstr "Ajouter un emoji ({0}/{MAX_SIGNATURE_EMOJIS_PER_PERSONA})"
+
+#. Developer / debug surface — keep terse and technical. Tooltip / description for the profile timezone settings toggle.
+#: src/features/devtools/components/DeveloperOptionsToggleGroups.ts:139
+msgid "Expose the staff-only time zone section in profile settings."
+msgstr "Afficher la section du fuseau horaire dans les paramètres du profil, réservée au personnel."
+
+#. Validation error when signature emoji limit is reached
+#: src/features/persona/components/modals/PersonaEditModal.tsx:155
+msgid "Maximum {max} signature emojis allowed per persona"
+msgstr "Maximum de {max} emojis signature autorisés par persona"
+
+#. Tooltip hint showing effective reacting persona or user on quick reaction hover.
+#: src/features/channel/components/MessageActionBar.tsx:79
+msgid "Reacting as {name}"
+msgstr "Réagir en tant que {name}"
+
+#: src/features/channel/components/emoji_picker/EmojiPickerInspector.tsx:133
+msgid "Reacting as <0>{reactorName}</0>"
+msgstr "Réaction en tant que <0>{reactorName}</0>"
+
+#: src/features/persona/components/modals/PersonaEditModal.tsx:980
+msgid "Reacting with a signature emoji will always react as this persona, regardless of active persona."
+msgstr "Réagir avec un emoji signature réagira toujours sous cette persona, quelle que soit la persona active."
+
+#. Aria label for removing signature emoji
+#: src/features/persona/components/modals/PersonaEditModal.tsx:159
+msgid "Remove signature emoji"
+msgstr "Supprimer l'emoji signature"
+
+#. Validation error when signature emoji is already used by another persona
+#: src/features/persona/components/modals/PersonaEditModal.tsx:147
+msgid "Signature emoji already in use by persona \"{name}\""
+msgstr "L'emoji signature est déjà utilisé par la persona « {name} »"
+
+#: src/features/persona/components/modals/PersonaEditModal.tsx:949
+msgid "Signature Emojis"
+msgstr "Emojis signature"
+
+#. Validation error when signature emoji is duplicated within the same persona
+#: src/features/persona/components/modals/PersonaEditModal.tsx:151
+msgid "This emoji is already added as a signature emoji"
+msgstr "Cet emoji est déjà ajouté comme emoji signature"

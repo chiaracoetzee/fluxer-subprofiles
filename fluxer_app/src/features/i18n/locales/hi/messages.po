@@ -41362,3 +41362,45 @@ msgstr "समय टिकट डालें"
 #: src/features/ui/components/form/SearchableTimeZonePicker.tsx:38
 msgid "Suggested"
 msgstr "सुझाए गए"
+
+#. placeholder {0}: formData.signatureEmojis.length
+#: src/features/persona/components/modals/PersonaEditModal.tsx:973
+msgid "Add Emoji ({0}/{MAX_SIGNATURE_EMOJIS_PER_PERSONA})"
+msgstr "इमोजी जोड़ें ({0}/{MAX_SIGNATURE_EMOJIS_PER_PERSONA})"
+
+#. Validation error when signature emoji limit is reached
+#: src/features/persona/components/modals/PersonaEditModal.tsx:155
+msgid "Maximum {max} signature emojis allowed per persona"
+msgstr "प्रति व्यक्तित्व अधिकतम {max} हस्ताक्षर इमोजी की अनुमति है"
+
+#. Tooltip hint showing effective reacting persona or user on quick reaction hover.
+#: src/features/channel/components/MessageActionBar.tsx:79
+msgid "Reacting as {name}"
+msgstr "{name} के रूप में प्रतिक्रिया दे रहे हैं"
+
+#: src/features/channel/components/emoji_picker/EmojiPickerInspector.tsx:133
+msgid "Reacting as <0>{reactorName}</0>"
+msgstr "<0>{reactorName}</0> के रूप में प्रतिक्रिया दे रहे हैं"
+
+#: src/features/persona/components/modals/PersonaEditModal.tsx:980
+msgid "Reacting with a signature emoji will always react as this persona, regardless of active persona."
+msgstr "हस्ताक्षर इमोजी के साथ प्रतिक्रिया देने पर हमेशा इस व्यक्तित्व के रूप में प्रतिक्रिया होगी, चाहे कोई भी सक्रिय व्यक्तित्व हो।"
+
+#. Aria label for removing signature emoji
+#: src/features/persona/components/modals/PersonaEditModal.tsx:159
+msgid "Remove signature emoji"
+msgstr "हस्ताक्षर इमोजी हटाएं"
+
+#. Validation error when signature emoji is already used by another persona
+#: src/features/persona/components/modals/PersonaEditModal.tsx:147
+msgid "Signature emoji already in use by persona \"{name}\""
+msgstr "हस्ताक्षर इमोजी का उपयोग पहले से ही व्यक्तित्व \"{name}\" द्वारा किया जा रहा है"
+
+#: src/features/persona/components/modals/PersonaEditModal.tsx:949
+msgid "Signature Emojis"
+msgstr "हस्ताक्षर इमोजी"
+
+#. Validation error when signature emoji is duplicated within the same persona
+#: src/features/persona/components/modals/PersonaEditModal.tsx:151
+msgid "This emoji is already added as a signature emoji"
+msgstr "यह इमोजी पहले से ही एक हस्ताक्षर इमोजी के रूप में जोड़ा गया है"

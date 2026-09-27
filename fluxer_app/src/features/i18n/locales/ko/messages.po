@@ -41362,3 +41362,45 @@ msgstr "타임스탬프 삽입"
 #: src/features/ui/components/form/SearchableTimeZonePicker.tsx:38
 msgid "Suggested"
 msgstr "추천"
+
+#. placeholder {0}: formData.signatureEmojis.length
+#: src/features/persona/components/modals/PersonaEditModal.tsx:973
+msgid "Add Emoji ({0}/{MAX_SIGNATURE_EMOJIS_PER_PERSONA})"
+msgstr "이모지 추가 ({0}/{MAX_SIGNATURE_EMOJIS_PER_PERSONA})"
+
+#. Validation error when signature emoji limit is reached
+#: src/features/persona/components/modals/PersonaEditModal.tsx:155
+msgid "Maximum {max} signature emojis allowed per persona"
+msgstr "페르소나당 시그니처 이모지는 최대 {max}개까지 허용됩니다"
+
+#. Tooltip hint showing effective reacting persona or user on quick reaction hover.
+#: src/features/channel/components/MessageActionBar.tsx:79
+msgid "Reacting as {name}"
+msgstr "{name}(으)로 반응하기"
+
+#: src/features/channel/components/emoji_picker/EmojiPickerInspector.tsx:133
+msgid "Reacting as <0>{reactorName}</0>"
+msgstr "<0>{reactorName}</0>(으)로 반응 중"
+
+#: src/features/persona/components/modals/PersonaEditModal.tsx:980
+msgid "Reacting with a signature emoji will always react as this persona, regardless of active persona."
+msgstr "시그니처 이모지로 반응하면 활성 페르소나와 관계없이 항상 이 페르소나로 반응합니다."
+
+#. Aria label for removing signature emoji
+#: src/features/persona/components/modals/PersonaEditModal.tsx:159
+msgid "Remove signature emoji"
+msgstr "시그니처 이모지 삭제"
+
+#. Validation error when signature emoji is already used by another persona
+#: src/features/persona/components/modals/PersonaEditModal.tsx:147
+msgid "Signature emoji already in use by persona \"{name}\""
+msgstr "시그니처 이모지가 이미 \"{name}\" 페르소나에서 사용 중입니다"
+
+#: src/features/persona/components/modals/PersonaEditModal.tsx:949
+msgid "Signature Emojis"
+msgstr "시그니처 이모지"
+
+#. Validation error when signature emoji is duplicated within the same persona
+#: src/features/persona/components/modals/PersonaEditModal.tsx:151
+msgid "This emoji is already added as a signature emoji"
+msgstr "이 이모지는 이미 시그니처 이모지로 추가되었습니다"
