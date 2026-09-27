@@ -34,6 +34,7 @@ import SavedMessages from '@app/features/messaging/state/SavedMessages';
 import MentionFeed from '@app/features/notification/state/MentionFeed';
 import Permission from '@app/features/permissions/state/Permission';
 import * as PersonaCommands from '@app/features/persona/commands/PersonaCommands';
+import {PersonaStore} from '@app/features/persona/state/PersonaStore';
 import {Logger} from '@app/features/platform/utils/AppLogger';
 import * as PremiumCommands from '@app/features/premium/commands/PremiumCommands';
 import Presence from '@app/features/presence/state/Presence';
@@ -93,6 +94,8 @@ function handleReadyInternal(data: ReadyPayload, context: GatewayHandlerContext)
 		MemberSidebar.handleSessionInvalidated();
 		GuildCount.handleSessionInvalidated();
 		ChannelMemberCount.handleSessionInvalidated();
+		PersonaStore.reset();
+		PersonaCommands.resetFetchPersonasCooldown();
 	}
 	context.setPreviousSessionId(currentSessionId);
 	const guilds = data.guilds;
@@ -153,7 +156,7 @@ function handleReadyInternal(data: ReadyPayload, context: GatewayHandlerContext)
 	void PremiumCommands.refreshPremiumState().catch((error) => {
 		logger.warn('Failed to refresh premium state after READY', error);
 	});
-	void PersonaCommands.fetchPersonas().catch((error) => {
+	void PersonaCommands.fetchPersonas(true).catch((error) => {
 		logger.warn('Failed to fetch personas after READY', error);
 	});
 	void PersonaCommands.fetchPersonaSettings().catch((error) => {
