@@ -149,6 +149,15 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 	const [isUploadingTagIcon, setIsUploadingTagIcon] = useState(false);
 	const [isSubmitting, setIsSubmitting] = useState(false);
 
+	const resolvedTagIconUrl = useMemo(() => {
+		if (!tagIcon) return null;
+		if (tagIcon.startsWith('http://') || tagIcon.startsWith('https://') || tagIcon.startsWith('data:')) {
+			return tagIcon;
+		}
+		const currentUserId = Users.currentUser?.id;
+		return currentUserId ? AvatarUtils.getUserAvatarURL({id: currentUserId, avatar: tagIcon}, false, 32) : tagIcon;
+	}, [tagIcon]);
+
 	const syncedStoreTagTextRef = useRef(PersonaStore.displayTagText);
 	const syncedStoreTagIconRef = useRef(PersonaStore.displayTagIcon);
 
@@ -253,12 +262,11 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 		async (base64: string) => {
 			setIsUploadingTagIcon(true);
 			try {
-				const res = await http.post<{avatar_url: string}>(Endpoints.USER_PERSONA_AVATAR, {
+				const res = await http.post<{avatar_hash?: string}>(Endpoints.USER_PERSONA_AVATAR, {
 					body: {avatar: base64},
 				});
-				if (res.ok && res.body?.avatar_url) {
-					const newIcon = res.body.avatar_url;
-					setTagIcon(newIcon);
+				if (res.ok && res.body?.avatar_hash) {
+					setTagIcon(res.body.avatar_hash);
 				} else {
 					ToastCommands.createToast({
 						type: 'error',
@@ -451,7 +459,7 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 									<div className={styles.tagIconRow}>
 										{tagIcon ? (
 											<>
-												<img src={tagIcon} alt="Tag Icon" className={styles.tagIconImage} />
+												<img src={resolvedTagIconUrl ?? tagIcon} alt="Tag Icon" className={styles.tagIconImage} />
 												<Button
 													variant="secondary"
 													small={true}
@@ -587,7 +595,7 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 											{currentUser && (
 												<Avatar
 													user={currentUser}
-													avatarUrl={persona.avatarUrl || AvatarUtils.getUserAvatarURL(currentUser, false)}
+													avatarUrl={persona.avatar_hash ?? persona.avatarHash}
 													size={36}
 												/>
 											)}
