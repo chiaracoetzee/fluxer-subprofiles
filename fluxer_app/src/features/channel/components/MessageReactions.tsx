@@ -19,10 +19,12 @@ import {getCachedNumberFormat} from '@app/features/i18n/utils/IntlCache';
 import * as ReactionCommands from '@app/features/messaging/commands/ReactionCommands';
 import {ReactionTooltip} from '@app/features/messaging/components/popouts/ReactionTooltip';
 import {ReactionImage} from '@app/features/messaging/components/ReactionImage';
+import Drafts from '@app/features/messaging/state/MessagingDrafts';
 import {useMatureMedia} from '@app/features/messaging/hooks/useMatureMedia';
 import {useMessageReactions as useMessageReactionsSnapshot} from '@app/features/messaging/hooks/useMessageReactionStore';
 import type {Message} from '@app/features/messaging/models/MessagingMessage';
-import {getEmojiName, getReactionKey, useEmojiURL} from '@app/features/messaging/utils/ReactionUtils';
+import {getEmojiName, getReactionKey, hasPersonaReacted, useEmojiURL} from '@app/features/messaging/utils/ReactionUtils';
+import {PersonaStore} from '@app/features/persona/state/PersonaStore';
 import matureStyles from '@app/features/theme/styles/MatureBlur.module.css';
 import {EmojiContextMenuItems} from '@app/features/ui/action_menu/items/EmojiContextMenuItems';
 import * as ContextMenuCommands from '@app/features/ui/commands/ContextMenuCommands';
@@ -89,14 +91,18 @@ const MessageReactionItem = observer(
 			}
 		}, [reaction.count, prevCount]);
 		const isDisabled = isPreview || disableInteraction;
+		const draft = Drafts.getDraft(message.channelId);
+		const effectivePersona = PersonaStore.getEffectiveReactionPersona(reaction.emoji, draft);
+		const effectivePersonaId = effectivePersona?.id ?? null;
+		const hasEffectivePersonaReacted = hasPersonaReacted(reaction, effectivePersonaId);
 		const handleClick = () => {
 			if (isDisabled) {
 				return;
 			}
-			if (reaction.me) {
-				ReactionCommands.removeReaction(i18n, message.channelId, message.id, reaction.emoji);
+			if (hasEffectivePersonaReacted) {
+				ReactionCommands.removeReaction(i18n, message.channelId, message.id, reaction.emoji, undefined, effectivePersonaId);
 			} else {
-				ReactionCommands.addReaction(i18n, message.channelId, message.id, reaction.emoji);
+				ReactionCommands.addReaction(i18n, message.channelId, message.id, reaction.emoji, effectivePersonaId);
 			}
 		};
 		const handleLongPress = () => {
@@ -150,7 +156,7 @@ const MessageReactionItem = observer(
 				other: '# reactions',
 			},
 		);
-		const actionText = reaction.me
+		const actionText = hasEffectivePersonaReacted
 			? i18n._(PRESS_TO_REMOVE_REACTION_DESCRIPTOR)
 			: i18n._(PRESS_TO_ADD_REACTION_DESCRIPTOR);
 		const ariaLabel = isDisabled
@@ -162,7 +168,7 @@ const MessageReactionItem = observer(
 					type="button"
 					className={clsx(styles.reactionButton, isDisabled && styles.reactionButtonDisabled)}
 					aria-label={ariaLabel}
-					aria-pressed={isDisabled ? undefined : reaction.me}
+					aria-pressed={isDisabled ? undefined : hasEffectivePersonaReacted}
 					aria-disabled={isDisabled || undefined}
 					disabled={disableInteraction}
 					tabIndex={isDisabled ? -1 : undefined}
