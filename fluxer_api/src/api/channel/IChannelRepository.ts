@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-import type {AttachmentID, ChannelID, EmojiID, GuildID, MessageID, UserID} from '@app/api/BrandedTypes';
+import type {AttachmentID, ChannelID, EmojiID, GuildID, MessageID, PersonaID, UserID} from '@app/api/BrandedTypes';
 import type {GuildChannelListMode} from '@app/api/channel/repositories/IChannelDataRepository';
 import {IChannelRepositoryAggregate} from '@app/api/channel/repositories/IChannelRepositoryAggregate';
 import type {UpsertMessageOptions} from '@app/api/channel/repositories/IMessageRepository';
@@ -124,7 +124,12 @@ export abstract class IChannelRepository extends IChannelRepositoryAggregate {
 		messageIds?: Array<MessageID>,
 	): Promise<void>;
 
-	abstract anonymizeMessage(channelId: ChannelID, messageId: MessageID, newAuthorId: UserID): Promise<void>;
+	abstract anonymizeMessage(
+		channelId: ChannelID,
+		messageId: MessageID,
+		newAuthorId: UserID,
+		personaIdMapping?: ReadonlyMap<string, PersonaID>,
+	): Promise<void>;
 
 	abstract deleteAllChannelMessages(channelId: ChannelID): Promise<void>;
 
