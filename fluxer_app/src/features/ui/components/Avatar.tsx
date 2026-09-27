@@ -69,7 +69,17 @@ const AvatarComponent = React.forwardRef<HTMLDivElement, AvatarProps>(
 		const memberAvatar = guildMember?.avatar ?? null;
 		const memberAvatarUnset = guildMember?.isAvatarUnset() ?? false;
 		const avatarUrl = useMemo(() => {
-			if (customAvatarUrl !== undefined) return customAvatarUrl;
+			if (customAvatarUrl !== undefined) {
+				if (!customAvatarUrl) return customAvatarUrl;
+				if (
+					customAvatarUrl.startsWith('http://') ||
+					customAvatarUrl.startsWith('https://') ||
+					customAvatarUrl.startsWith('data:')
+				) {
+					return customAvatarUrl;
+				}
+				return AvatarUtils.getUserAvatarURL({id: userId, avatar: customAvatarUrl}, false, mediaSize);
+			}
 			if (guildId && hasGuildMemberAvatarSource) {
 				return AvatarUtils.getGuildMemberDisplayAvatarURL({
 					guildId,
@@ -92,8 +102,28 @@ const AvatarComponent = React.forwardRef<HTMLDivElement, AvatarProps>(
 			userId,
 		]);
 		const hoverAvatarUrl = useMemo(() => {
-			if (customHoverAvatarUrl !== undefined) return customHoverAvatarUrl;
-			if (customAvatarUrl !== undefined) return customAvatarUrl;
+			if (customHoverAvatarUrl !== undefined) {
+				if (!customHoverAvatarUrl) return customHoverAvatarUrl;
+				if (
+					customHoverAvatarUrl.startsWith('http://') ||
+					customHoverAvatarUrl.startsWith('https://') ||
+					customHoverAvatarUrl.startsWith('data:')
+				) {
+					return customHoverAvatarUrl;
+				}
+				return AvatarUtils.getUserAvatarURL({id: userId, avatar: customHoverAvatarUrl}, true, mediaSize);
+			}
+			if (customAvatarUrl !== undefined) {
+				if (!customAvatarUrl) return customAvatarUrl;
+				if (
+					customAvatarUrl.startsWith('http://') ||
+					customAvatarUrl.startsWith('https://') ||
+					customAvatarUrl.startsWith('data:')
+				) {
+					return customAvatarUrl;
+				}
+				return AvatarUtils.getUserAvatarURL({id: userId, avatar: customAvatarUrl}, true, mediaSize);
+			}
 			if (guildId && hasGuildMemberAvatarSource) {
 				return AvatarUtils.getGuildMemberDisplayAvatarURL({
 					guildId,

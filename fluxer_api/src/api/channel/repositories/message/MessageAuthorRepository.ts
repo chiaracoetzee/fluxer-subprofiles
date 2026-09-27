@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-import type {ChannelID, MessageID, UserID} from '@app/api/BrandedTypes';
+import type {ChannelID, MessageID, PersonaID, UserID} from '@app/api/BrandedTypes';
 import {createChannelID, createMessageID} from '@app/api/BrandedTypes';
 import type {MessageDataRepository} from '@app/api/channel/repositories/message/MessageDataRepository';
 import type {MessageDeletionRepository} from '@app/api/channel/repositories/message/MessageDeletionRepository';
@@ -96,7 +96,12 @@ export class MessageAuthorRepository {
 		return result !== null;
 	}
 
-	async anonymizeMessage(channelId: ChannelID, messageId: MessageID, newAuthorId: UserID): Promise<void> {
+	async anonymizeMessage(
+		channelId: ChannelID,
+		messageId: MessageID,
+		newAuthorId: UserID,
+		personaIdMapping?: ReadonlyMap<string, PersonaID>,
+	): Promise<void> {
 		const bucket = BucketUtils.makeBucket(messageId);
 		const message = await this.messageDataRepo.getMessage(channelId, messageId);
 		if (!message) return;
@@ -115,6 +120,17 @@ export class MessageAuthorRepository {
 				message_id: messageId,
 			}),
 		);
+		const patch: Parameters<typeof Messages.patchByPk>[1] = {
+			author_id: Db.set(newAuthorId),
+		};
+		if (personaIdMapping) {
+			if (message.personaId) {
+				const mapped = personaIdMapping.get(message.personaId.toString());
+				patch.persona_id = mapped ? Db.set(mapped) : Db.clear();
+			} else {
+				patch.persona_id = Db.clear();
+			}
+		}
 		await upsertOne(
 			Messages.patchByPk(
 				{
@@ -122,9 +138,7 @@ export class MessageAuthorRepository {
 					bucket,
 					message_id: messageId,
 				},
-				{
-					author_id: Db.set(newAuthorId),
-				},
+				patch,
 			),
 		);
 	}
