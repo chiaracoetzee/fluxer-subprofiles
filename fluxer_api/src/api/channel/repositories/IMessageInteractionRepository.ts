@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-import type {ChannelID, EmojiID, MessageID, UserID} from '@app/api/BrandedTypes';
+import type {ChannelID, EmojiID, MessageID, PersonaID, UserID} from '@app/api/BrandedTypes';
 import type {Message} from '@app/api/models/Message';
 import type {MessageReaction} from '@app/api/models/MessageReaction';
 
@@ -29,6 +29,7 @@ export abstract class IMessageInteractionRepository {
 		emojiName: string,
 		emojiId?: EmojiID,
 		emojiAnimated?: boolean,
+		personaId?: PersonaID | null,
 	): Promise<MessageReaction>;
 
 	abstract removeReaction(
@@ -37,6 +38,7 @@ export abstract class IMessageInteractionRepository {
 		userId: UserID,
 		emojiName: string,
 		emojiId?: EmojiID,
+		personaId?: PersonaID | null,
 	): Promise<void>;
 
 	abstract removeAllReactions(channelId: ChannelID, messageId: MessageID): Promise<void>;
@@ -63,6 +65,7 @@ export abstract class IMessageInteractionRepository {
 		userId: UserID,
 		emojiName: string,
 		emojiId?: EmojiID,
+		personaId?: PersonaID | null,
 	): Promise<boolean>;
 
 	abstract setHasReaction(channelId: ChannelID, messageId: MessageID, hasReaction: boolean): Promise<void>;

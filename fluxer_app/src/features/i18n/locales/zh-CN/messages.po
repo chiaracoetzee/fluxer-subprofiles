@@ -41589,3 +41589,45 @@ msgstr "插入时间戳"
 #: src/features/ui/components/form/SearchableTimeZonePicker.tsx:38
 msgid "Suggested"
 msgstr "推荐"
+
+#. placeholder {0}: formData.signatureEmojis.length
+#: src/features/persona/components/modals/PersonaEditModal.tsx:973
+msgid "Add Emoji ({0}/{MAX_SIGNATURE_EMOJIS_PER_PERSONA})"
+msgstr "添加表情符号 ({0}/{MAX_SIGNATURE_EMOJIS_PER_PERSONA})"
+
+#. Validation error when signature emoji limit is reached
+#: src/features/persona/components/modals/PersonaEditModal.tsx:155
+msgid "Maximum {max} signature emojis allowed per persona"
+msgstr "每个角色最多允许 {max} 个专属表情符号"
+
+#. Tooltip hint showing effective reacting persona or user on quick reaction hover.
+#: src/features/channel/components/MessageActionBar.tsx:79
+msgid "Reacting as {name}"
+msgstr "以 {name} 的身份回应"
+
+#: src/features/channel/components/emoji_picker/EmojiPickerInspector.tsx:133
+msgid "Reacting as <0>{reactorName}</0>"
+msgstr "正在以 <0>{reactorName}</0> 身份回应"
+
+#: src/features/persona/components/modals/PersonaEditModal.tsx:980
+msgid "Reacting with a signature emoji will always react as this persona, regardless of active persona."
+msgstr "使用专属表情符号回应时，无论当前活跃角色是谁，都将始终以此角色身份回应。"
+
+#. Aria label for removing signature emoji
+#: src/features/persona/components/modals/PersonaEditModal.tsx:159
+msgid "Remove signature emoji"
+msgstr "移除专属表情符号"
+
+#. Validation error when signature emoji is already used by another persona
+#: src/features/persona/components/modals/PersonaEditModal.tsx:147
+msgid "Signature emoji already in use by persona \"{name}\""
+msgstr "专属表情符号已被角色“{name}”使用"
+
+#: src/features/persona/components/modals/PersonaEditModal.tsx:949
+msgid "Signature Emojis"
+msgstr "专属表情符号"
+
+#. Validation error when signature emoji is duplicated within the same persona
+#: src/features/persona/components/modals/PersonaEditModal.tsx:151
+msgid "This emoji is already added as a signature emoji"
+msgstr "此表情符号已添加为专属表情符号"

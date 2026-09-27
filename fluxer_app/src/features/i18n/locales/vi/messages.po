@@ -41589,3 +41589,45 @@ msgstr "Chèn dấu thời gian"
 #: src/features/ui/components/form/SearchableTimeZonePicker.tsx:38
 msgid "Suggested"
 msgstr "Được gợi ý"
+
+#. placeholder {0}: formData.signatureEmojis.length
+#: src/features/persona/components/modals/PersonaEditModal.tsx:973
+msgid "Add Emoji ({0}/{MAX_SIGNATURE_EMOJIS_PER_PERSONA})"
+msgstr "Thêm biểu tượng cảm xúc ({0}/{MAX_SIGNATURE_EMOJIS_PER_PERSONA})"
+
+#. Validation error when signature emoji limit is reached
+#: src/features/persona/components/modals/PersonaEditModal.tsx:155
+msgid "Maximum {max} signature emojis allowed per persona"
+msgstr "Tối đa {max} biểu tượng cảm xúc đặc trưng cho mỗi nhân cách"
+
+#. Tooltip hint showing effective reacting persona or user on quick reaction hover.
+#: src/features/channel/components/MessageActionBar.tsx:79
+msgid "Reacting as {name}"
+msgstr "Đang thả cảm xúc dưới tên {name}"
+
+#: src/features/channel/components/emoji_picker/EmojiPickerInspector.tsx:133
+msgid "Reacting as <0>{reactorName}</0>"
+msgstr "Đang bày tỏ cảm xúc với tư cách <0>{reactorName}</0>"
+
+#: src/features/persona/components/modals/PersonaEditModal.tsx:980
+msgid "Reacting with a signature emoji will always react as this persona, regardless of active persona."
+msgstr "Bày tỏ cảm xúc bằng biểu tượng đặc trưng sẽ luôn phản hồi dưới tư cách nhân cách này, bất kể nhân cách đang hoạt động là gì."
+
+#. Aria label for removing signature emoji
+#: src/features/persona/components/modals/PersonaEditModal.tsx:159
+msgid "Remove signature emoji"
+msgstr "Xóa biểu tượng cảm xúc đặc trưng"
+
+#. Validation error when signature emoji is already used by another persona
+#: src/features/persona/components/modals/PersonaEditModal.tsx:147
+msgid "Signature emoji already in use by persona \"{name}\""
+msgstr "Biểu tượng cảm xúc đặc trưng đã được nhân cách \"{name}\" sử dụng"
+
+#: src/features/persona/components/modals/PersonaEditModal.tsx:949
+msgid "Signature Emojis"
+msgstr "Biểu tượng cảm xúc đặc trưng"
+
+#. Validation error when signature emoji is duplicated within the same persona
+#: src/features/persona/components/modals/PersonaEditModal.tsx:151
+msgid "This emoji is already added as a signature emoji"
+msgstr "Biểu tượng cảm xúc này đã được thêm làm biểu tượng đặc trưng"

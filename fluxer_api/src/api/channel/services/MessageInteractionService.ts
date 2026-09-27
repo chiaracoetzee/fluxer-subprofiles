@@ -18,6 +18,7 @@ import type {RequestCache} from '@app/api/middleware/RequestCacheMiddleware';
 import type {Channel} from '@app/api/models/Channel';
 import type {Message} from '@app/api/models/Message';
 import type {MessageReaction} from '@app/api/models/MessageReaction';
+import type {IPersonaRepository} from '@app/api/persona/IPersonaRepository';
 import type {IUserRepository} from '@app/api/user/IUserRepository';
 import {
 	assertMayStartConversation,
@@ -27,7 +28,10 @@ import {
 import {assertGuildMemberCanCommunicate} from '@app/api/utils/GuildCommunicationUtils';
 import {ChannelTypes, Permissions} from '@fluxer/constants/src/ChannelConstants';
 import {NewConversationsLimitedError} from '@fluxer/errors/src/domains/user/NewConversationsLimitedError';
-import type {ChannelPinResponse} from '@fluxer/schema/src/domains/message/MessageResponseSchemas';
+import type {
+	ChannelPinResponse,
+	ReactionUserItemResponse,
+} from '@fluxer/schema/src/domains/message/MessageResponseSchemas';
 import type {MessageSubprofileRequest} from '@fluxer/schema/src/domains/persona/PersonaSchemas';
 import type {UserPartialResponse} from '@fluxer/schema/src/domains/user/UserResponseSchemas';
 
@@ -47,6 +51,7 @@ export class MessageInteractionService {
 		messagePersistenceService: MessagePersistenceService,
 		guildAuditLogService: GuildAuditLogService,
 		limitConfigService: LimitConfigService,
+		personaRepository?: IPersonaRepository,
 	) {
 		this.authService = new MessageInteractionAuthService(
 			channelRepository,
@@ -69,6 +74,7 @@ export class MessageInteractionService {
 			userRepository,
 			guildRepository,
 			limitConfigService,
+			personaRepository,
 		);
 	}
 
@@ -164,7 +170,7 @@ export class MessageInteractionService {
 		limit?: number;
 		after?: UserID;
 	}): Promise<{
-		users: Array<UserPartialResponse>;
+		users: Array<ReactionUserItemResponse>;
 		has_more: boolean;
 		next_after: string | null;
 	}> {
@@ -178,6 +184,7 @@ export class MessageInteractionService {
 		channelId,
 		messageId,
 		emoji,
+		personaId,
 	}: {
 		userId: UserID;
 		sessionId?: string;
@@ -185,12 +192,13 @@ export class MessageInteractionService {
 		messageId: MessageID;
 		emoji: string;
 		requestCache: RequestCache;
+		personaId?: string | null;
 	}): Promise<void> {
 		const authChannel = await this.authService.getChannelAuthenticated({userId, channelId});
 		if (!authChannel.guild) {
 			await this.assertConversationAllowed(authChannel.channel, userId);
 		}
-		await this.reactionService.addReaction({authChannel, messageId, emoji, userId, sessionId});
+		await this.reactionService.addReaction({authChannel, messageId, emoji, userId, sessionId, personaId});
 	}
 
 	private async startsNewConversation(channel: Channel, userId: UserID): Promise<boolean> {
@@ -224,6 +232,7 @@ export class MessageInteractionService {
 		messageId,
 		emoji,
 		targetId,
+		personaId,
 	}: {
 		userId: UserID;
 		sessionId?: string;
@@ -232,9 +241,18 @@ export class MessageInteractionService {
 		emoji: string;
 		targetId: UserID;
 		requestCache: RequestCache;
+		personaId?: string | null;
 	}): Promise<void> {
 		const authChannel = await this.authService.getChannelAuthenticated({userId, channelId});
-		await this.reactionService.removeReaction({authChannel, messageId, emoji, targetId, sessionId, actorId: userId});
+		await this.reactionService.removeReaction({
+			authChannel,
+			messageId,
+			emoji,
+			targetId,
+			sessionId,
+			actorId: userId,
+			personaId,
+		});
 	}
 
 	async removeOwnReaction({
@@ -244,6 +262,7 @@ export class MessageInteractionService {
 		messageId,
 		emoji,
 		requestCache,
+		personaId,
 	}: {
 		userId: UserID;
 		sessionId?: string;
@@ -251,8 +270,18 @@ export class MessageInteractionService {
 		messageId: MessageID;
 		emoji: string;
 		requestCache: RequestCache;
+		personaId?: string | null;
 	}): Promise<void> {
-		await this.removeReaction({userId, sessionId, channelId, messageId, emoji, targetId: userId, requestCache});
+		await this.removeReaction({
+			userId,
+			sessionId,
+			channelId,
+			messageId,
+			emoji,
+			targetId: userId,
+			requestCache,
+			personaId,
+		});
 	}
 
 	async removeAllReactionsForEmoji({
