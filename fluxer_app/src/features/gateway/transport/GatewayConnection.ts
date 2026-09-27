@@ -31,6 +31,8 @@ import MemberSearch from '@app/features/member/state/MemberSearch';
 import AttachmentUrlRefresher from '@app/features/messaging/state/AttachmentUrlRefresher';
 import Messages from '@app/features/messaging/state/MessagingMessages';
 import Navigation from '@app/features/navigation/state/Navigation';
+import {resetFetchPersonasCooldown} from '@app/features/persona/commands/PersonaCommands';
+import {PersonaStore} from '@app/features/persona/state/PersonaStore';
 import SelectedGuild from '@app/features/navigation/state/SelectedGuild';
 import Permission from '@app/features/permissions/state/Permission';
 import SessionManager from '@app/features/platform/state/AuthSession';
@@ -592,6 +594,8 @@ class GatewayConnection {
 		GuildMatureContentAgree.reset();
 		Initialization.reset();
 		MemberSearch.handleLogout();
+		PersonaStore.reset();
+		resetFetchPersonasCooldown();
 		this.isConnected = false;
 		this.isConnecting = false;
 		this.isReady = false;
