@@ -117,6 +117,12 @@ function createDefaultAuthSessionDependencies(): AuthSessionDependencies {
 			void import('@app/features/user/state/UserSettings').then((module) => {
 				module.default.handleAccountTransition();
 			});
+			void import('@app/features/persona/state/PersonaStore').then((module) => {
+				module.PersonaStore.reset();
+			});
+			void import('@app/features/persona/commands/PersonaCommands').then((module) => {
+				module.resetFetchPersonasCooldown();
+			});
 		},
 		captureLocalPresenceIntent: () => LocalPresence.captureIntent(),
 		restoreLocalPresenceIntent: (intent) => LocalPresence.restoreIntent(intent),
