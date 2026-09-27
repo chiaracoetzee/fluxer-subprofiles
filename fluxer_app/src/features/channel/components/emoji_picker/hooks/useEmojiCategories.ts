@@ -5,12 +5,15 @@ import type {UsageRanking} from '@app/features/emoji/state/UsageFrecency';
 import type {FlatEmoji, UnicodeEmoji} from '@app/features/emoji/types/EmojiTypes';
 import UnicodeEmojis from '@app/features/expressions/utils/UnicodeEmojis';
 import GuildList from '@app/features/guild/state/GuildList';
+import Drafts from '@app/features/messaging/state/MessagingDrafts';
 import SelectedGuild from '@app/features/navigation/state/SelectedGuild';
+import {PersonaStore} from '@app/features/persona/state/PersonaStore';
 import {useMemo, useRef} from 'react';
 
 export function useEmojiCategories(
 	allEmojis: ReadonlyArray<FlatEmoji | UnicodeEmoji>,
 	_searchResultEmojis: ReadonlyArray<FlatEmoji | UnicodeEmoji>,
+	channelId?: string,
 ) {
 	const guilds = GuildList.guilds;
 	const selectedGuildId = SelectedGuild.selectedGuildId;
@@ -18,9 +21,11 @@ export function useEmojiCategories(
 	const pinnedRankingRef = useRef<UsageRanking | null>(null);
 	pinnedRankingRef.current ??= EmojiPicker.getRanking();
 	const pinnedRanking = pinnedRankingRef.current;
+	const draft = channelId ? Drafts.getDraft(channelId) : undefined;
+	const effectivePersona = PersonaStore.getEffectiveReactionPersona(null, draft);
 	const frequentlyUsedEmojis = useMemo(
-		() => EmojiPicker.getFrecentEmojis(allEmojis, 42, pinnedRanking),
-		[allEmojis, pinnedRanking],
+		() => EmojiPicker.getFrecentEmojis(allEmojis, 42, pinnedRanking, effectivePersona?.id),
+		[allEmojis, pinnedRanking, effectivePersona?.id],
 	);
 	const customEmojisByGuildId = useMemo(() => {
 		const guildEmojis = allEmojis.filter((emoji) => emoji.guildId != null);
