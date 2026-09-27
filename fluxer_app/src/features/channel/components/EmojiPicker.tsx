@@ -58,6 +58,12 @@ import {
 	useSyncExternalStore,
 } from 'react';
 
+// Fork imports.
+
+import Drafts from '@app/features/messaging/state/MessagingDrafts';
+import {toReactionEmoji} from '@app/features/messaging/utils/ReactionUtils';
+import {PersonaStore} from '@app/features/persona/state/PersonaStore';
+
 const NO_EMOJIS_MATCH_YOUR_SEARCH_DESCRIPTOR = msg({
 	message: 'No emojis match that search',
 	comment: 'Empty-state text in the channel and chat emoji picker.',
@@ -158,6 +164,7 @@ export const EmojiPicker = observer(
 		const {favoriteEmojis, frequentlyUsedEmojis, customEmojisByGuildId, unicodeEmojisByCategory} = useEmojiCategories(
 			allUpsell.accessibleItems,
 			renderedEmojis,
+			channelId,
 		);
 		const showFrequentlyUsedButton = frequentlyUsedEmojis.length > 0 && !normalizedSearchTerm;
 		const pickerRows = useVirtualRows(
@@ -260,10 +267,13 @@ export const EmojiPicker = observer(
 				if (!availability.canUse) {
 					return;
 				}
-				EmojiPickerCommands.trackEmojiUsage(emoji);
+				const draft = channelId ? Drafts.getDraft(channelId) : undefined;
+				const reactionEmoji = toReactionEmoji(emoji as any);
+				const effectivePersona = PersonaStore.getEffectiveReactionPersona(reactionEmoji, draft);
+				EmojiPickerCommands.trackEmojiUsage(emoji, effectivePersona?.id);
 				handleSelect(emoji, shiftKey);
 			},
-			[channel, handleSelect, i18n],
+			[channel, channelId, handleSelect, i18n],
 		);
 		const handleSelectionChange = useCallback(
 			(row: number, column: number, shouldScroll = false) => {
@@ -425,7 +435,11 @@ export const EmojiPicker = observer(
 							)}
 						</div>
 					</div>
-					<EmojiPickerInspector hoveredEmoji={hoveredEmoji} data-flx="channel.emoji-picker.emoji-picker-inspector" />
+					<EmojiPickerInspector
+						hoveredEmoji={hoveredEmoji}
+						channelId={channelId}
+						data-flx="channel.emoji-picker.emoji-picker-inspector"
+					/>
 				</div>
 				<EmojiPickerCategoryList
 					customEmojisByGuildId={customEmojisByGuildId}
