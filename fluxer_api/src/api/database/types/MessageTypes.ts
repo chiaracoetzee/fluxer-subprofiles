@@ -212,6 +212,7 @@ export interface MessageReactionRow {
 	emoji_name: string;
 	emoji_animated: boolean;
 	created_at: Nullish<Date>;
+	persona_id?: Nullish<PersonaID | bigint | string>;
 }
 
 export interface AttachmentLookupRow {
@@ -239,6 +240,7 @@ export const MESSAGE_REACTION_COLUMNS = [
 	'emoji_name',
 	'emoji_animated',
 	'created_at',
+	'persona_id',
 ] as const satisfies ReadonlyArray<keyof MessageReactionRow>;
 
 export interface MessageByAuthorRow {
