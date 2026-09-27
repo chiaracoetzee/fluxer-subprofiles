@@ -1,4 +1,14 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
+// @vitest-environment happy-dom
+
+import {afterEach, describe, expect, it, vi} from 'vitest';
+
+await vi.hoisted(async () => {
+	const {installVoiceMenuTestBootstrap} = await import(
+		'@app/features/ui/action_menu/items/__fixtures__/VoiceMenuTestBootstrap'
+	);
+	installVoiceMenuTestBootstrap();
+});
 
 import {registerComposerBlockquote} from '@app/features/lexical/composer/ComposerBlockquote';
 import {registerComposerMarkdownHighlight} from '@app/features/lexical/composer/ComposerMarkdownHighlight';
@@ -27,7 +37,6 @@ import {
 	type LexicalCommand,
 	type LexicalEditor,
 } from 'lexical';
-import {afterEach, describe, expect, it, vi} from 'vitest';
 
 vi.mock('@app/features/lexical/composer/nodes/ComposerMentionPill', () => ({ComposerMentionPill: () => null}));
 vi.mock('@app/features/lexical/composer/nodes/ComposerCustomEmoji', () => ({ComposerCustomEmoji: () => null}));
