@@ -8,6 +8,7 @@ import {createUserID} from '@app/api/BrandedTypes';
 import {User} from '@app/api/models/User';
 import {UserRepository} from '@app/api/user/repositories/UserRepository';
 import {MAX_SYSTEM_DM_ALL_USERS_LIMIT} from '@app/api/admin/AdminService';
+import {UserFlags} from '@fluxer/constants/src/UserConstants';
 import {beforeEach, describe, expect, test, vi} from 'vitest';
 
 interface SendSystemDmResponse {
@@ -72,5 +73,50 @@ describe('Admin System DM all_users broadcast', () => {
 			.body({content: 'Broadcast announcement', all_users: true})
 			.expect(HTTP_STATUS.BAD_REQUEST)
 			.execute();
+	});
+
+	test('skips bot, system, and deleted users and returns 0 recipients when none remain', async () => {
+		const admin = await createTestAccount(harness);
+		const updated = await setUserACLs(harness, admin, ['admin:authenticate', 'system_dm:send']);
+
+		const skippedUsers: Array<User> = [
+			new User({
+				user_id: 0n,
+				username: 'system',
+				discriminator: 1,
+				system: true,
+				bot: false,
+				flags: 0n,
+			} as any),
+			new User({
+				user_id: createUserID(99901n),
+				username: 'bot_user',
+				discriminator: 1,
+				system: false,
+				bot: true,
+				flags: 0n,
+			} as any),
+			new User({
+				user_id: createUserID(99902n),
+				username: 'deleted_user',
+				discriminator: 1,
+				system: false,
+				bot: false,
+				flags: UserFlags.DELETED,
+			} as any),
+		];
+
+		vi.spyOn(UserRepository.prototype, 'scanAllUsersPage').mockResolvedValue({
+			users: skippedUsers,
+			pageState: null,
+		});
+
+		const response = await createBuilder<SendSystemDmResponse>(harness, `${updated.token}`)
+			.post('/admin/system-dms')
+			.body({content: 'Broadcast announcement', all_users: true})
+			.expect(HTTP_STATUS.OK)
+			.execute();
+
+		expect(response.recipient_count).toBe(0);
 	});
 });
