@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-import type {AttachmentID, ChannelID, MessageID, UserID} from '@app/api/BrandedTypes';
+import type {AttachmentID, ChannelID, MessageID, PersonaID, UserID} from '@app/api/BrandedTypes';
 import type {MessageRow} from '@app/api/database/types/MessageTypes';
 import type {Message} from '@app/api/models/Message';
 
@@ -52,7 +52,12 @@ export abstract class IMessageRepository {
 		messageIds?: Array<MessageID>,
 	): Promise<void>;
 
-	abstract anonymizeMessage(channelId: ChannelID, messageId: MessageID, newAuthorId: UserID): Promise<void>;
+	abstract anonymizeMessage(
+		channelId: ChannelID,
+		messageId: MessageID,
+		newAuthorId: UserID,
+		personaIdMapping?: ReadonlyMap<string, PersonaID>,
+	): Promise<void>;
 
 	abstract authorHasMessage(authorId: UserID, channelId: ChannelID, messageId: MessageID): Promise<boolean>;
 
