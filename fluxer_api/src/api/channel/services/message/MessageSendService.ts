@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-import type {AttachmentID, ChannelID, GuildID, MessageID, PersonaID, RoleID, UserID} from '@app/api/BrandedTypes';
+import type {AttachmentID, ChannelID, GuildID, MessageID, RoleID, UserID} from '@app/api/BrandedTypes';
 import {
 	createAttachmentID,
 	createChannelID,
@@ -1047,11 +1047,18 @@ export class MessageSendService {
 		if (searchIndexOptions && !suppressDmRecipientDelivery) {
 			void this.deps.searchService.indexMessage(message, user.isBot, searchIndexOptions);
 		}
-		if (message.subprofile?.id && this.deps.personaRepository && /^\d+$/.test(message.subprofile.id)) {
+		const targetPersonaId =
+			message.personaId ??
+			(data.subprofile?.id && /^\d+$/.test(data.subprofile.id)
+				? createPersonaID(BigInt(data.subprofile.id))
+				: null);
+		if (targetPersonaId && this.deps.personaRepository) {
 			try {
-				const pId = createPersonaID(BigInt(message.subprofile.id));
-				void this.deps.personaRepository.recordUsage(user.id, pId).catch((error) => {
-					Logger.warn({error, userId: user.id.toString(), personaId: message.subprofile?.id}, 'Failed to record persona usage');
+				void this.deps.personaRepository.recordUsage(user.id, targetPersonaId).catch((error) => {
+					Logger.warn(
+						{error, userId: user.id.toString(), personaId: targetPersonaId.toString()},
+						'Failed to record persona usage',
+					);
 				});
 			} catch {
 				// Ignore non-numeric test IDs
@@ -1410,11 +1417,18 @@ export class MessageSendService {
 		if (searchIndexOptions) {
 			void this.deps.searchService.indexMessage(message, user.isBot, searchIndexOptions);
 		}
-		if (message.subprofile?.id && this.deps.personaRepository && /^\d+$/.test(message.subprofile.id)) {
+		const targetPersonaId =
+			message.personaId ??
+			(data.subprofile?.id && /^\d+$/.test(data.subprofile.id)
+				? createPersonaID(BigInt(data.subprofile.id))
+				: null);
+		if (targetPersonaId && this.deps.personaRepository) {
 			try {
-				const pId = createPersonaID(BigInt(message.subprofile.id));
-				void this.deps.personaRepository.recordUsage(user.id, pId).catch((error) => {
-					Logger.warn({error, userId: user.id.toString(), personaId: message.subprofile?.id}, 'Failed to record persona usage');
+				void this.deps.personaRepository.recordUsage(user.id, targetPersonaId).catch((error) => {
+					Logger.warn(
+						{error, userId: user.id.toString(), personaId: targetPersonaId.toString()},
+						'Failed to record persona usage',
+					);
 				});
 			} catch {
 				// Ignore non-numeric test IDs
