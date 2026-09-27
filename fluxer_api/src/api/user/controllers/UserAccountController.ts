@@ -102,7 +102,7 @@ const PersonaAvatarUploadRequest = z.object({
 });
 const SubprofileAvatarUploadRequest = PersonaAvatarUploadRequest;
 const PersonaAvatarUploadResponse = z.object({
-	avatar_url: z.string().describe('CDN URL of the uploaded avatar'),
+	avatar_hash: z.string().describe('Hash of the uploaded avatar'),
 	avatar_color: z.number().int().nullish().optional().describe('Dominant avatar color'),
 });
 const SubprofileAvatarUploadResponse = PersonaAvatarUploadResponse;
@@ -112,7 +112,7 @@ const PersonaBannerUploadRequest = z.object({
 });
 const SubprofileBannerUploadRequest = PersonaBannerUploadRequest;
 const PersonaBannerUploadResponse = z.object({
-	banner_url: z.string().describe('CDN URL of the uploaded banner'),
+	banner_hash: z.string().describe('Hash of the uploaded banner'),
 });
 const SubprofileBannerUploadResponse = PersonaBannerUploadResponse;
 
@@ -121,7 +121,7 @@ const PersonaAvatarImportRequest = z.object({
 });
 const SubprofileAvatarImportRequest = PersonaAvatarImportRequest;
 const PersonaAvatarImportResponse = z.object({
-	avatar_url: z.string().describe('CDN URL of the imported avatar'),
+	avatar_hash: z.string().describe('Hash of the imported avatar'),
 	avatar_color: z.number().int().nullish().optional().describe('Dominant avatar color'),
 });
 const SubprofileAvatarImportResponse = PersonaAvatarImportResponse;
@@ -203,7 +203,7 @@ export function UserAccountController(app: HonoApp) {
 		});
 		await entityAssetService.commitAssetChange({prepared});
 		const avatarColor = prepared.imageBuffer ? await deriveDominantAvatarColor(prepared.imageBuffer) : null;
-		return ctx.json({avatar_url: prepared.newCdnUrl ?? '', avatar_color: avatarColor});
+		return ctx.json({avatar_hash: prepared.newHash ?? '', avatar_color: avatarColor});
 	};
 
 	const handlePersonaBannerUpload = async (ctx: any) => {
@@ -219,14 +219,14 @@ export function UserAccountController(app: HonoApp) {
 			errorPath: 'banner',
 		});
 		await entityAssetService.commitAssetChange({prepared});
-		return ctx.json({banner_url: prepared.newCdnUrl ?? ''});
+		return ctx.json({banner_hash: prepared.newHash ?? ''});
 	};
 
 	async function processRemoteAvatar(
 		rawUrl: string,
 		userId: string,
 		entityAssetService: any,
-	): Promise<{avatar_url?: string; avatar_color?: number | null; error?: string}> {
+	): Promise<{avatar_hash?: string; avatar_color?: number | null; error?: string}> {
 		try {
 			validateOutboundEndpointUrl(rawUrl, {
 				name: 'Avatar URL',
@@ -283,7 +283,7 @@ export function UserAccountController(app: HonoApp) {
 			});
 			await entityAssetService.commitAssetChange({prepared});
 			const avatarColor = prepared.imageBuffer ? await deriveDominantAvatarColor(prepared.imageBuffer) : null;
-			return {avatar_url: prepared.newCdnUrl ?? '', avatar_color: avatarColor};
+			return {avatar_hash: prepared.newHash ?? '', avatar_color: avatarColor};
 		} catch (err: unknown) {
 			const errorMsg = err instanceof Error ? err.message : 'Failed to process image';
 			return {error: errorMsg};
@@ -299,7 +299,7 @@ export function UserAccountController(app: HonoApp) {
 		if (result.error) {
 			return ctx.json({message: result.error}, 400 as any);
 		}
-		return ctx.json({avatar_url: result.avatar_url ?? '', avatar_color: result.avatar_color ?? null});
+		return ctx.json({avatar_hash: result.avatar_hash ?? '', avatar_color: result.avatar_color ?? null});
 	};
 
 	const handlePersonaBatchAvatarImport = async (ctx: any) => {
@@ -324,7 +324,7 @@ export function UserAccountController(app: HonoApp) {
 				}),
 			);
 
-			const results: Record<string, {avatar_url?: string; avatar_color?: number | null; error?: string}> = {};
+			const results: Record<string, {avatar_hash?: string; avatar_color?: number | null; error?: string}> = {};
 			let completedCount = 0;
 			let currentIndex = 0;
 			const CONCURRENCY = 4;
@@ -345,7 +345,7 @@ export function UserAccountController(app: HonoApp) {
 									completed: completedCount,
 									total,
 									url,
-									avatar_url: r.avatar_url,
+									avatar_hash: r.avatar_hash,
 									avatar_color: r.avatar_color,
 									error: r.error,
 								}),
