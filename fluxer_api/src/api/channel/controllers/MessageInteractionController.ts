@@ -24,8 +24,10 @@ import {
 	SessionIdQuerySchema,
 } from '@fluxer/schema/src/domains/common/CommonParamSchemas';
 import {
+	AddReactionBodySchema,
 	ChannelPinsQuerySchema,
 	ReactionUsersQuerySchema,
+	RemoveReactionQuerySchema,
 } from '@fluxer/schema/src/domains/message/MessageRequestSchemas';
 import {
 	ChannelPinsResponse,
@@ -268,6 +270,7 @@ export function MessageInteractionController(app: HonoApp) {
 		LoginRequired,
 		Validator('param', ChannelIdMessageIdEmojiParam),
 		Validator('query', SessionIdQuerySchema),
+		Validator('json', AddReactionBodySchema),
 		OpenAPI({
 			operationId: 'add_reaction',
 			summary: 'Add reaction to message',
@@ -284,6 +287,8 @@ export function MessageInteractionController(app: HonoApp) {
 			const channelId = createChannelID(channel_id);
 			const messageId = createMessageID(message_id);
 			const sessionId = ctx.req.valid('query').session_id;
+			const body = ctx.req.valid('json');
+			const personaId = body?.persona_id;
 			const requestCache = ctx.get('requestCache');
 			if (user.isUnclaimedAccount() && !isPersonalNotesChannel({userId: user.id, channelId})) {
 				throw new UnclaimedAccountCannotAddReactionsError();
@@ -299,6 +304,7 @@ export function MessageInteractionController(app: HonoApp) {
 				messageId,
 				emoji,
 				requestCache,
+				personaId,
 			});
 			return ctx.body(null, 204);
 		},
@@ -308,7 +314,7 @@ export function MessageInteractionController(app: HonoApp) {
 		RateLimitMiddleware(RateLimitConfigs.CHANNEL_REACTIONS),
 		LoginRequired,
 		Validator('param', ChannelIdMessageIdEmojiParam),
-		Validator('query', SessionIdQuerySchema),
+		Validator('query', RemoveReactionQuerySchema),
 		OpenAPI({
 			operationId: 'remove_own_reaction',
 			summary: 'Remove own reaction from message',
@@ -324,7 +330,7 @@ export function MessageInteractionController(app: HonoApp) {
 			const userId = ctx.get('user').id;
 			const channelId = createChannelID(channel_id);
 			const messageId = createMessageID(message_id);
-			const sessionId = ctx.req.valid('query').session_id;
+			const {session_id: sessionId, persona_id: personaId} = ctx.req.valid('query');
 			const requestCache = ctx.get('requestCache');
 			await ctx.get('channelService').interactions.removeOwnReaction({
 				viewer: viewerFromCtx(ctx),
@@ -334,6 +340,7 @@ export function MessageInteractionController(app: HonoApp) {
 				messageId,
 				emoji,
 				requestCache,
+				personaId,
 			});
 			return ctx.body(null, 204);
 		},
@@ -343,7 +350,7 @@ export function MessageInteractionController(app: HonoApp) {
 		RateLimitMiddleware(RateLimitConfigs.CHANNEL_REACTIONS),
 		LoginRequired,
 		Validator('param', ChannelIdMessageIdEmojiTargetIdParam),
-		Validator('query', SessionIdQuerySchema),
+		Validator('query', RemoveReactionQuerySchema),
 		OpenAPI({
 			operationId: 'remove_reaction',
 			summary: 'Remove reaction from message',
@@ -360,7 +367,7 @@ export function MessageInteractionController(app: HonoApp) {
 			const targetId = createUserID(target_id);
 			const channelId = createChannelID(channel_id);
 			const messageId = createMessageID(message_id);
-			const sessionId = ctx.req.valid('query').session_id;
+			const {session_id: sessionId, persona_id: personaId} = ctx.req.valid('query');
 			const requestCache = ctx.get('requestCache');
 			await ctx.get('channelService').interactions.removeReaction({
 				viewer: viewerFromCtx(ctx),
@@ -371,6 +378,7 @@ export function MessageInteractionController(app: HonoApp) {
 				emoji,
 				targetId,
 				requestCache,
+				personaId,
 			});
 			return ctx.body(null, 204);
 		},
