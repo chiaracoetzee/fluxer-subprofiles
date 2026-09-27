@@ -14,7 +14,13 @@ import {
 	UserPremiumTypes,
 } from '@fluxer/constants/src/UserConstants';
 import {DEFAULT_STOCK_LIMITS} from '@fluxer/limits/src/LimitDefaults';
-import type {UserPartial, UserPrivate, User as WireUser} from '@fluxer/schema/src/domains/user/UserResponseSchemas';
+import type {MessageSubprofileResponse} from '@fluxer/schema/src/domains/persona/PersonaSchemas';
+import type {
+	RequiredAction,
+	UserPartial,
+	UserPrivate,
+	User as WireUser,
+} from '@fluxer/schema/src/domains/user/UserResponseSchemas';
 import * as SnowflakeUtils from '@fluxer/snowflake/src/SnowflakeUtils';
 
 interface UserRecordOptions {
@@ -145,6 +151,8 @@ export class User {
 	readonly bannerColor: number | null | undefined;
 	readonly pronouns: string | null | undefined;
 	readonly accentColor: number | null | undefined;
+	readonly personaId?: string | null;
+	readonly subprofile?: MessageSubprofileResponse | null;
 	readonly timezone: string | null | undefined;
 	readonly timezonePrivacyFlags: number | undefined;
 	readonly mfaEnabled: boolean | undefined;
@@ -197,6 +205,10 @@ export class User {
 		this.bannerColor = hasKey(user, 'banner_color') ? (user.banner_color ?? null) : undefined;
 		this.pronouns = hasKey(user, 'pronouns') ? (user.pronouns ?? null) : undefined;
 		this.accentColor = hasKey(user, 'accent_color') ? (user.accent_color ?? null) : undefined;
+		this.personaId = hasKey(user, 'persona_id')
+			? ((user as any).persona_id ?? null)
+			: ((user as any).subprofile?.id ?? undefined);
+		this.subprofile = hasKey(user, 'subprofile') ? ((user as any).subprofile ?? null) : undefined;
 		this.timezone = hasKey(user, 'timezone') ? (user.timezone ?? null) : undefined;
 		this.timezonePrivacyFlags = hasKey(user, 'timezone_privacy_flags')
 			? (user.timezone_privacy_flags ?? ProfileFieldPrivacyFlags.EVERYONE)
