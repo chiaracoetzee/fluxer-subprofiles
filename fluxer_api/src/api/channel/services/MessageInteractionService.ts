@@ -40,7 +40,6 @@ import type {
 	ReactionUserItemResponse,
 } from '@fluxer/schema/src/domains/message/MessageResponseSchemas';
 import type {MessageSubprofileRequest} from '@fluxer/schema/src/domains/persona/PersonaSchemas';
-import type {UserPartialResponse} from '@fluxer/schema/src/domains/user/UserResponseSchemas';
 
 export class MessageInteractionService {
 	readonly authService: MessageInteractionAuthService;
