@@ -17,7 +17,6 @@ import {
 	collectMessageAttachments,
 	isCrosspostCopy,
 	keepOwnedEmbedAttachments,
-	normalizeMessageSubprofile,
 } from '@app/api/channel/services/message/MessageHelpers';
 import {MessageStickerService} from '@app/api/channel/services/message/MessageStickerService';
 import {getContentMessage} from '@app/api/content_i18n/ContentI18n';
