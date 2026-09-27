@@ -81,6 +81,7 @@ import {
 	getPurgeQueue,
 	getRateLimitService,
 	getReadStateRepository,
+	getPersonaRepository,
 	getReadStateService,
 	getReportRepository,
 	getStorageService,
@@ -93,6 +94,7 @@ import {
 } from '@app/api/middleware/ServiceSingletons';
 import type {ApplicationRepository} from '@app/api/oauth/repositories/ApplicationRepository';
 import type {OAuth2TokenRepository} from '@app/api/oauth/repositories/OAuth2TokenRepository';
+import type {IPersonaRepository} from '@app/api/persona/IPersonaRepository';
 import type {ReadStateRepository} from '@app/api/read_state/ReadStateRepository';
 import type {ReadStateService} from '@app/api/read_state/ReadStateService';
 import type {ReportRepository} from '@app/api/report/ReportRepository';
@@ -123,6 +125,7 @@ export interface WorkerDependencies {
 	userRepository: UserRepository;
 	channelRepository: ChannelRepository;
 	guildRepository: GuildRepository;
+	personaRepository: IPersonaRepository;
 	favoriteMemeRepository: FavoriteMemeRepository;
 	applicationRepository: ApplicationRepository;
 	oauth2TokenRepository: OAuth2TokenRepository;
@@ -279,6 +282,7 @@ export async function initializeWorkerDependencies(snowflakeService: ISnowflakeS
 		userRepository,
 		channelRepository,
 		guildRepository,
+		personaRepository: getPersonaRepository(),
 		favoriteMemeRepository,
 		applicationRepository,
 		oauth2TokenRepository,
