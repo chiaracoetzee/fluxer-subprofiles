@@ -83,6 +83,11 @@ jobs:
           echo "Resting 10s to ensure clean quota before rebase..."
           sleep 10
 
+      - name: Set up Rust (WASM target)
+        uses: dtolnay/rust-toolchain@master
+        with:
+          targets: wasm32-unknown-unknown
+
       - name: Set up pnpm
         uses: pnpm/action-setup@v4
 
@@ -125,6 +130,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: playwright-e2e-report
+          if-no-files-found: ignore
           path: |
             e2e/playwright-report
             e2e/test-results
@@ -135,6 +141,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: rebase-agent-logs
+          if-no-files-found: ignore
           path: |
             /tmp/rebase_transcript.md
             /tmp/rebase_escalation_reason.md
