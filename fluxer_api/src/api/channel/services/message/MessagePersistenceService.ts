@@ -58,7 +58,6 @@ import type {IVirusScanService} from '@pkgs/virus_scan/src/IVirusScanService';
 // Fork imports.
 
 import {createPersonaID, type PersonaID} from '@app/api/BrandedTypes';
-import {normalizeMessageSubprofile} from '@app/api/channel/services/message/MessageHelpers';
 import type {MessageSubprofileRow} from '@app/api/database/types/MessageTypes';
 
 function mapAttachmentForEmbedResolution(att: MessageAttachment) {
