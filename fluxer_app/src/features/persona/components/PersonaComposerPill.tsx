@@ -58,8 +58,8 @@ export const PersonaComposerPill: React.FC<PersonaComposerPillProps> = observer(
 
 		const {persona: effectivePersona, isFromTag} = PersonaStore.getEffectivePersonaForText(text, hasAttachments);
 
-		const avatarUrl = effectivePersona
-			? (effectivePersona.avatarUrl ?? effectivePersona.avatar_url ?? undefined)
+		const avatarHash = effectivePersona
+			? (effectivePersona.avatar_hash ?? effectivePersona.avatarHash ?? undefined)
 			: undefined;
 		const modeLabel =
 			mode === 'last'
@@ -105,7 +105,7 @@ export const PersonaComposerPill: React.FC<PersonaComposerPillProps> = observer(
 							)}
 							aria-label={tooltipText}
 						>
-							<Avatar user={currentUser} avatarUrl={avatarUrl} size={24} />
+							<Avatar user={currentUser} avatarUrl={avatarHash} size={24} />
 							{isLatched && !isFromTag && (
 								<div className={styles.latchBadge}>
 									<LockSimple size={8} weight="bold" />

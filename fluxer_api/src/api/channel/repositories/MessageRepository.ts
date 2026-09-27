@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-import type {AttachmentID, ChannelID, MessageID, UserID} from '@app/api/BrandedTypes';
+import type {AttachmentID, ChannelID, MessageID, PersonaID, UserID} from '@app/api/BrandedTypes';
 import type {ChannelDataRepository} from '@app/api/channel/repositories/ChannelDataRepository';
 import {MessageAttachmentRepository} from '@app/api/channel/repositories/message/MessageAttachmentRepository';
 import {MessageAuthorRepository} from '@app/api/channel/repositories/message/MessageAuthorRepository';
@@ -90,8 +90,13 @@ export class MessageRepository {
 		return this.authorRepo.listMessagesByAuthor(authorId, limit, lastMessageId);
 	}
 
-	async anonymizeMessage(channelId: ChannelID, messageId: MessageID, newAuthorId: UserID): Promise<void> {
-		return this.authorRepo.anonymizeMessage(channelId, messageId, newAuthorId);
+	async anonymizeMessage(
+		channelId: ChannelID,
+		messageId: MessageID,
+		newAuthorId: UserID,
+		personaIdMapping?: ReadonlyMap<string, PersonaID>,
+	): Promise<void> {
+		return this.authorRepo.anonymizeMessage(channelId, messageId, newAuthorId, personaIdMapping);
 	}
 
 	async lookupAttachmentByChannelAndFilename(

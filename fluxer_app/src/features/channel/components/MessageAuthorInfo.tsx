@@ -76,7 +76,9 @@ export const MessageAuthorInfo = observer((props: MessageAuthorInfoProps) => {
 	if (shouldAppearAuthorless) return null;
 	if (!shouldGroup) {
 		const displayName =
-			previewOverrides?.displayName || NicknameUtils.getNickname(author, guild?.id, message.channelId);
+			previewOverrides?.displayName ||
+			message.subprofile?.name ||
+			NicknameUtils.getNickname(author, guild?.id, message.channelId);
 		const headerAriaLabel = `${displayName}, ${formattedDate}`;
 		return (
 			<>
@@ -121,7 +123,7 @@ export const MessageAuthorInfo = observer((props: MessageAuthorInfoProps) => {
 									data-flx="channel.message-author-info.user-tag-offset--op1"
 								/>
 							)}
-							{message.subprofile && !author.isDeleted && (
+							{message.subprofile && (
 								<PersonaTag
 									subprofile={message.subprofile}
 									rootUser={author}
