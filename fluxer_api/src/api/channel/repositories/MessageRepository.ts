@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-import type {AttachmentID, ChannelID, MessageID, UserID} from '@app/api/BrandedTypes';
+import type {AttachmentID, ChannelID, MessageID, PersonaID, UserID} from '@app/api/BrandedTypes';
 import type {ChannelDataRepository} from '@app/api/channel/repositories/ChannelDataRepository';
 import {IMessageRepository, type ListMessagesOptions} from '@app/api/channel/repositories/IMessageRepository';
 import {MessageAttachmentRepository} from '@app/api/channel/repositories/message/MessageAttachmentRepository';
@@ -86,8 +86,13 @@ export class MessageRepository extends IMessageRepository {
 		return this.authorRepo.deleteMessagesByAuthor(authorId, channelIds, messageIds);
 	}
 
-	async anonymizeMessage(channelId: ChannelID, messageId: MessageID, newAuthorId: UserID): Promise<void> {
-		return this.authorRepo.anonymizeMessage(channelId, messageId, newAuthorId);
+	async anonymizeMessage(
+		channelId: ChannelID,
+		messageId: MessageID,
+		newAuthorId: UserID,
+		personaIdMapping?: ReadonlyMap<string, PersonaID>,
+	): Promise<void> {
+		return this.authorRepo.anonymizeMessage(channelId, messageId, newAuthorId, personaIdMapping);
 	}
 
 	async authorHasMessage(authorId: UserID, channelId: ChannelID, messageId: MessageID): Promise<boolean> {
