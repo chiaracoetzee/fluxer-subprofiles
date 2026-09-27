@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 import {requireEmailVerified} from '@app/api/auth/EmailVerificationUtils';
-import {createEmojiID, type MessageID, type UserID} from '@app/api/BrandedTypes';
+import {createEmojiID, createPersonaID, type MessageID, type PersonaID, type UserID} from '@app/api/BrandedTypes';
 import type {IChannelRepositoryAggregate} from '@app/api/channel/repositories/IChannelRepositoryAggregate';
 import type {AuthenticatedChannel} from '@app/api/channel/services/AuthenticatedChannel';
 import {dispatchChannelEvent} from '@app/api/channel/services/ChannelGatewayDispatch';
@@ -14,6 +14,8 @@ import {createLimitMatchContext} from '@app/api/limits/LimitMatchContextBuilder'
 import type {Channel} from '@app/api/models/Channel';
 import type {MessageReaction} from '@app/api/models/MessageReaction';
 import type {User} from '@app/api/models/User';
+import type {IPersonaRepository} from '@app/api/persona/IPersonaRepository';
+import {PersonaNotFoundError} from '@app/api/persona/errors/PersonaErrors';
 import type {IUserRepository} from '@app/api/user/IUserRepository';
 import {mapUserToPartialResponse} from '@app/api/user/UserMappers';
 import {assertGuildMemberCanCommunicate} from '@app/api/utils/GuildCommunicationUtils';
@@ -29,7 +31,8 @@ import {FeatureTemporarilyDisabledError} from '@fluxer/errors/src/domains/core/F
 import {InputValidationError} from '@fluxer/errors/src/domains/core/InputValidationError';
 import {MissingPermissionsError} from '@fluxer/errors/src/domains/core/MissingPermissionsError';
 import {resolveLimit} from '@fluxer/limits/src/LimitResolver';
-import type {UserPartialResponse} from '@fluxer/schema/src/domains/user/UserResponseSchemas';
+import type {ReactionUserItemResponse} from '@fluxer/schema/src/domains/message/MessageResponseSchemas';
+import type {MessageSubprofileResponse} from '@fluxer/schema/src/domains/persona/PersonaSchemas';
 import {isValidSingleUnicodeEmoji} from '@fluxer/schema/src/primitives/EmojiValidators';
 import {snowflakeToDate} from '@fluxer/snowflake/src/Snowflake';
 
@@ -42,6 +45,7 @@ export class MessageReactionService extends MessageInteractionBase {
 		private userRepository: IUserRepository,
 		private guildRepository: IGuildRepositoryAggregate,
 		private limitConfigService: LimitConfigService,
+		private personaRepository?: IPersonaRepository,
 	) {
 		super(gatewayService);
 	}
@@ -95,7 +99,7 @@ export class MessageReactionService extends MessageInteractionBase {
 		after?: UserID;
 		userId: UserID;
 	}): Promise<{
-		users: Array<UserPartialResponse>;
+		users: Array<ReactionUserItemResponse>;
 		has_more: boolean;
 		next_after: string | null;
 	}> {
@@ -134,12 +138,42 @@ export class MessageReactionService extends MessageInteractionBase {
 		const userIds = pageReactions.map((reaction: MessageReaction) => reaction.userId);
 		const users = await this.userRepository.listUsers(userIds);
 		const usersById = new Map(users.map((user) => [user.id.toString(), user]));
-		const orderedUsers = pageReactions.flatMap((reaction) => {
+
+		const personaPairs: Array<{userId: UserID; personaId: PersonaID}> = [];
+		for (const reaction of pageReactions) {
+			if (reaction.personaId) {
+				personaPairs.push({userId: reaction.userId, personaId: reaction.personaId});
+			}
+		}
+		const personasByKey =
+			this.personaRepository && personaPairs.length > 0
+				? await this.personaRepository.findByUserAndPersonaIds(personaPairs)
+				: new Map();
+		const userSettingsByUserId =
+			this.personaRepository && personaPairs.length > 0
+				? await this.personaRepository.findSettingsByUserIds(personaPairs.map((p) => p.userId))
+				: new Map();
+
+		const orderedUsers: Array<ReactionUserItemResponse> = pageReactions.flatMap((reaction) => {
 			const user = usersById.get(reaction.userId.toString());
-			return user ? [user] : [];
+			if (!user) return [];
+			const base = mapUserToPartialResponse(user);
+			let subprofile: MessageSubprofileResponse | null = null;
+			if (reaction.personaId) {
+				const persona = personasByKey.get(reaction.personaId.toString());
+				if (persona) {
+					const settings = userSettingsByUserId.get(reaction.userId.toString());
+					subprofile = persona.toSubprofileResponse(settings);
+				}
+			}
+			return [{
+				...base,
+				subprofile,
+				persona_id: reaction.personaId ? reaction.personaId.toString() : null,
+			}];
 		});
 		return {
-			users: orderedUsers.map((user) => mapUserToPartialResponse(user)),
+			users: orderedUsers,
 			has_more: hasMore,
 			next_after: nextAfter,
 		};
@@ -151,12 +185,14 @@ export class MessageReactionService extends MessageInteractionBase {
 		emoji,
 		userId,
 		sessionId,
+		personaId,
 	}: {
 		authChannel: AuthenticatedChannel;
 		messageId: MessageID;
 		emoji: string;
 		userId: UserID;
 		sessionId?: string;
+		personaId?: PersonaID | string | null;
 	}): Promise<void> {
 		const channel = authChannel.channel;
 		const {guild, hasPermission, checkPermission} = authChannel;
@@ -172,6 +208,21 @@ export class MessageReactionService extends MessageInteractionBase {
 		if (requestingUser) {
 			requireEmailVerified(requestingUser, 'reaction');
 		}
+
+		let validatedPersonaId: PersonaID | null = null;
+		let subprofile: MessageSubprofileResponse | null = null;
+		if (personaId !== undefined && personaId !== null && personaId !== '' && personaId !== '0') {
+			validatedPersonaId = createPersonaID(BigInt(personaId));
+			if (this.personaRepository) {
+				const persona = await this.personaRepository.findById(userId, validatedPersonaId);
+				if (!persona || persona.isDeleted) {
+					throw new PersonaNotFoundError();
+				}
+				const settings = await this.personaRepository.findSettings(userId);
+				subprofile = persona.toSubprofileResponse(settings);
+			}
+		}
+
 		const guildFeatures = guild?.features ?? null;
 		const maxUsersPerReaction = this.resolveLimitForUser({
 			user: requestingUser ?? null,
@@ -193,6 +244,7 @@ export class MessageReactionService extends MessageInteractionBase {
 			userId,
 			parsedEmojiBasic.name,
 			emojiId,
+			validatedPersonaId,
 		);
 		if (userReactionExists) {
 			return;
@@ -236,6 +288,7 @@ export class MessageReactionService extends MessageInteractionBase {
 			parsedEmoji.name,
 			emojiId,
 			parsedEmoji.animated ?? false,
+			validatedPersonaId,
 		);
 		await this.dispatchMessageReactionAdd({
 			channel,
@@ -243,6 +296,8 @@ export class MessageReactionService extends MessageInteractionBase {
 			emoji: parsedEmoji,
 			userId,
 			sessionId,
+			personaId: validatedPersonaId,
+			subprofile,
 		});
 	}
 
@@ -253,6 +308,7 @@ export class MessageReactionService extends MessageInteractionBase {
 		targetId,
 		sessionId,
 		actorId,
+		personaId,
 	}: {
 		authChannel: AuthenticatedChannel;
 		messageId: MessageID;
@@ -260,6 +316,7 @@ export class MessageReactionService extends MessageInteractionBase {
 		targetId: UserID;
 		sessionId?: string;
 		actorId: UserID;
+		personaId?: PersonaID | string | null;
 	}): Promise<void> {
 		const channel = authChannel.channel;
 		const {guild, hasPermission} = authChannel;
@@ -276,12 +333,20 @@ export class MessageReactionService extends MessageInteractionBase {
 			await this.assertCanModerateMessageReactions({channel, hasPermission});
 		}
 		const emojiId = parsedEmoji.id ? createEmojiID(BigInt(parsedEmoji.id)) : undefined;
+		const normalizedPersonaId =
+			personaId !== undefined && personaId !== null && personaId !== ''
+				? createPersonaID(BigInt(personaId))
+				: personaId === null
+					? createPersonaID(0n)
+					: undefined;
+
 		await this.channelRepository.messageInteractions.removeReaction(
 			channel.id,
 			messageId,
 			targetId,
 			parsedEmoji.name,
 			emojiId,
+			normalizedPersonaId,
 		);
 		await this.dispatchMessageReactionRemove({
 			channel,
@@ -289,6 +354,7 @@ export class MessageReactionService extends MessageInteractionBase {
 			emoji: parsedEmoji,
 			userId: targetId,
 			sessionId,
+			personaId: normalizedPersonaId,
 		});
 	}
 
@@ -449,6 +515,8 @@ export class MessageReactionService extends MessageInteractionBase {
 		emoji: ParsedEmoji;
 		userId: UserID;
 		sessionId?: string;
+		personaId?: PersonaID | null;
+		subprofile?: MessageSubprofileResponse | null;
 	}): Promise<void> {
 		await dispatchChannelEvent({
 			gatewayService: this.gatewayService,
@@ -460,6 +528,8 @@ export class MessageReactionService extends MessageInteractionBase {
 				emoji: params.emoji,
 				user_id: params.userId.toString(),
 				session_id: params.sessionId,
+				persona_id: params.personaId ? params.personaId.toString() : undefined,
+				subprofile: params.subprofile ?? undefined,
 			},
 		});
 	}
@@ -470,6 +540,7 @@ export class MessageReactionService extends MessageInteractionBase {
 		emoji: ParsedEmoji;
 		userId: UserID;
 		sessionId?: string;
+		personaId?: PersonaID | null;
 	}): Promise<void> {
 		await dispatchChannelEvent({
 			gatewayService: this.gatewayService,
@@ -481,6 +552,7 @@ export class MessageReactionService extends MessageInteractionBase {
 				emoji: params.emoji,
 				user_id: params.userId.toString(),
 				session_id: params.sessionId,
+				persona_id: params.personaId ? params.personaId.toString() : undefined,
 			},
 		});
 	}

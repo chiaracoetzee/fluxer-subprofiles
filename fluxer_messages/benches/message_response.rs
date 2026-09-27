@@ -128,6 +128,8 @@ fn sample_message(index: u64) -> ApiMessageResponse {
             },
             count: 3,
             me: Some(true),
+            me_root: None,
+            persona_reactions: None,
         }]),
         message_reference: Some(ApiMessageReferenceResponse {
             channel_id: "123456789".to_owned(),

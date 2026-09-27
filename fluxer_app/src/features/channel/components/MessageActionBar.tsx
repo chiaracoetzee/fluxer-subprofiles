@@ -33,8 +33,10 @@ import {
 	TRY_AGAIN_DESCRIPTOR,
 	UNPIN_MESSAGE_DESCRIPTOR,
 } from '@app/features/i18n/utils/CommonMessageDescriptors';
+import Drafts from '@app/features/messaging/state/MessagingDrafts';
 import type {Message} from '@app/features/messaging/models/MessagingMessage';
 import {getEmojiNameWithColons, toReactionEmoji} from '@app/features/messaging/utils/ReactionUtils';
+import {PersonaStore} from '@app/features/persona/state/PersonaStore';
 import {ComponentBus} from '@app/features/platform/utils/ComponentBus';
 import {
 	AddReactionIcon,
@@ -62,6 +64,7 @@ import ContextMenu from '@app/features/ui/state/ContextMenu';
 import KeyboardMode from '@app/features/ui/state/KeyboardMode';
 import {Tooltip} from '@app/features/ui/tooltip/Tooltip';
 import UserSettings from '@app/features/user/state/UserSettings';
+import Users from '@app/features/user/state/Users';
 import {MessageStates} from '@fluxer/constants/src/ChannelConstants';
 import {msg} from '@lingui/core/macro';
 import {useLingui} from '@lingui/react/macro';
@@ -72,6 +75,10 @@ import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 const CLICK_TO_REACT_DESCRIPTOR = msg({
 	message: 'Click to react',
 	comment: 'Tooltip on the add-reaction button in the inline message hover action bar.',
+});
+const REACTING_AS_DESCRIPTOR = msg({
+	message: 'Reacting as {name}',
+	comment: 'Tooltip hint showing effective reacting persona or user on quick reaction hover.',
 });
 const MESSAGE_DEBUG_DESCRIPTOR = msg({
 	message: 'Message debug',
@@ -153,42 +160,52 @@ MessageActionBarButton.displayName = 'MessageActionBarButton';
 interface QuickReactionButtonProps {
 	emoji: FlatEmoji;
 	onReact: (emoji: FlatEmoji) => void;
+	channelId?: string;
 	hidden?: boolean;
 }
 
 export const QuickReactionButton = observer(
-	React.forwardRef<HTMLButtonElement, QuickReactionButtonProps>(({emoji, onReact, hidden}, ref) => {
+	React.forwardRef<HTMLButtonElement, QuickReactionButtonProps>(({emoji, onReact, channelId, hidden}, ref) => {
 		const {i18n} = useLingui();
 		const isAnimatedEmoji = emoji.animated === true;
 		const [isHovered, setIsHovered] = useState(false);
 		const {url: displayUrl} = getEmojiDisplayData(emoji);
+		const reactionEmoji = useMemo(() => toReactionEmoji(emoji), [emoji]);
+		const draft = channelId ? Drafts.getDraft(channelId) : undefined;
+		const effectivePersona = PersonaStore.getEffectiveReactionPersona(reactionEmoji, draft);
 		const handleClick = useCallback(
 			(event: React.MouseEvent | React.KeyboardEvent) => {
 				event.preventDefault();
 				event.stopPropagation();
-				EmojiPickerCommands.trackEmojiUsage(emoji);
+				EmojiPickerCommands.trackEmojiUsage(emoji, effectivePersona?.id);
 				onReact(emoji);
 			},
-			[emoji, onReact],
+			[effectivePersona?.id, emoji, onReact],
 		);
 		const beginEmojiHover = useMemo(() => (isAnimatedEmoji ? () => setIsHovered(true) : undefined), [isAnimatedEmoji]);
 		const endEmojiHover = useMemo(() => (isAnimatedEmoji ? () => setIsHovered(false) : undefined), [isAnimatedEmoji]);
-		const emojiNameWithColons = useMemo(() => getEmojiNameWithColons(toReactionEmoji(emoji)), [emoji]);
+		const emojiNameWithColons = useMemo(() => getEmojiNameWithColons(reactionEmoji), [reactionEmoji]);
 		const shouldShowAnimated = useShouldAnimate({kind: 'emoji', isAnimated: isAnimatedEmoji, isHovering: isHovered});
 		const emojiSrc = useMemo(
 			() => (emoji.id ? buildCustomEmojiURL({id: emoji.id, animated: shouldShowAnimated}) : (displayUrl ?? '')),
 			[emoji.id, displayUrl, shouldShowAnimated],
 		);
+		const hasPersonas = PersonaStore.personas.length > 0;
+		const reactorName = hasPersonas
+			? (effectivePersona?.name ?? Users.currentUser?.displayName ?? Users.currentUser?.username)
+			: null;
 		const tooltipContent = useCallback(
 			() => (
 				<div className={styles.tooltipContent} data-flx="channel.message-action-bar.tooltip-content.tooltip-content">
 					<span data-flx="channel.message-action-bar.tooltip-content.span">{emojiNameWithColons}</span>
 					<span className={styles.tooltipHint} data-flx="channel.message-action-bar.tooltip-content.tooltip-hint">
-						{i18n._(CLICK_TO_REACT_DESCRIPTOR)}
+						{reactorName
+							? i18n._(REACTING_AS_DESCRIPTOR, {name: reactorName})
+							: i18n._(CLICK_TO_REACT_DESCRIPTOR)}
 					</span>
 				</div>
 			),
-			[emojiNameWithColons, i18n],
+			[reactorName, emojiNameWithColons, i18n],
 		);
 		const ariaLabel = useMemo(
 			() => i18n._(REACT_WITH_EMOJI_DESCRIPTOR, {emojiShortcode: emojiNameWithColons}),
@@ -273,10 +290,13 @@ export const MessageActionBarCore: React.FC<MessageActionBarCoreProps> = observe
 			[message, i18n.locale, permissions.channel],
 		);
 		const channel = permissions.channel;
+		const draft = Drafts.getDraft(channel.id);
+		const effectivePersona = PersonaStore.getEffectiveReactionPersona(null, draft);
 		const quickReactionEmojis = useQuickReactionEmojis(
 			channel,
 			3,
 			canAddReactions && showQuickReactions && message.state === MessageStates.SENT,
+			effectivePersona?.id,
 		);
 		const blurEmojiPickerTrigger = useCallback(() => {
 			if (keyboardModeEnabled) {
@@ -465,6 +485,7 @@ export const MessageActionBarCore: React.FC<MessageActionBarCoreProps> = observe
 										<QuickReactionButton
 											key={emoji.id ?? emoji.uniqueName}
 											emoji={emoji}
+											channelId={message.channelId}
 											hidden={showFullActions}
 											onReact={handlers.handleEmojiSelect}
 											data-flx="channel.message-action-bar.message-action-bar-core.quick-reaction-button"
