@@ -1009,7 +1009,7 @@ msgid "{count, plural, one {# mutual community} other {# mutual communities}}"
 msgstr "{count, plural, one {共通のコミュニティ#件} other {共通のコミュニティ#件}}"
 
 #: src/features/messaging/utils/MessageReactionUtils.ts:53
-#: src/features/messaging/utils/ReactionUtils.ts:54
+#: src/features/messaging/utils/ReactionUtils.ts:69
 msgid "{count, plural, one {# other} other {# others}}"
 msgstr "{count, plural, one {他#人} other {他#人}}"
 
@@ -1023,7 +1023,7 @@ msgid "{count, plural, one {# potential spammer message} other {# potential spam
 msgstr "{count, plural, one {#件のスパムの可能性があるメッセージ} other {#件のスパムの可能性があるメッセージ}}"
 
 #: src/features/app/components/shared/MessageReactionsContent.tsx:58
-#: src/features/channel/components/MessageReactions.tsx:146
+#: src/features/channel/components/MessageReactions.tsx:154
 msgid "{count, plural, one {# reaction} other {# reactions}}"
 msgstr "{count, plural, one {#件のリアクション} other {#件のリアクション}}"
 
@@ -1301,12 +1301,12 @@ msgid "{emojiName}, {reactionCountText}"
 msgstr "{emojiName}、{reactionCountText}"
 
 #. Short label in the channel and chat message reactions. Keep it concise. Preserve {emojiName}, {reactionCountText}; they are inserted by code.
-#: src/features/channel/components/MessageReactions.tsx:50
+#: src/features/channel/components/MessageReactions.tsx:52
 msgid "{emojiName}: {reactionCountText}"
 msgstr "{emojiName}: {reactionCountText}"
 
 #. Short label in the channel and chat message reactions. Keep it concise. Preserve {emojiName}, {reactionCountText}, {actionText}; they are inserted by code.
-#: src/features/channel/components/MessageReactions.tsx:55
+#: src/features/channel/components/MessageReactions.tsx:57
 msgid "{emojiName}: {reactionCountText}, {actionText}"
 msgstr "{emojiName}: {reactionCountText}、{actionText}"
 
@@ -1847,7 +1847,7 @@ msgstr "{productName}のワードマーク"
 #. Reaction tooltip. Preserve {emojiName}, {reactors}; they are inserted by code. {reactorCount} is how many people reacted, for verb agreement. Order the parts so the emoji never reads as the one doing the reacting.
 #. Reaction tooltip. Preserve {emojiName}, {reactors}; they are inserted by code. {reactorCount} is how many people reacted, for verb agreement. Order the parts so the emoji never reads as the one doing the reacting.
 #: src/features/messaging/utils/MessageReactionUtils.ts:16
-#: src/features/messaging/utils/ReactionUtils.ts:17
+#: src/features/messaging/utils/ReactionUtils.ts:32
 msgid "{reactorCount, plural, one {{emojiName} reacted by {reactors}} other {{emojiName} reacted by {reactors}}}"
 msgstr "{reactorCount, plural, one {{reactors}が{emojiName}でリアクションしました} other {{reactors}が{emojiName}でリアクションしました}}"
 
@@ -2577,7 +2577,7 @@ msgstr "{appName}について"
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Short label in the user profile shared popout. Keep it concise.
 #: src/features/app/components/pages/YouPage.tsx:166
-#: src/features/persona/components/modals/PersonaEditModal.tsx:876
+#: src/features/persona/components/modals/PersonaEditModal.tsx:900
 #: src/features/persona/components/PersonaProfileMobileSheet.tsx:400
 #: src/features/persona/components/PersonaProfileMobileSheet.tsx:409
 #: src/features/user/components/modals/tabs/my_profile_tab/BioEditor.tsx:26
@@ -3082,9 +3082,9 @@ msgid "Add email"
 msgstr "メールアドレスを追加"
 
 #. placeholder {0}: formData.signatureEmojis.length
-#: src/features/persona/components/modals/PersonaEditModal.tsx:973
-msgid "Add Emoji ({0}/{MAX_SIGNATURE_EMOJIS_PER_PERSONA})"
-msgstr "絵文字を追加 ({0}/{MAX_SIGNATURE_EMOJIS_PER_PERSONA})"
+#: src/features/persona/components/modals/PersonaEditModal.tsx:997
+msgid "Add Emoji ({0})"
+msgstr "絵文字を追加 ({0})"
 
 #. Modal or page title for the add-favorite-channels flow.
 #: src/features/expressions/components/modals/AddFavoriteChannelModal.tsx:28
@@ -3229,7 +3229,7 @@ msgid "Add stream"
 msgstr "配信を追加"
 
 #. placeholder {0}: formData.tags.length
-#: src/features/persona/components/modals/PersonaEditModal.tsx:905
+#: src/features/persona/components/modals/PersonaEditModal.tsx:929
 msgid "Add Tag Pair ({0}/5)"
 msgstr "タグペアを追加 ({0}/5)"
 
@@ -4519,7 +4519,7 @@ msgid "Are you sure you want to delete <0>{0}</0>?"
 msgstr "<0>{0}</0>を削除しますか？"
 
 #. placeholder {0}: formData.name
-#: src/features/persona/components/modals/PersonaEditModal.tsx:702
+#: src/features/persona/components/modals/PersonaEditModal.tsx:726
 msgid "Are you sure you want to delete <0>{0}</0>? This action cannot be undone."
 msgstr "<0>{0}</0>を削除してもよろしいですか？この操作は元に戻せません。"
 
@@ -7995,7 +7995,7 @@ msgid "Clear custom status"
 msgstr "カスタムステータスを削除"
 
 #. Body of the confirmation alert shown when clearing every reaction on a message.
-#: src/features/channel/components/MessageActionUtils.tsx:72
+#: src/features/channel/components/MessageActionUtils.tsx:74
 msgid "Clear every reaction from this message?"
 msgstr "このメッセージのリアクションをすべて消去しますか？"
 
@@ -9574,7 +9574,7 @@ msgid "Copy emoji"
 msgstr "絵文字をコピー"
 
 #. Developer-mode action that copies the emoji ID to the clipboard.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:40
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:47
 msgid "Copy emoji ID"
 msgstr "絵文字IDをコピー"
 
@@ -9590,14 +9590,14 @@ msgstr "ファイルリンクをコピー"
 
 #. Media context menu action that copies a GIF attachment to the clipboard.
 #. Media context menu action that copies a GIF to the clipboard.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:48
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:55
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:54
 msgid "Copy GIF"
 msgstr "GIFをコピー"
 
 #. Media context menu action that copies the URL of the GIF attachment.
 #. Media context menu action that copies the URL of the GIF.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:64
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:71
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:74
 msgid "Copy GIF link"
 msgstr "GIFリンクをコピー"
@@ -9624,7 +9624,7 @@ msgstr "識別子をコピー"
 
 #. Media context menu action that copies an image attachment to the clipboard.
 #. Media context menu action that copies an image to the clipboard.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:44
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:51
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:50
 msgid "Copy image"
 msgstr "画像をコピー"
@@ -9632,7 +9632,7 @@ msgstr "画像をコピー"
 #. Image context menu action that copies the image URL to the clipboard.
 #. Image context menu action that copies the image URL to the clipboard.
 #. Image context menu action that copies the image URL to the clipboard.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:60
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:67
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:70
 #: src/features/ui/action_menu/items/StickerContextMenuItems.tsx:44
 msgid "Copy image link"
@@ -11457,7 +11457,7 @@ msgstr "デラウェア州"
 #: src/features/emoji/components/stickers/StickerGridItem.tsx:35
 #: src/features/messaging/commands/MessageCommands.tsx:81
 #: src/features/moderation/components/report_modal/IARModalCopy.ts:109
-#: src/features/persona/components/modals/PersonaEditModal.tsx:706
+#: src/features/persona/components/modals/PersonaEditModal.tsx:730
 #: src/features/platform/utils/DesktopLocaleBridge.ts:77
 #: src/features/theme_studio/sections/LibrarySection.tsx:514
 #: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:517
@@ -11638,12 +11638,12 @@ msgid "Delete passkey"
 msgstr "パスキーを削除"
 
 #. Aria label for deleting persona
-#: src/features/persona/components/modals/PersonaEditModal.tsx:131
+#: src/features/persona/components/modals/PersonaEditModal.tsx:132
 msgid "Delete persona"
 msgstr "ペルソナを削除"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:700
-#: src/features/persona/components/modals/PersonaEditModal.tsx:1024
+#: src/features/persona/components/modals/PersonaEditModal.tsx:724
+#: src/features/persona/components/modals/PersonaEditModal.tsx:1048
 msgid "Delete Persona"
 msgstr "ペルソナを削除"
 
@@ -12592,7 +12592,7 @@ msgstr "表示モード"
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Short label in the inputs tab. Keep it concise.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/persona/components/modals/PersonaEditModal.tsx:825
+#: src/features/persona/components/modals/PersonaEditModal.tsx:849
 #: src/features/user/components/modals/tabs/component_gallery_tab/ComponentGalleryTabInputsTab.tsx:22
 #: src/features/user/components/modals/tabs/MyProfileTab.tsx:138
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:61
@@ -12953,14 +12953,14 @@ msgstr "fluxer-verificationをダウンロード"
 
 #. Media context menu action that downloads a GIF attachment.
 #. Media context menu action that downloads a GIF to disk.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:56
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:63
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:114
 msgid "Download GIF"
 msgstr "GIFをダウンロード"
 
 #. Image context menu action that downloads the image to disk.
 #. Image context menu action that downloads the image to disk.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:52
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:59
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:110
 msgid "Download image"
 msgstr "画像をダウンロード"
@@ -13166,7 +13166,7 @@ msgid "Duplicate role"
 msgstr "ロールを複製"
 
 #. Validation error when tag pair is duplicated within the same persona
-#: src/features/persona/components/modals/PersonaEditModal.tsx:139
+#: src/features/persona/components/modals/PersonaEditModal.tsx:140
 msgid "Duplicate tag pair on this persona"
 msgstr "このペルソナに重複したタグペアがあります"
 
@@ -13181,12 +13181,12 @@ msgid "Dutch"
 msgstr "オランダ語"
 
 #. Placeholder for persona name
-#: src/features/persona/components/modals/PersonaEditModal.tsx:107
+#: src/features/persona/components/modals/PersonaEditModal.tsx:108
 msgid "e.g. Alice"
 msgstr "例: Alice"
 
 #. Placeholder for persona pronouns
-#: src/features/persona/components/modals/PersonaEditModal.tsx:111
+#: src/features/persona/components/modals/PersonaEditModal.tsx:112
 msgid "e.g. she/her"
 msgstr "例: she/her"
 
@@ -13379,7 +13379,7 @@ msgid "Edit persona"
 msgstr "ペルソナを編集"
 
 #. Title for edit persona modal
-#: src/features/persona/components/modals/PersonaEditModal.tsx:59
+#: src/features/persona/components/modals/PersonaEditModal.tsx:60
 msgid "Edit Persona"
 msgstr "ペルソナを編集"
 
@@ -13636,12 +13636,12 @@ msgid "Embeds"
 msgstr "埋め込み"
 
 #. Toast confirmation after hiding link previews and embeds on a message.
-#: src/features/channel/components/MessageActionUtils.tsx:84
+#: src/features/channel/components/MessageActionUtils.tsx:86
 msgid "Embeds suppressed"
 msgstr "埋め込みを非表示にしました"
 
 #. Toast confirmation after re-enabling link previews and embeds on a message.
-#: src/features/channel/components/MessageActionUtils.tsx:80
+#: src/features/channel/components/MessageActionUtils.tsx:82
 msgid "Embeds unsuppressed"
 msgstr "埋め込みを再表示しました"
 
@@ -14956,7 +14956,7 @@ msgid "Failed to delete channel"
 msgstr "チャンネルを削除できませんでした"
 
 #. Toast when persona deletion fails
-#: src/features/persona/components/modals/PersonaEditModal.tsx:79
+#: src/features/persona/components/modals/PersonaEditModal.tsx:80
 msgid "Failed to delete persona"
 msgstr "ペルソナの削除に失敗しました"
 
@@ -15131,7 +15131,7 @@ msgid "Failed to reset premium state."
 msgstr "プレミアム状態のリセットに失敗しました。"
 
 #. Toast when persona save fails
-#: src/features/persona/components/modals/PersonaEditModal.tsx:71
+#: src/features/persona/components/modals/PersonaEditModal.tsx:72
 msgid "Failed to save persona"
 msgstr "ペルソナの保存に失敗しました"
 
@@ -15297,7 +15297,7 @@ msgid "Favorite DM"
 msgstr "DMをお気に入りに追加"
 
 #. Emoji context menu action that adds the emoji to favorites.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:36
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:43
 msgid "Favorite emoji"
 msgstr "絵文字をお気に入りに追加"
 
@@ -20168,7 +20168,7 @@ msgstr "チャンネルが成人向けコンテンツ設定を継承するよう
 msgid "Mail"
 msgstr "メール"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:1118
+#: src/features/persona/components/modals/PersonaEditModal.tsx:1142
 #: src/features/persona/components/PersonaProfileMobileSheet.tsx:420
 #: src/features/persona/components/PersonaProfilePopout.tsx:305
 msgid "Main account"
@@ -20673,7 +20673,7 @@ msgid "Maximizes visible messages with minimal spacing."
 msgstr "メッセージの表示数を最大化し、間隔を最小限に抑えます。"
 
 #. Validation error when signature emoji limit is reached
-#: src/features/persona/components/modals/PersonaEditModal.tsx:155
+#: src/features/persona/components/modals/PersonaEditModal.tsx:156
 msgid "Maximum {max} signature emojis allowed per persona"
 msgstr "ペルソナごとに許可されるシグネチャー絵文字は最大 {max} 個です"
 
@@ -21748,7 +21748,7 @@ msgid "More button"
 msgstr "その他ボタン"
 
 #. Submenu label that contains additional emoji context menu actions.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:76
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:83
 msgid "More emoji actions"
 msgstr "その他の絵文字操作"
 
@@ -22634,7 +22634,7 @@ msgid "New password"
 msgstr "新しいパスワード"
 
 #. Title for new persona modal
-#: src/features/persona/components/modals/PersonaEditModal.tsx:55
+#: src/features/persona/components/modals/PersonaEditModal.tsx:56
 msgid "New Persona"
 msgstr "新しいペルソナ"
 
@@ -22962,7 +22962,7 @@ msgid "No emojis found matching your search."
 msgstr "検索条件に一致する絵文字は見つかりませんでした。"
 
 #. Empty-state text in the channel and chat emoji picker.
-#: src/features/channel/components/EmojiPicker.tsx:65
+#: src/features/channel/components/EmojiPicker.tsx:72
 msgid "No emojis match that search"
 msgstr "検索条件に一致する絵文字はありません"
 
@@ -23066,6 +23066,7 @@ msgid "No matches found"
 msgstr "一致する項目はありません"
 
 #: src/features/persona/components/PersonaPickerSheet.tsx:197
+#: src/features/persona/components/PersonaReactAsModal.tsx:188
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:581
 msgid "No matching personas found."
 msgstr "一致するペルソナが見つかりません。"
@@ -23900,7 +23901,7 @@ msgid "Only the selected ones"
 msgstr "選択した項目のみ"
 
 #. Helper description for private persona visibility
-#: src/features/persona/components/modals/PersonaEditModal.tsx:103
+#: src/features/persona/components/modals/PersonaEditModal.tsx:104
 msgid "Only visible to you. Others cannot view this persona’s full bio or profile details."
 msgstr "あなたにのみ表示されます。他のユーザーはこのペルソナの完全な自己紹介やプロフィール詳細を表示できません。"
 
@@ -24180,7 +24181,7 @@ msgstr "ファイルリンクを開く"
 
 #. Media context menu action that opens the GIF URL in an external browser.
 #. Media context menu action that opens the GIF URL in an external browser.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:72
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:79
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:94
 msgid "Open GIF link"
 msgstr "GIFリンクを開く"
@@ -24214,7 +24215,7 @@ msgstr "画像を全画面で開く"
 #. Image context menu action that opens the image URL in an external browser.
 #. Image context menu action that opens the image URL in an external browser.
 #. Image context menu action that opens the image URL in an external browser.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:68
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:75
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:90
 #: src/features/ui/action_menu/items/StickerContextMenuItems.tsx:48
 msgid "Open image link"
@@ -25165,12 +25166,12 @@ msgid "Permissions for {0}"
 msgstr "{0}の権限"
 
 #. Toast when persona is created
-#: src/features/persona/components/modals/PersonaEditModal.tsx:67
+#: src/features/persona/components/modals/PersonaEditModal.tsx:68
 msgid "Persona created"
 msgstr "ペルソナを作成しました"
 
 #. Toast when persona is deleted
-#: src/features/persona/components/modals/PersonaEditModal.tsx:75
+#: src/features/persona/components/modals/PersonaEditModal.tsx:76
 msgid "Persona deleted"
 msgstr "ペルソナを削除しました"
 
@@ -25188,17 +25189,17 @@ msgstr "ペルソナプロフィール"
 msgid "Persona profile: {name}"
 msgstr "ペルソナプロフィール: {name}"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:896
+#: src/features/persona/components/modals/PersonaEditModal.tsx:920
 msgid "Persona Tags (Prefix & Suffix)"
 msgstr "ペルソナタグ (プレフィックスとサフィックス)"
 
 #. Toast when persona is updated
-#: src/features/persona/components/modals/PersonaEditModal.tsx:63
+#: src/features/persona/components/modals/PersonaEditModal.tsx:64
 msgid "Persona updated"
 msgstr "ペルソナを更新しました"
 
 #. Aria label for persona visibility tabs
-#: src/features/persona/components/modals/PersonaEditModal.tsx:135
+#: src/features/persona/components/modals/PersonaEditModal.tsx:136
 msgid "Persona visibility"
 msgstr "ペルソナの表示設定"
 
@@ -25221,6 +25222,7 @@ msgstr "個人メモはすでに空です"
 
 #. Title of personas settings section
 #. User settings tab for personas.
+#: src/features/persona/components/PersonaReactAsModal.tsx:181
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:76
 #: src/features/user/components/settings_utils/SettingsConstants.tsx:91
 msgid "Personas"
@@ -25376,7 +25378,7 @@ msgstr "ピクチャーインピクチャー"
 
 #. Confirm button label on the pin message alert.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/channel/components/MessageActionUtils.tsx:64
+#: src/features/channel/components/MessageActionUtils.tsx:66
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:70
 msgid "Pin"
 msgstr "ピン留め"
@@ -25394,7 +25396,7 @@ msgstr "グループDMをピン留め"
 #. Generic action label that pins a message to the channel pins.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Title of the confirmation alert shown when pinning a message.
-#: src/features/channel/components/MessageActionUtils.tsx:56
+#: src/features/channel/components/MessageActionUtils.tsx:58
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:539
 #: src/features/input/state/input_keybind/shared.ts:13
 msgid "Pin message"
@@ -25421,7 +25423,7 @@ msgid "Pin or unpin any message."
 msgstr "すべてのメッセージをピン留め、またはピン留めを解除します。"
 
 #. Body of the confirmation alert shown when pinning a message.
-#: src/features/channel/components/MessageActionUtils.tsx:60
+#: src/features/channel/components/MessageActionUtils.tsx:62
 msgid "Pin this message to the channel for everyone to see."
 msgstr "このメッセージをチャンネルにピン留めし、全員に表示します。"
 
@@ -25746,7 +25748,7 @@ msgid "Prefers reduced motion"
 msgstr "アニメーションを減らす"
 
 #. Placeholder for persona tag prefix
-#: src/features/persona/components/modals/PersonaEditModal.tsx:119
+#: src/features/persona/components/modals/PersonaEditModal.tsx:120
 msgid "Prefix (e.g. [)"
 msgstr "プレフィックス (例: [)"
 
@@ -25844,12 +25846,12 @@ msgid "Press Continue to use your passkey."
 msgstr "「続行」を押してパスキーを使用してください。"
 
 #. Label in the channel and chat message reactions.
-#: src/features/channel/components/MessageReactions.tsx:46
+#: src/features/channel/components/MessageReactions.tsx:48
 msgid "press to add reaction"
 msgstr "押してリアクションを追加"
 
 #. Label in the channel and chat message reactions. Keep the tone plain and specific.
-#: src/features/channel/components/MessageReactions.tsx:42
+#: src/features/channel/components/MessageReactions.tsx:44
 msgid "press to remove reaction"
 msgstr "押してリアクションを削除"
 
@@ -26087,7 +26089,7 @@ msgid "Privacy violation or stalking"
 msgstr "プライバシー侵害またはストーカー行為"
 
 #. Persona visibility private
-#: src/features/persona/components/modals/PersonaEditModal.tsx:91
+#: src/features/persona/components/modals/PersonaEditModal.tsx:92
 msgid "Private"
 msgstr "非公開"
 
@@ -26167,12 +26169,12 @@ msgid "Profile banners require {premiumProductName}."
 msgstr "プロフィールバナーには{premiumProductName}が必要です。"
 
 #. Helper description for unlisted persona visibility
-#: src/features/persona/components/modals/PersonaEditModal.tsx:95
+#: src/features/persona/components/modals/PersonaEditModal.tsx:96
 msgid "Profile cards are accessible only when clicking on messages sent by this persona. Not listed in your public persona list."
 msgstr "プロフィールカードは、このペルソナが送信したメッセージをクリックした場合にのみアクセスできます。公開ペルソナリストには表示されません。"
 
 #. Helper description for public persona visibility
-#: src/features/persona/components/modals/PersonaEditModal.tsx:99
+#: src/features/persona/components/modals/PersonaEditModal.tsx:100
 msgid "Profile cards are accessible when clicking on messages and visible in your public personas list to friends and mutual servers."
 msgstr "プロフィールカードは、メッセージをクリックした場合にアクセス可能で、公開ペルソナリストを通じてフレンドや共通のサーバーに表示されます。"
 
@@ -26296,7 +26298,7 @@ msgstr "新しいオーディオデバイスの接続時に通知する"
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/persona/components/modals/PersonaEditModal.tsx:835
+#: src/features/persona/components/modals/PersonaEditModal.tsx:859
 #: src/features/user/components/modals/tabs/MyProfileTab.tsx:142
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:177
 #: src/features/user/components/settings_utils/section_registry/PrivacySafetySections.ts:160
@@ -26338,7 +26340,7 @@ msgid "PTT"
 msgstr "PTT"
 
 #. Persona visibility public
-#: src/features/persona/components/modals/PersonaEditModal.tsx:87
+#: src/features/persona/components/modals/PersonaEditModal.tsx:88
 msgid "Public"
 msgstr "公開"
 
@@ -26650,6 +26652,12 @@ msgstr "録り直す"
 msgid "React"
 msgstr "リアクション"
 
+#. Title of the modal and context menu item to react as a persona.
+#: src/features/persona/components/PersonaReactAsModal.tsx:23
+#: src/features/persona/components/PersonaReactAsModal.tsx:115
+msgid "React as..."
+msgstr "別名でリアクション..."
+
 #. Accessible label for a quick reaction emoji button. Preserve {emojiShortcode}; it is inserted by code, usually like :smile:.
 #: src/features/channel/components/QuickReactionsRow.tsx:14
 msgid "React with {emojiShortcode}"
@@ -26664,7 +26672,7 @@ msgstr "{name} としてリアクション"
 msgid "Reacting as <0>{reactorName}</0>"
 msgstr "<0>{reactorName}</0> としてリアクション中"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:980
+#: src/features/persona/components/modals/PersonaEditModal.tsx:1004
 msgid "Reacting with a signature emoji will always react as this persona, regardless of active persona."
 msgstr "シグネチャー絵文字でリアクションすると、アクティブなペルソナに関係なく、常にこのペルソナとしてリアクションします。"
 
@@ -27216,7 +27224,7 @@ msgid "Remove {userName} from your friends?"
 msgstr "{userName}さんを友達から削除しますか？"
 
 #. Confirm button label on the remove-all-reactions alert. Destructive.
-#: src/features/channel/components/MessageActionUtils.tsx:76
+#: src/features/channel/components/MessageActionUtils.tsx:78
 msgid "Remove all"
 msgstr "すべて削除"
 
@@ -27229,7 +27237,7 @@ msgstr "このメッセージから{emojiNameWithColons}のリアクションを
 #. Message action that removes every reaction from the selected message.
 #. Title of the confirmation alert shown when clearing every reaction on a message.
 #: src/features/channel/components/MessageActionMenu.tsx:81
-#: src/features/channel/components/MessageActionUtils.tsx:68
+#: src/features/channel/components/MessageActionUtils.tsx:70
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:70
 msgid "Remove all reactions"
 msgstr "リアクションをすべて削除"
@@ -27385,7 +27393,7 @@ msgid "Remove search engine"
 msgstr "検索エンジンを削除"
 
 #. Aria label for removing signature emoji
-#: src/features/persona/components/modals/PersonaEditModal.tsx:159
+#: src/features/persona/components/modals/PersonaEditModal.tsx:160
 msgid "Remove signature emoji"
 msgstr "シグネチャー絵文字を削除"
 
@@ -27405,7 +27413,7 @@ msgid "Remove tag {tag}"
 msgstr "タグ「{tag}」を削除"
 
 #. Aria label for removing a tag pair
-#: src/features/persona/components/modals/PersonaEditModal.tsx:127
+#: src/features/persona/components/modals/PersonaEditModal.tsx:128
 msgid "Remove tag pair"
 msgstr "タグペアを削除"
 
@@ -28048,7 +28056,7 @@ msgstr "再送しました"
 #: src/features/app/components/floating/ColorPickerPopover.tsx:192
 #: src/features/input/components/KeybindRecorder.tsx:459
 #: src/features/messaging/components/modals/ImageCropModal.tsx:1022
-#: src/features/persona/components/modals/PersonaEditModal.tsx:777
+#: src/features/persona/components/modals/PersonaEditModal.tsx:801
 msgid "Reset"
 msgstr "リセット"
 
@@ -28790,6 +28798,7 @@ msgid "Romanian"
 msgstr "ルーマニア語"
 
 #: src/features/persona/components/PersonaPickerSheet.tsx:151
+#: src/features/persona/components/PersonaReactAsModal.tsx:169
 msgid "Root Account (Default)"
 msgstr "ルートアカウント (デフォルト)"
 
@@ -28925,7 +28934,7 @@ msgid "Save banner"
 msgstr "バナーを保存"
 
 #: src/features/app/components/dialogs/shared/UnsavedChangesBannerContent.tsx:60
-#: src/features/persona/components/modals/PersonaEditModal.tsx:786
+#: src/features/persona/components/modals/PersonaEditModal.tsx:810
 msgid "Save changes"
 msgstr "変更を保存"
 
@@ -29455,7 +29464,9 @@ msgid "Search permissions…"
 msgstr "権限を検索…"
 
 #. Search placeholder in persona picker sheet
+#. Search placeholder in persona picker sheet
 #: src/features/persona/components/PersonaPickerSheet.tsx:29
+#: src/features/persona/components/PersonaReactAsModal.tsx:28
 msgid "Search personas, tags, pronouns..."
 msgstr "ペルソナ、タグ、代名詞を検索..."
 
@@ -29468,6 +29479,7 @@ msgstr "検索結果"
 
 #. placeholder {0}: filteredPersonas.length
 #: src/features/persona/components/PersonaPickerSheet.tsx:189
+#: src/features/persona/components/PersonaReactAsModal.tsx:179
 msgid "Search Results ({0})"
 msgstr "検索結果 ({0})"
 
@@ -31412,11 +31424,11 @@ msgid "Signal strength loading"
 msgstr "接続品質を読み込み中"
 
 #. Validation error when signature emoji is already used by another persona
-#: src/features/persona/components/modals/PersonaEditModal.tsx:147
+#: src/features/persona/components/modals/PersonaEditModal.tsx:148
 msgid "Signature emoji already in use by persona \"{name}\""
 msgstr "シグネチャー絵文字はすでにペルソナ「{name}」で使用されています"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:949
+#: src/features/persona/components/modals/PersonaEditModal.tsx:973
 msgid "Signature Emojis"
 msgstr "シグネチャー絵文字"
 
@@ -33042,7 +33054,7 @@ msgid "Successfully imported {0} persona(s) into your account. All avatar images
 msgstr "アカウントに{0}件のペルソナを正常にインポートしました。すべてのアバター画像はローカルサーバーに安全に保存されます。"
 
 #. Placeholder for persona tag suffix
-#: src/features/persona/components/modals/PersonaEditModal.tsx:123
+#: src/features/persona/components/modals/PersonaEditModal.tsx:124
 msgid "Suffix (e.g. ])"
 msgstr "サフィックス (例: ])"
 
@@ -33518,7 +33530,7 @@ msgid "Tag Icon"
 msgstr "タグアイコン"
 
 #. Validation error when tag pair is already used by another persona
-#: src/features/persona/components/modals/PersonaEditModal.tsx:143
+#: src/features/persona/components/modals/PersonaEditModal.tsx:144
 msgid "Tag pair already in use by persona \"{name}\""
 msgstr "Tag pair already in use by persona \"{name}\""
 
@@ -33621,7 +33633,7 @@ msgid "Teleporting you to another voice region..."
 msgstr "別のボイスリージョンに転送しています…"
 
 #. Placeholder for persona bio
-#: src/features/persona/components/modals/PersonaEditModal.tsx:115
+#: src/features/persona/components/modals/PersonaEditModal.tsx:116
 msgid "Tell us about this persona..."
 msgstr "このペルソナについて..."
 
@@ -34593,7 +34605,7 @@ msgid "This emoji could not be prepared. Try another file or try again in a mome
 msgstr "この絵文字は準備できませんでした。別のファイルをお試しいただくか、しばらくしてからもう一度お試しください。"
 
 #. Validation error when signature emoji is duplicated within the same persona
-#: src/features/persona/components/modals/PersonaEditModal.tsx:151
+#: src/features/persona/components/modals/PersonaEditModal.tsx:152
 msgid "This emoji is already added as a signature emoji"
 msgstr "この絵文字はすでにシグネチャー絵文字として追加されています"
 
@@ -36360,7 +36372,7 @@ msgid "Unfavorite DM"
 msgstr "DMをお気に入りから削除"
 
 #. Emoji context menu action that removes the emoji from favorites.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:32
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:39
 msgid "Unfavorite emoji"
 msgstr "絵文字をお気に入りから削除"
 
@@ -36560,11 +36572,11 @@ msgid "unknown-role"
 msgstr "unknown-role"
 
 #. Persona visibility unlisted
-#: src/features/persona/components/modals/PersonaEditModal.tsx:83
+#: src/features/persona/components/modals/PersonaEditModal.tsx:84
 msgid "Unlisted"
 msgstr "限定公開"
 
-#: src/features/channel/components/EmojiPicker.tsx:180
+#: src/features/channel/components/EmojiPicker.tsx:200
 #: src/features/channel/components/MobileEmojiPicker.tsx:213
 msgid "Unlock {lockedEmojiCount, plural, one {# custom emoji} other {# custom emojis}} from {communityCount, plural, one {# community} other {# communities}} with {PREMIUM_PRODUCT_NAME}."
 msgstr "{PREMIUM_PRODUCT_NAME}で、{communityCount, plural, one {#個のコミュニティ} other {#個のコミュニティ}}から{lockedEmojiCount, plural, one {#個のカスタム絵文字} other {#個のカスタム絵文字}}をアンロックしましょう。"
@@ -36735,7 +36747,7 @@ msgid "Unordered"
 msgstr "箇条書き"
 
 #. Confirm button label on the unpin message alert.
-#: src/features/channel/components/MessageActionUtils.tsx:52
+#: src/features/channel/components/MessageActionUtils.tsx:54
 msgid "Unpin"
 msgstr "ピン留めを解除"
 
@@ -36760,7 +36772,7 @@ msgid "Unpin message"
 msgstr "メッセージのピン留めを解除"
 
 #. Body of the confirmation alert shown when unpinning a message.
-#: src/features/channel/components/MessageActionUtils.tsx:48
+#: src/features/channel/components/MessageActionUtils.tsx:50
 msgid "Unpin this message?"
 msgstr "このメッセージのピン留めを解除しますか？"
 
@@ -38567,7 +38579,7 @@ msgid "Virginia"
 msgstr "バージニア州"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/persona/components/modals/PersonaEditModal.tsx:1001
+#: src/features/persona/components/modals/PersonaEditModal.tsx:1025
 #: src/features/user/components/settings_utils/section_registry/AccessibilitySections.ts:39
 msgid "Visibility"
 msgstr "見やすさ"
@@ -39946,7 +39958,7 @@ msgstr "アカウントを作成したり、サインインしたりすること
 msgid "You can still email {supportEmail} for a human review at any time."
 msgstr "いつでも {supportEmail} にメールして、人間によるレビューを依頼できます。"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:884
+#: src/features/persona/components/modals/PersonaEditModal.tsx:908
 #: src/features/user/components/modals/tabs/my_profile_tab/BioEditor.tsx:288
 msgid "You can use links, emoji, and Markdown."
 msgstr "リンク、絵文字、マークダウンが使えます。"
@@ -40218,7 +40230,7 @@ msgid "You have refunded recently"
 msgstr "最近返金を受けたばかりです"
 
 #: src/features/app/components/dialogs/shared/UnsavedChangesBannerContent.tsx:37
-#: src/features/persona/components/modals/PersonaEditModal.tsx:766
+#: src/features/persona/components/modals/PersonaEditModal.tsx:790
 msgid "You have unsaved changes."
 msgstr "保存されていない変更があります。"
 

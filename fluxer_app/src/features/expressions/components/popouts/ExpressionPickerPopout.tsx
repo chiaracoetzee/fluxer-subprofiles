@@ -106,8 +106,10 @@ interface ExpressionPickerCategory {
 	label: string;
 	renderComponent: (props: {
 		channelId?: string;
+		messageId?: string;
 		onSelect: (emoji: FlatEmoji, shiftKey?: boolean) => void;
 		onClose?: () => void;
+		filterEmoji?: (emoji: FlatEmoji) => boolean;
 	}) => React.ReactNode;
 }
 
@@ -154,10 +156,12 @@ const createAllCategories = (i18n: I18n): Array<ExpressionPickerCategory> => [
 	{
 		type: 'emojis' as const,
 		label: i18n._(EMOJIS_DESCRIPTOR),
-		renderComponent: ({channelId, onSelect}) => (
+		renderComponent: ({channelId, messageId, onSelect, filterEmoji}) => (
 			<EmojiPicker
 				channelId={channelId}
+				messageId={messageId}
 				handleSelect={onSelect}
+				filterEmoji={filterEmoji}
 				data-flx="expressions.expression-picker-popout.render-component.emoji-picker"
 			/>
 		),
@@ -166,11 +170,13 @@ const createAllCategories = (i18n: I18n): Array<ExpressionPickerCategory> => [
 
 interface ExpressionPickerPopoutProps {
 	channelId?: string;
+	messageId?: string;
 	onEmojiSelect: (emoji: FlatEmoji, shiftKey?: boolean) => void;
 	onClose?: () => void;
 	visibleTabs?: Array<ExpressionPickerTabType>;
 	selectedTab?: ExpressionPickerTabType;
 	onTabChange?: (tab: ExpressionPickerTabType) => void;
+	filterEmoji?: (emoji: FlatEmoji) => boolean;
 }
 
 const RESIZE_HANDLE_LABELS: ResizablePaneHandleLabels = {
@@ -187,11 +193,13 @@ const RESIZE_HANDLE_LABELS: ResizablePaneHandleLabels = {
 export const ExpressionPickerPopout = observer(
 	({
 		channelId,
+		messageId,
 		onEmojiSelect,
 		onClose,
 		visibleTabs = ['gifs', 'memes', 'stickers', 'emojis'],
 		selectedTab: controlledSelectedTab,
 		onTabChange,
+		filterEmoji,
 	}: ExpressionPickerPopoutProps) => {
 		const {i18n} = useLingui();
 		const categories = useMemo(() => {
@@ -337,7 +345,13 @@ export const ExpressionPickerPopout = observer(
 						/>
 					</div>
 					<div className={styles.content} data-flx="expressions.expression-picker-popout.content">
-						{selectedCategory.renderComponent({channelId, onSelect: handleEmojiSelect, onClose})}
+						{selectedCategory.renderComponent({
+							channelId,
+							messageId,
+							onSelect: handleEmojiSelect,
+							onClose,
+							filterEmoji,
+						})}
 					</div>
 					<ResizablePaneHandles
 						getHandleProps={getHandleProps}
