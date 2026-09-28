@@ -10,6 +10,7 @@ import {
 import {
 	AVATAR_MAX_SIZE,
 	EMOJI_MAX_SIZE,
+	MAX_BIO_LENGTH,
 	MAX_GUILD_ROLES,
 	MAX_GUILD_STICKER_TAGS,
 	MAX_TEMP_BAN_DURATION_SECONDS,
@@ -154,7 +155,9 @@ export const GuildMemberUpdateRequest = z.object({
 	banner: createBase64StringType(1, base64LengthForBytes(AVATAR_MAX_SIZE))
 		.nullish()
 		.describe('Base64-encoded image data for the member guild banner'),
-	bio: createStringType(1, 320).nullish().describe('The member guild profile bio (1-320 characters)'),
+	bio: createStringType(1, MAX_BIO_LENGTH)
+		.nullish()
+		.describe(`The member guild profile bio (1-${MAX_BIO_LENGTH} characters)`),
 	pronouns: createStringType(1, 40).nullish().describe('The member guild profile pronouns (1-40 characters)'),
 	accent_color: ColorType.nullish().describe('The accent color for the member guild profile as an integer'),
 	profile_flags: createBitflagInt32Type(
