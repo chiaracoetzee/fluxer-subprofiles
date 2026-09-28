@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 import {User} from '@app/features/user/models/User';
+import type {MessageSubprofileResponse} from '@fluxer/schema/src/domains/persona/PersonaSchemas';
 import type {UserPartial} from '@fluxer/schema/src/domains/user/UserResponseSchemas';
 import {assign, initialTransition, type SnapshotFrom, setup, transition} from 'xstate';
 
@@ -36,7 +37,31 @@ export type ReactionUsersMachineEvent =
 	  }
 	| {type: 'fetch.error'; requestId?: number}
 	| {type: 'user.add'; user: User}
-	| {type: 'user.remove'; userId: string; personaId?: string | null};
+	| {type: 'user.remove'; userId: string; personaId?: string | null}
+	| {
+			type: 'persona.update';
+			persona: {
+				id: string;
+				name: string;
+				avatar?: string | null;
+				avatar_hash?: string | null;
+				avatar_color?: number | null;
+				banner?: string | null;
+				banner_hash?: string | null;
+				display_tag_text?: string | null;
+				display_tag_icon?: string | null;
+				pronouns?: string | null;
+				color?: number | null;
+				bio?: string | null;
+				visibility?: any;
+			};
+	  }
+	| {
+			type: 'displayTag.update';
+			userId: string;
+			display_tag_text?: string | null;
+			display_tag_icon?: string | null;
+	  };
 
 const EMPTY_USERS: ReadonlyArray<User> = Object.freeze([]);
 
@@ -268,6 +293,163 @@ function removeUser(
 	};
 }
 
+function updatePersonaInUsers(
+	context: ReactionUsersContext,
+	persona: {
+		id: string;
+		name: string;
+		avatar?: string | null;
+		avatar_hash?: string | null;
+		avatar_color?: number | null;
+		banner?: string | null;
+		banner_hash?: string | null;
+		display_tag_text?: string | null;
+		display_tag_icon?: string | null;
+		pronouns?: string | null;
+		color?: number | null;
+		bio?: string | null;
+		visibility?: any;
+	},
+): ReactionUsersContext {
+	let hasChanges = false;
+	const nextUsers = new Map(context.users);
+
+	for (const [key, user] of context.users) {
+		const matchesPersona =
+			user.personaId === persona.id ||
+			(user as any).subprofile?.id === persona.id;
+
+		if (matchesPersona) {
+			const currentSubprofile = user.subprofile;
+			const updatedAvatar =
+				persona.avatar !== undefined
+					? persona.avatar
+					: persona.avatar_hash !== undefined
+						? persona.avatar_hash
+						: (currentSubprofile?.avatar ?? null);
+			const updatedBanner =
+				persona.banner !== undefined
+					? persona.banner
+					: persona.banner_hash !== undefined
+						? persona.banner_hash
+						: (currentSubprofile?.banner ?? null);
+			const updatedAvatarColor =
+				persona.avatar_color !== undefined
+					? persona.avatar_color
+					: persona.color !== undefined
+						? persona.color
+						: (currentSubprofile?.avatar_color ?? null);
+
+			const updatedSubprofile: MessageSubprofileResponse = {
+				id: persona.id,
+				name: persona.name,
+				avatar: updatedAvatar,
+				avatar_color: updatedAvatarColor,
+				banner: updatedBanner,
+				display_tag_text:
+					persona.display_tag_text !== undefined
+						? persona.display_tag_text
+						: (currentSubprofile?.display_tag_text ?? null),
+				display_tag_icon:
+					persona.display_tag_icon !== undefined
+						? persona.display_tag_icon
+						: (currentSubprofile?.display_tag_icon ?? null),
+				pronouns:
+					persona.pronouns !== undefined
+						? persona.pronouns
+						: (currentSubprofile?.pronouns ?? null),
+				color:
+					persona.color !== undefined
+						? persona.color
+						: (currentSubprofile?.color ?? null),
+				bio:
+					persona.bio !== undefined
+						? persona.bio
+						: (currentSubprofile?.bio ?? null),
+				visibility:
+					persona.visibility !== undefined
+						? persona.visibility
+						: (currentSubprofile?.visibility ?? null),
+			};
+
+			const nextUser = user.withUpdates({
+				persona_id: persona.id,
+				subprofile: updatedSubprofile,
+			} as any);
+
+			nextUsers.set(key, nextUser);
+			hasChanges = true;
+		}
+	}
+
+	if (!hasChanges) {
+		return context;
+	}
+
+	const orderedUsers = context.userSnapshot.map((user) => {
+		if (user.personaId === persona.id || (user as any).subprofile?.id === persona.id) {
+			const key = getReactorKey(user);
+			return nextUsers.get(key) ?? user;
+		}
+		return user;
+	});
+
+	const userSnapshot = freezeUserSnapshot(orderedUsers);
+	return {
+		...context,
+		users: nextUsers,
+		userSnapshot,
+		lastUserId: getLastUserId(userSnapshot),
+		version: context.version + 1,
+	};
+}
+
+function updateDisplayTagInUsers(
+	context: ReactionUsersContext,
+	userId: string,
+	displayTagText?: string | null,
+	displayTagIcon?: string | null,
+): ReactionUsersContext {
+	let hasChanges = false;
+	const nextUsers = new Map(context.users);
+
+	for (const [key, user] of context.users) {
+		if (user.id === userId && user.subprofile) {
+			const updatedSubprofile: MessageSubprofileResponse = {
+				...user.subprofile,
+				display_tag_text: displayTagText !== undefined ? displayTagText : user.subprofile.display_tag_text,
+				display_tag_icon: displayTagIcon !== undefined ? displayTagIcon : user.subprofile.display_tag_icon,
+			};
+			const nextUser = user.withUpdates({
+				subprofile: updatedSubprofile,
+			} as any);
+			nextUsers.set(key, nextUser);
+			hasChanges = true;
+		}
+	}
+
+	if (!hasChanges) {
+		return context;
+	}
+
+	const orderedUsers = context.userSnapshot.map((user) => {
+		if (user.id === userId && user.subprofile) {
+			const key = getReactorKey(user);
+			return nextUsers.get(key) ?? user;
+		}
+		return user;
+	});
+
+	const userSnapshot = freezeUserSnapshot(orderedUsers);
+	return {
+		...context,
+		users: nextUsers,
+		userSnapshot,
+		lastUserId: getLastUserId(userSnapshot),
+		version: context.version + 1,
+	};
+}
+
 export const reactionUsersStateMachine = setup({
 	types: {} as {
 		context: ReactionUsersContext;
@@ -297,6 +479,14 @@ export const reactionUsersStateMachine = setup({
 		addUser: assign(({context, event}) => (event.type === 'user.add' ? addUser(context, event.user) : context)),
 		removeUser: assign(({context, event}) =>
 			event.type === 'user.remove' ? removeUser(context, event.userId, event.personaId) : context,
+		),
+		updatePersona: assign(({context, event}) =>
+			event.type === 'persona.update' ? updatePersonaInUsers(context, event.persona) : context,
+		),
+		updateDisplayTag: assign(({context, event}) =>
+			event.type === 'displayTag.update'
+				? updateDisplayTagInUsers(context, event.userId, event.display_tag_text, event.display_tag_icon)
+				: context,
 		),
 	},
 	guards: {
@@ -351,6 +541,8 @@ export const reactionUsersStateMachine = setup({
 				'fetch.error': {guard: 'isFetchResultCurrent', target: 'error', actions: 'applyFetchError'},
 				'user.add': {guard: 'isUserMissing', actions: 'addUser'},
 				'user.remove': {guard: 'isUserKnown', actions: 'removeUser'},
+				'persona.update': {actions: 'updatePersona'},
+				'displayTag.update': {actions: 'updateDisplayTag'},
 			},
 		},
 		pending: {
@@ -360,6 +552,8 @@ export const reactionUsersStateMachine = setup({
 				'fetch.error': {guard: 'isFetchResultCurrent', target: 'error', actions: 'applyFetchError'},
 				'user.add': {guard: 'isUserMissing', actions: 'addUser'},
 				'user.remove': {guard: 'isUserKnown', actions: 'removeUser'},
+				'persona.update': {actions: 'updatePersona'},
+				'displayTag.update': {actions: 'updateDisplayTag'},
 			},
 		},
 		success: {
@@ -369,6 +563,8 @@ export const reactionUsersStateMachine = setup({
 				'fetch.error': {guard: 'isFetchResultCurrent', target: 'error', actions: 'applyFetchError'},
 				'user.add': {guard: 'isUserMissing', actions: 'addUser'},
 				'user.remove': {guard: 'isUserKnown', actions: 'removeUser'},
+				'persona.update': {actions: 'updatePersona'},
+				'displayTag.update': {actions: 'updateDisplayTag'},
 			},
 		},
 		error: {
@@ -378,6 +574,8 @@ export const reactionUsersStateMachine = setup({
 				'fetch.error': {guard: 'isFetchResultCurrent', target: 'error', actions: 'applyFetchError'},
 				'user.add': {guard: 'isUserMissing', actions: 'addUser'},
 				'user.remove': {guard: 'isUserKnown', actions: 'removeUser'},
+				'persona.update': {actions: 'updatePersona'},
+				'displayTag.update': {actions: 'updateDisplayTag'},
 			},
 		},
 	},
