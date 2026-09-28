@@ -46,7 +46,6 @@ import {msg} from '@lingui/core/macro';
 import {Plural, Trans, useLingui} from '@lingui/react/macro';
 import {SmileySadIcon} from '@phosphor-icons/react';
 import {observer} from 'mobx-react-lite';
-import type React from 'react';
 import {
 	useCallback,
 	useContext,
@@ -63,13 +62,31 @@ import {
 import Drafts from '@app/features/messaging/state/MessagingDrafts';
 import {toReactionEmoji} from '@app/features/messaging/utils/ReactionUtils';
 import {PersonaStore} from '@app/features/persona/state/PersonaStore';
+import {createContext} from 'react';
+
+export interface EmojiPickerReactionContextValue {
+	channelId?: string;
+	messageId?: string;
+}
+
+export const EmojiPickerReactionContext = createContext<EmojiPickerReactionContextValue | null>(null);
 
 const NO_EMOJIS_MATCH_YOUR_SEARCH_DESCRIPTOR = msg({
 	message: 'No emojis match that search',
 	comment: 'Empty-state text in the channel and chat emoji picker.',
 });
 export const EmojiPicker = observer(
-	({channelId, handleSelect}: {channelId?: string; handleSelect: (emoji: FlatEmoji, shiftKey?: boolean) => void}) => {
+	({
+		channelId,
+		messageId,
+		handleSelect,
+		filterEmoji,
+	}: {
+		channelId?: string;
+		messageId?: string;
+		handleSelect: (emoji: FlatEmoji, shiftKey?: boolean) => void;
+		filterEmoji?: (emoji: FlatEmoji) => boolean;
+	}) => {
 		const PREMIUM_PRODUCT_NAME = getPremiumProductName();
 		const headerContext = useContext(ExpressionPickerHeaderContext);
 		if (!headerContext) {
@@ -143,17 +160,20 @@ export const EmojiPicker = observer(
 			return ComponentBus.subscribe('EMOJI_PICKER_RERENDER', handleEmojiDataUpdated);
 		}, []);
 		useSearchInputAutofocus(searchInputRef);
-		const searchItems = useMemo(
-			() => Emoji.search(channel, normalizedSearchTerm).slice(),
-			[channel, normalizedSearchTerm, emojiDataVersion],
-		);
+		const searchItems = useMemo(() => {
+			const items = Emoji.search(channel, normalizedSearchTerm).slice();
+			return filterEmoji ? items.filter(filterEmoji) : items;
+		}, [channel, normalizedSearchTerm, emojiDataVersion, filterEmoji]);
 		const searchUpsell = usePremiumUpsellData({
 			items: searchItems,
 			getAvailability: getEmojiAvailability,
 			getGuildId: getEmojiGuildId,
 		});
 		const renderedEmojis = searchUpsell.accessibleItems;
-		const allItems = useMemo(() => Emoji.getAllEmojis(channel).slice(), [channel, emojiDataVersion]);
+		const allItems = useMemo(() => {
+			const items = Emoji.getAllEmojis(channel).slice();
+			return filterEmoji ? items.filter(filterEmoji) : items;
+		}, [channel, emojiDataVersion, filterEmoji]);
 		const allUpsell = usePremiumUpsellData({
 			items: allItems,
 			getAvailability: getEmojiAvailability,
@@ -341,8 +361,10 @@ export const EmojiPicker = observer(
 			},
 			[pickerRows, handleEmojiSelect],
 		);
+		const reactionContextValue = useMemo(() => ({channelId, messageId}), [channelId, messageId]);
 		return (
-			<div className={styles.container} data-flx="channel.emoji-picker.container">
+			<EmojiPickerReactionContext.Provider value={reactionContextValue}>
+				<div className={styles.container} data-flx="channel.emoji-picker.container">
 				<ExpressionPickerHeaderPortal data-flx="channel.emoji-picker.expression-picker-header-portal">
 					<EmojiPickerSearchBar
 						searchTerm={searchTerm}
@@ -449,6 +471,7 @@ export const EmojiPicker = observer(
 					data-flx="channel.emoji-picker.emoji-picker-category-list"
 				/>
 			</div>
+			</EmojiPickerReactionContext.Provider>
 		);
 	},
 );
