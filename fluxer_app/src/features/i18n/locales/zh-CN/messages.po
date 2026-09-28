@@ -41404,3 +41404,14 @@ msgstr "专属表情符号"
 #: src/features/persona/components/modals/PersonaEditModal.tsx:151
 msgid "This emoji is already added as a signature emoji"
 msgstr "此表情符号已添加为专属表情符号"
+
+#. placeholder {0}: formData.signatureEmojis.length
+#: src/features/persona/components/modals/PersonaEditModal.tsx:997
+msgid "Add Emoji ({0})"
+msgstr "添加表情符号 ({0})"
+
+#. Title of the modal and context menu item to react as a persona.
+#: src/features/persona/components/PersonaReactAsModal.tsx:23
+#: src/features/persona/components/PersonaReactAsModal.tsx:115
+msgid "React as..."
+msgstr "回应身份..."
