@@ -30,6 +30,7 @@ import {type MouseEvent, type UIEvent, useCallback} from 'react';
 // Fork imports.
 
 import {PersonaTag} from '@app/features/persona/components/PersonaTag';
+import {PersonaStore} from '@app/features/persona/state/PersonaStore';
 import * as AvatarUtils from '@app/features/user/utils/AvatarUtils';
 
 const MESSAGE_DESCRIPTOR = msg({
@@ -239,11 +240,16 @@ const ReactorListItem = observer(
 		const isOwnReaction = currentUserId != null && reactor.id === currentUserId;
 		const showRemoveButton = Boolean(onRemoveReactor) && (canManageMessages || isOwnReaction);
 		const itemClassName = clsx(styles.reactorItem, !isFirst && styles.reactorItemBorder);
-		const displayName = reactor.subprofile?.name ?? NicknameUtils.getNickname(reactor, guildId, channelId);
-		const avatarUrl = reactor.subprofile?.avatar
+		const effectiveSubprofile =
+			reactor.subprofile ??
+			(reactor.personaId && reactor.personaId !== '0'
+				? PersonaStore.getKnownPersona(reactor.personaId)
+				: null);
+		const displayName = effectiveSubprofile?.name ?? NicknameUtils.getNickname(reactor, guildId, channelId);
+		const avatarUrl = effectiveSubprofile?.avatar
 			? AvatarUtils.getPersonaAvatarURL({
 					userId: reactor.id,
-					avatar: reactor.subprofile.avatar,
+					avatar: effectiveSubprofile.avatar,
 			  })
 			: undefined;
 		const content = (
@@ -259,9 +265,9 @@ const ReactorListItem = observer(
 					<span className={styles.reactorName} data-flx="app.message-reactions-content.reactor-list-item.reactor-name">
 						{displayName}
 					</span>
-					{reactor.subprofile && (
+					{effectiveSubprofile && (
 						<PersonaTag
-							subprofile={reactor.subprofile}
+							subprofile={effectiveSubprofile}
 							rootUser={reactor}
 							guild={undefined}
 						/>
