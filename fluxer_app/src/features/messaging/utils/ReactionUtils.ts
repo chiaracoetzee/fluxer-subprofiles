@@ -10,6 +10,7 @@ import {getSkinTonedSurrogate} from '@app/features/expressions/utils/SkinToneUti
 import UnicodeEmojis from '@app/features/expressions/utils/UnicodeEmojis';
 import type {Message} from '@app/features/messaging/models/MessagingMessage';
 import MessageReactions from '@app/features/messaging/state/MessageReactions';
+import {PersonaStore} from '@app/features/persona/state/PersonaStore';
 import {getCurrentLocale} from '@app/features/user/utils/LocaleUtils';
 import * as NicknameUtils from '@app/features/user/utils/NicknameUtils';
 import type {MessageReaction} from '@fluxer/schema/src/domains/message/MessageResponseSchemas';
@@ -56,7 +57,14 @@ export function getReactionTooltip(message: Message, emoji: ReactionEmoji) {
 	const guildId = Channels.getChannel(message.channelId)?.guildId ?? message.guildId;
 	const users = MessageReactions.getReactions(message.id, emoji)
 		.slice(0, 3)
-		.map((user) => (user.subprofile ? user.subprofile.name : NicknameUtils.getNickname(user, guildId)));
+		.map((user) => {
+			if (user.subprofile?.name) return user.subprofile.name;
+			if (user.personaId && user.personaId !== '0') {
+				const known = PersonaStore.getKnownPersona(user.personaId);
+				if (known?.name) return known.name;
+			}
+			return NicknameUtils.getNickname(user, guildId);
+		});
 	if (users.length === 0) {
 		return '';
 	}
