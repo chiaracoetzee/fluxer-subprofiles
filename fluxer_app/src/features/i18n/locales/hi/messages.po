@@ -41631,3 +41631,14 @@ msgstr "हस्ताक्षर इमोजी"
 #: src/features/persona/components/modals/PersonaEditModal.tsx:151
 msgid "This emoji is already added as a signature emoji"
 msgstr "यह इमोजी पहले से ही एक हस्ताक्षर इमोजी के रूप में जोड़ा गया है"
+
+#. placeholder {0}: formData.signatureEmojis.length
+#: src/features/persona/components/modals/PersonaEditModal.tsx:997
+msgid "Add Emoji ({0})"
+msgstr "इमोजी जोड़ें ({0})"
+
+#. Title of the modal and context menu item to react as a persona.
+#: src/features/persona/components/PersonaReactAsModal.tsx:23
+#: src/features/persona/components/PersonaReactAsModal.tsx:115
+msgid "React as..."
+msgstr "के रूप में प्रतिक्रिया दें..."

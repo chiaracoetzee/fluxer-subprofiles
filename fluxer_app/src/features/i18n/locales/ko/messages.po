@@ -41631,3 +41631,14 @@ msgstr "시그니처 이모지"
 #: src/features/persona/components/modals/PersonaEditModal.tsx:151
 msgid "This emoji is already added as a signature emoji"
 msgstr "이 이모지는 이미 시그니처 이모지로 추가되었습니다"
+
+#. placeholder {0}: formData.signatureEmojis.length
+#: src/features/persona/components/modals/PersonaEditModal.tsx:997
+msgid "Add Emoji ({0})"
+msgstr "이모지 추가 ({0})"
+
+#. Title of the modal and context menu item to react as a persona.
+#: src/features/persona/components/PersonaReactAsModal.tsx:23
+#: src/features/persona/components/PersonaReactAsModal.tsx:115
+msgid "React as..."
+msgstr "다른 프로필로 반응하기..."

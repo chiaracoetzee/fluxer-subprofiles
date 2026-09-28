@@ -41631,3 +41631,14 @@ msgstr "シグネチャー絵文字"
 #: src/features/persona/components/modals/PersonaEditModal.tsx:151
 msgid "This emoji is already added as a signature emoji"
 msgstr "この絵文字はすでにシグネチャー絵文字として追加されています"
+
+#. placeholder {0}: formData.signatureEmojis.length
+#: src/features/persona/components/modals/PersonaEditModal.tsx:997
+msgid "Add Emoji ({0})"
+msgstr "絵文字を追加 ({0})"
+
+#. Title of the modal and context menu item to react as a persona.
+#: src/features/persona/components/PersonaReactAsModal.tsx:23
+#: src/features/persona/components/PersonaReactAsModal.tsx:115
+msgid "React as..."
+msgstr "別名でリアクション..."
