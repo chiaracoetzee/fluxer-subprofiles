@@ -23,7 +23,12 @@ import {useCallback} from 'react';
 
 // Fork imports.
 
+import {EmojiPickerReactionContext} from '@app/features/channel/components/EmojiPicker';
+import ExpressionPicker from '@app/features/emoji/state/ExpressionPicker';
+import Messages from '@app/features/messaging/state/MessagingMessages';
 import {createDownloadHandler} from '@app/features/messaging/utils/FileDownloadUtils';
+import {PersonaReactAsModal, REACT_AS_DESCRIPTOR} from '@app/features/persona/components/PersonaReactAsModal';
+import {PersonaStore} from '@app/features/persona/state/PersonaStore';
 import {
 	CopyLinkIcon,
 	CopyMediaIcon,
@@ -31,6 +36,10 @@ import {
 	OpenMediaLinkIcon,
 } from '@app/features/ui/action_menu/ContextMenuIcons';
 import {copyMediaToClipboard} from '@app/features/ui/action_menu/items/MediaMenuData';
+import * as ModalCommands from '@app/features/ui/commands/ModalCommands';
+import {modal} from '@app/features/ui/commands/ModalCommands';
+import {Smiley} from '@phosphor-icons/react';
+import {useContext} from 'react';
 
 const UNFAVORITE_EMOJI_DESCRIPTOR = msg({
 	message: 'Unfavorite emoji',
@@ -84,6 +93,8 @@ const MORE_EMOJI_ACTIONS_DESCRIPTOR = msg({
 interface EmojiContextMenuItemsProps {
 	emoji: FlatEmoji;
 	onClose: () => void;
+	channelId?: string;
+	messageId?: string;
 }
 
 const useEmojiHandlers = (emoji: FlatEmoji, onClose: () => void) => {
@@ -163,30 +174,73 @@ const useEmojiHandlers = (emoji: FlatEmoji, onClose: () => void) => {
 	};
 };
 
-export const EmojiContextMenuItems = observer(({emoji, onClose}: EmojiContextMenuItemsProps) => {
-	const {i18n} = useLingui();
-	const {
-		canFavorite,
-		isFavorite,
-		originalUrl,
-		copyLabel,
-		downloadLabel,
-		copyLinkLabel,
-		openLinkLabel,
-		handleToggleFavorite,
-		handleCopyId,
-		handleCopyImage,
-		handleDownloadImage,
-		handleCopyUrl,
-		handleOpenInBrowser,
-	} = useEmojiHandlers(emoji, onClose);
+export const EmojiContextMenuItems = observer(
+	({emoji, onClose, channelId: propChannelId, messageId: propMessageId}: EmojiContextMenuItemsProps) => {
+		const {i18n} = useLingui();
+		const reactionContext = useContext(EmojiPickerReactionContext);
+		const resolvedChannelId = propChannelId ?? reactionContext?.channelId ?? ExpressionPicker.channelId ?? undefined;
+		const resolvedMessageId =
+			propMessageId ??
+			reactionContext?.messageId ??
+			(resolvedChannelId ? Messages.getMessages(resolvedChannelId).toArray().slice(-1)[0]?.id : undefined);
 
-	const shouldShowSecondaryGroup = canFavorite || Boolean(emoji.id);
+		const hasPersonas = PersonaStore.personas.length > 0;
+		const canReactAs = hasPersonas && Boolean(resolvedChannelId && resolvedMessageId);
 
-	return (
-		<>
-			{originalUrl && (
-				<MenuGroup data-flx="ui.action-menu.items.emoji-context-menu-items.media-menu-group">
+		const handleReactAs = useCallback(() => {
+			if (!resolvedChannelId || !resolvedMessageId) return;
+			onClose();
+			ModalCommands.push(
+				modal(() => (
+					<PersonaReactAsModal
+						emoji={emoji}
+						channelId={resolvedChannelId}
+						messageId={resolvedMessageId}
+						onClose={() => ModalCommands.pop()}
+					/>
+				)),
+			);
+		}, [emoji, resolvedChannelId, resolvedMessageId, onClose]);
+
+		const {
+			canFavorite,
+			isFavorite,
+			originalUrl,
+			copyLabel,
+			downloadLabel,
+			copyLinkLabel,
+			openLinkLabel,
+			handleToggleFavorite,
+			handleCopyId,
+			handleCopyImage,
+			handleDownloadImage,
+			handleCopyUrl,
+			handleOpenInBrowser,
+		} = useEmojiHandlers(emoji, onClose);
+
+		const shouldShowSecondaryGroup = canFavorite || Boolean(emoji.id);
+
+		return (
+			<>
+				{canReactAs && (
+					<MenuGroup data-flx="ui.action-menu.items.emoji-context-menu-items.react-as-menu-group">
+						<MenuItem
+							icon={
+								<Smiley
+									className={styles.iconSmall}
+									weight="bold"
+									data-flx="ui.action-menu.items.emoji-context-menu-items.react-as-icon"
+								/>
+							}
+							onClick={handleReactAs}
+							data-flx="ui.action-menu.items.emoji-context-menu-items.menu-item.react-as"
+						>
+							{i18n._(REACT_AS_DESCRIPTOR)}
+						</MenuItem>
+					</MenuGroup>
+				)}
+				{originalUrl && (
+					<MenuGroup data-flx="ui.action-menu.items.emoji-context-menu-items.media-menu-group">
 					<MenuItem
 						icon={<CopyMediaIcon size={20} data-flx="ui.action-menu.items.emoji-context-menu-items.copy-media-icon" />}
 						onClick={handleCopyImage}
@@ -272,32 +326,66 @@ export const EmojiContextMenuItems = observer(({emoji, onClose}: EmojiContextMen
 
 EmojiContextMenuItems.displayName = 'EmojiContextMenuItems';
 
-export const EmojiInlineMenuItems = observer(({emoji, onClose}: EmojiContextMenuItemsProps) => {
-	const {i18n} = useLingui();
-	const {
-		canFavorite,
-		isFavorite,
-		originalUrl,
-		copyLabel,
-		downloadLabel,
-		copyLinkLabel,
-		openLinkLabel,
-		handleToggleFavorite,
-		handleCopyId,
-		handleCopyImage,
-		handleDownloadImage,
-		handleCopyUrl,
-		handleOpenInBrowser,
-	} = useEmojiHandlers(emoji, onClose);
+export const EmojiInlineMenuItems = observer(
+	({emoji, onClose, channelId: propChannelId, messageId: propMessageId}: EmojiContextMenuItemsProps) => {
+		const {i18n} = useLingui();
+		const reactionContext = useContext(EmojiPickerReactionContext);
+		const resolvedChannelId = propChannelId ?? reactionContext?.channelId ?? ExpressionPicker.channelId ?? undefined;
+		const resolvedMessageId =
+			propMessageId ??
+			reactionContext?.messageId ??
+			(resolvedChannelId ? Messages.getMessages(resolvedChannelId).toArray().slice(-1)[0]?.id : undefined);
 
-	if (!canFavorite && !emoji.id && !originalUrl) {
-		return null;
-	}
+		const hasPersonas = PersonaStore.personas.length > 0;
+		const canReactAs = hasPersonas && Boolean(resolvedChannelId && resolvedMessageId);
 
-	const showSubmenu = Boolean(emoji.id) || Boolean(originalUrl);
+		const handleReactAs = useCallback(() => {
+			if (!resolvedChannelId || !resolvedMessageId) return;
+			onClose();
+			ModalCommands.push(
+				modal(() => (
+					<PersonaReactAsModal
+						emoji={emoji}
+						channelId={resolvedChannelId}
+						messageId={resolvedMessageId}
+						onClose={() => ModalCommands.pop()}
+					/>
+				)),
+			);
+		}, [emoji, resolvedChannelId, resolvedMessageId, onClose]);
 
-	return (
-		<MenuGroup data-flx="ui.action-menu.items.emoji-context-menu-items.emoji-inline-menu-items.menu-group">
+		const {
+			canFavorite,
+			isFavorite,
+			originalUrl,
+			copyLabel,
+			downloadLabel,
+			copyLinkLabel,
+			openLinkLabel,
+			handleToggleFavorite,
+			handleCopyId,
+			handleCopyImage,
+			handleDownloadImage,
+			handleCopyUrl,
+			handleOpenInBrowser,
+		} = useEmojiHandlers(emoji, onClose);
+
+		if (!canFavorite && !emoji.id && !originalUrl && !canReactAs) {
+			return null;
+		}
+
+		const showSubmenu = Boolean(emoji.id) || Boolean(originalUrl);
+
+		return (
+			<MenuGroup data-flx="ui.action-menu.items.emoji-context-menu-items.emoji-inline-menu-items.menu-group">
+				{canReactAs && (
+					<MenuItem
+						onClick={handleReactAs}
+						data-flx="ui.action-menu.items.emoji-context-menu-items.emoji-inline-menu-items.menu-item.react-as"
+					>
+						{i18n._(REACT_AS_DESCRIPTOR)}
+					</MenuItem>
+				)}
 			{originalUrl && (
 				<MenuItem
 					onClick={handleCopyImage}
