@@ -1,6 +1,11 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-import {AVATAR_MAX_SIZE, MAX_GROUP_DM_OTHER_RECIPIENTS, MAX_GUILDS_PREMIUM} from '@fluxer/constants/src/LimitConstants';
+import {
+	AVATAR_MAX_SIZE,
+	MAX_BIO_LENGTH,
+	MAX_GROUP_DM_OTHER_RECIPIENTS,
+	MAX_GUILDS_PREMIUM,
+} from '@fluxer/constants/src/LimitConstants';
 import {StatusTypes} from '@fluxer/constants/src/StatusConstants';
 import {
 	DEFAULT_GUILD_FOLDER_ICON,
@@ -73,7 +78,9 @@ export const UserUpdateRequest = z
 		banner: createBase64StringType(1, base64LengthForBytes(AVATAR_MAX_SIZE))
 			.nullish()
 			.describe('Base64-encoded profile banner image'),
-		bio: createStringType(1, 320).nullish().describe('User biography text (max 320 characters)'),
+		bio: createStringType(1, MAX_BIO_LENGTH)
+			.nullish()
+			.describe(`User biography text (max ${MAX_BIO_LENGTH} characters)`),
 		pronouns: createStringType(1, 40).nullish().describe('User pronouns (max 40 characters)'),
 		accent_color: ColorType.nullish().describe('Profile accent color as integer'),
 		timezone: createStringType(1, 128).nullish().describe('IANA timezone identifier saved for profile local time'),
