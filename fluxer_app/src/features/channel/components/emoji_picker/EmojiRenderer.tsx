@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+import {EmojiPickerReactionContext} from '@app/features/channel/components/EmojiPicker';
 import styles from '@app/features/channel/components/EmojiPicker.module.css';
 import {
 	getEmojiSpriteSheetLayout,
@@ -19,7 +20,7 @@ import FocusRing from '@app/features/ui/focus_ring/FocusRing';
 import {isFirefoxBrowser} from '@app/features/ui/utils/NativeUtils';
 import {useLingui} from '@lingui/react/macro';
 import {clsx} from 'clsx';
-import React, {useEffect, useImperativeHandle, useMemo, useRef} from 'react';
+import React, {useContext, useEffect, useImperativeHandle, useMemo, useRef} from 'react';
 
 type PickerEmojiImageProps = React.ImgHTMLAttributes<HTMLImageElement> & {
 	src: string;
@@ -106,6 +107,7 @@ export const EmojiRenderer = React.forwardRef<HTMLButtonElement, EmojiRendererPr
 	) => {
 		const emojiRef = useRef<HTMLButtonElement | null>(null);
 		const {i18n} = useLingui();
+		const reactionContext = useContext(EmojiPickerReactionContext);
 		useImperativeHandle(forwardedRef, () => emojiRef.current!);
 		useEffect(() => {
 			if (shouldScrollIntoView && emojiRef.current) {
@@ -146,6 +148,8 @@ export const EmojiRenderer = React.forwardRef<HTMLButtonElement, EmojiRendererPr
 			ContextMenuCommands.openFromEvent(e, (props) => (
 				<EmojiContextMenuItems
 					emoji={emoji}
+					channelId={reactionContext?.channelId ?? channel?.id}
+					messageId={reactionContext?.messageId}
 					onClose={props.onClose}
 					data-flx="channel.emoji-picker.emoji-renderer.handle-context-menu.emoji-context-menu-items"
 				/>

@@ -58,6 +58,7 @@ import {
 	ReplyIcon,
 	RetryIcon,
 } from '@app/features/ui/action_menu/ContextMenuIcons';
+import {EmojiContextMenuItems} from '@app/features/ui/action_menu/items/EmojiContextMenuItems';
 import {MessageContextMenu} from '@app/features/ui/action_menu/MessageContextMenu';
 import * as ContextMenuCommands from '@app/features/ui/commands/ContextMenuCommands';
 import * as ModalCommands from '@app/features/ui/commands/ModalCommands';
@@ -177,11 +178,12 @@ interface QuickReactionButtonProps {
 	emoji: FlatEmoji;
 	onReact: (emoji: FlatEmoji) => void;
 	channelId?: string;
+	messageId?: string;
 	hidden?: boolean;
 }
 
 const QuickReactionButton = observer(
-	React.forwardRef<HTMLButtonElement, QuickReactionButtonProps>(({emoji, onReact, channelId, hidden}, ref) => {
+	React.forwardRef<HTMLButtonElement, QuickReactionButtonProps>(({emoji, onReact, channelId, messageId, hidden}, ref) => {
 		const {i18n} = useLingui();
 		const isAnimatedEmoji = emoji.animated === true;
 		const [isHovered, setIsHovered] = useState(false);
@@ -197,6 +199,22 @@ const QuickReactionButton = observer(
 				onReact(emoji);
 			},
 			[effectivePersona?.id, emoji, onReact],
+		);
+		const handleContextMenu = useCallback(
+			(event: React.MouseEvent<HTMLButtonElement>) => {
+				event.preventDefault();
+				event.stopPropagation();
+				ContextMenuCommands.openFromEvent(event, (props) => (
+					<EmojiContextMenuItems
+						emoji={emoji}
+						channelId={channelId}
+						messageId={messageId}
+						onClose={props.onClose}
+						data-flx="channel.message-action-bar.quick-reaction-button.emoji-context-menu-items"
+					/>
+				));
+			},
+			[channelId, emoji, messageId],
 		);
 		const beginEmojiHover = useMemo(() => (isAnimatedEmoji ? () => setIsHovered(true) : undefined), [isAnimatedEmoji]);
 		const endEmojiHover = useMemo(() => (isAnimatedEmoji ? () => setIsHovered(false) : undefined), [isAnimatedEmoji]);
@@ -236,6 +254,7 @@ const QuickReactionButton = observer(
 						aria-label={ariaLabel}
 						hidden={hidden}
 						onClick={handleClick}
+						onContextMenu={handleContextMenu}
 						onMouseEnter={beginEmojiHover}
 						onMouseLeave={endEmojiHover}
 						onFocus={beginEmojiHover}
@@ -404,6 +423,7 @@ export const MessageActionBarCore: React.FC<MessageActionBarCoreProps> = observe
 						render: ({onClose}) => (
 							<EmojiPickerPopout
 								channelId={message.channelId}
+								messageId={message.id}
 								handleSelect={handlers.handleEmojiSelect}
 								onClose={onClose}
 								data-flx="channel.message-action-bar.unsubscribe.emoji-picker-popout"
@@ -511,6 +531,7 @@ export const MessageActionBarCore: React.FC<MessageActionBarCoreProps> = observe
 											key={emoji.id ?? emoji.uniqueName}
 											emoji={emoji}
 											channelId={message.channelId}
+											messageId={message.id}
 											hidden={showFullActions}
 											onReact={handlers.handleEmojiSelect}
 											data-flx="channel.message-action-bar.message-action-bar-core.quick-reaction-button"
@@ -596,6 +617,7 @@ export const MessageActionBarCore: React.FC<MessageActionBarCoreProps> = observe
 										render={({onClose}) => (
 											<EmojiPickerPopout
 												channelId={message.channelId}
+												messageId={message.id}
 												handleSelect={handlers.handleEmojiSelect}
 												onClose={onClose}
 												data-flx="channel.message-action-bar.message-action-bar-core.emoji-picker-popout"
