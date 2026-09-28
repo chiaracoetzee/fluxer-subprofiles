@@ -68,6 +68,7 @@ import {z} from 'zod';
 
 // Fork imports.
 
+import {LIMIT_KEY_METADATA, type LimitKey} from '@fluxer/constants/src/LimitConfigMetadata';
 import {ServerListButtonsSchema} from '@fluxer/schema/src/domains/instance/InstanceSchemas';
 
 const ReportStatusSchema = withOpenApiType(
@@ -934,13 +935,33 @@ const LimitRuleSchema = z.object({
 	filters: LimitFilterSchema.optional().describe('Optional filters that scope the rule'),
 	limits: z
 		.record(z.string(), NonNegativeSafeIntegerType)
-		.refine(
-			(limits) => {
-				const limitKeys = Object.keys(limits);
-				return limitKeys.every((key) => (LIMIT_KEYS as ReadonlyArray<string>).includes(key));
-			},
-			{error: 'Invalid limit key detected'},
-		)
+		.superRefine((limits, ctx) => {
+			for (const [key, value] of Object.entries(limits)) {
+				if (!(LIMIT_KEYS as ReadonlyArray<string>).includes(key)) {
+					ctx.addIssue({
+						code: 'custom',
+						message: 'Invalid limit key detected',
+						path: [key],
+					});
+					continue;
+				}
+				const meta = LIMIT_KEY_METADATA[key as LimitKey];
+				if (meta?.max !== undefined && typeof value === 'number' && value > meta.max) {
+					ctx.addIssue({
+						code: 'custom',
+						message: `${meta.label} cannot exceed ${meta.max}`,
+						path: [key],
+					});
+				}
+				if (meta?.min !== undefined && typeof value === 'number' && value < meta.min) {
+					ctx.addIssue({
+						code: 'custom',
+						message: `${meta.label} must be at least ${meta.min}`,
+						path: [key],
+					});
+				}
+			}
+		})
 		.describe('Per-limit key values'),
 });
 const LimitConfigSchema = z.object({
