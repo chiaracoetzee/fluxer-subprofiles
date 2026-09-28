@@ -41316,3 +41316,14 @@ msgstr "Emojis de assinatura"
 #: src/features/persona/components/modals/PersonaEditModal.tsx:151
 msgid "This emoji is already added as a signature emoji"
 msgstr "Este emoji já foi adicionado como emoji de assinatura"
+
+#. placeholder {0}: formData.signatureEmojis.length
+#: src/features/persona/components/modals/PersonaEditModal.tsx:997
+msgid "Add Emoji ({0})"
+msgstr "Adicionar emoji ({0})"
+
+#. Title of the modal and context menu item to react as a persona.
+#: src/features/persona/components/PersonaReactAsModal.tsx:23
+#: src/features/persona/components/PersonaReactAsModal.tsx:115
+msgid "React as..."
+msgstr "Reagir como..."
