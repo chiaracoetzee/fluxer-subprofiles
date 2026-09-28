@@ -37,7 +37,14 @@ export function handleMessageReactionAdd(data: MessageReactionAddPayload, _conte
 		PersonaStore.recordKnownPersona(data.subprofile);
 	}
 	SavedMessages.handleMessageReactionAdd(data.message_id);
-	MessageReactions.handleReactionAdd(data.message_id, data.user_id, emoji, undefined, data.persona_id);
+	MessageReactions.handleReactionAdd(
+		data.message_id,
+		data.user_id,
+		emoji,
+		undefined,
+		data.persona_id,
+		data.subprofile,
+	);
 	ChannelPins.handleMessageReactionAdd(data.channel_id, data.message_id);
 	MentionFeed.handleMessageReactionAdd(data.message_id);
 	Messages.handleReaction({
