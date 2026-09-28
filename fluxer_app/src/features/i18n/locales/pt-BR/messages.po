@@ -1009,7 +1009,7 @@ msgid "{count, plural, one {# mutual community} other {# mutual communities}}"
 msgstr "{count, plural, =0 {# comunidades em comum} one {# comunidade em comum} other {# comunidades em comum}}"
 
 #: src/features/messaging/utils/MessageReactionUtils.ts:53
-#: src/features/messaging/utils/ReactionUtils.ts:54
+#: src/features/messaging/utils/ReactionUtils.ts:69
 msgid "{count, plural, one {# other} other {# others}}"
 msgstr "{count, plural, =0 {# outros} one {# outro} other {# outros}}"
 
@@ -1023,7 +1023,7 @@ msgid "{count, plural, one {# potential spammer message} other {# potential spam
 msgstr "{count, plural, =1 {# mensagem de um possível remetente de spam} other {# mensagens de possíveis remetentes de spam}}"
 
 #: src/features/app/components/shared/MessageReactionsContent.tsx:58
-#: src/features/channel/components/MessageReactions.tsx:146
+#: src/features/channel/components/MessageReactions.tsx:154
 msgid "{count, plural, one {# reaction} other {# reactions}}"
 msgstr "{count, plural, =0 {# reações} one {# reação} other {# reações}}"
 
@@ -1301,12 +1301,12 @@ msgid "{emojiName}, {reactionCountText}"
 msgstr "{emojiName}, {reactionCountText}"
 
 #. Short label in the channel and chat message reactions. Keep it concise. Preserve {emojiName}, {reactionCountText}; they are inserted by code.
-#: src/features/channel/components/MessageReactions.tsx:50
+#: src/features/channel/components/MessageReactions.tsx:52
 msgid "{emojiName}: {reactionCountText}"
 msgstr "{emojiName}: {reactionCountText}"
 
 #. Short label in the channel and chat message reactions. Keep it concise. Preserve {emojiName}, {reactionCountText}, {actionText}; they are inserted by code.
-#: src/features/channel/components/MessageReactions.tsx:55
+#: src/features/channel/components/MessageReactions.tsx:57
 msgid "{emojiName}: {reactionCountText}, {actionText}"
 msgstr "{emojiName}: {reactionCountText}, {actionText}"
 
@@ -1847,7 +1847,7 @@ msgstr "Nome escrito da marca {productName}"
 #. Reaction tooltip. Preserve {emojiName}, {reactors}; they are inserted by code. {reactorCount} is how many people reacted, for verb agreement. Order the parts so the emoji never reads as the one doing the reacting.
 #. Reaction tooltip. Preserve {emojiName}, {reactors}; they are inserted by code. {reactorCount} is how many people reacted, for verb agreement. Order the parts so the emoji never reads as the one doing the reacting.
 #: src/features/messaging/utils/MessageReactionUtils.ts:16
-#: src/features/messaging/utils/ReactionUtils.ts:17
+#: src/features/messaging/utils/ReactionUtils.ts:32
 msgid "{reactorCount, plural, one {{emojiName} reacted by {reactors}} other {{emojiName} reacted by {reactors}}}"
 msgstr "{reactorCount, plural, =0 {{reactors} reagiram com {emojiName}} one {{reactors} reagiu com {emojiName}} other {{reactors} reagiram com {emojiName}}}"
 
@@ -2577,7 +2577,7 @@ msgstr "Sobre o {appName}"
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Short label in the user profile shared popout. Keep it concise.
 #: src/features/app/components/pages/YouPage.tsx:166
-#: src/features/persona/components/modals/PersonaEditModal.tsx:876
+#: src/features/persona/components/modals/PersonaEditModal.tsx:900
 #: src/features/persona/components/PersonaProfileMobileSheet.tsx:400
 #: src/features/persona/components/PersonaProfileMobileSheet.tsx:409
 #: src/features/user/components/modals/tabs/my_profile_tab/BioEditor.tsx:26
@@ -3092,9 +3092,9 @@ msgid "Add email"
 msgstr "Adicionar e-mail"
 
 #. placeholder {0}: formData.signatureEmojis.length
-#: src/features/persona/components/modals/PersonaEditModal.tsx:973
-msgid "Add Emoji ({0}/{MAX_SIGNATURE_EMOJIS_PER_PERSONA})"
-msgstr "Adicionar emoji ({0}/{MAX_SIGNATURE_EMOJIS_PER_PERSONA})"
+#: src/features/persona/components/modals/PersonaEditModal.tsx:997
+msgid "Add Emoji ({0})"
+msgstr "Adicionar emoji ({0})"
 
 #. Modal or page title for the add-favorite-channels flow.
 #: src/features/expressions/components/modals/AddFavoriteChannelModal.tsx:28
@@ -3239,7 +3239,7 @@ msgid "Add stream"
 msgstr "Adicionar transmissão"
 
 #. placeholder {0}: formData.tags.length
-#: src/features/persona/components/modals/PersonaEditModal.tsx:905
+#: src/features/persona/components/modals/PersonaEditModal.tsx:929
 msgid "Add Tag Pair ({0}/5)"
 msgstr "Adicionar par de tags ({0}/5)"
 
@@ -4529,7 +4529,7 @@ msgid "Are you sure you want to delete <0>{0}</0>?"
 msgstr "Tem certeza de que deseja excluir <0>{0}</0>?"
 
 #. placeholder {0}: formData.name
-#: src/features/persona/components/modals/PersonaEditModal.tsx:702
+#: src/features/persona/components/modals/PersonaEditModal.tsx:726
 msgid "Are you sure you want to delete <0>{0}</0>? This action cannot be undone."
 msgstr "Tem certeza de que deseja excluir <0>{0}</0>? Essa ação não pode ser desfeita."
 
@@ -8009,7 +8009,7 @@ msgid "Clear custom status"
 msgstr "Limpar status personalizado"
 
 #. Body of the confirmation alert shown when clearing every reaction on a message.
-#: src/features/channel/components/MessageActionUtils.tsx:72
+#: src/features/channel/components/MessageActionUtils.tsx:74
 msgid "Clear every reaction from this message?"
 msgstr "Limpar todas as reações desta mensagem?"
 
@@ -9588,7 +9588,7 @@ msgid "Copy emoji"
 msgstr "Copiar emoji"
 
 #. Developer-mode action that copies the emoji ID to the clipboard.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:40
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:47
 msgid "Copy emoji ID"
 msgstr "Copiar ID do emoji"
 
@@ -9604,14 +9604,14 @@ msgstr "Copiar link do arquivo"
 
 #. Media context menu action that copies a GIF attachment to the clipboard.
 #. Media context menu action that copies a GIF to the clipboard.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:48
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:55
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:54
 msgid "Copy GIF"
 msgstr "Copiar GIF"
 
 #. Media context menu action that copies the URL of the GIF attachment.
 #. Media context menu action that copies the URL of the GIF.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:64
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:71
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:74
 msgid "Copy GIF link"
 msgstr "Copiar link do GIF"
@@ -9638,7 +9638,7 @@ msgstr "Copiar identificador"
 
 #. Media context menu action that copies an image attachment to the clipboard.
 #. Media context menu action that copies an image to the clipboard.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:44
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:51
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:50
 msgid "Copy image"
 msgstr "Copiar imagem"
@@ -9646,7 +9646,7 @@ msgstr "Copiar imagem"
 #. Image context menu action that copies the image URL to the clipboard.
 #. Image context menu action that copies the image URL to the clipboard.
 #. Image context menu action that copies the image URL to the clipboard.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:60
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:67
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:70
 #: src/features/ui/action_menu/items/StickerContextMenuItems.tsx:44
 msgid "Copy image link"
@@ -11471,7 +11471,7 @@ msgstr "Delaware"
 #: src/features/emoji/components/stickers/StickerGridItem.tsx:35
 #: src/features/messaging/commands/MessageCommands.tsx:81
 #: src/features/moderation/components/report_modal/IARModalCopy.ts:109
-#: src/features/persona/components/modals/PersonaEditModal.tsx:706
+#: src/features/persona/components/modals/PersonaEditModal.tsx:730
 #: src/features/platform/utils/DesktopLocaleBridge.ts:77
 #: src/features/theme_studio/sections/LibrarySection.tsx:514
 #: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:517
@@ -11652,12 +11652,12 @@ msgid "Delete passkey"
 msgstr "Excluir chave de acesso"
 
 #. Aria label for deleting persona
-#: src/features/persona/components/modals/PersonaEditModal.tsx:131
+#: src/features/persona/components/modals/PersonaEditModal.tsx:132
 msgid "Delete persona"
 msgstr "Excluir persona"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:700
-#: src/features/persona/components/modals/PersonaEditModal.tsx:1024
+#: src/features/persona/components/modals/PersonaEditModal.tsx:724
+#: src/features/persona/components/modals/PersonaEditModal.tsx:1048
 msgid "Delete Persona"
 msgstr "Excluir persona"
 
@@ -12606,7 +12606,7 @@ msgstr "Modo de exibição"
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Short label in the inputs tab. Keep it concise.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/persona/components/modals/PersonaEditModal.tsx:825
+#: src/features/persona/components/modals/PersonaEditModal.tsx:849
 #: src/features/user/components/modals/tabs/component_gallery_tab/ComponentGalleryTabInputsTab.tsx:22
 #: src/features/user/components/modals/tabs/MyProfileTab.tsx:138
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:61
@@ -12967,14 +12967,14 @@ msgstr "Baixar fluxer-verification"
 
 #. Media context menu action that downloads a GIF attachment.
 #. Media context menu action that downloads a GIF to disk.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:56
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:63
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:114
 msgid "Download GIF"
 msgstr "Baixar GIF"
 
 #. Image context menu action that downloads the image to disk.
 #. Image context menu action that downloads the image to disk.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:52
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:59
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:110
 msgid "Download image"
 msgstr "Baixar imagem"
@@ -13180,7 +13180,7 @@ msgid "Duplicate role"
 msgstr "Duplicar cargo"
 
 #. Validation error when tag pair is duplicated within the same persona
-#: src/features/persona/components/modals/PersonaEditModal.tsx:139
+#: src/features/persona/components/modals/PersonaEditModal.tsx:140
 msgid "Duplicate tag pair on this persona"
 msgstr "Par de tags duplicado nesta persona"
 
@@ -13195,12 +13195,12 @@ msgid "Dutch"
 msgstr "Holandês"
 
 #. Placeholder for persona name
-#: src/features/persona/components/modals/PersonaEditModal.tsx:107
+#: src/features/persona/components/modals/PersonaEditModal.tsx:108
 msgid "e.g. Alice"
 msgstr "ex. Alice"
 
 #. Placeholder for persona pronouns
-#: src/features/persona/components/modals/PersonaEditModal.tsx:111
+#: src/features/persona/components/modals/PersonaEditModal.tsx:112
 msgid "e.g. she/her"
 msgstr "ex. ela/dela"
 
@@ -13393,7 +13393,7 @@ msgid "Edit persona"
 msgstr "Editar persona"
 
 #. Title for edit persona modal
-#: src/features/persona/components/modals/PersonaEditModal.tsx:59
+#: src/features/persona/components/modals/PersonaEditModal.tsx:60
 msgid "Edit Persona"
 msgstr "Editar persona"
 
@@ -13650,12 +13650,12 @@ msgid "Embeds"
 msgstr "Conteúdo incorporado"
 
 #. Toast confirmation after hiding link previews and embeds on a message.
-#: src/features/channel/components/MessageActionUtils.tsx:84
+#: src/features/channel/components/MessageActionUtils.tsx:86
 msgid "Embeds suppressed"
 msgstr "Conteúdo incorporado ocultado"
 
 #. Toast confirmation after re-enabling link previews and embeds on a message.
-#: src/features/channel/components/MessageActionUtils.tsx:80
+#: src/features/channel/components/MessageActionUtils.tsx:82
 msgid "Embeds unsuppressed"
 msgstr "Conteúdo incorporado reativado"
 
@@ -14965,7 +14965,7 @@ msgid "Failed to delete channel"
 msgstr "Não foi possível excluir o canal"
 
 #. Toast when persona deletion fails
-#: src/features/persona/components/modals/PersonaEditModal.tsx:79
+#: src/features/persona/components/modals/PersonaEditModal.tsx:80
 msgid "Failed to delete persona"
 msgstr "Falha ao excluir a persona"
 
@@ -15140,7 +15140,7 @@ msgid "Failed to reset premium state."
 msgstr "Falha ao redefinir o status premium."
 
 #. Toast when persona save fails
-#: src/features/persona/components/modals/PersonaEditModal.tsx:71
+#: src/features/persona/components/modals/PersonaEditModal.tsx:72
 msgid "Failed to save persona"
 msgstr "Falha ao salvar a persona"
 
@@ -15306,7 +15306,7 @@ msgid "Favorite DM"
 msgstr "Favoritar conversa"
 
 #. Emoji context menu action that adds the emoji to favorites.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:36
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:43
 msgid "Favorite emoji"
 msgstr "Favoritar emoji"
 
@@ -20182,7 +20182,7 @@ msgstr "Fez o canal herdar a configuração de conteúdo adulto"
 msgid "Mail"
 msgstr "E-mail"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:1118
+#: src/features/persona/components/modals/PersonaEditModal.tsx:1142
 #: src/features/persona/components/PersonaProfileMobileSheet.tsx:420
 #: src/features/persona/components/PersonaProfilePopout.tsx:305
 msgid "Main account"
@@ -20687,7 +20687,7 @@ msgid "Maximizes visible messages with minimal spacing."
 msgstr "Maximiza as mensagens visíveis com espaçamento mínimo."
 
 #. Validation error when signature emoji limit is reached
-#: src/features/persona/components/modals/PersonaEditModal.tsx:155
+#: src/features/persona/components/modals/PersonaEditModal.tsx:156
 msgid "Maximum {max} signature emojis allowed per persona"
 msgstr "Máximo de {max} emojis de assinatura permitidos por persona"
 
@@ -21764,7 +21764,7 @@ msgid "More button"
 msgstr "Botão \"Mais\""
 
 #. Submenu label that contains additional emoji context menu actions.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:76
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:83
 msgid "More emoji actions"
 msgstr "Mais ações de emoji"
 
@@ -22650,7 +22650,7 @@ msgid "New password"
 msgstr "Nova senha"
 
 #. Title for new persona modal
-#: src/features/persona/components/modals/PersonaEditModal.tsx:55
+#: src/features/persona/components/modals/PersonaEditModal.tsx:56
 msgid "New Persona"
 msgstr "Nova persona"
 
@@ -22978,7 +22978,7 @@ msgid "No emojis found matching your search."
 msgstr "Nenhum emoji encontrado para sua busca."
 
 #. Empty-state text in the channel and chat emoji picker.
-#: src/features/channel/components/EmojiPicker.tsx:65
+#: src/features/channel/components/EmojiPicker.tsx:72
 msgid "No emojis match that search"
 msgstr "Nenhum emoji corresponde à pesquisa"
 
@@ -23082,6 +23082,7 @@ msgid "No matches found"
 msgstr "Nenhum resultado encontrado"
 
 #: src/features/persona/components/PersonaPickerSheet.tsx:197
+#: src/features/persona/components/PersonaReactAsModal.tsx:188
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:581
 msgid "No matching personas found."
 msgstr "Nenhuma persona correspondente encontrada."
@@ -23921,7 +23922,7 @@ msgid "Only the selected ones"
 msgstr "Apenas os selecionados"
 
 #. Helper description for private persona visibility
-#: src/features/persona/components/modals/PersonaEditModal.tsx:103
+#: src/features/persona/components/modals/PersonaEditModal.tsx:104
 msgid "Only visible to you. Others cannot view this persona’s full bio or profile details."
 msgstr "Visível apenas para você. Outras pessoas não podem ver a biografia completa ou os detalhes do perfil desta persona."
 
@@ -24201,7 +24202,7 @@ msgstr "Abrir link do arquivo"
 
 #. Media context menu action that opens the GIF URL in an external browser.
 #. Media context menu action that opens the GIF URL in an external browser.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:72
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:79
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:94
 msgid "Open GIF link"
 msgstr "Abrir link do GIF"
@@ -24235,7 +24236,7 @@ msgstr "Abrir imagem na visualização completa"
 #. Image context menu action that opens the image URL in an external browser.
 #. Image context menu action that opens the image URL in an external browser.
 #. Image context menu action that opens the image URL in an external browser.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:68
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:75
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:90
 #: src/features/ui/action_menu/items/StickerContextMenuItems.tsx:48
 msgid "Open image link"
@@ -25186,12 +25187,12 @@ msgid "Permissions for {0}"
 msgstr "Permissões para {0}"
 
 #. Toast when persona is created
-#: src/features/persona/components/modals/PersonaEditModal.tsx:67
+#: src/features/persona/components/modals/PersonaEditModal.tsx:68
 msgid "Persona created"
 msgstr "Persona criada"
 
 #. Toast when persona is deleted
-#: src/features/persona/components/modals/PersonaEditModal.tsx:75
+#: src/features/persona/components/modals/PersonaEditModal.tsx:76
 msgid "Persona deleted"
 msgstr "Persona excluída"
 
@@ -25209,17 +25210,17 @@ msgstr "Perfil da persona"
 msgid "Persona profile: {name}"
 msgstr "Perfil da persona: {name}"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:896
+#: src/features/persona/components/modals/PersonaEditModal.tsx:920
 msgid "Persona Tags (Prefix & Suffix)"
 msgstr "Tags de persona (Prefixo e Sufixo)"
 
 #. Toast when persona is updated
-#: src/features/persona/components/modals/PersonaEditModal.tsx:63
+#: src/features/persona/components/modals/PersonaEditModal.tsx:64
 msgid "Persona updated"
 msgstr "Persona atualizada"
 
 #. Aria label for persona visibility tabs
-#: src/features/persona/components/modals/PersonaEditModal.tsx:135
+#: src/features/persona/components/modals/PersonaEditModal.tsx:136
 msgid "Persona visibility"
 msgstr "Visibilidade da persona"
 
@@ -25242,6 +25243,7 @@ msgstr "As notas pessoais já estavam vazias"
 
 #. Title of personas settings section
 #. User settings tab for personas.
+#: src/features/persona/components/PersonaReactAsModal.tsx:181
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:76
 #: src/features/user/components/settings_utils/SettingsConstants.tsx:91
 msgid "Personas"
@@ -25397,7 +25399,7 @@ msgstr "Janela flutuante (picture-in-picture)"
 
 #. Confirm button label on the pin message alert.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/channel/components/MessageActionUtils.tsx:64
+#: src/features/channel/components/MessageActionUtils.tsx:66
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:70
 msgid "Pin"
 msgstr "Fixar"
@@ -25415,7 +25417,7 @@ msgstr "Fixar conversa em grupo"
 #. Generic action label that pins a message to the channel pins.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Title of the confirmation alert shown when pinning a message.
-#: src/features/channel/components/MessageActionUtils.tsx:56
+#: src/features/channel/components/MessageActionUtils.tsx:58
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:539
 #: src/features/input/state/input_keybind/shared.ts:13
 msgid "Pin message"
@@ -25442,7 +25444,7 @@ msgid "Pin or unpin any message."
 msgstr "Fixar ou desafixar qualquer mensagem."
 
 #. Body of the confirmation alert shown when pinning a message.
-#: src/features/channel/components/MessageActionUtils.tsx:60
+#: src/features/channel/components/MessageActionUtils.tsx:62
 msgid "Pin this message to the channel for everyone to see."
 msgstr "Fixar esta mensagem no canal para que todos possam ver."
 
@@ -25767,7 +25769,7 @@ msgid "Prefers reduced motion"
 msgstr "Prefere movimento reduzido"
 
 #. Placeholder for persona tag prefix
-#: src/features/persona/components/modals/PersonaEditModal.tsx:119
+#: src/features/persona/components/modals/PersonaEditModal.tsx:120
 msgid "Prefix (e.g. [)"
 msgstr "Prefixo (ex. [)"
 
@@ -25865,12 +25867,12 @@ msgid "Press Continue to use your passkey."
 msgstr "Pressione \"Continuar\" para usar sua chave de acesso."
 
 #. Label in the channel and chat message reactions.
-#: src/features/channel/components/MessageReactions.tsx:46
+#: src/features/channel/components/MessageReactions.tsx:48
 msgid "press to add reaction"
 msgstr "toque para adicionar uma reação"
 
 #. Label in the channel and chat message reactions. Keep the tone plain and specific.
-#: src/features/channel/components/MessageReactions.tsx:42
+#: src/features/channel/components/MessageReactions.tsx:44
 msgid "press to remove reaction"
 msgstr "toque para remover a reação"
 
@@ -26108,7 +26110,7 @@ msgid "Privacy violation or stalking"
 msgstr "Violação de privacidade ou perseguição"
 
 #. Persona visibility private
-#: src/features/persona/components/modals/PersonaEditModal.tsx:91
+#: src/features/persona/components/modals/PersonaEditModal.tsx:92
 msgid "Private"
 msgstr "Privada"
 
@@ -26188,12 +26190,12 @@ msgid "Profile banners require {premiumProductName}."
 msgstr "Banners de perfil exigem {premiumProductName}."
 
 #. Helper description for unlisted persona visibility
-#: src/features/persona/components/modals/PersonaEditModal.tsx:95
+#: src/features/persona/components/modals/PersonaEditModal.tsx:96
 msgid "Profile cards are accessible only when clicking on messages sent by this persona. Not listed in your public persona list."
 msgstr "Os cartões de perfil são acessíveis apenas ao clicar nas mensagens enviadas por esta persona. Não é listada na sua lista pública de personas."
 
 #. Helper description for public persona visibility
-#: src/features/persona/components/modals/PersonaEditModal.tsx:99
+#: src/features/persona/components/modals/PersonaEditModal.tsx:100
 msgid "Profile cards are accessible when clicking on messages and visible in your public personas list to friends and mutual servers."
 msgstr "Os cartões de perfil ficam acessíveis ao clicar nas mensagens e visíveis na sua lista pública de personas para amigos e servidores mútuos."
 
@@ -26317,7 +26319,7 @@ msgstr "Perguntar sobre novos dispositivos de áudio"
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/persona/components/modals/PersonaEditModal.tsx:835
+#: src/features/persona/components/modals/PersonaEditModal.tsx:859
 #: src/features/user/components/modals/tabs/MyProfileTab.tsx:142
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:177
 #: src/features/user/components/settings_utils/section_registry/PrivacySafetySections.ts:160
@@ -26359,7 +26361,7 @@ msgid "PTT"
 msgstr "PTT"
 
 #. Persona visibility public
-#: src/features/persona/components/modals/PersonaEditModal.tsx:87
+#: src/features/persona/components/modals/PersonaEditModal.tsx:88
 msgid "Public"
 msgstr "Pública"
 
@@ -26676,6 +26678,12 @@ msgstr "Gravar novamente"
 msgid "React"
 msgstr "Reagir"
 
+#. Title of the modal and context menu item to react as a persona.
+#: src/features/persona/components/PersonaReactAsModal.tsx:23
+#: src/features/persona/components/PersonaReactAsModal.tsx:115
+msgid "React as..."
+msgstr "Reagir como..."
+
 #. Accessible label for a quick reaction emoji button. Preserve {emojiShortcode}; it is inserted by code, usually like :smile:.
 #: src/features/channel/components/QuickReactionsRow.tsx:14
 msgid "React with {emojiShortcode}"
@@ -26690,7 +26698,7 @@ msgstr "Reagindo como {name}"
 msgid "Reacting as <0>{reactorName}</0>"
 msgstr "Reagindo como <0>{reactorName}</0>"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:980
+#: src/features/persona/components/modals/PersonaEditModal.tsx:1004
 msgid "Reacting with a signature emoji will always react as this persona, regardless of active persona."
 msgstr "Reagir com um emoji de assinatura sempre reagirá como esta persona, independentemente da persona ativa."
 
@@ -27247,7 +27255,7 @@ msgid "Remove {userName} from your friends?"
 msgstr "Remover {userName} dos seus amigos?"
 
 #. Confirm button label on the remove-all-reactions alert. Destructive.
-#: src/features/channel/components/MessageActionUtils.tsx:76
+#: src/features/channel/components/MessageActionUtils.tsx:78
 msgid "Remove all"
 msgstr "Remover tudo"
 
@@ -27260,7 +27268,7 @@ msgstr "Remover todas as reações {emojiNameWithColons} desta mensagem?"
 #. Message action that removes every reaction from the selected message.
 #. Title of the confirmation alert shown when clearing every reaction on a message.
 #: src/features/channel/components/MessageActionMenu.tsx:81
-#: src/features/channel/components/MessageActionUtils.tsx:68
+#: src/features/channel/components/MessageActionUtils.tsx:70
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:70
 msgid "Remove all reactions"
 msgstr "Remover todas as reações"
@@ -27416,7 +27424,7 @@ msgid "Remove search engine"
 msgstr "Remover buscador"
 
 #. Aria label for removing signature emoji
-#: src/features/persona/components/modals/PersonaEditModal.tsx:159
+#: src/features/persona/components/modals/PersonaEditModal.tsx:160
 msgid "Remove signature emoji"
 msgstr "Remover emoji de assinatura"
 
@@ -27436,7 +27444,7 @@ msgid "Remove tag {tag}"
 msgstr "Remover etiqueta {tag}"
 
 #. Aria label for removing a tag pair
-#: src/features/persona/components/modals/PersonaEditModal.tsx:127
+#: src/features/persona/components/modals/PersonaEditModal.tsx:128
 msgid "Remove tag pair"
 msgstr "Remover par de tags"
 
@@ -28079,7 +28087,7 @@ msgstr "Reenviado"
 #: src/features/app/components/floating/ColorPickerPopover.tsx:192
 #: src/features/input/components/KeybindRecorder.tsx:459
 #: src/features/messaging/components/modals/ImageCropModal.tsx:1022
-#: src/features/persona/components/modals/PersonaEditModal.tsx:777
+#: src/features/persona/components/modals/PersonaEditModal.tsx:801
 msgid "Reset"
 msgstr "Redefinir"
 
@@ -28821,6 +28829,7 @@ msgid "Romanian"
 msgstr "Romeno"
 
 #: src/features/persona/components/PersonaPickerSheet.tsx:151
+#: src/features/persona/components/PersonaReactAsModal.tsx:169
 msgid "Root Account (Default)"
 msgstr "Conta principal (Padrão)"
 
@@ -28956,7 +28965,7 @@ msgid "Save banner"
 msgstr "Salvar banner"
 
 #: src/features/app/components/dialogs/shared/UnsavedChangesBannerContent.tsx:60
-#: src/features/persona/components/modals/PersonaEditModal.tsx:786
+#: src/features/persona/components/modals/PersonaEditModal.tsx:810
 msgid "Save changes"
 msgstr "Salvar alterações"
 
@@ -29486,7 +29495,9 @@ msgid "Search permissions…"
 msgstr "Pesquisar permissões…"
 
 #. Search placeholder in persona picker sheet
+#. Search placeholder in persona picker sheet
 #: src/features/persona/components/PersonaPickerSheet.tsx:29
+#: src/features/persona/components/PersonaReactAsModal.tsx:28
 msgid "Search personas, tags, pronouns..."
 msgstr "Pesquisar personas, tags, pronomes..."
 
@@ -29499,6 +29510,7 @@ msgstr "Resultados da busca"
 
 #. placeholder {0}: filteredPersonas.length
 #: src/features/persona/components/PersonaPickerSheet.tsx:189
+#: src/features/persona/components/PersonaReactAsModal.tsx:179
 msgid "Search Results ({0})"
 msgstr "Resultados da pesquisa ({0})"
 
@@ -31443,11 +31455,11 @@ msgid "Signal strength loading"
 msgstr "Carregando intensidade do sinal"
 
 #. Validation error when signature emoji is already used by another persona
-#: src/features/persona/components/modals/PersonaEditModal.tsx:147
+#: src/features/persona/components/modals/PersonaEditModal.tsx:148
 msgid "Signature emoji already in use by persona \"{name}\""
 msgstr "O emoji de assinatura já está em uso pela persona \"{name}\""
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:949
+#: src/features/persona/components/modals/PersonaEditModal.tsx:973
 msgid "Signature Emojis"
 msgstr "Emojis de assinatura"
 
@@ -33073,7 +33085,7 @@ msgid "Successfully imported {0} persona(s) into your account. All avatar images
 msgstr "{0} persona(s) importada(s) com sucesso para sua conta. Todas as imagens de avatar estão armazenadas de forma segura no seu servidor local."
 
 #. Placeholder for persona tag suffix
-#: src/features/persona/components/modals/PersonaEditModal.tsx:123
+#: src/features/persona/components/modals/PersonaEditModal.tsx:124
 msgid "Suffix (e.g. ])"
 msgstr "Sufixo (ex. ])"
 
@@ -33549,7 +33561,7 @@ msgid "Tag Icon"
 msgstr "Ícone da tag"
 
 #. Validation error when tag pair is already used by another persona
-#: src/features/persona/components/modals/PersonaEditModal.tsx:143
+#: src/features/persona/components/modals/PersonaEditModal.tsx:144
 msgid "Tag pair already in use by persona \"{name}\""
 msgstr "Tag pair already in use by persona \"{name}\""
 
@@ -33652,7 +33664,7 @@ msgid "Teleporting you to another voice region..."
 msgstr "Transferindo você para outra região de voz..."
 
 #. Placeholder for persona bio
-#: src/features/persona/components/modals/PersonaEditModal.tsx:115
+#: src/features/persona/components/modals/PersonaEditModal.tsx:116
 msgid "Tell us about this persona..."
 msgstr "Fale-nos sobre esta persona..."
 
@@ -34629,7 +34641,7 @@ msgid "This emoji could not be prepared. Try another file or try again in a mome
 msgstr "Não foi possível preparar este emoji. Tente outro arquivo ou tente novamente em alguns instantes."
 
 #. Validation error when signature emoji is duplicated within the same persona
-#: src/features/persona/components/modals/PersonaEditModal.tsx:151
+#: src/features/persona/components/modals/PersonaEditModal.tsx:152
 msgid "This emoji is already added as a signature emoji"
 msgstr "Este emoji já foi adicionado como emoji de assinatura"
 
@@ -36397,7 +36409,7 @@ msgid "Unfavorite DM"
 msgstr "Remover conversa direta dos favoritos"
 
 #. Emoji context menu action that removes the emoji from favorites.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:32
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:39
 msgid "Unfavorite emoji"
 msgstr "Remover emoji dos favoritos"
 
@@ -36597,11 +36609,11 @@ msgid "unknown-role"
 msgstr "cargo-desconhecido"
 
 #. Persona visibility unlisted
-#: src/features/persona/components/modals/PersonaEditModal.tsx:83
+#: src/features/persona/components/modals/PersonaEditModal.tsx:84
 msgid "Unlisted"
 msgstr "Não listada"
 
-#: src/features/channel/components/EmojiPicker.tsx:180
+#: src/features/channel/components/EmojiPicker.tsx:200
 #: src/features/channel/components/MobileEmojiPicker.tsx:213
 msgid "Unlock {lockedEmojiCount, plural, one {# custom emoji} other {# custom emojis}} from {communityCount, plural, one {# community} other {# communities}} with {PREMIUM_PRODUCT_NAME}."
 msgstr "Desbloqueie {lockedEmojiCount, plural, =0 {# emojis personalizados} one {# emoji personalizado} other {# emojis personalizados}} de {communityCount, plural, =0 {# comunidades} one {# comunidade} other {# comunidades}} com o {PREMIUM_PRODUCT_NAME}."
@@ -36772,7 +36784,7 @@ msgid "Unordered"
 msgstr "Sem ordem"
 
 #. Confirm button label on the unpin message alert.
-#: src/features/channel/components/MessageActionUtils.tsx:52
+#: src/features/channel/components/MessageActionUtils.tsx:54
 msgid "Unpin"
 msgstr "Desafixar"
 
@@ -36797,7 +36809,7 @@ msgid "Unpin message"
 msgstr "Desafixar mensagem"
 
 #. Body of the confirmation alert shown when unpinning a message.
-#: src/features/channel/components/MessageActionUtils.tsx:48
+#: src/features/channel/components/MessageActionUtils.tsx:50
 msgid "Unpin this message?"
 msgstr "Desafixar esta mensagem?"
 
@@ -38604,7 +38616,7 @@ msgid "Virginia"
 msgstr "Virgínia"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/persona/components/modals/PersonaEditModal.tsx:1001
+#: src/features/persona/components/modals/PersonaEditModal.tsx:1025
 #: src/features/user/components/settings_utils/section_registry/AccessibilitySections.ts:39
 msgid "Visibility"
 msgstr "Visibilidade"
@@ -39983,7 +39995,7 @@ msgstr "Você ainda pode criar uma conta ou entrar. Se os convites forem reativa
 msgid "You can still email {supportEmail} for a human review at any time."
 msgstr "Você ainda pode enviar um e-mail para {supportEmail} para uma revisão humana a qualquer momento."
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:884
+#: src/features/persona/components/modals/PersonaEditModal.tsx:908
 #: src/features/user/components/modals/tabs/my_profile_tab/BioEditor.tsx:288
 msgid "You can use links, emoji, and Markdown."
 msgstr "Você pode usar links, emojis e Markdown."
@@ -40255,7 +40267,7 @@ msgid "You have refunded recently"
 msgstr "Você fez um reembolso recentemente"
 
 #: src/features/app/components/dialogs/shared/UnsavedChangesBannerContent.tsx:37
-#: src/features/persona/components/modals/PersonaEditModal.tsx:766
+#: src/features/persona/components/modals/PersonaEditModal.tsx:790
 msgid "You have unsaved changes."
 msgstr "Você tem alterações não salvas."
 

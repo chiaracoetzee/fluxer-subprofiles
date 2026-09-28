@@ -1009,7 +1009,7 @@ msgid "{count, plural, one {# mutual community} other {# mutual communities}}"
 msgstr "{count, plural, one {# साझा कम्युनिटी} other {# साझा कम्युनिटी}}"
 
 #: src/features/messaging/utils/MessageReactionUtils.ts:53
-#: src/features/messaging/utils/ReactionUtils.ts:54
+#: src/features/messaging/utils/ReactionUtils.ts:69
 msgid "{count, plural, one {# other} other {# others}}"
 msgstr "{count, plural, one {# अन्य} other {# अन्य}}"
 
@@ -1023,7 +1023,7 @@ msgid "{count, plural, one {# potential spammer message} other {# potential spam
 msgstr "{count, plural, one {# संभावित स्पैमर का मैसेज} other {# संभावित स्पैमर के मैसेज}}"
 
 #: src/features/app/components/shared/MessageReactionsContent.tsx:58
-#: src/features/channel/components/MessageReactions.tsx:146
+#: src/features/channel/components/MessageReactions.tsx:154
 msgid "{count, plural, one {# reaction} other {# reactions}}"
 msgstr "{count, plural, one {# रिएक्शन} other {# रिएक्शन}}"
 
@@ -1301,12 +1301,12 @@ msgid "{emojiName}, {reactionCountText}"
 msgstr "{emojiName}, {reactionCountText}"
 
 #. Short label in the channel and chat message reactions. Keep it concise. Preserve {emojiName}, {reactionCountText}; they are inserted by code.
-#: src/features/channel/components/MessageReactions.tsx:50
+#: src/features/channel/components/MessageReactions.tsx:52
 msgid "{emojiName}: {reactionCountText}"
 msgstr "{emojiName}: {reactionCountText}"
 
 #. Short label in the channel and chat message reactions. Keep it concise. Preserve {emojiName}, {reactionCountText}, {actionText}; they are inserted by code.
-#: src/features/channel/components/MessageReactions.tsx:55
+#: src/features/channel/components/MessageReactions.tsx:57
 msgid "{emojiName}: {reactionCountText}, {actionText}"
 msgstr "{emojiName}: {reactionCountText}, {actionText}"
 
@@ -1847,7 +1847,7 @@ msgstr "{productName} वर्डमार्क"
 #. Reaction tooltip. Preserve {emojiName}, {reactors}; they are inserted by code. {reactorCount} is how many people reacted, for verb agreement. Order the parts so the emoji never reads as the one doing the reacting.
 #. Reaction tooltip. Preserve {emojiName}, {reactors}; they are inserted by code. {reactorCount} is how many people reacted, for verb agreement. Order the parts so the emoji never reads as the one doing the reacting.
 #: src/features/messaging/utils/MessageReactionUtils.ts:16
-#: src/features/messaging/utils/ReactionUtils.ts:17
+#: src/features/messaging/utils/ReactionUtils.ts:32
 msgid "{reactorCount, plural, one {{emojiName} reacted by {reactors}} other {{emojiName} reacted by {reactors}}}"
 msgstr "{reactorCount, plural, one {{reactors} ने {emojiName} से रिएक्ट किया} other {{reactors} ने {emojiName} से रिएक्ट किया}}"
 
@@ -2577,7 +2577,7 @@ msgstr "{appName} के बारे में"
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Short label in the user profile shared popout. Keep it concise.
 #: src/features/app/components/pages/YouPage.tsx:166
-#: src/features/persona/components/modals/PersonaEditModal.tsx:876
+#: src/features/persona/components/modals/PersonaEditModal.tsx:900
 #: src/features/persona/components/PersonaProfileMobileSheet.tsx:400
 #: src/features/persona/components/PersonaProfileMobileSheet.tsx:409
 #: src/features/user/components/modals/tabs/my_profile_tab/BioEditor.tsx:26
@@ -3092,9 +3092,9 @@ msgid "Add email"
 msgstr "ईमेल जोड़ें"
 
 #. placeholder {0}: formData.signatureEmojis.length
-#: src/features/persona/components/modals/PersonaEditModal.tsx:973
-msgid "Add Emoji ({0}/{MAX_SIGNATURE_EMOJIS_PER_PERSONA})"
-msgstr "इमोजी जोड़ें ({0}/{MAX_SIGNATURE_EMOJIS_PER_PERSONA})"
+#: src/features/persona/components/modals/PersonaEditModal.tsx:997
+msgid "Add Emoji ({0})"
+msgstr "इमोजी जोड़ें ({0})"
 
 #. Modal or page title for the add-favorite-channels flow.
 #: src/features/expressions/components/modals/AddFavoriteChannelModal.tsx:28
@@ -3239,7 +3239,7 @@ msgid "Add stream"
 msgstr "स्ट्रीम जोड़ें"
 
 #. placeholder {0}: formData.tags.length
-#: src/features/persona/components/modals/PersonaEditModal.tsx:905
+#: src/features/persona/components/modals/PersonaEditModal.tsx:929
 msgid "Add Tag Pair ({0}/5)"
 msgstr "टैग पेयर जोड़ें ({0}/5)"
 
@@ -4529,7 +4529,7 @@ msgid "Are you sure you want to delete <0>{0}</0>?"
 msgstr "क्या आप वाकई <0>{0}</0> को हटाना चाहते हैं?"
 
 #. placeholder {0}: formData.name
-#: src/features/persona/components/modals/PersonaEditModal.tsx:702
+#: src/features/persona/components/modals/PersonaEditModal.tsx:726
 msgid "Are you sure you want to delete <0>{0}</0>? This action cannot be undone."
 msgstr "क्या आप वाकई <0>{0}</0> को हटाना चाहते हैं? इसे पूर्ववत नहीं किया जा सकता है।"
 
@@ -8009,7 +8009,7 @@ msgid "Clear custom status"
 msgstr "कस्टम स्टेटस हटाएँ"
 
 #. Body of the confirmation alert shown when clearing every reaction on a message.
-#: src/features/channel/components/MessageActionUtils.tsx:72
+#: src/features/channel/components/MessageActionUtils.tsx:74
 msgid "Clear every reaction from this message?"
 msgstr "इस मैसेज से सभी रिएक्शन हटा दें?"
 
@@ -9588,7 +9588,7 @@ msgid "Copy emoji"
 msgstr "इमोजी कॉपी करें"
 
 #. Developer-mode action that copies the emoji ID to the clipboard.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:40
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:47
 msgid "Copy emoji ID"
 msgstr "इमोजी आईडी कॉपी करें"
 
@@ -9604,14 +9604,14 @@ msgstr "फ़ाइल लिंक कॉपी करें"
 
 #. Media context menu action that copies a GIF attachment to the clipboard.
 #. Media context menu action that copies a GIF to the clipboard.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:48
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:55
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:54
 msgid "Copy GIF"
 msgstr "GIF कॉपी करें"
 
 #. Media context menu action that copies the URL of the GIF attachment.
 #. Media context menu action that copies the URL of the GIF.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:64
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:71
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:74
 msgid "Copy GIF link"
 msgstr "GIF लिंक कॉपी करें"
@@ -9638,7 +9638,7 @@ msgstr "आइडेंटिफ़ायर कॉपी करें"
 
 #. Media context menu action that copies an image attachment to the clipboard.
 #. Media context menu action that copies an image to the clipboard.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:44
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:51
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:50
 msgid "Copy image"
 msgstr "इमेज कॉपी करें"
@@ -9646,7 +9646,7 @@ msgstr "इमेज कॉपी करें"
 #. Image context menu action that copies the image URL to the clipboard.
 #. Image context menu action that copies the image URL to the clipboard.
 #. Image context menu action that copies the image URL to the clipboard.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:60
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:67
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:70
 #: src/features/ui/action_menu/items/StickerContextMenuItems.tsx:44
 msgid "Copy image link"
@@ -11471,7 +11471,7 @@ msgstr "डेलावेयर"
 #: src/features/emoji/components/stickers/StickerGridItem.tsx:35
 #: src/features/messaging/commands/MessageCommands.tsx:81
 #: src/features/moderation/components/report_modal/IARModalCopy.ts:109
-#: src/features/persona/components/modals/PersonaEditModal.tsx:706
+#: src/features/persona/components/modals/PersonaEditModal.tsx:730
 #: src/features/platform/utils/DesktopLocaleBridge.ts:77
 #: src/features/theme_studio/sections/LibrarySection.tsx:514
 #: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:517
@@ -11652,12 +11652,12 @@ msgid "Delete passkey"
 msgstr "पासकी मिटाएँ"
 
 #. Aria label for deleting persona
-#: src/features/persona/components/modals/PersonaEditModal.tsx:131
+#: src/features/persona/components/modals/PersonaEditModal.tsx:132
 msgid "Delete persona"
 msgstr "परसोना डिलीट करें"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:700
-#: src/features/persona/components/modals/PersonaEditModal.tsx:1024
+#: src/features/persona/components/modals/PersonaEditModal.tsx:724
+#: src/features/persona/components/modals/PersonaEditModal.tsx:1048
 msgid "Delete Persona"
 msgstr "परसोना डिलीट करें"
 
@@ -12606,7 +12606,7 @@ msgstr "डिस्प्ले मोड"
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Short label in the inputs tab. Keep it concise.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/persona/components/modals/PersonaEditModal.tsx:825
+#: src/features/persona/components/modals/PersonaEditModal.tsx:849
 #: src/features/user/components/modals/tabs/component_gallery_tab/ComponentGalleryTabInputsTab.tsx:22
 #: src/features/user/components/modals/tabs/MyProfileTab.tsx:138
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:61
@@ -12967,14 +12967,14 @@ msgstr "fluxer-verification डाउनलोड करें"
 
 #. Media context menu action that downloads a GIF attachment.
 #. Media context menu action that downloads a GIF to disk.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:56
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:63
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:114
 msgid "Download GIF"
 msgstr "GIF डाउनलोड करें"
 
 #. Image context menu action that downloads the image to disk.
 #. Image context menu action that downloads the image to disk.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:52
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:59
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:110
 msgid "Download image"
 msgstr "इमेज डाउनलोड करें"
@@ -13180,7 +13180,7 @@ msgid "Duplicate role"
 msgstr "रोल डुप्लिकेट करें"
 
 #. Validation error when tag pair is duplicated within the same persona
-#: src/features/persona/components/modals/PersonaEditModal.tsx:139
+#: src/features/persona/components/modals/PersonaEditModal.tsx:140
 msgid "Duplicate tag pair on this persona"
 msgstr "इस परसोना पर डुप्लीकेट टैग पेयर है"
 
@@ -13195,12 +13195,12 @@ msgid "Dutch"
 msgstr "डच"
 
 #. Placeholder for persona name
-#: src/features/persona/components/modals/PersonaEditModal.tsx:107
+#: src/features/persona/components/modals/PersonaEditModal.tsx:108
 msgid "e.g. Alice"
 msgstr "उदा. Alice"
 
 #. Placeholder for persona pronouns
-#: src/features/persona/components/modals/PersonaEditModal.tsx:111
+#: src/features/persona/components/modals/PersonaEditModal.tsx:112
 msgid "e.g. she/her"
 msgstr "उदा. she/her"
 
@@ -13393,7 +13393,7 @@ msgid "Edit persona"
 msgstr "परसोना एडिट करें"
 
 #. Title for edit persona modal
-#: src/features/persona/components/modals/PersonaEditModal.tsx:59
+#: src/features/persona/components/modals/PersonaEditModal.tsx:60
 msgid "Edit Persona"
 msgstr "परसोना एडिट करें"
 
@@ -13650,12 +13650,12 @@ msgid "Embeds"
 msgstr "एम्बेड"
 
 #. Toast confirmation after hiding link previews and embeds on a message.
-#: src/features/channel/components/MessageActionUtils.tsx:84
+#: src/features/channel/components/MessageActionUtils.tsx:86
 msgid "Embeds suppressed"
 msgstr "एम्बेड छिपाए गए"
 
 #. Toast confirmation after re-enabling link previews and embeds on a message.
-#: src/features/channel/components/MessageActionUtils.tsx:80
+#: src/features/channel/components/MessageActionUtils.tsx:82
 msgid "Embeds unsuppressed"
 msgstr "एम्बेड फिर से दिखाए गए"
 
@@ -14965,7 +14965,7 @@ msgid "Failed to delete channel"
 msgstr "चैनल नहीं मिटाया जा सका"
 
 #. Toast when persona deletion fails
-#: src/features/persona/components/modals/PersonaEditModal.tsx:79
+#: src/features/persona/components/modals/PersonaEditModal.tsx:80
 msgid "Failed to delete persona"
 msgstr "परसोना डिलीट नहीं हो सका"
 
@@ -15140,7 +15140,7 @@ msgid "Failed to reset premium state."
 msgstr "प्रीमियम स्थिति रीसेट नहीं हो पाई।"
 
 #. Toast when persona save fails
-#: src/features/persona/components/modals/PersonaEditModal.tsx:71
+#: src/features/persona/components/modals/PersonaEditModal.tsx:72
 msgid "Failed to save persona"
 msgstr "परसोना सेव नहीं हो सका"
 
@@ -15306,7 +15306,7 @@ msgid "Favorite DM"
 msgstr "DM को पसंदीदा में जोड़ें"
 
 #. Emoji context menu action that adds the emoji to favorites.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:36
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:43
 msgid "Favorite emoji"
 msgstr "इमोजी को पसंदीदा में जोड़ें"
 
@@ -20182,7 +20182,7 @@ msgstr "चैनल की वयस्क सामग्री सेटि�
 msgid "Mail"
 msgstr "मेल"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:1118
+#: src/features/persona/components/modals/PersonaEditModal.tsx:1142
 #: src/features/persona/components/PersonaProfileMobileSheet.tsx:420
 #: src/features/persona/components/PersonaProfilePopout.tsx:305
 msgid "Main account"
@@ -20687,7 +20687,7 @@ msgid "Maximizes visible messages with minimal spacing."
 msgstr "कम से कम स्पेस के साथ ज़्यादा से ज़्यादा मैसेज दिखते हैं।"
 
 #. Validation error when signature emoji limit is reached
-#: src/features/persona/components/modals/PersonaEditModal.tsx:155
+#: src/features/persona/components/modals/PersonaEditModal.tsx:156
 msgid "Maximum {max} signature emojis allowed per persona"
 msgstr "प्रति व्यक्तित्व अधिकतम {max} हस्ताक्षर इमोजी की अनुमति है"
 
@@ -21764,7 +21764,7 @@ msgid "More button"
 msgstr "ज़्यादा बटन"
 
 #. Submenu label that contains additional emoji context menu actions.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:76
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:83
 msgid "More emoji actions"
 msgstr "ज़्यादा इमोजी ऐक्शन"
 
@@ -22650,7 +22650,7 @@ msgid "New password"
 msgstr "नया पासवर्ड"
 
 #. Title for new persona modal
-#: src/features/persona/components/modals/PersonaEditModal.tsx:55
+#: src/features/persona/components/modals/PersonaEditModal.tsx:56
 msgid "New Persona"
 msgstr "नया परसोना"
 
@@ -22978,7 +22978,7 @@ msgid "No emojis found matching your search."
 msgstr "आपकी खोज से मेल खाने वाले कोई इमोजी नहीं मिले।"
 
 #. Empty-state text in the channel and chat emoji picker.
-#: src/features/channel/components/EmojiPicker.tsx:65
+#: src/features/channel/components/EmojiPicker.tsx:72
 msgid "No emojis match that search"
 msgstr "इस खोज से कोई इमोजी मेल नहीं खाता"
 
@@ -23082,6 +23082,7 @@ msgid "No matches found"
 msgstr "कोई मिलान नहीं मिला"
 
 #: src/features/persona/components/PersonaPickerSheet.tsx:197
+#: src/features/persona/components/PersonaReactAsModal.tsx:188
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:581
 msgid "No matching personas found."
 msgstr "कोई मेल खाने वाला परसोना नहीं मिला।"
@@ -23921,7 +23922,7 @@ msgid "Only the selected ones"
 msgstr "सिर्फ़ चुने हुए"
 
 #. Helper description for private persona visibility
-#: src/features/persona/components/modals/PersonaEditModal.tsx:103
+#: src/features/persona/components/modals/PersonaEditModal.tsx:104
 msgid "Only visible to you. Others cannot view this persona’s full bio or profile details."
 msgstr "केवल आपको दिखाई देगा। अन्य लोग इस परसोना का पूरा बायो या प्रोफ़ाइल विवरण नहीं देख सकते हैं।"
 
@@ -24201,7 +24202,7 @@ msgstr "फ़ाइल लिंक खोलें"
 
 #. Media context menu action that opens the GIF URL in an external browser.
 #. Media context menu action that opens the GIF URL in an external browser.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:72
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:79
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:94
 msgid "Open GIF link"
 msgstr "GIF लिंक खोलें"
@@ -24235,7 +24236,7 @@ msgstr "इमेज को फ़ुल व्यू में खोलें"
 #. Image context menu action that opens the image URL in an external browser.
 #. Image context menu action that opens the image URL in an external browser.
 #. Image context menu action that opens the image URL in an external browser.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:68
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:75
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:90
 #: src/features/ui/action_menu/items/StickerContextMenuItems.tsx:48
 msgid "Open image link"
@@ -25186,12 +25187,12 @@ msgid "Permissions for {0}"
 msgstr "{0} के लिए अनुमतियाँ"
 
 #. Toast when persona is created
-#: src/features/persona/components/modals/PersonaEditModal.tsx:67
+#: src/features/persona/components/modals/PersonaEditModal.tsx:68
 msgid "Persona created"
 msgstr "परसोना बन गया"
 
 #. Toast when persona is deleted
-#: src/features/persona/components/modals/PersonaEditModal.tsx:75
+#: src/features/persona/components/modals/PersonaEditModal.tsx:76
 msgid "Persona deleted"
 msgstr "परसोना डिलीट हो गया"
 
@@ -25209,17 +25210,17 @@ msgstr "परसोना प्रोफ़ाइल"
 msgid "Persona profile: {name}"
 msgstr "परसोना प्रोफ़ाइल: {name}"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:896
+#: src/features/persona/components/modals/PersonaEditModal.tsx:920
 msgid "Persona Tags (Prefix & Suffix)"
 msgstr "परसोना टैग (Prefix और Suffix)"
 
 #. Toast when persona is updated
-#: src/features/persona/components/modals/PersonaEditModal.tsx:63
+#: src/features/persona/components/modals/PersonaEditModal.tsx:64
 msgid "Persona updated"
 msgstr "परसोना अपडेट हो गया"
 
 #. Aria label for persona visibility tabs
-#: src/features/persona/components/modals/PersonaEditModal.tsx:135
+#: src/features/persona/components/modals/PersonaEditModal.tsx:136
 msgid "Persona visibility"
 msgstr "परसोना विज़िबिलिटी"
 
@@ -25242,6 +25243,7 @@ msgstr "निजी नोट्स पहले से ही खाली थ
 
 #. Title of personas settings section
 #. User settings tab for personas.
+#: src/features/persona/components/PersonaReactAsModal.tsx:181
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:76
 #: src/features/user/components/settings_utils/SettingsConstants.tsx:91
 msgid "Personas"
@@ -25397,7 +25399,7 @@ msgstr "पिक्चर इन पिक्चर"
 
 #. Confirm button label on the pin message alert.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/channel/components/MessageActionUtils.tsx:64
+#: src/features/channel/components/MessageActionUtils.tsx:66
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:70
 msgid "Pin"
 msgstr "पिन करें"
@@ -25415,7 +25417,7 @@ msgstr "ग्रुप DM पिन करें"
 #. Generic action label that pins a message to the channel pins.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Title of the confirmation alert shown when pinning a message.
-#: src/features/channel/components/MessageActionUtils.tsx:56
+#: src/features/channel/components/MessageActionUtils.tsx:58
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:539
 #: src/features/input/state/input_keybind/shared.ts:13
 msgid "Pin message"
@@ -25442,7 +25444,7 @@ msgid "Pin or unpin any message."
 msgstr "किसी भी मैसेज को पिन या अनपिन करें।"
 
 #. Body of the confirmation alert shown when pinning a message.
-#: src/features/channel/components/MessageActionUtils.tsx:60
+#: src/features/channel/components/MessageActionUtils.tsx:62
 msgid "Pin this message to the channel for everyone to see."
 msgstr "इस मैसेज को चैनल में पिन करें ताकि सभी देख सकें।"
 
@@ -25767,7 +25769,7 @@ msgid "Prefers reduced motion"
 msgstr "कम गति की प्राथमिकता"
 
 #. Placeholder for persona tag prefix
-#: src/features/persona/components/modals/PersonaEditModal.tsx:119
+#: src/features/persona/components/modals/PersonaEditModal.tsx:120
 msgid "Prefix (e.g. [)"
 msgstr "Prefix (उदा. [)"
 
@@ -25865,12 +25867,12 @@ msgid "Press Continue to use your passkey."
 msgstr "अपनी पासकी का उपयोग करने के लिए 'जारी रखें' दबाएँ।"
 
 #. Label in the channel and chat message reactions.
-#: src/features/channel/components/MessageReactions.tsx:46
+#: src/features/channel/components/MessageReactions.tsx:48
 msgid "press to add reaction"
 msgstr "रिएक्शन जोड़ने के लिए दबाएँ"
 
 #. Label in the channel and chat message reactions. Keep the tone plain and specific.
-#: src/features/channel/components/MessageReactions.tsx:42
+#: src/features/channel/components/MessageReactions.tsx:44
 msgid "press to remove reaction"
 msgstr "रिएक्शन हटाने के लिए दबाएँ"
 
@@ -26108,7 +26110,7 @@ msgid "Privacy violation or stalking"
 msgstr "गोपनीयता का उल्लंघन या पीछा करना"
 
 #. Persona visibility private
-#: src/features/persona/components/modals/PersonaEditModal.tsx:91
+#: src/features/persona/components/modals/PersonaEditModal.tsx:92
 msgid "Private"
 msgstr "प्राइवेट"
 
@@ -26188,12 +26190,12 @@ msgid "Profile banners require {premiumProductName}."
 msgstr "प्रोफ़ाइल बैनर के लिए {premiumProductName} ज़रूरी है।"
 
 #. Helper description for unlisted persona visibility
-#: src/features/persona/components/modals/PersonaEditModal.tsx:95
+#: src/features/persona/components/modals/PersonaEditModal.tsx:96
 msgid "Profile cards are accessible only when clicking on messages sent by this persona. Not listed in your public persona list."
 msgstr "प्रोफ़ाइल कार्ड केवल इस परसोना द्वारा भेजे गए मैसेज पर क्लिक करने पर ही एक्सेस किए जा सकते हैं। यह आपकी सार्वजनिक परसोना लिस्ट में नहीं है।"
 
 #. Helper description for public persona visibility
-#: src/features/persona/components/modals/PersonaEditModal.tsx:99
+#: src/features/persona/components/modals/PersonaEditModal.tsx:100
 msgid "Profile cards are accessible when clicking on messages and visible in your public personas list to friends and mutual servers."
 msgstr "मैसेज पर क्लिक करने पर प्रोफ़ाइल कार्ड एक्सेस किए जा सकते हैं और दोस्तों और म्यूच्यूअल सर्वर को आपकी सार्वजनिक परसोना लिस्ट में दिखाई देते हैं।"
 
@@ -26317,7 +26319,7 @@ msgstr "नया ऑडियो डिवाइस कनेक्ट हो�
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/persona/components/modals/PersonaEditModal.tsx:835
+#: src/features/persona/components/modals/PersonaEditModal.tsx:859
 #: src/features/user/components/modals/tabs/MyProfileTab.tsx:142
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:177
 #: src/features/user/components/settings_utils/section_registry/PrivacySafetySections.ts:160
@@ -26359,7 +26361,7 @@ msgid "PTT"
 msgstr "PTT"
 
 #. Persona visibility public
-#: src/features/persona/components/modals/PersonaEditModal.tsx:87
+#: src/features/persona/components/modals/PersonaEditModal.tsx:88
 msgid "Public"
 msgstr "पब्लिक"
 
@@ -26676,6 +26678,12 @@ msgstr "फिर से रिकॉर्ड करें"
 msgid "React"
 msgstr "रिएक्ट करें"
 
+#. Title of the modal and context menu item to react as a persona.
+#: src/features/persona/components/PersonaReactAsModal.tsx:23
+#: src/features/persona/components/PersonaReactAsModal.tsx:115
+msgid "React as..."
+msgstr "के रूप में प्रतिक्रिया दें..."
+
 #. Accessible label for a quick reaction emoji button. Preserve {emojiShortcode}; it is inserted by code, usually like :smile:.
 #: src/features/channel/components/QuickReactionsRow.tsx:14
 msgid "React with {emojiShortcode}"
@@ -26690,7 +26698,7 @@ msgstr "{name} के रूप में प्रतिक्रिया द�
 msgid "Reacting as <0>{reactorName}</0>"
 msgstr "<0>{reactorName}</0> के रूप में प्रतिक्रिया दे रहे हैं"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:980
+#: src/features/persona/components/modals/PersonaEditModal.tsx:1004
 msgid "Reacting with a signature emoji will always react as this persona, regardless of active persona."
 msgstr "हस्ताक्षर इमोजी के साथ प्रतिक्रिया देने पर हमेशा इस व्यक्तित्व के रूप में प्रतिक्रिया होगी, चाहे कोई भी सक्रिय व्यक्तित्व हो।"
 
@@ -27247,7 +27255,7 @@ msgid "Remove {userName} from your friends?"
 msgstr "क्या आप {userName} को अपने दोस्तों से हटाना चाहते हैं?"
 
 #. Confirm button label on the remove-all-reactions alert. Destructive.
-#: src/features/channel/components/MessageActionUtils.tsx:76
+#: src/features/channel/components/MessageActionUtils.tsx:78
 msgid "Remove all"
 msgstr "सभी हटाएँ"
 
@@ -27260,7 +27268,7 @@ msgstr "इस मैसेज से सभी {emojiNameWithColons} रिए�
 #. Message action that removes every reaction from the selected message.
 #. Title of the confirmation alert shown when clearing every reaction on a message.
 #: src/features/channel/components/MessageActionMenu.tsx:81
-#: src/features/channel/components/MessageActionUtils.tsx:68
+#: src/features/channel/components/MessageActionUtils.tsx:70
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:70
 msgid "Remove all reactions"
 msgstr "सभी रिएक्शन हटाएँ"
@@ -27416,7 +27424,7 @@ msgid "Remove search engine"
 msgstr "सर्च इंजन हटाएँ"
 
 #. Aria label for removing signature emoji
-#: src/features/persona/components/modals/PersonaEditModal.tsx:159
+#: src/features/persona/components/modals/PersonaEditModal.tsx:160
 msgid "Remove signature emoji"
 msgstr "हस्ताक्षर इमोजी हटाएं"
 
@@ -27436,7 +27444,7 @@ msgid "Remove tag {tag}"
 msgstr "{tag} टैग हटाएँ"
 
 #. Aria label for removing a tag pair
-#: src/features/persona/components/modals/PersonaEditModal.tsx:127
+#: src/features/persona/components/modals/PersonaEditModal.tsx:128
 msgid "Remove tag pair"
 msgstr "टैग पेयर हटाएं"
 
@@ -28079,7 +28087,7 @@ msgstr "फिर से भेजा गया"
 #: src/features/app/components/floating/ColorPickerPopover.tsx:192
 #: src/features/input/components/KeybindRecorder.tsx:459
 #: src/features/messaging/components/modals/ImageCropModal.tsx:1022
-#: src/features/persona/components/modals/PersonaEditModal.tsx:777
+#: src/features/persona/components/modals/PersonaEditModal.tsx:801
 msgid "Reset"
 msgstr "रीसेट करें"
 
@@ -28821,6 +28829,7 @@ msgid "Romanian"
 msgstr "रोमानियाई"
 
 #: src/features/persona/components/PersonaPickerSheet.tsx:151
+#: src/features/persona/components/PersonaReactAsModal.tsx:169
 msgid "Root Account (Default)"
 msgstr "रूट अकाउंट (डिफ़ॉल्ट)"
 
@@ -28956,7 +28965,7 @@ msgid "Save banner"
 msgstr "बैनर सेव करें"
 
 #: src/features/app/components/dialogs/shared/UnsavedChangesBannerContent.tsx:60
-#: src/features/persona/components/modals/PersonaEditModal.tsx:786
+#: src/features/persona/components/modals/PersonaEditModal.tsx:810
 msgid "Save changes"
 msgstr "बदलाव सेव करें"
 
@@ -29486,7 +29495,9 @@ msgid "Search permissions…"
 msgstr "अनुमतियाँ खोजें…"
 
 #. Search placeholder in persona picker sheet
+#. Search placeholder in persona picker sheet
 #: src/features/persona/components/PersonaPickerSheet.tsx:29
+#: src/features/persona/components/PersonaReactAsModal.tsx:28
 msgid "Search personas, tags, pronouns..."
 msgstr "परसोना, टैग, प्रोनाउन खोजें..."
 
@@ -29499,6 +29510,7 @@ msgstr "खोज के नतीजे"
 
 #. placeholder {0}: filteredPersonas.length
 #: src/features/persona/components/PersonaPickerSheet.tsx:189
+#: src/features/persona/components/PersonaReactAsModal.tsx:179
 msgid "Search Results ({0})"
 msgstr "सर्च रिज़ल्ट ({0})"
 
@@ -31443,11 +31455,11 @@ msgid "Signal strength loading"
 msgstr "सिग्नल स्ट्रेंथ लोड हो रही है"
 
 #. Validation error when signature emoji is already used by another persona
-#: src/features/persona/components/modals/PersonaEditModal.tsx:147
+#: src/features/persona/components/modals/PersonaEditModal.tsx:148
 msgid "Signature emoji already in use by persona \"{name}\""
 msgstr "हस्ताक्षर इमोजी का उपयोग पहले से ही व्यक्तित्व \"{name}\" द्वारा किया जा रहा है"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:949
+#: src/features/persona/components/modals/PersonaEditModal.tsx:973
 msgid "Signature Emojis"
 msgstr "हस्ताक्षर इमोजी"
 
@@ -33073,7 +33085,7 @@ msgid "Successfully imported {0} persona(s) into your account. All avatar images
 msgstr "आपके अकाउंट में {0} परसोना सफलतापूर्वक इंपोर्ट हो गए हैं। सभी अवतार इमेज आपके लोकल सर्वर पर सुरक्षित रूप से स्टोर हैं।"
 
 #. Placeholder for persona tag suffix
-#: src/features/persona/components/modals/PersonaEditModal.tsx:123
+#: src/features/persona/components/modals/PersonaEditModal.tsx:124
 msgid "Suffix (e.g. ])"
 msgstr "Suffix (उदा. ])"
 
@@ -33549,7 +33561,7 @@ msgid "Tag Icon"
 msgstr "टैग आइकॉन"
 
 #. Validation error when tag pair is already used by another persona
-#: src/features/persona/components/modals/PersonaEditModal.tsx:143
+#: src/features/persona/components/modals/PersonaEditModal.tsx:144
 msgid "Tag pair already in use by persona \"{name}\""
 msgstr "Tag pair already in use by persona \"{name}\""
 
@@ -33652,7 +33664,7 @@ msgid "Teleporting you to another voice region..."
 msgstr "दूसरे वॉइस रीजन में टेलीपोर्ट कर रहे हैं..."
 
 #. Placeholder for persona bio
-#: src/features/persona/components/modals/PersonaEditModal.tsx:115
+#: src/features/persona/components/modals/PersonaEditModal.tsx:116
 msgid "Tell us about this persona..."
 msgstr "इस परसोना के बारे में बताएं..."
 
@@ -34629,7 +34641,7 @@ msgid "This emoji could not be prepared. Try another file or try again in a mome
 msgstr "यह इमोजी तैयार नहीं किया जा सका। कोई दूसरी फ़ाइल आज़माएँ या कुछ देर बाद फिर से कोशिश करें।"
 
 #. Validation error when signature emoji is duplicated within the same persona
-#: src/features/persona/components/modals/PersonaEditModal.tsx:151
+#: src/features/persona/components/modals/PersonaEditModal.tsx:152
 msgid "This emoji is already added as a signature emoji"
 msgstr "यह इमोजी पहले से ही एक हस्ताक्षर इमोजी के रूप में जोड़ा गया है"
 
@@ -36397,7 +36409,7 @@ msgid "Unfavorite DM"
 msgstr "DM को पसंदीदा से हटाएँ"
 
 #. Emoji context menu action that removes the emoji from favorites.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:32
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:39
 msgid "Unfavorite emoji"
 msgstr "इमोजी को पसंदीदा से हटाएँ"
 
@@ -36597,11 +36609,11 @@ msgid "unknown-role"
 msgstr "unknown-role"
 
 #. Persona visibility unlisted
-#: src/features/persona/components/modals/PersonaEditModal.tsx:83
+#: src/features/persona/components/modals/PersonaEditModal.tsx:84
 msgid "Unlisted"
 msgstr "अनलिस्टेड"
 
-#: src/features/channel/components/EmojiPicker.tsx:180
+#: src/features/channel/components/EmojiPicker.tsx:200
 #: src/features/channel/components/MobileEmojiPicker.tsx:213
 msgid "Unlock {lockedEmojiCount, plural, one {# custom emoji} other {# custom emojis}} from {communityCount, plural, one {# community} other {# communities}} with {PREMIUM_PRODUCT_NAME}."
 msgstr "{lockedEmojiCount, plural, one {# कस्टम इमोजी} other {# कस्टम इमोजी}} को {communityCount, plural, one {# कम्युनिटी} other {# कम्युनिटी}} से {PREMIUM_PRODUCT_NAME} के साथ अनलॉक करें।"
@@ -36772,7 +36784,7 @@ msgid "Unordered"
 msgstr "बिना क्रम के"
 
 #. Confirm button label on the unpin message alert.
-#: src/features/channel/components/MessageActionUtils.tsx:52
+#: src/features/channel/components/MessageActionUtils.tsx:54
 msgid "Unpin"
 msgstr "अनपिन करें"
 
@@ -36797,7 +36809,7 @@ msgid "Unpin message"
 msgstr "मैसेज अनपिन करें"
 
 #. Body of the confirmation alert shown when unpinning a message.
-#: src/features/channel/components/MessageActionUtils.tsx:48
+#: src/features/channel/components/MessageActionUtils.tsx:50
 msgid "Unpin this message?"
 msgstr "इस मैसेज को अनपिन करें?"
 
@@ -38604,7 +38616,7 @@ msgid "Virginia"
 msgstr "वर्जीनिया"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/persona/components/modals/PersonaEditModal.tsx:1001
+#: src/features/persona/components/modals/PersonaEditModal.tsx:1025
 #: src/features/user/components/settings_utils/section_registry/AccessibilitySections.ts:39
 msgid "Visibility"
 msgstr "विज़िबिलिटी"
@@ -39983,7 +39995,7 @@ msgstr "आप अभी भी अकाउंट बना सकते है
 msgid "You can still email {supportEmail} for a human review at any time."
 msgstr "आप अभी भी किसी भी समय मानवीय समीक्षा के लिए {supportEmail} पर ईमेल कर सकते हैं।"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:884
+#: src/features/persona/components/modals/PersonaEditModal.tsx:908
 #: src/features/user/components/modals/tabs/my_profile_tab/BioEditor.tsx:288
 msgid "You can use links, emoji, and Markdown."
 msgstr "आप लिंक, इमोजी और मार्कडाउन का इस्तेमाल कर सकते हैं।"
@@ -40255,7 +40267,7 @@ msgid "You have refunded recently"
 msgstr "आपने हाल ही में रिफंड किया है"
 
 #: src/features/app/components/dialogs/shared/UnsavedChangesBannerContent.tsx:37
-#: src/features/persona/components/modals/PersonaEditModal.tsx:766
+#: src/features/persona/components/modals/PersonaEditModal.tsx:790
 msgid "You have unsaved changes."
 msgstr "आपके कुछ बदलाव सेव नहीं हुए हैं।"
 

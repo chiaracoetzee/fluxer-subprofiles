@@ -1009,7 +1009,7 @@ msgid "{count, plural, one {# mutual community} other {# mutual communities}}"
 msgstr "{count, plural, one {# komunitas bersama} other {# komunitas bersama}}"
 
 #: src/features/messaging/utils/MessageReactionUtils.ts:53
-#: src/features/messaging/utils/ReactionUtils.ts:54
+#: src/features/messaging/utils/ReactionUtils.ts:69
 msgid "{count, plural, one {# other} other {# others}}"
 msgstr "{count, plural, one {# lainnya} other {# lainnya}}"
 
@@ -1023,7 +1023,7 @@ msgid "{count, plural, one {# potential spammer message} other {# potential spam
 msgstr "{count, plural, one {# pesan spammer potensial} other {# pesan spammer potensial}}"
 
 #: src/features/app/components/shared/MessageReactionsContent.tsx:58
-#: src/features/channel/components/MessageReactions.tsx:146
+#: src/features/channel/components/MessageReactions.tsx:154
 msgid "{count, plural, one {# reaction} other {# reactions}}"
 msgstr "{count, plural, one {# reaksi} other {# reaksi}}"
 
@@ -1301,12 +1301,12 @@ msgid "{emojiName}, {reactionCountText}"
 msgstr "{emojiName}, {reactionCountText}"
 
 #. Short label in the channel and chat message reactions. Keep it concise. Preserve {emojiName}, {reactionCountText}; they are inserted by code.
-#: src/features/channel/components/MessageReactions.tsx:50
+#: src/features/channel/components/MessageReactions.tsx:52
 msgid "{emojiName}: {reactionCountText}"
 msgstr "{emojiName}: {reactionCountText}"
 
 #. Short label in the channel and chat message reactions. Keep it concise. Preserve {emojiName}, {reactionCountText}, {actionText}; they are inserted by code.
-#: src/features/channel/components/MessageReactions.tsx:55
+#: src/features/channel/components/MessageReactions.tsx:57
 msgid "{emojiName}: {reactionCountText}, {actionText}"
 msgstr "{emojiName}: {reactionCountText}, {actionText}"
 
@@ -1847,7 +1847,7 @@ msgstr "Logo teks {productName}"
 #. Reaction tooltip. Preserve {emojiName}, {reactors}; they are inserted by code. {reactorCount} is how many people reacted, for verb agreement. Order the parts so the emoji never reads as the one doing the reacting.
 #. Reaction tooltip. Preserve {emojiName}, {reactors}; they are inserted by code. {reactorCount} is how many people reacted, for verb agreement. Order the parts so the emoji never reads as the one doing the reacting.
 #: src/features/messaging/utils/MessageReactionUtils.ts:16
-#: src/features/messaging/utils/ReactionUtils.ts:17
+#: src/features/messaging/utils/ReactionUtils.ts:32
 msgid "{reactorCount, plural, one {{emojiName} reacted by {reactors}} other {{emojiName} reacted by {reactors}}}"
 msgstr "{reactorCount, plural, one {{reactors} bereaksi dengan {emojiName}} other {{reactors} bereaksi dengan {emojiName}}}"
 
@@ -2577,7 +2577,7 @@ msgstr "Tentang {appName}"
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Short label in the user profile shared popout. Keep it concise.
 #: src/features/app/components/pages/YouPage.tsx:166
-#: src/features/persona/components/modals/PersonaEditModal.tsx:876
+#: src/features/persona/components/modals/PersonaEditModal.tsx:900
 #: src/features/persona/components/PersonaProfileMobileSheet.tsx:400
 #: src/features/persona/components/PersonaProfileMobileSheet.tsx:409
 #: src/features/user/components/modals/tabs/my_profile_tab/BioEditor.tsx:26
@@ -3092,9 +3092,9 @@ msgid "Add email"
 msgstr "Tambah email"
 
 #. placeholder {0}: formData.signatureEmojis.length
-#: src/features/persona/components/modals/PersonaEditModal.tsx:973
-msgid "Add Emoji ({0}/{MAX_SIGNATURE_EMOJIS_PER_PERSONA})"
-msgstr "Tambah Emoji ({0}/{MAX_SIGNATURE_EMOJIS_PER_PERSONA})"
+#: src/features/persona/components/modals/PersonaEditModal.tsx:997
+msgid "Add Emoji ({0})"
+msgstr "Tambah Emoji ({0})"
 
 #. Modal or page title for the add-favorite-channels flow.
 #: src/features/expressions/components/modals/AddFavoriteChannelModal.tsx:28
@@ -3239,7 +3239,7 @@ msgid "Add stream"
 msgstr "Tambahkan streaming"
 
 #. placeholder {0}: formData.tags.length
-#: src/features/persona/components/modals/PersonaEditModal.tsx:905
+#: src/features/persona/components/modals/PersonaEditModal.tsx:929
 msgid "Add Tag Pair ({0}/5)"
 msgstr "Tambah Pasangan Tag ({0}/5)"
 
@@ -4529,7 +4529,7 @@ msgid "Are you sure you want to delete <0>{0}</0>?"
 msgstr "Yakin ingin menghapus <0>{0}</0>?"
 
 #. placeholder {0}: formData.name
-#: src/features/persona/components/modals/PersonaEditModal.tsx:702
+#: src/features/persona/components/modals/PersonaEditModal.tsx:726
 msgid "Are you sure you want to delete <0>{0}</0>? This action cannot be undone."
 msgstr "Apakah Anda yakin ingin menghapus <0>{0}</0>? Tindakan ini tidak dapat dibatalkan."
 
@@ -8009,7 +8009,7 @@ msgid "Clear custom status"
 msgstr "Hapus status kustom"
 
 #. Body of the confirmation alert shown when clearing every reaction on a message.
-#: src/features/channel/components/MessageActionUtils.tsx:72
+#: src/features/channel/components/MessageActionUtils.tsx:74
 msgid "Clear every reaction from this message?"
 msgstr "Hapus semua reaksi dari pesan ini?"
 
@@ -9588,7 +9588,7 @@ msgid "Copy emoji"
 msgstr "Salin emoji"
 
 #. Developer-mode action that copies the emoji ID to the clipboard.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:40
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:47
 msgid "Copy emoji ID"
 msgstr "Salin ID emoji"
 
@@ -9604,14 +9604,14 @@ msgstr "Salin tautan file"
 
 #. Media context menu action that copies a GIF attachment to the clipboard.
 #. Media context menu action that copies a GIF to the clipboard.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:48
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:55
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:54
 msgid "Copy GIF"
 msgstr "Salin GIF"
 
 #. Media context menu action that copies the URL of the GIF attachment.
 #. Media context menu action that copies the URL of the GIF.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:64
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:71
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:74
 msgid "Copy GIF link"
 msgstr "Salin tautan GIF"
@@ -9638,7 +9638,7 @@ msgstr "Salin pengenal"
 
 #. Media context menu action that copies an image attachment to the clipboard.
 #. Media context menu action that copies an image to the clipboard.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:44
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:51
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:50
 msgid "Copy image"
 msgstr "Salin gambar"
@@ -9646,7 +9646,7 @@ msgstr "Salin gambar"
 #. Image context menu action that copies the image URL to the clipboard.
 #. Image context menu action that copies the image URL to the clipboard.
 #. Image context menu action that copies the image URL to the clipboard.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:60
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:67
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:70
 #: src/features/ui/action_menu/items/StickerContextMenuItems.tsx:44
 msgid "Copy image link"
@@ -11471,7 +11471,7 @@ msgstr "Delaware"
 #: src/features/emoji/components/stickers/StickerGridItem.tsx:35
 #: src/features/messaging/commands/MessageCommands.tsx:81
 #: src/features/moderation/components/report_modal/IARModalCopy.ts:109
-#: src/features/persona/components/modals/PersonaEditModal.tsx:706
+#: src/features/persona/components/modals/PersonaEditModal.tsx:730
 #: src/features/platform/utils/DesktopLocaleBridge.ts:77
 #: src/features/theme_studio/sections/LibrarySection.tsx:514
 #: src/features/user/components/modals/tabs/account_security_tab/SecurityTab.tsx:517
@@ -11652,12 +11652,12 @@ msgid "Delete passkey"
 msgstr "Hapus passkey"
 
 #. Aria label for deleting persona
-#: src/features/persona/components/modals/PersonaEditModal.tsx:131
+#: src/features/persona/components/modals/PersonaEditModal.tsx:132
 msgid "Delete persona"
 msgstr "Hapus persona"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:700
-#: src/features/persona/components/modals/PersonaEditModal.tsx:1024
+#: src/features/persona/components/modals/PersonaEditModal.tsx:724
+#: src/features/persona/components/modals/PersonaEditModal.tsx:1048
 msgid "Delete Persona"
 msgstr "Hapus Persona"
 
@@ -12606,7 +12606,7 @@ msgstr "Mode tampilan"
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Short label in the inputs tab. Keep it concise.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/persona/components/modals/PersonaEditModal.tsx:825
+#: src/features/persona/components/modals/PersonaEditModal.tsx:849
 #: src/features/user/components/modals/tabs/component_gallery_tab/ComponentGalleryTabInputsTab.tsx:22
 #: src/features/user/components/modals/tabs/MyProfileTab.tsx:138
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:61
@@ -12967,14 +12967,14 @@ msgstr "Unduh fluxer-verification"
 
 #. Media context menu action that downloads a GIF attachment.
 #. Media context menu action that downloads a GIF to disk.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:56
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:63
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:114
 msgid "Download GIF"
 msgstr "Unduh GIF"
 
 #. Image context menu action that downloads the image to disk.
 #. Image context menu action that downloads the image to disk.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:52
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:59
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:110
 msgid "Download image"
 msgstr "Unduh gambar"
@@ -13180,7 +13180,7 @@ msgid "Duplicate role"
 msgstr "Duplikat peran"
 
 #. Validation error when tag pair is duplicated within the same persona
-#: src/features/persona/components/modals/PersonaEditModal.tsx:139
+#: src/features/persona/components/modals/PersonaEditModal.tsx:140
 msgid "Duplicate tag pair on this persona"
 msgstr "Pasangan tag duplikat pada persona ini"
 
@@ -13195,12 +13195,12 @@ msgid "Dutch"
 msgstr "Belanda"
 
 #. Placeholder for persona name
-#: src/features/persona/components/modals/PersonaEditModal.tsx:107
+#: src/features/persona/components/modals/PersonaEditModal.tsx:108
 msgid "e.g. Alice"
 msgstr "mis. Alice"
 
 #. Placeholder for persona pronouns
-#: src/features/persona/components/modals/PersonaEditModal.tsx:111
+#: src/features/persona/components/modals/PersonaEditModal.tsx:112
 msgid "e.g. she/her"
 msgstr "mis. dia/nya"
 
@@ -13393,7 +13393,7 @@ msgid "Edit persona"
 msgstr "Ubah persona"
 
 #. Title for edit persona modal
-#: src/features/persona/components/modals/PersonaEditModal.tsx:59
+#: src/features/persona/components/modals/PersonaEditModal.tsx:60
 msgid "Edit Persona"
 msgstr "Ubah Persona"
 
@@ -13650,12 +13650,12 @@ msgid "Embeds"
 msgstr "Sematan"
 
 #. Toast confirmation after hiding link previews and embeds on a message.
-#: src/features/channel/components/MessageActionUtils.tsx:84
+#: src/features/channel/components/MessageActionUtils.tsx:86
 msgid "Embeds suppressed"
 msgstr "Sematan disembunyikan"
 
 #. Toast confirmation after re-enabling link previews and embeds on a message.
-#: src/features/channel/components/MessageActionUtils.tsx:80
+#: src/features/channel/components/MessageActionUtils.tsx:82
 msgid "Embeds unsuppressed"
 msgstr "Sematan ditampilkan lagi"
 
@@ -14965,7 +14965,7 @@ msgid "Failed to delete channel"
 msgstr "Gagal menghapus saluran"
 
 #. Toast when persona deletion fails
-#: src/features/persona/components/modals/PersonaEditModal.tsx:79
+#: src/features/persona/components/modals/PersonaEditModal.tsx:80
 msgid "Failed to delete persona"
 msgstr "Gagal menghapus persona"
 
@@ -15140,7 +15140,7 @@ msgid "Failed to reset premium state."
 msgstr "Gagal mengatur ulang status premium."
 
 #. Toast when persona save fails
-#: src/features/persona/components/modals/PersonaEditModal.tsx:71
+#: src/features/persona/components/modals/PersonaEditModal.tsx:72
 msgid "Failed to save persona"
 msgstr "Gagal menyimpan persona"
 
@@ -15306,7 +15306,7 @@ msgid "Favorite DM"
 msgstr "Tambahkan DM ke favorit"
 
 #. Emoji context menu action that adds the emoji to favorites.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:36
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:43
 msgid "Favorite emoji"
 msgstr "Tambahkan emoji ke favorit"
 
@@ -20182,7 +20182,7 @@ msgstr "Membuat saluran mewarisi setelan konten dewasa"
 msgid "Mail"
 msgstr "Email"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:1118
+#: src/features/persona/components/modals/PersonaEditModal.tsx:1142
 #: src/features/persona/components/PersonaProfileMobileSheet.tsx:420
 #: src/features/persona/components/PersonaProfilePopout.tsx:305
 msgid "Main account"
@@ -20687,7 +20687,7 @@ msgid "Maximizes visible messages with minimal spacing."
 msgstr "Memaksimalkan pesan yang terlihat dengan spasi minimal."
 
 #. Validation error when signature emoji limit is reached
-#: src/features/persona/components/modals/PersonaEditModal.tsx:155
+#: src/features/persona/components/modals/PersonaEditModal.tsx:156
 msgid "Maximum {max} signature emojis allowed per persona"
 msgstr "Maksimum {max} emoji tanda tangan diizinkan per persona"
 
@@ -21764,7 +21764,7 @@ msgid "More button"
 msgstr "Tombol lainnya"
 
 #. Submenu label that contains additional emoji context menu actions.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:76
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:83
 msgid "More emoji actions"
 msgstr "Tindakan emoji lainnya"
 
@@ -22650,7 +22650,7 @@ msgid "New password"
 msgstr "Kata sandi baru"
 
 #. Title for new persona modal
-#: src/features/persona/components/modals/PersonaEditModal.tsx:55
+#: src/features/persona/components/modals/PersonaEditModal.tsx:56
 msgid "New Persona"
 msgstr "Persona Baru"
 
@@ -22978,7 +22978,7 @@ msgid "No emojis found matching your search."
 msgstr "Tidak ada emoji yang cocok dengan pencarianmu."
 
 #. Empty-state text in the channel and chat emoji picker.
-#: src/features/channel/components/EmojiPicker.tsx:65
+#: src/features/channel/components/EmojiPicker.tsx:72
 msgid "No emojis match that search"
 msgstr "Tidak ada emoji yang cocok dengan pencarian itu"
 
@@ -23082,6 +23082,7 @@ msgid "No matches found"
 msgstr "Tidak ada yang cocok"
 
 #: src/features/persona/components/PersonaPickerSheet.tsx:197
+#: src/features/persona/components/PersonaReactAsModal.tsx:188
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:581
 msgid "No matching personas found."
 msgstr "Tidak ditemukan persona yang cocok."
@@ -23921,7 +23922,7 @@ msgid "Only the selected ones"
 msgstr "Hanya yang dipilih"
 
 #. Helper description for private persona visibility
-#: src/features/persona/components/modals/PersonaEditModal.tsx:103
+#: src/features/persona/components/modals/PersonaEditModal.tsx:104
 msgid "Only visible to you. Others cannot view this persona’s full bio or profile details."
 msgstr "Hanya terlihat oleh Anda. Orang lain tidak dapat melihat bio lengkap atau detail profil persona ini."
 
@@ -24201,7 +24202,7 @@ msgstr "Buka tautan file"
 
 #. Media context menu action that opens the GIF URL in an external browser.
 #. Media context menu action that opens the GIF URL in an external browser.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:72
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:79
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:94
 msgid "Open GIF link"
 msgstr "Buka tautan GIF"
@@ -24235,7 +24236,7 @@ msgstr "Buka gambar dalam tampilan penuh"
 #. Image context menu action that opens the image URL in an external browser.
 #. Image context menu action that opens the image URL in an external browser.
 #. Image context menu action that opens the image URL in an external browser.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:68
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:75
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:90
 #: src/features/ui/action_menu/items/StickerContextMenuItems.tsx:48
 msgid "Open image link"
@@ -25186,12 +25187,12 @@ msgid "Permissions for {0}"
 msgstr "Izin untuk {0}"
 
 #. Toast when persona is created
-#: src/features/persona/components/modals/PersonaEditModal.tsx:67
+#: src/features/persona/components/modals/PersonaEditModal.tsx:68
 msgid "Persona created"
 msgstr "Persona dibuat"
 
 #. Toast when persona is deleted
-#: src/features/persona/components/modals/PersonaEditModal.tsx:75
+#: src/features/persona/components/modals/PersonaEditModal.tsx:76
 msgid "Persona deleted"
 msgstr "Persona dihapus"
 
@@ -25209,17 +25210,17 @@ msgstr "Profil persona"
 msgid "Persona profile: {name}"
 msgstr "Profil persona: {name}"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:896
+#: src/features/persona/components/modals/PersonaEditModal.tsx:920
 msgid "Persona Tags (Prefix & Suffix)"
 msgstr "Tag Persona (Awalan & Akhiran)"
 
 #. Toast when persona is updated
-#: src/features/persona/components/modals/PersonaEditModal.tsx:63
+#: src/features/persona/components/modals/PersonaEditModal.tsx:64
 msgid "Persona updated"
 msgstr "Persona diperbarui"
 
 #. Aria label for persona visibility tabs
-#: src/features/persona/components/modals/PersonaEditModal.tsx:135
+#: src/features/persona/components/modals/PersonaEditModal.tsx:136
 msgid "Persona visibility"
 msgstr "Visibilitas persona"
 
@@ -25242,6 +25243,7 @@ msgstr "Catatan pribadi sudah kosong"
 
 #. Title of personas settings section
 #. User settings tab for personas.
+#: src/features/persona/components/PersonaReactAsModal.tsx:181
 #: src/features/persona/components/settings/PersonaSettingsTab.tsx:76
 #: src/features/user/components/settings_utils/SettingsConstants.tsx:91
 msgid "Personas"
@@ -25397,7 +25399,7 @@ msgstr "Gambar dalam gambar"
 
 #. Confirm button label on the pin message alert.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/channel/components/MessageActionUtils.tsx:64
+#: src/features/channel/components/MessageActionUtils.tsx:66
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:70
 msgid "Pin"
 msgstr "Sematkan"
@@ -25415,7 +25417,7 @@ msgstr "Sematkan DM grup"
 #. Generic action label that pins a message to the channel pins.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Title of the confirmation alert shown when pinning a message.
-#: src/features/channel/components/MessageActionUtils.tsx:56
+#: src/features/channel/components/MessageActionUtils.tsx:58
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:539
 #: src/features/input/state/input_keybind/shared.ts:13
 msgid "Pin message"
@@ -25442,7 +25444,7 @@ msgid "Pin or unpin any message."
 msgstr "Sematkan atau batalkan sematan pesan apa pun."
 
 #. Body of the confirmation alert shown when pinning a message.
-#: src/features/channel/components/MessageActionUtils.tsx:60
+#: src/features/channel/components/MessageActionUtils.tsx:62
 msgid "Pin this message to the channel for everyone to see."
 msgstr "Sematkan pesan ini ke saluran agar semua orang bisa melihatnya."
 
@@ -25767,7 +25769,7 @@ msgid "Prefers reduced motion"
 msgstr "Preferensi gerakan dikurangi"
 
 #. Placeholder for persona tag prefix
-#: src/features/persona/components/modals/PersonaEditModal.tsx:119
+#: src/features/persona/components/modals/PersonaEditModal.tsx:120
 msgid "Prefix (e.g. [)"
 msgstr "Awalan (mis. [)"
 
@@ -25865,12 +25867,12 @@ msgid "Press Continue to use your passkey."
 msgstr "Tekan Lanjutkan untuk menggunakan passkey kamu."
 
 #. Label in the channel and chat message reactions.
-#: src/features/channel/components/MessageReactions.tsx:46
+#: src/features/channel/components/MessageReactions.tsx:48
 msgid "press to add reaction"
 msgstr "tekan untuk menambahkan reaksi"
 
 #. Label in the channel and chat message reactions. Keep the tone plain and specific.
-#: src/features/channel/components/MessageReactions.tsx:42
+#: src/features/channel/components/MessageReactions.tsx:44
 msgid "press to remove reaction"
 msgstr "tekan untuk menghapus reaksi"
 
@@ -26108,7 +26110,7 @@ msgid "Privacy violation or stalking"
 msgstr "Pelanggaran privasi atau penguntitan"
 
 #. Persona visibility private
-#: src/features/persona/components/modals/PersonaEditModal.tsx:91
+#: src/features/persona/components/modals/PersonaEditModal.tsx:92
 msgid "Private"
 msgstr "Privat"
 
@@ -26188,12 +26190,12 @@ msgid "Profile banners require {premiumProductName}."
 msgstr "Banner profil memerlukan {premiumProductName}."
 
 #. Helper description for unlisted persona visibility
-#: src/features/persona/components/modals/PersonaEditModal.tsx:95
+#: src/features/persona/components/modals/PersonaEditModal.tsx:96
 msgid "Profile cards are accessible only when clicking on messages sent by this persona. Not listed in your public persona list."
 msgstr "Kartu profil hanya dapat diakses saat mengeklik pesan yang dikirim oleh persona ini. Tidak terdaftar dalam daftar persona publik Anda."
 
 #. Helper description for public persona visibility
-#: src/features/persona/components/modals/PersonaEditModal.tsx:99
+#: src/features/persona/components/modals/PersonaEditModal.tsx:100
 msgid "Profile cards are accessible when clicking on messages and visible in your public personas list to friends and mutual servers."
 msgstr "Kartu profil dapat diakses saat mengeklik pesan dan terlihat dalam daftar persona publik Anda oleh teman dan server bersama."
 
@@ -26317,7 +26319,7 @@ msgstr "Tanya saat ada perangkat audio baru"
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/persona/components/modals/PersonaEditModal.tsx:835
+#: src/features/persona/components/modals/PersonaEditModal.tsx:859
 #: src/features/user/components/modals/tabs/MyProfileTab.tsx:142
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:177
 #: src/features/user/components/settings_utils/section_registry/PrivacySafetySections.ts:160
@@ -26359,7 +26361,7 @@ msgid "PTT"
 msgstr "PTT"
 
 #. Persona visibility public
-#: src/features/persona/components/modals/PersonaEditModal.tsx:87
+#: src/features/persona/components/modals/PersonaEditModal.tsx:88
 msgid "Public"
 msgstr "Publik"
 
@@ -26676,6 +26678,12 @@ msgstr "Rekam ulang"
 msgid "React"
 msgstr "Reaksi"
 
+#. Title of the modal and context menu item to react as a persona.
+#: src/features/persona/components/PersonaReactAsModal.tsx:23
+#: src/features/persona/components/PersonaReactAsModal.tsx:115
+msgid "React as..."
+msgstr "Bereaksi sebagai..."
+
 #. Accessible label for a quick reaction emoji button. Preserve {emojiShortcode}; it is inserted by code, usually like :smile:.
 #: src/features/channel/components/QuickReactionsRow.tsx:14
 msgid "React with {emojiShortcode}"
@@ -26690,7 +26698,7 @@ msgstr "Bereaksi sebagai {name}"
 msgid "Reacting as <0>{reactorName}</0>"
 msgstr "Bereaksi sebagai <0>{reactorName}</0>"
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:980
+#: src/features/persona/components/modals/PersonaEditModal.tsx:1004
 msgid "Reacting with a signature emoji will always react as this persona, regardless of active persona."
 msgstr "Bereaksi dengan emoji tanda tangan akan selalu bereaksi sebagai persona ini, terlepas dari persona yang aktif."
 
@@ -27247,7 +27255,7 @@ msgid "Remove {userName} from your friends?"
 msgstr "Hapus {userName} dari daftar temanmu?"
 
 #. Confirm button label on the remove-all-reactions alert. Destructive.
-#: src/features/channel/components/MessageActionUtils.tsx:76
+#: src/features/channel/components/MessageActionUtils.tsx:78
 msgid "Remove all"
 msgstr "Hapus semua"
 
@@ -27260,7 +27268,7 @@ msgstr "Hapus semua reaksi {emojiNameWithColons} dari pesan ini?"
 #. Message action that removes every reaction from the selected message.
 #. Title of the confirmation alert shown when clearing every reaction on a message.
 #: src/features/channel/components/MessageActionMenu.tsx:81
-#: src/features/channel/components/MessageActionUtils.tsx:68
+#: src/features/channel/components/MessageActionUtils.tsx:70
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:70
 msgid "Remove all reactions"
 msgstr "Hapus semua reaksi"
@@ -27416,7 +27424,7 @@ msgid "Remove search engine"
 msgstr "Hapus mesin pencari"
 
 #. Aria label for removing signature emoji
-#: src/features/persona/components/modals/PersonaEditModal.tsx:159
+#: src/features/persona/components/modals/PersonaEditModal.tsx:160
 msgid "Remove signature emoji"
 msgstr "Hapus emoji tanda tangan"
 
@@ -27436,7 +27444,7 @@ msgid "Remove tag {tag}"
 msgstr "Hapus tag {tag}"
 
 #. Aria label for removing a tag pair
-#: src/features/persona/components/modals/PersonaEditModal.tsx:127
+#: src/features/persona/components/modals/PersonaEditModal.tsx:128
 msgid "Remove tag pair"
 msgstr "Hapus pasangan tag"
 
@@ -28079,7 +28087,7 @@ msgstr "Dikirim ulang"
 #: src/features/app/components/floating/ColorPickerPopover.tsx:192
 #: src/features/input/components/KeybindRecorder.tsx:459
 #: src/features/messaging/components/modals/ImageCropModal.tsx:1022
-#: src/features/persona/components/modals/PersonaEditModal.tsx:777
+#: src/features/persona/components/modals/PersonaEditModal.tsx:801
 msgid "Reset"
 msgstr "Setel ulang"
 
@@ -28821,6 +28829,7 @@ msgid "Romanian"
 msgstr "Rumania"
 
 #: src/features/persona/components/PersonaPickerSheet.tsx:151
+#: src/features/persona/components/PersonaReactAsModal.tsx:169
 msgid "Root Account (Default)"
 msgstr "Akun Utama (Default)"
 
@@ -28956,7 +28965,7 @@ msgid "Save banner"
 msgstr "Simpan banner"
 
 #: src/features/app/components/dialogs/shared/UnsavedChangesBannerContent.tsx:60
-#: src/features/persona/components/modals/PersonaEditModal.tsx:786
+#: src/features/persona/components/modals/PersonaEditModal.tsx:810
 msgid "Save changes"
 msgstr "Simpan perubahan"
 
@@ -29486,7 +29495,9 @@ msgid "Search permissions…"
 msgstr "Cari izin…"
 
 #. Search placeholder in persona picker sheet
+#. Search placeholder in persona picker sheet
 #: src/features/persona/components/PersonaPickerSheet.tsx:29
+#: src/features/persona/components/PersonaReactAsModal.tsx:28
 msgid "Search personas, tags, pronouns..."
 msgstr "Cari persona, tag, kata ganti..."
 
@@ -29499,6 +29510,7 @@ msgstr "Hasil pencarian"
 
 #. placeholder {0}: filteredPersonas.length
 #: src/features/persona/components/PersonaPickerSheet.tsx:189
+#: src/features/persona/components/PersonaReactAsModal.tsx:179
 msgid "Search Results ({0})"
 msgstr "Hasil Pencarian ({0})"
 
@@ -31443,11 +31455,11 @@ msgid "Signal strength loading"
 msgstr "Kekuatan sinyal sedang dimuat"
 
 #. Validation error when signature emoji is already used by another persona
-#: src/features/persona/components/modals/PersonaEditModal.tsx:147
+#: src/features/persona/components/modals/PersonaEditModal.tsx:148
 msgid "Signature emoji already in use by persona \"{name}\""
 msgstr "Emoji tanda tangan sudah digunakan oleh persona \"{name}\""
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:949
+#: src/features/persona/components/modals/PersonaEditModal.tsx:973
 msgid "Signature Emojis"
 msgstr "Emoji Tanda Tangan"
 
@@ -33073,7 +33085,7 @@ msgid "Successfully imported {0} persona(s) into your account. All avatar images
 msgstr "Berhasil mengimpor {0} persona ke akun Anda. Semua gambar avatar disimpan dengan aman di server lokal Anda."
 
 #. Placeholder for persona tag suffix
-#: src/features/persona/components/modals/PersonaEditModal.tsx:123
+#: src/features/persona/components/modals/PersonaEditModal.tsx:124
 msgid "Suffix (e.g. ])"
 msgstr "Akhiran (mis. ])"
 
@@ -33549,7 +33561,7 @@ msgid "Tag Icon"
 msgstr "Ikon Tag"
 
 #. Validation error when tag pair is already used by another persona
-#: src/features/persona/components/modals/PersonaEditModal.tsx:143
+#: src/features/persona/components/modals/PersonaEditModal.tsx:144
 msgid "Tag pair already in use by persona \"{name}\""
 msgstr "Tag pair already in use by persona \"{name}\""
 
@@ -33652,7 +33664,7 @@ msgid "Teleporting you to another voice region..."
 msgstr "Memindahkanmu ke wilayah suara lain..."
 
 #. Placeholder for persona bio
-#: src/features/persona/components/modals/PersonaEditModal.tsx:115
+#: src/features/persona/components/modals/PersonaEditModal.tsx:116
 msgid "Tell us about this persona..."
 msgstr "Ceritakan kepada kami tentang persona ini..."
 
@@ -34629,7 +34641,7 @@ msgid "This emoji could not be prepared. Try another file or try again in a mome
 msgstr "Emoji ini tidak dapat disiapkan. Coba file lain atau coba lagi sebentar lagi."
 
 #. Validation error when signature emoji is duplicated within the same persona
-#: src/features/persona/components/modals/PersonaEditModal.tsx:151
+#: src/features/persona/components/modals/PersonaEditModal.tsx:152
 msgid "This emoji is already added as a signature emoji"
 msgstr "Emoji ini sudah ditambahkan sebagai emoji tanda tangan"
 
@@ -36397,7 +36409,7 @@ msgid "Unfavorite DM"
 msgstr "Hapus DM dari favorit"
 
 #. Emoji context menu action that removes the emoji from favorites.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:32
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:39
 msgid "Unfavorite emoji"
 msgstr "Hapus emoji dari favorit"
 
@@ -36597,11 +36609,11 @@ msgid "unknown-role"
 msgstr "unknown-role"
 
 #. Persona visibility unlisted
-#: src/features/persona/components/modals/PersonaEditModal.tsx:83
+#: src/features/persona/components/modals/PersonaEditModal.tsx:84
 msgid "Unlisted"
 msgstr "Tidak terdaftar"
 
-#: src/features/channel/components/EmojiPicker.tsx:180
+#: src/features/channel/components/EmojiPicker.tsx:200
 #: src/features/channel/components/MobileEmojiPicker.tsx:213
 msgid "Unlock {lockedEmojiCount, plural, one {# custom emoji} other {# custom emojis}} from {communityCount, plural, one {# community} other {# communities}} with {PREMIUM_PRODUCT_NAME}."
 msgstr "Buka {lockedEmojiCount, plural, one {# emoji kustom} other {# emoji kustom}} dari {communityCount, plural, one {# komunitas} other {# komunitas}} dengan {PREMIUM_PRODUCT_NAME}."
@@ -36772,7 +36784,7 @@ msgid "Unordered"
 msgstr "Tanpa nomor"
 
 #. Confirm button label on the unpin message alert.
-#: src/features/channel/components/MessageActionUtils.tsx:52
+#: src/features/channel/components/MessageActionUtils.tsx:54
 msgid "Unpin"
 msgstr "Lepas sematan"
 
@@ -36797,7 +36809,7 @@ msgid "Unpin message"
 msgstr "Lepas sematan pesan"
 
 #. Body of the confirmation alert shown when unpinning a message.
-#: src/features/channel/components/MessageActionUtils.tsx:48
+#: src/features/channel/components/MessageActionUtils.tsx:50
 msgid "Unpin this message?"
 msgstr "Lepas sematan pesan ini?"
 
@@ -38604,7 +38616,7 @@ msgid "Virginia"
 msgstr "Virginia"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/persona/components/modals/PersonaEditModal.tsx:1001
+#: src/features/persona/components/modals/PersonaEditModal.tsx:1025
 #: src/features/user/components/settings_utils/section_registry/AccessibilitySections.ts:39
 msgid "Visibility"
 msgstr "Visibilitas"
@@ -39983,7 +39995,7 @@ msgstr "Kamu masih bisa membuat akun atau masuk. Jika undangan diaktifkan kembal
 msgid "You can still email {supportEmail} for a human review at any time."
 msgstr "Kamu masih dapat mengirim email ke {supportEmail} untuk peninjauan manual kapan saja."
 
-#: src/features/persona/components/modals/PersonaEditModal.tsx:884
+#: src/features/persona/components/modals/PersonaEditModal.tsx:908
 #: src/features/user/components/modals/tabs/my_profile_tab/BioEditor.tsx:288
 msgid "You can use links, emoji, and Markdown."
 msgstr "Kamu bisa pakai tautan, emoji, dan Markdown."
@@ -40255,7 +40267,7 @@ msgid "You have refunded recently"
 msgstr "Kamu baru saja melakukan pengembalian dana"
 
 #: src/features/app/components/dialogs/shared/UnsavedChangesBannerContent.tsx:37
-#: src/features/persona/components/modals/PersonaEditModal.tsx:766
+#: src/features/persona/components/modals/PersonaEditModal.tsx:790
 msgid "You have unsaved changes."
 msgstr "Ada perubahan yang belum disimpan."
 
