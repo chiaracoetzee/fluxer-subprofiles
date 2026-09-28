@@ -6,7 +6,7 @@ import {
 	SystemChannelFlags,
 	SystemChannelFlagsDescriptions,
 } from '@fluxer/constants/src/GuildConstants';
-import {LIMIT_KEYS} from '@fluxer/constants/src/LimitConfigMetadata';
+import {LIMIT_KEY_METADATA, LIMIT_KEYS, type LimitKey} from '@fluxer/constants/src/LimitConfigMetadata';
 import {ADMIN_ACL_COUNT, AdminAclType} from '@fluxer/schema/src/domains/admin/AdminAclType';
 import {AdminArchiveResponseSchema} from '@fluxer/schema/src/domains/admin/AdminArchiveSchemas';
 import {GuildAdminResponse} from '@fluxer/schema/src/domains/admin/AdminGuildSchemas';
@@ -874,13 +874,33 @@ const LimitRuleSchema = z.object({
 	filters: LimitFilterSchema.optional().describe('Optional filters that scope the rule'),
 	limits: z
 		.record(z.string(), NonNegativeSafeIntegerType)
-		.refine(
-			(limits) => {
-				const limitKeys = Object.keys(limits);
-				return limitKeys.every((key) => (LIMIT_KEYS as ReadonlyArray<string>).includes(key));
-			},
-			{error: 'Invalid limit key detected'},
-		)
+		.superRefine((limits, ctx) => {
+			for (const [key, value] of Object.entries(limits)) {
+				if (!(LIMIT_KEYS as ReadonlyArray<string>).includes(key)) {
+					ctx.addIssue({
+						code: 'custom',
+						message: 'Invalid limit key detected',
+						path: [key],
+					});
+					continue;
+				}
+				const meta = LIMIT_KEY_METADATA[key as LimitKey];
+				if (meta?.max !== undefined && typeof value === 'number' && value > meta.max) {
+					ctx.addIssue({
+						code: 'custom',
+						message: `${meta.label} cannot exceed ${meta.max}`,
+						path: [key],
+					});
+				}
+				if (meta?.min !== undefined && typeof value === 'number' && value < meta.min) {
+					ctx.addIssue({
+						code: 'custom',
+						message: `${meta.label} must be at least ${meta.min}`,
+						path: [key],
+					});
+				}
+			}
+		})
 		.describe('Per-limit key values'),
 });
 const LimitConfigSchema = z.object({

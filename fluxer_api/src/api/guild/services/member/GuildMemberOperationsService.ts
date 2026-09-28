@@ -49,6 +49,7 @@ import {
 	type MentionReplyPreference,
 	UserNotificationSettings,
 } from '@fluxer/constants/src/UserConstants';
+import {MAX_BIO_LENGTH} from '@fluxer/constants/src/LimitConstants';
 import {ValidationErrorCodes} from '@fluxer/constants/src/ValidationErrorCodes';
 import {ContentBlockedError} from '@fluxer/errors/src/domains/content/ContentBlockedError';
 import {InputValidationError} from '@fluxer/errors/src/domains/core/InputValidationError';
@@ -799,6 +800,17 @@ export class GuildMemberOperationsService {
 				if (!bioRateLimit.allowed) {
 					const minutes = Math.ceil((bioRateLimit.retryAfter || 0) / 60);
 					throw InputValidationError.fromCode('bio', ValidationErrorCodes.BIO_CHANGED_TOO_MANY_TIMES, {minutes});
+				}
+				const maxBioLength = resolveLimitSafe(
+					this.limitConfigService.getConfigSnapshot(),
+					ctx,
+					'max_bio_length',
+					MAX_BIO_LENGTH,
+				);
+				if (data.bio && data.bio.length > maxBioLength) {
+					throw InputValidationError.fromCode('bio', ValidationErrorCodes.CONTENT_EXCEEDS_MAX_LENGTH, {
+						maxLength: maxBioLength,
+					});
 				}
 				this.enforceProfileSubstringBlocklist(targetUser, 'bio', data.bio);
 				updateData.bio = data.bio;
