@@ -524,7 +524,7 @@ export class MessageReactionService extends MessageInteractionBase {
 				emoji: params.emoji,
 				user_id: params.userId.toString(),
 				session_id: params.sessionId,
-				persona_id: params.personaId ? params.personaId.toString() : undefined,
+				persona_id: params.personaId != null && params.personaId !== 0n ? params.personaId.toString() : undefined,
 				subprofile: params.subprofile ?? undefined,
 			},
 		});
@@ -548,7 +548,7 @@ export class MessageReactionService extends MessageInteractionBase {
 				emoji: params.emoji,
 				user_id: params.userId.toString(),
 				session_id: params.sessionId,
-				persona_id: params.personaId ? params.personaId.toString() : undefined,
+				persona_id: params.personaId != null && params.personaId !== 0n ? params.personaId.toString() : undefined,
 			},
 		});
 	}
