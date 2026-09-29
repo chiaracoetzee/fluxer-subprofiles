@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+import {useHover} from '@app/features/app/hooks/useHover';
+import {useShouldAnimate} from '@app/features/app/hooks/useShouldAnimate';
 import {SettingsSection} from '@app/features/app/components/dialogs/shared/SettingsSection';
 import {SettingsTabContainer, SettingsTabContent} from '@app/features/app/components/dialogs/shared/SettingsTabLayout';
 import {
@@ -149,7 +151,7 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 	const [isUploadingTagIcon, setIsUploadingTagIcon] = useState(false);
 	const [isSubmitting, setIsSubmitting] = useState(false);
 
-	const resolvedTagIconUrl = useMemo(() => {
+	const staticTagIconUrl = useMemo(() => {
 		if (!tagIcon) return null;
 		if (tagIcon.startsWith('http://') || tagIcon.startsWith('https://') || tagIcon.startsWith('data:')) {
 			return tagIcon;
@@ -157,6 +159,26 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 		const currentUserId = Users.currentUser?.id;
 		return currentUserId ? AvatarUtils.getUserAvatarURL({id: currentUserId, avatar: tagIcon}, false, 32) : tagIcon;
 	}, [tagIcon]);
+
+	const hoverTagIconUrl = useMemo(() => {
+		if (!tagIcon) return null;
+		if (tagIcon.startsWith('http://') || tagIcon.startsWith('https://') || tagIcon.startsWith('data:')) {
+			return tagIcon;
+		}
+		const currentUserId = Users.currentUser?.id;
+		return currentUserId ? AvatarUtils.getUserAvatarURL({id: currentUserId, avatar: tagIcon}, true, 32) : tagIcon;
+	}, [tagIcon]);
+
+	const [tagIconHoverRef, isTagIconHovering] = useHover();
+	const hasDistinctTagIconHover = Boolean(hoverTagIconUrl && hoverTagIconUrl !== staticTagIconUrl);
+	const shouldAnimateTagIcon = useShouldAnimate({
+		kind: 'avatar',
+		isAnimated: hasDistinctTagIconHover,
+		isHovering: hasDistinctTagIconHover && isTagIconHovering,
+	});
+	const resolvedTagIconUrl = shouldAnimateTagIcon ? hoverTagIconUrl : staticTagIconUrl;
+
+	const [previewCardHoverRef, isPreviewCardHovering] = useHover();
 
 	const syncedStoreTagTextRef = useRef(PersonaStore.displayTagText);
 	const syncedStoreTagIconRef = useRef(PersonaStore.displayTagIcon);
@@ -459,7 +481,7 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 									<div className={styles.tagIconRow}>
 										{tagIcon ? (
 											<>
-												<img src={resolvedTagIconUrl ?? tagIcon} alt="Tag Icon" className={styles.tagIconImage} />
+												<img ref={tagIconHoverRef} src={resolvedTagIconUrl ?? tagIcon} alt="Tag Icon" className={styles.tagIconImage} />
 												<Button
 													variant="secondary"
 													small={true}
@@ -495,8 +517,15 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 								<div className={styles.previewLabel}>
 									<Trans>Preview</Trans>
 								</div>
-								<div className={styles.previewCard}>
-									{currentUser && <Avatar user={currentUser} size={40} className={styles.previewAvatar} />}
+								<div ref={previewCardHoverRef} className={styles.previewCard}>
+									{currentUser && (
+										<Avatar
+											user={currentUser}
+											size={40}
+											className={styles.previewAvatar}
+											forceAnimate={isPreviewCardHovering}
+										/>
+									)}
 									<div className={styles.previewMessageContent}>
 										<div className={styles.previewHeader}>
 											<span className={styles.previewName}>Alice</span>
@@ -509,6 +538,7 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 														display_tag_icon: tagIcon,
 													}}
 													rootUser={currentUser}
+													isHovering={isPreviewCardHovering}
 												/>
 											)}
 											<span className={styles.previewTimestamp}>
