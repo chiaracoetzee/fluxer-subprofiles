@@ -10,6 +10,7 @@ import {Message} from '@app/features/messaging/models/MessagingMessage';
 import {UploadingAttachment} from '@app/features/messaging/models/UploadingAttachment';
 import MessageQueue from '@app/features/messaging/state/MessageQueue';
 import {CloudUpload} from '@app/features/messaging/upload/CloudUpload';
+import {clearShiftPaste, isShiftPasteActive} from '@app/features/messaging/utils/PlainPasteUtils';
 import {isDialogPasteTarget} from '@app/features/messaging/utils/TextInputEditUtils';
 import {formatUploadingAttachmentSummary} from '@app/features/messaging/utils/UploadingAttachmentLabelUtils';
 import {ComponentBus} from '@app/features/platform/utils/ComponentBus';
@@ -189,6 +190,10 @@ export const UploadManager = observer(({channel, canAttachFiles, canSendMessages
 	const handlePaste = useCallback(
 		(event: ClipboardEvent) => {
 			if (event.defaultPrevented || Modal.hasModalOpen() || isDialogPasteTarget(event.target)) {
+				return;
+			}
+			if (isShiftPasteActive()) {
+				clearShiftPaste();
 				return;
 			}
 			const items = event.clipboardData?.items;
