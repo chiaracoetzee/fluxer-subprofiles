@@ -226,6 +226,7 @@ export function CompactAuthorPrefix({
 						message={message}
 						guild={guild}
 						member={member}
+						isHovering={isHovering}
 					/>
 				)}
 			</span>
