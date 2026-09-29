@@ -33,6 +33,7 @@ import {
 } from '@app/features/i18n/utils/CommonMessageDescriptors';
 import {useMessageReactions as useMessageReactionsSnapshot} from '@app/features/messaging/hooks/useMessageReactionStore';
 import type {Message} from '@app/features/messaging/models/MessagingMessage';
+import Drafts from '@app/features/messaging/state/MessagingDrafts';
 import SavedMessages from '@app/features/messaging/state/SavedMessages';
 import {openReportMessageModal} from '@app/features/moderation/utils/ReportActionUtils';
 import Permission from '@app/features/permissions/state/Permission';
@@ -179,7 +180,14 @@ export const useMessageActionMenuData = (
 	const channel = permissions?.channel ?? sourceChannel ?? null;
 	const shouldBuildQuickReactions = permissions?.canAddReactions === true && message.state === MessageStates.SENT;
 	const reactionEmojiLimit = Math.max(quickReactionCount, submenuReactionCount);
-	const reactionEmojis = useQuickReactionEmojis(channel, reactionEmojiLimit, shouldBuildQuickReactions);
+	const draft = channel ? Drafts.getDraft(channel.id) : undefined;
+	const effectivePersona = PersonaStore.getEffectiveReactionPersona(null, draft);
+	const reactionEmojis = useQuickReactionEmojis(
+		channel,
+		reactionEmojiLimit,
+		shouldBuildQuickReactions,
+		effectivePersona?.id,
+	);
 	const quickReactionEmojis = useMemo(
 		() => reactionEmojis.slice(0, quickReactionCount),
 		[reactionEmojis, quickReactionCount],
