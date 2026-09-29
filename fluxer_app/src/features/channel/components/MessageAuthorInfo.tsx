@@ -121,6 +121,7 @@ export const MessageAuthorInfo = observer((props: MessageAuthorInfoProps) => {
 									message={message}
 									guild={guild}
 									member={member}
+									isHovering={isHovering}
 								/>
 							)}
 						</span>
