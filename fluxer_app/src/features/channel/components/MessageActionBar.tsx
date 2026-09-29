@@ -16,6 +16,7 @@ import type {Channel} from '@app/features/channel/models/Channel';
 import {useQuickReactionEmojis} from '@app/features/channel/state/QuickReactionStore';
 import {MessageDebugModal} from '@app/features/devtools/components/debug/MessageDebugModal';
 import * as EmojiPickerCommands from '@app/features/emoji/commands/EmojiPickerCommands';
+import EmojiPicker from '@app/features/emoji/state/EmojiPicker';
 import {EmojiPickerPopout} from '@app/features/emoji/components/popouts/EmojiPickerPopout';
 import type {FlatEmoji} from '@app/features/emoji/types/EmojiTypes';
 import {buildCustomEmojiURL} from '@app/features/expressions/utils/CustomEmojiImageUrl';
@@ -38,6 +39,8 @@ import type {Message} from '@app/features/messaging/models/MessagingMessage';
 import {getEmojiNameWithColons, toReactionEmoji} from '@app/features/messaging/utils/ReactionUtils';
 import {PersonaStore} from '@app/features/persona/state/PersonaStore';
 import {ComponentBus} from '@app/features/platform/utils/ComponentBus';
+import {remFromPx} from '@app/features/theme/layout/RemFromPx';
+import {PushPinIcon} from '@phosphor-icons/react';
 import {
 	AddReactionIcon,
 	CopyIdIcon,
@@ -212,10 +215,22 @@ export const QuickReactionButton = observer(
 		const reactorName = hasPersonas
 			? (effectivePersona?.name ?? Users.currentUser?.displayName ?? Users.currentUser?.username)
 			: null;
+		const isPinned = EmojiPicker.isPinned(emoji, effectivePersona?.id);
 		const tooltipContent = useCallback(
 			() => (
 				<div className={styles.tooltipContent} data-flx="channel.message-action-bar.tooltip-content.tooltip-content">
-					<span data-flx="channel.message-action-bar.tooltip-content.span">{emojiNameWithColons}</span>
+					{isPinned && (
+						<div
+							className={styles.tooltipPinnedBadge}
+							aria-hidden={true}
+							data-flx="channel.message-action-bar.tooltip-pinned-badge"
+						>
+							<PushPinIcon size={remFromPx(11)} weight="fill" />
+						</div>
+					)}
+					<span data-flx="channel.message-action-bar.tooltip-content.span">
+						{emojiNameWithColons}
+					</span>
 					<span className={styles.tooltipHint} data-flx="channel.message-action-bar.tooltip-content.tooltip-hint">
 						{reactorName
 							? i18n._(REACTING_AS_DESCRIPTOR, {name: reactorName})
@@ -223,7 +238,7 @@ export const QuickReactionButton = observer(
 					</span>
 				</div>
 			),
-			[reactorName, emojiNameWithColons, i18n],
+			[reactorName, emojiNameWithColons, isPinned, i18n],
 		);
 		const ariaLabel = useMemo(
 			() => i18n._(REACT_WITH_EMOJI_DESCRIPTOR, {emojiShortcode: emojiNameWithColons}),
