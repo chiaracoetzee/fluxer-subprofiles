@@ -41327,3 +41327,8 @@ msgstr "Přidat emoji ({0})"
 #: src/features/persona/components/PersonaReactAsModal.tsx:115
 msgid "React as..."
 msgstr "Reagovat jako..."
+
+#. Textarea right-click context menu item that pastes clipboard contents without formatting.
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:59
+msgid "Paste as plain text"
+msgstr "Vložit jako prostý text"
