@@ -5,6 +5,7 @@ import Accessibility from '@app/features/accessibility/state/Accessibility';
 import {UserSettingsModal} from '@app/features/app/components/dialogs/LoadableSettingsModals';
 import RuntimeConfig from '@app/features/app/state/RuntimeConfig';
 import Spellcheck from '@app/features/messaging/state/Spellcheck';
+import {markShiftPasteActive} from '@app/features/messaging/utils/PlainPasteUtils';
 import {isEditableTextInput, replaceSelectedText} from '@app/features/messaging/utils/TextInputEditUtils';
 import type {SpellcheckEngine} from '@app/features/platform/types/Electron';
 import {CheckboxItem, MenuSeparator} from '@app/features/ui/action_menu/ContextMenu';
@@ -54,6 +55,10 @@ const COPY_DESCRIPTOR = msg({
 const PASTE_DESCRIPTOR = msg({
 	message: 'Paste',
 	comment: 'Textarea right-click context menu item that pastes clipboard contents.',
+});
+const PASTE_AS_PLAIN_TEXT_DESCRIPTOR = msg({
+	message: 'Paste as plain text',
+	comment: 'Textarea right-click context menu item that pastes clipboard contents without formatting.',
 });
 const SELECT_ALL_DESCRIPTOR = msg({
 	message: 'Select all',
@@ -177,6 +182,9 @@ export const TextareaContextMenu = observer(
 			if (isEditableTextInput(active)) {
 				return replaceSelectedText(active, text);
 			}
+			if (active instanceof HTMLElement && active.isContentEditable) {
+				return document.execCommand('insertText', false, text);
+			}
 			return false;
 		};
 		const handlePaste = () => {
@@ -199,6 +207,29 @@ export const TextareaContextMenu = observer(
 						insertTextInActiveEditable(text);
 					});
 					return;
+				}
+			});
+		};
+		const handlePastePlainText = () => {
+			runAfterClose(() => {
+				markShiftPasteActive();
+				const readClipboard = electronAPI?.clipboardReadText;
+				if (readClipboard) {
+					void readClipboard()
+						.then((text: string) => {
+							insertTextInActiveEditable(text);
+						})
+						.catch(() => {});
+					return;
+				}
+				if (navigator.clipboard?.readText) {
+					void navigator.clipboard.readText().then((text) => {
+						insertTextInActiveEditable(text);
+					});
+					return;
+				}
+				if (electronAPI?.pasteFromClipboard) {
+					void electronAPI.pasteFromClipboard();
 				}
 			});
 		};
@@ -297,6 +328,14 @@ export const TextareaContextMenu = observer(
 						data-flx="channel.textarea.textarea-context-menu.menu-item.paste"
 					>
 						{i18n._(PASTE_DESCRIPTOR)}
+					</MenuItem>
+					<MenuItem
+						icon={<ClipboardTextIcon data-flx="channel.textarea.textarea-context-menu.clipboard-text-icon--2" />}
+						onClick={() => handlePastePlainText()}
+						disabled={!editFlags?.canPaste}
+						data-flx="channel.textarea.textarea-context-menu.menu-item.paste-plain-text"
+					>
+						{i18n._(PASTE_AS_PLAIN_TEXT_DESCRIPTOR)}
 					</MenuItem>
 					<MenuItem
 						icon={<SelectionIcon data-flx="channel.textarea.textarea-context-menu.selection-icon" />}
