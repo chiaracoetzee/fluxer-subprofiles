@@ -7,6 +7,7 @@ import type {GuildEmoji} from '@app/features/expressions/models/GuildEmoji';
 import Guilds from '@app/features/guild/state/Guilds';
 import {getClipboardDataFiles, readClipboardImageFiles} from '@app/features/messaging/utils/ClipboardFilePasteUtils';
 import {detectPastedSegments, type LookupFunctions} from '@app/features/messaging/utils/PasteSegmentUtils';
+import {clearShiftPaste, isShiftPasteActive} from '@app/features/messaging/utils/PlainPasteUtils';
 import {
 	applyTextareaTextChange,
 	type PrepareTextareaTextChange,
@@ -293,14 +294,21 @@ export function useTextareaPaste({
 				event.preventDefault();
 				return;
 			}
+			const isPlainPaste = isShiftPasteActive();
+			const rawPastedText = event.clipboardData?.getData('text/plain');
 			const pastedFiles = getClipboardDataFiles(event.clipboardData);
-			if (handlePasteFiles(pastedFiles)) {
+			if (!isPlainPaste && handlePasteFiles(pastedFiles)) {
 				event.preventDefault();
 				return;
 			}
-			const rawPastedText = event.clipboardData?.getData('text/plain');
 			if (!rawPastedText) {
-				tryReadAsyncClipboardImageFiles();
+				if (!isPlainPaste) {
+					tryReadAsyncClipboardImageFiles();
+				}
+				clearShiftPaste();
+				if (isPlainPaste) {
+					event.preventDefault();
+				}
 				return;
 			}
 			const pastedText = rawPastedText.replace(/\t/g, '    ');
@@ -374,22 +382,25 @@ export function useTextareaPaste({
 			if (!isDocumentPasteTarget(document.activeElement)) {
 				return;
 			}
+			const isPlainPaste = isShiftPasteActive();
+			const rawPastedText = event.clipboardData?.getData('text/plain');
 			const pastedFiles = getClipboardDataFiles(event.clipboardData);
-			if (pastedFiles.length > 0) {
+			if (!isPlainPaste && pastedFiles.length > 0) {
 				if (!canFocusTextarea(textarea)) {
 					return;
 				}
 				if (handlePasteFiles(pastedFiles)) {
 					event.preventDefault();
 					safeFocus(textarea, true);
+					clearShiftPaste();
 					return;
 				}
 			}
-			const rawPastedText = event.clipboardData?.getData('text/plain');
 			if (!rawPastedText) {
-				if (canFocusTextarea(textarea)) {
+				if (!isPlainPaste && canFocusTextarea(textarea)) {
 					tryReadAsyncClipboardImageFiles();
 				}
+				clearShiftPaste();
 				return;
 			}
 			const pastedText = rawPastedText.replace(/\t/g, '    ');
