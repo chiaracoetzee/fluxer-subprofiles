@@ -55,10 +55,17 @@ vi.mock('@app/features/emoji/commands/EmojiPickerCommands', () => ({
 }));
 
 vi.mock('@app/features/ui/tooltip/Tooltip', () => ({
-	Tooltip: ({children}: {children: React.ReactNode}) => <>{children}</>,
+	Tooltip: ({children, text}: {children: React.ReactNode; text?: any}) => (
+		<>
+			{children}
+			<div data-testid="tooltip-text">{typeof text === 'function' ? text() : text}</div>
+		</>
+	),
 }));
 
 import {QuickReactionButton} from './MessageActionBar';
+import {EmojiRenderer} from './emoji_picker/EmojiRenderer';
+import EmojiPicker from '@app/features/emoji/state/EmojiPicker';
 import {PersonaStore} from '@app/features/persona/state/PersonaStore';
 import * as ContextMenuCommands from '@app/features/ui/commands/ContextMenuCommands';
 import * as EmojiPickerCommands from '@app/features/emoji/commands/EmojiPickerCommands';
@@ -164,5 +171,110 @@ describe('QuickReactionButton', () => {
 		expect(renderedMenu?.props?.channelId).toBe('ch-100');
 		expect(renderedMenu?.props?.messageId).toBe('msg-200');
 		expect(renderedMenu?.props?.emoji).toEqual(testEmoji);
+	});
+
+	it('displays tiny pin badge in tooltip when emoji is pinned', async () => {
+		EmojiPicker.resetPinnedEmojis();
+		EmojiPicker.pinEmoji('unicode:heart');
+
+		await act(async () => {
+			root.render(
+				<QuickReactionButton
+					emoji={testEmoji}
+					onReact={mockOnReact}
+					channelId="ch-100"
+					messageId="msg-200"
+				/>,
+			);
+		});
+
+		const tooltip = container.querySelector('[data-testid="tooltip-text"]')!;
+		expect(tooltip.textContent).toContain(':heart:');
+		expect(tooltip.textContent).not.toContain('(pinned)');
+
+		const pinnedBadge = container.querySelector('[data-flx="channel.message-action-bar.tooltip-pinned-badge"]');
+		expect(pinnedBadge).toBeTruthy();
+
+		// Button itself should not have a pinned badge
+		expect(container.querySelector('[data-flx="channel.message-action-bar.pinned-badge"]')).toBeNull();
+
+		// Unpin and verify pinned badge disappears
+		EmojiPicker.unpinEmoji('unicode:heart');
+		await act(async () => {
+			root.render(
+				<QuickReactionButton
+					emoji={testEmoji}
+					onReact={mockOnReact}
+					channelId="ch-100"
+					messageId="msg-200"
+				/>,
+			);
+		});
+		expect(container.querySelector('[data-flx="channel.message-action-bar.tooltip-pinned-badge"]')).toBeNull();
+	});
+});
+
+describe('EmojiRenderer Pinning', () => {
+	let container: HTMLDivElement;
+	let root: Root;
+
+	const testEmoji: FlatEmoji = {
+		name: 'heart',
+		surrogates: '❤️',
+		uniqueName: 'heart',
+		allNamesString: ':heart:',
+		animated: false,
+	};
+
+	beforeEach(() => {
+		container = document.createElement('div');
+		document.body.appendChild(container);
+		root = createRoot(container);
+		vi.clearAllMocks();
+	});
+
+	afterEach(() => {
+		act(() => {
+			root.unmount();
+		});
+		container.remove();
+		document.body.replaceChildren();
+	});
+
+	it('renders pinned badge inside emoji picker tile when emoji is pinned', async () => {
+		EmojiPicker.resetPinnedEmojis();
+		EmojiPicker.pinEmoji('unicode:heart');
+
+		await act(async () => {
+			root.render(
+				<EmojiRenderer
+					emoji={testEmoji}
+					handleHover={vi.fn()}
+					handleSelect={vi.fn()}
+					skinTone=""
+					channel={null}
+					shouldAnimate={false}
+				/>,
+			);
+		});
+
+		const pinnedBadge = container.querySelector('[data-flx="channel.emoji-picker.emoji-renderer.pinned-badge"]');
+		expect(pinnedBadge).toBeTruthy();
+
+		// Unpin and verify pinned badge disappears
+		EmojiPicker.unpinEmoji('unicode:heart');
+		await act(async () => {
+			root.render(
+				<EmojiRenderer
+					emoji={testEmoji}
+					handleHover={vi.fn()}
+					handleSelect={vi.fn()}
+					skinTone=""
+					channel={null}
+					shouldAnimate={false}
+				/>,
+			);
+		});
+		expect(container.querySelector('[data-flx="channel.emoji-picker.emoji-renderer.pinned-badge"]')).toBeNull();
 	});
 });
