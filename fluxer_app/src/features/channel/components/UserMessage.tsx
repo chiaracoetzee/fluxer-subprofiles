@@ -535,6 +535,7 @@ export const UserMessage = observer(() => {
 							message={message}
 							guild={guild}
 							member={member ?? undefined}
+							isHovering={isHovering}
 						/>
 					)}
 					{(author.bot || message.isCrosspostCopy) && (
