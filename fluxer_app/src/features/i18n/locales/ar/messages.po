@@ -41642,3 +41642,8 @@ msgstr "إضافة إيموجي ({0})"
 #: src/features/persona/components/PersonaReactAsModal.tsx:115
 msgid "React as..."
 msgstr "تفاعل باسم..."
+
+#. Textarea right-click context menu item that pastes clipboard contents without formatting.
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:59
+msgid "Paste as plain text"
+msgstr "لصق كنص عادي"
