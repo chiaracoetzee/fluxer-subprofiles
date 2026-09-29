@@ -8,17 +8,24 @@ import {
 } from '@app/features/channel/components/emoji_picker/EmojiPickerConstants';
 import type {Channel} from '@app/features/channel/models/Channel';
 import * as EmojiPickerCommands from '@app/features/emoji/commands/EmojiPickerCommands';
+import EmojiPicker from '@app/features/emoji/state/EmojiPicker';
+import ExpressionPicker from '@app/features/emoji/state/ExpressionPicker';
 import type {FlatEmoji} from '@app/features/emoji/types/EmojiTypes';
 import {checkEmojiAvailability} from '@app/features/expressions/utils/ExpressionPermissionUtils';
 import {getEmojiDisplayDataWithSkinTone} from '@app/features/expressions/utils/SkinToneUtils';
 import UnicodeEmojis, {EMOJI_SPRITES} from '@app/features/expressions/utils/UnicodeEmojis';
+import Drafts from '@app/features/messaging/state/MessagingDrafts';
 import {getEmojiRenderUrl} from '@app/features/messaging/utils/markdown/EmojiDetector';
+import {PersonaStore} from '@app/features/persona/state/PersonaStore';
+import {remFromPx} from '@app/features/theme/layout/RemFromPx';
 import {EmojiContextMenuItems} from '@app/features/ui/action_menu/items/EmojiContextMenuItems';
 import * as ContextMenuCommands from '@app/features/ui/commands/ContextMenuCommands';
 import FocusRing from '@app/features/ui/focus_ring/FocusRing';
 import {isFirefoxBrowser} from '@app/features/ui/utils/NativeUtils';
+import {PushPinIcon} from '@phosphor-icons/react';
 import {useLingui} from '@lingui/react/macro';
 import {clsx} from 'clsx';
+import {observer} from 'mobx-react-lite';
 import React, {useContext, useEffect, useImperativeHandle, useMemo, useRef} from 'react';
 
 type PickerEmojiImageProps = React.ImgHTMLAttributes<HTMLImageElement> & {
@@ -63,100 +70,114 @@ interface EmojiRendererProps {
 	shouldScrollIntoView?: boolean;
 }
 
-export const EmojiRenderer = React.forwardRef<HTMLButtonElement, EmojiRendererProps>(
-	(
-		{
-			emoji,
-			handleHover,
-			handleSelect,
-			skinTone,
-			channel,
-			shouldAnimate,
-			isHighlighted = false,
-			shouldScrollIntoView = false,
-			...props
-		},
-		forwardedRef,
-	) => {
-		const emojiRef = useRef<HTMLButtonElement | null>(null);
-		const {i18n} = useLingui();
-		const reactionContext = useContext(EmojiPickerReactionContext);
-		useImperativeHandle(forwardedRef, () => emojiRef.current!);
-		useEffect(() => {
-			if (shouldScrollIntoView && emojiRef.current) {
-				emojiRef.current.scrollIntoView({block: 'nearest', inline: 'nearest'});
-			}
-		}, [shouldScrollIntoView]);
-		const availability = checkEmojiAvailability(i18n, emoji, channel);
-		const customEmojiUrl = useMemo(
-			() =>
-				emoji.id
-					? (getEmojiRenderUrl({
-							id: emoji.id,
-							surrogateUrl: null,
-							isAnimatable: Boolean(emoji.animated),
-							animated: shouldAnimate,
-							jumbo: false,
-						}) ?? '')
-					: (emoji.url ?? ''),
-			[emoji.id, emoji.animated, emoji.url, shouldAnimate],
-		);
-		const handleClick = (e: React.MouseEvent) => {
-			if (!availability.canUse) {
+export const EmojiRenderer = observer(
+	React.forwardRef<HTMLButtonElement, EmojiRendererProps>(
+		(
+			{
+				emoji,
+				handleHover,
+				handleSelect,
+				skinTone,
+				channel,
+				shouldAnimate,
+				isHighlighted = false,
+				shouldScrollIntoView = false,
+				...props
+			},
+			forwardedRef,
+		) => {
+			const emojiRef = useRef<HTMLButtonElement | null>(null);
+			const {i18n} = useLingui();
+			const reactionContext = useContext(EmojiPickerReactionContext);
+			const resolvedChannelId = reactionContext?.channelId ?? channel?.id ?? ExpressionPicker.channelId ?? undefined;
+			const draft = resolvedChannelId ? Drafts.getDraft(resolvedChannelId) : undefined;
+			const effectivePersona = PersonaStore.getEffectiveReactionPersona(null, draft);
+			const isPinned = EmojiPicker.isPinned(emoji, effectivePersona?.id);
+			useImperativeHandle(forwardedRef, () => emojiRef.current!);
+			useEffect(() => {
+				if (shouldScrollIntoView && emojiRef.current) {
+					emojiRef.current.scrollIntoView({block: 'nearest', inline: 'nearest'});
+				}
+			}, [shouldScrollIntoView]);
+			const availability = checkEmojiAvailability(i18n, emoji, channel);
+			const customEmojiUrl = useMemo(
+				() =>
+					emoji.id
+						? (getEmojiRenderUrl({
+								id: emoji.id,
+								surrogateUrl: null,
+								isAnimatable: Boolean(emoji.animated),
+								animated: shouldAnimate,
+								jumbo: false,
+							}) ?? '')
+						: (emoji.url ?? ''),
+				[emoji.id, emoji.animated, emoji.url, shouldAnimate],
+			);
+			const handleClick = (e: React.MouseEvent) => {
+				if (!availability.canUse) {
+					e.preventDefault();
+					e.stopPropagation();
+					return;
+				}
+				if (e.altKey) {
+					e.preventDefault();
+					e.stopPropagation();
+					EmojiPickerCommands.toggleFavorite(emoji);
+					return;
+				}
+				handleSelect(emoji, e.shiftKey);
+			};
+			const handleContextMenu = (e: React.MouseEvent<HTMLButtonElement>) => {
 				e.preventDefault();
 				e.stopPropagation();
-				return;
-			}
-			if (e.altKey) {
-				e.preventDefault();
-				e.stopPropagation();
-				EmojiPickerCommands.toggleFavorite(emoji);
-				return;
-			}
-			handleSelect(emoji, e.shiftKey);
-		};
-		const handleContextMenu = (e: React.MouseEvent<HTMLButtonElement>) => {
-			e.preventDefault();
-			e.stopPropagation();
-			ContextMenuCommands.openFromEvent(e, (props) => (
-				<EmojiContextMenuItems
-					emoji={emoji}
-					channelId={reactionContext?.channelId ?? channel?.id}
-					messageId={reactionContext?.messageId}
-					onClose={props.onClose}
-					data-flx="channel.emoji-picker.emoji-renderer.handle-context-menu.emoji-context-menu-items"
-				/>
-			));
-		};
-		const renderButton = (children: React.ReactNode) => {
-			const isDisabled = !availability.canUse;
-			const className = clsx(
-				styles.emojiRenderer,
-				isHighlighted && styles.selectedEmojiRenderer,
-				isDisabled && 'cursor-not-allowed',
-			);
-			return (
-				<FocusRing offset={-2} data-flx="channel.emoji-picker.emoji-renderer.render-button.focus-ring">
-					<button
-						type="button"
-						tabIndex={-1}
-						ref={emojiRef}
-						onMouseEnter={() => handleHover(emoji)}
-						onMouseLeave={() => handleHover(null)}
-						onClick={handleClick}
-						onContextMenu={handleContextMenu}
-						className={className}
-						aria-disabled={isDisabled}
-						aria-selected={isHighlighted}
-						role="option"
-						data-flx="channel.emoji-picker.emoji-renderer.render-button.option.click.button"
-						{...props}
-					>
-						{children}
-					</button>
-				</FocusRing>
-			);
-		};
+				ContextMenuCommands.openFromEvent(e, (props) => (
+					<EmojiContextMenuItems
+						emoji={emoji}
+						channelId={reactionContext?.channelId ?? channel?.id}
+						messageId={reactionContext?.messageId}
+						onClose={props.onClose}
+						data-flx="channel.emoji-picker.emoji-renderer.handle-context-menu.emoji-context-menu-items"
+					/>
+				));
+			};
+			const renderButton = (children: React.ReactNode) => {
+				const isDisabled = !availability.canUse;
+				const className = clsx(
+					styles.emojiRenderer,
+					isHighlighted && styles.selectedEmojiRenderer,
+					isDisabled && 'cursor-not-allowed',
+				);
+				return (
+					<FocusRing offset={-2} data-flx="channel.emoji-picker.emoji-renderer.render-button.focus-ring">
+						<button
+							type="button"
+							tabIndex={-1}
+							ref={emojiRef}
+							onMouseEnter={() => handleHover(emoji)}
+							onMouseLeave={() => handleHover(null)}
+							onClick={handleClick}
+							onContextMenu={handleContextMenu}
+							className={className}
+							aria-disabled={isDisabled}
+							aria-selected={isHighlighted}
+							role="option"
+							data-flx="channel.emoji-picker.emoji-renderer.render-button.option.click.button"
+							{...props}
+						>
+							{children}
+							{isPinned && (
+								<div
+									className={styles.pinnedBadge}
+									aria-hidden={true}
+									data-flx="channel.emoji-picker.emoji-renderer.pinned-badge"
+								>
+									<PushPinIcon size={remFromPx(10)} weight="fill" />
+								</div>
+							)}
+						</button>
+					</FocusRing>
+				);
+			};
 		if (emoji.guildId || emoji.id) {
 			const content = (
 				<PickerEmojiImage
@@ -208,7 +229,7 @@ export const EmojiRenderer = React.forwardRef<HTMLButtonElement, EmojiRendererPr
 				data-flx="channel.emoji-picker.emoji-renderer.sprite-emoji"
 			/>,
 		);
-	},
+	}),
 );
 
 EmojiRenderer.displayName = 'EmojiRenderer';

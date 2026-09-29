@@ -36,6 +36,11 @@ msgstr "（編集済み）"
 msgid "(only visible to you)"
 msgstr "（あなただけに表示）"
 
+#. Short indicator shown next to pinned emoji text, for example: :heart: (pinned).
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:660
+msgid "(pinned)"
+msgstr "(ピン留め)"
+
 #. placeholder {0}: w.prefix
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:755
 msgid "(Prefix: {0})"
@@ -1500,7 +1505,7 @@ msgid "{memberCount} {rawMemberCount, plural, one {member} other {members}}"
 msgstr "{memberCount}{rawMemberCount, plural, one {人のメンバー} other {人のメンバー}}"
 
 #. Generic aria-label for an unread-mentions badge. Preserve {mentionCount}.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:809
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:813
 msgid "{mentionCount, plural, one {# mention} other {# mentions}}"
 msgstr "{mentionCount, plural, other {#件のメンション}}"
 
@@ -2858,7 +2863,7 @@ msgstr "月額プランに加入中（解約予約済み）"
 #. Short label in the appearance tab. Keep it concise.
 #. Short label in the inline. Keep it concise.
 #. Status label indicating a user is currently active.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:753
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:757
 #: src/features/user/components/modals/tabs/appearance_tab/AppearanceTabInline.tsx:43
 #: src/features/user/components/modals/tabs/AppearanceTab.tsx:51
 #: src/features/user/components/settings_utils/section_registry/AppearanceSections.ts:430
@@ -4371,7 +4376,7 @@ msgid "App zoom"
 msgstr "アプリのズーム"
 
 #. Setting label for the global UI zoom level.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:785
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:789
 msgid "App zoom level"
 msgstr "アプリの表示サイズ"
 
@@ -6349,7 +6354,7 @@ msgstr "通話"
 #. Generic voice/video setting label for the active camera device.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Short label in the video tab. Keep it concise.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:729
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:733
 #: src/features/user/components/modals/tabs/UserVideoTab.tsx:98
 #: src/features/user/components/settings_utils/section_registry/VoiceVideoSections.ts:162
 #: src/features/voice/utils/SettingsDeviceOptions.ts:24
@@ -6409,7 +6414,7 @@ msgstr "カメラオフ"
 
 #. Generic action label that enables the local camera.
 #. Notification sound setting label. Sound played when the user turns their camera on in a call.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:733
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:737
 #: src/features/notification/utils/SoundLabels.ts:52
 msgid "Camera on"
 msgstr "カメラオン"
@@ -6888,7 +6893,7 @@ msgid "Change password form"
 msgstr "パスワード変更フォーム"
 
 #. Generic action label that opens the persona picker.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:717
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:721
 msgid "Change persona"
 msgstr "ペルソナを変更"
 
@@ -7210,7 +7215,7 @@ msgid "Channel actions"
 msgstr "チャンネル操作"
 
 #. Toast confirming a channel was added to the favorites list.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:801
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:805
 msgid "Channel added to favorites"
 msgstr "チャンネルをお気に入りに追加しました"
 
@@ -7238,7 +7243,7 @@ msgstr "チャンネルのデバッグ"
 #. Audit log entry label. Past-tense action describing that a channel was deleted.
 #. Toast confirming a channel was successfully deleted.
 #: src/features/app/config/AuditLogConstants.ts:20
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:769
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:773
 msgid "Channel deleted"
 msgstr "チャンネルを削除しました"
 
@@ -7328,7 +7333,7 @@ msgid "Channel record"
 msgstr "チャンネルレコード"
 
 #. Toast confirming a channel was removed from the favorites list.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:797
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:801
 msgid "Channel removed from favorites"
 msgstr "お気に入りからチャンネルを削除しました"
 
@@ -8157,7 +8162,7 @@ msgid "Click to open the color picker and choose a new color."
 msgstr "クリックしてカラーピッカーを開き、新しい色を選択してください。"
 
 #. Tooltip on the add-reaction button in the inline message hover action bar.
-#: src/features/channel/components/MessageActionBar.tsx:76
+#: src/features/channel/components/MessageActionBar.tsx:78
 msgid "Click to react"
 msgstr "クリックしてリアクション"
 
@@ -8665,7 +8670,7 @@ msgid "Community debug"
 msgstr "コミュニティデバッグ"
 
 #. Notification level option indicating the channel inherits the community default.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:773
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:777
 msgid "Community default"
 msgstr "コミュニティのデフォルト"
 
@@ -9356,7 +9361,7 @@ msgstr "左クリック（ボタン上）または右クリック（その他の
 #: src/features/auth/components/pages/oauth_authorize_page/OAuthAccountStep.tsx:34
 #: src/features/auth/flow/HandoffApprovalFlow.tsx:109
 #: src/features/connection/components/modals/AddConnectionModal.tsx:384
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:721
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:725
 #: src/features/user/components/modals/FluxerTagChangeModal.tsx:397
 #: src/features/user/components/modals/tabs/AuthorizedAppsTab.tsx:182
 msgid "Continue"
@@ -9571,7 +9576,7 @@ msgid "Copy code"
 msgstr "コードをコピー"
 
 #. Developer-mode action that copies a community snowflake/ID to the clipboard.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:737
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:741
 msgid "Copy community ID"
 msgstr "コミュニティIDをコピー"
 
@@ -9588,7 +9593,7 @@ msgid "Copy emoji"
 msgstr "絵文字をコピー"
 
 #. Developer-mode action that copies the emoji ID to the clipboard.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:47
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:64
 msgid "Copy emoji ID"
 msgstr "絵文字IDをコピー"
 
@@ -9604,14 +9609,14 @@ msgstr "ファイルリンクをコピー"
 
 #. Media context menu action that copies a GIF attachment to the clipboard.
 #. Media context menu action that copies a GIF to the clipboard.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:55
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:72
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:54
 msgid "Copy GIF"
 msgstr "GIFをコピー"
 
 #. Media context menu action that copies the URL of the GIF attachment.
 #. Media context menu action that copies the URL of the GIF.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:71
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:88
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:74
 msgid "Copy GIF link"
 msgstr "GIFリンクをコピー"
@@ -9638,7 +9643,7 @@ msgstr "識別子をコピー"
 
 #. Media context menu action that copies an image attachment to the clipboard.
 #. Media context menu action that copies an image to the clipboard.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:51
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:68
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:50
 msgid "Copy image"
 msgstr "画像をコピー"
@@ -9646,7 +9651,7 @@ msgstr "画像をコピー"
 #. Image context menu action that copies the image URL to the clipboard.
 #. Image context menu action that copies the image URL to the clipboard.
 #. Image context menu action that copies the image URL to the clipboard.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:67
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:84
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:70
 #: src/features/ui/action_menu/items/StickerContextMenuItems.tsx:44
 msgid "Copy image link"
@@ -9675,7 +9680,7 @@ msgid "Copy invite URL"
 msgstr "招待URLをコピー"
 
 #. Generic action label that copies a URL to the clipboard.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:749
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:753
 #: src/features/user/components/modals/tabs/component_gallery_tab/ComponentGalleryTabButtonsTab.tsx:330
 #: src/features/user/components/modals/tabs/component_gallery_tab/index.tsx:145
 msgid "Copy link"
@@ -9702,13 +9707,13 @@ msgid "Copy media to clipboard"
 msgstr "メディアをクリップボードにコピー"
 
 #. Message context menu item that copies the message text content to the clipboard.
-#: src/features/channel/components/MessageActionMenu.tsx:93
+#: src/features/channel/components/MessageActionMenu.tsx:94
 msgid "Copy message"
 msgstr "メッセージをコピー"
 
 #. Developer-mode action that copies a message snowflake/ID to the clipboard.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:741
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:745
 #: src/features/input/state/input_keybind/shared.ts:281
 msgid "Copy message ID"
 msgstr "メッセージIDをコピー"
@@ -9794,7 +9799,7 @@ msgid "Copy user ID"
 msgstr "ユーザーIDをコピー"
 
 #. Action that copies a user username (handle) to the clipboard.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:745
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:749
 msgid "Copy username"
 msgstr "ユーザー名をコピー"
 
@@ -10236,7 +10241,7 @@ msgid "Couldn't send invite"
 msgstr "招待を送信できませんでした"
 
 #. Toast shown when sending an invite (group DM or community) fails.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:709
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:713
 msgid "Couldn't send invite. Try again."
 msgstr "招待を送信できませんでした。もう一度お試しください。"
 
@@ -10995,7 +11000,7 @@ msgid "Custom warning text"
 msgstr "カスタム警告文"
 
 #. Last "Custom…" option in dropdown menus that opens a custom-value picker.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:777
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:781
 msgid "Custom…"
 msgstr "カスタム…"
 
@@ -11313,8 +11318,8 @@ msgstr "メンバーをデバッグ"
 #. Developer-mode action that opens the message debug modal.
 #. Developer-mode item in the message action bar overflow menu. Opens the message debug modal.
 #. Developer-mode message context menu item that opens an internal debug view for the message.
-#: src/features/channel/components/MessageActionBar.tsx:92
-#: src/features/channel/components/MessageActionMenu.tsx:105
+#: src/features/channel/components/MessageActionBar.tsx:94
+#: src/features/channel/components/MessageActionMenu.tsx:106
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:66
 msgid "Debug message"
 msgstr "メッセージをデバッグ"
@@ -11548,7 +11553,7 @@ msgid "Delete application"
 msgstr "アプリケーションを削除"
 
 #. Generic action label that removes an attachment from the upload tray / message.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:757
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:761
 msgid "Delete attachment"
 msgstr "添付ファイルを削除"
 
@@ -12487,7 +12492,7 @@ msgid "Disconnected"
 msgstr "切断されました"
 
 #. Label for a community that anyone can find through discovery. Used in the community badge and as the community subtitle in expression info cards. Keep it concise.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:684
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:688
 msgid "Discoverable community"
 msgstr "「見つける」掲載コミュニティ"
 
@@ -12794,7 +12799,7 @@ msgstr "ブロックはしません。後でまた開けます。"
 
 #. Generic form-field / table-column label for an internet domain.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:781
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:785
 #: src/features/user/components/settings_utils/search_index/LinkedAccountsIndex.ts:28
 msgid "Domain"
 msgstr "ドメイン"
@@ -12967,14 +12972,14 @@ msgstr "fluxer-verificationをダウンロード"
 
 #. Media context menu action that downloads a GIF attachment.
 #. Media context menu action that downloads a GIF to disk.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:63
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:80
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:114
 msgid "Download GIF"
 msgstr "GIFをダウンロード"
 
 #. Image context menu action that downloads the image to disk.
 #. Image context menu action that downloads the image to disk.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:59
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:76
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:110
 msgid "Download image"
 msgstr "画像をダウンロード"
@@ -13360,7 +13365,7 @@ msgstr "メディアを編集"
 #. Generic action label that opens the message edit composer.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:713
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:717
 #: src/features/input/state/input_keybind/shared.ts:9
 #: src/features/user/components/settings_utils/search_index/AdvancedSettingsIndex.ts:68
 msgid "Edit message"
@@ -13939,7 +13944,7 @@ msgstr "モバイルプッシュ通知をオンにする"
 
 #. Generic action label / toggle that turns on push or desktop notifications.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:789
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:793
 #: src/features/user/components/settings_utils/section_registry/NotificationsSections.ts:127
 msgid "Enable notifications"
 msgstr "通知をオンにする"
@@ -14154,7 +14159,7 @@ msgid "English (US)"
 msgstr "英語（米国）"
 
 #. Generic radio / dropdown option label for an "enhanced" tier.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:793
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:797
 msgid "Enhanced"
 msgstr "強化"
 
@@ -14842,7 +14847,7 @@ msgid "Expression autocomplete"
 msgstr "エクスプレッションの入力候補"
 
 #. Aria label for the expression picker category nav.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:761
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:765
 msgid "Expression picker categories"
 msgstr "エクスプレッションピッカーのカテゴリ"
 
@@ -15306,7 +15311,7 @@ msgid "Favorite DM"
 msgstr "DMをお気に入りに追加"
 
 #. Emoji context menu action that adds the emoji to favorites.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:43
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:60
 msgid "Favorite emoji"
 msgstr "絵文字をお気に入りに追加"
 
@@ -15916,8 +15921,8 @@ msgstr "フォーム"
 #. Message action label for forwarding the selected message to another channel or DM.
 #. Message context menu item that opens the forward-to-channel picker.
 #. Tooltip on the forward button in the inline message hover action bar.
-#: src/features/channel/components/MessageActionBar.tsx:96
-#: src/features/channel/components/MessageActionMenu.tsx:85
+#: src/features/channel/components/MessageActionBar.tsx:98
+#: src/features/channel/components/MessageActionMenu.tsx:86
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:54
 msgid "Forward"
 msgstr "転送"
@@ -16145,7 +16150,7 @@ msgid "From {start}"
 msgstr "{start}から"
 
 #. placeholder {0}: sourceGuild.name
-#: src/features/channel/components/emoji_picker/EmojiPickerInspector.tsx:123
+#: src/features/channel/components/emoji_picker/EmojiPickerInspector.tsx:130
 msgid "from <0>{0}</0>"
 msgstr "<0>{0}</0>から"
 
@@ -16364,7 +16369,7 @@ msgid "Germany"
 msgstr "ドイツ"
 
 #. Generic upsell CTA button to start the Plutonium purchase flow. Preserve {premiumProductName}.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:805
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:809
 msgid "Get {premiumProductName}"
 msgstr "{premiumProductName}を入手"
 
@@ -17302,7 +17307,7 @@ msgid "Hide expiration footnotes"
 msgstr "有効期限の注釈を非表示"
 
 #. Toggle / action label that collapses or hides the favorites section.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:701
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:705
 msgid "Hide favorites"
 msgstr "お気に入りを非表示"
 
@@ -18821,7 +18826,7 @@ msgstr "招待者:"
 #. Generic section / tab label for the invites list.
 #: src/features/channel/components/modals/channel_tabs/ChannelInvitesTab.tsx:191
 #: src/features/guild/components/modals/guild_tabs/GuildInvitesTab.tsx:53
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:689
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:693
 msgid "Invites"
 msgstr "招待"
 
@@ -19010,7 +19015,7 @@ msgid "Join call"
 msgstr "通話に参加"
 
 #. Generic action label that accepts a community invite / joins a community.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:680
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:684
 msgid "Join community"
 msgstr "コミュニティに参加"
 
@@ -19365,7 +19370,7 @@ msgid "Kick a member from this community."
 msgstr "このコミュニティからメンバーをキックします。"
 
 #. Moderation action label that removes a member from a community without banning.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:676
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:680
 msgid "Kick member"
 msgstr "メンバーをキック"
 
@@ -19552,7 +19557,7 @@ msgid "Leave call"
 msgstr "通話から退出"
 
 #. Destructive action label that removes the current user from a community.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:672
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:676
 msgid "Leave community"
 msgstr "コミュニティを脱退"
 
@@ -20433,7 +20438,7 @@ msgstr "ネタバレにする"
 
 #. Generic action label that flips a channel back to unread.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:668
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:672
 #: src/features/input/state/input_keybind/shared.ts:33
 msgid "Mark as unread"
 msgstr "未読にする"
@@ -21178,8 +21183,8 @@ msgstr "メディアが添付されています"
 #. Title of the developer-mode message debug modal opened from the message action bar.
 #. Title of the developer-mode message debug modal opened from the message context menu.
 #. Title of the developer-mode message debug modal.
-#: src/features/channel/components/MessageActionBar.tsx:84
-#: src/features/channel/components/MessageActionMenu.tsx:73
+#: src/features/channel/components/MessageActionBar.tsx:86
+#: src/features/channel/components/MessageActionMenu.tsx:74
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:62
 msgid "Message debug"
 msgstr "メッセージのデバッグ"
@@ -21741,7 +21746,7 @@ msgstr "月間ギフト"
 #: src/features/auth/components/accounts/AccountRow.tsx:23
 #: src/features/channel/components/bottomsheets/channel_details_bottom_sheet/ChannelDetailsBottomSheetShared.ts:142
 #: src/features/channel/components/friends/FriendListItem.tsx:63
-#: src/features/channel/components/MessageActionBar.tsx:88
+#: src/features/channel/components/MessageActionBar.tsx:90
 #: src/features/user/components/modals/tabs/component_gallery_tab/ComponentGalleryTabButtonsTab.tsx:125
 msgid "More"
 msgstr "その他"
@@ -21764,7 +21769,7 @@ msgid "More button"
 msgstr "その他ボタン"
 
 #. Submenu label that contains additional emoji context menu actions.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:83
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:100
 msgid "More emoji actions"
 msgstr "その他の絵文字操作"
 
@@ -22096,7 +22101,7 @@ msgid "Mute entrance sound"
 msgstr "入室サウンドをミュート"
 
 #. Action label that mutes notifications for the favourites pseudo-guild.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:693
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:697
 msgid "Mute favorites"
 msgstr "お気に入りをミュート"
 
@@ -22713,7 +22718,7 @@ msgstr "新しい順"
 #. Primary button in the required-action modal. Moves to the next carousel step.
 #: src/features/app/components/setup/SelfHostedSetupWizardGate.tsx:82
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:154
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:725
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:729
 msgid "Next"
 msgstr "次へ"
 
@@ -23623,7 +23628,7 @@ msgstr "通知音量"
 #. Generic section header / tab label for the notifications area.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/app/components/layout/MobileBottomNav.tsx:136
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:705
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:709
 #: src/features/notification/components/pages/NotificationsPage.tsx:61
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedSettingsCategories.ts:18
 #: src/features/user/components/settings_utils/section_registry/NotificationsSections.ts:30
@@ -24202,7 +24207,7 @@ msgstr "ファイルリンクを開く"
 
 #. Media context menu action that opens the GIF URL in an external browser.
 #. Media context menu action that opens the GIF URL in an external browser.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:79
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:96
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:94
 msgid "Open GIF link"
 msgstr "GIFリンクを開く"
@@ -24236,7 +24241,7 @@ msgstr "画像を全画面で開く"
 #. Image context menu action that opens the image URL in an external browser.
 #. Image context menu action that opens the image URL in an external browser.
 #. Image context menu action that opens the image URL in an external browser.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:75
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:92
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:90
 #: src/features/ui/action_menu/items/StickerContextMenuItems.tsx:48
 msgid "Open image link"
@@ -25414,6 +25419,16 @@ msgstr "ピン留め"
 msgid "Pin DM"
 msgstr "DMをピン留め"
 
+#. Emoji context menu action that pins the emoji.
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:40
+msgid "Pin emoji"
+msgstr "絵文字をピン留め"
+
+#. Emoji context menu action that pins the emoji for the active persona.
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:48
+msgid "Pin for this persona"
+msgstr "このペルソナ用にピン留め"
+
 #. Action label for adding a group DM to the pinned DM list.
 #: src/features/channel/utils/ChannelMessageDescriptors.ts:21
 msgid "Pin group DM"
@@ -26090,7 +26105,7 @@ msgid "Privacy policy"
 msgstr "プライバシーポリシー"
 
 #. Generic section heading / button label for the privacy settings area.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:664
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:668
 msgid "Privacy settings"
 msgstr "プライバシー設定"
 
@@ -26695,11 +26710,11 @@ msgid "React with {emojiShortcode}"
 msgstr "{emojiShortcode}でリアクション"
 
 #. Tooltip hint showing effective reacting persona or user on quick reaction hover.
-#: src/features/channel/components/MessageActionBar.tsx:80
+#: src/features/channel/components/MessageActionBar.tsx:82
 msgid "Reacting as {name}"
 msgstr "{name} としてリアクション"
 
-#: src/features/channel/components/emoji_picker/EmojiPickerInspector.tsx:133
+#: src/features/channel/components/emoji_picker/EmojiPickerInspector.tsx:140
 msgid "Reacting as <0>{reactorName}</0>"
 msgstr "<0>{reactorName}</0> としてリアクション中"
 
@@ -26709,7 +26724,7 @@ msgstr "シグネチャー絵文字でリアクションすると、アクティ
 
 #. Generic short section / tab / aria label for emoji reactions.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:660
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:664
 #: src/features/messaging/components/modals/MessageReactionsModal.tsx:145
 #: src/features/user/components/settings_utils/section_registry/ChatSettingsSections.ts:13
 msgid "Reactions"
@@ -27272,7 +27287,7 @@ msgstr "このメッセージから{emojiNameWithColons}のリアクションを
 #. Destructive message context menu item for moderators that clears every reaction on a message.
 #. Message action that removes every reaction from the selected message.
 #. Title of the confirmation alert shown when clearing every reaction on a message.
-#: src/features/channel/components/MessageActionMenu.tsx:81
+#: src/features/channel/components/MessageActionMenu.tsx:82
 #: src/features/channel/components/MessageActionUtils.tsx:70
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:70
 msgid "Remove all reactions"
@@ -30287,7 +30302,7 @@ msgid "Sensitive media"
 msgstr "センシティブなメディア"
 
 #. Generic short status label confirming an item (invite, gift, theme link) was sent.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:813
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:817
 msgid "Sent"
 msgstr "送信済み"
 
@@ -32109,7 +32124,7 @@ msgstr "音量"
 
 #. Section heading / tab label for the notification-sounds area.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:817
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:821
 #: src/features/user/components/settings_utils/section_registry/NotificationsSections.ts:135
 msgid "Sounds"
 msgstr "サウンド"
@@ -32234,7 +32249,7 @@ msgstr "すべてのメッセージを読み上げる"
 
 #. Message action that has the screen reader read the selected message aloud.
 #. Message context menu item that reads the message aloud via text-to-speech.
-#: src/features/channel/components/MessageActionMenu.tsx:101
+#: src/features/channel/components/MessageActionMenu.tsx:102
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:78
 msgid "Speak message"
 msgstr "メッセージを読み上げる"
@@ -32810,7 +32825,7 @@ msgstr "すべての友達との音声アクティビティの共有を停止し
 #. Message action that stops the screen reader from speaking the selected message.
 #. Message context menu item that stops the text-to-speech playback in progress.
 #. Native macOS Edit > Speech submenu item that stops reading text aloud. Imperative verb.
-#: src/features/channel/components/MessageActionMenu.tsx:97
+#: src/features/channel/components/MessageActionMenu.tsx:98
 #: src/features/platform/utils/DesktopLocaleBridge.ts:93
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:74
 msgid "Stop speaking"
@@ -36409,7 +36424,7 @@ msgid "Unfavorite DM"
 msgstr "DMをお気に入りから削除"
 
 #. Emoji context menu action that removes the emoji from favorites.
-#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:39
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:56
 msgid "Unfavorite emoji"
 msgstr "絵文字をお気に入りから削除"
 
@@ -36465,7 +36480,7 @@ msgstr "汎用フォールバック。品質は最も低いですが、どこで
 #. Generic fallback label when a more specific value is unavailable.
 #. Short label in the invite list item. Keep it concise.
 #: src/features/emoji/components/emojis/EmojiListItem.tsx:584
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:765
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:769
 #: src/features/invite/components/InviteListItem.tsx:36
 #: src/features/moderation/components/modals/BanDetailsModal.tsx:114
 #: src/features/updater/commands/UpdaterModalCommands.tsx:144
@@ -36731,7 +36746,7 @@ msgid "Unmute DMs"
 msgstr "DMのミュートを解除"
 
 #. Action label that unmutes notifications for the favourites pseudo-guild.
-#: src/features/i18n/utils/CommonMessageDescriptors.ts:697
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:701
 msgid "Unmute favorites"
 msgstr "お気に入りのミュートを解除"
 
@@ -36792,6 +36807,16 @@ msgstr "ピン留めを解除"
 #: src/features/channel/utils/ChannelMessageDescriptors.ts:17
 msgid "Unpin DM"
 msgstr "DMのピン留めを解除"
+
+#. Emoji context menu action that unpins the emoji.
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:44
+msgid "Unpin emoji"
+msgstr "絵文字のピン留めを解除"
+
+#. Emoji context menu action that unpins the emoji for the active persona.
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:52
+msgid "Unpin for this persona"
+msgstr "このペルソナ用のピン留めを解除"
 
 #. Action label for removing a group DM from the pinned DM list.
 #: src/features/channel/utils/ChannelMessageDescriptors.ts:25
@@ -36957,7 +36982,7 @@ msgstr "サポートされていないスタンプファイル"
 
 #. Message action that re-enables embeds on the selected message.
 #. Message context menu item that re-shows previously hidden link previews and embeds on the message.
-#: src/features/channel/components/MessageActionMenu.tsx:89
+#: src/features/channel/components/MessageActionMenu.tsx:90
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:58
 msgid "Unsuppress embeds"
 msgstr "埋め込みを再表示"
@@ -38545,7 +38570,7 @@ msgid "View profile for {displayName}"
 msgstr "{displayName}さんのプロフィールを見る"
 
 #. Message context menu item that opens the reactions list sheet for the message.
-#: src/features/channel/components/MessageActionMenu.tsx:77
+#: src/features/channel/components/MessageActionMenu.tsx:78
 msgid "View reactions"
 msgstr "リアクションを見る"
 
