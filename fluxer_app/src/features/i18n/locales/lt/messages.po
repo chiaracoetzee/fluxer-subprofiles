@@ -41416,3 +41416,8 @@ msgstr "Pridėti jaustuką ({0})"
 #: src/features/persona/components/PersonaReactAsModal.tsx:115
 msgid "React as..."
 msgstr "Reaguoti kaip..."
+
+#. Textarea right-click context menu item that pastes clipboard contents without formatting.
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:59
+msgid "Paste as plain text"
+msgstr "Įklijuoti kaip paprastąjį tekstą"
