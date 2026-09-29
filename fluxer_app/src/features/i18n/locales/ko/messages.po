@@ -41291,3 +41291,8 @@ msgstr "이모지 추가 ({0})"
 #: src/features/persona/components/PersonaReactAsModal.tsx:115
 msgid "React as..."
 msgstr "다른 프로필로 반응하기..."
+
+#. Textarea right-click context menu item that pastes clipboard contents without formatting.
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:59
+msgid "Paste as plain text"
+msgstr "일반 텍스트로 붙여넣기"
