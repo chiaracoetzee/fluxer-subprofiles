@@ -9,6 +9,9 @@ import type {Message} from '@app/features/messaging/models/MessagingMessage';
 import {PersonaStore} from '@app/features/persona/state/PersonaStore';
 import {Avatar} from '@app/features/ui/components/Avatar';
 import {Tooltip} from '@app/features/ui/tooltip/Tooltip';
+import {useHover} from '@app/features/app/hooks/useHover';
+import {useShouldAnimate} from '@app/features/app/hooks/useShouldAnimate';
+import * as AvatarUtils from '@app/features/user/utils/AvatarUtils';
 import * as UserProfileCommands from '@app/features/user/commands/UserProfileCommands';
 import type {User} from '@app/features/user/models/User';
 import Users from '@app/features/user/state/Users';
@@ -27,10 +30,11 @@ interface PersonaTagProps {
 	message?: Message;
 	guild?: Guild;
 	member?: GuildMember;
+	isHovering?: boolean;
 }
 
 export const PersonaTag: React.FC<PersonaTagProps> = observer(
-	({subprofile, rootUser, className, message, guild, member}) => {
+	({subprofile, rootUser, className, message, guild, member, isHovering: propIsHovering}) => {
 		const {i18n} = useLingui();
 		const currentUserId = Authentication.currentUserId ?? Users.currentUser?.id;
 		const isCurrentUser = Boolean(currentUserId && rootUser?.id && rootUser.id === currentUserId);
@@ -54,6 +58,7 @@ export const PersonaTag: React.FC<PersonaTagProps> = observer(
 					customIconUrl={tagIcon}
 					tagText={tagText || null}
 					className={className}
+					isHovering={propIsHovering}
 				/>
 			);
 		}
@@ -103,9 +108,36 @@ export const PersonaTag: React.FC<PersonaTagProps> = observer(
 			}
 		};
 
+		const [tagHoverRef, isTagHovering] = useHover();
+
+		const staticIconUrl = tagIcon
+			? tagIcon.startsWith('http://') || tagIcon.startsWith('https://') || tagIcon.startsWith('data:')
+				? tagIcon
+				: rootUser
+					? AvatarUtils.getUserAvatarURL({id: rootUser.id, avatar: tagIcon}, false, 32)
+					: tagIcon
+			: null;
+
+		const hoverIconUrl = tagIcon
+			? tagIcon.startsWith('http://') || tagIcon.startsWith('https://') || tagIcon.startsWith('data:')
+				? tagIcon
+				: rootUser
+					? AvatarUtils.getUserAvatarURL({id: rootUser.id, avatar: tagIcon}, true, 32)
+					: tagIcon
+			: null;
+
+		const hasDistinctHover = Boolean(hoverIconUrl && hoverIconUrl !== staticIconUrl);
+		const shouldAnimate = useShouldAnimate({
+			kind: 'avatar',
+			isAnimated: hasDistinctHover,
+			isHovering: hasDistinctHover && (isTagHovering || Boolean(propIsHovering)),
+		});
+		const resolvedTagIcon = shouldAnimate ? hoverIconUrl : staticIconUrl;
+
 		if (tagText) {
 			const pill = (
 				<span
+					ref={tagHoverRef}
 					className={clsx(styles.tag, className)}
 					data-flx="persona.tag"
 					onClick={handleFallbackClick}
@@ -113,7 +145,7 @@ export const PersonaTag: React.FC<PersonaTagProps> = observer(
 					role="button"
 					tabIndex={0}
 				>
-					{tagIcon && <img src={tagIcon} alt="" className={styles.icon} />}
+					{resolvedTagIcon && <img src={resolvedTagIcon} alt="" className={styles.icon} />}
 					<span className={styles.text}>{tagText}</span>
 				</span>
 			);
@@ -127,9 +159,10 @@ export const PersonaTag: React.FC<PersonaTagProps> = observer(
 			);
 		}
 
-		if (tagIcon) {
+		if (resolvedTagIcon) {
 			const iconElement = (
 				<span
+					ref={tagHoverRef}
 					onClick={handleFallbackClick}
 					onKeyDown={handleFallbackKeyDown}
 					role="button"
@@ -137,7 +170,7 @@ export const PersonaTag: React.FC<PersonaTagProps> = observer(
 					style={{cursor: 'pointer', display: 'inline-flex', verticalAlign: 'middle'}}
 					data-flx="persona.standalone-icon"
 				>
-					<img src={tagIcon} alt="" className={clsx(styles.standaloneIcon, className)} />
+					<img src={resolvedTagIcon} alt="" className={clsx(styles.standaloneIcon, className)} />
 				</span>
 			);
 			return tooltipText ? (
@@ -151,6 +184,7 @@ export const PersonaTag: React.FC<PersonaTagProps> = observer(
 
 		const avatarElement = (
 			<span
+				ref={tagHoverRef}
 				onClick={handleFallbackClick}
 				onKeyDown={handleFallbackKeyDown}
 				role="button"
@@ -162,6 +196,7 @@ export const PersonaTag: React.FC<PersonaTagProps> = observer(
 					size={16}
 					className={clsx(styles.standaloneIcon, className)}
 					disableStatusTooltip={true}
+					forceAnimate={isTagHovering || Boolean(propIsHovering)}
 				/>
 			</span>
 		);
