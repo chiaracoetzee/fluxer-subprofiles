@@ -14,7 +14,7 @@ msgstr ""
 "Plural-Forms: \n"
 "X-Generator: @lingui/cli\n"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:515
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:545
 msgid "— Today at 12:00 PM"
 msgstr "— Aujourd'hui à 12:00"
 
@@ -1009,7 +1009,7 @@ msgid "{count, plural, one {# mutual community} other {# mutual communities}}"
 msgstr "{count, plural, one {# communauté en commun} other {# communautés en commun}}"
 
 #: src/features/messaging/utils/MessageReactionUtils.ts:53
-#: src/features/messaging/utils/ReactionUtils.ts:69
+#: src/features/messaging/utils/ReactionUtils.ts:77
 msgid "{count, plural, one {# other} other {# others}}"
 msgstr "{count, plural, one {# autre} other {# autres}}"
 
@@ -1022,7 +1022,7 @@ msgstr "{count, plural, one {# participant à l'appel} other {# participants à 
 msgid "{count, plural, one {# potential spammer message} other {# potential spammer messages}}"
 msgstr "{count, plural, one {# message d’une personne susceptible d’envoyer du spam} other {# messages de personnes susceptibles d’envoyer du spam}}"
 
-#: src/features/app/components/shared/MessageReactionsContent.tsx:58
+#: src/features/app/components/shared/MessageReactionsContent.tsx:59
 #: src/features/channel/components/MessageReactions.tsx:154
 msgid "{count, plural, one {# reaction} other {# reactions}}"
 msgstr "{count, plural, one {# réaction} other {# réactions}}"
@@ -1296,7 +1296,7 @@ msgid "{emojiName} (failed to load)"
 msgstr "{emojiName} (échec du chargement)"
 
 #. Short label in the shared app message reactions content. Preserve placeholders {emojiName}, {reactionCountText}; they are inserted by code.
-#: src/features/app/components/shared/MessageReactionsContent.tsx:32
+#: src/features/app/components/shared/MessageReactionsContent.tsx:33
 msgid "{emojiName}, {reactionCountText}"
 msgstr "{emojiName}, {reactionCountText}"
 
@@ -1810,7 +1810,7 @@ msgid "{productName} restarted while you were connected to the call in {directCa
 msgstr "{productName} a redémarré pendant que vous étiez connecté à l'appel dans {directCallName}."
 
 #. Item in the textarea spellcheck submenu that opens the full settings page. Trailing horizontal ellipsis (…) indicates the action opens settings.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:96
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:101
 msgid "{productName} spellcheck settings…"
 msgstr "Paramètres de vérification orthographique de {productName}…"
 
@@ -1847,7 +1847,7 @@ msgstr "Logotype {productName}"
 #. Reaction tooltip. Preserve {emojiName}, {reactors}; they are inserted by code. {reactorCount} is how many people reacted, for verb agreement. Order the parts so the emoji never reads as the one doing the reacting.
 #. Reaction tooltip. Preserve {emojiName}, {reactors}; they are inserted by code. {reactorCount} is how many people reacted, for verb agreement. Order the parts so the emoji never reads as the one doing the reacting.
 #: src/features/messaging/utils/MessageReactionUtils.ts:16
-#: src/features/messaging/utils/ReactionUtils.ts:32
+#: src/features/messaging/utils/ReactionUtils.ts:33
 msgid "{reactorCount, plural, one {{emojiName} reacted by {reactors}} other {{emojiName} reacted by {reactors}}}"
 msgstr "{reactorCount, plural, one {{reactors} a réagi avec {emojiName}} other {{reactors} ont réagi avec {emojiName}}}"
 
@@ -2578,8 +2578,8 @@ msgstr "À propos de {appName}"
 #. Short label in the user profile shared popout. Keep it concise.
 #: src/features/app/components/pages/YouPage.tsx:166
 #: src/features/persona/components/modals/PersonaEditModal.tsx:900
-#: src/features/persona/components/PersonaProfileMobileSheet.tsx:400
-#: src/features/persona/components/PersonaProfileMobileSheet.tsx:409
+#: src/features/persona/components/PersonaProfileMobileSheet.tsx:421
+#: src/features/persona/components/PersonaProfileMobileSheet.tsx:430
 #: src/features/user/components/modals/tabs/my_profile_tab/BioEditor.tsx:26
 #: src/features/user/components/modals/UserProfileMobileSheet.tsx:787
 #: src/features/user/components/popouts/UserProfileShared.tsx:41
@@ -2639,6 +2639,16 @@ msgstr "Accepter l'invitation"
 #: src/features/relationship/utils/RelationshipActionUtils.tsx:77
 msgid "Accept the friend request from {userName}?"
 msgstr "Accepter la demande d'ami de {userName} ?"
+
+#. Label for the push relay consent switch during setup.
+#: src/features/app/components/setup/SetupWizardSteps.tsx:278
+msgid "Accept the push relay supplemental privacy notice"
+msgstr "Accepter l'avis de confidentialité supplémentaire du relais de notification"
+
+#. Summary value when the operator accepted the push relay notice.
+#: src/features/app/components/setup/SetupWizardSteps.tsx:390
+msgid "Accepted"
+msgstr "Accepté"
 
 #. Short label in the notification utils helper. Keep it concise.
 #: src/features/notification/utils/NotificationUtils.ts:32
@@ -2735,7 +2745,7 @@ msgid "Account verification required"
 msgstr "Vérification du compte requise"
 
 #. Tooltip showing root account username
-#: src/features/persona/components/PersonaTag.tsx:87
+#: src/features/persona/components/PersonaTag.tsx:92
 msgid "Account: @{username}"
 msgstr "Compte : @{username}"
 
@@ -2803,7 +2813,7 @@ msgstr "Actions"
 #. Subscription status badge meaning the paid subscription is active.
 #: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:445
 #: src/features/channel/components/channel_header_components/developer_tools/DeveloperToolsShared.ts:37
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:670
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:700
 #: src/features/user/components/settings_utils/search_index/DevicesIndex.ts:19
 msgid "Active"
 msgstr "Actif"
@@ -2859,11 +2869,11 @@ msgstr "Actif en ce moment"
 #. Aria label for active persona mode tabs
 #. Aria label for active persona mode tabs
 #: src/features/persona/components/PersonaPickerSheet.tsx:33
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:84
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:86
 msgid "Active persona mode"
 msgstr "Mode de persona actif"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:403
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:425
 msgid "Active Persona Mode"
 msgstr "Mode de persona actif"
 
@@ -2960,7 +2970,7 @@ msgid "Add a friend to get started."
 msgstr "Ajoutez un ami pour commencer."
 
 #. Setup wizard body for GIF integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:934
+#: src/features/app/components/setup/SetupWizardSteps.tsx:972
 msgid "Add a Klipy API key to enable GIF search at runtime."
 msgstr "Ajoutez une clé API Klipy pour activer la recherche de GIF pendant l'exécution."
 
@@ -2997,7 +3007,7 @@ msgid "Add a working email"
 msgstr "Ajouter une adresse e-mail valide"
 
 #. Setup wizard body for YouTube integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:942
+#: src/features/app/components/setup/SetupWizardSteps.tsx:980
 msgid "Add a YouTube Data API key to enrich YouTube links."
 msgstr "Ajoutez une clé API YouTube Data pour enrichir les liens YouTube."
 
@@ -3043,7 +3053,7 @@ msgid "Add another reaction"
 msgstr "Ajouter une autre réaction"
 
 #. Setup wizard body for Bluesky integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:966
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1004
 msgid "Add Bluesky OAuth client metadata and a signing key."
 msgstr "Ajoutez les métadonnées du client OAuth Bluesky et une clé de signature."
 
@@ -3154,7 +3164,7 @@ msgstr "Ajouter des permissions spécifiques"
 msgid "Add passkey"
 msgstr "Ajouter une clé d'accès"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:544
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:574
 msgid "Add Persona"
 msgstr "Ajouter une persona"
 
@@ -3202,7 +3212,7 @@ msgid "Add shortcut"
 msgstr "Ajouter un raccourci"
 
 #. Setup wizard body for SMTP integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:958
+#: src/features/app/components/setup/SetupWizardSteps.tsx:996
 msgid "Add SMTP credentials so the instance can send verification and notification email."
 msgstr "Ajoutez les identifiants SMTP pour que l'instance puisse envoyer des e-mails de vérification et de notification."
 
@@ -3234,12 +3244,12 @@ msgid "Add Tag Pair ({0}/5)"
 msgstr "Ajouter une paire de balises ({0}/5)"
 
 #. Description for configuring an optional setup wizard integration now.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:926
+#: src/features/app/components/setup/SetupWizardSteps.tsx:964
 msgid "Add the credentials during setup."
 msgstr "Ajoutez les identifiants pendant la configuration."
 
 #. Textarea right-click context menu item that adds the selected misspelled word to the personal dictionary.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:34
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:35
 msgid "Add to dictionary"
 msgstr "Ajouter au dictionnaire"
 
@@ -4307,17 +4317,17 @@ msgid "Anyone can call you, including strangers"
 msgstr "Tout le monde peut vous appeler, y compris les inconnus"
 
 #. Description for the open registration mode.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:159
+#: src/features/app/components/setup/SetupWizardSteps.tsx:162
 msgid "Anyone can create an account."
 msgstr "Tout le monde peut créer un compte."
 
 #. Description for the approval registration mode.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:167
+#: src/features/app/components/setup/SetupWizardSteps.tsx:170
 msgid "Anyone can request an account, but an administrator must approve it."
 msgstr "Tout le monde peut demander un compte, mais un administrateur doit l'approuver."
 
 #. Label for an integration API key input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:979
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1017
 msgid "API key"
 msgstr "Clé d'API"
 
@@ -4476,7 +4486,7 @@ msgid "Apply to all communities"
 msgstr "Appliquer à toutes les communautés"
 
 #. Registration mode option requiring admin approval.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:163
+#: src/features/app/components/setup/SetupWizardSteps.tsx:166
 msgid "Approval required"
 msgstr "Approbation requise"
 
@@ -4710,8 +4720,8 @@ msgstr "Actions sur les pièces jointes"
 
 #. Setup wizard media expiry step title.
 #. Summary row label for the attachment expiry choice in the setup wizard.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:217
-#: src/features/app/components/setup/SetupWizardSteps.tsx:352
+#: src/features/app/components/setup/SetupWizardSteps.tsx:220
+#: src/features/app/components/setup/SetupWizardSteps.tsx:378
 msgid "Attachment expiration"
 msgstr "Expiration des pièces jointes"
 
@@ -5314,7 +5324,7 @@ msgstr "Absent(e) pour le moment"
 #. Button that moves to the previous setup wizard step.
 #. Footer button in the IAR modal that returns to the previous step.
 #. OAuth authorization secondary button. Returns to the previous carousel step.
-#: src/features/app/components/setup/SelfHostedSetupWizardGate.tsx:77
+#: src/features/app/components/setup/SelfHostedSetupWizardGate.tsx:78
 #: src/features/auth/components/pages/oauth_authorize_page/OAuthAuthorizeActions.tsx:14
 #: src/features/auth/flow/IpAuthorizationScreen.tsx:155
 #: src/features/channel/components/channel_header/shared.ts:27
@@ -5811,12 +5821,12 @@ msgid "Bluesky"
 msgstr "Bluesky"
 
 #. Label for the Bluesky connections service toggle in the setup wizard.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:294
+#: src/features/app/components/setup/SetupWizardSteps.tsx:320
 msgid "Bluesky connections"
 msgstr "Connexions Bluesky"
 
 #. Setup wizard title for Bluesky integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:962
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1000
 msgid "Bluesky OAuth"
 msgstr "OAuth Bluesky"
 
@@ -5984,7 +5994,7 @@ msgid "Bot profile"
 msgstr "Profil du bot"
 
 #. Setup wizard title for CAPTCHA integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:946
+#: src/features/app/components/setup/SetupWizardSteps.tsx:984
 msgid "Bot protection"
 msgstr "Protection contre les bots"
 
@@ -6050,7 +6060,7 @@ msgid "Branding"
 msgstr "Image de marque"
 
 #. Accessible label for a branding image preview in the setup wizard.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:141
+#: src/features/app/components/setup/SetupWizardSteps.tsx:144
 msgid "Branding asset preview"
 msgstr "Aperçu de l'élément graphique de la marque"
 
@@ -6622,7 +6632,7 @@ msgid "Cannot delete account"
 msgstr "Impossible de supprimer le compte"
 
 #. Toast error shown when captcha verification fails inside the auth captcha interceptor.
-#: src/features/auth/components/CaptchaInterceptor.tsx:14
+#: src/features/auth/components/CaptchaInterceptor.tsx:15
 msgid "Captcha verification failed. Try again."
 msgstr "Échec de la vérification du CAPTCHA. Veuillez réessayer."
 
@@ -6819,7 +6829,7 @@ msgstr "Modifier le surnom du groupe"
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:86
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:625
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildIconUploadField.tsx:35
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:469
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:491
 msgid "Change icon"
 msgstr "Changer l'icône"
 
@@ -7471,6 +7481,10 @@ msgstr "Vérification de l'accès..."
 msgid "Checking screen recording permission..."
 msgstr "Vérification de l’autorisation d’enregistrement d’écran…"
 
+#: src/features/auth/components/AltchaVerification.tsx:62
+msgid "Checking your browser. This takes a few seconds."
+msgstr "Vérification de votre navigateur. Cela prend quelques secondes."
+
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/search_index/PlutoniumIndex.ts:67
 msgid "Checkout"
@@ -7586,7 +7600,7 @@ msgid "Choose a supported audio file and try again."
 msgstr "Choisissez un fichier audio pris en charge et réessayez."
 
 #. Setup wizard title for choosing the initial account theme.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:60
+#: src/features/app/components/setup/SetupWizardSteps.tsx:63
 msgid "Choose a theme"
 msgstr "Choisir un thème"
 
@@ -7639,7 +7653,7 @@ msgid "Choose friends to message."
 msgstr "Choisissez des amis à qui envoyer un message."
 
 #. Setup wizard body for CAPTCHA integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:950
+#: src/features/app/components/setup/SetupWizardSteps.tsx:988
 msgid "Choose hCaptcha or Cloudflare Turnstile for signup challenges."
 msgstr "Choisissez hCaptcha ou Cloudflare Turnstile pour les vérifications à l’inscription."
 
@@ -7654,7 +7668,7 @@ msgid "Choose how messages are displayed in chat channels."
 msgstr "Choisissez comment les messages s'affichent dans les salons de discussion."
 
 #. Setup wizard registration step body.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:150
+#: src/features/app/components/setup/SetupWizardSteps.tsx:153
 msgid "Choose how new accounts are created on this instance."
 msgstr "Choisissez comment les nouveaux comptes sont créés sur cette instance."
 
@@ -7668,7 +7682,7 @@ msgstr "Choisir comment les GIF favoris marqués d'une étoile sont stockés"
 msgid "Choose how times are displayed throughout the app"
 msgstr "Choisissez le format d’affichage des heures dans l’application"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:406
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:428
 msgid "Choose how untagged messages and persona tags interact with your active persona."
 msgstr "Choisissez comment les messages sans balise et les balises de persona interagissent avec votre persona active."
 
@@ -7678,7 +7692,7 @@ msgid "Choose how you'd like to pay for this subscription."
 msgstr "Choisissez comment vous souhaitez payer cet abonnement."
 
 #. Setup wizard community model step title.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:180
+#: src/features/app/components/setup/SetupWizardSteps.tsx:183
 msgid "Choose how your instance works"
 msgstr "Choisir le fonctionnement de votre instance"
 
@@ -7706,7 +7720,7 @@ msgid "Choose the category that best describes your community. You can change th
 msgstr "Choisissez la catégorie qui décrit le mieux votre communauté. Vous pourrez la modifier à tout moment."
 
 #. Setup wizard premium model step title.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:303
+#: src/features/app/components/setup/SetupWizardSteps.tsx:329
 msgid "Choose the premium model"
 msgstr "Choisir le modèle premium"
 
@@ -7761,7 +7775,7 @@ msgid "Choose where {PRODUCT_NAME} should send images for reverse image search. 
 msgstr "Choisissez où {PRODUCT_NAME} doit envoyer les images pour la recherche d'images inversée. Nous nous souviendrons de votre choix. Vous pourrez le modifier ou ajouter votre propre fournisseur plus tard dans {searchEnginesSettingsPath}."
 
 #. Setup wizard media expiry step body.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:221
+#: src/features/app/components/setup/SetupWizardSteps.tsx:224
 msgid "Choose whether uploaded attachments should expire automatically based on size."
 msgstr "Choisissez si les pièces jointes envoyées doivent expirer automatiquement en fonction de leur taille."
 
@@ -7943,7 +7957,7 @@ msgstr "Améliore le son du micro pour une voix claire."
 #. Button or menu action label in the theme studio quick css section. Keep it concise.
 #. Button that removes an uploaded branding image.
 #. Inline button in the Recent searches section that wipes the search history list.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:117
+#: src/features/app/components/setup/SetupWizardSteps.tsx:120
 #: src/features/channel/components/message_search_bar/HistorySection.tsx:24
 #: src/features/guild/components/modals/guild_tabs/GuildMembersDateRangeModal.tsx:74
 #: src/features/input/components/KeybindRecorder.tsx:442
@@ -8143,7 +8157,7 @@ msgid "Click to open the color picker and choose a new color."
 msgstr "Cliquez pour ouvrir le sélecteur de couleurs et choisir une nouvelle couleur."
 
 #. Tooltip on the add-reaction button in the inline message hover action bar.
-#: src/features/channel/components/MessageActionBar.tsx:75
+#: src/features/channel/components/MessageActionBar.tsx:76
 msgid "Click to react"
 msgstr "Cliquer pour réagir"
 
@@ -8171,7 +8185,7 @@ msgid "Client"
 msgstr "Client"
 
 #. Label for Bluesky OAuth client name input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1018
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1056
 msgid "Client name"
 msgstr "Nom du client"
 
@@ -8188,7 +8202,7 @@ msgid "Client secret regenerated. Update any code that uses the old secret."
 msgstr "Secret client régénéré. Mettez à jour tout code utilisant l'ancien secret."
 
 #. Label for Bluesky OAuth client URL input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1022
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1060
 msgid "Client URL"
 msgstr "URL du client"
 
@@ -8321,7 +8335,7 @@ msgid "Close your DM with {username}? You can reopen it anytime."
 msgstr "Fermer votre conversation privée avec {username} ? Vous pourrez la rouvrir à tout moment."
 
 #. Registration mode option that disables public registration.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:171
+#: src/features/app/components/setup/SetupWizardSteps.tsx:174
 msgid "Closed"
 msgstr "Fermé"
 
@@ -8341,7 +8355,7 @@ msgid "Cloud upload"
 msgstr "Envoi vers le cloud"
 
 #. Cloudflare Turnstile provider option.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:975
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1013
 msgid "Cloudflare Turnstile"
 msgstr "Cloudflare Turnstile"
 
@@ -8733,14 +8747,14 @@ msgstr "Couper le micro du membre"
 
 #. Label for the single community name input in the setup wizard.
 #. Label of the community name input in the create-community form.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:196
+#: src/features/app/components/setup/SetupWizardSteps.tsx:199
 #: src/features/guild/components/modals/add_guild_modal/shared.ts:123
 msgid "Community name"
 msgstr "Nom de la communauté"
 
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:126
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:127
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:113
 msgid "Community nickname"
 msgstr "Surnom dans la communauté"
@@ -8793,7 +8807,7 @@ msgid "Community profile"
 msgstr "Profil dans la communauté"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:73
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:74
 msgid "Community profile updated"
 msgstr "Profil dans la communauté mis à jour"
 
@@ -8951,7 +8965,7 @@ msgid "Configure keyboard shortcuts"
 msgstr "Configurer les raccourcis clavier"
 
 #. Option for configuring an optional setup wizard integration.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:922
+#: src/features/app/components/setup/SetupWizardSteps.tsx:960
 msgid "Configure now"
 msgstr "Configurer maintenant"
 
@@ -9003,7 +9017,7 @@ msgid "Configure your profile badge"
 msgstr "Configurer votre badge de profil"
 
 #. Header for configured personas list with count
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:117
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:119
 msgid "Configured Personas ({count})"
 msgstr "Personas configurées ({count})"
 
@@ -9480,18 +9494,18 @@ msgstr "URL copiée dans le presse-papiers"
 #. Textarea right-click context menu item that copies the selected text.
 #: src/features/app/components/dialogs/shared/CopyLinkSection.tsx:11
 #: src/features/auth/components/modals/BackupCodesModal.tsx:96
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:50
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:51
 #: src/features/moderation/components/report_modal/IARModalCopy.ts:397
 #: src/features/platform/utils/DesktopLocaleBridge.ts:64
 #: src/features/theme_studio/sections/QuickCssSection.tsx:214
-#: src/features/ui/action_menu/MessageContextMenu.tsx:73
+#: src/features/ui/action_menu/MessageContextMenu.tsx:75
 #: src/features/user/components/modals/tabs/applications_tab/application_detail/OAuthBuilderSection.tsx:228
 #: src/features/user/components/modals/tabs/GiftInventoryTab.tsx:59
 msgid "Copy"
 msgstr "Copier"
 
 #. Developer-mode action that copies the attachment ID to the clipboard.
-#: src/features/ui/action_menu/MessageContextMenu.tsx:69
+#: src/features/ui/action_menu/MessageContextMenu.tsx:71
 msgid "Copy attachment ID"
 msgstr "Copier l'ID de la pièce jointe"
 
@@ -9829,7 +9843,7 @@ msgid "Could not decode this audio file."
 msgstr "Impossible de décoder ce fichier audio."
 
 #. Error shown when the setup wizard fails to load the instance configuration.
-#: src/features/app/components/setup/SelfHostedSetupWizardGate.tsx:93
+#: src/features/app/components/setup/SelfHostedSetupWizardGate.tsx:94
 msgid "Could not load the instance configuration. Try reloading the page."
 msgstr "Impossible de charger la configuration de l'instance. Essayez de recharger la page."
 
@@ -10202,7 +10216,7 @@ msgid "Couldn't ring this person"
 msgstr "Impossible d'appeler cette personne"
 
 #. Error message in the use textarea submit hook. Preserve {detail}; it is inserted by code.
-#: src/features/messaging/hooks/useTextareaSubmit.ts:49
+#: src/features/messaging/hooks/useTextareaSubmit.ts:54
 msgid "Couldn't run that command: {detail}"
 msgstr "Impossible d'exécuter cette commande : {detail}"
 
@@ -10446,7 +10460,7 @@ msgid "Create account to claim gift"
 msgstr "Créer un compte pour récupérer le cadeau"
 
 #. Button that opens the registration flow to create the first administrator account.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:68
+#: src/features/app/components/setup/SetupWizardSteps.tsx:71
 msgid "Create administrator account"
 msgstr "Créer le compte administrateur"
 
@@ -10557,7 +10571,7 @@ msgid "Create role"
 msgstr "Créer un rôle"
 
 #. Setup wizard title prompting the operator to create the first account.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:48
+#: src/features/app/components/setup/SetupWizardSteps.tsx:51
 msgid "Create the administrator account"
 msgstr "Créer le compte administrateur"
 
@@ -11046,7 +11060,7 @@ msgstr "La personnalisation de votre avatar, de votre bannière, de votre couleu
 
 #. Native Edit menu item that cuts the selection to the clipboard. Imperative verb, not the noun.
 #. Textarea right-click context menu item that cuts the selected text.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:46
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:47
 #: src/features/platform/utils/DesktopLocaleBridge.ts:60
 msgid "Cut"
 msgstr "Couper"
@@ -11211,7 +11225,7 @@ msgid "Deactivate"
 msgstr "Désactiver"
 
 #. Aria label for deactivating active persona
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:109
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:111
 msgid "Deactivate persona"
 msgstr "Désactiver la persona"
 
@@ -11299,7 +11313,7 @@ msgstr "Déboguer le membre"
 #. Developer-mode action that opens the message debug modal.
 #. Developer-mode item in the message action bar overflow menu. Opens the message debug modal.
 #. Developer-mode message context menu item that opens an internal debug view for the message.
-#: src/features/channel/components/MessageActionBar.tsx:91
+#: src/features/channel/components/MessageActionBar.tsx:92
 #: src/features/channel/components/MessageActionMenu.tsx:105
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:66
 msgid "Debug message"
@@ -11313,7 +11327,7 @@ msgid "Debug user"
 msgstr "Déboguer l'utilisateur"
 
 #. Setup wizard premium model step body.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:307
+#: src/features/app/components/setup/SetupWizardSteps.tsx:333
 msgid "Decide how premium limits apply to people on this instance."
 msgstr "Décidez comment les limites premium s'appliquent aux personnes de cette instance."
 
@@ -12023,7 +12037,7 @@ msgstr "Détails"
 
 #. Item in the textarea spellcheck language submenu that detects draft message language and switches dictionaries as the user types.
 #. Spellcheck language mode label in the language tab. The app detects the draft message language and switches dictionaries as the user types.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:83
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:88
 #: src/features/user/components/modals/tabs/LanguageTab.tsx:126
 msgid "Detect while typing"
 msgstr "Détection pendant la saisie"
@@ -12212,7 +12226,7 @@ msgstr "Aperçus des messages privés"
 
 #. Generic section heading / label for the direct messages area.
 #. Summary row label for the direct messages choice in the setup wizard.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:348
+#: src/features/app/components/setup/SetupWizardSteps.tsx:374
 #: src/features/channel/components/direct_message/DirectMessageList.tsx:629
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:223
 #: src/features/user/components/modals/tabs/privacy_safety_tab/ConnectionsTab.tsx:255
@@ -12292,7 +12306,7 @@ msgid "Disable desktop notifications?"
 msgstr "Désactiver les notifications de bureau ?"
 
 #. Label for the toggle that disables direct messages and friend requests.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:208
+#: src/features/app/components/setup/SetupWizardSteps.tsx:211
 msgid "Disable direct messages and friend requests"
 msgstr "Désactiver les messages privés et les demandes d’ami"
 
@@ -12368,7 +12382,7 @@ msgid "Disable video locally"
 msgstr "Désactiver la vidéo localement"
 
 #. Summary value when a setup option is disabled.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:364
+#: src/features/app/components/setup/SetupWizardSteps.tsx:402
 msgid "Disabled"
 msgstr "Désactivé"
 
@@ -12594,7 +12608,7 @@ msgstr "Mode d'affichage"
 #. Short label in the my profile tab. Keep it concise.
 #: src/features/persona/components/modals/PersonaEditModal.tsx:849
 #: src/features/user/components/modals/tabs/component_gallery_tab/ComponentGalleryTabInputsTab.tsx:22
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:138
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:139
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:61
 msgid "Display name"
 msgstr "Nom affiché"
@@ -12612,11 +12626,11 @@ msgstr "Nom affiché (facultatif)"
 msgid "Display scaling"
 msgstr "Mise à l'échelle de l'affichage"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:429
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:451
 msgid "Display Tag"
 msgstr "Badge d'affichage"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:432
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:454
 msgid "Display tag will appear next to all persona names in messages. If no display tag is set, your account profile picture will be shown."
 msgstr "Le badge d'affichage apparaîtra à côté du nom de toutes vos personas dans les messages. Si aucun badge n'est configuré, votre photo de profil de compte sera affichée."
 
@@ -12748,7 +12762,7 @@ msgstr "Voulez-vous rejoindre {communityName} ?"
 #. Label in the accessibility tab.
 #. Label in the my profile tab.
 #: src/features/user/components/modals/tabs/AccessibilityTab.tsx:54
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:146
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:147
 msgid "Doc, I'm from the future. I came here in a time machine that you invented. Now, I need your help to get back to the year 1985."
 msgstr "Doc, je viens du futur. Je suis venu ici dans une machine à voyager dans le temps que vous avez inventée. Maintenant, j'ai besoin de votre aide pour retourner en 1985."
 
@@ -13371,10 +13385,10 @@ msgstr "Modifier les permissions spécifiques aux rôles et aux membres dans ce 
 
 #. Action button to edit persona
 #. Aria label for editing persona
-#: src/features/persona/components/PersonaProfileMobileSheet.tsx:321
-#: src/features/persona/components/PersonaProfileMobileSheet.tsx:377
-#: src/features/persona/components/PersonaProfilePopout.tsx:333
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:113
+#: src/features/persona/components/PersonaProfileMobileSheet.tsx:342
+#: src/features/persona/components/PersonaProfileMobileSheet.tsx:398
+#: src/features/persona/components/PersonaProfilePopout.tsx:358
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:115
 msgid "Edit persona"
 msgstr "Modifier la persona"
 
@@ -13452,7 +13466,7 @@ msgid "Edit translation provider"
 msgstr "Modifier le fournisseur de traduction"
 
 #. Button or menu action label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:93
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:94
 msgid "Edit your profile appearance and see a live preview"
 msgstr "Modifiez l'apparence de votre profil et voyez un aperçu en direct"
 
@@ -13520,7 +13534,7 @@ msgid "Email changed"
 msgstr "E-mail modifié"
 
 #. Setup wizard title for SMTP integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:954
+#: src/features/app/components/setup/SetupWizardSteps.tsx:992
 msgid "Email delivery"
 msgstr "Envoi d’e-mails"
 
@@ -13811,7 +13825,7 @@ msgid "Enable at least one translator below."
 msgstr "Activez au moins un traducteur ci-dessous."
 
 #. Label for enabling attachment expiry during setup.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:225
+#: src/features/app/components/setup/SetupWizardSteps.tsx:228
 msgid "Enable attachment expiration"
 msgstr "Activer l'expiration des pièces jointes"
 
@@ -13825,7 +13839,7 @@ msgid "Enable beta feature"
 msgstr "Activer la fonctionnalité bêta"
 
 #. Label for enabling Bluesky OAuth in setup.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1014
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1052
 msgid "Enable Bluesky OAuth"
 msgstr "Activer l'authentification OAuth Bluesky"
 
@@ -13858,7 +13872,7 @@ msgid "Enable developer mode"
 msgstr "Activer le mode développeur"
 
 #. Label for enabling SMTP email delivery in setup.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:982
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1020
 msgid "Enable email delivery"
 msgstr "Activer l’envoi d’e-mails"
 
@@ -14000,7 +14014,7 @@ msgid "Enable text selection"
 msgstr "Activer la sélection de texte"
 
 #. Setup wizard optional services step body.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:270
+#: src/features/app/components/setup/SetupWizardSteps.tsx:296
 msgid "Enable the integrations whose credentials you have configured. Only available services are shown."
 msgstr "Activez les intégrations pour lesquelles vous avez configuré les identifiants. Seuls les services disponibles sont affichés."
 
@@ -14041,9 +14055,9 @@ msgstr "Activer les miniatures de navigation vidéo"
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
 #. Summary value when a setup option is enabled.
 #. Toggle item in the textarea spellcheck submenu. Master enable for spellcheck.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:360
+#: src/features/app/components/setup/SetupWizardSteps.tsx:398
 #: src/features/channel/components/channel_header_components/developer_tools/DeveloperToolsShared.ts:21
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:66
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:71
 msgid "Enabled"
 msgstr "Activé"
 
@@ -14163,7 +14177,7 @@ msgid "Enter a code in the format ABCD-1234."
 msgstr "Saisissez un code au format ABCD-1234."
 
 #. Validation error for the single community name input in the setup wizard.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:204
+#: src/features/app/components/setup/SetupWizardSteps.tsx:207
 msgid "Enter a community name between 1 and 100 characters."
 msgstr "Entrez un nom de communauté entre 1 et 100 caractères."
 
@@ -14173,7 +14187,7 @@ msgid "Enter a gift code to redeem {premiumProductName} for your account."
 msgstr "Saisissez un code cadeau pour activer {premiumProductName} sur votre compte."
 
 #. Validation error for the product name input in the setup wizard.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:97
+#: src/features/app/components/setup/SetupWizardSteps.tsx:100
 msgid "Enter a product name between 1 and 80 characters."
 msgstr "Entrez un nom de produit entre 1 et 80 caractères."
 
@@ -14556,7 +14570,7 @@ msgid "Everyone"
 msgstr "Tout le monde"
 
 #. Premium model option that gives everyone the highest limits.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:319
+#: src/features/app/components/setup/SetupWizardSteps.tsx:345
 msgid "Everyone is premium"
 msgstr "Tout le monde est premium"
 
@@ -14685,7 +14699,7 @@ msgid "EXPERIMENTAL"
 msgstr "EXPÉRIMENTAL"
 
 #. Label for attachment decay curve.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:253
+#: src/features/app/components/setup/SetupWizardSteps.tsx:256
 msgid "Expiration curve"
 msgstr "Courbe d'expiration"
 
@@ -14819,11 +14833,6 @@ msgstr "Résumé de l'export"
 #: src/features/user/components/settings_utils/section_registry/AppearanceSections.ts:110
 msgid "Export themes"
 msgstr "Exporter les thèmes"
-
-#. Developer / debug surface — keep terse and technical. Tooltip / description for the profile timezone settings toggle.
-#: src/features/devtools/components/DeveloperOptionsToggleGroups.ts:139
-msgid "Expose the staff-only time zone section in profile settings."
-msgstr "Afficher la section du fuseau horaire dans les paramètres du profil, réservée au personnel."
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
@@ -15248,7 +15257,7 @@ msgid "Failed to upload emojis. Try again."
 msgstr "Échec de l’envoi des emojis. Veuillez réessayer."
 
 #. Toast when icon upload fails
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:89
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:91
 msgid "Failed to upload icon to server"
 msgstr "Impossible de téléverser l'icône sur le serveur"
 
@@ -15258,7 +15267,7 @@ msgid "False claims likely to cause real-world harm."
 msgstr "Fausses déclarations susceptibles de causer des préjudices dans le monde réel."
 
 #. Label for the favicon branding asset.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:137
+#: src/features/app/components/setup/SetupWizardSteps.tsx:140
 msgid "Favicon"
 msgstr "Icône du site"
 
@@ -15554,8 +15563,8 @@ msgstr "Terminez dans le nouvel onglet. Si vous l'avez fermé, appuyez à nouvea
 
 #. Button that saves the configuration and completes the setup wizard.
 #. Setup wizard finish step title.
-#: src/features/app/components/setup/SelfHostedSetupWizardGate.tsx:85
-#: src/features/app/components/setup/SetupWizardSteps.tsx:328
+#: src/features/app/components/setup/SelfHostedSetupWizardGate.tsx:86
+#: src/features/app/components/setup/SetupWizardSteps.tsx:354
 msgid "Finish setup"
 msgstr "Terminer la configuration"
 
@@ -15602,7 +15611,7 @@ msgid "Florida"
 msgstr "Floride"
 
 #. Placeholder for the product name input in the setup wizard.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:93
+#: src/features/app/components/setup/SetupWizardSteps.tsx:96
 msgid "Fluxer"
 msgstr "Fluxer"
 
@@ -15907,7 +15916,7 @@ msgstr "Formulaires"
 #. Message action label for forwarding the selected message to another channel or DM.
 #. Message context menu item that opens the forward-to-channel picker.
 #. Tooltip on the forward button in the inline message hover action bar.
-#: src/features/channel/components/MessageActionBar.tsx:95
+#: src/features/channel/components/MessageActionBar.tsx:96
 #: src/features/channel/components/MessageActionMenu.tsx:85
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:54
 msgid "Forward"
@@ -16141,12 +16150,12 @@ msgid "from <0>{0}</0>"
 msgstr "de <0>{0}</0>"
 
 #. Label for SMTP from email input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:986
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1024
 msgid "From email"
 msgstr "E-mail de l’expéditeur"
 
 #. Label for SMTP from name input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:990
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1028
 msgid "From name"
 msgstr "Nom de l’expéditeur"
 
@@ -16438,7 +16447,7 @@ msgid "GIF preview"
 msgstr "Aperçu du GIF"
 
 #. Setup wizard title for GIF integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:930
+#: src/features/app/components/setup/SetupWizardSteps.tsx:968
 msgid "GIF search"
 msgstr "Recherche GIF"
 
@@ -16611,7 +16620,7 @@ msgid "Gifts"
 msgstr "Cadeaux"
 
 #. Description for the everyone-is-premium model.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:323
+#: src/features/app/components/setup/SetupWizardSteps.tsx:349
 msgid "Give everyone on this instance the highest premium limits."
 msgstr "Donnez à tout le monde sur cette instance les limites premium les plus élevées."
 
@@ -17082,7 +17091,7 @@ msgstr "Discours haineux"
 msgid "Having fun?"
 msgstr "Vous vous amusez bien ?"
 
-#: src/features/auth/components/modals/CaptchaModal.tsx:157
+#: src/features/auth/components/modals/CaptchaModal.tsx:175
 msgid "Having issues? Try hCaptcha instead"
 msgstr "Vous rencontrez des problèmes ? Essayez plutôt hCaptcha"
 
@@ -17093,7 +17102,7 @@ msgid "Hawaii"
 msgstr "Hawaï"
 
 #. hCaptcha provider option.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:974
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1012
 msgid "hCaptcha"
 msgstr "hCaptcha"
 
@@ -17632,7 +17641,7 @@ msgstr "J'ai compris"
 
 #. Label for the icon branding asset.
 #. Short label in the guild icon upload field. Keep it concise.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:121
+#: src/features/app/components/setup/SetupWizardSteps.tsx:124
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildIconUploadField.tsx:27
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildIconUploadField.tsx:89
 msgid "Icon"
@@ -17655,7 +17664,7 @@ msgid "Icon file is too large. Choose a file smaller than {imageMaxSizeLabel}."
 msgstr "Le fichier de l'icône est trop volumineux. Choisissez un fichier de taille inférieure à {imageMaxSizeLabel}."
 
 #. Toast when icon file exceeds size limit
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:93
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:95
 msgid "Icon file is too large. Choose an image smaller than 10MB."
 msgstr "Le fichier d'icône est trop volumineux. Choisissez une image de moins de 10 Mo."
 
@@ -17857,7 +17866,7 @@ msgid "Image"
 msgstr "Image"
 
 #. Label for the branding image asset uploaders in the setup wizard.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:105
+#: src/features/app/components/setup/SetupWizardSteps.tsx:108
 msgid "Image assets"
 msgstr "Images"
 
@@ -17997,7 +18006,7 @@ msgstr "Importer un dossier"
 
 #. Modal title for PluralKit import step select
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:534
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:541
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:571
 msgid "Import from PluralKit"
 msgstr "Importer depuis PluralKit"
 
@@ -18138,7 +18147,7 @@ msgstr "En chat vocal"
 
 #. Spellcheck engine option in the language tab. Uses the bundled in-app Hunspell dictionaries. Keep it concise.
 #. Spellcheck engine option in the textarea spellcheck submenu. The bundled in-app hunspell engine.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:75
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:80
 #: src/features/user/components/modals/tabs/LanguageTab.tsx:100
 msgid "In-app dictionaries"
 msgstr "Dictionnaires intégrés à l'application"
@@ -19238,7 +19247,7 @@ msgid "Keep existing and add new (Recommended)"
 msgstr "Conserver les existantes et ajouter les nouvelles (Recommandé)"
 
 #. Description for the mirror premium model.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:315
+#: src/features/app/components/setup/SetupWizardSteps.tsx:341
 msgid "Keep free and premium tiers. You can customize the tiers later."
 msgstr "Conservez les niveaux Gratuit et Premium. Vous pourrez personnaliser les niveaux plus tard."
 
@@ -19370,7 +19379,7 @@ msgid "Kicked {targetUserTag} from the community"
 msgstr "A expulsé {targetUserTag} de la communauté"
 
 #. Label for the Klipy GIF service toggle in the setup wizard.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:278
+#: src/features/app/components/setup/SetupWizardSteps.tsx:304
 msgid "Klipy GIFs"
 msgstr "GIF Klipy"
 
@@ -19382,7 +19391,7 @@ msgstr "Coréen"
 #. Label for the setup wizard language selector.
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. User settings tab for language, locale, and time display preferences.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:56
+#: src/features/app/components/setup/SetupWizardSteps.tsx:59
 #: src/features/user/components/settings_utils/search_index/LanguageIndex.ts:6
 #: src/features/user/components/settings_utils/SettingsConstants.tsx:137
 msgid "Language"
@@ -19395,7 +19404,7 @@ msgstr "Paramètres de langue"
 
 #. Submenu label in the textarea spellcheck submenu listing manual language overrides.
 #. Subsection title for spellcheck language settings. Keep it concise.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:88
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:93
 #: src/features/user/components/modals/tabs/LanguageTab.tsx:122
 msgid "Languages"
 msgstr "Langues"
@@ -19406,7 +19415,7 @@ msgid "Large"
 msgstr "Grande"
 
 #. Label for attachment decay maximum size threshold.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:237
+#: src/features/app/components/setup/SetupWizardSteps.tsx:240
 msgid "Large file threshold (MB)"
 msgstr "Seuil de taille des fichiers volumineux (Mo)"
 
@@ -19433,7 +19442,7 @@ msgstr "Dernière utilisation"
 #. Active persona mode last used
 #: src/features/persona/components/PersonaComposerPill.tsx:21
 #: src/features/persona/components/PersonaPickerSheet.tsx:25
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:62
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:64
 msgid "Last Used"
 msgstr "Dernière utilisée"
 
@@ -19582,6 +19591,11 @@ msgstr "Quitter ce groupe ? Vous ne verrez plus ses messages."
 msgid "Leave voice call"
 msgstr "Quitter l'appel vocal"
 
+#. Description for the push relay consent switch during setup.
+#: src/features/app/components/setup/SetupWizardSteps.tsx:282
+msgid "Leaving this off keeps the relay unused and drops notifications to the official mobile apps. You can accept it later in the admin panel."
+msgstr "Laisser cette option désactivée empêche l'utilisation du relais, et les applications mobiles officielles ne reçoivent aucune notification. Vous pourrez l'accepter plus tard dans le panneau d'administration."
+
 #. Card alignment option that aligns content to the left.
 #: src/features/ui/card_alignment_controls/CardAlignmentControls.tsx:17
 #: src/features/user/components/modals/tabs/component_gallery_tab/OverlaysTab.tsx:108
@@ -19656,12 +19670,12 @@ msgid "Let others clone your stickers"
 msgstr "Permettre aux autres de cloner vos stickers"
 
 #. Description for the Bluesky connections service toggle in the setup wizard.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:298
+#: src/features/app/components/setup/SetupWizardSteps.tsx:324
 msgid "Let people link their Bluesky account to their profile."
 msgstr "Permettre aux utilisateurs de lier leur compte Bluesky à leur profil."
 
 #. Description for the Klipy GIF service toggle in the setup wizard.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:282
+#: src/features/app/components/setup/SetupWizardSteps.tsx:308
 msgid "Let people search and send GIFs powered by Klipy."
 msgstr "Permettre aux utilisateurs de rechercher et d’envoyer des GIF avec Klipy."
 
@@ -19970,7 +19984,7 @@ msgid "Loading destinations…"
 msgstr "Chargement des destinations…"
 
 #. Accessible status while the setup wizard loads the instance configuration.
-#: src/features/app/components/setup/SelfHostedSetupWizardGate.tsx:89
+#: src/features/app/components/setup/SelfHostedSetupWizardGate.tsx:90
 msgid "Loading instance configuration"
 msgstr "Chargement de la configuration de l'instance"
 
@@ -20000,7 +20014,7 @@ msgid "Loading states"
 msgstr "États de chargement"
 
 #. Setup wizard body while the instance configuration loads.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:76
+#: src/features/app/components/setup/SetupWizardSteps.tsx:79
 msgid "Loading the current instance configuration."
 msgstr "Chargement de la configuration de l'instance actuelle."
 
@@ -20072,12 +20086,12 @@ msgid "Login"
 msgstr "Connexion"
 
 #. Label for the logo branding asset.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:129
+#: src/features/app/components/setup/SetupWizardSteps.tsx:132
 msgid "Logo"
 msgstr "Logo"
 
 #. Label for Bluesky OAuth logo URL input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1026
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1064
 msgid "Logo URL"
 msgstr "URL du logo"
 
@@ -20169,8 +20183,8 @@ msgid "Mail"
 msgstr "E-mail"
 
 #: src/features/persona/components/modals/PersonaEditModal.tsx:1142
-#: src/features/persona/components/PersonaProfileMobileSheet.tsx:420
-#: src/features/persona/components/PersonaProfilePopout.tsx:305
+#: src/features/persona/components/PersonaProfileMobileSheet.tsx:441
+#: src/features/persona/components/PersonaProfilePopout.tsx:330
 msgid "Main account"
 msgstr "Compte principal"
 
@@ -20208,7 +20222,7 @@ msgid "Make group owner"
 msgstr "Nommer propriétaire du groupe"
 
 #. Setup wizard branding step title.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:81
+#: src/features/app/components/setup/SetupWizardSteps.tsx:84
 msgid "Make the instance yours"
 msgstr "Personnalisez votre instance"
 
@@ -20360,7 +20374,7 @@ msgstr "Gérer votre abonnement"
 #. Active persona mode manual
 #: src/features/persona/components/PersonaComposerPill.tsx:17
 #: src/features/persona/components/PersonaPickerSheet.tsx:21
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:58
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:60
 msgid "Manual"
 msgstr "Manuel"
 
@@ -20678,12 +20692,12 @@ msgid "Maximum {max} signature emojis allowed per persona"
 msgstr "Maximum de {max} emojis signature autorisés par persona"
 
 #. Label for attachment decay maximum eligible size.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:241
+#: src/features/app/components/setup/SetupWizardSteps.tsx:244
 msgid "Maximum eligible size (MB)"
 msgstr "Taille maximale admissible (Mo)"
 
 #. Label for attachment decay maximum lifetime.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:249
+#: src/features/app/components/setup/SetupWizardSteps.tsx:252
 msgid "Maximum lifetime (days)"
 msgstr "Durée de vie maximale (jours)"
 
@@ -21079,8 +21093,8 @@ msgstr "message"
 #. Audit log target-type filter label. Filters entries that target an individual message.
 #. Short label in the inputs tab. Keep it concise.
 #: src/features/app/config/AuditLogConstants.ts:184
-#: src/features/persona/components/PersonaProfileMobileSheet.tsx:331
-#: src/features/persona/components/PersonaProfilePopout.tsx:343
+#: src/features/persona/components/PersonaProfileMobileSheet.tsx:352
+#: src/features/persona/components/PersonaProfilePopout.tsx:368
 #: src/features/user/components/modals/tabs/component_gallery_tab/ComponentGalleryTabInputsTab.tsx:86
 msgid "Message"
 msgstr "Message"
@@ -21090,7 +21104,7 @@ msgstr "Message"
 #. Member actions sheet menu item. Sends a direct message to the target user. Standalone verb used as a menu label.
 #. Voice participant menu action that opens a DM conversation with the selected user.
 #: src/features/guild/components/modals/guild_tabs/GuildMemberActionsSheet.tsx:88
-#: src/features/persona/components/PersonaProfileMobileSheet.tsx:391
+#: src/features/persona/components/PersonaProfileMobileSheet.tsx:412
 #: src/features/ui/action_menu/items/ActionsSubmenu.tsx:41
 #: src/features/ui/action_menu/items/MessageUserMenuItem.tsx:26
 #: src/features/ui/action_menu/items/voice_participant_menu_data/shared.ts:78
@@ -21164,7 +21178,7 @@ msgstr "Le message contient des médias en pièce jointe"
 #. Title of the developer-mode message debug modal opened from the message action bar.
 #. Title of the developer-mode message debug modal opened from the message context menu.
 #. Title of the developer-mode message debug modal.
-#: src/features/channel/components/MessageActionBar.tsx:83
+#: src/features/channel/components/MessageActionBar.tsx:84
 #: src/features/channel/components/MessageActionMenu.tsx:73
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:62
 msgid "Message debug"
@@ -21501,7 +21515,7 @@ msgid "Minimize window"
 msgstr "Réduire la fenêtre"
 
 #. Label for attachment decay minimum lifetime.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:245
+#: src/features/app/components/setup/SetupWizardSteps.tsx:248
 msgid "Minimum lifetime (days)"
 msgstr "Durée de vie minimale (jours)"
 
@@ -21530,7 +21544,7 @@ msgid "Mirror of the Appearance tab toggle for light/dark/coal preference. Disab
 msgstr "Reprend le réglage de l’onglet Apparence pour le thème clair, sombre ou charbon. Désactivez-le pour choisir un thème de base par appareil."
 
 #. Premium model option that mirrors free and premium tiers.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:311
+#: src/features/app/components/setup/SetupWizardSteps.tsx:337
 msgid "Mirror tiers"
 msgstr "Dupliquer les niveaux"
 
@@ -21578,7 +21592,9 @@ msgid "Mobile online status on avatars"
 msgstr "Statut mobile en ligne sur les avatars"
 
 #. Section label for mobile push notification settings.
+#. Setup wizard push relay consent step title.
 #. Switch label in the community notification settings modal. Controls whether mobile push notifications are delivered for this community.
+#: src/features/app/components/setup/SetupWizardSteps.tsx:269
 #: src/features/guild/components/modals/GuildNotificationSettingsModal.tsx:112
 #: src/features/ui/action_menu/items/GuildMenuItems.tsx:81
 msgid "Mobile push notifications"
@@ -21725,7 +21741,7 @@ msgstr "Cadeau d’un mois"
 #: src/features/auth/components/accounts/AccountRow.tsx:23
 #: src/features/channel/components/bottomsheets/channel_details_bottom_sheet/ChannelDetailsBottomSheetShared.ts:142
 #: src/features/channel/components/friends/FriendListItem.tsx:63
-#: src/features/channel/components/MessageActionBar.tsx:87
+#: src/features/channel/components/MessageActionBar.tsx:88
 #: src/features/user/components/modals/tabs/component_gallery_tab/ComponentGalleryTabButtonsTab.tsx:125
 msgid "More"
 msgstr "Plus"
@@ -21753,7 +21769,7 @@ msgid "More emoji actions"
 msgstr "Plus d'actions d'emoji"
 
 #. Submenu label that contains additional media context menu actions.
-#: src/features/ui/action_menu/MessageContextMenu.tsx:65
+#: src/features/ui/action_menu/MessageContextMenu.tsx:67
 msgid "More media actions"
 msgstr "Plus d'actions sur les médias"
 
@@ -22261,7 +22277,7 @@ msgid "My category"
 msgstr "Ma catégorie"
 
 #. Placeholder for the single community name input in the setup wizard.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:200
+#: src/features/app/components/setup/SetupWizardSteps.tsx:203
 msgid "My community"
 msgstr "Ma communauté"
 
@@ -22695,7 +22711,7 @@ msgstr "Du plus récent au plus ancien"
 #. Button that moves to the next setup wizard step.
 #. Generic primary or pagination action label that advances to the next step, page, or item.
 #. Primary button in the required-action modal. Moves to the next carousel step.
-#: src/features/app/components/setup/SelfHostedSetupWizardGate.tsx:81
+#: src/features/app/components/setup/SelfHostedSetupWizardGate.tsx:82
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:154
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:725
 msgid "Next"
@@ -22936,7 +22952,7 @@ msgstr "Aucune description."
 msgid "No desktop update is available."
 msgstr "Aucune mise à jour de l’application de bureau n’est disponible."
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:522
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:552
 msgid "No display tag configured. Messages will show your account profile picture."
 msgstr "Aucun badge d'affichage configuré. Les messages afficheront la photo de profil de votre compte."
 
@@ -23066,8 +23082,8 @@ msgid "No matches found"
 msgstr "Aucun résultat"
 
 #: src/features/persona/components/PersonaPickerSheet.tsx:197
-#: src/features/persona/components/PersonaReactAsModal.tsx:188
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:581
+#: src/features/persona/components/PersonaReactAsModal.tsx:246
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:611
 msgid "No matching personas found."
 msgstr "Aucune persona correspondante trouvée."
 
@@ -23094,7 +23110,7 @@ msgid "No one can add you to group chats without asking"
 msgstr "Personne ne peut vous ajouter à des conversations de groupe sans votre autorisation"
 
 #. Message shown when no optional services are available in the setup wizard.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:274
+#: src/features/app/components/setup/SetupWizardSteps.tsx:300
 msgid "No optional services are available on this instance. You can skip this step."
 msgstr "Aucun service optionnel n'est disponible sur cette instance. Vous pouvez ignorer cette étape."
 
@@ -23130,7 +23146,7 @@ msgstr "Pas encore de mots personnels."
 msgid "No personas configured yet. Create one in Settings."
 msgstr "Aucune persona configurée pour l'instant. Créez-en une dans les Paramètres."
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:577
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:607
 msgid "No personas created yet. Click \"Add Persona\" to create your first persona!"
 msgstr "Aucune persona créée pour le moment. Cliquez sur « Ajouter une persona » pour créer votre première persona !"
 
@@ -23361,7 +23377,7 @@ msgid "No webhooks"
 msgstr "Aucun webhook"
 
 #. Developer option label for short-circuiting the in-app reporting (IAR) flow. When enabled, submitting a report skips the network call.
-#: src/features/devtools/components/DeveloperOptionsToggleGroups.ts:144
+#: src/features/devtools/components/DeveloperOptionsToggleGroups.ts:135
 msgid "No-op in-app reports"
 msgstr "Désactiver l’envoi réel des signalements dans l’application"
 
@@ -23460,6 +23476,11 @@ msgstr "Ce n’est pas un nombre"
 #: src/features/lexical/composer/nodes/SlashSlotNode.ts:73
 msgid "Not a whole number"
 msgstr "Ce n’est pas un nombre entier"
+
+#. Summary value when the operator left the push relay notice unaccepted.
+#: src/features/app/components/setup/SetupWizardSteps.tsx:394
+msgid "Not accepted"
+msgstr "Non accepté"
 
 #. Fallback value when a saved billing payment method has no expiration date.
 #: src/features/app/components/dialogs/components/plutonium/PaymentMethodList.tsx:18
@@ -23933,7 +23954,7 @@ msgid "Open"
 msgstr "Ouvrir"
 
 #. Registration mode option allowing anyone to register.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:154
+#: src/features/app/components/setup/SetupWizardSteps.tsx:157
 msgctxt "registration-policy"
 msgid "Open"
 msgstr "Ouverte"
@@ -24452,7 +24473,7 @@ msgstr "Ouvre la page Membres. Appuyez sur Espace ou Entrée pour ouvrir."
 #. Short label in the language tab. Keep it concise.
 #. Spellcheck engine option in the textarea spellcheck submenu. Uses the host operating system spellchecker.
 #: src/features/auth/flow/HandoffApprovalFlow.tsx:184
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:79
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:84
 #: src/features/user/components/modals/tabs/LanguageTab.tsx:110
 msgid "Operating system"
 msgstr "Système d'exploitation"
@@ -24492,7 +24513,7 @@ msgid "Optional arguments"
 msgstr "Arguments facultatifs"
 
 #. Setup wizard optional services step title.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:266
+#: src/features/app/components/setup/SetupWizardSteps.tsx:292
 msgid "Optional services"
 msgstr "Services facultatifs"
 
@@ -24601,7 +24622,7 @@ msgid "Other people can only see your current UTC offset when you choose to shar
 msgstr "Les autres utilisateurs ne peuvent voir que votre décalage UTC actuel lorsque vous choisissez de partager l’heure locale de votre profil. Ils ne voient pas votre identifiant de fuseau horaire exact, tel que {timezoneIdentifierExample}. {productName} conserve cet identifiant afin que le décalage puisse être mis à jour automatiquement lors des changements d’heure d’été."
 
 #. Message action that opens the full reaction picker.
-#: src/features/ui/action_menu/MessageContextMenu.tsx:57
+#: src/features/ui/action_menu/MessageContextMenu.tsx:59
 msgid "Other reaction…"
 msgstr "Autre réaction…"
 
@@ -24813,7 +24834,7 @@ msgstr "Les clés d'accès nécessitent un paquet macOS signé avec un identifia
 
 #. Generic form-field label for a password.
 #. Label for SMTP password input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:997
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1035
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:215
 #: src/features/user/components/modals/tabs/account_security_tab/AccountTab.tsx:146
 #: src/features/user/components/modals/tabs/account_security_tab/AccountTab.tsx:183
@@ -24879,7 +24900,7 @@ msgstr "7 derniers jours"
 
 #. Native Edit menu item that pastes the clipboard contents. Imperative verb, not the noun.
 #. Textarea right-click context menu item that pastes clipboard contents.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:54
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:55
 #: src/features/platform/utils/DesktopLocaleBridge.ts:68
 msgid "Paste"
 msgstr "Coller"
@@ -24892,6 +24913,11 @@ msgstr "Collez une URL de modèle {theOtherPlatform} pour importer sa structure 
 #: src/features/platform/utils/DesktopLocaleBridge.ts:72
 msgid "Paste and match style"
 msgstr "Coller et adapter le style"
+
+#. Textarea right-click context menu item that pastes clipboard contents without formatting.
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:59
+msgid "Paste as plain text"
+msgstr "Coller en texte brut"
 
 #. Instruction text in the favorite GIF import modal.
 #: src/features/channel/components/pickers/gif/ImportFavoriteGifsModal.tsx:46
@@ -25177,14 +25203,14 @@ msgstr "Persona supprimée"
 
 #. Fallback screen reader label for the persona profile modal. Keep it concise.
 #. Fallback screen reader label for the persona profile modal. Keep it concise.
-#: src/features/persona/components/PersonaProfileMobileSheet.tsx:47
+#: src/features/persona/components/PersonaProfileMobileSheet.tsx:48
 #: src/features/persona/components/PersonaProfileModal.tsx:18
 msgid "Persona profile"
 msgstr "Profil de persona"
 
 #. Screen reader label for the persona profile modal. Keep it concise. Preserve {name}; it is inserted by code.
 #. Screen reader label for the persona profile modal. Keep it concise. Preserve {name}; it is inserted by code.
-#: src/features/persona/components/PersonaProfileMobileSheet.tsx:43
+#: src/features/persona/components/PersonaProfileMobileSheet.tsx:44
 #: src/features/persona/components/PersonaProfileModal.tsx:14
 msgid "Persona profile: {name}"
 msgstr "Profil de persona : {name}"
@@ -25222,8 +25248,8 @@ msgstr "Les notes personnelles étaient déjà vides"
 
 #. Title of personas settings section
 #. User settings tab for personas.
-#: src/features/persona/components/PersonaReactAsModal.tsx:181
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:76
+#: src/features/persona/components/PersonaReactAsModal.tsx:239
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:78
 #: src/features/user/components/settings_utils/SettingsConstants.tsx:91
 msgid "Personas"
 msgstr "Personas"
@@ -25337,7 +25363,7 @@ msgid "Pick one or more dictionaries. Words from any selected dictionary are acc
 msgstr "Choisissez un ou plusieurs dictionnaires. Les mots de tous les dictionnaires sélectionnés sont acceptés, ce qui est utile pour les discussions multilingues."
 
 #. Setup wizard body for choosing the initial account theme.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:64
+#: src/features/app/components/setup/SetupWizardSteps.tsx:67
 msgid "Pick the appearance this administrator account should start with."
 msgstr "Choisissez l'apparence de départ de ce compte administrateur."
 
@@ -25662,7 +25688,7 @@ msgid "Popup"
 msgstr "Pop-up"
 
 #. Label for SMTP port input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:995
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1033
 msgid "Port"
 msgstr "Port"
 
@@ -25773,7 +25799,7 @@ msgid "Premium grace period nagbar"
 msgstr "Bannière de période de grâce Premium"
 
 #. Summary row label for the premium model in the setup wizard.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:356
+#: src/features/app/components/setup/SetupWizardSteps.tsx:386
 msgid "Premium model"
 msgstr "Modèle premium"
 
@@ -25818,7 +25844,7 @@ msgid "Preparing avatar batch download..."
 msgstr "Préparation du téléchargement par lot des avatars…"
 
 #. Setup wizard title while the instance configuration loads.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:72
+#: src/features/app/components/setup/SetupWizardSteps.tsx:75
 msgid "Preparing setup"
 msgstr "Préparation de la configuration"
 
@@ -25828,7 +25854,7 @@ msgid "Presence"
 msgstr "Présence"
 
 #. Tooltip hint for a quick reaction in the message context menu. Preserve {shortcut}; it is a keyboard key such as 1.
-#: src/features/ui/action_menu/MessageContextMenu.tsx:77
+#: src/features/ui/action_menu/MessageContextMenu.tsx:79
 msgid "Press {shortcut} to react"
 msgstr "Appuyez sur {shortcut} pour réagir"
 
@@ -25875,7 +25901,7 @@ msgstr "Empêcher les membres d'envoyer des messages, de réagir et de rejoindre
 
 #: src/features/expressions/components/modals/sticker_form/StickerPreview.tsx:21
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildInviteSplashSettingsField.tsx:45
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:496
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:518
 #: src/features/user/components/modals/tabs/EmbedDebuggerTab.tsx:276
 msgid "Preview"
 msgstr "Aperçu"
@@ -26069,7 +26095,7 @@ msgid "Privacy settings"
 msgstr "Paramètres de confidentialité"
 
 #. Label for Bluesky OAuth privacy URL input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1034
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1072
 msgid "Privacy URL"
 msgstr "URL de confidentialité"
 
@@ -26099,7 +26125,7 @@ msgid "Private details"
 msgstr "Détails privés"
 
 #. Label for Bluesky OAuth private key input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1042
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1080
 msgid "Private key"
 msgstr "Clé privée"
 
@@ -26109,7 +26135,7 @@ msgid "Private message"
 msgstr "Message privé"
 
 #. Tooltip on private persona badge
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:101
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:103
 msgid "Private persona"
 msgstr "Persona privée"
 
@@ -26134,8 +26160,8 @@ msgstr "Traitement : {0}"
 
 #. Label for the product name input in the setup wizard.
 #. Summary row label for the product name in the setup wizard.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:89
-#: src/features/app/components/setup/SetupWizardSteps.tsx:336
+#: src/features/app/components/setup/SetupWizardSteps.tsx:92
+#: src/features/app/components/setup/SetupWizardSteps.tsx:362
 msgid "Product name"
 msgstr "Nom du produit"
 
@@ -26185,18 +26211,18 @@ msgstr "Couleur du profil"
 
 #. Settings section label for editing profile appearance and identity.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:105
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:106
 #: src/features/user/components/settings_utils/section_registry/GeneralSettingsSections.ts:6
 msgid "Profile customization"
 msgstr "Personnalisation du profil"
 
 #. Label in the my profile tab. Preserve {selectedGuildName}; it is inserted by code.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:101
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:102
 msgid "Profile customization for {selectedGuildName}"
 msgstr "Personnalisation du profil pour {selectedGuildName}"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:97
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:98
 msgid "Profile customization form"
 msgstr "Formulaire de personnalisation du profil"
 
@@ -26261,7 +26287,7 @@ msgid "Profile type"
 msgstr "Type de profil"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:77
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:78
 msgid "Profile updated"
 msgstr "Profil mis à jour"
 
@@ -26299,7 +26325,7 @@ msgstr "Demander la confirmation pour les nouveaux périphériques audio."
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Short label in the my profile tab. Keep it concise.
 #: src/features/persona/components/modals/PersonaEditModal.tsx:859
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:142
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:143
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:177
 #: src/features/user/components/settings_utils/section_registry/PrivacySafetySections.ts:160
 msgid "Pronouns"
@@ -26330,7 +26356,7 @@ msgid "Provide your full legal name for the declaration."
 msgstr "Indiquez vos nom et prénom tels qu’ils figurent sur vos documents officiels pour la déclaration."
 
 #. Label for an integration provider choice.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:970
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1008
 msgid "Provider"
 msgstr "Fournisseur"
 
@@ -26357,12 +26383,12 @@ msgid "Public community"
 msgstr "Communauté publique"
 
 #. Tooltip on public persona badge
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:97
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:99
 msgid "Public persona"
 msgstr "Persona publique"
 
 #. Description for the closed registration mode.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:175
+#: src/features/app/components/setup/SetupWizardSteps.tsx:178
 msgid "Public registration is closed."
 msgstr "L'inscription publique est fermée."
 
@@ -26454,6 +26480,11 @@ msgstr "{deletedCount, plural, one {# message supprimé} many {# messages suppri
 #: src/features/user/components/settings_utils/search_index/NotificationsIndex.ts:42
 msgid "Push notification inactive timeout"
 msgstr "Délai d'inactivité des notifications push"
+
+#. Summary row label for the push relay consent on the setup wizard finish step.
+#: src/features/app/components/setup/SetupWizardSteps.tsx:382
+msgid "Push relay notice"
+msgstr "Notification de relais push"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/section_registry/NotificationsSections.ts:131
@@ -26653,8 +26684,8 @@ msgid "React"
 msgstr "Réagir"
 
 #. Title of the modal and context menu item to react as a persona.
-#: src/features/persona/components/PersonaReactAsModal.tsx:23
-#: src/features/persona/components/PersonaReactAsModal.tsx:115
+#: src/features/persona/components/PersonaReactAsModal.tsx:24
+#: src/features/persona/components/PersonaReactAsModal.tsx:162
 msgid "React as..."
 msgstr "Réagir en tant que..."
 
@@ -26664,7 +26695,7 @@ msgid "React with {emojiShortcode}"
 msgstr "Réagir avec {emojiShortcode}"
 
 #. Tooltip hint showing effective reacting persona or user on quick reaction hover.
-#: src/features/channel/components/MessageActionBar.tsx:79
+#: src/features/channel/components/MessageActionBar.tsx:80
 msgid "Reacting as {name}"
 msgstr "Réagir en tant que {name}"
 
@@ -26737,6 +26768,11 @@ msgstr "Lire le journal d'activité de la communauté (modifications et actions 
 #: src/features/user/components/modals/tabs/applications_tab/index.tsx:33
 msgid "Read the documentation ({domain})"
 msgstr "Lire la documentation ({domain})"
+
+#. Link to the push relay supplemental privacy notice shown during setup.
+#: src/features/app/components/setup/SetupWizardSteps.tsx:287
+msgid "Read the supplemental privacy notice"
+msgstr "Lire l'avis de confidentialité supplémentaire"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/section_registry/AccessibilitySections.ts:163
@@ -26828,7 +26864,7 @@ msgstr "Les destinataires seront redirigés vers {0} <0>{1}</0>"
 
 #. Spellcheck engine option in the language tab. Lets the app choose the best available spellcheck engine.
 #. Spellcheck engine option in the textarea spellcheck submenu. Lets the app choose the best available engine.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:70
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:75
 #: src/features/user/components/modals/tabs/LanguageTab.tsx:90
 msgid "Recommended"
 msgstr "Recommandé"
@@ -26952,7 +26988,7 @@ msgstr "URI de redirection"
 
 #. Native Edit menu item that redoes the last undone edit. Imperative verb.
 #. Textarea right-click context menu item that redoes the last undone edit.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:42
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:43
 #: src/features/platform/utils/DesktopLocaleBridge.ts:56
 msgid "Redo"
 msgstr "Rétablir"
@@ -27057,7 +27093,7 @@ msgid "Registered passkeys"
 msgstr "Clés d'accès enregistrées"
 
 #. Summary row label for the registration mode in the setup wizard.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:340
+#: src/features/app/components/setup/SetupWizardSteps.tsx:366
 msgid "Registration"
 msgstr "Inscription"
 
@@ -27133,7 +27169,7 @@ msgid "Reload now"
 msgstr "Recharger maintenant"
 
 #. Hint in the textarea spellcheck submenu shown after switching engines.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:92
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:97
 msgid "Reload to apply engine change"
 msgstr "Recharger pour appliquer le changement de moteur"
 
@@ -27293,7 +27329,7 @@ msgid "Remove friend"
 msgstr "Supprimer l'ami"
 
 #. Textarea right-click context menu item that removes the selected misspelled word from the personal dictionary.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:29
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:30
 msgid "Remove from dictionary"
 msgstr "Retirer du dictionnaire"
 
@@ -27330,7 +27366,7 @@ msgstr "Supprimer des favoris GIF enregistrés par URL"
 #: src/features/channel/components/modals/EditGroupModal.tsx:292
 #: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:313
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:634
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:477
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:499
 msgid "Remove icon"
 msgstr "Supprimer l'icône"
 
@@ -27368,12 +27404,12 @@ msgid "Remove reaction"
 msgstr "Supprimer la réaction"
 
 #. Short label in the shared app message reactions content. Preserve {displayName}; it is inserted by code. Keep the tone plain and specific.
-#: src/features/app/components/shared/MessageReactionsContent.tsx:37
+#: src/features/app/components/shared/MessageReactionsContent.tsx:38
 msgid "Remove reaction from {displayName}"
 msgstr "Retirer la réaction de {displayName}"
 
 #. Message action that removes a specific reaction from the selected message.
-#: src/features/ui/action_menu/MessageContextMenu.tsx:61
+#: src/features/ui/action_menu/MessageContextMenu.tsx:63
 msgid "Remove reactions"
 msgstr "Supprimer les réactions"
 
@@ -27680,12 +27716,12 @@ msgid "Render placeholders"
 msgstr "Afficher les espaces réservés"
 
 #. Label for attachment decay renewal threshold.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:257
+#: src/features/app/components/setup/SetupWizardSteps.tsx:260
 msgid "Renew threshold (days)"
 msgstr "Seuil de renouvellement (jours)"
 
 #. Label for attachment decay renewal window.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:261
+#: src/features/app/components/setup/SetupWizardSteps.tsx:264
 msgid "Renew window (days)"
 msgstr "Fenêtre de renouvellement (jours)"
 
@@ -27695,7 +27731,7 @@ msgstr "Renouvellement le <0>{renewalDate}.</0>"
 
 #. Button or menu action label in the background image gallery modal. Keep it concise.
 #. Button that replaces an already uploaded branding image.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:113
+#: src/features/app/components/setup/SetupWizardSteps.tsx:116
 #: src/features/theme/components/modals/BackgroundImageGalleryModal.tsx:80
 msgid "Replace"
 msgstr "Remplacer"
@@ -28581,7 +28617,7 @@ msgid "Review what this app is asking for before you continue."
 msgstr "Vérifiez les autorisations demandées par cette application avant de continuer."
 
 #. Setup wizard finish step body.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:332
+#: src/features/app/components/setup/SetupWizardSteps.tsx:358
 msgid "Review your choices below, then finish. This saves the configuration and opens the instance."
 msgstr "Vérifiez vos choix ci-dessous, puis terminez. Cela enregistrera la configuration et ouvrira l'instance."
 
@@ -28798,7 +28834,7 @@ msgid "Romanian"
 msgstr "Roumain"
 
 #: src/features/persona/components/PersonaPickerSheet.tsx:151
-#: src/features/persona/components/PersonaReactAsModal.tsx:169
+#: src/features/persona/components/PersonaReactAsModal.tsx:226
 msgid "Root Account (Default)"
 msgstr "Compte principal (par défaut)"
 
@@ -28842,7 +28878,7 @@ msgid "Run at login"
 msgstr "Lancer à la connexion"
 
 #. Description for the single community toggle in the setup wizard.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:192
+#: src/features/app/components/setup/SetupWizardSteps.tsx:195
 msgid "Run the instance as one community instead of many. This can only be enabled now, during setup."
 msgstr "Exécutez l'instance comme une seule communauté au lieu de plusieurs. Ceci ne peut être activé que maintenant, pendant la configuration."
 
@@ -29466,7 +29502,7 @@ msgstr "Rechercher des permissions…"
 #. Search placeholder in persona picker sheet
 #. Search placeholder in persona picker sheet
 #: src/features/persona/components/PersonaPickerSheet.tsx:29
-#: src/features/persona/components/PersonaReactAsModal.tsx:28
+#: src/features/persona/components/PersonaReactAsModal.tsx:29
 msgid "Search personas, tags, pronouns..."
 msgstr "Rechercher des personas, balises, pronoms…"
 
@@ -29479,7 +29515,7 @@ msgstr "Résultats de recherche"
 
 #. placeholder {0}: filteredPersonas.length
 #: src/features/persona/components/PersonaPickerSheet.tsx:189
-#: src/features/persona/components/PersonaReactAsModal.tsx:179
+#: src/features/persona/components/PersonaReactAsModal.tsx:237
 msgid "Search Results ({0})"
 msgstr "Résultats de recherche ({0})"
 
@@ -29662,7 +29698,7 @@ msgid "Secret"
 msgstr "Secret"
 
 #. Label for a CAPTCHA secret key input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:981
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1019
 msgid "Secret key"
 msgstr "Clé secrète"
 
@@ -29823,7 +29859,7 @@ msgstr "Sélectionner un compte"
 
 #. Native Edit menu item that selects everything in the focused field. Imperative verb.
 #. Textarea right-click context menu item that selects all text in the textarea.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:58
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:63
 #: src/features/platform/utils/DesktopLocaleBridge.ts:81
 msgid "Select all"
 msgstr "Tout sélectionner"
@@ -29950,7 +29986,7 @@ msgid "Self-harm or suicide"
 msgstr "Automutilation ou suicide"
 
 #. Accessible label for the self-host setup wizard carousel.
-#: src/features/app/components/setup/SelfHostedSetupWizardGate.tsx:69
+#: src/features/app/components/setup/SelfHostedSetupWizardGate.tsx:70
 msgid "Self-host setup"
 msgstr "Configuration auto-hébergée"
 
@@ -30102,7 +30138,7 @@ msgid "Send messages in this channel."
 msgstr "Envoyer des messages dans ce salon."
 
 #. Description of personas settings section
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:80
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:82
 msgid "Send messages with distinct names and avatars. Personas can represent plural system members, roleplay characters, or any other identity."
 msgstr "Envoyez des messages avec des noms et avatars distincts. Les personas peuvent représenter les membres d'un système pluriel, des personnages de jeu de rôle ou toute autre identité."
 
@@ -30326,12 +30362,12 @@ msgstr "Définir un statut personnalisé"
 msgid "Set a member list position for the role"
 msgstr "A défini une position dans la liste des membres pour ce rôle"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:670
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:700
 msgid "Set Active"
 msgstr "Définir comme active"
 
 #. Aria label for setting active persona
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:105
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:107
 msgid "Set as active persona"
 msgstr "Définir comme persona active"
 
@@ -30455,7 +30491,7 @@ msgid "Set the nickname to {nick}"
 msgstr "A défini le surnom sur {nick}"
 
 #. Setup wizard branding step body.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:85
+#: src/features/app/components/setup/SetupWizardSteps.tsx:88
 msgid "Set the public product name, theme color, and image assets that clients display."
 msgstr "Définissez le nom public du produit, la couleur du thème et les ressources d'image que les clients affichent."
 
@@ -30507,7 +30543,7 @@ msgid "Set this check aside?"
 msgstr "Mettre cette vérification de côté ?"
 
 #. Title for the self-host setup wizard modal.
-#: src/features/app/components/setup/SelfHostedSetupWizardGate.tsx:73
+#: src/features/app/components/setup/SelfHostedSetupWizardGate.tsx:74
 msgid "Set up {productName}"
 msgstr "Configurer {productName}"
 
@@ -30517,7 +30553,7 @@ msgid "Set up authenticator app"
 msgstr "Configurer l'application d'authentification"
 
 #. Option for deferring an optional setup wizard integration.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:914
+#: src/features/app/components/setup/SetupWizardSteps.tsx:952
 msgid "Set up later"
 msgstr "Configurer plus tard"
 
@@ -31181,18 +31217,13 @@ msgstr "Afficher les curseurs de volume des participants par appareil dans les m
 msgid "Show personas button"
 msgstr "Afficher le bouton des personas"
 
-#. Developer option label for exposing the staff-only profile timezone section in profile settings.
-#: src/features/devtools/components/DeveloperOptionsToggleGroups.ts:135
-msgid "Show profile time zone settings"
-msgstr "Afficher les paramètres de fuseau horaire du profil"
-
 #. Short label for an advanced message action bar preference.
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:57
 msgid "Show quick reactions"
 msgstr "Afficher les réactions rapides"
 
 #. Description for the YouTube enrichment service toggle in the setup wizard.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:290
+#: src/features/app/components/setup/SetupWizardSteps.tsx:316
 msgid "Show rich previews for YouTube links."
 msgstr "Afficher des aperçus enrichis pour les liens YouTube."
 
@@ -31204,7 +31235,7 @@ msgstr "Afficher les médias enregistrés dans la saisie semi-automatique des ex
 #. Short label for an advanced message input preference.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:102
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:107
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:67
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:137
 msgid "Show send button"
@@ -31444,7 +31475,7 @@ msgid "Signed-in devices"
 msgstr "Appareils connectés"
 
 #. Label for Bluesky OAuth signing key ID input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1038
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1076
 msgid "Signing key ID"
 msgstr "ID de clé de signature"
 
@@ -31511,12 +31542,12 @@ msgid "Single column"
 msgstr "Colonne unique"
 
 #. Summary row label for the single community choice in the setup wizard.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:344
+#: src/features/app/components/setup/SetupWizardSteps.tsx:370
 msgid "Single community"
 msgstr "Communauté unique"
 
 #. Label for the single community toggle in the setup wizard.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:188
+#: src/features/app/components/setup/SetupWizardSteps.tsx:191
 msgid "Single community mode"
 msgstr "Mode communauté unique"
 
@@ -31535,7 +31566,7 @@ msgid "Single user (all statuses)"
 msgstr "Utilisateur unique (tous les statuts)"
 
 #. Label for a CAPTCHA site key input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:980
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1018
 msgid "Site key"
 msgstr "Clé du site"
 
@@ -31578,7 +31609,7 @@ msgid "Skip the external link warning for all domains"
 msgstr "Ignorer l'avertissement de lien externe pour tous les domaines"
 
 #. Developer / debug surface — keep terse and technical. Tooltip / description for the no-op in-app reports toggle.
-#: src/features/devtools/components/DeveloperOptionsToggleGroups.ts:149
+#: src/features/devtools/components/DeveloperOptionsToggleGroups.ts:140
 msgid "Skip the network call when an in-app report is submitted. The flow still advances to the success screen so you can exercise the UI, but nothing is actually sent to the safety team."
 msgstr "N’effectue pas l’appel réseau lors de l’envoi d’un signalement depuis l’application. Le parcours continue jusqu’à l’écran de réussite pour permettre de vérifier l’interface, mais rien n’est envoyé à l’équipe de sécurité."
 
@@ -31588,7 +31619,7 @@ msgid "Skip the system leave notice — nobody gets pinged."
 msgstr "Ne pas afficher la notification de départ du système : personne ne sera averti."
 
 #. Description for deferring an optional setup wizard integration.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:918
+#: src/features/app/components/setup/SetupWizardSteps.tsx:956
 msgid "Skip this now and configure it from the admin panel."
 msgstr "Ignorez ceci pour l'instant et configurez-le depuis le panneau d'administration."
 
@@ -31780,7 +31811,7 @@ msgid "Small button clicked."
 msgstr "Petit bouton cliqué."
 
 #. Label for attachment decay minimum size threshold.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:233
+#: src/features/app/components/setup/SetupWizardSteps.tsx:236
 msgid "Small file threshold (MB)"
 msgstr "Seuil de taille des petits fichiers (Mo)"
 
@@ -31841,17 +31872,17 @@ msgid "SMS verification is unavailable right now. Try again later or contact sup
 msgstr "La vérification par SMS est indisponible pour le moment. Réessayez plus tard ou contactez l'assistance."
 
 #. Success message after validating SMTP credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1006
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1044
 msgid "SMTP connection verified."
 msgstr "Connexion SMTP vérifiée."
 
 #. Label for SMTP host input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:994
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1032
 msgid "SMTP host"
 msgstr "Hôte SMTP"
 
 #. Failure message after validating SMTP credentials when the server returns no error detail.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1010
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1048
 msgid "SMTP validation failed."
 msgstr "La validation SMTP a échoué."
 
@@ -32283,7 +32314,7 @@ msgstr "Vitesse"
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings section label for spellcheck settings.
 #. Submenu label in the textarea right-click context menu for spellcheck preferences.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:62
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:67
 #: src/features/user/components/modals/tabs/LanguageTab.tsx:401
 #: src/features/user/components/modals/tabs/LanguageTab.tsx:443
 #: src/features/user/components/settings_utils/search_index/LanguageIndex.ts:74
@@ -33317,7 +33348,7 @@ msgid "Switches"
 msgstr "Interrupteurs"
 
 #. Label for the symbol branding asset.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:125
+#: src/features/app/components/setup/SetupWizardSteps.tsx:128
 msgid "Symbol"
 msgstr "Symbole"
 
@@ -33525,7 +33556,7 @@ msgstr "Tableaux"
 msgid "Tag"
 msgstr "Tag"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:457
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:479
 msgid "Tag Icon"
 msgstr "Icône de badge"
 
@@ -33534,7 +33565,7 @@ msgstr "Icône de badge"
 msgid "Tag pair already in use by persona \"{name}\""
 msgstr "Paire de balises déjà utilisée par la persona « {name} »"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:444
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:466
 msgid "Tag Text"
 msgstr "Texte du badge"
 
@@ -33697,7 +33728,7 @@ msgid "Terms of service"
 msgstr "Conditions d'utilisation"
 
 #. Label for Bluesky OAuth terms URL input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1030
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1068
 msgid "Terms URL"
 msgstr "URL des conditions"
 
@@ -33707,7 +33738,7 @@ msgid "Terrorism or violent extremism"
 msgstr "Terrorisme ou extrémisme violent"
 
 #. Button that validates SMTP credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1002
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1040
 msgid "Test SMTP"
 msgstr "Tester le SMTP"
 
@@ -33897,7 +33928,7 @@ msgid "That friend request is no longer available. Refresh and try again."
 msgstr "Cette demande d’ami n’est plus disponible. Actualisez la page et réessayez."
 
 #. Error shown when a branding image fails to upload in the setup wizard.
-#: src/features/app/components/setup/SelfHostedSetupWizardGate.tsx:102
+#: src/features/app/components/setup/SelfHostedSetupWizardGate.tsx:103
 msgid "That image could not be used. Try a different file."
 msgstr "Cette image n'a pas pu être utilisée. Essayez un autre fichier."
 
@@ -33929,7 +33960,7 @@ msgid "The #0000 tag is reserved for Visionary subscribers. Visionary is no long
 msgstr "Le tag #0000 est réservé aux abonnés Visionary. L'abonnement Visionary n'est plus disponible à l'achat."
 
 #. Error shown when the setup wizard cannot load because the API origin differs from the page origin.
-#: src/features/app/components/setup/SelfHostedSetupWizardGate.tsx:97
+#: src/features/app/components/setup/SelfHostedSetupWizardGate.tsx:98
 msgid "The API is on a different origin than this page, so setup requests are sent without your session. Check the public origin and port this instance is configured with, then reload."
 msgstr "L'API est sur une origine différente de celle de cette page, les requêtes de configuration sont donc envoyées sans votre session. Vérifiez l'origine publique et le port configurés pour cette instance, puis rechargez."
 
@@ -34112,6 +34143,11 @@ msgstr "Le nouveau prix est déjà prévu pour le {effectiveDate}."
 msgid "The new voice channel will reuse the permissions, user limit, and bitrate from <0>{channelLabel}</0>."
 msgstr "Le nouveau salon vocal réutilisera les permissions, la limite d'utilisateurs et le débit binaire de <0>{channelLabel}</0>."
 
+#. Setup wizard push relay consent step body.
+#: src/features/app/components/setup/SetupWizardSteps.tsx:273
+msgid "The official Fluxer mobile apps receive notifications through Fluxer's push relay, which hands them to Apple and Google. Self-hosted UnifiedPush and ntfy endpoints never reach the relay and need no agreement."
+msgstr "Les applications mobiles Fluxer officielles reçoivent les notifications via le relais de notifications push de Fluxer, qui les transmet à Apple et Google. Les points de terminaison UnifiedPush et ntfy auto-hébergés n'atteignent jamais le relais et n'ont pas besoin d'accord."
+
 #. Activity log detail row under a removed channel permission override, listing the permissions it explicitly allowed before it was removed. It describes the removed override. It does not mean these permissions are allowed now. A permission override is a channel-level exception to the permissions of a role or member. It allows or denies chosen permissions in one channel or category only. Use the same word for override as the channel permissions settings, such as Add override. {permissions} is a list of permission names joined into one phrase, for example "View channel and Send messages". A long list ends with a count, for example "View channel, Send messages, and 3 more permissions".
 #: src/features/guild/utils/guild_tabs/audit_log/AuditLogChannelMessages.ts:378
 msgid "The override allowed {permissions}"
@@ -34220,7 +34256,7 @@ msgstr "Les modifications de thème sont synchronisées sur tous vos appareils. 
 
 #. Label for the theme color picker in the setup wizard.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:101
+#: src/features/app/components/setup/SetupWizardSteps.tsx:104
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:165
 msgid "Theme color"
 msgstr "Couleur du thème"
@@ -34320,7 +34356,7 @@ msgid "There was an error loading the webhooks. Try again."
 msgstr "Une erreur est survenue lors du chargement des webhooks. Veuillez réessayer."
 
 #. Setup wizard community model step body.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:184
+#: src/features/app/components/setup/SetupWizardSteps.tsx:187
 msgid "These options change how people use the instance. Some can only be chosen during setup."
 msgstr "Ces options modifient la façon dont les gens utilisent l'instance. Certaines ne peuvent être choisies que lors de la configuration."
 
@@ -34707,7 +34743,7 @@ msgid "This instance currently allows screen sharing up to 720p at 30 FPS."
 msgstr "Cette instance autorise actuellement le partage d'écran jusqu'à 720p à 30 FPS."
 
 #. Setup wizard body prompting the operator to register the first account.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:52
+#: src/features/app/components/setup/SetupWizardSteps.tsx:55
 msgid "This instance has no accounts yet. The first account you create automatically becomes the administrator."
 msgstr "Cette instance ne contient aucun compte. Le premier compte que vous créez devient automatiquement l'administrateur."
 
@@ -34735,7 +34771,7 @@ msgstr "Ceci est un emoji personnalisé d'une communauté."
 msgid "This is a custom sticker from a community."
 msgstr "Ceci est un sticker personnalisé d'une communauté."
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:520
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:550
 msgid "This is a preview of how your display tag will look in chat."
 msgstr "Voici un aperçu de l'affichage de votre badge dans la discussion."
 
@@ -34893,7 +34929,7 @@ msgid "This message no longer exists."
 msgstr "Ce message n’existe plus."
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:130
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:131
 msgid "This nickname will only be visible in this community"
 msgstr "Ce surnom ne sera visible que dans cette communauté"
 
@@ -35760,6 +35796,7 @@ msgid "Try a different variable name or clear the search."
 msgstr "Essayez un autre nom de variable ou effacez la recherche."
 
 #. Generic action label for retrying a failed or interrupted operation.
+#: src/features/auth/components/AltchaVerification.tsx:53
 #: src/features/auth/flow/AuthRouteLoadError.tsx:22
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:75
 msgid "Try again"
@@ -35837,7 +35874,7 @@ msgstr "Essayer plutôt une clé de sécurité / clé d'accès"
 msgid "Try sending your message again."
 msgstr "Essayez de renvoyer votre message."
 
-#: src/features/auth/components/modals/CaptchaModal.tsx:159
+#: src/features/auth/components/modals/CaptchaModal.tsx:177
 msgid "Try Turnstile instead"
 msgstr "Essayer plutôt Turnstile"
 
@@ -35909,7 +35946,7 @@ msgid "Turn off device stream"
 msgstr "Arrêter la diffusion de l’appareil"
 
 #. Description for the toggle that disables direct messages and friend requests.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:212
+#: src/features/app/components/setup/SetupWizardSteps.tsx:215
 msgid "Turn off private messaging and friends across the instance. This can be reversed only once later."
 msgstr "Désactiver la messagerie privée et les fonctionnalités d’amis sur toute l’instance. Vous pourrez revenir sur ce choix une seule fois par la suite."
 
@@ -36352,7 +36389,7 @@ msgstr "Compris"
 
 #. Native Edit menu item that undoes the last edit. Imperative verb.
 #. Textarea right-click context menu item that undoes the last edit.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:38
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:39
 #: src/features/platform/utils/DesktopLocaleBridge.ts:52
 msgid "Undo"
 msgstr "Annuler"
@@ -36926,12 +36963,12 @@ msgid "Unsuppress embeds"
 msgstr "Réafficher les contenus intégrés"
 
 #. Helper description for Last Used persona mode
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:71
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:73
 msgid "Untagged messages send as the persona that spoke most recently. Whenever anyone uses a persona tag, they automatically become the active persona."
 msgstr "Les messages sans balise sont envoyés sous l'identité de la persona ayant parlé le plus récemment. Dès qu'une balise de persona est utilisée, celle-ci devient automatiquement la persona active."
 
 #. Helper description for Manual persona mode
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:67
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:69
 msgid "Untagged messages send as your chosen persona. Typing another persona’s tags will only send that single message and won’t switch who is active."
 msgstr "Les messages sans balise sont envoyés sous l'identité de la persona choisie. Taper les balises d'une autre persona enverra uniquement ce message sans changer la persona active."
 
@@ -37066,7 +37103,7 @@ msgstr "Passez à la version supérieure pour stocker jusqu'à 15 arrière-plans
 
 #. Button or menu action label in the background image gallery modal. Keep it concise.
 #. Button that opens a file picker to upload a branding image.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:109
+#: src/features/app/components/setup/SetupWizardSteps.tsx:112
 #: src/features/theme/components/modals/BackgroundImageGalleryModal.tsx:84
 msgid "Upload"
 msgstr "Importer"
@@ -37154,7 +37191,7 @@ msgstr "Envoyer des fichiers et des médias dans ce salon."
 #: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:304
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:625
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildIconUploadField.tsx:130
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:487
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:509
 msgid "Upload icon"
 msgstr "Importer une icône"
 
@@ -37611,7 +37648,7 @@ msgid "Use this when troubleshooting the client or collecting logs. It may add v
 msgstr "Utilisez cette option pour dépanner le client ou collecter des journaux. Elle peut ajouter des messages détaillés à la console du navigateur pour le client actuel."
 
 #. Label for SMTP TLS toggle.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:998
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1036
 msgid "Use TLS"
 msgstr "Utiliser TLS"
 
@@ -37777,7 +37814,7 @@ msgstr "Volume de l'utilisateur"
 #. Generic form-field label for a username.
 #. Label for SMTP username input.
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:996
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1034
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:572
 #: src/features/user/components/modals/FluxerTagChangeModal.tsx:218
 #: src/features/user/components/modals/tabs/my_profile_tab/MyProfileTabUsernameSection.tsx:56
@@ -38059,7 +38096,7 @@ msgid "Verify phone number form"
 msgstr "Formulaire de vérification du numéro de téléphone"
 
 #. Short label in the authentication captcha modal. Keep the tone plain and specific.
-#: src/features/auth/components/modals/CaptchaModal.tsx:15
+#: src/features/auth/components/modals/CaptchaModal.tsx:17
 msgid "Verify you're human"
 msgstr "Vérifiez que vous n'êtes pas un robot"
 
@@ -38090,22 +38127,22 @@ msgid "Verify your email before adding an authenticator app."
 msgstr "Vérifiez votre adresse e-mail avant d'ajouter une application d'authentification."
 
 #. Description text in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:117
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:118
 msgid "Verify your email before changing your community nickname, avatar, banner, bio, pronouns, or accent color."
 msgstr "Vérifiez votre adresse e-mail avant de modifier votre surnom, votre avatar, votre bannière, votre bio, vos pronoms ou votre couleur d’accentuation dans une communauté."
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:121
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:122
 msgid "Verify your email before changing your username, display name, avatar, banner, bio, pronouns, time zone, or {premiumProductName} badge privacy."
 msgstr "Vérifiez votre adresse e-mail avant de modifier votre nom d’utilisateur, votre nom affiché, votre avatar, votre bannière, votre bio, vos pronoms, votre fuseau horaire ou la confidentialité de votre badge {premiumProductName}."
 
 #. Description text in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:85
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:86
 msgid "Verify your email before editing this community profile. You can still preview it here."
 msgstr "Vérifiez votre adresse e-mail avant de modifier ce profil dans la communauté. Vous pouvez toujours en consulter l’aperçu ici."
 
 #. Description text in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:89
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:90
 msgid "Verify your email before editing your profile. You can still preview it here."
 msgstr "Vérifiez votre e-mail avant de modifier votre profil. Vous pouvez toujours le prévisualiser ici."
 
@@ -38137,12 +38174,12 @@ msgid "Verify your email to continue using {productName}."
 msgstr "Vérifiez votre e-mail pour continuer à utiliser {productName}."
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:109
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:110
 msgid "Verify your email to edit this community profile"
 msgstr "Vérifiez votre adresse e-mail pour modifier ce profil dans la communauté"
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:113
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:114
 msgid "Verify your email to edit your profile"
 msgstr "Vérifiez votre e-mail pour modifier votre profil"
 
@@ -39125,7 +39162,7 @@ msgstr "Nous avons baissé le prix de {premiumProductName} au Brésil. Il est ma
 msgid "We need one verification step before you continue. This helps protect accounts and keep spam off {productName}."
 msgstr "Nous avons besoin d'une étape de vérification avant que vous puissiez continuer. Cela permet de protéger les comptes et de limiter le spam sur {productName}."
 
-#: src/features/auth/components/modals/CaptchaModal.tsx:116
+#: src/features/auth/components/modals/CaptchaModal.tsx:128
 msgid "We need to make sure you're not a bot. Complete the verification below."
 msgstr "Nous devons nous assurer que vous n'êtes pas un robot. Veuillez compléter la vérification ci-dessous."
 
@@ -39396,7 +39433,7 @@ msgid "Welcome to {premiumProductFullName}. Your yearly subscription renews on {
 msgstr "Bienvenue sur {premiumProductFullName}. Votre abonnement annuel sera renouvelé le {formattedDate}. Découvrez vos avantages {premiumProductName} et gérez votre abonnement."
 
 #. Setup wizard title shown once the operator is signed in as the instance admin.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:39
+#: src/features/app/components/setup/SetupWizardSteps.tsx:42
 msgid "Welcome to {productName}"
 msgstr "Bienvenue sur {productName}"
 
@@ -39494,7 +39531,7 @@ msgid "When a custom threshold date is not set, members without the <0>{readMess
 msgstr "Lorsqu’aucune date limite personnalisée n’est définie, les membres sans la permission <0>{readMessageHistoryPermissionLabel}</0> ne peuvent consulter aucun ancien message. Ils voient uniquement les nouveaux messages en temps réel. Ces messages disparaissent lorsqu’ils redémarrent leur client."
 
 #. Description for the attachment expiry setup switch.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:229
+#: src/features/app/components/setup/SetupWizardSteps.tsx:232
 msgid "When attachment expiration is disabled, attachments remain available until manually removed."
 msgstr "Lorsque l’expiration des pièces jointes est désactivée, les pièces jointes restent disponibles jusqu’à leur suppression manuelle."
 
@@ -39592,7 +39629,7 @@ msgid "Who can friend"
 msgstr "Qui peut m'ajouter en ami"
 
 #. Setup wizard registration step title.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:146
+#: src/features/app/components/setup/SetupWizardSteps.tsx:149
 msgid "Who can join"
 msgstr "Qui peut rejoindre"
 
@@ -39727,7 +39764,7 @@ msgid "Without this permission, push-to-talk is required."
 msgstr "Sans cette permission, « Appuyer pour parler » est requis."
 
 #. Label for the wordmark branding asset.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:133
+#: src/features/app/components/setup/SetupWizardSteps.tsx:136
 msgid "Wordmark"
 msgstr "Logo textuel"
 
@@ -39863,7 +39900,7 @@ msgid "You are now navigating to {paymentProviderName} to complete the payment. 
 msgstr "Vous allez maintenant être redirigé(e) vers {paymentProviderName} pour finaliser le paiement. Revenez sur {productName} une fois l'opération terminée."
 
 #. Setup wizard body shown to the signed-in instance administrator.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:43
+#: src/features/app/components/setup/SetupWizardSteps.tsx:46
 msgid "You are signed in as the instance administrator. The next steps configure branding, registration, and core policy for everyone on this instance."
 msgstr "Vous êtes connecté en tant qu’administrateur de l’instance. Les étapes suivantes permettent de configurer son identité visuelle, les inscriptions et les règles générales qui s’appliquent à tous ses utilisateurs."
 
@@ -39984,7 +40021,7 @@ msgid "You can't befriend yourself"
 msgstr "Vous ne pouvez pas être ami avec vous-même"
 
 #. Label in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:134
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:135
 msgid "You can't change your nickname here"
 msgstr "Vous ne pouvez pas modifier votre surnom ici"
 
@@ -40235,7 +40272,7 @@ msgid "You have unsaved changes."
 msgstr "Vous avez des modifications non enregistrées."
 
 #. Warning text in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:81
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:82
 msgid "You have unsaved changes. Save or reset before leaving."
 msgstr "Vous avez des modifications non enregistrées. Enregistrez-les ou réinitialisez-les avant de partir."
 
@@ -40760,6 +40797,10 @@ msgstr "Votre action n'a pas pu être effectuée, car elle a été signalée par
 msgid "Your application is pending review. You can still update your listing details or withdraw the application."
 msgstr "Votre candidature est en attente d’examen. Vous pouvez encore modifier les détails de votre fiche ou retirer votre candidature."
 
+#: src/features/auth/components/AltchaVerification.tsx:50
+msgid "Your browser couldn't finish the check."
+msgstr "Votre navigateur n'a pas pu terminer la vérification."
+
 #. Body of the browser-audio-required modal explaining why the user must click before audio can play.
 #: src/features/voice/components/modals/AudioPlaybackPermissionModal.tsx:12
 msgid "Your browser requires user interaction before audio can be played. Click the button below to enable voice chat."
@@ -41106,12 +41147,12 @@ msgid "Your video encoder stopped encoding frames, so your screen share was stop
 msgstr "Votre encodeur vidéo a cessé d'encoder des images, votre partage d'écran a donc été arrêté. Essayez de partager à nouveau."
 
 #. Label for the YouTube enrichment service toggle in the setup wizard.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:286
+#: src/features/app/components/setup/SetupWizardSteps.tsx:312
 msgid "YouTube enrichment"
 msgstr "Enrichissement YouTube"
 
 #. Setup wizard title for YouTube integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:938
+#: src/features/app/components/setup/SetupWizardSteps.tsx:976
 msgid "YouTube previews"
 msgstr "Aperçus YouTube"
 
@@ -41153,46 +41194,3 @@ msgstr "Zoom avant"
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:86
 msgid "Zoom out"
 msgstr "Zoom arrière"
-
-#. Label for the push relay consent switch during setup.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:278
-msgid "Accept the push relay supplemental privacy notice"
-msgstr "Accepter l'avis de confidentialité supplémentaire du relais de notification"
-
-#. Summary value when the operator accepted the push relay notice.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:390
-msgid "Accepted"
-msgstr "Accepté"
-
-#: src/features/auth/components/AltchaVerification.tsx:62
-msgid "Checking your browser. This takes a few seconds."
-msgstr "Vérification de votre navigateur. Cela prend quelques secondes."
-
-#. Description for the push relay consent switch during setup.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:282
-msgid "Leaving this off keeps the relay unused and drops notifications to the official mobile apps. You can accept it later in the admin panel."
-msgstr "Laisser cette option désactivée empêche l'utilisation du relais, et les applications mobiles officielles ne reçoivent aucune notification. Vous pourrez l'accepter plus tard dans le panneau d'administration."
-
-#. Summary value when the operator left the push relay notice unaccepted.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:394
-msgid "Not accepted"
-msgstr "Non accepté"
-
-#. Summary row label for the push relay consent on the setup wizard finish step.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:382
-msgid "Push relay notice"
-msgstr "Notification de relais push"
-
-#. Link to the push relay supplemental privacy notice shown during setup.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:287
-msgid "Read the supplemental privacy notice"
-msgstr "Lire l'avis de confidentialité supplémentaire"
-
-#. Setup wizard push relay consent step body.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:273
-msgid "The official Fluxer mobile apps receive notifications through Fluxer's push relay, which hands them to Apple and Google. Self-hosted UnifiedPush and ntfy endpoints never reach the relay and need no agreement."
-msgstr "Les applications mobiles Fluxer officielles reçoivent les notifications via le relais de notifications push de Fluxer, qui les transmet à Apple et Google. Les points de terminaison UnifiedPush et ntfy auto-hébergés n'atteignent jamais le relais et n'ont pas besoin d'accord."
-
-#: src/features/auth/components/AltchaVerification.tsx:50
-msgid "Your browser couldn't finish the check."
-msgstr "Votre navigateur n'a pas pu terminer la vérification."

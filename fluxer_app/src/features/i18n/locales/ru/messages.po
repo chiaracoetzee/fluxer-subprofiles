@@ -14,7 +14,7 @@ msgstr ""
 "Plural-Forms: \n"
 "X-Generator: @lingui/cli\n"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:515
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:545
 msgid "— Today at 12:00 PM"
 msgstr "— Сегодня в 12:00"
 
@@ -1009,7 +1009,7 @@ msgid "{count, plural, one {# mutual community} other {# mutual communities}}"
 msgstr "{count, plural, one {# общее сообщество} few {# общих сообщества} many {# общих сообществ} other {# общих сообществ}}"
 
 #: src/features/messaging/utils/MessageReactionUtils.ts:53
-#: src/features/messaging/utils/ReactionUtils.ts:69
+#: src/features/messaging/utils/ReactionUtils.ts:77
 msgid "{count, plural, one {# other} other {# others}}"
 msgstr "{count, plural, one {ещё # пользователь} few {ещё # пользователя} many {ещё # пользователей} other {ещё # пользователя}}"
 
@@ -1022,7 +1022,7 @@ msgstr "{count, plural, one {# участник звонка} few {# участ�
 msgid "{count, plural, one {# potential spammer message} other {# potential spammer messages}}"
 msgstr "{count, plural, one {# потенциальное спам-сообщение} few {# потенциальных спам-сообщения} many {# потенциальных спам-сообщений} other {# потенциальных спам-сообщений}}"
 
-#: src/features/app/components/shared/MessageReactionsContent.tsx:58
+#: src/features/app/components/shared/MessageReactionsContent.tsx:59
 #: src/features/channel/components/MessageReactions.tsx:154
 msgid "{count, plural, one {# reaction} other {# reactions}}"
 msgstr "{count, plural, one {# реакция} few {# реакции} many {# реакций} other {# реакций}}"
@@ -1296,7 +1296,7 @@ msgid "{emojiName} (failed to load)"
 msgstr "{emojiName} (не удалось загрузить)"
 
 #. Short label in the shared app message reactions content. Preserve placeholders {emojiName}, {reactionCountText}; they are inserted by code.
-#: src/features/app/components/shared/MessageReactionsContent.tsx:32
+#: src/features/app/components/shared/MessageReactionsContent.tsx:33
 msgid "{emojiName}, {reactionCountText}"
 msgstr "{emojiName}, {reactionCountText}"
 
@@ -1810,7 +1810,7 @@ msgid "{productName} restarted while you were connected to the call in {directCa
 msgstr "{productName} перезапустился, пока вы были подключены к звонку в {directCallName}."
 
 #. Item in the textarea spellcheck submenu that opens the full settings page. Trailing horizontal ellipsis (…) indicates the action opens settings.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:96
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:101
 msgid "{productName} spellcheck settings…"
 msgstr "Настройки проверки орфографии {productName}…"
 
@@ -1847,7 +1847,7 @@ msgstr "Текстовый логотип {productName}"
 #. Reaction tooltip. Preserve {emojiName}, {reactors}; they are inserted by code. {reactorCount} is how many people reacted, for verb agreement. Order the parts so the emoji never reads as the one doing the reacting.
 #. Reaction tooltip. Preserve {emojiName}, {reactors}; they are inserted by code. {reactorCount} is how many people reacted, for verb agreement. Order the parts so the emoji never reads as the one doing the reacting.
 #: src/features/messaging/utils/MessageReactionUtils.ts:16
-#: src/features/messaging/utils/ReactionUtils.ts:32
+#: src/features/messaging/utils/ReactionUtils.ts:33
 msgid "{reactorCount, plural, one {{emojiName} reacted by {reactors}} other {{emojiName} reacted by {reactors}}}"
 msgstr "{reactorCount, plural, one {Реакция {emojiName} от {reactors}} few {Реакция {emojiName} от {reactors}} many {Реакция {emojiName} от {reactors}} other {Реакция {emojiName} от {reactors}}}"
 
@@ -2578,8 +2578,8 @@ msgstr "О приложении {appName}"
 #. Short label in the user profile shared popout. Keep it concise.
 #: src/features/app/components/pages/YouPage.tsx:166
 #: src/features/persona/components/modals/PersonaEditModal.tsx:900
-#: src/features/persona/components/PersonaProfileMobileSheet.tsx:400
-#: src/features/persona/components/PersonaProfileMobileSheet.tsx:409
+#: src/features/persona/components/PersonaProfileMobileSheet.tsx:421
+#: src/features/persona/components/PersonaProfileMobileSheet.tsx:430
 #: src/features/user/components/modals/tabs/my_profile_tab/BioEditor.tsx:26
 #: src/features/user/components/modals/UserProfileMobileSheet.tsx:787
 #: src/features/user/components/popouts/UserProfileShared.tsx:41
@@ -2745,7 +2745,7 @@ msgid "Account verification required"
 msgstr "Требуется подтверждение аккаунта"
 
 #. Tooltip showing root account username
-#: src/features/persona/components/PersonaTag.tsx:87
+#: src/features/persona/components/PersonaTag.tsx:92
 msgid "Account: @{username}"
 msgstr "Аккаунт: @{username}"
 
@@ -2813,7 +2813,7 @@ msgstr "Действия"
 #. Subscription status badge meaning the paid subscription is active.
 #: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:445
 #: src/features/channel/components/channel_header_components/developer_tools/DeveloperToolsShared.ts:37
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:670
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:700
 #: src/features/user/components/settings_utils/search_index/DevicesIndex.ts:19
 msgid "Active"
 msgstr "Активна"
@@ -2869,11 +2869,11 @@ msgstr "Сейчас онлайн"
 #. Aria label for active persona mode tabs
 #. Aria label for active persona mode tabs
 #: src/features/persona/components/PersonaPickerSheet.tsx:33
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:84
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:86
 msgid "Active persona mode"
 msgstr "Режим активной персоны"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:403
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:425
 msgid "Active Persona Mode"
 msgstr "Режим активной персоны"
 
@@ -3164,7 +3164,7 @@ msgstr "Добавить переопределение"
 msgid "Add passkey"
 msgstr "Добавить ключ доступа"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:544
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:574
 msgid "Add Persona"
 msgstr "Добавить персону"
 
@@ -3249,7 +3249,7 @@ msgid "Add the credentials during setup."
 msgstr "Добавьте учетные данные во время настройки."
 
 #. Textarea right-click context menu item that adds the selected misspelled word to the personal dictionary.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:34
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:35
 msgid "Add to dictionary"
 msgstr "Добавить в словарь"
 
@@ -6829,7 +6829,7 @@ msgstr "Изменить никнейм в группе"
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:86
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:625
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildIconUploadField.tsx:35
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:469
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:491
 msgid "Change icon"
 msgstr "Изменить значок"
 
@@ -7682,7 +7682,7 @@ msgstr "Выберите, как хранить избранные GIF-файл�
 msgid "Choose how times are displayed throughout the app"
 msgstr "Выберите формат времени в приложении"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:406
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:428
 msgid "Choose how untagged messages and persona tags interact with your active persona."
 msgstr "Выберите, как сообщения без тегов и теги персон взаимодействуют с вашей активной персоной."
 
@@ -8157,7 +8157,7 @@ msgid "Click to open the color picker and choose a new color."
 msgstr "Нажмите, чтобы открыть палитру и выбрать новый цвет."
 
 #. Tooltip on the add-reaction button in the inline message hover action bar.
-#: src/features/channel/components/MessageActionBar.tsx:75
+#: src/features/channel/components/MessageActionBar.tsx:76
 msgid "Click to react"
 msgstr "Нажмите, чтобы отреагировать"
 
@@ -8754,7 +8754,7 @@ msgstr "Название сообщества"
 
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:126
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:127
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:113
 msgid "Community nickname"
 msgstr "Никнейм в сообществе"
@@ -8807,7 +8807,7 @@ msgid "Community profile"
 msgstr "Профиль сообщества"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:73
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:74
 msgid "Community profile updated"
 msgstr "Профиль сообщества обновлен"
 
@@ -9017,7 +9017,7 @@ msgid "Configure your profile badge"
 msgstr "Настроить значок профиля"
 
 #. Header for configured personas list with count
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:117
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:119
 msgid "Configured Personas ({count})"
 msgstr "Настроенные персоны ({count})"
 
@@ -9494,18 +9494,18 @@ msgstr "Ссылка скопирована в буфер обмена"
 #. Textarea right-click context menu item that copies the selected text.
 #: src/features/app/components/dialogs/shared/CopyLinkSection.tsx:11
 #: src/features/auth/components/modals/BackupCodesModal.tsx:96
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:50
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:51
 #: src/features/moderation/components/report_modal/IARModalCopy.ts:397
 #: src/features/platform/utils/DesktopLocaleBridge.ts:64
 #: src/features/theme_studio/sections/QuickCssSection.tsx:214
-#: src/features/ui/action_menu/MessageContextMenu.tsx:73
+#: src/features/ui/action_menu/MessageContextMenu.tsx:75
 #: src/features/user/components/modals/tabs/applications_tab/application_detail/OAuthBuilderSection.tsx:228
 #: src/features/user/components/modals/tabs/GiftInventoryTab.tsx:59
 msgid "Copy"
 msgstr "Скопировать"
 
 #. Developer-mode action that copies the attachment ID to the clipboard.
-#: src/features/ui/action_menu/MessageContextMenu.tsx:69
+#: src/features/ui/action_menu/MessageContextMenu.tsx:71
 msgid "Copy attachment ID"
 msgstr "Скопировать ID вложения"
 
@@ -10216,7 +10216,7 @@ msgid "Couldn't ring this person"
 msgstr "Не удалось позвонить этому пользователю"
 
 #. Error message in the use textarea submit hook. Preserve {detail}; it is inserted by code.
-#: src/features/messaging/hooks/useTextareaSubmit.ts:53
+#: src/features/messaging/hooks/useTextareaSubmit.ts:54
 msgid "Couldn't run that command: {detail}"
 msgstr "Не удалось выполнить команду: {detail}"
 
@@ -11060,7 +11060,7 @@ msgstr "Для настройки аватара, баннера, акцентн
 
 #. Native Edit menu item that cuts the selection to the clipboard. Imperative verb, not the noun.
 #. Textarea right-click context menu item that cuts the selected text.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:46
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:47
 #: src/features/platform/utils/DesktopLocaleBridge.ts:60
 msgid "Cut"
 msgstr "Вырезать"
@@ -11225,7 +11225,7 @@ msgid "Deactivate"
 msgstr "Деактивировать"
 
 #. Aria label for deactivating active persona
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:109
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:111
 msgid "Deactivate persona"
 msgstr "Деактивировать персону"
 
@@ -11313,7 +11313,7 @@ msgstr "Отладка участника"
 #. Developer-mode action that opens the message debug modal.
 #. Developer-mode item in the message action bar overflow menu. Opens the message debug modal.
 #. Developer-mode message context menu item that opens an internal debug view for the message.
-#: src/features/channel/components/MessageActionBar.tsx:91
+#: src/features/channel/components/MessageActionBar.tsx:92
 #: src/features/channel/components/MessageActionMenu.tsx:105
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:66
 msgid "Debug message"
@@ -12037,7 +12037,7 @@ msgstr "Подробности"
 
 #. Item in the textarea spellcheck language submenu that detects draft message language and switches dictionaries as the user types.
 #. Spellcheck language mode label in the language tab. The app detects the draft message language and switches dictionaries as the user types.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:83
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:88
 #: src/features/user/components/modals/tabs/LanguageTab.tsx:126
 msgid "Detect while typing"
 msgstr "Определять при вводе"
@@ -12608,7 +12608,7 @@ msgstr "Режим отображения"
 #. Short label in the my profile tab. Keep it concise.
 #: src/features/persona/components/modals/PersonaEditModal.tsx:849
 #: src/features/user/components/modals/tabs/component_gallery_tab/ComponentGalleryTabInputsTab.tsx:22
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:138
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:139
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:61
 msgid "Display name"
 msgstr "Отображаемое имя"
@@ -12626,11 +12626,11 @@ msgstr "Отображаемое имя (необязательно)"
 msgid "Display scaling"
 msgstr "Масштаб отображения"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:429
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:451
 msgid "Display Tag"
 msgstr "Отображаемый тег"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:432
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:454
 msgid "Display tag will appear next to all persona names in messages. If no display tag is set, your account profile picture will be shown."
 msgstr "Отображаемый тег будет появляться рядом со всеми именами персон в сообщениях. Если тег не задан, будет показываться аватар вашего аккаунта."
 
@@ -12762,7 +12762,7 @@ msgstr "Вы хотите присоединиться к {communityName}?"
 #. Label in the accessibility tab.
 #. Label in the my profile tab.
 #: src/features/user/components/modals/tabs/AccessibilityTab.tsx:54
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:146
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:147
 msgid "Doc, I'm from the future. I came here in a time machine that you invented. Now, I need your help to get back to the year 1985."
 msgstr "Док, я из будущего. Я прибыл сюда на машине времени, которую вы изобрели. Теперь мне нужна ваша помощь, чтобы вернуться в 1985 год."
 
@@ -13385,10 +13385,10 @@ msgstr "Изменять переопределения разрешений д�
 
 #. Action button to edit persona
 #. Aria label for editing persona
-#: src/features/persona/components/PersonaProfileMobileSheet.tsx:321
-#: src/features/persona/components/PersonaProfileMobileSheet.tsx:377
-#: src/features/persona/components/PersonaProfilePopout.tsx:333
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:113
+#: src/features/persona/components/PersonaProfileMobileSheet.tsx:342
+#: src/features/persona/components/PersonaProfileMobileSheet.tsx:398
+#: src/features/persona/components/PersonaProfilePopout.tsx:358
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:115
 msgid "Edit persona"
 msgstr "Редактировать персону"
 
@@ -13466,7 +13466,7 @@ msgid "Edit translation provider"
 msgstr "Изменить поставщика перевода"
 
 #. Button or menu action label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:93
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:94
 msgid "Edit your profile appearance and see a live preview"
 msgstr "Измените свой профиль и посмотрите, как он будет выглядеть"
 
@@ -14057,7 +14057,7 @@ msgstr "Включить миниатюры для навигации по ви�
 #. Toggle item in the textarea spellcheck submenu. Master enable for spellcheck.
 #: src/features/app/components/setup/SetupWizardSteps.tsx:398
 #: src/features/channel/components/channel_header_components/developer_tools/DeveloperToolsShared.ts:21
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:66
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:71
 msgid "Enabled"
 msgstr "Включено"
 
@@ -15257,7 +15257,7 @@ msgid "Failed to upload emojis. Try again."
 msgstr "Не удалось загрузить эмодзи. Повторите попытку."
 
 #. Toast when icon upload fails
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:89
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:91
 msgid "Failed to upload icon to server"
 msgstr "Не удалось загрузить иконку на сервер"
 
@@ -15916,7 +15916,7 @@ msgstr "Формы"
 #. Message action label for forwarding the selected message to another channel or DM.
 #. Message context menu item that opens the forward-to-channel picker.
 #. Tooltip on the forward button in the inline message hover action bar.
-#: src/features/channel/components/MessageActionBar.tsx:95
+#: src/features/channel/components/MessageActionBar.tsx:96
 #: src/features/channel/components/MessageActionMenu.tsx:85
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:54
 msgid "Forward"
@@ -17664,7 +17664,7 @@ msgid "Icon file is too large. Choose a file smaller than {imageMaxSizeLabel}."
 msgstr "Файл значка слишком большой. Выберите файл размером меньше {imageMaxSizeLabel}."
 
 #. Toast when icon file exceeds size limit
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:93
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:95
 msgid "Icon file is too large. Choose an image smaller than 10MB."
 msgstr "Файл иконки слишком велик. Выберите изображение размером менее 10 МБ."
 
@@ -18006,7 +18006,7 @@ msgstr "Импортировать папку"
 
 #. Modal title for PluralKit import step select
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:534
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:541
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:571
 msgid "Import from PluralKit"
 msgstr "Импортировать из PluralKit"
 
@@ -18147,7 +18147,7 @@ msgstr "В голосовом чате"
 
 #. Spellcheck engine option in the language tab. Uses the bundled in-app Hunspell dictionaries. Keep it concise.
 #. Spellcheck engine option in the textarea spellcheck submenu. The bundled in-app hunspell engine.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:75
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:80
 #: src/features/user/components/modals/tabs/LanguageTab.tsx:100
 msgid "In-app dictionaries"
 msgstr "Встроенные словари"
@@ -19404,7 +19404,7 @@ msgstr "Настройки языка"
 
 #. Submenu label in the textarea spellcheck submenu listing manual language overrides.
 #. Subsection title for spellcheck language settings. Keep it concise.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:88
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:93
 #: src/features/user/components/modals/tabs/LanguageTab.tsx:122
 msgid "Languages"
 msgstr "Языки"
@@ -19442,7 +19442,7 @@ msgstr "Последнее использование"
 #. Active persona mode last used
 #: src/features/persona/components/PersonaComposerPill.tsx:21
 #: src/features/persona/components/PersonaPickerSheet.tsx:25
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:62
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:64
 msgid "Last Used"
 msgstr "Последнее использование"
 
@@ -20183,8 +20183,8 @@ msgid "Mail"
 msgstr "Почта"
 
 #: src/features/persona/components/modals/PersonaEditModal.tsx:1142
-#: src/features/persona/components/PersonaProfileMobileSheet.tsx:420
-#: src/features/persona/components/PersonaProfilePopout.tsx:305
+#: src/features/persona/components/PersonaProfileMobileSheet.tsx:441
+#: src/features/persona/components/PersonaProfilePopout.tsx:330
 msgid "Main account"
 msgstr "Основной аккаунт"
 
@@ -20374,7 +20374,7 @@ msgstr "Управление подпиской"
 #. Active persona mode manual
 #: src/features/persona/components/PersonaComposerPill.tsx:17
 #: src/features/persona/components/PersonaPickerSheet.tsx:21
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:58
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:60
 msgid "Manual"
 msgstr "Вручную"
 
@@ -21093,8 +21093,8 @@ msgstr "сообщение"
 #. Audit log target-type filter label. Filters entries that target an individual message.
 #. Short label in the inputs tab. Keep it concise.
 #: src/features/app/config/AuditLogConstants.ts:184
-#: src/features/persona/components/PersonaProfileMobileSheet.tsx:331
-#: src/features/persona/components/PersonaProfilePopout.tsx:343
+#: src/features/persona/components/PersonaProfileMobileSheet.tsx:352
+#: src/features/persona/components/PersonaProfilePopout.tsx:368
 #: src/features/user/components/modals/tabs/component_gallery_tab/ComponentGalleryTabInputsTab.tsx:86
 msgid "Message"
 msgstr "Сообщение"
@@ -21104,7 +21104,7 @@ msgstr "Сообщение"
 #. Member actions sheet menu item. Sends a direct message to the target user. Standalone verb used as a menu label.
 #. Voice participant menu action that opens a DM conversation with the selected user.
 #: src/features/guild/components/modals/guild_tabs/GuildMemberActionsSheet.tsx:88
-#: src/features/persona/components/PersonaProfileMobileSheet.tsx:391
+#: src/features/persona/components/PersonaProfileMobileSheet.tsx:412
 #: src/features/ui/action_menu/items/ActionsSubmenu.tsx:41
 #: src/features/ui/action_menu/items/MessageUserMenuItem.tsx:26
 #: src/features/ui/action_menu/items/voice_participant_menu_data/shared.ts:78
@@ -21178,7 +21178,7 @@ msgstr "Сообщение содержит вложения"
 #. Title of the developer-mode message debug modal opened from the message action bar.
 #. Title of the developer-mode message debug modal opened from the message context menu.
 #. Title of the developer-mode message debug modal.
-#: src/features/channel/components/MessageActionBar.tsx:83
+#: src/features/channel/components/MessageActionBar.tsx:84
 #: src/features/channel/components/MessageActionMenu.tsx:73
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:62
 msgid "Message debug"
@@ -21741,7 +21741,7 @@ msgstr "Ежемесячный подарок"
 #: src/features/auth/components/accounts/AccountRow.tsx:23
 #: src/features/channel/components/bottomsheets/channel_details_bottom_sheet/ChannelDetailsBottomSheetShared.ts:142
 #: src/features/channel/components/friends/FriendListItem.tsx:63
-#: src/features/channel/components/MessageActionBar.tsx:87
+#: src/features/channel/components/MessageActionBar.tsx:88
 #: src/features/user/components/modals/tabs/component_gallery_tab/ComponentGalleryTabButtonsTab.tsx:125
 msgid "More"
 msgstr "Ещё"
@@ -21769,7 +21769,7 @@ msgid "More emoji actions"
 msgstr "Другие действия с эмодзи"
 
 #. Submenu label that contains additional media context menu actions.
-#: src/features/ui/action_menu/MessageContextMenu.tsx:65
+#: src/features/ui/action_menu/MessageContextMenu.tsx:67
 msgid "More media actions"
 msgstr "Другие действия с медиа"
 
@@ -22952,7 +22952,7 @@ msgstr "Без описания."
 msgid "No desktop update is available."
 msgstr "Нет доступных обновлений для компьютера."
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:522
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:552
 msgid "No display tag configured. Messages will show your account profile picture."
 msgstr "Отображаемый тег не настроен. В сообщениях будет показываться аватар вашего аккаунта."
 
@@ -23082,8 +23082,8 @@ msgid "No matches found"
 msgstr "Совпадений не найдено"
 
 #: src/features/persona/components/PersonaPickerSheet.tsx:197
-#: src/features/persona/components/PersonaReactAsModal.tsx:188
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:581
+#: src/features/persona/components/PersonaReactAsModal.tsx:246
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:611
 msgid "No matching personas found."
 msgstr "Подходящих персон не найдено."
 
@@ -23146,7 +23146,7 @@ msgstr "Пока нет личных слов."
 msgid "No personas configured yet. Create one in Settings."
 msgstr "Персоны ещё не настроены. Создайте первую в настройках."
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:577
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:607
 msgid "No personas created yet. Click \"Add Persona\" to create your first persona!"
 msgstr "No personas created yet. Click \"Add Persona\" to create your first persona!"
 
@@ -24473,7 +24473,7 @@ msgstr "Открывает страницу участников. Нажмите
 #. Short label in the language tab. Keep it concise.
 #. Spellcheck engine option in the textarea spellcheck submenu. Uses the host operating system spellchecker.
 #: src/features/auth/flow/HandoffApprovalFlow.tsx:184
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:79
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:84
 #: src/features/user/components/modals/tabs/LanguageTab.tsx:110
 msgid "Operating system"
 msgstr "Операционная система"
@@ -24622,7 +24622,7 @@ msgid "Other people can only see your current UTC offset when you choose to shar
 msgstr "Другие пользователи видят только ваше текущее смещение относительно UTC, если вы включили показ местного времени в профиле. Точный идентификатор часового пояса, например {timezoneIdentifierExample}, им не виден. {productName} хранит этот идентификатор только для того, чтобы смещение автоматически обновлялось при переходе на летнее время."
 
 #. Message action that opens the full reaction picker.
-#: src/features/ui/action_menu/MessageContextMenu.tsx:57
+#: src/features/ui/action_menu/MessageContextMenu.tsx:59
 msgid "Other reaction…"
 msgstr "Другая реакция…"
 
@@ -24900,7 +24900,7 @@ msgstr "Последние 7 дней"
 
 #. Native Edit menu item that pastes the clipboard contents. Imperative verb, not the noun.
 #. Textarea right-click context menu item that pastes clipboard contents.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:54
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:55
 #: src/features/platform/utils/DesktopLocaleBridge.ts:68
 msgid "Paste"
 msgstr "Вставить"
@@ -24913,6 +24913,11 @@ msgstr "Вставьте URL шаблона {theOtherPlatform}, чтобы им�
 #: src/features/platform/utils/DesktopLocaleBridge.ts:72
 msgid "Paste and match style"
 msgstr "Вставить и согласовать стиль"
+
+#. Textarea right-click context menu item that pastes clipboard contents without formatting.
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:59
+msgid "Paste as plain text"
+msgstr "Вставить как обычный текст"
 
 #. Instruction text in the favorite GIF import modal.
 #: src/features/channel/components/pickers/gif/ImportFavoriteGifsModal.tsx:46
@@ -25198,14 +25203,14 @@ msgstr "Персона удалена"
 
 #. Fallback screen reader label for the persona profile modal. Keep it concise.
 #. Fallback screen reader label for the persona profile modal. Keep it concise.
-#: src/features/persona/components/PersonaProfileMobileSheet.tsx:47
+#: src/features/persona/components/PersonaProfileMobileSheet.tsx:48
 #: src/features/persona/components/PersonaProfileModal.tsx:18
 msgid "Persona profile"
 msgstr "Профиль персоны"
 
 #. Screen reader label for the persona profile modal. Keep it concise. Preserve {name}; it is inserted by code.
 #. Screen reader label for the persona profile modal. Keep it concise. Preserve {name}; it is inserted by code.
-#: src/features/persona/components/PersonaProfileMobileSheet.tsx:43
+#: src/features/persona/components/PersonaProfileMobileSheet.tsx:44
 #: src/features/persona/components/PersonaProfileModal.tsx:14
 msgid "Persona profile: {name}"
 msgstr "Профиль персоны: {name}"
@@ -25243,8 +25248,8 @@ msgstr "Личные заметки уже пусты"
 
 #. Title of personas settings section
 #. User settings tab for personas.
-#: src/features/persona/components/PersonaReactAsModal.tsx:181
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:76
+#: src/features/persona/components/PersonaReactAsModal.tsx:239
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:78
 #: src/features/user/components/settings_utils/SettingsConstants.tsx:91
 msgid "Personas"
 msgstr "Персоны"
@@ -25849,7 +25854,7 @@ msgid "Presence"
 msgstr "Статус в сети"
 
 #. Tooltip hint for a quick reaction in the message context menu. Preserve {shortcut}; it is a keyboard key such as 1.
-#: src/features/ui/action_menu/MessageContextMenu.tsx:77
+#: src/features/ui/action_menu/MessageContextMenu.tsx:79
 msgid "Press {shortcut} to react"
 msgstr "Нажмите {shortcut}, чтобы отреагировать"
 
@@ -25896,7 +25901,7 @@ msgstr "Запретить участникам отправлять сообщ�
 
 #: src/features/expressions/components/modals/sticker_form/StickerPreview.tsx:21
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildInviteSplashSettingsField.tsx:45
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:496
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:518
 #: src/features/user/components/modals/tabs/EmbedDebuggerTab.tsx:276
 msgid "Preview"
 msgstr "Предпросмотр"
@@ -26130,7 +26135,7 @@ msgid "Private message"
 msgstr "Личное сообщение"
 
 #. Tooltip on private persona badge
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:101
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:103
 msgid "Private persona"
 msgstr "Приватная персона"
 
@@ -26206,18 +26211,18 @@ msgstr "Цвет профиля"
 
 #. Settings section label for editing profile appearance and identity.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:105
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:106
 #: src/features/user/components/settings_utils/section_registry/GeneralSettingsSections.ts:6
 msgid "Profile customization"
 msgstr "Настройка профиля"
 
 #. Label in the my profile tab. Preserve {selectedGuildName}; it is inserted by code.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:101
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:102
 msgid "Profile customization for {selectedGuildName}"
 msgstr "Настройка профиля для {selectedGuildName}"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:97
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:98
 msgid "Profile customization form"
 msgstr "Форма настройки профиля"
 
@@ -26282,7 +26287,7 @@ msgid "Profile type"
 msgstr "Тип профиля"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:77
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:78
 msgid "Profile updated"
 msgstr "Профиль обновлен"
 
@@ -26320,7 +26325,7 @@ msgstr "Оповещать о новых аудиоустройствах"
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Short label in the my profile tab. Keep it concise.
 #: src/features/persona/components/modals/PersonaEditModal.tsx:859
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:142
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:143
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:177
 #: src/features/user/components/settings_utils/section_registry/PrivacySafetySections.ts:160
 msgid "Pronouns"
@@ -26378,7 +26383,7 @@ msgid "Public community"
 msgstr "Публичное сообщество"
 
 #. Tooltip on public persona badge
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:97
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:99
 msgid "Public persona"
 msgstr "Публичная персона"
 
@@ -26679,8 +26684,8 @@ msgid "React"
 msgstr "Реакции"
 
 #. Title of the modal and context menu item to react as a persona.
-#: src/features/persona/components/PersonaReactAsModal.tsx:23
-#: src/features/persona/components/PersonaReactAsModal.tsx:115
+#: src/features/persona/components/PersonaReactAsModal.tsx:24
+#: src/features/persona/components/PersonaReactAsModal.tsx:162
 msgid "React as..."
 msgstr "Реагировать как..."
 
@@ -26690,7 +26695,7 @@ msgid "React with {emojiShortcode}"
 msgstr "Поставить реакцию {emojiShortcode}"
 
 #. Tooltip hint showing effective reacting persona or user on quick reaction hover.
-#: src/features/channel/components/MessageActionBar.tsx:79
+#: src/features/channel/components/MessageActionBar.tsx:80
 msgid "Reacting as {name}"
 msgstr "Реакция от имени {name}"
 
@@ -26859,7 +26864,7 @@ msgstr "Получатели перейдут в {0} <0>{1}</0>"
 
 #. Spellcheck engine option in the language tab. Lets the app choose the best available spellcheck engine.
 #. Spellcheck engine option in the textarea spellcheck submenu. Lets the app choose the best available engine.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:70
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:75
 #: src/features/user/components/modals/tabs/LanguageTab.tsx:90
 msgid "Recommended"
 msgstr "Рекомендуется"
@@ -26983,7 +26988,7 @@ msgstr "URI перенаправления"
 
 #. Native Edit menu item that redoes the last undone edit. Imperative verb.
 #. Textarea right-click context menu item that redoes the last undone edit.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:42
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:43
 #: src/features/platform/utils/DesktopLocaleBridge.ts:56
 msgid "Redo"
 msgstr "Повторить"
@@ -27164,7 +27169,7 @@ msgid "Reload now"
 msgstr "Перезагрузить сейчас"
 
 #. Hint in the textarea spellcheck submenu shown after switching engines.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:92
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:97
 msgid "Reload to apply engine change"
 msgstr "Перезагрузите, чтобы применить смену движка"
 
@@ -27324,7 +27329,7 @@ msgid "Remove friend"
 msgstr "Удалить из друзей"
 
 #. Textarea right-click context menu item that removes the selected misspelled word from the personal dictionary.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:29
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:30
 msgid "Remove from dictionary"
 msgstr "Удалить из словаря"
 
@@ -27361,7 +27366,7 @@ msgstr "Удалить из избранных GIF (только по URL)"
 #: src/features/channel/components/modals/EditGroupModal.tsx:292
 #: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:313
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:634
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:477
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:499
 msgid "Remove icon"
 msgstr "Удалить значок"
 
@@ -27399,12 +27404,12 @@ msgid "Remove reaction"
 msgstr "Удалить реакцию"
 
 #. Short label in the shared app message reactions content. Preserve {displayName}; it is inserted by code. Keep the tone plain and specific.
-#: src/features/app/components/shared/MessageReactionsContent.tsx:37
+#: src/features/app/components/shared/MessageReactionsContent.tsx:38
 msgid "Remove reaction from {displayName}"
 msgstr "Удалить реакцию от {displayName}"
 
 #. Message action that removes a specific reaction from the selected message.
-#: src/features/ui/action_menu/MessageContextMenu.tsx:61
+#: src/features/ui/action_menu/MessageContextMenu.tsx:63
 msgid "Remove reactions"
 msgstr "Удалить реакции"
 
@@ -28829,7 +28834,7 @@ msgid "Romanian"
 msgstr "Румынский"
 
 #: src/features/persona/components/PersonaPickerSheet.tsx:151
-#: src/features/persona/components/PersonaReactAsModal.tsx:169
+#: src/features/persona/components/PersonaReactAsModal.tsx:226
 msgid "Root Account (Default)"
 msgstr "Основной аккаунт (по умолчанию)"
 
@@ -29497,7 +29502,7 @@ msgstr "Поиск разрешений…"
 #. Search placeholder in persona picker sheet
 #. Search placeholder in persona picker sheet
 #: src/features/persona/components/PersonaPickerSheet.tsx:29
-#: src/features/persona/components/PersonaReactAsModal.tsx:28
+#: src/features/persona/components/PersonaReactAsModal.tsx:29
 msgid "Search personas, tags, pronouns..."
 msgstr "Поиск персон, тегов, местоимений..."
 
@@ -29510,7 +29515,7 @@ msgstr "Результаты поиска"
 
 #. placeholder {0}: filteredPersonas.length
 #: src/features/persona/components/PersonaPickerSheet.tsx:189
-#: src/features/persona/components/PersonaReactAsModal.tsx:179
+#: src/features/persona/components/PersonaReactAsModal.tsx:237
 msgid "Search Results ({0})"
 msgstr "Результаты поиска ({0})"
 
@@ -29854,7 +29859,7 @@ msgstr "Выбрать аккаунт"
 
 #. Native Edit menu item that selects everything in the focused field. Imperative verb.
 #. Textarea right-click context menu item that selects all text in the textarea.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:58
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:63
 #: src/features/platform/utils/DesktopLocaleBridge.ts:81
 msgid "Select all"
 msgstr "Выделить все"
@@ -30133,7 +30138,7 @@ msgid "Send messages in this channel."
 msgstr "Отправлять сообщения в этом канале."
 
 #. Description of personas settings section
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:80
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:82
 msgid "Send messages with distinct names and avatars. Personas can represent plural system members, roleplay characters, or any other identity."
 msgstr "Отправляйте сообщения от разных имён и с разными аватарами. Персоны могут представлять участников множественных систем, ролевых персонажей или любые другие личности."
 
@@ -30357,12 +30362,12 @@ msgstr "Задать свой статус"
 msgid "Set a member list position for the role"
 msgstr "Для роли задана позиция в списке участников"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:670
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:700
 msgid "Set Active"
 msgstr "Сделать активной"
 
 #. Aria label for setting active persona
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:105
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:107
 msgid "Set as active persona"
 msgstr "Сделать активной персоной"
 
@@ -31212,11 +31217,6 @@ msgstr "Показывать ползунки громкости участни�
 msgid "Show personas button"
 msgstr "Показывать кнопку персон"
 
-#. Developer option label for exposing the staff-only profile timezone section in profile settings.
-#: src/features/devtools/components/DeveloperOptionsToggleGroups.ts:135
-msgid "Show profile time zone settings"
-msgstr "Показать настройки часового пояса в профиле"
-
 #. Short label for an advanced message action bar preference.
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:57
 msgid "Show quick reactions"
@@ -31235,7 +31235,7 @@ msgstr "Показывать сохраненные медиа в автозав
 #. Short label for an advanced message input preference.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:102
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:107
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:67
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:137
 msgid "Show send button"
@@ -32314,7 +32314,7 @@ msgstr "Скорость"
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings section label for spellcheck settings.
 #. Submenu label in the textarea right-click context menu for spellcheck preferences.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:62
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:67
 #: src/features/user/components/modals/tabs/LanguageTab.tsx:401
 #: src/features/user/components/modals/tabs/LanguageTab.tsx:443
 #: src/features/user/components/settings_utils/search_index/LanguageIndex.ts:74
@@ -33556,7 +33556,7 @@ msgstr "Таблицы"
 msgid "Tag"
 msgstr "Тег"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:457
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:479
 msgid "Tag Icon"
 msgstr "Иконка тега"
 
@@ -33565,7 +33565,7 @@ msgstr "Иконка тега"
 msgid "Tag pair already in use by persona \"{name}\""
 msgstr "Tag pair already in use by persona \"{name}\""
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:444
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:466
 msgid "Tag Text"
 msgstr "Текст тега"
 
@@ -34771,7 +34771,7 @@ msgstr "Это эмодзи из сообщества."
 msgid "This is a custom sticker from a community."
 msgstr "Это пользовательская эмодзи из сообщества."
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:520
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:550
 msgid "This is a preview of how your display tag will look in chat."
 msgstr "Так ваш отображаемый тег будет выглядеть в чате."
 
@@ -34929,7 +34929,7 @@ msgid "This message no longer exists."
 msgstr "Этого сообщения больше нет."
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:130
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:131
 msgid "This nickname will only be visible in this community"
 msgstr "Этот никнейм будет виден только в этом сообществе"
 
@@ -36389,7 +36389,7 @@ msgstr "Понятно"
 
 #. Native Edit menu item that undoes the last edit. Imperative verb.
 #. Textarea right-click context menu item that undoes the last edit.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:38
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:39
 #: src/features/platform/utils/DesktopLocaleBridge.ts:52
 msgid "Undo"
 msgstr "Отменить"
@@ -36963,12 +36963,12 @@ msgid "Unsuppress embeds"
 msgstr "Показать предпросмотр"
 
 #. Helper description for Last Used persona mode
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:71
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:73
 msgid "Untagged messages send as the persona that spoke most recently. Whenever anyone uses a persona tag, they automatically become the active persona."
 msgstr "Сообщения без тегов отправляются от персоны, говорившей последней. При использовании тега персоны, она автоматически становится активной."
 
 #. Helper description for Manual persona mode
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:67
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:69
 msgid "Untagged messages send as your chosen persona. Typing another persona’s tags will only send that single message and won’t switch who is active."
 msgstr "Сообщения без тегов отправляются от выбранной персоны. Ввод тегов другой персоны отправит только одно сообщение и не переключит активную персону."
 
@@ -37191,7 +37191,7 @@ msgstr "Загружать файлы и медиа в этом канале."
 #: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:304
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:625
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildIconUploadField.tsx:130
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:487
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:509
 msgid "Upload icon"
 msgstr "Загрузить значок"
 
@@ -38127,22 +38127,22 @@ msgid "Verify your email before adding an authenticator app."
 msgstr "Подтвердите почту, прежде чем добавлять приложение-аутентификатор."
 
 #. Description text in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:117
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:118
 msgid "Verify your email before changing your community nickname, avatar, banner, bio, pronouns, or accent color."
 msgstr "Подтвердите почту, прежде чем менять никнейм в сообществе, аватар, баннер, описание, местоимения или акцентный цвет."
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:121
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:122
 msgid "Verify your email before changing your username, display name, avatar, banner, bio, pronouns, time zone, or {premiumProductName} badge privacy."
 msgstr "Подтвердите почту, прежде чем менять имя пользователя, отображаемое имя, аватар, баннер, описание, местоимения, часовой пояс или настройки конфиденциальности значка {premiumProductName}."
 
 #. Description text in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:85
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:86
 msgid "Verify your email before editing this community profile. You can still preview it here."
 msgstr "Подтвердите почту, прежде чем редактировать профиль сообщества. Вы всё ещё можете посмотреть его здесь."
 
 #. Description text in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:89
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:90
 msgid "Verify your email before editing your profile. You can still preview it here."
 msgstr "Подтвердите почту, прежде чем редактировать профиль. Вы всё ещё можете посмотреть его здесь."
 
@@ -38174,12 +38174,12 @@ msgid "Verify your email to continue using {productName}."
 msgstr "Подтвердите почту, чтобы продолжить пользоваться {productName}."
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:109
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:110
 msgid "Verify your email to edit this community profile"
 msgstr "Подтвердите почту, чтобы изменить профиль сообщества"
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:113
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:114
 msgid "Verify your email to edit your profile"
 msgstr "Подтвердите почту, чтобы изменить профиль"
 
@@ -40021,7 +40021,7 @@ msgid "You can't befriend yourself"
 msgstr "Нельзя добавить себя в друзья"
 
 #. Label in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:134
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:135
 msgid "You can't change your nickname here"
 msgstr "Здесь нельзя изменить ваш никнейм"
 
@@ -40272,7 +40272,7 @@ msgid "You have unsaved changes."
 msgstr "У вас есть несохраненные изменения."
 
 #. Warning text in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:81
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:82
 msgid "You have unsaved changes. Save or reset before leaving."
 msgstr "У вас есть несохраненные изменения. Сохраните или сбросьте их, прежде чем уйти."
 

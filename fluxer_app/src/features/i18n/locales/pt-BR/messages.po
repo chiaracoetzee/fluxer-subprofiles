@@ -14,7 +14,7 @@ msgstr ""
 "Plural-Forms: \n"
 "X-Generator: @lingui/cli\n"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:515
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:545
 msgid "— Today at 12:00 PM"
 msgstr "— Hoje às 12:00"
 
@@ -1009,7 +1009,7 @@ msgid "{count, plural, one {# mutual community} other {# mutual communities}}"
 msgstr "{count, plural, =0 {# comunidades em comum} one {# comunidade em comum} other {# comunidades em comum}}"
 
 #: src/features/messaging/utils/MessageReactionUtils.ts:53
-#: src/features/messaging/utils/ReactionUtils.ts:69
+#: src/features/messaging/utils/ReactionUtils.ts:77
 msgid "{count, plural, one {# other} other {# others}}"
 msgstr "{count, plural, =0 {# outros} one {# outro} other {# outros}}"
 
@@ -1022,7 +1022,7 @@ msgstr "{count, plural, =0 {# participantes na chamada} one {# participante na c
 msgid "{count, plural, one {# potential spammer message} other {# potential spammer messages}}"
 msgstr "{count, plural, =1 {# mensagem de um possível remetente de spam} other {# mensagens de possíveis remetentes de spam}}"
 
-#: src/features/app/components/shared/MessageReactionsContent.tsx:58
+#: src/features/app/components/shared/MessageReactionsContent.tsx:59
 #: src/features/channel/components/MessageReactions.tsx:154
 msgid "{count, plural, one {# reaction} other {# reactions}}"
 msgstr "{count, plural, =0 {# reações} one {# reação} other {# reações}}"
@@ -1296,7 +1296,7 @@ msgid "{emojiName} (failed to load)"
 msgstr "{emojiName} (falha ao carregar)"
 
 #. Short label in the shared app message reactions content. Preserve placeholders {emojiName}, {reactionCountText}; they are inserted by code.
-#: src/features/app/components/shared/MessageReactionsContent.tsx:32
+#: src/features/app/components/shared/MessageReactionsContent.tsx:33
 msgid "{emojiName}, {reactionCountText}"
 msgstr "{emojiName}, {reactionCountText}"
 
@@ -1810,7 +1810,7 @@ msgid "{productName} restarted while you were connected to the call in {directCa
 msgstr "O {productName} reiniciou enquanto você estava conectado à chamada em {directCallName}."
 
 #. Item in the textarea spellcheck submenu that opens the full settings page. Trailing horizontal ellipsis (…) indicates the action opens settings.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:96
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:101
 msgid "{productName} spellcheck settings…"
 msgstr "Configurações de verificação ortográfica do {productName}…"
 
@@ -1847,7 +1847,7 @@ msgstr "Nome escrito da marca {productName}"
 #. Reaction tooltip. Preserve {emojiName}, {reactors}; they are inserted by code. {reactorCount} is how many people reacted, for verb agreement. Order the parts so the emoji never reads as the one doing the reacting.
 #. Reaction tooltip. Preserve {emojiName}, {reactors}; they are inserted by code. {reactorCount} is how many people reacted, for verb agreement. Order the parts so the emoji never reads as the one doing the reacting.
 #: src/features/messaging/utils/MessageReactionUtils.ts:16
-#: src/features/messaging/utils/ReactionUtils.ts:32
+#: src/features/messaging/utils/ReactionUtils.ts:33
 msgid "{reactorCount, plural, one {{emojiName} reacted by {reactors}} other {{emojiName} reacted by {reactors}}}"
 msgstr "{reactorCount, plural, =0 {{reactors} reagiram com {emojiName}} one {{reactors} reagiu com {emojiName}} other {{reactors} reagiram com {emojiName}}}"
 
@@ -2578,8 +2578,8 @@ msgstr "Sobre o {appName}"
 #. Short label in the user profile shared popout. Keep it concise.
 #: src/features/app/components/pages/YouPage.tsx:166
 #: src/features/persona/components/modals/PersonaEditModal.tsx:900
-#: src/features/persona/components/PersonaProfileMobileSheet.tsx:400
-#: src/features/persona/components/PersonaProfileMobileSheet.tsx:409
+#: src/features/persona/components/PersonaProfileMobileSheet.tsx:421
+#: src/features/persona/components/PersonaProfileMobileSheet.tsx:430
 #: src/features/user/components/modals/tabs/my_profile_tab/BioEditor.tsx:26
 #: src/features/user/components/modals/UserProfileMobileSheet.tsx:787
 #: src/features/user/components/popouts/UserProfileShared.tsx:41
@@ -2745,7 +2745,7 @@ msgid "Account verification required"
 msgstr "Verificação de conta necessária"
 
 #. Tooltip showing root account username
-#: src/features/persona/components/PersonaTag.tsx:87
+#: src/features/persona/components/PersonaTag.tsx:92
 msgid "Account: @{username}"
 msgstr "Conta: @{username}"
 
@@ -2813,7 +2813,7 @@ msgstr "Ações"
 #. Subscription status badge meaning the paid subscription is active.
 #: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:445
 #: src/features/channel/components/channel_header_components/developer_tools/DeveloperToolsShared.ts:37
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:670
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:700
 #: src/features/user/components/settings_utils/search_index/DevicesIndex.ts:19
 msgid "Active"
 msgstr "Ativo"
@@ -2869,11 +2869,11 @@ msgstr "Ativos agora"
 #. Aria label for active persona mode tabs
 #. Aria label for active persona mode tabs
 #: src/features/persona/components/PersonaPickerSheet.tsx:33
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:84
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:86
 msgid "Active persona mode"
 msgstr "Modo de persona ativa"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:403
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:425
 msgid "Active Persona Mode"
 msgstr "Modo de persona ativa"
 
@@ -3164,7 +3164,7 @@ msgstr "Adicionar exceção"
 msgid "Add passkey"
 msgstr "Adicionar chave de acesso"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:544
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:574
 msgid "Add Persona"
 msgstr "Adicionar persona"
 
@@ -3249,7 +3249,7 @@ msgid "Add the credentials during setup."
 msgstr "Adicione as credenciais durante a configuração."
 
 #. Textarea right-click context menu item that adds the selected misspelled word to the personal dictionary.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:34
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:35
 msgid "Add to dictionary"
 msgstr "Adicionar ao dicionário"
 
@@ -6829,7 +6829,7 @@ msgstr "Alterar apelido do grupo"
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:86
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:625
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildIconUploadField.tsx:35
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:469
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:491
 msgid "Change icon"
 msgstr "Alterar ícone"
 
@@ -7682,7 +7682,7 @@ msgstr "Escolha como os GIFs favoritos marcados com estrela são armazenados"
 msgid "Choose how times are displayed throughout the app"
 msgstr "Escolha como as horas são exibidas no aplicativo"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:406
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:428
 msgid "Choose how untagged messages and persona tags interact with your active persona."
 msgstr "Escolha como mensagens sem tags e tags de persona interagem com sua persona ativa."
 
@@ -8157,7 +8157,7 @@ msgid "Click to open the color picker and choose a new color."
 msgstr "Clique para abrir o seletor de cores e escolher uma nova cor."
 
 #. Tooltip on the add-reaction button in the inline message hover action bar.
-#: src/features/channel/components/MessageActionBar.tsx:75
+#: src/features/channel/components/MessageActionBar.tsx:76
 msgid "Click to react"
 msgstr "Clique para reagir"
 
@@ -8754,7 +8754,7 @@ msgstr "Nome da comunidade"
 
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:126
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:127
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:113
 msgid "Community nickname"
 msgstr "Apelido na comunidade"
@@ -8807,7 +8807,7 @@ msgid "Community profile"
 msgstr "Perfil na comunidade"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:73
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:74
 msgid "Community profile updated"
 msgstr "Perfil na comunidade atualizado"
 
@@ -9017,7 +9017,7 @@ msgid "Configure your profile badge"
 msgstr "Configurar seu selo de perfil"
 
 #. Header for configured personas list with count
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:117
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:119
 msgid "Configured Personas ({count})"
 msgstr "Personas configuradas ({count})"
 
@@ -9494,18 +9494,18 @@ msgstr "URL copiada para a área de transferência"
 #. Textarea right-click context menu item that copies the selected text.
 #: src/features/app/components/dialogs/shared/CopyLinkSection.tsx:11
 #: src/features/auth/components/modals/BackupCodesModal.tsx:96
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:50
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:51
 #: src/features/moderation/components/report_modal/IARModalCopy.ts:397
 #: src/features/platform/utils/DesktopLocaleBridge.ts:64
 #: src/features/theme_studio/sections/QuickCssSection.tsx:214
-#: src/features/ui/action_menu/MessageContextMenu.tsx:73
+#: src/features/ui/action_menu/MessageContextMenu.tsx:75
 #: src/features/user/components/modals/tabs/applications_tab/application_detail/OAuthBuilderSection.tsx:228
 #: src/features/user/components/modals/tabs/GiftInventoryTab.tsx:59
 msgid "Copy"
 msgstr "Copiar"
 
 #. Developer-mode action that copies the attachment ID to the clipboard.
-#: src/features/ui/action_menu/MessageContextMenu.tsx:69
+#: src/features/ui/action_menu/MessageContextMenu.tsx:71
 msgid "Copy attachment ID"
 msgstr "Copiar ID do anexo"
 
@@ -10216,7 +10216,7 @@ msgid "Couldn't ring this person"
 msgstr "Não foi possível chamar esta pessoa"
 
 #. Error message in the use textarea submit hook. Preserve {detail}; it is inserted by code.
-#: src/features/messaging/hooks/useTextareaSubmit.ts:53
+#: src/features/messaging/hooks/useTextareaSubmit.ts:54
 msgid "Couldn't run that command: {detail}"
 msgstr "Não foi possível executar o comando: {detail}"
 
@@ -11060,7 +11060,7 @@ msgstr "Personalizar seu avatar, banner, cor de destaque e biografia para cada c
 
 #. Native Edit menu item that cuts the selection to the clipboard. Imperative verb, not the noun.
 #. Textarea right-click context menu item that cuts the selected text.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:46
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:47
 #: src/features/platform/utils/DesktopLocaleBridge.ts:60
 msgid "Cut"
 msgstr "Recortar"
@@ -11225,7 +11225,7 @@ msgid "Deactivate"
 msgstr "Desativar"
 
 #. Aria label for deactivating active persona
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:109
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:111
 msgid "Deactivate persona"
 msgstr "Desativar persona"
 
@@ -11313,7 +11313,7 @@ msgstr "Depurar membro"
 #. Developer-mode action that opens the message debug modal.
 #. Developer-mode item in the message action bar overflow menu. Opens the message debug modal.
 #. Developer-mode message context menu item that opens an internal debug view for the message.
-#: src/features/channel/components/MessageActionBar.tsx:91
+#: src/features/channel/components/MessageActionBar.tsx:92
 #: src/features/channel/components/MessageActionMenu.tsx:105
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:66
 msgid "Debug message"
@@ -12037,7 +12037,7 @@ msgstr "Detalhes"
 
 #. Item in the textarea spellcheck language submenu that detects draft message language and switches dictionaries as the user types.
 #. Spellcheck language mode label in the language tab. The app detects the draft message language and switches dictionaries as the user types.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:83
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:88
 #: src/features/user/components/modals/tabs/LanguageTab.tsx:126
 msgid "Detect while typing"
 msgstr "Detectar ao digitar"
@@ -12608,7 +12608,7 @@ msgstr "Modo de exibição"
 #. Short label in the my profile tab. Keep it concise.
 #: src/features/persona/components/modals/PersonaEditModal.tsx:849
 #: src/features/user/components/modals/tabs/component_gallery_tab/ComponentGalleryTabInputsTab.tsx:22
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:138
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:139
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:61
 msgid "Display name"
 msgstr "Nome de exibição"
@@ -12626,11 +12626,11 @@ msgstr "Nome de exibição (opcional)"
 msgid "Display scaling"
 msgstr "Escala de exibição"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:429
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:451
 msgid "Display Tag"
 msgstr "Tag de exibição"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:432
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:454
 msgid "Display tag will appear next to all persona names in messages. If no display tag is set, your account profile picture will be shown."
 msgstr "A tag de exibição aparecerá ao lado do nome de todas as personas nas mensagens. Se nenhuma tag de exibição for definida, a foto de perfil da sua conta será exibida."
 
@@ -12762,7 +12762,7 @@ msgstr "Deseja entrar em {communityName}?"
 #. Label in the accessibility tab.
 #. Label in the my profile tab.
 #: src/features/user/components/modals/tabs/AccessibilityTab.tsx:54
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:146
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:147
 msgid "Doc, I'm from the future. I came here in a time machine that you invented. Now, I need your help to get back to the year 1985."
 msgstr "Doutor, eu sou do futuro. Vim parar aqui em uma máquina do tempo que você inventou. Agora, preciso da sua ajuda para voltar para o ano de 1985."
 
@@ -13385,10 +13385,10 @@ msgstr "Editar permissões de cargos e membros neste canal."
 
 #. Action button to edit persona
 #. Aria label for editing persona
-#: src/features/persona/components/PersonaProfileMobileSheet.tsx:321
-#: src/features/persona/components/PersonaProfileMobileSheet.tsx:377
-#: src/features/persona/components/PersonaProfilePopout.tsx:333
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:113
+#: src/features/persona/components/PersonaProfileMobileSheet.tsx:342
+#: src/features/persona/components/PersonaProfileMobileSheet.tsx:398
+#: src/features/persona/components/PersonaProfilePopout.tsx:358
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:115
 msgid "Edit persona"
 msgstr "Editar persona"
 
@@ -13466,7 +13466,7 @@ msgid "Edit translation provider"
 msgstr "Editar provedor de tradução"
 
 #. Button or menu action label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:93
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:94
 msgid "Edit your profile appearance and see a live preview"
 msgstr "Edite a aparência do seu perfil e veja uma prévia ao vivo"
 
@@ -14057,7 +14057,7 @@ msgstr "Ativar miniaturas ao navegar pelo vídeo"
 #. Toggle item in the textarea spellcheck submenu. Master enable for spellcheck.
 #: src/features/app/components/setup/SetupWizardSteps.tsx:398
 #: src/features/channel/components/channel_header_components/developer_tools/DeveloperToolsShared.ts:21
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:66
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:71
 msgid "Enabled"
 msgstr "Ativado"
 
@@ -15257,7 +15257,7 @@ msgid "Failed to upload emojis. Try again."
 msgstr "Não foi possível enviar os emojis. Tente novamente."
 
 #. Toast when icon upload fails
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:89
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:91
 msgid "Failed to upload icon to server"
 msgstr "Falha ao fazer upload do ícone para o servidor"
 
@@ -15916,7 +15916,7 @@ msgstr "Formulários"
 #. Message action label for forwarding the selected message to another channel or DM.
 #. Message context menu item that opens the forward-to-channel picker.
 #. Tooltip on the forward button in the inline message hover action bar.
-#: src/features/channel/components/MessageActionBar.tsx:95
+#: src/features/channel/components/MessageActionBar.tsx:96
 #: src/features/channel/components/MessageActionMenu.tsx:85
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:54
 msgid "Forward"
@@ -17664,7 +17664,7 @@ msgid "Icon file is too large. Choose a file smaller than {imageMaxSizeLabel}."
 msgstr "O arquivo do ícone é muito grande. Escolha um arquivo menor que {imageMaxSizeLabel}."
 
 #. Toast when icon file exceeds size limit
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:93
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:95
 msgid "Icon file is too large. Choose an image smaller than 10MB."
 msgstr "O arquivo do ícone é muito grande. Escolha uma imagem com menos de 10 MB."
 
@@ -18006,7 +18006,7 @@ msgstr "Importar pasta"
 
 #. Modal title for PluralKit import step select
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:534
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:541
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:571
 msgid "Import from PluralKit"
 msgstr "Importar do PluralKit"
 
@@ -18147,7 +18147,7 @@ msgstr "No chat de voz"
 
 #. Spellcheck engine option in the language tab. Uses the bundled in-app Hunspell dictionaries. Keep it concise.
 #. Spellcheck engine option in the textarea spellcheck submenu. The bundled in-app hunspell engine.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:75
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:80
 #: src/features/user/components/modals/tabs/LanguageTab.tsx:100
 msgid "In-app dictionaries"
 msgstr "Dicionários no app"
@@ -19404,7 +19404,7 @@ msgstr "Configurações de idioma"
 
 #. Submenu label in the textarea spellcheck submenu listing manual language overrides.
 #. Subsection title for spellcheck language settings. Keep it concise.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:88
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:93
 #: src/features/user/components/modals/tabs/LanguageTab.tsx:122
 msgid "Languages"
 msgstr "Idiomas"
@@ -19442,7 +19442,7 @@ msgstr "Último uso"
 #. Active persona mode last used
 #: src/features/persona/components/PersonaComposerPill.tsx:21
 #: src/features/persona/components/PersonaPickerSheet.tsx:25
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:62
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:64
 msgid "Last Used"
 msgstr "Usada por último"
 
@@ -20183,8 +20183,8 @@ msgid "Mail"
 msgstr "E-mail"
 
 #: src/features/persona/components/modals/PersonaEditModal.tsx:1142
-#: src/features/persona/components/PersonaProfileMobileSheet.tsx:420
-#: src/features/persona/components/PersonaProfilePopout.tsx:305
+#: src/features/persona/components/PersonaProfileMobileSheet.tsx:441
+#: src/features/persona/components/PersonaProfilePopout.tsx:330
 msgid "Main account"
 msgstr "Conta principal"
 
@@ -20374,7 +20374,7 @@ msgstr "Gerenciar sua assinatura"
 #. Active persona mode manual
 #: src/features/persona/components/PersonaComposerPill.tsx:17
 #: src/features/persona/components/PersonaPickerSheet.tsx:21
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:58
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:60
 msgid "Manual"
 msgstr "Manual"
 
@@ -21093,8 +21093,8 @@ msgstr "mensagem"
 #. Audit log target-type filter label. Filters entries that target an individual message.
 #. Short label in the inputs tab. Keep it concise.
 #: src/features/app/config/AuditLogConstants.ts:184
-#: src/features/persona/components/PersonaProfileMobileSheet.tsx:331
-#: src/features/persona/components/PersonaProfilePopout.tsx:343
+#: src/features/persona/components/PersonaProfileMobileSheet.tsx:352
+#: src/features/persona/components/PersonaProfilePopout.tsx:368
 #: src/features/user/components/modals/tabs/component_gallery_tab/ComponentGalleryTabInputsTab.tsx:86
 msgid "Message"
 msgstr "Mensagem"
@@ -21104,7 +21104,7 @@ msgstr "Mensagem"
 #. Member actions sheet menu item. Sends a direct message to the target user. Standalone verb used as a menu label.
 #. Voice participant menu action that opens a DM conversation with the selected user.
 #: src/features/guild/components/modals/guild_tabs/GuildMemberActionsSheet.tsx:88
-#: src/features/persona/components/PersonaProfileMobileSheet.tsx:391
+#: src/features/persona/components/PersonaProfileMobileSheet.tsx:412
 #: src/features/ui/action_menu/items/ActionsSubmenu.tsx:41
 #: src/features/ui/action_menu/items/MessageUserMenuItem.tsx:26
 #: src/features/ui/action_menu/items/voice_participant_menu_data/shared.ts:78
@@ -21178,7 +21178,7 @@ msgstr "A mensagem contém mídia anexada"
 #. Title of the developer-mode message debug modal opened from the message action bar.
 #. Title of the developer-mode message debug modal opened from the message context menu.
 #. Title of the developer-mode message debug modal.
-#: src/features/channel/components/MessageActionBar.tsx:83
+#: src/features/channel/components/MessageActionBar.tsx:84
 #: src/features/channel/components/MessageActionMenu.tsx:73
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:62
 msgid "Message debug"
@@ -21741,7 +21741,7 @@ msgstr "Presente mensal"
 #: src/features/auth/components/accounts/AccountRow.tsx:23
 #: src/features/channel/components/bottomsheets/channel_details_bottom_sheet/ChannelDetailsBottomSheetShared.ts:142
 #: src/features/channel/components/friends/FriendListItem.tsx:63
-#: src/features/channel/components/MessageActionBar.tsx:87
+#: src/features/channel/components/MessageActionBar.tsx:88
 #: src/features/user/components/modals/tabs/component_gallery_tab/ComponentGalleryTabButtonsTab.tsx:125
 msgid "More"
 msgstr "Mais"
@@ -21769,7 +21769,7 @@ msgid "More emoji actions"
 msgstr "Mais ações de emoji"
 
 #. Submenu label that contains additional media context menu actions.
-#: src/features/ui/action_menu/MessageContextMenu.tsx:65
+#: src/features/ui/action_menu/MessageContextMenu.tsx:67
 msgid "More media actions"
 msgstr "Mais ações de mídia"
 
@@ -22952,7 +22952,7 @@ msgstr "Sem descrição."
 msgid "No desktop update is available."
 msgstr "Nenhuma atualização do aplicativo para computador está disponível."
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:522
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:552
 msgid "No display tag configured. Messages will show your account profile picture."
 msgstr "Nenhuma tag de exibição configurada. As mensagens mostrarão a foto de perfil da sua conta."
 
@@ -23082,8 +23082,8 @@ msgid "No matches found"
 msgstr "Nenhum resultado encontrado"
 
 #: src/features/persona/components/PersonaPickerSheet.tsx:197
-#: src/features/persona/components/PersonaReactAsModal.tsx:188
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:581
+#: src/features/persona/components/PersonaReactAsModal.tsx:246
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:611
 msgid "No matching personas found."
 msgstr "Nenhuma persona correspondente encontrada."
 
@@ -23146,7 +23146,7 @@ msgstr "Nenhuma palavra adicionada ao dicionário ainda."
 msgid "No personas configured yet. Create one in Settings."
 msgstr "Nenhuma persona configurada ainda. Crie uma nas Configurações."
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:577
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:607
 msgid "No personas created yet. Click \"Add Persona\" to create your first persona!"
 msgstr "No personas created yet. Click \"Add Persona\" to create your first persona!"
 
@@ -24473,7 +24473,7 @@ msgstr "Abre a página de Membros. Pressione Espaço ou Enter para abrir."
 #. Short label in the language tab. Keep it concise.
 #. Spellcheck engine option in the textarea spellcheck submenu. Uses the host operating system spellchecker.
 #: src/features/auth/flow/HandoffApprovalFlow.tsx:184
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:79
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:84
 #: src/features/user/components/modals/tabs/LanguageTab.tsx:110
 msgid "Operating system"
 msgstr "Sistema operacional"
@@ -24622,7 +24622,7 @@ msgid "Other people can only see your current UTC offset when you choose to shar
 msgstr "Outras pessoas só podem ver seu deslocamento UTC atual quando você optar por compartilhar o horário local do perfil. Elas não veem seu identificador de fuso horário exato, como {timezoneIdentifierExample}. O {productName} armazena esse identificador apenas para que o deslocamento possa ser atualizado automaticamente quando o horário de verão mudar."
 
 #. Message action that opens the full reaction picker.
-#: src/features/ui/action_menu/MessageContextMenu.tsx:57
+#: src/features/ui/action_menu/MessageContextMenu.tsx:59
 msgid "Other reaction…"
 msgstr "Outra reação…"
 
@@ -24900,7 +24900,7 @@ msgstr "Últimos 7 dias"
 
 #. Native Edit menu item that pastes the clipboard contents. Imperative verb, not the noun.
 #. Textarea right-click context menu item that pastes clipboard contents.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:54
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:55
 #: src/features/platform/utils/DesktopLocaleBridge.ts:68
 msgid "Paste"
 msgstr "Colar"
@@ -24913,6 +24913,11 @@ msgstr "Cole a URL de um modelo do {theOtherPlatform} para importar sua estrutur
 #: src/features/platform/utils/DesktopLocaleBridge.ts:72
 msgid "Paste and match style"
 msgstr "Colar e ajustar o estilo"
+
+#. Textarea right-click context menu item that pastes clipboard contents without formatting.
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:59
+msgid "Paste as plain text"
+msgstr "Colar como texto sem formatação"
 
 #. Instruction text in the favorite GIF import modal.
 #: src/features/channel/components/pickers/gif/ImportFavoriteGifsModal.tsx:46
@@ -25198,14 +25203,14 @@ msgstr "Persona excluída"
 
 #. Fallback screen reader label for the persona profile modal. Keep it concise.
 #. Fallback screen reader label for the persona profile modal. Keep it concise.
-#: src/features/persona/components/PersonaProfileMobileSheet.tsx:47
+#: src/features/persona/components/PersonaProfileMobileSheet.tsx:48
 #: src/features/persona/components/PersonaProfileModal.tsx:18
 msgid "Persona profile"
 msgstr "Perfil da persona"
 
 #. Screen reader label for the persona profile modal. Keep it concise. Preserve {name}; it is inserted by code.
 #. Screen reader label for the persona profile modal. Keep it concise. Preserve {name}; it is inserted by code.
-#: src/features/persona/components/PersonaProfileMobileSheet.tsx:43
+#: src/features/persona/components/PersonaProfileMobileSheet.tsx:44
 #: src/features/persona/components/PersonaProfileModal.tsx:14
 msgid "Persona profile: {name}"
 msgstr "Perfil da persona: {name}"
@@ -25243,8 +25248,8 @@ msgstr "As notas pessoais já estavam vazias"
 
 #. Title of personas settings section
 #. User settings tab for personas.
-#: src/features/persona/components/PersonaReactAsModal.tsx:181
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:76
+#: src/features/persona/components/PersonaReactAsModal.tsx:239
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:78
 #: src/features/user/components/settings_utils/SettingsConstants.tsx:91
 msgid "Personas"
 msgstr "Personas"
@@ -25849,7 +25854,7 @@ msgid "Presence"
 msgstr "Presença"
 
 #. Tooltip hint for a quick reaction in the message context menu. Preserve {shortcut}; it is a keyboard key such as 1.
-#: src/features/ui/action_menu/MessageContextMenu.tsx:77
+#: src/features/ui/action_menu/MessageContextMenu.tsx:79
 msgid "Press {shortcut} to react"
 msgstr "Pressione {shortcut} para reagir"
 
@@ -25896,7 +25901,7 @@ msgstr "Impedir que membros enviem mensagens, reajam e entrem em chamadas de voz
 
 #: src/features/expressions/components/modals/sticker_form/StickerPreview.tsx:21
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildInviteSplashSettingsField.tsx:45
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:496
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:518
 #: src/features/user/components/modals/tabs/EmbedDebuggerTab.tsx:276
 msgid "Preview"
 msgstr "Prévia"
@@ -26130,7 +26135,7 @@ msgid "Private message"
 msgstr "Mensagem privada"
 
 #. Tooltip on private persona badge
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:101
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:103
 msgid "Private persona"
 msgstr "Persona privada"
 
@@ -26206,18 +26211,18 @@ msgstr "Cor do perfil"
 
 #. Settings section label for editing profile appearance and identity.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:105
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:106
 #: src/features/user/components/settings_utils/section_registry/GeneralSettingsSections.ts:6
 msgid "Profile customization"
 msgstr "Personalização do perfil"
 
 #. Label in the my profile tab. Preserve {selectedGuildName}; it is inserted by code.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:101
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:102
 msgid "Profile customization for {selectedGuildName}"
 msgstr "Personalização de perfil para {selectedGuildName}"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:97
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:98
 msgid "Profile customization form"
 msgstr "Formulário de personalização do perfil"
 
@@ -26282,7 +26287,7 @@ msgid "Profile type"
 msgstr "Tipo de perfil"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:77
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:78
 msgid "Profile updated"
 msgstr "Perfil atualizado"
 
@@ -26320,7 +26325,7 @@ msgstr "Perguntar sobre novos dispositivos de áudio"
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Short label in the my profile tab. Keep it concise.
 #: src/features/persona/components/modals/PersonaEditModal.tsx:859
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:142
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:143
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:177
 #: src/features/user/components/settings_utils/section_registry/PrivacySafetySections.ts:160
 msgid "Pronouns"
@@ -26378,7 +26383,7 @@ msgid "Public community"
 msgstr "Comunidade pública"
 
 #. Tooltip on public persona badge
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:97
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:99
 msgid "Public persona"
 msgstr "Persona pública"
 
@@ -26679,8 +26684,8 @@ msgid "React"
 msgstr "Reagir"
 
 #. Title of the modal and context menu item to react as a persona.
-#: src/features/persona/components/PersonaReactAsModal.tsx:23
-#: src/features/persona/components/PersonaReactAsModal.tsx:115
+#: src/features/persona/components/PersonaReactAsModal.tsx:24
+#: src/features/persona/components/PersonaReactAsModal.tsx:162
 msgid "React as..."
 msgstr "Reagir como..."
 
@@ -26690,7 +26695,7 @@ msgid "React with {emojiShortcode}"
 msgstr "Reagir com {emojiShortcode}"
 
 #. Tooltip hint showing effective reacting persona or user on quick reaction hover.
-#: src/features/channel/components/MessageActionBar.tsx:79
+#: src/features/channel/components/MessageActionBar.tsx:80
 msgid "Reacting as {name}"
 msgstr "Reagindo como {name}"
 
@@ -26859,7 +26864,7 @@ msgstr "Os destinatários serão direcionados para {0} <0>{1}</0>"
 
 #. Spellcheck engine option in the language tab. Lets the app choose the best available spellcheck engine.
 #. Spellcheck engine option in the textarea spellcheck submenu. Lets the app choose the best available engine.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:70
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:75
 #: src/features/user/components/modals/tabs/LanguageTab.tsx:90
 msgid "Recommended"
 msgstr "Recomendado"
@@ -26983,7 +26988,7 @@ msgstr "URIs de redirecionamento"
 
 #. Native Edit menu item that redoes the last undone edit. Imperative verb.
 #. Textarea right-click context menu item that redoes the last undone edit.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:42
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:43
 #: src/features/platform/utils/DesktopLocaleBridge.ts:56
 msgid "Redo"
 msgstr "Refazer"
@@ -27164,7 +27169,7 @@ msgid "Reload now"
 msgstr "Recarregar agora"
 
 #. Hint in the textarea spellcheck submenu shown after switching engines.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:92
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:97
 msgid "Reload to apply engine change"
 msgstr "Recarregar para aplicar a mudança no mecanismo"
 
@@ -27324,7 +27329,7 @@ msgid "Remove friend"
 msgstr "Remover amigo"
 
 #. Textarea right-click context menu item that removes the selected misspelled word from the personal dictionary.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:29
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:30
 msgid "Remove from dictionary"
 msgstr "Remover do dicionário"
 
@@ -27361,7 +27366,7 @@ msgstr "Remover dos GIFs favoritos salvos por URL"
 #: src/features/channel/components/modals/EditGroupModal.tsx:292
 #: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:313
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:634
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:477
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:499
 msgid "Remove icon"
 msgstr "Remover ícone"
 
@@ -27399,12 +27404,12 @@ msgid "Remove reaction"
 msgstr "Remover reação"
 
 #. Short label in the shared app message reactions content. Preserve {displayName}; it is inserted by code. Keep the tone plain and specific.
-#: src/features/app/components/shared/MessageReactionsContent.tsx:37
+#: src/features/app/components/shared/MessageReactionsContent.tsx:38
 msgid "Remove reaction from {displayName}"
 msgstr "Remover reação de {displayName}"
 
 #. Message action that removes a specific reaction from the selected message.
-#: src/features/ui/action_menu/MessageContextMenu.tsx:61
+#: src/features/ui/action_menu/MessageContextMenu.tsx:63
 msgid "Remove reactions"
 msgstr "Remover reações"
 
@@ -28829,7 +28834,7 @@ msgid "Romanian"
 msgstr "Romeno"
 
 #: src/features/persona/components/PersonaPickerSheet.tsx:151
-#: src/features/persona/components/PersonaReactAsModal.tsx:169
+#: src/features/persona/components/PersonaReactAsModal.tsx:226
 msgid "Root Account (Default)"
 msgstr "Conta principal (Padrão)"
 
@@ -29497,7 +29502,7 @@ msgstr "Pesquisar permissões…"
 #. Search placeholder in persona picker sheet
 #. Search placeholder in persona picker sheet
 #: src/features/persona/components/PersonaPickerSheet.tsx:29
-#: src/features/persona/components/PersonaReactAsModal.tsx:28
+#: src/features/persona/components/PersonaReactAsModal.tsx:29
 msgid "Search personas, tags, pronouns..."
 msgstr "Pesquisar personas, tags, pronomes..."
 
@@ -29510,7 +29515,7 @@ msgstr "Resultados da busca"
 
 #. placeholder {0}: filteredPersonas.length
 #: src/features/persona/components/PersonaPickerSheet.tsx:189
-#: src/features/persona/components/PersonaReactAsModal.tsx:179
+#: src/features/persona/components/PersonaReactAsModal.tsx:237
 msgid "Search Results ({0})"
 msgstr "Resultados da pesquisa ({0})"
 
@@ -29854,7 +29859,7 @@ msgstr "Selecionar conta"
 
 #. Native Edit menu item that selects everything in the focused field. Imperative verb.
 #. Textarea right-click context menu item that selects all text in the textarea.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:58
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:63
 #: src/features/platform/utils/DesktopLocaleBridge.ts:81
 msgid "Select all"
 msgstr "Selecionar tudo"
@@ -30133,7 +30138,7 @@ msgid "Send messages in this channel."
 msgstr "Enviar mensagens neste canal."
 
 #. Description of personas settings section
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:80
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:82
 msgid "Send messages with distinct names and avatars. Personas can represent plural system members, roleplay characters, or any other identity."
 msgstr "Envie mensagens com nomes e avatares diferentes. As personas podem representar membros de um sistema plural, personagens de RPG ou qualquer outra identidade."
 
@@ -30357,12 +30362,12 @@ msgstr "Definir um status personalizado"
 msgid "Set a member list position for the role"
 msgstr "Definiu uma posição na lista de membros para o cargo"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:670
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:700
 msgid "Set Active"
 msgstr "Tornar ativa"
 
 #. Aria label for setting active persona
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:105
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:107
 msgid "Set as active persona"
 msgstr "Definir como persona ativa"
 
@@ -31212,11 +31217,6 @@ msgstr "Mostrar controles deslizantes de volume por participante por dispositivo
 msgid "Show personas button"
 msgstr "Mostrar botão de personas"
 
-#. Developer option label for exposing the staff-only profile timezone section in profile settings.
-#: src/features/devtools/components/DeveloperOptionsToggleGroups.ts:135
-msgid "Show profile time zone settings"
-msgstr "Mostrar configurações de fuso horário do perfil"
-
 #. Short label for an advanced message action bar preference.
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:57
 msgid "Show quick reactions"
@@ -31235,7 +31235,7 @@ msgstr "Mostrar mídias salvas no preenchimento automático de expressões"
 #. Short label for an advanced message input preference.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:102
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:107
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:67
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:137
 msgid "Show send button"
@@ -32314,7 +32314,7 @@ msgstr "Velocidade"
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings section label for spellcheck settings.
 #. Submenu label in the textarea right-click context menu for spellcheck preferences.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:62
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:67
 #: src/features/user/components/modals/tabs/LanguageTab.tsx:401
 #: src/features/user/components/modals/tabs/LanguageTab.tsx:443
 #: src/features/user/components/settings_utils/search_index/LanguageIndex.ts:74
@@ -33556,7 +33556,7 @@ msgstr "Tabelas"
 msgid "Tag"
 msgstr "Tag"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:457
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:479
 msgid "Tag Icon"
 msgstr "Ícone da tag"
 
@@ -33565,7 +33565,7 @@ msgstr "Ícone da tag"
 msgid "Tag pair already in use by persona \"{name}\""
 msgstr "Tag pair already in use by persona \"{name}\""
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:444
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:466
 msgid "Tag Text"
 msgstr "Texto da tag"
 
@@ -34771,7 +34771,7 @@ msgstr "Este é um emoji personalizado de uma comunidade."
 msgid "This is a custom sticker from a community."
 msgstr "Este é um adesivo personalizado de uma comunidade."
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:520
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:550
 msgid "This is a preview of how your display tag will look in chat."
 msgstr "Esta é uma prévia de como sua tag de exibição ficará no chat."
 
@@ -34929,7 +34929,7 @@ msgid "This message no longer exists."
 msgstr "Esta mensagem não existe mais."
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:130
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:131
 msgid "This nickname will only be visible in this community"
 msgstr "Este apelido só ficará visível nesta comunidade"
 
@@ -36389,7 +36389,7 @@ msgstr "Entendi"
 
 #. Native Edit menu item that undoes the last edit. Imperative verb.
 #. Textarea right-click context menu item that undoes the last edit.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:38
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:39
 #: src/features/platform/utils/DesktopLocaleBridge.ts:52
 msgid "Undo"
 msgstr "Desfazer"
@@ -36963,12 +36963,12 @@ msgid "Unsuppress embeds"
 msgstr "Mostrar conteúdos incorporados novamente"
 
 #. Helper description for Last Used persona mode
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:71
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:73
 msgid "Untagged messages send as the persona that spoke most recently. Whenever anyone uses a persona tag, they automatically become the active persona."
 msgstr "Mensagens sem tags são enviadas como a persona que falou mais recentemente. Sempre que alguém usa uma tag de persona, ela automaticamente se torna a persona ativa."
 
 #. Helper description for Manual persona mode
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:67
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:69
 msgid "Untagged messages send as your chosen persona. Typing another persona’s tags will only send that single message and won’t switch who is active."
 msgstr "Mensagens sem tags são enviadas como sua persona escolhida. Digitar as tags de outra persona enviará apenas aquela mensagem e não mudará quem está ativo."
 
@@ -37191,7 +37191,7 @@ msgstr "Envie arquivos e mídias neste canal."
 #: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:304
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:625
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildIconUploadField.tsx:130
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:487
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:509
 msgid "Upload icon"
 msgstr "Enviar ícone"
 
@@ -38127,22 +38127,22 @@ msgid "Verify your email before adding an authenticator app."
 msgstr "Verifique seu e-mail antes de adicionar um aplicativo autenticador."
 
 #. Description text in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:117
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:118
 msgid "Verify your email before changing your community nickname, avatar, banner, bio, pronouns, or accent color."
 msgstr "Verifique seu e-mail antes de mudar seu apelido da comunidade, avatar, banner, biografia, pronomes ou cor de destaque."
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:121
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:122
 msgid "Verify your email before changing your username, display name, avatar, banner, bio, pronouns, time zone, or {premiumProductName} badge privacy."
 msgstr "Verifique seu e-mail antes de alterar seu nome de usuário, nome de exibição, avatar, banner, biografia, pronomes, fuso horário ou privacidade do selo {premiumProductName}."
 
 #. Description text in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:85
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:86
 msgid "Verify your email before editing this community profile. You can still preview it here."
 msgstr "Verifique seu e-mail antes de editar seu perfil nesta comunidade. Você ainda pode ver uma prévia aqui."
 
 #. Description text in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:89
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:90
 msgid "Verify your email before editing your profile. You can still preview it here."
 msgstr "Verifique seu e-mail antes de editar seu perfil. Você ainda pode pré-visualizá-lo aqui."
 
@@ -38174,12 +38174,12 @@ msgid "Verify your email to continue using {productName}."
 msgstr "Verifique seu e-mail para continuar usando o {productName}."
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:109
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:110
 msgid "Verify your email to edit this community profile"
 msgstr "Verifique seu e-mail para editar seu perfil nesta comunidade"
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:113
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:114
 msgid "Verify your email to edit your profile"
 msgstr "Verifique seu e-mail para editar seu perfil"
 
@@ -40021,7 +40021,7 @@ msgid "You can't befriend yourself"
 msgstr "Você não pode adicionar a si mesmo(a) como amigo(a)"
 
 #. Label in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:134
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:135
 msgid "You can't change your nickname here"
 msgstr "Você não pode mudar seu apelido aqui"
 
@@ -40272,7 +40272,7 @@ msgid "You have unsaved changes."
 msgstr "Você tem alterações não salvas."
 
 #. Warning text in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:81
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:82
 msgid "You have unsaved changes. Save or reset before leaving."
 msgstr "Você tem alterações não salvas. Salve ou redefina antes de sair."
 

@@ -14,7 +14,7 @@ msgstr ""
 "Plural-Forms: \n"
 "X-Generator: @lingui/cli\n"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:515
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:545
 msgid "— Today at 12:00 PM"
 msgstr "— 今天 12:00 PM"
 
@@ -1009,7 +1009,7 @@ msgid "{count, plural, one {# mutual community} other {# mutual communities}}"
 msgstr "{count, plural, one {# 個共同社群} other {# 個共同社群}}"
 
 #: src/features/messaging/utils/MessageReactionUtils.ts:53
-#: src/features/messaging/utils/ReactionUtils.ts:69
+#: src/features/messaging/utils/ReactionUtils.ts:77
 msgid "{count, plural, one {# other} other {# others}}"
 msgstr "{count, plural, one {其他 # 人} other {其他 # 人}}"
 
@@ -1022,7 +1022,7 @@ msgstr "{count, plural, one {# 位參與者在通話中} other {# 位參與者�
 msgid "{count, plural, one {# potential spammer message} other {# potential spammer messages}}"
 msgstr "{count, plural, one {# 則可能的垃圾訊息} other {# 則可能的垃圾訊息}}"
 
-#: src/features/app/components/shared/MessageReactionsContent.tsx:58
+#: src/features/app/components/shared/MessageReactionsContent.tsx:59
 #: src/features/channel/components/MessageReactions.tsx:154
 msgid "{count, plural, one {# reaction} other {# reactions}}"
 msgstr "{count, plural, one {# 個反應} other {# 個反應}}"
@@ -1296,7 +1296,7 @@ msgid "{emojiName} (failed to load)"
 msgstr "{emojiName}（載入失敗）"
 
 #. Short label in the shared app message reactions content. Preserve placeholders {emojiName}, {reactionCountText}; they are inserted by code.
-#: src/features/app/components/shared/MessageReactionsContent.tsx:32
+#: src/features/app/components/shared/MessageReactionsContent.tsx:33
 msgid "{emojiName}, {reactionCountText}"
 msgstr "{emojiName}，{reactionCountText}"
 
@@ -1810,7 +1810,7 @@ msgid "{productName} restarted while you were connected to the call in {directCa
 msgstr "{productName} 在您連線到 {directCallName} 中的通話時重新啟動。"
 
 #. Item in the textarea spellcheck submenu that opens the full settings page. Trailing horizontal ellipsis (…) indicates the action opens settings.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:96
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:101
 msgid "{productName} spellcheck settings…"
 msgstr "{productName} 拼字檢查設定…"
 
@@ -1847,7 +1847,7 @@ msgstr "{productName} 文字標誌"
 #. Reaction tooltip. Preserve {emojiName}, {reactors}; they are inserted by code. {reactorCount} is how many people reacted, for verb agreement. Order the parts so the emoji never reads as the one doing the reacting.
 #. Reaction tooltip. Preserve {emojiName}, {reactors}; they are inserted by code. {reactorCount} is how many people reacted, for verb agreement. Order the parts so the emoji never reads as the one doing the reacting.
 #: src/features/messaging/utils/MessageReactionUtils.ts:16
-#: src/features/messaging/utils/ReactionUtils.ts:32
+#: src/features/messaging/utils/ReactionUtils.ts:33
 msgid "{reactorCount, plural, one {{emojiName} reacted by {reactors}} other {{emojiName} reacted by {reactors}}}"
 msgstr "{reactorCount, plural, one {{reactors} 用 {emojiName} 做出反應} other {{reactors} 用 {emojiName} 做出反應}}"
 
@@ -2578,8 +2578,8 @@ msgstr "關於 {appName}"
 #. Short label in the user profile shared popout. Keep it concise.
 #: src/features/app/components/pages/YouPage.tsx:166
 #: src/features/persona/components/modals/PersonaEditModal.tsx:900
-#: src/features/persona/components/PersonaProfileMobileSheet.tsx:400
-#: src/features/persona/components/PersonaProfileMobileSheet.tsx:409
+#: src/features/persona/components/PersonaProfileMobileSheet.tsx:421
+#: src/features/persona/components/PersonaProfileMobileSheet.tsx:430
 #: src/features/user/components/modals/tabs/my_profile_tab/BioEditor.tsx:26
 #: src/features/user/components/modals/UserProfileMobileSheet.tsx:787
 #: src/features/user/components/popouts/UserProfileShared.tsx:41
@@ -2745,7 +2745,7 @@ msgid "Account verification required"
 msgstr "需要驗證帳號"
 
 #. Tooltip showing root account username
-#: src/features/persona/components/PersonaTag.tsx:87
+#: src/features/persona/components/PersonaTag.tsx:92
 msgid "Account: @{username}"
 msgstr "帳號：@{username}"
 
@@ -2813,7 +2813,7 @@ msgstr "動作"
 #. Subscription status badge meaning the paid subscription is active.
 #: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:445
 #: src/features/channel/components/channel_header_components/developer_tools/DeveloperToolsShared.ts:37
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:670
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:700
 #: src/features/user/components/settings_utils/search_index/DevicesIndex.ts:19
 msgid "Active"
 msgstr "啟用中"
@@ -2869,11 +2869,11 @@ msgstr "目前在線上"
 #. Aria label for active persona mode tabs
 #. Aria label for active persona mode tabs
 #: src/features/persona/components/PersonaPickerSheet.tsx:33
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:84
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:86
 msgid "Active persona mode"
 msgstr "活躍人格模式"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:403
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:425
 msgid "Active Persona Mode"
 msgstr "活躍人格模式"
 
@@ -3164,7 +3164,7 @@ msgstr "新增覆寫"
 msgid "Add passkey"
 msgstr "新增通行金鑰"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:544
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:574
 msgid "Add Persona"
 msgstr "新增人格"
 
@@ -3249,7 +3249,7 @@ msgid "Add the credentials during setup."
 msgstr "在設定期間新增憑證。"
 
 #. Textarea right-click context menu item that adds the selected misspelled word to the personal dictionary.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:34
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:35
 msgid "Add to dictionary"
 msgstr "新增至字典"
 
@@ -6829,7 +6829,7 @@ msgstr "變更群組暱稱"
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:86
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:625
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildIconUploadField.tsx:35
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:469
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:491
 msgid "Change icon"
 msgstr "更換圖示"
 
@@ -7682,7 +7682,7 @@ msgstr "選擇我的最愛 GIF 的儲存方式"
 msgid "Choose how times are displayed throughout the app"
 msgstr "選擇應用程式中時間的顯示方式"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:406
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:428
 msgid "Choose how untagged messages and persona tags interact with your active persona."
 msgstr "選擇未標記的訊息和人格標籤如何與您的活躍人格互動。"
 
@@ -8157,7 +8157,7 @@ msgid "Click to open the color picker and choose a new color."
 msgstr "點擊以開啟選色器並選擇新顏色。"
 
 #. Tooltip on the add-reaction button in the inline message hover action bar.
-#: src/features/channel/components/MessageActionBar.tsx:75
+#: src/features/channel/components/MessageActionBar.tsx:76
 msgid "Click to react"
 msgstr "點擊以新增反應"
 
@@ -8754,7 +8754,7 @@ msgstr "社群名稱"
 
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:126
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:127
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:113
 msgid "Community nickname"
 msgstr "社群暱稱"
@@ -8807,7 +8807,7 @@ msgid "Community profile"
 msgstr "社群個人檔案"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:73
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:74
 msgid "Community profile updated"
 msgstr "社群個人檔案已更新"
 
@@ -9017,7 +9017,7 @@ msgid "Configure your profile badge"
 msgstr "設定您的個人檔案徽章"
 
 #. Header for configured personas list with count
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:117
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:119
 msgid "Configured Personas ({count})"
 msgstr "已設定的人格 ({count})"
 
@@ -9494,18 +9494,18 @@ msgstr "已將網址複製到剪貼簿"
 #. Textarea right-click context menu item that copies the selected text.
 #: src/features/app/components/dialogs/shared/CopyLinkSection.tsx:11
 #: src/features/auth/components/modals/BackupCodesModal.tsx:96
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:50
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:51
 #: src/features/moderation/components/report_modal/IARModalCopy.ts:397
 #: src/features/platform/utils/DesktopLocaleBridge.ts:64
 #: src/features/theme_studio/sections/QuickCssSection.tsx:214
-#: src/features/ui/action_menu/MessageContextMenu.tsx:73
+#: src/features/ui/action_menu/MessageContextMenu.tsx:75
 #: src/features/user/components/modals/tabs/applications_tab/application_detail/OAuthBuilderSection.tsx:228
 #: src/features/user/components/modals/tabs/GiftInventoryTab.tsx:59
 msgid "Copy"
 msgstr "複製"
 
 #. Developer-mode action that copies the attachment ID to the clipboard.
-#: src/features/ui/action_menu/MessageContextMenu.tsx:69
+#: src/features/ui/action_menu/MessageContextMenu.tsx:71
 msgid "Copy attachment ID"
 msgstr "複製附件 ID"
 
@@ -10216,7 +10216,7 @@ msgid "Couldn't ring this person"
 msgstr "無法撥打給此人"
 
 #. Error message in the use textarea submit hook. Preserve {detail}; it is inserted by code.
-#: src/features/messaging/hooks/useTextareaSubmit.ts:53
+#: src/features/messaging/hooks/useTextareaSubmit.ts:54
 msgid "Couldn't run that command: {detail}"
 msgstr "無法執行該指令：{detail}"
 
@@ -11060,7 +11060,7 @@ msgstr "在個別社群中自訂您的大頭貼、橫幅、主題顏色和個人
 
 #. Native Edit menu item that cuts the selection to the clipboard. Imperative verb, not the noun.
 #. Textarea right-click context menu item that cuts the selected text.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:46
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:47
 #: src/features/platform/utils/DesktopLocaleBridge.ts:60
 msgid "Cut"
 msgstr "剪下"
@@ -11225,7 +11225,7 @@ msgid "Deactivate"
 msgstr "停用"
 
 #. Aria label for deactivating active persona
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:109
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:111
 msgid "Deactivate persona"
 msgstr "停用人格"
 
@@ -11313,7 +11313,7 @@ msgstr "偵錯成員"
 #. Developer-mode action that opens the message debug modal.
 #. Developer-mode item in the message action bar overflow menu. Opens the message debug modal.
 #. Developer-mode message context menu item that opens an internal debug view for the message.
-#: src/features/channel/components/MessageActionBar.tsx:91
+#: src/features/channel/components/MessageActionBar.tsx:92
 #: src/features/channel/components/MessageActionMenu.tsx:105
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:66
 msgid "Debug message"
@@ -12037,7 +12037,7 @@ msgstr "詳細資訊"
 
 #. Item in the textarea spellcheck language submenu that detects draft message language and switches dictionaries as the user types.
 #. Spellcheck language mode label in the language tab. The app detects the draft message language and switches dictionaries as the user types.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:83
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:88
 #: src/features/user/components/modals/tabs/LanguageTab.tsx:126
 msgid "Detect while typing"
 msgstr "輸入時偵測"
@@ -12608,7 +12608,7 @@ msgstr "顯示模式"
 #. Short label in the my profile tab. Keep it concise.
 #: src/features/persona/components/modals/PersonaEditModal.tsx:849
 #: src/features/user/components/modals/tabs/component_gallery_tab/ComponentGalleryTabInputsTab.tsx:22
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:138
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:139
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:61
 msgid "Display name"
 msgstr "顯示名稱"
@@ -12626,11 +12626,11 @@ msgstr "顯示名稱（選填）"
 msgid "Display scaling"
 msgstr "顯示比例"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:429
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:451
 msgid "Display Tag"
 msgstr "顯示標籤"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:432
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:454
 msgid "Display tag will appear next to all persona names in messages. If no display tag is set, your account profile picture will be shown."
 msgstr "顯示標籤會出現在訊息中所有人格名稱的旁邊。如果未設定顯示標籤，則會顯示您的帳號大頭貼。"
 
@@ -12762,7 +12762,7 @@ msgstr "你想加入 {communityName} 嗎？"
 #. Label in the accessibility tab.
 #. Label in the my profile tab.
 #: src/features/user/components/modals/tabs/AccessibilityTab.tsx:54
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:146
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:147
 msgid "Doc, I'm from the future. I came here in a time machine that you invented. Now, I need your help to get back to the year 1985."
 msgstr "博士，我來自未來。我搭乘您發明的時光機來到這裡。現在，我需要您的幫助才能回到 1985 年。"
 
@@ -13385,10 +13385,10 @@ msgstr "編輯此頻道中身分組和成員的覆寫權限。"
 
 #. Action button to edit persona
 #. Aria label for editing persona
-#: src/features/persona/components/PersonaProfileMobileSheet.tsx:321
-#: src/features/persona/components/PersonaProfileMobileSheet.tsx:377
-#: src/features/persona/components/PersonaProfilePopout.tsx:333
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:113
+#: src/features/persona/components/PersonaProfileMobileSheet.tsx:342
+#: src/features/persona/components/PersonaProfileMobileSheet.tsx:398
+#: src/features/persona/components/PersonaProfilePopout.tsx:358
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:115
 msgid "Edit persona"
 msgstr "編輯人格"
 
@@ -13466,7 +13466,7 @@ msgid "Edit translation provider"
 msgstr "編輯翻譯服務供應商"
 
 #. Button or menu action label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:93
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:94
 msgid "Edit your profile appearance and see a live preview"
 msgstr "編輯個人檔案外觀並查看即時預覽"
 
@@ -14057,7 +14057,7 @@ msgstr "啟用影片進度預覽縮圖"
 #. Toggle item in the textarea spellcheck submenu. Master enable for spellcheck.
 #: src/features/app/components/setup/SetupWizardSteps.tsx:398
 #: src/features/channel/components/channel_header_components/developer_tools/DeveloperToolsShared.ts:21
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:66
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:71
 msgid "Enabled"
 msgstr "已啟用"
 
@@ -15257,7 +15257,7 @@ msgid "Failed to upload emojis. Try again."
 msgstr "表情符號上傳失敗。請再試一次。"
 
 #. Toast when icon upload fails
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:89
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:91
 msgid "Failed to upload icon to server"
 msgstr "無法將圖示上傳至伺服器"
 
@@ -15916,7 +15916,7 @@ msgstr "表單"
 #. Message action label for forwarding the selected message to another channel or DM.
 #. Message context menu item that opens the forward-to-channel picker.
 #. Tooltip on the forward button in the inline message hover action bar.
-#: src/features/channel/components/MessageActionBar.tsx:95
+#: src/features/channel/components/MessageActionBar.tsx:96
 #: src/features/channel/components/MessageActionMenu.tsx:85
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:54
 msgid "Forward"
@@ -17664,7 +17664,7 @@ msgid "Icon file is too large. Choose a file smaller than {imageMaxSizeLabel}."
 msgstr "圖示檔案過大。請選擇小於 {imageMaxSizeLabel} 的檔案。"
 
 #. Toast when icon file exceeds size limit
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:93
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:95
 msgid "Icon file is too large. Choose an image smaller than 10MB."
 msgstr "圖示檔案太大。請選擇小於 10MB 的圖片。"
 
@@ -18006,7 +18006,7 @@ msgstr "匯入資料夾"
 
 #. Modal title for PluralKit import step select
 #: src/features/persona/components/modals/PluralKitImportModal.tsx:534
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:541
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:571
 msgid "Import from PluralKit"
 msgstr "從 PluralKit 匯入"
 
@@ -18147,7 +18147,7 @@ msgstr "在語音聊天中"
 
 #. Spellcheck engine option in the language tab. Uses the bundled in-app Hunspell dictionaries. Keep it concise.
 #. Spellcheck engine option in the textarea spellcheck submenu. The bundled in-app hunspell engine.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:75
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:80
 #: src/features/user/components/modals/tabs/LanguageTab.tsx:100
 msgid "In-app dictionaries"
 msgstr "應用程式內建字典"
@@ -19404,7 +19404,7 @@ msgstr "語言設定"
 
 #. Submenu label in the textarea spellcheck submenu listing manual language overrides.
 #. Subsection title for spellcheck language settings. Keep it concise.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:88
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:93
 #: src/features/user/components/modals/tabs/LanguageTab.tsx:122
 msgid "Languages"
 msgstr "語言"
@@ -19442,7 +19442,7 @@ msgstr "上次使用"
 #. Active persona mode last used
 #: src/features/persona/components/PersonaComposerPill.tsx:21
 #: src/features/persona/components/PersonaPickerSheet.tsx:25
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:62
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:64
 msgid "Last Used"
 msgstr "最後使用"
 
@@ -20183,8 +20183,8 @@ msgid "Mail"
 msgstr "郵件"
 
 #: src/features/persona/components/modals/PersonaEditModal.tsx:1142
-#: src/features/persona/components/PersonaProfileMobileSheet.tsx:420
-#: src/features/persona/components/PersonaProfilePopout.tsx:305
+#: src/features/persona/components/PersonaProfileMobileSheet.tsx:441
+#: src/features/persona/components/PersonaProfilePopout.tsx:330
 msgid "Main account"
 msgstr "主帳號"
 
@@ -20374,7 +20374,7 @@ msgstr "管理您的訂閱"
 #. Active persona mode manual
 #: src/features/persona/components/PersonaComposerPill.tsx:17
 #: src/features/persona/components/PersonaPickerSheet.tsx:21
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:58
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:60
 msgid "Manual"
 msgstr "手動"
 
@@ -21093,8 +21093,8 @@ msgstr "訊息"
 #. Audit log target-type filter label. Filters entries that target an individual message.
 #. Short label in the inputs tab. Keep it concise.
 #: src/features/app/config/AuditLogConstants.ts:184
-#: src/features/persona/components/PersonaProfileMobileSheet.tsx:331
-#: src/features/persona/components/PersonaProfilePopout.tsx:343
+#: src/features/persona/components/PersonaProfileMobileSheet.tsx:352
+#: src/features/persona/components/PersonaProfilePopout.tsx:368
 #: src/features/user/components/modals/tabs/component_gallery_tab/ComponentGalleryTabInputsTab.tsx:86
 msgid "Message"
 msgstr "訊息"
@@ -21104,7 +21104,7 @@ msgstr "訊息"
 #. Member actions sheet menu item. Sends a direct message to the target user. Standalone verb used as a menu label.
 #. Voice participant menu action that opens a DM conversation with the selected user.
 #: src/features/guild/components/modals/guild_tabs/GuildMemberActionsSheet.tsx:88
-#: src/features/persona/components/PersonaProfileMobileSheet.tsx:391
+#: src/features/persona/components/PersonaProfileMobileSheet.tsx:412
 #: src/features/ui/action_menu/items/ActionsSubmenu.tsx:41
 #: src/features/ui/action_menu/items/MessageUserMenuItem.tsx:26
 #: src/features/ui/action_menu/items/voice_participant_menu_data/shared.ts:78
@@ -21178,7 +21178,7 @@ msgstr "訊息包含附加媒體"
 #. Title of the developer-mode message debug modal opened from the message action bar.
 #. Title of the developer-mode message debug modal opened from the message context menu.
 #. Title of the developer-mode message debug modal.
-#: src/features/channel/components/MessageActionBar.tsx:83
+#: src/features/channel/components/MessageActionBar.tsx:84
 #: src/features/channel/components/MessageActionMenu.tsx:73
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:62
 msgid "Message debug"
@@ -21741,7 +21741,7 @@ msgstr "每月禮物"
 #: src/features/auth/components/accounts/AccountRow.tsx:23
 #: src/features/channel/components/bottomsheets/channel_details_bottom_sheet/ChannelDetailsBottomSheetShared.ts:142
 #: src/features/channel/components/friends/FriendListItem.tsx:63
-#: src/features/channel/components/MessageActionBar.tsx:87
+#: src/features/channel/components/MessageActionBar.tsx:88
 #: src/features/user/components/modals/tabs/component_gallery_tab/ComponentGalleryTabButtonsTab.tsx:125
 msgid "More"
 msgstr "更多"
@@ -21769,7 +21769,7 @@ msgid "More emoji actions"
 msgstr "更多表情符號操作"
 
 #. Submenu label that contains additional media context menu actions.
-#: src/features/ui/action_menu/MessageContextMenu.tsx:65
+#: src/features/ui/action_menu/MessageContextMenu.tsx:67
 msgid "More media actions"
 msgstr "更多媒體操作"
 
@@ -22952,7 +22952,7 @@ msgstr "沒有說明。"
 msgid "No desktop update is available."
 msgstr "沒有可用的桌面版更新。"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:522
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:552
 msgid "No display tag configured. Messages will show your account profile picture."
 msgstr "未設定顯示標籤。訊息將會顯示您的帳號大頭貼。"
 
@@ -23082,8 +23082,8 @@ msgid "No matches found"
 msgstr "沒有找到符合的項目"
 
 #: src/features/persona/components/PersonaPickerSheet.tsx:197
-#: src/features/persona/components/PersonaReactAsModal.tsx:188
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:581
+#: src/features/persona/components/PersonaReactAsModal.tsx:246
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:611
 msgid "No matching personas found."
 msgstr "找不到符合的人格。"
 
@@ -23146,7 +23146,7 @@ msgstr "還沒有任何個人詞彙。"
 msgid "No personas configured yet. Create one in Settings."
 msgstr "尚未設定任何人格。請在「設定」中建立一個。"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:577
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:607
 msgid "No personas created yet. Click \"Add Persona\" to create your first persona!"
 msgstr "No personas created yet. Click \"Add Persona\" to create your first persona!"
 
@@ -24473,7 +24473,7 @@ msgstr "開啟成員頁面。按空白鍵或 Enter 鍵開啟。"
 #. Short label in the language tab. Keep it concise.
 #. Spellcheck engine option in the textarea spellcheck submenu. Uses the host operating system spellchecker.
 #: src/features/auth/flow/HandoffApprovalFlow.tsx:184
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:79
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:84
 #: src/features/user/components/modals/tabs/LanguageTab.tsx:110
 msgid "Operating system"
 msgstr "作業系統"
@@ -24622,7 +24622,7 @@ msgid "Other people can only see your current UTC offset when you choose to shar
 msgstr "當您選擇分享個人檔案中的當地時間時，其他人只能看到您目前的 UTC 時區偏移量。他們不會看到您的確切時區識別碼，例如 {timezoneIdentifierExample}。{productName} 會儲存該識別碼，以便在日光節約時間變更時自動更新偏移量。"
 
 #. Message action that opens the full reaction picker.
-#: src/features/ui/action_menu/MessageContextMenu.tsx:57
+#: src/features/ui/action_menu/MessageContextMenu.tsx:59
 msgid "Other reaction…"
 msgstr "其他反應…"
 
@@ -24900,7 +24900,7 @@ msgstr "過去 7 天"
 
 #. Native Edit menu item that pastes the clipboard contents. Imperative verb, not the noun.
 #. Textarea right-click context menu item that pastes clipboard contents.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:54
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:55
 #: src/features/platform/utils/DesktopLocaleBridge.ts:68
 msgid "Paste"
 msgstr "貼上"
@@ -24913,6 +24913,11 @@ msgstr "貼上 {theOtherPlatform} 範本網址，即可將其結構匯入新的�
 #: src/features/platform/utils/DesktopLocaleBridge.ts:72
 msgid "Paste and match style"
 msgstr "貼上並符合樣式"
+
+#. Textarea right-click context menu item that pastes clipboard contents without formatting.
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:59
+msgid "Paste as plain text"
+msgstr "貼上為純文字"
 
 #. Instruction text in the favorite GIF import modal.
 #: src/features/channel/components/pickers/gif/ImportFavoriteGifsModal.tsx:46
@@ -25198,14 +25203,14 @@ msgstr "人格已刪除"
 
 #. Fallback screen reader label for the persona profile modal. Keep it concise.
 #. Fallback screen reader label for the persona profile modal. Keep it concise.
-#: src/features/persona/components/PersonaProfileMobileSheet.tsx:47
+#: src/features/persona/components/PersonaProfileMobileSheet.tsx:48
 #: src/features/persona/components/PersonaProfileModal.tsx:18
 msgid "Persona profile"
 msgstr "人格個人檔案"
 
 #. Screen reader label for the persona profile modal. Keep it concise. Preserve {name}; it is inserted by code.
 #. Screen reader label for the persona profile modal. Keep it concise. Preserve {name}; it is inserted by code.
-#: src/features/persona/components/PersonaProfileMobileSheet.tsx:43
+#: src/features/persona/components/PersonaProfileMobileSheet.tsx:44
 #: src/features/persona/components/PersonaProfileModal.tsx:14
 msgid "Persona profile: {name}"
 msgstr "人格個人檔案：{name}"
@@ -25243,8 +25248,8 @@ msgstr "個人筆記已經是空的了"
 
 #. Title of personas settings section
 #. User settings tab for personas.
-#: src/features/persona/components/PersonaReactAsModal.tsx:181
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:76
+#: src/features/persona/components/PersonaReactAsModal.tsx:239
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:78
 #: src/features/user/components/settings_utils/SettingsConstants.tsx:91
 msgid "Personas"
 msgstr "人格"
@@ -25849,7 +25854,7 @@ msgid "Presence"
 msgstr "上線狀態"
 
 #. Tooltip hint for a quick reaction in the message context menu. Preserve {shortcut}; it is a keyboard key such as 1.
-#: src/features/ui/action_menu/MessageContextMenu.tsx:77
+#: src/features/ui/action_menu/MessageContextMenu.tsx:79
 msgid "Press {shortcut} to react"
 msgstr "按下 {shortcut} 以新增反應"
 
@@ -25896,7 +25901,7 @@ msgstr "在一段時間內禁止成員傳送訊息、新增反應和加入語音
 
 #: src/features/expressions/components/modals/sticker_form/StickerPreview.tsx:21
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildInviteSplashSettingsField.tsx:45
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:496
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:518
 #: src/features/user/components/modals/tabs/EmbedDebuggerTab.tsx:276
 msgid "Preview"
 msgstr "預覽"
@@ -26130,7 +26135,7 @@ msgid "Private message"
 msgstr "私訊"
 
 #. Tooltip on private persona badge
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:101
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:103
 msgid "Private persona"
 msgstr "私人人格"
 
@@ -26206,18 +26211,18 @@ msgstr "個人檔案顏色"
 
 #. Settings section label for editing profile appearance and identity.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:105
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:106
 #: src/features/user/components/settings_utils/section_registry/GeneralSettingsSections.ts:6
 msgid "Profile customization"
 msgstr "個人檔案自訂"
 
 #. Label in the my profile tab. Preserve {selectedGuildName}; it is inserted by code.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:101
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:102
 msgid "Profile customization for {selectedGuildName}"
 msgstr "{selectedGuildName} 的個人檔案自訂"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:97
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:98
 msgid "Profile customization form"
 msgstr "個人檔案自訂表單"
 
@@ -26282,7 +26287,7 @@ msgid "Profile type"
 msgstr "個人檔案類型"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:77
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:78
 msgid "Profile updated"
 msgstr "個人檔案已更新"
 
@@ -26320,7 +26325,7 @@ msgstr "偵測到新音訊裝置時提示"
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Short label in the my profile tab. Keep it concise.
 #: src/features/persona/components/modals/PersonaEditModal.tsx:859
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:142
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:143
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:177
 #: src/features/user/components/settings_utils/section_registry/PrivacySafetySections.ts:160
 msgid "Pronouns"
@@ -26378,7 +26383,7 @@ msgid "Public community"
 msgstr "公開社群"
 
 #. Tooltip on public persona badge
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:97
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:99
 msgid "Public persona"
 msgstr "公開人格"
 
@@ -26679,8 +26684,8 @@ msgid "React"
 msgstr "反應"
 
 #. Title of the modal and context menu item to react as a persona.
-#: src/features/persona/components/PersonaReactAsModal.tsx:23
-#: src/features/persona/components/PersonaReactAsModal.tsx:115
+#: src/features/persona/components/PersonaReactAsModal.tsx:24
+#: src/features/persona/components/PersonaReactAsModal.tsx:162
 msgid "React as..."
 msgstr "回應身分..."
 
@@ -26690,7 +26695,7 @@ msgid "React with {emojiShortcode}"
 msgstr "新增「{emojiShortcode}」反應"
 
 #. Tooltip hint showing effective reacting persona or user on quick reaction hover.
-#: src/features/channel/components/MessageActionBar.tsx:79
+#: src/features/channel/components/MessageActionBar.tsx:80
 msgid "Reacting as {name}"
 msgstr "以 {name} 的身分回應"
 
@@ -26859,7 +26864,7 @@ msgstr "收件人將會前往 {0} <0>{1}</0>"
 
 #. Spellcheck engine option in the language tab. Lets the app choose the best available spellcheck engine.
 #. Spellcheck engine option in the textarea spellcheck submenu. Lets the app choose the best available engine.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:70
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:75
 #: src/features/user/components/modals/tabs/LanguageTab.tsx:90
 msgid "Recommended"
 msgstr "推薦"
@@ -26983,7 +26988,7 @@ msgstr "重新導向 URI"
 
 #. Native Edit menu item that redoes the last undone edit. Imperative verb.
 #. Textarea right-click context menu item that redoes the last undone edit.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:42
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:43
 #: src/features/platform/utils/DesktopLocaleBridge.ts:56
 msgid "Redo"
 msgstr "重做"
@@ -27164,7 +27169,7 @@ msgid "Reload now"
 msgstr "立即重新載入"
 
 #. Hint in the textarea spellcheck submenu shown after switching engines.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:92
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:97
 msgid "Reload to apply engine change"
 msgstr "重新載入以套用引擎變更"
 
@@ -27324,7 +27329,7 @@ msgid "Remove friend"
 msgstr "移除好友"
 
 #. Textarea right-click context menu item that removes the selected misspelled word from the personal dictionary.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:29
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:30
 msgid "Remove from dictionary"
 msgstr "從字典中移除"
 
@@ -27361,7 +27366,7 @@ msgstr "從僅限網址的 GIF 最愛中移除"
 #: src/features/channel/components/modals/EditGroupModal.tsx:292
 #: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:313
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:634
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:477
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:499
 msgid "Remove icon"
 msgstr "移除圖示"
 
@@ -27399,12 +27404,12 @@ msgid "Remove reaction"
 msgstr "移除心情"
 
 #. Short label in the shared app message reactions content. Preserve {displayName}; it is inserted by code. Keep the tone plain and specific.
-#: src/features/app/components/shared/MessageReactionsContent.tsx:37
+#: src/features/app/components/shared/MessageReactionsContent.tsx:38
 msgid "Remove reaction from {displayName}"
 msgstr "移除 {displayName} 的反應"
 
 #. Message action that removes a specific reaction from the selected message.
-#: src/features/ui/action_menu/MessageContextMenu.tsx:61
+#: src/features/ui/action_menu/MessageContextMenu.tsx:63
 msgid "Remove reactions"
 msgstr "移除反應"
 
@@ -28829,7 +28834,7 @@ msgid "Romanian"
 msgstr "羅馬尼亞文"
 
 #: src/features/persona/components/PersonaPickerSheet.tsx:151
-#: src/features/persona/components/PersonaReactAsModal.tsx:169
+#: src/features/persona/components/PersonaReactAsModal.tsx:226
 msgid "Root Account (Default)"
 msgstr "根帳號 (預設)"
 
@@ -29497,7 +29502,7 @@ msgstr "搜尋權限…"
 #. Search placeholder in persona picker sheet
 #. Search placeholder in persona picker sheet
 #: src/features/persona/components/PersonaPickerSheet.tsx:29
-#: src/features/persona/components/PersonaReactAsModal.tsx:28
+#: src/features/persona/components/PersonaReactAsModal.tsx:29
 msgid "Search personas, tags, pronouns..."
 msgstr "搜尋人格、標籤、代名詞..."
 
@@ -29510,7 +29515,7 @@ msgstr "搜尋結果"
 
 #. placeholder {0}: filteredPersonas.length
 #: src/features/persona/components/PersonaPickerSheet.tsx:189
-#: src/features/persona/components/PersonaReactAsModal.tsx:179
+#: src/features/persona/components/PersonaReactAsModal.tsx:237
 msgid "Search Results ({0})"
 msgstr "搜尋結果 ({0})"
 
@@ -29854,7 +29859,7 @@ msgstr "選擇帳號"
 
 #. Native Edit menu item that selects everything in the focused field. Imperative verb.
 #. Textarea right-click context menu item that selects all text in the textarea.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:58
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:63
 #: src/features/platform/utils/DesktopLocaleBridge.ts:81
 msgid "Select all"
 msgstr "全選"
@@ -30133,7 +30138,7 @@ msgid "Send messages in this channel."
 msgstr "在此頻道中傳送訊息。"
 
 #. Description of personas settings section
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:80
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:82
 msgid "Send messages with distinct names and avatars. Personas can represent plural system members, roleplay characters, or any other identity."
 msgstr "使用不同的名稱和大頭貼傳送訊息。人格可以代表多元系統成員、角色扮演人物或任何其他身分。"
 
@@ -30357,12 +30362,12 @@ msgstr "設定自訂狀態"
 msgid "Set a member list position for the role"
 msgstr "為身分組設定成員列表中的位置"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:670
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:700
 msgid "Set Active"
 msgstr "設為活躍"
 
 #. Aria label for setting active persona
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:105
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:107
 msgid "Set as active persona"
 msgstr "設為活躍人格"
 
@@ -31212,11 +31217,6 @@ msgstr "在語音選單中顯示個別裝置的參與者音量滑桿"
 msgid "Show personas button"
 msgstr "顯示人格按鈕"
 
-#. Developer option label for exposing the staff-only profile timezone section in profile settings.
-#: src/features/devtools/components/DeveloperOptionsToggleGroups.ts:135
-msgid "Show profile time zone settings"
-msgstr "顯示個人檔案時區設定"
-
 #. Short label for an advanced message action bar preference.
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:57
 msgid "Show quick reactions"
@@ -31235,7 +31235,7 @@ msgstr "在表情符號自動完成中顯示已儲存的媒體"
 #. Short label for an advanced message input preference.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
 #. Short label in the channel and chat textarea plus menu. Keep it concise.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:102
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:107
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:67
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:137
 msgid "Show send button"
@@ -32314,7 +32314,7 @@ msgstr "速度"
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings section label for spellcheck settings.
 #. Submenu label in the textarea right-click context menu for spellcheck preferences.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:62
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:67
 #: src/features/user/components/modals/tabs/LanguageTab.tsx:401
 #: src/features/user/components/modals/tabs/LanguageTab.tsx:443
 #: src/features/user/components/settings_utils/search_index/LanguageIndex.ts:74
@@ -33556,7 +33556,7 @@ msgstr "表格"
 msgid "Tag"
 msgstr "標籤"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:457
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:479
 msgid "Tag Icon"
 msgstr "標籤圖示"
 
@@ -33565,7 +33565,7 @@ msgstr "標籤圖示"
 msgid "Tag pair already in use by persona \"{name}\""
 msgstr "Tag pair already in use by persona \"{name}\""
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:444
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:466
 msgid "Tag Text"
 msgstr "標籤文字"
 
@@ -34771,7 +34771,7 @@ msgstr "這是社群中的自訂表情符號。"
 msgid "This is a custom sticker from a community."
 msgstr "這是來自某個社群的自訂貼圖。"
 
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:520
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:550
 msgid "This is a preview of how your display tag will look in chat."
 msgstr "這是您的顯示標籤在聊天中的預覽。"
 
@@ -34929,7 +34929,7 @@ msgid "This message no longer exists."
 msgstr "此訊息已不存在。"
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:130
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:131
 msgid "This nickname will only be visible in this community"
 msgstr "這個暱稱只會在此社群中顯示"
 
@@ -36389,7 +36389,7 @@ msgstr "知道了"
 
 #. Native Edit menu item that undoes the last edit. Imperative verb.
 #. Textarea right-click context menu item that undoes the last edit.
-#: src/features/channel/components/textarea/TextareaContextMenu.tsx:38
+#: src/features/channel/components/textarea/TextareaContextMenu.tsx:39
 #: src/features/platform/utils/DesktopLocaleBridge.ts:52
 msgid "Undo"
 msgstr "復原"
@@ -36963,12 +36963,12 @@ msgid "Unsuppress embeds"
 msgstr "取消隱藏嵌入內容"
 
 #. Helper description for Last Used persona mode
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:71
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:73
 msgid "Untagged messages send as the persona that spoke most recently. Whenever anyone uses a persona tag, they automatically become the active persona."
 msgstr "未標記的訊息會以最近發言的人格身分傳送。只要任何人使用了人格標籤，他們就會自動成為活躍人格。"
 
 #. Helper description for Manual persona mode
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:67
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:69
 msgid "Untagged messages send as your chosen persona. Typing another persona’s tags will only send that single message and won’t switch who is active."
 msgstr "未標記的訊息會以您選擇的人格身分傳送。輸入其他人格的標籤只會傳送該則單一訊息，不會切換活躍人格。"
 
@@ -37191,7 +37191,7 @@ msgstr "在此頻道上傳檔案和媒體。"
 #: src/features/guild/components/modals/add_guild_modal/GuildCreateForm.tsx:304
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:625
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/fields/GuildIconUploadField.tsx:130
-#: src/features/persona/components/settings/PersonaSettingsTab.tsx:487
+#: src/features/persona/components/settings/PersonaSettingsTab.tsx:509
 msgid "Upload icon"
 msgstr "上傳圖示"
 
@@ -38127,22 +38127,22 @@ msgid "Verify your email before adding an authenticator app."
 msgstr "請先驗證您的電子郵件，然後再新增驗證器應用程式。"
 
 #. Description text in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:117
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:118
 msgid "Verify your email before changing your community nickname, avatar, banner, bio, pronouns, or accent color."
 msgstr "請先驗證您的電子郵件，才能更改社群暱稱、大頭貼、橫幅、個人簡介、代名詞或強調色。"
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:121
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:122
 msgid "Verify your email before changing your username, display name, avatar, banner, bio, pronouns, time zone, or {premiumProductName} badge privacy."
 msgstr "請先驗證您的電子郵件，然後再變更您的使用者名稱、顯示名稱、大頭貼、橫幅、個人簡介、代名詞、時區或 {premiumProductName} 徽章隱私設定。"
 
 #. Description text in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:85
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:86
 msgid "Verify your email before editing this community profile. You can still preview it here."
 msgstr "請先驗證您的電子郵件，才能編輯這個社群個人檔案。您仍然可以在這裡預覽。"
 
 #. Description text in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:89
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:90
 msgid "Verify your email before editing your profile. You can still preview it here."
 msgstr "請先驗證您的電子郵件，然後再編輯個人檔案。您仍然可以在這裡預覽。"
 
@@ -38174,12 +38174,12 @@ msgid "Verify your email to continue using {productName}."
 msgstr "請驗證您的電子郵件，以繼續使用 {productName}。"
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:109
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:110
 msgid "Verify your email to edit this community profile"
 msgstr "請驗證您的電子郵件以編輯此社群個人檔案"
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:113
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:114
 msgid "Verify your email to edit your profile"
 msgstr "請驗證您的電子郵件以編輯個人檔案"
 
@@ -40021,7 +40021,7 @@ msgid "You can't befriend yourself"
 msgstr "您無法將自己新增為朋友"
 
 #. Label in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:134
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:135
 msgid "You can't change your nickname here"
 msgstr "您無法在這裡變更暱稱"
 
@@ -40272,7 +40272,7 @@ msgid "You have unsaved changes."
 msgstr "您有未儲存的變更。"
 
 #. Warning text in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:81
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:82
 msgid "You have unsaved changes. Save or reset before leaving."
 msgstr "您有未儲存的變更。請先儲存或重設，再離開。"
 
