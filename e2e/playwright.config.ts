@@ -34,6 +34,7 @@ export default defineConfig({
     },
     {
       name: 'mobile-chromium',
+      testMatch: /.*mobile\/.*/,
       use: {
         ...devices['Pixel 7'],
       },
