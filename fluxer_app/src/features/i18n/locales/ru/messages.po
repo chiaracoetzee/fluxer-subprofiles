@@ -41296,3 +41296,28 @@ msgstr "Реагировать как..."
 #: src/features/channel/components/textarea/TextareaContextMenu.tsx:59
 msgid "Paste as plain text"
 msgstr "Вставить как обычный текст"
+
+#. Short indicator shown next to pinned emoji text, for example: :heart: (pinned).
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:660
+msgid "(pinned)"
+msgstr "(закреплено)"
+
+#. Emoji context menu action that pins the emoji.
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:40
+msgid "Pin emoji"
+msgstr "Закрепить эмодзи"
+
+#. Emoji context menu action that pins the emoji for the active persona.
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:48
+msgid "Pin for this persona"
+msgstr "Закрепить для этой персоны"
+
+#. Emoji context menu action that unpins the emoji.
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:44
+msgid "Unpin emoji"
+msgstr "Открепить эмодзи"
+
+#. Emoji context menu action that unpins the emoji for the active persona.
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:52
+msgid "Unpin for this persona"
+msgstr "Открепить для этой персоны"

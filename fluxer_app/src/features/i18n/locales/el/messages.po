@@ -41296,3 +41296,28 @@ msgstr "Αντίδραση ως..."
 #: src/features/channel/components/textarea/TextareaContextMenu.tsx:59
 msgid "Paste as plain text"
 msgstr "Επικόλληση ως απλό κείμενο"
+
+#. Short indicator shown next to pinned emoji text, for example: :heart: (pinned).
+#: src/features/i18n/utils/CommonMessageDescriptors.ts:660
+msgid "(pinned)"
+msgstr "(καρφιτσωμένο)"
+
+#. Emoji context menu action that pins the emoji.
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:40
+msgid "Pin emoji"
+msgstr "Καρφίτσωμα emoji"
+
+#. Emoji context menu action that pins the emoji for the active persona.
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:48
+msgid "Pin for this persona"
+msgstr "Καρφίτσωμα για αυτήν την περσόνα"
+
+#. Emoji context menu action that unpins the emoji.
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:44
+msgid "Unpin emoji"
+msgstr "Ξεκαρφίτσωμα emoji"
+
+#. Emoji context menu action that unpins the emoji for the active persona.
+#: src/features/ui/action_menu/items/EmojiContextMenuItems.tsx:52
+msgid "Unpin for this persona"
+msgstr "Ξεκαρφίτσωμα για αυτήν την περσόνα"
