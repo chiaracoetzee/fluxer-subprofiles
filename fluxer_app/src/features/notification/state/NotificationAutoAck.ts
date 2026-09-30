@@ -11,6 +11,7 @@ import {
 import {isTextChatVisibleForAutoAck} from '@app/features/notification/utils/AutoAckVisibility';
 import {Logger} from '@app/features/platform/utils/AppLogger';
 import {deferUntilModulesLoaded} from '@app/features/platform/utils/DeferUntilModulesLoaded';
+import LocalPresence from '@app/features/presence/state/LocalPresence';
 import ReadStates from '@app/features/read_state/state/ReadStates';
 import Dimension from '@app/features/ui/state/Dimension';
 import MediaViewer from '@app/features/ui/state/MediaViewer';
@@ -63,7 +64,9 @@ class AutoAck {
 						activeVoiceCallFullscreenScopeKey: VoiceCallFullscreen.activeScopeKey,
 					});
 					const isMediaViewerOpen = MediaViewer.isOpen;
-					const canAutoAck = !ackedManually && isWindowFocused && isTextChatVisible && !isMediaViewerOpen;
+					const isAfk = LocalPresence.afk;
+					const canAutoAck =
+						!ackedManually && isWindowFocused && !isAfk && isTextChatVisible && !isMediaViewerOpen;
 					return {windowId, channelId, isAtBottom, canAutoAck};
 				},
 				(conditions) => {
