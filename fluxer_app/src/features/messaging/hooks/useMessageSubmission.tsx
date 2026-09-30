@@ -11,7 +11,7 @@ import {canSubmitMessage} from '@app/features/messaging/utils/MessageRequestUtil
 import * as MessageSubmitUtils from '@app/features/messaging/utils/MessageSubmitUtils';
 import {formatUploadingAttachmentSummary} from '@app/features/messaging/utils/UploadingAttachmentLabelUtils';
 import Permission from '@app/features/permissions/state/Permission';
-import {PersonaStore} from '@app/features/persona/state/PersonaStore';
+import {normalizeSubprofile, PersonaStore} from '@app/features/persona/state/PersonaStore';
 import {ComponentBus} from '@app/features/platform/utils/ComponentBus';
 import * as SlowmodeCommands from '@app/features/slowmode/commands/SlowmodeCommands';
 import {SlowmodeRateLimitedModal} from '@app/features/slowmode/components/alerts/SlowmodeRateLimitedModal';
@@ -132,18 +132,10 @@ export const useMessageSubmission = ({
 			const displayTagIcon = PersonaStore.displayTagIcon;
 			const subprofile =
 				matchResult.matched && matchResult.persona
-					? {
-							id: matchResult.persona.id,
-							name: matchResult.persona.name,
-							avatar: matchResult.persona.avatar_hash ?? null,
-							avatar_color: matchResult.persona.color ?? null,
-							banner: matchResult.persona.banner_hash ?? null,
+					? normalizeSubprofile(matchResult.persona, {
 							display_tag_text: displayTagText || null,
 							display_tag_icon: displayTagIcon || null,
-							pronouns: matchResult.persona.pronouns ?? null,
-							color: matchResult.persona.color ?? null,
-							visibility: matchResult.persona.visibility ?? null,
-						}
+						})
 					: undefined;
 
 			const nonce = SnowflakeUtils.fromTimestamp(Date.now());
@@ -248,18 +240,10 @@ export const useMessageSubmission = ({
 			const displayTagText = PersonaStore.displayTagText;
 			const displayTagIcon = PersonaStore.displayTagIcon;
 			const subprofile = matchedPersona
-				? {
-						id: matchedPersona.id,
-						name: matchedPersona.name,
-						avatar: matchedPersona.avatar_hash ?? null,
-						avatar_color: matchedPersona.color ?? null,
-						banner: matchedPersona.banner_hash ?? null,
+				? normalizeSubprofile(matchedPersona, {
 						display_tag_text: displayTagText || null,
 						display_tag_icon: displayTagIcon || null,
-						pronouns: matchedPersona.pronouns ?? null,
-						color: matchedPersona.color ?? null,
-						visibility: matchedPersona.visibility ?? null,
-					}
+					})
 				: undefined;
 
 			const nonce = SnowflakeUtils.fromTimestamp(Date.now());
