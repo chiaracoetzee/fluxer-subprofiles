@@ -1,6 +1,6 @@
 import * as DraftCommands from '@app/features/messaging/commands/DraftCommands';
 import type {MentionSegment, TextareaSegmentManager} from '@app/features/messaging/utils/TextareaSegmentManager';
-import {PersonaStore} from '@app/features/persona/state/PersonaStore';
+import {normalizeSubprofile, PersonaStore} from '@app/features/persona/state/PersonaStore';
 import {onBeforeAppStorageScopeChange} from '@app/features/platform/state/PersistentStorage';
 import {flushPendingPersistWrites} from '@app/features/platform/utils/MobXPersistence';
 import {TypingUtils} from '@app/features/typing/utils/TypingUtils';
@@ -194,16 +194,10 @@ export const useTextareaDraftAndTyping = ({
 		}
 		const {persona: effectivePersona} = PersonaStore.getEffectivePersonaForText(value, false);
 		const subprofile: MessageSubprofileRequest | null = effectivePersona
-			? {
-					id: effectivePersona.id,
-					name: effectivePersona.name,
-					avatar: effectivePersona.avatar_hash ?? effectivePersona.avatarHash ?? null,
-					avatar_color: effectivePersona.color ?? effectivePersona.accentColor ?? null,
+			? normalizeSubprofile(effectivePersona, {
 					display_tag_text: PersonaStore.displayTagText || null,
 					display_tag_icon: PersonaStore.displayTagIcon || null,
-					pronouns: effectivePersona.pronouns ?? null,
-					color: effectivePersona.color ?? effectivePersona.accentColor ?? null,
-				}
+				})
 			: null;
 
 		TypingUtils.handleComposerChange({
