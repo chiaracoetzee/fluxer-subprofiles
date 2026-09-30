@@ -45,6 +45,7 @@ import LocalUserSpamOverride from '@app/features/moderation/state/LocalUserSpamO
 import Navigation from '@app/features/navigation/state/Navigation';
 import SelectedChannel from '@app/features/navigation/state/SelectedChannel';
 import Permission from '@app/features/permissions/state/Permission';
+import LocalPresence from '@app/features/presence/state/LocalPresence';
 import {ComponentBus} from '@app/features/platform/utils/ComponentBus';
 import {useScrollManager} from '@app/features/platform/utils/ScrollManager';
 import * as ReadStateCommands from '@app/features/read_state/commands/ReadStateCommands';
@@ -215,6 +216,7 @@ const CachedMessages = observer(function CachedMessages({
 		textChatVisible: true,
 		manualAck: state.ackedManually,
 		blockingModalOpen: isModalOpen || MediaViewer.isOpen,
+		afk: LocalPresence.afk,
 	});
 	const jumpHighlightTimeoutRef = useRef<number | null>(null);
 	const lastJumpSequenceKeyRef = useRef<string | null>(null);
