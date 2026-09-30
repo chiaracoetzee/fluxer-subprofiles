@@ -34,15 +34,21 @@ on:
         required: false
         default: false
         type: boolean
+      skip_baseline_e2e:
+        description: 'Skip pre-rebase baseline E2E gate only'
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: write
   issues: write
+  actions: write
 
 jobs:
   nightly-rebase:
     runs-on: ubuntu-24.04
-    timeout-minutes: 100
+    timeout-minutes: 240
 
     steps:
       - name: Checkout features/subprofiles
@@ -123,6 +129,9 @@ jobs:
           fi
           if [ "${{ inputs.skip_e2e }}" = "true" ]; then
             FLAGS="$FLAGS --skip-e2e"
+          fi
+          if [ "${{ inputs.skip_baseline_e2e }}" = "true" ]; then
+            FLAGS="$FLAGS --skip-baseline-e2e"
           fi
           python /tmp/rebase_tools/rebase/rebase_orchestrator.py --profile subprofiles $FLAGS
 
