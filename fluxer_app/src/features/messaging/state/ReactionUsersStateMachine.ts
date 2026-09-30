@@ -40,21 +40,7 @@ export type ReactionUsersMachineEvent =
 	| {type: 'user.remove'; userId: string; personaId?: string | null}
 	| {
 			type: 'persona.update';
-			persona: {
-				id: string;
-				name: string;
-				avatar?: string | null;
-				avatar_hash?: string | null;
-				avatar_color?: number | null;
-				banner?: string | null;
-				banner_hash?: string | null;
-				display_tag_text?: string | null;
-				display_tag_icon?: string | null;
-				pronouns?: string | null;
-				color?: number | null;
-				bio?: string | null;
-				visibility?: any;
-			};
+			persona: MessageSubprofileResponse;
 	  }
 	| {
 			type: 'displayTag.update';
@@ -295,21 +281,7 @@ function removeUser(
 
 function updatePersonaInUsers(
 	context: ReactionUsersContext,
-	persona: {
-		id: string;
-		name: string;
-		avatar?: string | null;
-		avatar_hash?: string | null;
-		avatar_color?: number | null;
-		banner?: string | null;
-		banner_hash?: string | null;
-		display_tag_text?: string | null;
-		display_tag_icon?: string | null;
-		pronouns?: string | null;
-		color?: number | null;
-		bio?: string | null;
-		visibility?: any;
-	},
+	persona: MessageSubprofileResponse,
 ): ReactionUsersContext {
 	let hasChanges = false;
 	const nextUsers = new Map(context.users);
@@ -321,31 +293,12 @@ function updatePersonaInUsers(
 
 		if (matchesPersona) {
 			const currentSubprofile = user.subprofile;
-			const updatedAvatar =
-				persona.avatar !== undefined
-					? persona.avatar
-					: persona.avatar_hash !== undefined
-						? persona.avatar_hash
-						: (currentSubprofile?.avatar ?? null);
-			const updatedBanner =
-				persona.banner !== undefined
-					? persona.banner
-					: persona.banner_hash !== undefined
-						? persona.banner_hash
-						: (currentSubprofile?.banner ?? null);
-			const updatedAvatarColor =
-				persona.avatar_color !== undefined
-					? persona.avatar_color
-					: persona.color !== undefined
-						? persona.color
-						: (currentSubprofile?.avatar_color ?? null);
-
 			const updatedSubprofile: MessageSubprofileResponse = {
 				id: persona.id,
 				name: persona.name,
-				avatar: updatedAvatar,
-				avatar_color: updatedAvatarColor,
-				banner: updatedBanner,
+				avatar: persona.avatar !== undefined ? persona.avatar : (currentSubprofile?.avatar ?? null),
+				avatar_color: persona.avatar_color !== undefined ? persona.avatar_color : (currentSubprofile?.avatar_color ?? null),
+				banner: persona.banner !== undefined ? persona.banner : (currentSubprofile?.banner ?? null),
 				display_tag_text:
 					persona.display_tag_text !== undefined
 						? persona.display_tag_text
