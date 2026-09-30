@@ -199,6 +199,10 @@ export function createInitializer(config: APIConfig, logger: ILogger): () => Pro
 					registerMetricsSection(renderPhoneRpcMetrics),
 				);
 				logger.info('Activity events initialized');
+			} else {
+				const {NoopWorkerService} = await import('@app/api/test/NoopWorkerService');
+				setInjectedWorkerService(new NoopWorkerService());
+				logger.info('Test mode enabled: NoopWorkerService initialized');
 			}
 			await ensureDeletionQueueState(getKVAccountDeletionQueue(), logger);
 			logger.info('Initializing search indexes...');
