@@ -392,6 +392,7 @@ const api: ElectronAPI = {
 		ipcRenderer.send('window-close');
 	},
 	windowIsMaximized: (): Promise<boolean> => ipcRenderer.invoke('window-is-maximized'),
+	openAppWindow: (url?: string): Promise<boolean> => ipcRenderer.invoke('desktop:open-app-window', url),
 	focusThemeStudioPopout: (): Promise<boolean> => ipcRenderer.invoke('theme-studio-popout-focus'),
 	closeThemeStudioPopout: (): Promise<boolean> => ipcRenderer.invoke('theme-studio-popout-close'),
 	popoutSetAlwaysOnTop: (key: string, flag: boolean): Promise<boolean> =>

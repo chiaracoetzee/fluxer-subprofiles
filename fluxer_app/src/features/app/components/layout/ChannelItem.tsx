@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+import {Routes} from '@app/app/Routes';
 import Accessibility, {ChannelTypingIndicatorMode} from '@app/features/accessibility/state/Accessibility';
 import styles from '@app/features/app/components/layout/ChannelItem.module.css';
 import {ChannelItemContent} from '@app/features/app/components/layout/ChannelItemContent';
@@ -423,6 +424,22 @@ export const ChannelItem = observer(
 			if (!Permission.can(Permissions.CONNECT, channel)) return;
 			startVoiceConnection({skipConfirm: true});
 		}, [channelIsVoice, isVoiceSelected, channel, startVoiceConnection]);
+		const handleAuxClick = useCallback(
+			(event: React.MouseEvent) => {
+				if (event.button === 1) {
+					event.preventDefault();
+					event.stopPropagation();
+					if (channelIsCategory) return;
+					const targetUrl = Routes.guildChannel(guild.id, channel.id);
+					if (window.electron?.openAppWindow) {
+						void window.electron.openAppWindow(targetUrl);
+					} else {
+						window.open(targetUrl, '_blank');
+					}
+				}
+			},
+			[channelIsCategory, guild.id, channel.id],
+		);
 		const handleContextMenu = useCallback(
 			(event: React.MouseEvent) => {
 				event.preventDefault();
@@ -769,6 +786,7 @@ export const ChannelItem = observer(
 				aria-expanded={channelIsCategory ? !isCollapsed : undefined}
 				className={channelItemClassName}
 				onClick={handleSelect}
+				onAuxClick={handleAuxClick}
 				onDoubleClick={handleDoubleClick}
 				onContextMenu={handleContextMenu}
 				onKeyDown={handleKeyDown}
