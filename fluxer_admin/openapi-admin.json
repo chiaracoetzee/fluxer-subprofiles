@@ -14123,6 +14123,11 @@
 				"x-enumNames": ["SAFE", "AGE_RESTRICTED"],
 				"x-enumDescriptions": ["Guild is safe for all ages", "Guild is age-restricted"]
 			},
+			"PersonaVisibilitySchema": {
+				"type": "string",
+				"enum": ["unlisted", "public", "private"],
+				"description": "Persona visibility setting: unlisted (default), public, or private"
+			},
 			"MessageSubprofileResponseSchema": {
 				"type": "object",
 				"properties": {
