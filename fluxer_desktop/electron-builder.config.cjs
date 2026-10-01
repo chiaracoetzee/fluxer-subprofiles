@@ -73,12 +73,14 @@ const targetArchs = electronArch && electronArch !== 'universal' ? [electronArch
 const macTargetArchs = targetNativeArch ? [targetNativeArch] : supportedTargetArchs;
 const winGameCaptureTargetArchs =
 	targetPlatform === 'win32' && targetNativeArch ? [targetNativeArch] : supportedTargetArchs;
-const winTargets = [
-	{
-		target: 'dir',
-		arch: targetArchs,
-	},
-];
+const winTargets = process.env.FLUXER_WIN_TARGETS
+	? process.env.FLUXER_WIN_TARGETS.split(',').map((target) => ({target: target.trim(), arch: targetArchs}))
+	: [
+			{
+				target: 'dir',
+				arch: targetArchs,
+			},
+		];
 const fluxerNativePackages = [
 	'@fluxer/mac-app-audio',
 	'@fluxer/mac-clipboard',
@@ -989,6 +991,12 @@ function linuxDistributableTargetNames(context) {
 
 async function verifyLinuxGlibcCompatibility(context) {
 	if (context.electronPlatformName !== 'linux') return;
+	if (process.env.SKIP_GLIBC_CHECK === 'true' || process.env.FLUXER_SKIP_GLIBC_CHECK === 'true') {
+		console.log(
+			`Skipped the ${linuxGlibcBaseline.name} ABI baseline check: FLUXER_SKIP_GLIBC_CHECK enabled.`,
+		);
+		return;
+	}
 	const distributableTargets = linuxDistributableTargetNames(context);
 	if (distributableTargets.length === 0) {
 		console.log(
@@ -1605,15 +1613,15 @@ module.exports = {
 		minimumSystemVersion: macOSMinimumSystemVersion,
 		icon: `build_resources/${iconDir}/_compiled/AppIcon.icns`,
 		darkModeSupport: true,
-		notarize: true,
-		sign: {
+		notarize: Boolean(process.env.APPLE_ID && (process.env.APPLE_APP_SPECIFIC_PASSWORD || process.env.APPLE_PASSWORD)),
+		sign: (process.env.CSC_LINK || process.env.CSC_NAME || process.env.CSC_KEYCHAIN) ? {
 			hardenedRuntime: true,
 			provisioningProfile,
 			entitlements: isCanary
 				? 'build_resources/entitlements.mac.canary.plist'
 				: 'build_resources/entitlements.mac.stable.plist',
 			entitlementsInherit: 'build_resources/entitlements.mac.inherit.plist',
-		},
+		} : null,
 		target: [
 			{
 				target: 'dmg',
