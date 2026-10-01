@@ -620,22 +620,37 @@ async function buildPreload() {
 }
 
 function ensureBuildChannelFile() {
-	execFileSync(
-		'cargo',
-		[
-			'run',
-			'--manifest-path',
-			path.join(ROOT_DIR, '..', 'tools', 'ci', 'Cargo.toml'),
-			'--',
-			'build-desktop',
-			'--step',
-			'set_build_channel',
-		],
-		{
-			stdio: 'inherit',
-			env: process.env,
-		},
-	);
+	const channel = process.env.BUILD_CHANNEL || 'stable';
+	const channelPath = path.join(ROOT_DIR, 'src', 'common', 'BuildChannel.ts');
+	if (fs.existsSync(channelPath)) {
+		const existing = fs.readFileSync(channelPath, 'utf8');
+		if (existing.includes(`export const BUILD_CHANNEL = '${channel}'`)) {
+			return;
+		}
+	}
+	try {
+		execFileSync(
+			'cargo',
+			[
+				'run',
+				'--manifest-path',
+				path.join(ROOT_DIR, '..', 'tools', 'ci', 'Cargo.toml'),
+				'--',
+				'build-desktop',
+				'--step',
+				'set_build_channel',
+			],
+			{
+				stdio: 'inherit',
+				env: process.env,
+			},
+		);
+	} catch {
+		fs.writeFileSync(
+			channelPath,
+			`// SPDX-License-Identifier: AGPL-3.0-or-later\n\nexport type BuildChannel = 'stable' | 'canary';\n\nexport const BUILD_CHANNEL = '${channel}' as BuildChannel;\nexport const IS_CANARY = BUILD_CHANNEL === 'canary';\nexport const CHANNEL_DISPLAY_NAME = BUILD_CHANNEL;\n`,
+		);
+	}
 }
 
 async function build() {
