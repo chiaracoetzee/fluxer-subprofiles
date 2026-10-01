@@ -1015,6 +1015,43 @@ const ensureSharedIpc = () => {
 		if (typeof word !== 'string' || word.length === 0) return [];
 		return suggestWord(event.sender.session, word);
 	});
+	ipcMain.handle('spellcheck-get-state', (event) => {
+		const targetSession = event.sender.session;
+		const next = applyLaunchSpellcheckMode(sessionState.get(targetSession) ?? {...defaultState});
+		sessionState.set(targetSession, next);
+		return next;
+	});
+	ipcMain.handle('spellcheck-set-state', async (event, patch: RendererSpellcheckPatch) => {
+		const targetSession = event.sender.session;
+		const current = sessionState.get(targetSession) ?? {...defaultState};
+		const next = applyLaunchSpellcheckMode(normalizeState(current, patch));
+		sessionState.set(targetSession, next);
+		await applyStateToWebContents(event.sender, next, {broadcastState: true, broadcastResolved: true});
+		return next;
+	});
+	ipcMain.handle('spellcheck-get-available-languages', (event) =>
+		listAvailableSpellcheckLanguages(event.sender.session),
+	);
+	ipcMain.handle('spellcheck-replace-misspelling', (event, replacement: string) => {
+		event.sender.replaceMisspelling(replacement);
+	});
+	ipcMain.handle('spellcheck-add-word-to-dictionary', async (event, word: string) => {
+		if (typeof word !== 'string' || word.length === 0) return;
+		const targetSession = event.sender.session;
+		const current = sessionState.get(targetSession) ?? {...defaultState};
+		const next = applyLaunchSpellcheckMode(
+			normalizeState(current, {
+				personalDictionary: [...current.personalDictionary, word],
+			}),
+		);
+		sessionState.set(targetSession, next);
+		if (useChromiumSpellchecker) {
+			try {
+				targetSession.addWordToSpellCheckerDictionary(word);
+			} catch {}
+		}
+		await applyStateToWebContents(event.sender, next, {broadcastState: true});
+	});
 };
 const shouldHandleContextMenu = (webContents: WebContents, params: Electron.ContextMenuParams): boolean => {
 	if (!params['isEditable']) return false;
@@ -1074,45 +1111,6 @@ export const registerSpellcheck = (webContents: WebContents): void => {
 	webContents.on('did-finish-load', () => {
 		void applyStateToWebContents(webContents, sessionState.get(session) ?? state, {broadcastResolved: true});
 	});
-	if (!ipcMain.eventNames().includes('spellcheck-get-state')) {
-		ipcMain.handle('spellcheck-get-state', (event) => {
-			const targetSession = event.sender.session;
-			const next = applyLaunchSpellcheckMode(sessionState.get(targetSession) ?? {...defaultState});
-			sessionState.set(targetSession, next);
-			return next;
-		});
-		ipcMain.handle('spellcheck-set-state', async (event, patch: RendererSpellcheckPatch) => {
-			const targetSession = event.sender.session;
-			const current = sessionState.get(targetSession) ?? {...defaultState};
-			const next = applyLaunchSpellcheckMode(normalizeState(current, patch));
-			sessionState.set(targetSession, next);
-			await applyStateToWebContents(event.sender, next, {broadcastState: true, broadcastResolved: true});
-			return next;
-		});
-		ipcMain.handle('spellcheck-get-available-languages', (event) =>
-			listAvailableSpellcheckLanguages(event.sender.session),
-		);
-		ipcMain.handle('spellcheck-replace-misspelling', (event, replacement: string) => {
-			event.sender.replaceMisspelling(replacement);
-		});
-		ipcMain.handle('spellcheck-add-word-to-dictionary', async (event, word: string) => {
-			if (typeof word !== 'string' || word.length === 0) return;
-			const targetSession = event.sender.session;
-			const current = sessionState.get(targetSession) ?? {...defaultState};
-			const next = applyLaunchSpellcheckMode(
-				normalizeState(current, {
-					personalDictionary: [...current.personalDictionary, word],
-				}),
-			);
-			sessionState.set(targetSession, next);
-			if (useChromiumSpellchecker) {
-				try {
-					targetSession.addWordToSpellCheckerDictionary(word);
-				} catch {}
-			}
-			await applyStateToWebContents(event.sender, next, {broadcastState: true});
-		});
-	}
 	webContents.on('context-menu', (event, params) => {
 		if (!shouldHandleContextMenu(webContents, params)) return;
 		event.preventDefault();
