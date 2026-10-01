@@ -167,6 +167,7 @@ let mainWindowRendererGone = false;
 
 const maximizeChangeForwarders = new WeakSet<BrowserWindow>();
 const voicePopoutWindows = new Map<string, BrowserWindow>();
+const secondaryAppWindows = new Set<BrowserWindow>();
 const windowsHtmlFullscreenStates = new WeakMap<
 	BrowserWindow,
 	{resizable: boolean; bounds: Bounds; isMaximized: boolean; customChromeGuardActive: boolean}
@@ -341,7 +342,19 @@ function shouldHideMainWindowOnMinimize(): boolean {
 }
 
 export function getMainWindow(): BrowserWindow | null {
-	return mainWindow;
+	if (isAliveWindow(mainWindow)) {
+		return mainWindow;
+	}
+	for (const win of secondaryAppWindows) {
+		if (isAliveWindow(win)) {
+			return win;
+		}
+	}
+	return null;
+}
+
+export function getSecondaryAppWindows(): Array<BrowserWindow> {
+	return Array.from(secondaryAppWindows).filter(isAliveWindow);
 }
 
 export function getActiveUseNativeTitleBar(): boolean {
@@ -1083,6 +1096,15 @@ export function createWindow(options: CreateWindowOptions = {}): BrowserWindow {
 			};
 			return {action: 'allow', overrideBrowserWindowOptions};
 		}
+		if (isTrustedOrigin(url)) {
+			const path = getSanitizedPath(url);
+			if (path && (path.startsWith('/channels/') || path === '/app' || path.startsWith('/users/'))) {
+				setTimeout(() => {
+					createSecondaryAppWindow(url);
+				}, 0);
+				return {action: 'deny'};
+			}
+		}
 		openExternalDeduped(url).catch((error) => {
 			log.warn('Failed to open external URL from window-open:', error);
 		});
@@ -1091,13 +1113,172 @@ export function createWindow(options: CreateWindowOptions = {}): BrowserWindow {
 	return mainWindow;
 }
 
-export function showWindow(): void {
-	if (mainWindow) {
-		if (mainWindow.isMinimized()) {
-			mainWindow.restore();
+export function createSecondaryAppWindow(targetUrl?: string): BrowserWindow | null {
+	const baseAppUrl = getAppUrl();
+	let resolvedUrl = baseAppUrl;
+	if (targetUrl) {
+		try {
+			resolvedUrl = new URL(targetUrl, baseAppUrl).toString();
+		} catch {
+			resolvedUrl = baseAppUrl;
 		}
-		ensureWindowOnScreen(mainWindow);
-		recoverMainWindowRendererBeforeShow('show-window');
+	}
+	if (!isTrustedOrigin(resolvedUrl)) {
+		logger.warn('Untrusted URL provided to createSecondaryAppWindow', {targetUrl, resolvedUrl});
+		return null;
+	}
+
+	const focusedWin = BrowserWindow.getFocusedWindow();
+	const referenceWin = focusedWin && isAliveWindow(focusedWin) ? focusedWin : mainWindow;
+	let windowWidth = DEFAULT_WINDOW_WIDTH;
+	let windowHeight = DEFAULT_WINDOW_HEIGHT;
+	let x: number | undefined;
+	let y: number | undefined;
+
+	if (referenceWin && isAliveWindow(referenceWin)) {
+		const bounds = referenceWin.getBounds();
+		windowWidth = bounds.width;
+		windowHeight = bounds.height;
+		x = bounds.x + 32;
+		y = bounds.y + 32;
+	}
+
+	const isMac = process.platform === 'darwin';
+	const isLinux = process.platform === 'linux';
+	const desktopWindowBehavior = getDesktopWindowBehaviorSettings();
+	const allowTransparency = desktopWindowBehavior.allowTransparency;
+	const useNativeTitleBar = getEffectiveUseNativeTitleBar(desktopWindowBehavior);
+
+	const windowOptions: Electron.BrowserWindowConstructorOptions = {
+		width: windowWidth,
+		height: windowHeight,
+		minWidth: MIN_WINDOW_WIDTH,
+		minHeight: MIN_WINDOW_HEIGHT,
+		show: false,
+		backgroundColor: getWindowBackgroundColor(allowTransparency),
+		transparent: allowTransparency,
+		hasShadow: getWindowHasShadow(allowTransparency),
+		...getTitleBarWindowOptions(useNativeTitleBar),
+		trafficLightPosition: isMac ? CUSTOM_TITLEBAR_TRAFFIC_LIGHT_POSITION : undefined,
+		acceptFirstMouse: isMac,
+		webPreferences: getSharedWebPreferences(allowTransparency, useNativeTitleBar, baseAppUrl),
+	};
+
+	if (isLinux) {
+		const iconPath = getLinuxWindowIconPath();
+		if (iconPath) {
+			windowOptions.icon = iconPath;
+		}
+	}
+
+	if (x !== undefined && y !== undefined) {
+		windowOptions.x = x;
+		windowOptions.y = y;
+	} else {
+		windowOptions.center = true;
+	}
+
+	const secondaryWin = new BrowserWindow(windowOptions);
+	secondaryAppWindows.add(secondaryWin);
+	installHtmlFullscreenChromeGuard(secondaryWin);
+	forwardMaximizeChanges(secondaryWin);
+	secondaryWin.setMenuBarVisibility(false);
+
+	let shown = false;
+	const showWindowOnce = () => {
+		if (!shown && isAliveWindow(secondaryWin)) {
+			shown = true;
+			secondaryWin.show();
+		}
+	};
+	secondaryWin.once('ready-to-show', showWindowOnce);
+	setTimeout(() => {
+		if (!shown) {
+			showWindowOnce();
+		}
+	}, 5000);
+
+	secondaryWin.on('closed', () => {
+		secondaryAppWindows.delete(secondaryWin);
+	});
+
+	registerSpellcheck(secondaryWin.webContents);
+	registerDisplayMediaRequestHandler(secondaryWin.webContents.session, secondaryWin.webContents);
+
+	secondaryWin.webContents.on('will-navigate', (event, navUrl) => {
+		if (!isTrustedOrigin(navUrl)) {
+			event.preventDefault();
+		}
+	});
+
+	secondaryWin.webContents.setWindowOpenHandler(({url, frameName}) => {
+		if (isVoicePopoutWindowName(frameName) && url === 'about:blank') {
+			if (!hasVoicePopoutCapacity()) {
+				logger.warn('Denied voice popout window: capacity reached', {frameName});
+				return {action: 'deny'};
+			}
+			return {action: 'allow', overrideBrowserWindowOptions: getVoicePopoutWindowOptions()};
+		}
+		const pathname = getSanitizedPath(url);
+		if (
+			frameName?.startsWith(POPOUT_NAMESPACE) &&
+			(pathname === '/popout' || pathname === '/quick-css-editor' || pathname === THEME_STUDIO_POPOUT_PATHNAME) &&
+			isTrustedOrigin(url)
+		) {
+			const isThemeStudioPopout =
+				frameName === THEME_STUDIO_POPOUT_WINDOW_NAME && pathname === THEME_STUDIO_POPOUT_PATHNAME;
+			const isOpaqueChromePopout = pathname === '/quick-css-editor' || pathname === THEME_STUDIO_POPOUT_PATHNAME;
+			const allowPopoutTransparency = allowTransparency && !isOpaqueChromePopout;
+			const overrideBrowserWindowOptions: Electron.BrowserWindowConstructorOptions = {
+				...getTitleBarWindowOptions(getActiveUseNativeTitleBar()),
+				title: isThemeStudioPopout ? THEME_STUDIO_POPOUT_TITLE : undefined,
+				minWidth: isThemeStudioPopout ? THEME_STUDIO_POPOUT_MIN_WIDTH : MIN_WINDOW_WIDTH,
+				minHeight: isThemeStudioPopout ? THEME_STUDIO_POPOUT_MIN_HEIGHT : MIN_WINDOW_HEIGHT,
+				trafficLightPosition: isMac ? CUSTOM_TITLEBAR_TRAFFIC_LIGHT_POSITION : undefined,
+				backgroundColor: getWindowBackgroundColor(allowPopoutTransparency),
+				transparent: allowPopoutTransparency,
+				hasShadow: getWindowHasShadow(allowPopoutTransparency),
+				show: true,
+				webPreferences: getSharedWebPreferences(
+					allowPopoutTransparency,
+					getActiveUseNativeTitleBar(),
+					baseAppUrl,
+				),
+			};
+			return {action: 'allow', overrideBrowserWindowOptions};
+		}
+		if (isTrustedOrigin(url)) {
+			const path = getSanitizedPath(url);
+			if (path && (path.startsWith('/channels/') || path === '/app' || path.startsWith('/users/'))) {
+				setTimeout(() => {
+					createSecondaryAppWindow(url);
+				}, 0);
+				return {action: 'deny'};
+			}
+		}
+		openExternalDeduped(url).catch((error) => {
+			log.warn('Failed to open external URL from window-open:', error);
+		});
+		return {action: 'deny'};
+	});
+
+	void secondaryWin.loadURL(resolvedUrl).catch((error) => {
+		logger.error('Failed to load URL in secondary app window:', {resolvedUrl, error});
+	});
+
+	return secondaryWin;
+}
+
+export function showWindow(): void {
+	const win = getMainWindow();
+	if (win) {
+		if (win.isMinimized()) {
+			win.restore();
+		}
+		ensureWindowOnScreen(win);
+		if (win === mainWindow) {
+			recoverMainWindowRendererBeforeShow('show-window');
+		}
 		if (process.platform === 'darwin') {
 			try {
 				app.dock?.show();
@@ -1110,23 +1291,23 @@ export function showWindow(): void {
 				log.warn('[Window] Failed to focus app:', error);
 			}
 			try {
-				mainWindow.setVisibleOnAllWorkspaces(true, {visibleOnFullScreen: true});
+				win.setVisibleOnAllWorkspaces(true, {visibleOnFullScreen: true});
 			} catch (error) {
 				log.warn('[Window] Failed to set visible on all workspaces:', error);
 			}
-			mainWindow.show();
-			mainWindow.focus();
+			win.show();
+			win.focus();
 			setTimeout(() => {
-				if (!mainWindow || mainWindow.isDestroyed()) return;
+				if (!win || win.isDestroyed()) return;
 				try {
-					mainWindow.setVisibleOnAllWorkspaces(false);
+					win.setVisibleOnAllWorkspaces(false);
 				} catch (error) {
 					log.warn('[Window] Failed to disable visible on all workspaces:', error);
 				}
 			}, 250);
 		} else {
-			mainWindow.show();
-			mainWindow.focus();
+			win.show();
+			win.focus();
 		}
 	}
 }

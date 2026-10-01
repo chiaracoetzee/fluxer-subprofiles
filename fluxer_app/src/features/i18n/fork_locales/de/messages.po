@@ -328,6 +328,10 @@ msgstr "No personas created yet. Click \"Add Persona\" to create your first pers
 msgid "Only visible to you. Others cannot view this persona’s full bio or profile details."
 msgstr "Only visible to you. Others cannot view this persona’s full bio or profile details."
 
+#. Action menu item to open a channel or conversation in a new desktop or browser window.
+msgid "Open in new window"
+msgstr "In neuem Fenster öffnen"
+
 #. Placeholder for system badge in import modal
 msgid "Optional system badge, e.g. ⚞Seraphim⚟"
 msgstr "Optional system badge, e.g. ⚞Seraphim⚟"
