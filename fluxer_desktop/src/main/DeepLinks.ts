@@ -4,7 +4,7 @@ import {APP_PROTOCOL} from '@electron/common/Constants';
 import {parseJumpListTaskFromArgv} from '@electron/main/JumpList';
 import {ensureLinuxProtocolDesktopEntry} from '@electron/main/LinuxDesktopEntry';
 import {recordRecentDeepLink} from '@electron/main/RecentDocuments';
-import {getMainWindow, showWindow} from '@electron/main/Window';
+import {createSecondaryAppWindow, getMainWindow, showWindow} from '@electron/main/Window';
 import {app, ipcMain} from 'electron';
 
 let initialDeepLink: string | null = null;
@@ -137,6 +137,10 @@ export function handleSecondInstance(argv: Array<string>): void {
 		return;
 	}
 	if (argv.some(isSquirrelOrSyntheticArg)) {
+		return;
+	}
+	if (argv.includes('--new-window')) {
+		createSecondaryAppWindow();
 		return;
 	}
 	showWindow();
