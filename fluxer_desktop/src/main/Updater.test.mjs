@@ -137,6 +137,7 @@ function loadUpdater({
 			},
 		},
 		'@electron/common/BuildChannel': {BUILD_CHANNEL: 'canary'},
+		'@electron/common/DesktopConfig': {getAppUrl: () => 'https://web.canary.fluxer.app'},
 		'@electron/common/UserDataPath': {isPortableMode: () => false},
 		'@electron/main/DesktopTray': {destroyDesktopTray() {}},
 		'@electron/main/LinuxSandbox': {isFlatpakRuntime: () => false},
@@ -170,6 +171,7 @@ function loadUpdater({
 	const sandbox = {
 		console,
 		Buffer,
+		URL,
 		process: {
 			...process,
 			platform,
