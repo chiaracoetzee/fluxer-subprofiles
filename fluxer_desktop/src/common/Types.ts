@@ -686,6 +686,10 @@ export interface ElectronAPI {
 	setVoiceDebugEventSinkStatsHtml: (html: string) => void;
 	onWindowMaximizeChange: (callback: (maximized: boolean) => void) => () => void;
 	openExternal: (url: string) => Promise<void>;
+	getInstanceUrl: () => Promise<string>;
+	getDefaultInstanceUrl: () => Promise<string>;
+	setInstanceUrl: (url: string) => Promise<{success: boolean; url: string; error?: string}>;
+	resetInstanceUrl: () => Promise<string>;
 	clipboardWriteText: (text: string) => Promise<void>;
 	clipboardReadText: () => Promise<string>;
 	clipboardWriteFile: (options: ClipboardWriteFileOptions) => Promise<ClipboardWriteFileResult>;
