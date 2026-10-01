@@ -6,6 +6,10 @@ import {BUILD_CHANNEL} from '@electron/common/BuildChannel';
 import {
 	CANARY_APP_URL,
 	CANARY_MIGRATED_APP_ORIGIN,
+	DEFAULT_APP_URL,
+	DEFAULT_HOMESERVER_URL,
+	DEV_HOMESERVER_URL,
+	KNOWN_HOMESERVER_ORIGINS,
 	MIGRATED_APP_ENTRY_PATH,
 	STABLE_APP_URL,
 	STABLE_MIGRATED_APP_ORIGIN,
@@ -31,6 +35,7 @@ interface DesktopConfig extends Record<string, unknown> {
 	theme_allowed_local_files?: Array<string>;
 	app_origin?: string;
 	global_shortcuts?: PersistedGlobalShortcutsSettings;
+	app_url?: string;
 }
 
 export type GlobalShortcutsPortalConsent = 'unset' | 'granted' | 'declined';
@@ -246,7 +251,27 @@ function getMigratedAppOrigin(): string {
 }
 
 export function getOfficialAppOrigins(): Array<string> {
-	return [new URL(getLegacyAppUrl()).origin, getMigratedAppOrigin()];
+	return [
+		...KNOWN_HOMESERVER_ORIGINS,
+		new URL(getLegacyAppUrl()).origin,
+		getMigratedAppOrigin(),
+	];
+}
+
+export function sanitizeAppUrl(value: unknown): string | undefined {
+	if (typeof value !== 'string') return undefined;
+	const trimmed = value.trim();
+	if (!trimmed) return undefined;
+	try {
+		const candidate = /^[a-zA-Z][a-zA-Z0-9+\-.]*:\/\//.test(trimmed) ? trimmed : `https://${trimmed}`;
+		const parsed = new URL(candidate);
+		if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') {
+			return undefined;
+		}
+		return parsed.toString().replace(/\/+$/, '');
+	} catch {
+		return undefined;
+	}
 }
 
 function sanitizeAppOrigin(value: unknown): string | undefined {
@@ -258,7 +283,12 @@ function sanitizeDesktopConfig(value: unknown): DesktopConfig {
 		return {};
 	}
 	const nextConfig: DesktopConfig = {...value};
-	delete nextConfig.app_url;
+	const appUrl = sanitizeAppUrl(value.app_url);
+	if (appUrl) {
+		nextConfig.app_url = appUrl;
+	} else {
+		delete nextConfig.app_url;
+	}
 	const appOrigin = sanitizeAppOrigin(value.app_origin);
 	if (appOrigin) {
 		nextConfig.app_origin = appOrigin;
@@ -449,11 +479,17 @@ export function getAppUrl(): string {
 	if (runtimeAppUrlOverride) {
 		return runtimeAppUrlOverride;
 	}
+	if (config.app_url) {
+		return config.app_url;
+	}
 	const migratedAppOrigin = getMigratedAppOrigin();
 	if (config.app_origin === migratedAppOrigin) {
 		return `${migratedAppOrigin}${MIGRATED_APP_ENTRY_PATH}`;
 	}
-	return getLegacyAppUrl();
+	if (config.app_origin) {
+		return config.app_origin;
+	}
+	return DEFAULT_APP_URL;
 }
 
 export function getAppUrlFallback(url: string): string | null {
@@ -475,7 +511,33 @@ export function setAppOrigin(origin: string): boolean {
 }
 
 export function getCustomAppUrl(): string | null {
-	return runtimeAppUrlOverride;
+	return runtimeAppUrlOverride ?? (config.app_url || null);
+}
+
+export function getDefaultInstanceUrl(): string {
+	return DEFAULT_HOMESERVER_URL;
+}
+
+export function setPersistedAppUrl(appUrl: string): string {
+	const sanitized = sanitizeAppUrl(appUrl);
+	if (!sanitized) {
+		throw new Error(`Invalid instance URL: ${appUrl}`);
+	}
+	config.app_url = sanitized;
+	try {
+		config.app_origin = new URL(sanitized).origin;
+	} catch {
+		config.app_origin = sanitized;
+	}
+	saveDesktopConfig();
+	return sanitized;
+}
+
+export function resetPersistedAppUrl(): string {
+	delete config.app_url;
+	delete config.app_origin;
+	saveDesktopConfig();
+	return DEFAULT_HOMESERVER_URL;
 }
 
 export function setRuntimeAppUrlOverride(appUrl: string | null): void {

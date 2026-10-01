@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 import {createRequire} from 'node:module';
+import {getAppUrl} from '@electron/common/DesktopConfig';
 import {isPortableMode} from '@electron/common/UserDataPath';
 import {
 	AppImageChecksumError,
@@ -803,9 +804,28 @@ function registerManualUpdater(
 	});
 }
 
+function isOfficialFluxerInstance(): boolean {
+	try {
+		const appUrl = getAppUrl();
+		return (
+			appUrl.startsWith('https://fluxer.com') ||
+			appUrl.startsWith('https://web.fluxer.app') ||
+			appUrl.startsWith('https://canary.fluxer.com') ||
+			appUrl.startsWith('https://web.canary.fluxer.app')
+		);
+	} catch {
+		return false;
+	}
+}
+
 export function registerUpdater(getMainWindow: () => BrowserWindow | null) {
 	if (!app.isPackaged) {
 		registerManualUpdater(getMainWindow, 'unpackaged');
+		return;
+	}
+	if (!isOfficialFluxerInstance()) {
+		log.info('Running against self-hosted homeserver; upstream in-app updates disabled.');
+		registerManualUpdater(getMainWindow, 'managed-package');
 		return;
 	}
 	if (isPortableMode()) {
