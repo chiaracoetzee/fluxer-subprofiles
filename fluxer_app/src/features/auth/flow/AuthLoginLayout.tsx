@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+import {DesktopInstanceIndicator} from '@app/features/app/components/DesktopInstanceIndicator';
 import {PRODUCT_NAME} from '@app/features/app/config/I18nDisplayConstants';
 import {detectDomainMigrationInstallKind} from '@app/features/app/domain_migration/DomainMigrationBrowser';
 import RuntimeConfig from '@app/features/app/state/RuntimeConfig';
@@ -499,6 +500,7 @@ export const AuthLoginLayout = observer(function AuthLoginLayout({
 						</span>
 						{styledRegisterLink}
 					</div>
+					<DesktopInstanceIndicator />
 				</div>
 			</>
 		);
