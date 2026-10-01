@@ -4,7 +4,7 @@ import {BUILD_CHANNEL} from '@electron/common/BuildChannel';
 import {onLocaleChange, t} from '@electron/main/MainI18n';
 import {openExternalDeduped} from '@electron/main/OpenExternal';
 import {buildTroubleshootingMenuItems} from '@electron/main/Troubleshooting';
-import {getMainWindow, toggleWindowDevTools} from '@electron/main/Window';
+import {createSecondaryAppWindow, getMainWindow, toggleWindowDevTools} from '@electron/main/Window';
 import {type BaseWindow, BrowserWindow, Menu, type MenuItem, type MenuItemConstructorOptions} from 'electron';
 
 const MACOS_HELP_MENU_TITLE_AUTODETECT_OPT_OUT = '\u200C';
@@ -53,8 +53,34 @@ function buildTemplate(): Array<MenuItemConstructorOptions> {
 	template.push({
 		label: t('desktop.appMenu.file'),
 		submenu: isMac
-			? [{role: 'close'}]
+			? [
+					{
+						label: t('desktop.appMenu.newWindow', {defaultValue: 'New Window'}),
+						accelerator: 'CmdOrCtrl+N',
+						click: (_item, focusedWindow) => {
+							const currentUrl =
+								focusedWindow instanceof BrowserWindow
+									? focusedWindow.webContents.getURL()
+									: undefined;
+							createSecondaryAppWindow(currentUrl);
+						},
+					},
+					{type: 'separator'},
+					{role: 'close'},
+				]
 			: [
+					{
+						label: t('desktop.appMenu.newWindow', {defaultValue: 'New Window'}),
+						accelerator: 'CmdOrCtrl+N',
+						click: (_item, focusedWindow) => {
+							const currentUrl =
+								focusedWindow instanceof BrowserWindow
+									? focusedWindow.webContents.getURL()
+									: undefined;
+							createSecondaryAppWindow(currentUrl);
+						},
+					},
+					{type: 'separator'},
 					{
 						label: t('desktop.appMenu.preferencesPlain'),
 						accelerator: 'Ctrl+,',
