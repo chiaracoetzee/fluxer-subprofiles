@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+import {DesktopInstanceIndicator} from '@app/features/app/components/DesktopInstanceIndicator';
 import {AuthBottomLink} from '@app/features/auth/flow/AuthBottomLink';
 import sharedStyles from '@app/features/auth/flow/AuthPageStyles.module.css';
 import {AuthRegisterFormCore} from '@app/features/auth/flow/AuthRegisterFormCore';
@@ -52,6 +53,7 @@ const RegisterPageContent = observer(function RegisterPageContent() {
 					to={loginPath}
 					data-flx="auth.register-page.register-page-content.auth-bottom-link"
 				/>
+				<DesktopInstanceIndicator />
 			</div>
 		</>
 	);
