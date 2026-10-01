@@ -87,9 +87,9 @@ function topLevelFrame(url) {
 }
 
 describe('DesktopConfig app origin', () => {
-	test('keeps loading the legacy root when no app origin is stored', () => {
-		assert.equal(loadDesktop().desktopConfig.getAppUrl(), 'https://web.fluxer.app');
-		assert.equal(loadDesktop({channel: 'canary'}).desktopConfig.getAppUrl(), 'https://web.canary.fluxer.app');
+	test('keeps loading the default instance when no app origin is stored', () => {
+		assert.equal(loadDesktop().desktopConfig.getAppUrl(), 'https://temple.hypersystem.xyz');
+		assert.equal(loadDesktop({channel: 'canary'}).desktopConfig.getAppUrl(), 'https://temple.hypersystem.xyz');
 	});
 
 	test('loads the app entry path for a stored migrated origin', () => {
@@ -115,7 +115,7 @@ describe('DesktopConfig app origin', () => {
 			42,
 		]) {
 			const {desktopConfig} = loadDesktop({settings: {app_origin: appOrigin}});
-			assert.equal(desktopConfig.getAppUrl(), 'https://web.fluxer.app');
+			assert.equal(desktopConfig.getAppUrl(), 'https://temple.hypersystem.xyz');
 		}
 	});
 
