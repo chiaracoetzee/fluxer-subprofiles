@@ -3,8 +3,12 @@
 import {
 	type DesktopTroubleshootingSettings,
 	type DesktopWindowBehaviorSettings,
+	getAppUrl,
+	getDefaultInstanceUrl,
 	getDesktopWindowBehaviorSettings,
+	resetPersistedAppUrl,
 	setDesktopWindowBehaviorSettings,
+	setPersistedAppUrl,
 } from '@electron/common/DesktopConfig';
 import type {
 	ClipboardWriteFileResult,
@@ -80,6 +84,7 @@ import {flashWindowForAttention, stopFlashingWindow} from '@electron/main/Window
 import {setWindowsBadgeOverlay} from '@electron/main/WindowsBadge';
 import {registerWindowsToastIpcHandlers} from '@electron/main/WindowsToast';
 import {app, BrowserWindow, clipboard, dialog, ipcMain, powerMonitor, shell, systemPreferences} from 'electron';
+import log from 'electron-log';
 
 interface TrayRuntimeStateUpdate {
 	voiceConnected?: boolean;
@@ -496,6 +501,47 @@ export function registerIpcHandlers(): void {
 		const mainWindow = getMainWindow();
 		if (!mainWindow || mainWindow.isDestroyed()) return;
 		mainWindow.webContents.send('accessibility-support-changed', Boolean(accessibilitySupportEnabled));
+	});
+	ipcMain.handle('desktop:get-instance-url', (event): string => {
+		requirePrivilegedRendererDocumentSender(event, 'desktop:get-instance-url');
+		return getAppUrl();
+	});
+	ipcMain.handle('desktop:get-default-instance-url', (event): string => {
+		requirePrivilegedRendererDocumentSender(event, 'desktop:get-default-instance-url');
+		return getDefaultInstanceUrl();
+	});
+	ipcMain.handle(
+		'desktop:set-instance-url',
+		async (event, url: unknown): Promise<{success: boolean; url: string; error?: string}> => {
+			requirePrivilegedRendererDocumentSender(event, 'desktop:set-instance-url');
+			if (typeof url !== 'string' || !url.trim()) {
+				return {success: false, url: getAppUrl(), error: 'Invalid instance URL'};
+			}
+			try {
+				const persistedUrl = setPersistedAppUrl(url);
+				const mainWindow = getMainWindow();
+				if (mainWindow && !mainWindow.isDestroyed()) {
+					mainWindow.webContents.loadURL(persistedUrl).catch((err: unknown) => {
+						log.error('Failed to load new instance URL in main window:', err);
+					});
+				}
+				return {success: true, url: persistedUrl};
+			} catch (err) {
+				const message = err instanceof Error ? err.message : String(err);
+				return {success: false, url: getAppUrl(), error: message};
+			}
+		},
+	);
+	ipcMain.handle('desktop:reset-instance-url', async (event): Promise<string> => {
+		requirePrivilegedRendererDocumentSender(event, 'desktop:reset-instance-url');
+		const defaultUrl = resetPersistedAppUrl();
+		const mainWindow = getMainWindow();
+		if (mainWindow && !mainWindow.isDestroyed()) {
+			mainWindow.webContents.loadURL(defaultUrl).catch((err: unknown) => {
+				log.error('Failed to load default instance URL in main window:', err);
+			});
+		}
+		return defaultUrl;
 	});
 	registerPasskeyHandlers();
 	registerLinuxAppearanceHandlers();

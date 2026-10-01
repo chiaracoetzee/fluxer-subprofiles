@@ -407,6 +407,11 @@ const api: ElectronAPI = {
 		};
 	},
 	openExternal: (url: string): Promise<void> => ipcRenderer.invoke('open-external', url),
+	getInstanceUrl: (): Promise<string> => ipcRenderer.invoke('desktop:get-instance-url'),
+	getDefaultInstanceUrl: (): Promise<string> => ipcRenderer.invoke('desktop:get-default-instance-url'),
+	setInstanceUrl: (url: string): Promise<{success: boolean; url: string; error?: string}> =>
+		ipcRenderer.invoke('desktop:set-instance-url', url),
+	resetInstanceUrl: (): Promise<string> => ipcRenderer.invoke('desktop:reset-instance-url'),
 	clipboardWriteText: (text: string): Promise<void> => ipcRenderer.invoke('clipboard-write-text', text),
 	clipboardReadText: (): Promise<string> => ipcRenderer.invoke('clipboard-read-text'),
 	clipboardWriteFile: (options: ClipboardWriteFileOptions): Promise<ClipboardWriteFileResult> =>
@@ -452,7 +457,9 @@ const api: ElectronAPI = {
 		options: PublicKeyCredentialCreationOptionsJSON,
 		requestContext?: {pin?: string},
 	): Promise<RegistrationResponseJSON> => ipcRenderer.invoke('passkey-register', options, requestContext),
-	passkeyRpIds: PASSKEY_RP_IDS,
+	passkeyRpIds: Array.from(
+		new Set([...PASSKEY_RP_IDS, typeof window !== 'undefined' ? window.location.hostname : '']),
+	).filter(Boolean),
 	domainMigration: {
 		version: 1,
 		setAppOrigin: (origin: string): Promise<void> => ipcRenderer.invoke('domain-migration:set-app-origin', origin),
