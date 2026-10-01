@@ -21,7 +21,7 @@ const RESET_WINDOW_STATE_ARGS = new Set(['--fluxer-reset-window-state']);
 const SAFE_MODE_ARGS = new Set(['--fluxer-safe-mode']);
 const RENDERER_CONSOLE_LOG_ARGS = new Set(['--fluxer-log-renderer-console']);
 const NET_LOG_ARGS = new Set(['--fluxer-net-log']);
-const APP_URL_ARGS = new Set(['--fluxer-app-url']);
+const APP_URL_ARGS = new Set(['--fluxer-app-url', '--app-url']);
 
 interface DesktopDebugInfo {
 	clientInfo: string;

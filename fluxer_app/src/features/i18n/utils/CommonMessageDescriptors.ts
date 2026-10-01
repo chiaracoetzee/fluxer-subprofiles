@@ -284,6 +284,10 @@ export const OPEN_LINK_DESCRIPTOR = msg({
 	message: 'Open link',
 	comment: 'Generic action or tooltip label for opening an external or attached link.',
 });
+export const OPEN_IN_NEW_WINDOW_DESCRIPTOR = msg({
+	message: 'Open in new window',
+	comment: 'Action menu item to open a channel or conversation in a new desktop or browser window.',
+});
 export const INVALID_IMAGE_TRY_ANOTHER_DESCRIPTOR = msg({
 	message: 'That image is invalid. Try another one.',
 	comment: 'Generic image upload error shown when the selected file cannot be decoded or accepted.',

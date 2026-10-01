@@ -467,6 +467,7 @@ export interface ElectronAPI {
 	spellcheckAddWordToDictionary?(word: string): void;
 	onWindowMaximizeChange?(callback: (isMaximized: boolean) => void): () => void;
 	windowIsMaximized?(): Promise<boolean>;
+	openAppWindow?(url?: string): Promise<boolean>;
 	focusThemeStudioPopout?(): Promise<boolean>;
 	closeThemeStudioPopout?(): Promise<boolean>;
 	popoutSetAlwaysOnTop?(key: string, flag: boolean): Promise<boolean>;

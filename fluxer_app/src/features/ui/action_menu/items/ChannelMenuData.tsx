@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+import {Routes} from '@app/app/Routes';
 import Accessibility from '@app/features/accessibility/state/Accessibility';
 import {showChannelDeleteFailedModal} from '@app/features/app/components/alerts/ChannelDeleteFailedModal';
 import {GenericErrorModal} from '@app/features/app/components/alerts/GenericErrorModal';
@@ -46,6 +47,7 @@ import {
 	LINK_COPIED_TO_CLIPBOARD_DESCRIPTOR,
 	MARK_AS_READ_DESCRIPTOR,
 	NOTIFICATION_SETTINGS_DESCRIPTOR,
+	OPEN_IN_NEW_WINDOW_DESCRIPTOR,
 	OPEN_LINK_DESCRIPTOR,
 	PINNED_DM_DESCRIPTOR,
 	REMOVE_FROM_FAVORITES_DESCRIPTOR,
@@ -174,6 +176,7 @@ export interface ChannelMenuHandlers {
 	handleCopyChannelLink: () => Promise<void>;
 	handleOpenChannelLink: () => void;
 	handleCopyLinkChannelUrl: () => Promise<void>;
+	handleOpenInNewWindow: () => void;
 	handleOpenChat: () => void;
 	handleOpenMuteSheet: () => void;
 	handleNotificationSettings: () => void;
@@ -324,6 +327,17 @@ export function useChannelMenuData(
 					children: i18n._(LINK_COPIED_TO_CLIPBOARD_DESCRIPTOR),
 				});
 				onClose();
+			},
+			handleOpenInNewWindow: () => {
+				onClose();
+				const targetUrl = channel.guildId
+					? Routes.guildChannel(channel.guildId, channel.id)
+					: Routes.dmChannel(channel.id);
+				if (window.electron?.openAppWindow) {
+					void window.electron.openAppWindow(targetUrl);
+				} else {
+					window.open(targetUrl, '_blank');
+				}
 			},
 			handleOpenChat: () => {
 				if (channel.guildId) {
@@ -526,6 +540,11 @@ export function useChannelMenuData(
 		if (state.isGroupDM) {
 			const primaryItems: Array<MenuItemType> = [
 				{
+					icon: <OpenLinkIcon size={20} data-flx="ui.action-menu.items.channel-menu-data.groups.open-in-new-window-icon" />,
+					label: i18n._(OPEN_IN_NEW_WINDOW_DESCRIPTOR),
+					onClick: handlers.handleOpenInNewWindow,
+				},
+				{
 					icon: <EditGroupIcon size={20} data-flx="ui.action-menu.items.channel-menu-data.groups.edit-group-icon" />,
 					label: i18n._(EDIT_GROUP_DESCRIPTOR),
 					onClick: handlers.handleEditGroup,
@@ -585,6 +604,11 @@ export function useChannelMenuData(
 		}
 		if (state.isDM) {
 			const items: Array<MenuItemType> = [
+				{
+					icon: <OpenLinkIcon size={20} data-flx="ui.action-menu.items.channel-menu-data.groups.open-in-new-window-icon--2" />,
+					label: i18n._(OPEN_IN_NEW_WINDOW_DESCRIPTOR),
+					onClick: handlers.handleOpenInNewWindow,
+				},
 				state.isPinned
 					? {
 							icon: <PinIcon size={20} data-flx="ui.action-menu.items.channel-menu-data.groups.pin-icon--3" />,
@@ -668,6 +692,16 @@ export function useChannelMenuData(
 				menuGroups.push({items: metaItems});
 			}
 			const inviteItems: Array<MenuItemType> = [];
+			inviteItems.push({
+				icon: (
+					<OpenLinkIcon
+						size={20}
+						data-flx="ui.action-menu.items.channel-menu-data.groups.open-in-new-window-icon--3"
+					/>
+				),
+				label: i18n._(OPEN_IN_NEW_WINDOW_DESCRIPTOR),
+				onClick: handlers.handleOpenInNewWindow,
+			});
 			if (state.canInvite) {
 				inviteItems.push({
 					icon: <InviteIcon size={20} data-flx="ui.action-menu.items.channel-menu-data.groups.invite-icon" />,

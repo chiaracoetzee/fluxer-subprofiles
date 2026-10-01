@@ -665,6 +665,7 @@ export interface ElectronAPI {
 	windowMaximize: () => void;
 	windowClose: () => void;
 	windowIsMaximized: () => Promise<boolean>;
+	openAppWindow?: (url?: string) => Promise<boolean>;
 	focusThemeStudioPopout: () => Promise<boolean>;
 	closeThemeStudioPopout: () => Promise<boolean>;
 	popoutSetAlwaysOnTop: (key: string, flag: boolean) => Promise<boolean>;

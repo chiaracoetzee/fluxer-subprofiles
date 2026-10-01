@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+import {Routes} from '@app/app/Routes';
 import * as LinkChannelCommands from '@app/features/channel/commands/LinkChannelCommands';
 import {RenameChannelModal} from '@app/features/channel/components/modals/RenameChannelModal';
 import {useDeleteMyMessagesInChannel} from '@app/features/channel/hooks/useDeleteMyMessagesInChannel';
@@ -11,6 +12,7 @@ import {
 	CHANNEL_REMOVED_FROM_FAVORITES_DESCRIPTOR,
 	COPY_LINK_DESCRIPTOR,
 	LINK_COPIED_TO_CLIPBOARD_DESCRIPTOR,
+	OPEN_IN_NEW_WINDOW_DESCRIPTOR,
 	OPEN_LINK_DESCRIPTOR,
 	REMOVE_FROM_FAVORITES_DESCRIPTOR,
 	UNCATEGORIZED_DESCRIPTOR,
@@ -24,6 +26,7 @@ import {
 	CopyLinkIcon,
 	DeleteIcon,
 	OpenInCommunityIcon,
+	OpenLinkIcon,
 	RemoveFromFavoritesIcon,
 } from '@app/features/ui/action_menu/ContextMenuIcons';
 import {
@@ -107,6 +110,18 @@ export const FavoritesChannelContextMenu: React.FC<FavoritesChannelContextMenuPr
 			onClose();
 			focusChannelTextareaAfterNavigation(channel.id);
 		};
+		const handleOpenInNewWindow = () => {
+			if (!channel) return;
+			onClose();
+			const targetUrl = channel.guildId
+				? Routes.guildChannel(channel.guildId, channel.id)
+				: Routes.dmChannel(channel.id);
+			if (window.electron?.openAppWindow) {
+				void window.electron.openAppWindow(targetUrl);
+			} else {
+				window.open(targetUrl, '_blank');
+			}
+		};
 		const handleCopyLinkChannelUrl = async () => {
 			if (!channel?.url) return;
 			await TextCopyCommands.copy(i18n, channel.url, true);
@@ -164,6 +179,15 @@ export const FavoritesChannelContextMenu: React.FC<FavoritesChannelContextMenuPr
 						data-flx="ui.action-menu.favorites-channel-context-menu.menu-item.set-nickname"
 					>
 						{i18n._(CHANGE_NICKNAME_DESCRIPTOR)}
+					</MenuItem>
+					<MenuItem
+						icon={
+							<OpenLinkIcon data-flx="ui.action-menu.favorites-channel-context-menu.open-in-new-window-icon" />
+						}
+						onClick={handleOpenInNewWindow}
+						data-flx="ui.action-menu.favorites-channel-context-menu.menu-item.open-in-new-window"
+					>
+						{i18n._(OPEN_IN_NEW_WINDOW_DESCRIPTOR)}
 					</MenuItem>
 					{channel.guildId && (
 						<MenuItem

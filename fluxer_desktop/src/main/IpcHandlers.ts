@@ -67,6 +67,7 @@ import {
 import {
 	clearSavedWindowBounds,
 	closeThemeStudioPopoutWindow,
+	createSecondaryAppWindow,
 	desktopTransparencyPendingRestart,
 	desktopUseNativeTitleBarPendingRestart,
 	focusThemeStudioPopoutWindow,
@@ -303,6 +304,10 @@ export function registerIpcHandlers(): void {
 	});
 	ipcMain.handle('window-is-maximized', (event): boolean => {
 		return BrowserWindow.fromWebContents(event.sender)?.isMaximized() ?? false;
+	});
+	ipcMain.handle('desktop:open-app-window', (_event, rawUrl: unknown): boolean => {
+		const urlStr = typeof rawUrl === 'string' && rawUrl.trim().length > 0 ? rawUrl.trim() : undefined;
+		return createSecondaryAppWindow(urlStr) !== null;
 	});
 	ipcMain.handle('theme-studio-popout-focus', (): boolean => {
 		return focusThemeStudioPopoutWindow();
