@@ -64,9 +64,17 @@ msgstr "Auto-peek hidden sidebars"
 msgid "Avatar image failed to download: {error}. Persona was imported without an avatar."
 msgstr "Avatar image failed to download: {error}. Persona was imported without an avatar."
 
+#. Button to change homeserver instance.
+msgid "Change"
+msgstr "Промяна"
+
 #. Generic action label that opens the persona picker.
 msgid "Change persona"
 msgstr "Change persona"
+
+#. Button to open server instance switcher modal.
+msgid "Change server"
+msgstr "Смяна на сървъра"
 
 msgid "Choose a PluralKit export (.json) or drag & drop"
 msgstr "Choose a PluralKit export (.json) or drag & drop"
@@ -82,9 +90,33 @@ msgstr "Configured Personas ({count})"
 msgid "Configuring {name}..."
 msgstr "Configuring {name}..."
 
+#. Primary action button to save the new server instance and reload the desktop app.
+msgid "Connect & switch"
+msgstr "Свързване и превключване"
+
+#. Description in modal explaining what changing server instance does.
+msgid "Connect your desktop app to a custom homeserver or official instance."
+msgstr "Свържете настолното си приложение към персонализиран домашен сървър или официална инстанция."
+
+#. Label showing which homeserver the desktop client is currently connected to. {server} is the hostname.
+msgid "Connected to {server}"
+msgstr "Свързан към {server}"
+
+#. Description in desktop settings row showing current server instance and reload notice.
+msgid "Connected to {url}. Changing server instance reloads the application."
+msgstr "Свързан към {url}. Смяната на инстанцията на сървъра презарежда приложението."
+
 #. Context menu action to copy a timestamp markdown tag in the message composer.
 msgid "Copy timestamp"
 msgstr "Копирай клеймото за време\\"
+
+#. Error status indicator when server instance probe fails.
+msgid "Could not reach server. Please verify the URL."
+msgstr "Сървърът не може да бъде достигнат. Моля, проверете URL адреса."
+
+#. Title for current homeserver in desktop settings.
+msgid "Current server instance"
+msgstr "Текуща инстанция на сървъра"
 
 #. Aria label for deactivating active persona
 msgid "Deactivate persona"
@@ -103,6 +135,10 @@ msgstr "Изтриване на клеймото за време\\"
 
 msgid "Detected System Name / Tag"
 msgstr "Detected System Name / Tag"
+
+#. Label for development/staging instance preset button.
+msgid "Dev (Staging)"
+msgstr "Разработка (Staging)"
 
 msgid "Display Tag"
 msgstr "Display Tag"
@@ -172,6 +208,10 @@ msgstr "Failed to save persona"
 #. Toast when icon upload fails
 msgid "Failed to upload icon to server"
 msgstr "Failed to upload icon to server"
+
+#. Label for upstream official Fluxer instance preset button.
+msgid "Fluxer Official"
+msgstr "Официален Fluxer"
 
 #. Label for format preview selection in timestamp modal.
 msgid "Format preview"
@@ -447,6 +487,17 @@ msgstr "Sending as @{username} ({mode}) - Click to switch persona"
 msgid "Sending as {name} (Matched by tag) - Click to switch persona"
 msgstr "Sending as {name} (Matched by tag) - Click to switch persona"
 
+#. Form label for the instance server URL input field.
+msgid "Server URL"
+msgstr "URL адрес на сървъра"
+
+msgid "Server instance"
+msgstr "Инстанция на сървъра"
+
+#. Notice displayed if instance switcher modal is somehow opened outside of Electron desktop.
+msgid "Server instance switching is only supported in the Fluxer Desktop application."
+msgstr "Превключването на инстанция на сървъра се поддържа само в настолното приложение на Fluxer."
+
 msgid "Set Active"
 msgstr "Set Active"
 
@@ -485,6 +536,10 @@ msgstr "Start Import"
 msgid "Successfully imported {0} persona(s) into your account. All avatar images are safely stored on your local server."
 msgstr "Successfully imported {0} persona(s) into your account. All avatar images are safely stored on your local server."
 
+#. Success status indicator when server instance responds to health probe.
+msgid "Successfully reached server instance."
+msgstr "Успешно свързване с инстанцията на сървъра."
+
 #. Placeholder for persona tag suffix
 msgid "Suffix (e.g. ])"
 msgstr "Suffix (e.g. ])"
@@ -495,6 +550,10 @@ msgstr "Предложени"
 
 msgid "Supports PluralKit system export files"
 msgstr "Supports PluralKit system export files"
+
+#. Title of modal allowing desktop users to change their homeserver instance URL.
+msgid "Switch server instance"
+msgstr "Превключване на инстанция на сървъра"
 
 msgid "System Tag (Applied to imported personas)"
 msgstr "System Tag (Applied to imported personas)"
@@ -516,6 +575,18 @@ msgstr "Taskbar"
 #. Placeholder for persona bio
 msgid "Tell us about this persona..."
 msgstr "Tell us about this persona..."
+
+#. Label for default Temple production instance preset button.
+msgid "Temple (Default)"
+msgstr "Temple (По подразбиране)"
+
+#. Button label to test network reachability to the specified server instance.
+msgid "Test connection"
+msgstr "Тестване на връзката"
+
+#. Status indicator while checking server reachability.
+msgid "Testing connection..."
+msgstr "Тестване на връзката…"
 
 #. Error message when uploaded file is not valid JSON
 msgid "The chosen file is not a valid JSON object."
