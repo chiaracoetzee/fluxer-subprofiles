@@ -64,9 +64,17 @@ msgstr "Auto-peek hidden sidebars"
 msgid "Avatar image failed to download: {error}. Persona was imported without an avatar."
 msgstr "Avatar image failed to download: {error}. Persona was imported without an avatar."
 
+#. Button to change homeserver instance.
+msgid "Change"
+msgstr "變更"
+
 #. Generic action label that opens the persona picker.
 msgid "Change persona"
 msgstr "Change persona"
+
+#. Button to open server instance switcher modal.
+msgid "Change server"
+msgstr "更換伺服器"
 
 msgid "Choose a PluralKit export (.json) or drag & drop"
 msgstr "Choose a PluralKit export (.json) or drag & drop"
@@ -82,9 +90,33 @@ msgstr "Configured Personas ({count})"
 msgid "Configuring {name}..."
 msgstr "Configuring {name}..."
 
+#. Primary action button to save the new server instance and reload the desktop app.
+msgid "Connect & switch"
+msgstr "連線並切換"
+
+#. Description in modal explaining what changing server instance does.
+msgid "Connect your desktop app to a custom homeserver or official instance."
+msgstr "將桌面應用程式連線至自訂伺服器或官方執行個體。"
+
+#. Label showing which homeserver the desktop client is currently connected to. {server} is the hostname.
+msgid "Connected to {server}"
+msgstr "已連線至 {server}"
+
+#. Description in desktop settings row showing current server instance and reload notice.
+msgid "Connected to {url}. Changing server instance reloads the application."
+msgstr "已連線至 {url}。變更伺服器執行個體將重新載入應用程式。"
+
 #. Context menu action to copy a timestamp markdown tag in the message composer.
 msgid "Copy timestamp"
 msgstr "複製時間戳記\\"
+
+#. Error status indicator when server instance probe fails.
+msgid "Could not reach server. Please verify the URL."
+msgstr "無法連線至伺服器。請確認網址。"
+
+#. Title for current homeserver in desktop settings.
+msgid "Current server instance"
+msgstr "目前的伺服器執行個體"
 
 #. Aria label for deactivating active persona
 msgid "Deactivate persona"
@@ -103,6 +135,10 @@ msgstr "刪除時間戳記\\"
 
 msgid "Detected System Name / Tag"
 msgstr "Detected System Name / Tag"
+
+#. Label for development/staging instance preset button.
+msgid "Dev (Staging)"
+msgstr "開發（測試）"
 
 msgid "Display Tag"
 msgstr "Display Tag"
@@ -172,6 +208,10 @@ msgstr "Failed to save persona"
 #. Toast when icon upload fails
 msgid "Failed to upload icon to server"
 msgstr "Failed to upload icon to server"
+
+#. Label for upstream official Fluxer instance preset button.
+msgid "Fluxer Official"
+msgstr "Fluxer 官方"
 
 #. Label for format preview selection in timestamp modal.
 msgid "Format preview"
@@ -447,6 +487,17 @@ msgstr "Sending as @{username} ({mode}) - Click to switch persona"
 msgid "Sending as {name} (Matched by tag) - Click to switch persona"
 msgstr "Sending as {name} (Matched by tag) - Click to switch persona"
 
+#. Form label for the instance server URL input field.
+msgid "Server URL"
+msgstr "伺服器網址"
+
+msgid "Server instance"
+msgstr "伺服器執行個體"
+
+#. Notice displayed if instance switcher modal is somehow opened outside of Electron desktop.
+msgid "Server instance switching is only supported in the Fluxer Desktop application."
+msgstr "伺服器執行個體切換僅支援於 Fluxer 桌面應用程式。"
+
 msgid "Set Active"
 msgstr "Set Active"
 
@@ -485,6 +536,10 @@ msgstr "Start Import"
 msgid "Successfully imported {0} persona(s) into your account. All avatar images are safely stored on your local server."
 msgstr "Successfully imported {0} persona(s) into your account. All avatar images are safely stored on your local server."
 
+#. Success status indicator when server instance responds to health probe.
+msgid "Successfully reached server instance."
+msgstr "已成功連線至伺服器執行個體。"
+
 #. Placeholder for persona tag suffix
 msgid "Suffix (e.g. ])"
 msgstr "Suffix (e.g. ])"
@@ -495,6 +550,10 @@ msgstr "推薦"
 
 msgid "Supports PluralKit system export files"
 msgstr "Supports PluralKit system export files"
+
+#. Title of modal allowing desktop users to change their homeserver instance URL.
+msgid "Switch server instance"
+msgstr "切換伺服器執行個體"
 
 msgid "System Tag (Applied to imported personas)"
 msgstr "System Tag (Applied to imported personas)"
@@ -516,6 +575,18 @@ msgstr "Taskbar"
 #. Placeholder for persona bio
 msgid "Tell us about this persona..."
 msgstr "Tell us about this persona..."
+
+#. Label for default Temple production instance preset button.
+msgid "Temple (Default)"
+msgstr "Temple（預設）"
+
+#. Button label to test network reachability to the specified server instance.
+msgid "Test connection"
+msgstr "測試連線"
+
+#. Status indicator while checking server reachability.
+msgid "Testing connection..."
+msgstr "正在測試連線…"
 
 #. Error message when uploaded file is not valid JSON
 msgid "The chosen file is not a valid JSON object."

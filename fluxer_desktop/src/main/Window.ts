@@ -6,8 +6,12 @@ import {fileURLToPath} from 'node:url';
 import {
 	CANARY_APP_URL,
 	CANARY_MIGRATED_APP_ORIGIN,
+	DEFAULT_APP_URL,
+	DEFAULT_HOMESERVER_URL,
 	DEFAULT_WINDOW_HEIGHT,
 	DEFAULT_WINDOW_WIDTH,
+	DEV_HOMESERVER_URL,
+	KNOWN_HOMESERVER_ORIGINS,
 	MIN_WINDOW_HEIGHT,
 	MIN_WINDOW_WIDTH,
 	STABLE_APP_URL,
@@ -67,7 +71,16 @@ const CUSTOM_TITLEBAR_TRAFFIC_LIGHT_POSITION = {
 	y: Math.round((CUSTOM_TITLEBAR_HEIGHT_MAC - CUSTOM_TITLEBAR_TRAFFIC_LIGHT_DIAMETER) / 2),
 };
 const trustedWebOrigins = new Set(
-	[STABLE_APP_URL, CANARY_APP_URL, STABLE_MIGRATED_APP_ORIGIN, CANARY_MIGRATED_APP_ORIGIN]
+	[
+		...KNOWN_HOMESERVER_ORIGINS,
+		DEFAULT_HOMESERVER_URL,
+		DEV_HOMESERVER_URL,
+		DEFAULT_APP_URL,
+		STABLE_APP_URL,
+		CANARY_APP_URL,
+		STABLE_MIGRATED_APP_ORIGIN,
+		CANARY_MIGRATED_APP_ORIGIN,
+	]
 		.map((url) => {
 			try {
 				return new URL(url).origin;
@@ -108,10 +121,16 @@ export function isTrustedOrigin(url?: string): boolean {
 	const customUrl = getCustomAppUrl();
 	if (customUrl) {
 		try {
-			return new URL(customUrl).origin === origin;
+			if (new URL(customUrl).origin === origin) return true;
 		} catch {
-			return false;
+			// Ignore malformed custom URL
 		}
+	}
+	try {
+		const activeAppUrl = getAppUrl();
+		if (new URL(activeAppUrl).origin === origin) return true;
+	} catch {
+		// Ignore malformed active URL
 	}
 	return false;
 }

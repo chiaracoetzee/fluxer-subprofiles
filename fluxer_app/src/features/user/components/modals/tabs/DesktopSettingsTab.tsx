@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 import {ConfirmModal} from '@app/features/app/components/dialogs/ConfirmModal';
+import {DesktopInstanceSettingsRow} from '@app/features/app/components/DesktopInstanceSettingsRow';
 import {SettingsSection} from '@app/features/app/components/dialogs/shared/SettingsSection';
 import {SettingsTabContainer} from '@app/features/app/components/dialogs/shared/SettingsTabLayout';
 import {PRODUCT_NAME} from '@app/features/app/config/I18nDisplayConstants';
@@ -214,6 +215,16 @@ const DesktopSettingsTab: React.FC = observer(() => {
 					</>
 				)}
 			</SettingsSection>
+			{isDesktop() && (
+				<SettingsSection
+					id="server-instance"
+					title={<Trans>Server instance</Trans>}
+					linkable={false}
+					data-flx="user.desktop-settings-tab.server-instance-section"
+				>
+					<DesktopInstanceSettingsRow />
+				</SettingsSection>
+			)}
 			{isMac && (
 				<SettingsSection
 					id="macos-permissions"
