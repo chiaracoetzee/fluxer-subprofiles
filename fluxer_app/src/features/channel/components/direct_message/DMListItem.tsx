@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+import {Routes} from '@app/app/Routes';
 import Accessibility, {DMMessagePreviewMode} from '@app/features/accessibility/state/Accessibility';
 import {LongPressable} from '@app/features/app/components/LongPressable';
 import {getChannelUnreadState} from '@app/features/app/components/layout/utils/ChannelUnreadState';
@@ -499,6 +500,18 @@ const ResolvedDMListItem = observer(function ResolvedDMListItem({
 						contextMenuOpen && styles.contextMenuActive,
 					)}
 					onClick={handleNavigate}
+					onAuxClick={(event) => {
+						if (event.button === 1) {
+							event.preventDefault();
+							event.stopPropagation();
+							const targetUrl = Routes.dmChannel(channel.id);
+							if (window.electron?.openAppWindow) {
+								void window.electron.openAppWindow(targetUrl);
+							} else {
+								window.open(targetUrl, '_blank');
+							}
+						}
+					}}
 					onContextMenu={handleContextMenu}
 					onFocus={() => setIsFocused(true)}
 					onBlur={() => setIsFocused(false)}

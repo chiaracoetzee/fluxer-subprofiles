@@ -45,6 +45,7 @@ import {
 	EDIT_GROUP_DESCRIPTOR,
 	INVITES_DESCRIPTOR,
 	MARK_AS_READ_DESCRIPTOR,
+	OPEN_IN_NEW_WINDOW_DESCRIPTOR,
 	PINNED_DM_DESCRIPTOR,
 	REMOVE_FROM_FAVORITES_DESCRIPTOR,
 	REMOVED_FROM_FAVORITES_TOAST_DESCRIPTOR,
@@ -89,6 +90,7 @@ import {
 	LeaveIcon,
 	MarkAsReadIcon,
 	MuteIcon,
+	OpenLinkIcon,
 	PinIcon,
 	RemoveFriendIcon,
 	SendFriendRequestIcon,
@@ -174,6 +176,7 @@ export interface DMMenuHandlers {
 	handleBlockUser: () => void;
 	handleUnblockUser: () => void;
 	handleCloseDM: () => void;
+	handleOpenInNewWindow: () => void;
 	handleLeaveGroup: () => void;
 	handleDeleteMyMessagesInChannel: () => void;
 	handlePinDM: () => Promise<void>;
@@ -432,6 +435,15 @@ export function useDMMenuData(
 			)),
 		);
 	}, [channel.id, i18n, recipient, onClose]);
+	const handleOpenInNewWindow = useCallback(() => {
+		onClose();
+		const targetUrl = Routes.dmChannel(channel.id);
+		if (window.electron?.openAppWindow) {
+			void window.electron.openAppWindow(targetUrl);
+		} else {
+			window.open(targetUrl, '_blank');
+		}
+	}, [channel.id, onClose]);
 	const handleLeaveGroup = useCallback(() => {
 		ModalCommands.runAfterBottomSheetClose(onClose, () => leaveGroup(channel.id));
 	}, [channel.id, leaveGroup, onClose]);
@@ -543,6 +555,7 @@ export function useDMMenuData(
 			handleBlockUser,
 			handleUnblockUser,
 			handleCloseDM,
+			handleOpenInNewWindow,
 			handleLeaveGroup,
 			handleDeleteMyMessagesInChannel,
 			handlePinDM,
@@ -568,6 +581,7 @@ export function useDMMenuData(
 			handleBlockUser,
 			handleUnblockUser,
 			handleCloseDM,
+			handleOpenInNewWindow,
 			handleLeaveGroup,
 			handleDeleteMyMessagesInChannel,
 			handlePinDM,
@@ -654,6 +668,11 @@ export function useDMMenuData(
 			});
 		}
 		const groupActionsItems: Array<MenuItemType> = [];
+		groupActionsItems.push({
+			icon: <OpenLinkIcon size={20} data-flx="ui.action-menu.items.dm-menu-data.groups.open-in-new-window-icon" />,
+			label: i18n._(OPEN_IN_NEW_WINDOW_DESCRIPTOR),
+			onClick: handleOpenInNewWindow,
+		});
 		if (isGroupDM) {
 			groupActionsItems.push({
 				icon: <EditGroupIcon size={20} data-flx="ui.action-menu.items.dm-menu-data.groups.edit-group-icon" />,

@@ -17,5 +17,5 @@ export const PASSKEY_RP_IDS = ['temple.hypersystem.xyz', 'chat-dev.hypersystem.x
 export const STATIC_CDN_URL = 'https://fluxerstatic.com';
 export const DEFAULT_WINDOW_WIDTH = 1280;
 export const DEFAULT_WINDOW_HEIGHT = 800;
-export const MIN_WINDOW_WIDTH = 800;
-export const MIN_WINDOW_HEIGHT = 600;
+export const MIN_WINDOW_WIDTH = 0;
+export const MIN_WINDOW_HEIGHT = 0;
