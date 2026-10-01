@@ -69,7 +69,7 @@ if (isLinuxBuild && /\s/.test(linuxOptDirName)) {
 	);
 }
 
-const targetArchs = electronArch && electronArch !== 'universal' ? [electronArch] : supportedTargetArchs;
+const targetArchs = targetNativeArch && targetNativeArch !== 'universal' ? [targetNativeArch] : supportedTargetArchs;
 const macTargetArchs = targetNativeArch ? [targetNativeArch] : supportedTargetArchs;
 const winGameCaptureTargetArchs =
 	targetPlatform === 'win32' && targetNativeArch ? [targetNativeArch] : supportedTargetArchs;
