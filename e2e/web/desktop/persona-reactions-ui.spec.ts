@@ -148,7 +148,9 @@ test.describe('In-App Persona Reactions UI & Context Menu Flow', () => {
     await expect(page.locator('[data-flx*="emoji-tooltip-content"]').filter({ hasText: bobBeta.name }).first()).toBeVisible({ timeout: 10_000 });
 
     // 16. Re-open React as modal to toggle Bob-Alpha's reaction off
+    await page.mouse.move(0, 0);
     await messageLocator.hover();
+    await expect(quickReactionBtn).toBeVisible({ timeout: 10_000 });
     await quickReactionBtn.click({ button: 'right' });
     await expect(reactAsMenuItem).toBeVisible({ timeout: 5_000 });
     await reactAsMenuItem.click();
