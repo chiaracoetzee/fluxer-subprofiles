@@ -17,6 +17,16 @@ on:
         required: false
         default: 'windows,macos'
         type: string
+      version:
+        description: 'Version number to stamp into the build (e.g. 1.2.0)'
+        required: false
+        default: ''
+        type: string
+      targets:
+        description: 'Windows build targets (e.g. nsis, or nsis,portable,zip)'
+        required: false
+        default: 'nsis,portable,zip'
+        type: string
 
 permissions:
   contents: write
@@ -55,6 +65,19 @@ jobs:
           toolchain: stable
           targets: x86_64-pc-windows-msvc
 
+      - name: Rust cache
+        uses: swatinem/rust-cache@v2
+        with:
+          workspaces: |
+            fluxer_desktop/native/rust
+            fluxer_desktop/native/hardware-encoder
+            fluxer_desktop/native/webauthn
+            fluxer_desktop/native/win-clipboard
+            fluxer_desktop/native/win-game-capture
+            fluxer_desktop/native/win-process-loopback
+            fluxer_desktop/native/win-shell
+            fluxer_desktop/native/win-toast
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile=false
 
@@ -68,8 +91,9 @@ jobs:
         working-directory: fluxer_desktop
         env:
           BUILD_CHANNEL: ${{ env.BUILD_CHANNEL }}
-          FLUXER_WIN_TARGETS: nsis,portable,zip
+          FLUXER_WIN_TARGETS: ${{ inputs.targets || 'nsis,portable,zip' }}
           ELECTRON_ARCH: x64
+          VERSION: ${{ inputs.version || '' }}
         run: pnpm exec electron-builder --config electron-builder.config.cjs --win --x64
 
       - name: Upload Windows Artifacts
@@ -121,6 +145,7 @@ jobs:
         env:
           BUILD_CHANNEL: ${{ env.BUILD_CHANNEL }}
           CSC_IDENTITY_AUTO_DISCOVERY: false
+          VERSION: ${{ inputs.version || '' }}
         run: pnpm exec electron-builder --config electron-builder.config.cjs --mac dmg zip --arm64
 
       - name: Upload macOS Artifacts
@@ -179,6 +204,7 @@ jobs:
         env:
           BUILD_CHANNEL: ${{ env.BUILD_CHANNEL }}
           FLUXER_SKIP_GLIBC_CHECK: 'true'
+          VERSION: ${{ inputs.version || '' }}
         run: pnpm exec electron-builder --config electron-builder.config.cjs --linux AppImage
 
       - name: Upload Linux Artifacts
