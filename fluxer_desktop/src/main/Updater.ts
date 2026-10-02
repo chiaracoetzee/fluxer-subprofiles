@@ -987,7 +987,9 @@ function installGitHubUpdate(mode: DesktopUpdateMode): void {
 		} else {
 			applyWindowsPortableUpdate(staged.filePath, process.execPath, staged.stagingDirectory);
 		}
-		setImmediate(() => app.exit(0));
+		setTimeout(() => {
+			app.exit(0);
+		}, 1000);
 		return;
 	}
 

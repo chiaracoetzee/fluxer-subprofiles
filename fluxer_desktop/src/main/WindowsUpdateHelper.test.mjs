@@ -98,7 +98,7 @@ describe('WindowsUpdateHelper', () => {
 		assert.equal(paths.appLogPath, 'C:\\Users\\test\\AppData\\Roaming\\fluxer\\logs\\update-helper.log');
 	});
 
-	test('applyWindowsNsisUpdate writes a PowerShell script with single-quoted paths and .NET APIs', () => {
+	test('applyWindowsNsisUpdate spawns the NSIS installer directly with --force-run', () => {
 		const {exports, writtenFiles, spawnedProcesses} = loadHelper();
 		const setupExe = 'C:\\Users\\test\\AppData\\Local\\Temp\\fluxer-update-123\\Fluxer-Setup-1.2.4-win-x64.exe';
 		const stagingDir = 'C:\\Users\\test\\AppData\\Local\\Temp\\fluxer-update-123';
@@ -106,59 +106,16 @@ describe('WindowsUpdateHelper', () => {
 
 		exports.applyWindowsNsisUpdate(setupExe, stagingDir, currentExe);
 
-		assert.equal(writtenFiles.size, 1);
-		const [scriptPath, scriptContent] = Array.from(writtenFiles.entries())[0];
-		assert.match(scriptPath, /fluxer-update-\d+\.ps1$/);
+		// Must NOT write any script files — the installer handles everything
+		assert.equal(writtenFiles.size, 0);
 
-		// Must use single-quoted strings (verbatim literal in PowerShell)
-		assert.ok(
-			scriptContent.includes(`$setupExe = '${setupExe}'`),
-			'setupExe must be assigned with single quotes and single backslashes',
-		);
-		assert.ok(
-			scriptContent.includes(`$currentExe = '${currentExe}'`),
-			'currentExe must be assigned with single quotes',
-		);
-		assert.ok(
-			scriptContent.includes(`$staging = '${stagingDir}'`),
-			'staging directory must be assigned with single quotes',
-		);
-
-		// Must NOT contain double-backslashes in assignments
-		assert.ok(
-			!scriptContent.includes('C:\\\\Users\\\\test'),
-			'script must not contain double backslashes in paths',
-		);
-
-		// Must set execution policy bypass
-		assert.ok(
-			scriptContent.includes('Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass'),
-			'script must configure execution policy bypass',
-		);
-
-		// Must use .NET File methods instead of Test-Path
-		assert.ok(
-			scriptContent.includes('[System.IO.File]::Exists($setupExe)'),
-			'script must use [System.IO.File]::Exists for setupExe check',
-		);
-		assert.ok(
-			scriptContent.includes('[System.IO.File]::AppendAllText'),
-			'script must use [System.IO.File]::AppendAllText for logging',
-		);
-
-		// Must spawn powershell.exe with Bypass and Hidden
+		// Must spawn the installer exe directly
 		assert.equal(spawnedProcesses.length, 1);
 		const spawnCall = spawnedProcesses[0];
-		assert.equal(spawnCall.cmd, 'powershell.exe');
-		assert.equal(spawnCall.args[0], '-NoProfile');
-		assert.equal(spawnCall.args[1], '-ExecutionPolicy');
-		assert.equal(spawnCall.args[2], 'Bypass');
-		assert.equal(spawnCall.args[3], '-WindowStyle');
-		assert.equal(spawnCall.args[4], 'Hidden');
-		assert.equal(spawnCall.args[5], '-File');
-		assert.equal(spawnCall.args[6], scriptPath);
+		assert.equal(spawnCall.cmd, setupExe);
+		assert.equal(spawnCall.args.length, 1);
+		assert.equal(spawnCall.args[0], '--force-run');
 		assert.equal(spawnCall.opts.detached, true);
-		assert.equal(spawnCall.opts.windowsHide, true);
 	});
 
 	test('applyWindowsPortableUpdate writes a PowerShell script with single-quoted paths and rollback safety', () => {

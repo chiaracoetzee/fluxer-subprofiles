@@ -36,165 +36,36 @@ export function getUpdateLogPaths(): {tempLogPath: string; appLogPath: string} {
 }
 
 /**
- * Applies a Windows NSIS update by spawning a detached PowerShell process that:
- * 1. Waits for the current Electron process to exit
- * 2. Runs Setup.exe silently with /S and waits for completion
- * 3. Relaunches the updated application
- * 4. Cleans up staging directory and the script
+ * Applies a Windows NSIS update by launching the oneClick installer directly.
  *
- * Comprehensive progress, exit codes, and errors are written to both temp and app log files.
+ * The electron-builder oneClick NSIS installer (with runAfterFinish: true, the default)
+ * handles everything itself:
+ * - Shows a native progress bar UI (no prompts since oneClick: true)
+ * - Detects and closes the running application
+ * - Replaces files in place
+ * - Relaunches the updated application
+ * - Cleans up after itself
+ *
+ * The installer is a native Win32 executable, so it has no issues with Node's
+ * DETACHED_PROCESS flag (unlike PowerShell which requires a console handle).
  */
 export function applyWindowsNsisUpdate(
 	setupExePath: string,
-	stagingDirectory: string,
-	currentExePath: string = process.execPath,
+	_stagingDirectory: string,
+	_currentExePath: string = process.execPath,
 ): void {
-	const targetPid = process.pid;
-	const {tempLogPath, appLogPath} = getUpdateLogPaths();
+	log.info('Launching NSIS oneClick installer for update', {
+		setupExePath,
+		pid: process.pid,
+	});
 
-	// Write a PowerShell script to temp so we can run it completely detached and hidden
-	const scriptPath = join(tmpdir(), `fluxer-update-${Date.now()}.ps1`);
-	const script = [
-		'Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force -ErrorAction SilentlyContinue',
-		'$ErrorActionPreference = "Continue"',
-		`$targetPid = ${targetPid}`,
-		`$setupExe = ${toPowerShellLiteralString(setupExePath)}`,
-		`$currentExe = ${toPowerShellLiteralString(currentExePath)}`,
-		`$staging = ${toPowerShellLiteralString(stagingDirectory)}`,
-		`$script = ${toPowerShellLiteralString(scriptPath)}`,
-		`$tempLogPath = ${toPowerShellLiteralString(tempLogPath)}`,
-		`$appLogPath = ${toPowerShellLiteralString(appLogPath)}`,
-		'',
-		'function Write-UpdateLog([string]$msg) {',
-		'    $ts = (Get-Date).ToString("yyyy-MM-dd HH:mm:ss.fff")',
-		'    $line = "[$ts] $msg"',
-		'    try {',
-		'        if ($tempLogPath) {',
-		'            $dir = [System.IO.Path]::GetDirectoryName($tempLogPath)',
-		'            if ($dir -and -not [System.IO.Directory]::Exists($dir)) {',
-		'                [System.IO.Directory]::CreateDirectory($dir) | Out-Null',
-		'            }',
-		'            [System.IO.File]::AppendAllText($tempLogPath, $line + "`r`n", [System.Text.Encoding]::UTF8)',
-		'        }',
-		'    } catch {}',
-		'    try {',
-		'        if ($appLogPath) {',
-		'            $dir = [System.IO.Path]::GetDirectoryName($appLogPath)',
-		'            if ($dir -and -not [System.IO.Directory]::Exists($dir)) {',
-		'                [System.IO.Directory]::CreateDirectory($dir) | Out-Null',
-		'            }',
-		'            [System.IO.File]::AppendAllText($appLogPath, $line + "`r`n", [System.Text.Encoding]::UTF8)',
-		'        }',
-		'    } catch {}',
-		'}',
-		'',
-		'try {',
-		'    Write-UpdateLog "=========================================="',
-		'    Write-UpdateLog "Fluxer Windows NSIS Update Helper started"',
-		'    Write-UpdateLog "Target PID: $targetPid"',
-		'    Write-UpdateLog "Setup Executable: $setupExe"',
-		'    Write-UpdateLog "Current Executable: $currentExe"',
-		'    Write-UpdateLog "Staging Directory: $staging"',
-		'    Write-UpdateLog "Script Path: $script"',
-		'    Write-UpdateLog "PowerShell Version: $($PSVersionTable.PSVersion)"',
-		'',
-		'    # Verify Setup Exe exists before proceeding',
-		'    if (-not [System.IO.File]::Exists($setupExe)) {',
-		'        Write-UpdateLog "ERROR: Setup executable not found at: $setupExe"',
-		'        exit 1',
-		'    }',
-		'    $setupItem = Get-Item -LiteralPath $setupExe -ErrorAction SilentlyContinue',
-		'    if ($setupItem) {',
-		'        Write-UpdateLog "Setup executable verified on disk ($($setupItem.Length) bytes)"',
-		'    } else {',
-		'        Write-UpdateLog "Setup executable exists on disk."',
-		'    }',
-		'',
-		'    # Wait for the Electron process to exit (up to 60 seconds)',
-		'    Write-UpdateLog "Waiting for parent process $targetPid to exit (timeout: 60s)..."',
-		'    $waited = 0',
-		'    while ($waited -lt 60) {',
-		'        $proc = Get-Process -Id $targetPid -ErrorAction SilentlyContinue',
-		'        if (-not $proc) { break }',
-		'        Start-Sleep -Seconds 1',
-		'        $waited++',
-		'    }',
-		'    if ($waited -ge 60) {',
-		'        Write-UpdateLog "WARNING: Process $targetPid did not exit within 60s; terminating it..."',
-		'        Stop-Process -Id $targetPid -Force -ErrorAction SilentlyContinue',
-		'        Start-Sleep -Seconds 1',
-		'    } else {',
-		'        Write-UpdateLog "Parent process $targetPid exited cleanly."',
-		'    }',
-		'',
-		'    # Grace period for file locks to release',
-		'    Start-Sleep -Seconds 1',
-		'',
-		'    # Run NSIS installer silently and wait for it to complete',
-		'    Write-UpdateLog "Launching NSIS installer silently: $setupExe /S"',
-		'    $installerProc = Start-Process -FilePath $setupExe -ArgumentList "/S" -Wait -PassThru',
-		'    Write-UpdateLog "NSIS installer completed with ExitCode: $($installerProc.ExitCode)"',
-		'    if ($installerProc.ExitCode -ne 0) {',
-		'        Write-UpdateLog "WARNING: NSIS installer returned non-zero ExitCode $($installerProc.ExitCode)"',
-		'    }',
-		'',
-		'    # Grace period after installer finishes for files to settle',
-		'    Start-Sleep -Seconds 2',
-		'',
-		'    # Relaunch the application',
-		'    Write-UpdateLog "Checking application executable at: $currentExe"',
-		'    if ([System.IO.File]::Exists($currentExe)) {',
-		'        Write-UpdateLog "Relaunching application: $currentExe"',
-		'        $relaunched = Start-Process -FilePath $currentExe -PassThru',
-		'        Write-UpdateLog "Application successfully relaunched with PID: $($relaunched.Id)"',
-		'    } else {',
-		'        Write-UpdateLog "ERROR: Application executable not found at: $currentExe"',
-		'    }',
-		'',
-		'    # Clean up staging directory',
-		'    Start-Sleep -Seconds 2',
-		'    Write-UpdateLog "Cleaning up staging directory: $staging"',
-		'    try {',
-		'        if ([System.IO.Directory]::Exists($staging)) {',
-		'            [System.IO.Directory]::Delete($staging, $true)',
-		'        }',
-		'    } catch {',
-		'        Write-UpdateLog "Warning: Could not remove staging directory: $($_.Exception.Message)"',
-		'    }',
-		'    Write-UpdateLog "Fluxer update helper completed successfully."',
-		'} catch {',
-		'    Write-UpdateLog "CRITICAL ERROR in update helper script: $($_.Exception.ToString())"',
-		'} finally {',
-		'    try {',
-		'        if ([System.IO.File]::Exists($script)) {',
-		'            [System.IO.File]::Delete($script)',
-		'        }',
-		'    } catch {}',
-		'}',
-	].join('\r\n');
-
-	writeFileSync(scriptPath, script, 'utf8');
-
-	const child = spawn(
-		'powershell.exe',
-		['-NoProfile', '-ExecutionPolicy', 'Bypass', '-WindowStyle', 'Hidden', '-File', scriptPath],
-		{
-			detached: true,
-			stdio: 'ignore',
-			windowsHide: true,
-		},
-	);
+	const child = spawn(setupExePath, ['--force-run'], {
+		detached: true,
+		stdio: 'ignore',
+	});
 	child.unref();
 
-	log.info('Windows NSIS update helper launched', {
-		setupExePath,
-		currentExePath,
-		scriptPath,
-		tempLogPath,
-		appLogPath,
-		helperPid: child.pid,
-		parentPid: targetPid,
-	});
+	log.info('NSIS installer spawned', {helperPid: child.pid});
 }
 
 /**
