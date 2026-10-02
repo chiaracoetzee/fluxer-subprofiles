@@ -442,16 +442,21 @@ export function restoreWindowSession(): void {
 	// Restore secondary windows
 	const secondarySessions = sessions.filter((s) => !s.isMainWindow);
 	for (const session of secondarySessions) {
-		const bounds: Bounds = {x: session.x, y: session.y, width: session.width, height: session.height};
+		let bounds: Bounds = {x: session.x, y: session.y, width: session.width, height: session.height};
 		const visibleDisplay = findVisibleDisplay(displays, bounds);
-		if (!visibleDisplay) {
-			log.warn('Skipping session restore for off-screen window:', session.url);
-			continue;
+		if (!visibleDisplay && displays.length > 0) {
+			const primaryBounds = displays[0].bounds;
+			bounds = {
+				x: primaryBounds.x + 32,
+				y: primaryBounds.y + 32,
+				width: Math.min(bounds.width, primaryBounds.width - 64),
+				height: Math.min(bounds.height, primaryBounds.height - 64),
+			};
+			log.warn('Saved window was on disconnected monitor; repositioned to primary display:', session.url);
 		}
 
-		const win = createSecondaryAppWindow(session.url);
+		const win = createSecondaryAppWindow(session.url, bounds);
 		if (win && isAliveWindow(win)) {
-			win.setBounds({x: session.x, y: session.y, width: session.width, height: session.height});
 			if (session.isMaximized) {
 				win.maximize();
 			}
@@ -1255,7 +1260,10 @@ export function createWindow(options: CreateWindowOptions = {}): BrowserWindow {
 	return mainWindow;
 }
 
-export function createSecondaryAppWindow(targetUrl?: string): BrowserWindow | null {
+export function createSecondaryAppWindow(
+	targetUrl?: string,
+	initialBounds?: Partial<Bounds>,
+): BrowserWindow | null {
 	const baseAppUrl = getAppUrl();
 	let resolvedUrl = baseAppUrl;
 	if (targetUrl) {
@@ -1277,10 +1285,25 @@ export function createSecondaryAppWindow(targetUrl?: string): BrowserWindow | nu
 	let x: number | undefined;
 	let y: number | undefined;
 
-	if (referenceWin && isAliveWindow(referenceWin)) {
+	if (initialBounds?.width !== undefined) {
+		windowWidth = initialBounds.width;
+	} else if (referenceWin && isAliveWindow(referenceWin)) {
 		const bounds = referenceWin.getBounds();
 		windowWidth = bounds.width;
+	}
+
+	if (initialBounds?.height !== undefined) {
+		windowHeight = initialBounds.height;
+	} else if (referenceWin && isAliveWindow(referenceWin)) {
+		const bounds = referenceWin.getBounds();
 		windowHeight = bounds.height;
+	}
+
+	if (initialBounds?.x !== undefined && initialBounds?.y !== undefined) {
+		x = initialBounds.x;
+		y = initialBounds.y;
+	} else if (referenceWin && isAliveWindow(referenceWin)) {
+		const bounds = referenceWin.getBounds();
 		x = bounds.x + 32;
 		y = bounds.y + 32;
 	}

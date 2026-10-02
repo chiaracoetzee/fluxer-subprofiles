@@ -794,7 +794,7 @@ function registerAppImageUpdater(getMainWindow: () => BrowserWindow | null, targ
 	});
 }
 
-const GITHUB_CHECK_INTERVAL_MS = 4 * 60 * 60 * 1000; // 4 hours
+const GITHUB_CHECK_INTERVAL_MS = 30 * 60 * 1000; // 30 minutes
 
 async function checkGitHubForUpdates(
 	context: UpdaterContext,
