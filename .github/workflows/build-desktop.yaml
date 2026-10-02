@@ -68,7 +68,7 @@ jobs:
         working-directory: fluxer_desktop
         env:
           BUILD_CHANNEL: ${{ env.BUILD_CHANNEL }}
-          FLUXER_WIN_TARGETS: portable,zip
+          FLUXER_WIN_TARGETS: nsis,portable,zip
           ELECTRON_ARCH: x64
         run: pnpm exec electron-builder --config electron-builder.config.cjs --win --x64
 
