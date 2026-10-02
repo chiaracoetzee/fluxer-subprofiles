@@ -72,6 +72,8 @@ import {
 	createWindow,
 	getMainWindow,
 	hideWindow,
+	saveWindowBounds,
+	saveWindowSession,
 	setQuitting,
 	showWindow,
 } from '@electron/main/Window';
@@ -453,6 +455,8 @@ if (launchConfigurationError) {
 		app.on('before-quit', () => {
 			log.info('[Shutdown] before-quit received');
 			setQuitting(true);
+			saveWindowBounds();
+			saveWindowSession();
 			armQuitWatchdog('before-quit');
 		});
 		let quitCleanupStarted = false;
