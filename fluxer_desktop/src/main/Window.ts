@@ -168,11 +168,40 @@ let mainWindowRendererGone = false;
 const maximizeChangeForwarders = new WeakSet<BrowserWindow>();
 const voicePopoutWindows = new Map<string, BrowserWindow>();
 const secondaryAppWindows = new Set<BrowserWindow>();
+const activeWindowZOrder: Array<BrowserWindow> = [];
 const windowsHtmlFullscreenStates = new WeakMap<
 	BrowserWindow,
 	{resizable: boolean; bounds: Bounds; isMaximized: boolean; customChromeGuardActive: boolean}
 >();
 let lastGoodWindowBounds: Bounds | null = null;
+
+function bringWindowToZOrderTop(window: BrowserWindow): void {
+	const idx = activeWindowZOrder.indexOf(window);
+	if (idx !== -1) {
+		activeWindowZOrder.splice(idx, 1);
+	}
+	activeWindowZOrder.push(window);
+}
+
+function removeWindowFromZOrder(window: BrowserWindow): void {
+	const idx = activeWindowZOrder.indexOf(window);
+	if (idx !== -1) {
+		activeWindowZOrder.splice(idx, 1);
+	}
+}
+
+function trackWindowInZOrder(window: BrowserWindow): void {
+	if (!activeWindowZOrder.includes(window)) {
+		activeWindowZOrder.push(window);
+	}
+	window.on('focus', () => {
+		bringWindowToZOrderTop(window);
+		scheduleSaveWindowSession();
+	});
+	window.on('closed', () => {
+		removeWindowFromZOrder(window);
+	});
+}
 
 function getWindowStateFile(): string {
 	if (!windowStateFile) {
@@ -339,6 +368,8 @@ interface WindowSession {
 	height: number;
 	isMaximized: boolean;
 	isMainWindow: boolean;
+	zOrder?: number;
+	isFocused?: boolean;
 }
 
 function getWindowSessionFile(): string {
@@ -347,8 +378,11 @@ function getWindowSessionFile(): string {
 
 let lastKnownMainWindowUrl = '';
 let saveSessionTimeout: NodeJS.Timeout | null = null;
+let initialSessionRestored = false;
+let pendingInitialSessions: Array<WindowSession> | null = null;
 
 export function scheduleSaveWindowSession(): void {
+	if (isQuitting) return;
 	if (saveSessionTimeout) clearTimeout(saveSessionTimeout);
 	saveSessionTimeout = setTimeout(() => {
 		saveWindowSession();
@@ -369,8 +403,18 @@ function getWindowUrl(window: BrowserWindow): string {
 
 export function saveWindowSession(): void {
 	if (!getDesktopWindowBehaviorSettings().rememberWindowState) return;
+	if (!initialSessionRestored) {
+		log.debug('Skipping saveWindowSession before initial session restore completes');
+		return;
+	}
 	try {
 		const sessions: Array<WindowSession> = [];
+
+		const currentlyFocused = BrowserWindow.getFocusedWindow();
+		const topActiveWin =
+			currentlyFocused && isAliveWindow(currentlyFocused)
+				? currentlyFocused
+				: activeWindowZOrder.filter(isAliveWindow).pop();
 
 		// Save main window
 		if (mainWindow && isAliveWindow(mainWindow)) {
@@ -378,6 +422,7 @@ export function saveWindowSession(): void {
 			const isMaximized = mainWindow.isMinimized() ? lastRestorableMainWindowMaximized : mainWindow.isMaximized();
 			const currentUrl = getWindowUrl(mainWindow) || lastKnownMainWindowUrl;
 			if (currentUrl) {
+				const zIdx = activeWindowZOrder.indexOf(mainWindow);
 				sessions.push({
 					url: currentUrl,
 					x: bounds.x,
@@ -386,6 +431,8 @@ export function saveWindowSession(): void {
 					height: bounds.height,
 					isMaximized,
 					isMainWindow: true,
+					zOrder: zIdx !== -1 ? zIdx : 0,
+					isFocused: mainWindow === topActiveWin,
 				});
 			}
 		}
@@ -396,6 +443,7 @@ export function saveWindowSession(): void {
 			const bounds = win.getNormalBounds();
 			const url = getWindowUrl(win);
 			if (!url) continue;
+			const zIdx = activeWindowZOrder.indexOf(win);
 			sessions.push({
 				url,
 				x: bounds.x,
@@ -404,8 +452,22 @@ export function saveWindowSession(): void {
 				height: bounds.height,
 				isMaximized: win.isMaximized(),
 				isMainWindow: false,
+				zOrder: zIdx !== -1 ? zIdx : 0,
+				isFocused: win === topActiveWin,
 			});
 		}
+
+		// Never overwrite a valid session with 0 windows (e.g. during quit destruction)
+		if (sessions.length === 0) {
+			log.debug('Skipping saveWindowSession because window count is 0');
+			return;
+		}
+
+		// Sort sessions ascending by zOrder (0 = bottom, higher = top)
+		sessions.sort((a, b) => (a.zOrder ?? 0) - (b.zOrder ?? 0));
+		sessions.forEach((s, idx) => {
+			s.zOrder = idx;
+		});
 
 		const filePath = getWindowSessionFile();
 		fs.writeFileSync(filePath, JSON.stringify(sessions, null, 2), 'utf-8');
@@ -434,11 +496,21 @@ function loadWindowSession(): Array<WindowSession> | null {
 
 export function getInitialMainWindowUrl(): string {
 	const defaultAppUrl = getAppUrl();
-	if (!getDesktopWindowBehaviorSettings().rememberWindowState) return defaultAppUrl;
-	if (shouldIgnoreWindowStateForLaunch(process.argv)) return defaultAppUrl;
+	if (!getDesktopWindowBehaviorSettings().rememberWindowState) {
+		initialSessionRestored = true;
+		return defaultAppUrl;
+	}
+	if (shouldIgnoreWindowStateForLaunch(process.argv)) {
+		initialSessionRestored = true;
+		return defaultAppUrl;
+	}
 
 	const sessions = loadWindowSession();
-	if (!sessions) return defaultAppUrl;
+	pendingInitialSessions = sessions;
+	if (!sessions) {
+		initialSessionRestored = true;
+		return defaultAppUrl;
+	}
 	const mainSession = sessions.find((s) => s.isMainWindow);
 	if (!mainSession?.url) return defaultAppUrl;
 
@@ -464,14 +536,24 @@ export function getInitialMainWindowUrl(): string {
 	return defaultAppUrl;
 }
 
-export function restoreWindowSession(): void {
-	const sessions = loadWindowSession();
-	if (!sessions) return;
+export function restoreWindowSession(options: {startHidden?: boolean} = {}): void {
+	if (initialSessionRestored && !pendingInitialSessions) return;
+	const sessions = pendingInitialSessions ?? loadWindowSession();
+	pendingInitialSessions = null;
+	initialSessionRestored = true;
+	if (!sessions || sessions.length === 0) return;
+
+	// Sort sessions by zOrder ascending (0 = bottom-most, last = top-most)
+	const sortedSessions = [...sessions].sort((a, b) => (a.zOrder ?? 0) - (b.zOrder ?? 0));
+
+	// Find the session that was focused, or default to the top-most window
+	const focusedSession = sortedSessions.find((s) => s.isFocused) ?? sortedSessions[sortedSessions.length - 1];
 
 	const displays = screen.getAllDisplays();
+	const createdSecondaryMap = new Map<WindowSession, BrowserWindow>();
 
-	// Restore secondary windows
-	const secondarySessions = sessions.filter((s) => !s.isMainWindow);
+	// Restore secondary windows concurrently
+	const secondarySessions = sortedSessions.filter((s) => !s.isMainWindow);
 	for (const session of secondarySessions) {
 		let bounds: Bounds = {x: session.x, y: session.y, width: session.width, height: session.height};
 		const visibleDisplay = findVisibleDisplay(displays, bounds);
@@ -486,17 +568,81 @@ export function restoreWindowSession(): void {
 			log.warn('Saved window was on disconnected monitor; repositioned to primary display:', session.url);
 		}
 
-		const win = createSecondaryAppWindow(session.url, bounds);
+		const isTargetFocused = session === focusedSession && !options.startHidden;
+		const win = createSecondaryAppWindow(session.url, bounds, {
+			startHidden: options.startHidden,
+			shouldFocus: isTargetFocused,
+		});
 		if (win && isAliveWindow(win)) {
+			createdSecondaryMap.set(session, win);
 			if (session.isMaximized) {
 				win.maximize();
 			}
 		}
 	}
 
+	// Build the back-to-front window list
+	const orderedWindows: Array<{win: BrowserWindow; shouldFocus: boolean}> = [];
+	for (const session of sortedSessions) {
+		if (session.isMainWindow) {
+			if (mainWindow && isAliveWindow(mainWindow)) {
+				orderedWindows.push({
+					win: mainWindow,
+					shouldFocus: session === focusedSession && !options.startHidden,
+				});
+			}
+		} else {
+			const win = createdSecondaryMap.get(session);
+			if (win && isAliveWindow(win)) {
+				orderedWindows.push({
+					win,
+					shouldFocus: session === focusedSession && !options.startHidden,
+				});
+			}
+		}
+	}
+
+	// Initialize activeWindowZOrder in this exact back-to-front order
+	activeWindowZOrder.length = 0;
+	for (const item of orderedWindows) {
+		activeWindowZOrder.push(item.win);
+	}
+
+	// Function to apply stacking order: iterate back to front calling moveTop(), then focus top
+	const applyZOrder = () => {
+		for (const item of orderedWindows) {
+			if (isAliveWindow(item.win)) {
+				try {
+					item.win.moveTop();
+				} catch (error) {
+					log.warn('Failed to moveTop window during z-order restore:', error);
+				}
+			}
+		}
+		const topItem = orderedWindows.find((item) => item.shouldFocus) ?? orderedWindows[orderedWindows.length - 1];
+		if (topItem && isAliveWindow(topItem.win) && !options.startHidden) {
+			try {
+				topItem.win.focus();
+			} catch (error) {
+				log.warn('Failed to focus top window during z-order restore:', error);
+			}
+		}
+	};
+
+	// Apply immediately so HWND order is established
+	applyZOrder();
+
+	// Also re-apply after windows have had moments to show/paint
+	setTimeout(applyZOrder, 300);
+	setTimeout(applyZOrder, 800);
+
 	log.info('Restored window session:', {
+		totalWindowsRestored: orderedWindows.length,
 		secondaryWindowsRestored: secondarySessions.length,
 	});
+
+	// Now that secondary windows are active, schedule a session save to keep them in sync
+	scheduleSaveWindowSession();
 }
 
 function shouldHideMainWindowOnClose(): boolean {
@@ -911,6 +1057,7 @@ export function createWindow(options: CreateWindowOptions = {}): BrowserWindow {
 	const savedBounds = loadWindowBounds();
 	lastRestorableMainWindowMaximized = Boolean(savedBounds?.isMaximized);
 	logPhase('bounds');
+	const initialAppUrl = getInitialMainWindowUrl();
 	const windowWidth = savedBounds?.width ?? Math.min(DEFAULT_WINDOW_WIDTH, screenWidth);
 	const windowHeight = savedBounds?.height ?? Math.min(DEFAULT_WINDOW_HEIGHT, screenHeight);
 	const isMac = process.platform === 'darwin';
@@ -948,6 +1095,7 @@ export function createWindow(options: CreateWindowOptions = {}): BrowserWindow {
 		windowOptions.center = true;
 	}
 	mainWindow = new BrowserWindow(windowOptions);
+	trackWindowInZOrder(mainWindow);
 	mainWindowRendererGone = false;
 	installHtmlFullscreenChromeGuard(mainWindow);
 	lastGoodWindowBounds = mainWindow.getNormalBounds();
@@ -959,7 +1107,13 @@ export function createWindow(options: CreateWindowOptions = {}): BrowserWindow {
 	const showWindowOnce = () => {
 		if (!windowShown && mainWindow) {
 			windowShown = true;
-			mainWindow.show();
+			const mainSession = pendingInitialSessions?.find((s) => s.isMainWindow);
+			const hasMultiple = (pendingInitialSessions?.length ?? 0) > 1;
+			if (mainSession && mainSession.isFocused === false && hasMultiple) {
+				mainWindow.showInactive();
+			} else {
+				mainWindow.show();
+			}
 		}
 	};
 	if (!options.startHidden) {
@@ -1011,8 +1165,10 @@ export function createWindow(options: CreateWindowOptions = {}): BrowserWindow {
 	mainWindow.on('hide', refreshDesktopTrayMenu);
 	mainWindow.on('close', (event) => {
 		if (saveTimeout) clearTimeout(saveTimeout);
-		saveWindowBounds();
-		saveWindowSession();
+		if (!isQuitting) {
+			saveWindowBounds();
+			saveWindowSession();
+		}
 		if (!isQuitting && shouldHideMainWindowOnClose()) {
 			event.preventDefault();
 			logger.info('Window close hid the app to the tray; use Quit to terminate the process');
@@ -1172,7 +1328,6 @@ export function createWindow(options: CreateWindowOptions = {}): BrowserWindow {
 		appLoadFailurePrompt?.abort();
 		appLoadFailurePrompt = null;
 	};
-	const initialAppUrl = getInitialMainWindowUrl();
 	const appLoadRetry = createAppLoadRetry({
 		webContents,
 		appUrl: initialAppUrl,
@@ -1208,17 +1363,9 @@ export function createWindow(options: CreateWindowOptions = {}): BrowserWindow {
 				});
 		},
 	});
-	let sessionRestoredOnce = false;
 	webContents.on('did-finish-load', () => {
 		rendererGoneReloaded = false;
 		mainWindowRendererGone = false;
-		if (!sessionRestoredOnce) {
-			sessionRestoredOnce = true;
-			// Delay slightly to let the renderer initialize before spawning secondary windows
-			setTimeout(() => {
-				restoreWindowSession();
-			}, 1500);
-		}
 	});
 	webContents.on('did-navigate-in-page', (_event, navUrl) => {
 		if (navUrl && isTrustedOrigin(navUrl) && navUrl !== 'about:blank') {
@@ -1303,12 +1450,21 @@ export function createWindow(options: CreateWindowOptions = {}): BrowserWindow {
 		});
 		return {action: 'deny'};
 	});
+	setImmediate(() => {
+		restoreWindowSession({startHidden: Boolean(options.startHidden)});
+	});
 	return mainWindow;
+}
+
+export interface CreateSecondaryAppWindowOptions {
+	startHidden?: boolean;
+	shouldFocus?: boolean;
 }
 
 export function createSecondaryAppWindow(
 	targetUrl?: string,
 	initialBounds?: Partial<Bounds>,
+	options: CreateSecondaryAppWindowOptions = {},
 ): BrowserWindow | null {
 	const baseAppUrl = getAppUrl();
 	let resolvedUrl = baseAppUrl;
@@ -1391,23 +1547,30 @@ export function createSecondaryAppWindow(
 
 	const secondaryWin = new BrowserWindow(windowOptions);
 	secondaryAppWindows.add(secondaryWin);
+	trackWindowInZOrder(secondaryWin);
 	installHtmlFullscreenChromeGuard(secondaryWin);
 	forwardMaximizeChanges(secondaryWin);
 	secondaryWin.setMenuBarVisibility(false);
 
-	let shown = false;
+	let shown = Boolean(options.startHidden);
 	const showWindowOnce = () => {
 		if (!shown && isAliveWindow(secondaryWin)) {
 			shown = true;
-			secondaryWin.show();
+			if (options.shouldFocus === false) {
+				secondaryWin.showInactive();
+			} else {
+				secondaryWin.show();
+			}
 		}
 	};
-	secondaryWin.once('ready-to-show', showWindowOnce);
-	setTimeout(() => {
-		if (!shown) {
-			showWindowOnce();
-		}
-	}, 5000);
+	if (!options.startHidden) {
+		secondaryWin.once('ready-to-show', showWindowOnce);
+		setTimeout(() => {
+			if (!shown) {
+				showWindowOnce();
+			}
+		}, 5000);
+	}
 
 	secondaryWin.on('resize', scheduleSaveWindowSession);
 	secondaryWin.on('move', scheduleSaveWindowSession);
@@ -1415,7 +1578,9 @@ export function createSecondaryAppWindow(
 	secondaryWin.on('unmaximize', scheduleSaveWindowSession);
 	secondaryWin.on('closed', () => {
 		secondaryAppWindows.delete(secondaryWin);
-		scheduleSaveWindowSession();
+		if (!isQuitting) {
+			scheduleSaveWindowSession();
+		}
 	});
 
 	registerSpellcheck(secondaryWin.webContents);
@@ -1540,4 +1705,8 @@ export function hideWindow(): void {
 
 export function setQuitting(quitting: boolean): void {
 	isQuitting = quitting;
+	if (quitting && saveSessionTimeout) {
+		clearTimeout(saveSessionTimeout);
+		saveSessionTimeout = null;
+	}
 }
