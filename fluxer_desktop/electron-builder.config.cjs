@@ -1661,6 +1661,13 @@ module.exports = {
 	portable: {
 		artifactName: `${artifactProductName}-\${version}-portable-\${os}-\${arch}.\${ext}`,
 	},
+	nsis: {
+		oneClick: true,
+		perMachine: false,
+		allowToChangeInstallationDirectory: false,
+		deleteAppDataOnUninstall: false,
+		artifactName: `${artifactProductName}-Setup-\${version}-\${os}-\${arch}.\${ext}`,
+	},
 	linux: {
 		icon: `build_resources/${iconDir}/1024x1024.png`,
 		category: 'Network;InstantMessaging;Chat;',
