@@ -15,7 +15,8 @@ import {Tooltip} from '@app/features/ui/tooltip/Tooltip';
 import {useLingui} from '@lingui/react/macro';
 import {observer} from 'mobx-react-lite';
 import type React from 'react';
-import {useEffect, useRef} from 'react';
+import {useCallback, useEffect, useRef} from 'react';
+import {Routes} from '@app/app/Routes';
 
 interface GuildListItemContentProps extends GuildListItemProps {
 	readonly isDesktopLayout: boolean;
@@ -78,6 +79,21 @@ export const GuildListItemContent = observer((props: GuildListItemContentProps) 
 		if (focusable == null) return;
 		focusable.scrollIntoView({block: 'nearest'});
 	}, [props.isSelected]);
+	const handleAuxClick = useCallback(
+		(event: React.MouseEvent) => {
+			if (event.button === 1) {
+				event.preventDefault();
+				event.stopPropagation();
+				const targetUrl = Routes.guildChannel(props.guild.id);
+				if (window.electron?.openAppWindow) {
+					void window.electron.openAppWindow(targetUrl);
+				} else {
+					window.open(targetUrl, '_blank');
+				}
+			}
+		},
+		[props.guild.id],
+	);
 	const showHoverState = interaction.isHovering || interaction.contextMenuOpen;
 	const showGuildIndicator = state.hasUnreadMessages || props.isSelected || showHoverState;
 	const indicatorTarget = resolveGuildListIndicatorBarTarget({isSelected: props.isSelected, showHoverState});
@@ -130,6 +146,7 @@ export const GuildListItemContent = observer((props: GuildListItemContentProps) 
 						surfaceRef={surfaceRef}
 						dragAndDrop={props.dragAndDrop}
 						onClick={interaction.handleSelect}
+						onAuxClick={handleAuxClick}
 						onContextMenu={interaction.handleContextMenu}
 						onKeyDown={interaction.handleKeyDown}
 						onLongPress={interaction.handleLongPress}
