@@ -331,6 +331,139 @@ export function clearSavedWindowBounds(): void {
 	}
 }
 
+interface WindowSession {
+	url: string;
+	x: number;
+	y: number;
+	width: number;
+	height: number;
+	isMaximized: boolean;
+	isMainWindow: boolean;
+}
+
+function getWindowSessionFile(): string {
+	return path.join(app.getPath('userData'), 'window-session.json');
+}
+
+function getWindowUrl(window: BrowserWindow): string {
+	try {
+		return window.webContents.getURL();
+	} catch {
+		return '';
+	}
+}
+
+export function saveWindowSession(): void {
+	if (!getDesktopWindowBehaviorSettings().rememberWindowState) return;
+	try {
+		const sessions: Array<WindowSession> = [];
+
+		// Save main window
+		if (mainWindow && isAliveWindow(mainWindow)) {
+			const bounds = mainWindow.getNormalBounds();
+			const isMaximized = mainWindow.isMinimized() ? lastRestorableMainWindowMaximized : mainWindow.isMaximized();
+			sessions.push({
+				url: getWindowUrl(mainWindow),
+				x: bounds.x,
+				y: bounds.y,
+				width: bounds.width,
+				height: bounds.height,
+				isMaximized,
+				isMainWindow: true,
+			});
+		}
+
+		// Save secondary windows
+		for (const win of secondaryAppWindows) {
+			if (!isAliveWindow(win)) continue;
+			const bounds = win.getNormalBounds();
+			const url = getWindowUrl(win);
+			if (!url || url.length === 0) continue;
+			sessions.push({
+				url,
+				x: bounds.x,
+				y: bounds.y,
+				width: bounds.width,
+				height: bounds.height,
+				isMaximized: win.isMaximized(),
+				isMainWindow: false,
+			});
+		}
+
+		const filePath = getWindowSessionFile();
+		fs.writeFileSync(filePath, JSON.stringify(sessions, null, 2), 'utf-8');
+		log.debug('Saved window session:', {windowCount: sessions.length});
+	} catch (error) {
+		log.error('Failed to save window session:', error);
+	}
+}
+
+function loadWindowSession(): Array<WindowSession> | null {
+	if (shouldIgnoreWindowStateForLaunch(process.argv)) return null;
+	if (!getDesktopWindowBehaviorSettings().rememberWindowState) return null;
+	try {
+		const filePath = getWindowSessionFile();
+		if (!fs.existsSync(filePath)) return null;
+		const data = fs.readFileSync(filePath, 'utf-8');
+		const sessions = JSON.parse(data) as Array<WindowSession>;
+		if (!Array.isArray(sessions) || sessions.length === 0) return null;
+		log.info('Loaded window session:', {windowCount: sessions.length});
+		return sessions;
+	} catch (error) {
+		log.error('Failed to load window session:', error);
+		return null;
+	}
+}
+
+export function restoreWindowSession(): void {
+	const sessions = loadWindowSession();
+	if (!sessions) return;
+
+	const displays = screen.getAllDisplays();
+
+	// Find the main window session entry to get the saved URL
+	const mainSession = sessions.find((s) => s.isMainWindow);
+	if (mainSession && mainWindow && isAliveWindow(mainWindow)) {
+		// Navigate main window to saved URL (if it's a valid app route)
+		const appUrl = getAppUrl();
+		const savedPath = getSanitizedPath(mainSession.url);
+		if (savedPath && savedPath.startsWith('/channels/') && mainSession.url !== appUrl) {
+			try {
+				const resolvedUrl = new URL(savedPath, appUrl).toString();
+				if (isTrustedOrigin(resolvedUrl)) {
+					void mainWindow.loadURL(resolvedUrl).catch((error) => {
+						log.warn('Failed to restore main window URL:', error);
+					});
+				}
+			} catch {}
+		}
+	}
+
+	// Restore secondary windows
+	const secondarySessions = sessions.filter((s) => !s.isMainWindow);
+	for (const session of secondarySessions) {
+		const bounds: Bounds = {x: session.x, y: session.y, width: session.width, height: session.height};
+		const visibleDisplay = findVisibleDisplay(displays, bounds);
+		if (!visibleDisplay) {
+			log.warn('Skipping session restore for off-screen window:', session.url);
+			continue;
+		}
+
+		const win = createSecondaryAppWindow(session.url);
+		if (win && isAliveWindow(win)) {
+			win.setBounds({x: session.x, y: session.y, width: session.width, height: session.height});
+			if (session.isMaximized) {
+				win.maximize();
+			}
+		}
+	}
+
+	log.info('Restored window session:', {
+		mainWindowRestored: !!mainSession,
+		secondaryWindowsRestored: secondarySessions.length,
+	});
+}
+
 function shouldHideMainWindowOnClose(): boolean {
 	const settings = getDesktopWindowBehaviorSettings();
 	return hasActiveDesktopTray() && settings.showTrayIcon && settings.closeToTray;
@@ -841,6 +974,7 @@ export function createWindow(options: CreateWindowOptions = {}): BrowserWindow {
 	mainWindow.on('close', (event) => {
 		if (saveTimeout) clearTimeout(saveTimeout);
 		saveWindowBounds();
+		saveWindowSession();
 		if (!isQuitting && shouldHideMainWindowOnClose()) {
 			event.preventDefault();
 			logger.info('Window close hid the app to the tray; use Quit to terminate the process');
@@ -1035,9 +1169,17 @@ export function createWindow(options: CreateWindowOptions = {}): BrowserWindow {
 				});
 		},
 	});
+	let sessionRestoredOnce = false;
 	webContents.on('did-finish-load', () => {
 		rendererGoneReloaded = false;
 		mainWindowRendererGone = false;
+		if (!sessionRestoredOnce) {
+			sessionRestoredOnce = true;
+			// Delay slightly to let the renderer initialize before spawning secondary windows
+			setTimeout(() => {
+				restoreWindowSession();
+			}, 1500);
+		}
 	});
 	void clearStartupRenderingCaches(session).then(() => {
 		if (!isAliveWindow(mainWindow)) return;
