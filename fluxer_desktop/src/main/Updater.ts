@@ -27,6 +27,7 @@ import {
 import {
 	buildManualVersionDownloadUrl,
 	DOWNLOAD_PAGE_URL,
+	GITHUB_RELEASES_DOWNLOAD_PAGE_URL,
 	getManualDownloadOptions,
 	getManualDownloadUrl,
 	MANUAL_DESKTOP_FORMATS,
@@ -36,6 +37,20 @@ import {
 	UPDATE_BASE_URL,
 	type UpdaterDownloadOption,
 } from '@electron/main/UpdaterDownloads';
+import {
+	type DesktopUpdateMode,
+	discardStagedDownload,
+	downloadAssetToStaging,
+	fetchLatestDesktopRelease,
+	fetchSha256ForAsset,
+	GITHUB_RELEASES_PAGE_URL,
+	resolveDesktopAsset,
+	type StagedDownload,
+} from '@electron/main/GitHubReleasesUpdate';
+import {
+	applyWindowsNsisUpdate,
+	applyWindowsPortableUpdate,
+} from '@electron/main/WindowsUpdateHelper';
 import {setQuitting} from '@electron/main/Window';
 import {app, autoUpdater, type BrowserWindow, ipcMain} from 'electron';
 import log from 'electron-log';
@@ -98,6 +113,10 @@ let velopackInstallStarted = false;
 let pendingAppImageUpdate: PendingAppImageUpdate | null = null;
 let appImageUpdatePromise: Promise<void> | null = null;
 let appImageInstallStarted = false;
+let pendingGitHubDownload: StagedDownload | null = null;
+let gitHubCheckPromise: Promise<void> | null = null;
+let gitHubDownloadPromise: Promise<void> | null = null;
+let gitHubInstallStarted = false;
 
 const UPDATE_DOWNLOAD_MAX_ATTEMPTS = 5;
 const UPDATE_DOWNLOAD_RETRY_BASE_DELAY_MS = 3000;
@@ -775,6 +794,215 @@ function registerAppImageUpdater(getMainWindow: () => BrowserWindow | null, targ
 	});
 }
 
+const GITHUB_CHECK_INTERVAL_MS = 4 * 60 * 60 * 1000; // 4 hours
+
+async function checkGitHubForUpdates(
+	context: UpdaterContext,
+	getMainWindow: () => BrowserWindow | null,
+	mode: DesktopUpdateMode,
+): Promise<void> {
+	if (gitHubCheckPromise) {
+		return gitHubCheckPromise;
+	}
+	gitHubCheckPromise = (async () => {
+		send(getMainWindow(), {type: 'checking', context});
+		try {
+			const release = await fetchLatestDesktopRelease(context === 'user');
+			if (!release) {
+				send(getMainWindow(), {type: 'not-available', context});
+				return;
+			}
+
+			const current = app.getVersion();
+			if (compareVersions(release.version, current) <= 0) {
+				send(getMainWindow(), {type: 'not-available', context});
+				return;
+			}
+
+			// Check if we already have this version downloaded
+			if (pendingGitHubDownload && pendingGitHubDownload.version === release.version) {
+				send(getMainWindow(), {type: 'downloaded', context, version: release.version});
+				return;
+			}
+
+			const asset = resolveDesktopAsset(release, mode);
+			if (!asset) {
+				log.warn('No matching asset found for update mode', {mode, version: release.version});
+				send(getMainWindow(), {
+					type: 'available',
+					context,
+					version: release.version,
+					downloadSize: null,
+					downloadStarted: false,
+					downloadUrl: GITHUB_RELEASES_PAGE_URL,
+				});
+				return;
+			}
+
+			send(getMainWindow(), {
+				type: 'available',
+				context,
+				version: release.version,
+				downloadSize: asset.size,
+				downloadStarted: false,
+			});
+		} catch (error) {
+			log.warn('GitHub Releases update check failed', error);
+			send(getMainWindow(), {type: 'error', context, phase: 'check', message: getErrorMessage(error)});
+		}
+	})().finally(() => {
+		gitHubCheckPromise = null;
+	});
+	return gitHubCheckPromise;
+}
+
+async function downloadGitHubUpdate(
+	context: UpdaterContext,
+	getMainWindow: () => BrowserWindow | null,
+	mode: DesktopUpdateMode,
+): Promise<void> {
+	if (gitHubDownloadPromise) {
+		return gitHubDownloadPromise;
+	}
+	gitHubDownloadPromise = (async () => {
+		let lastError: unknown;
+		for (let attempt = 1; attempt <= UPDATE_DOWNLOAD_MAX_ATTEMPTS; attempt += 1) {
+			try {
+				const release = await fetchLatestDesktopRelease();
+				if (!release) {
+					send(getMainWindow(), {type: 'error', context, phase: 'download', message: 'No release found.'});
+					return;
+				}
+
+				const asset = resolveDesktopAsset(release, mode);
+				if (!asset) {
+					send(getMainWindow(), {
+						type: 'error',
+						context,
+						phase: 'download',
+						message: 'No matching download asset found.',
+					});
+					return;
+				}
+
+				// Fetch SHA-256 checksum
+				const sha256 = await fetchSha256ForAsset(release, asset.name);
+
+				// Download with progress
+				const staged = await downloadAssetToStaging(asset, sha256, (progress) => {
+					send(getMainWindow(), {
+						type: 'progress',
+						context,
+						percent: progress.percent,
+						transferred: progress.transferred,
+						total: progress.total,
+						bytesPerSecond: progress.bytesPerSecond,
+					});
+				});
+				staged.version = release.version;
+
+				// Discard any previous staged download
+				if (pendingGitHubDownload) {
+					discardStagedDownload(pendingGitHubDownload);
+				}
+				pendingGitHubDownload = staged;
+
+				send(getMainWindow(), {type: 'downloaded', context, version: release.version});
+				return;
+			} catch (error) {
+				lastError = error;
+				if (attempt >= UPDATE_DOWNLOAD_MAX_ATTEMPTS) {
+					break;
+				}
+				const delay = backoffDelay(attempt);
+				const reason = getErrorMessage(error);
+				const waitSeconds = Math.round(delay / 1000);
+				log.warn(
+					`GitHub update download attempt ${attempt}/${UPDATE_DOWNLOAD_MAX_ATTEMPTS} failed (${reason}); retrying in ${waitSeconds}s`,
+				);
+				await sleep(delay);
+			}
+		}
+		log.error('GitHub update download failed after retries', lastError);
+		send(getMainWindow(), {type: 'error', context, phase: 'download', message: getErrorMessage(lastError)});
+	})().finally(() => {
+		gitHubDownloadPromise = null;
+	});
+	return gitHubDownloadPromise;
+}
+
+function installGitHubUpdate(mode: DesktopUpdateMode): void {
+	if (gitHubInstallStarted) {
+		log.warn('GitHub update install already in progress; ignoring duplicate request.');
+		return;
+	}
+	const staged = pendingGitHubDownload;
+	if (!staged) {
+		throw new Error('No update is ready to install.');
+	}
+	gitHubInstallStarted = true;
+	setQuitting(true);
+	destroyDesktopTray();
+
+	if (process.platform === 'win32') {
+		if (mode === 'nsis') {
+			applyWindowsNsisUpdate(staged.filePath, staged.stagingDirectory);
+		} else {
+			applyWindowsPortableUpdate(staged.filePath, process.execPath, staged.stagingDirectory);
+		}
+		setImmediate(() => app.exit(0));
+		return;
+	}
+
+	if (process.platform === 'linux' && mode === 'appimage') {
+		const appImagePath = process.env.APPIMAGE;
+		if (appImagePath) {
+			const fs = require('node:fs') as typeof import('node:fs');
+			fs.renameSync(staged.filePath, appImagePath);
+			fs.chmodSync(appImagePath, 0o755);
+			discardStagedDownload(staged);
+			pendingGitHubDownload = null;
+			relaunchAndExit();
+			return;
+		}
+	}
+
+	// Fallback: clean up and relaunch
+	discardStagedDownload(staged);
+	pendingGitHubDownload = null;
+	relaunchAndExit();
+}
+
+function registerGitHubReleasesUpdater(getMainWindow: () => BrowserWindow | null, mode: DesktopUpdateMode): void {
+	log.info('Registering GitHub Releases updater', {mode, platform: process.platform});
+
+	// Clean up staged downloads on quit if not installing
+	app.on('will-quit', () => {
+		if (!pendingGitHubDownload || gitHubInstallStarted) {
+			return;
+		}
+		discardStagedDownload(pendingGitHubDownload);
+		pendingGitHubDownload = null;
+	});
+
+	ipcMain.handle('updater-check', async (_e, context: UpdaterContext) => {
+		lastContext = context;
+		await checkGitHubForUpdates(context, getMainWindow, mode);
+	});
+	ipcMain.handle('updater-download', async (_e, context: UpdaterContext) => {
+		lastContext = context;
+		await downloadGitHubUpdate(context, getMainWindow, mode);
+	});
+	ipcMain.handle('updater-install', async () => {
+		installGitHubUpdate(mode);
+	});
+
+	// Background check every 4 hours
+	setInterval(() => {
+		void checkGitHubForUpdates('background', getMainWindow, mode);
+	}, GITHUB_CHECK_INTERVAL_MS);
+}
+
 function registerManualUpdater(
 	getMainWindow: () => BrowserWindow | null,
 	reason: 'platform' | 'unpackaged' | 'managed-package',
@@ -824,8 +1052,19 @@ export function registerUpdater(getMainWindow: () => BrowserWindow | null) {
 		return;
 	}
 	if (!isOfficialFluxerInstance()) {
-		log.info('Running against self-hosted homeserver; upstream in-app updates disabled.');
-		registerManualUpdater(getMainWindow, 'managed-package');
+		log.info('Running against self-hosted homeserver; using GitHub Releases updater.');
+		if (process.platform === 'win32') {
+			const {isWindowsNsisInstalled} = require('@electron/main/WindowsUpdateHelper') as typeof import('@electron/main/WindowsUpdateHelper');
+			const mode: DesktopUpdateMode = isPortableMode() ? 'portable' : (isWindowsNsisInstalled() ? 'nsis' : 'portable');
+			registerGitHubReleasesUpdater(getMainWindow, mode);
+			return;
+		}
+		if (process.platform === 'linux' && isRunningFromAppImage()) {
+			registerGitHubReleasesUpdater(getMainWindow, 'appimage');
+			return;
+		}
+		// macOS and other platforms: manual download with GitHub Releases URL
+		registerManualUpdater(getMainWindow, 'platform');
 		return;
 	}
 	if (isPortableMode()) {

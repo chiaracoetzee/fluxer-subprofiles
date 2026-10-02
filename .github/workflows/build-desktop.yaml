@@ -17,6 +17,11 @@ on:
         required: false
         default: 'windows,macos'
         type: string
+      version:
+        description: 'Version number to stamp into the build (e.g. 1.2.0)'
+        required: false
+        default: ''
+        type: string
 
 permissions:
   contents: write
@@ -70,6 +75,7 @@ jobs:
           BUILD_CHANNEL: ${{ env.BUILD_CHANNEL }}
           FLUXER_WIN_TARGETS: nsis,portable,zip
           ELECTRON_ARCH: x64
+          VERSION: ${{ inputs.version || '' }}
         run: pnpm exec electron-builder --config electron-builder.config.cjs --win --x64
 
       - name: Upload Windows Artifacts
@@ -121,6 +127,7 @@ jobs:
         env:
           BUILD_CHANNEL: ${{ env.BUILD_CHANNEL }}
           CSC_IDENTITY_AUTO_DISCOVERY: false
+          VERSION: ${{ inputs.version || '' }}
         run: pnpm exec electron-builder --config electron-builder.config.cjs --mac dmg zip --arm64
 
       - name: Upload macOS Artifacts
@@ -179,6 +186,7 @@ jobs:
         env:
           BUILD_CHANNEL: ${{ env.BUILD_CHANNEL }}
           FLUXER_SKIP_GLIBC_CHECK: 'true'
+          VERSION: ${{ inputs.version || '' }}
         run: pnpm exec electron-builder --config electron-builder.config.cjs --linux AppImage
 
       - name: Upload Linux Artifacts

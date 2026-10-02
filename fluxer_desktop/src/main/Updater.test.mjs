@@ -146,6 +146,19 @@ function loadUpdater({
 				state.relaunched = true;
 			},
 		},
+		'@electron/main/GitHubReleasesUpdate': {
+			fetchLatestDesktopRelease: async () => null,
+			resolveDesktopAsset: () => null,
+			fetchSha256ForAsset: async () => null,
+			downloadAssetToStaging: async () => ({filePath: '', stagingDirectory: '', version: ''}),
+			discardStagedDownload() {},
+			GITHUB_RELEASES_PAGE_URL: 'https://github.com/test/test/releases/latest',
+		},
+		'@electron/main/WindowsUpdateHelper': {
+			applyWindowsNsisUpdate() {},
+			applyWindowsPortableUpdate() {},
+			isWindowsNsisInstalled: () => false,
+		},
 		'@electron/main/Window': {setQuitting() {}},
 		'electron-log': {info() {}, warn() {}, error() {}, debug() {}},
 		electron: {
