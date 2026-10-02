@@ -366,6 +366,8 @@ export interface ElectronAPI {
 	downloadFile: (url: string, defaultPath: string, sha256?: string | null) => Promise<DownloadFileResult>;
 	toggleDevTools: () => void;
 	showNotification: (options: NotificationOptions) => Promise<NotificationResult>;
+	claimNotificationForSound?: (messageId: string, channelId?: string) => Promise<boolean>;
+	setFocusedChannel?: (channelId: string | null) => void;
 	shouldPlayNotificationSound?: () => Promise<boolean>;
 	getStreamerModeCaptureAppStatus?: () => Promise<StreamerModeCaptureAppStatus>;
 	closeNotification: (id: string) => void;

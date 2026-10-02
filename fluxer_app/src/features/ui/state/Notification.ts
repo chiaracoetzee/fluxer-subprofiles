@@ -27,6 +27,7 @@ import {FRIEND_ADDED_DESCRIPTOR} from '@app/features/relationship/utils/Relation
 import StreamerMode from '@app/features/streamer_mode/state/StreamerMode';
 import Modal from '@app/features/ui/state/Modal';
 import {isInstalledPwa} from '@app/features/ui/utils/PwaUtils';
+import {getElectronAPI} from '@app/features/ui/utils/NativeUtils';
 import type {User} from '@app/features/user/models/User';
 import UserGuildSettings from '@app/features/user/state/UserGuildSettings';
 import Users from '@app/features/user/state/Users';
@@ -137,6 +138,7 @@ class NotificationState {
 	notifiedMessageIds = new LRUCache<string, boolean>({max: CACHE_SIZE});
 	private isPersisting = false;
 	private accountReactionDisposer: (() => void) | null = null;
+	private focusedChannelReactionDisposer: (() => void) | null = null;
 	private i18n: I18n | null = null;
 
 	constructor() {
@@ -169,6 +171,15 @@ class NotificationState {
 				},
 			);
 		});
+		queueMicrotask(() => {
+			this.focusedChannelReactionDisposer = reaction(
+				() => [this.focused, this.getVisibleChannelId()],
+				([focused, channelId]) => {
+					getElectronAPI()?.setFocusedChannel?.(focused ? (channelId as string | null) : null);
+				},
+				{fireImmediately: true},
+			);
+		});
 		if (IS_DEV) {
 			window.__notificationCleanup = () => this.cleanup();
 		}
@@ -194,6 +205,8 @@ class NotificationState {
 		this.isPersisting = false;
 		this.accountReactionDisposer?.();
 		this.accountReactionDisposer = null;
+		this.focusedChannelReactionDisposer?.();
+		this.focusedChannelReactionDisposer = null;
 	}
 
 	getUnreadMessageBadgeEnabled(): boolean {
@@ -290,8 +303,17 @@ class NotificationState {
 		this.notifiedMessageIds.set(key, true);
 	}
 
-	private claimNotification(key: string): boolean {
+	private async claimNotification(key: string, channelId?: string): Promise<boolean> {
 		if (this.notifiedMessageIds.has(key)) return false;
+		const electronApi = getElectronAPI();
+		if (electronApi?.claimNotificationForSound) {
+			try {
+				const claimed = await electronApi.claimNotificationForSound(key, channelId);
+				if (!claimed) return false;
+			} catch (error) {
+				logger.warn('Failed to claim notification via desktop IPC', error);
+			}
+		}
 		this.markNotified(key);
 		return true;
 	}
@@ -383,7 +405,7 @@ class NotificationState {
 		}
 	}
 
-	handleMessageCreate({message}: {message: WireMessage}): boolean {
+	async handleMessageCreate({message}: {message: WireMessage}): Promise<boolean> {
 		if (StreamerMode.shouldDisableNotifications) {
 			return false;
 		}
@@ -394,6 +416,7 @@ class NotificationState {
 			this.isViewingChannel(message.channel_id) &&
 			this.isFocusedForNotifications();
 		if (isFocusedViewingChannel && !Modal.hasModalOpen()) {
+			void this.claimNotification(message.id, message.channel_id);
 			NotificationUtils.playSameChannelNotificationSoundIfEnabled();
 			this.markNotified(message.id);
 			return true;
@@ -406,7 +429,8 @@ class NotificationState {
 		if (!this.shouldNotifyBasedOnSettings(channel, messageRecord, currentUser)) {
 			return false;
 		}
-		if (!this.claimNotification(message.id)) {
+		const claimed = await this.claimNotification(message.id, message.channel_id);
+		if (!claimed) {
 			return false;
 		}
 		if (isFocusedViewingChannel && Modal.hasModalOpen()) {
@@ -476,12 +500,12 @@ class NotificationState {
 		notificationTracker.clearChannel(channelId);
 	}
 
-	handleRelationshipNotification(
+	async handleRelationshipNotification(
 		relationship: RelationshipWire,
 		options?: {
 			event?: 'add' | 'update';
 		},
-	): void {
+	): Promise<void> {
 		if (RuntimeConfig.directMessagesDisabled) {
 			return;
 		}
@@ -525,6 +549,10 @@ class NotificationState {
 			this.markNotified(cacheKey);
 			return;
 		}
+		const claimed = await this.claimNotification(cacheKey);
+		if (!claimed) {
+			return;
+		}
 		void NotificationUtils.showNotification({
 			id: cacheKey,
 			title,
@@ -534,7 +562,6 @@ class NotificationState {
 		}).catch((error) => {
 			logger.error('Failed to show relationship notification', {cacheKey}, error);
 		});
-		this.markNotified(cacheKey);
 	}
 }
 

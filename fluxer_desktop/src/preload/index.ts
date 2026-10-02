@@ -498,6 +498,11 @@ const api: ElectronAPI = {
 		ipcRenderer.invoke('set-display-media-portal-preference', preference),
 	showNotification: (options: NotificationOptions): Promise<NotificationResult> =>
 		ipcRenderer.invoke('show-notification', options),
+	claimNotificationForSound: (messageId: string, channelId?: string): Promise<boolean> =>
+		ipcRenderer.invoke('claim-notification-for-sound', messageId, channelId),
+	setFocusedChannel: (channelId: string | null): void => {
+		ipcRenderer.send('set-focused-channel', channelId);
+	},
 	shouldPlayNotificationSound: (): Promise<boolean> => ipcRenderer.invoke('notification-sound-allowed'),
 	getStreamerModeCaptureAppStatus: (): Promise<StreamerModeCaptureAppStatus> =>
 		ipcRenderer.invoke('streamer-mode:get-capture-app-status'),
