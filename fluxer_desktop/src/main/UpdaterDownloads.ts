@@ -21,6 +21,7 @@ const PKGS_BASE_URL = 'https://pkgs.fluxer.com';
 export const UPDATE_BASE_URL = `${PKGS_BASE_URL}/desktop/${BUILD_CHANNEL}/${process.platform}/${DESKTOP_DOWNLOAD_ARCH}`;
 export const DOWNLOAD_PAGE_URL =
 	BUILD_CHANNEL === 'canary' ? 'https://canary.fluxer.app/download' : 'https://fluxer.app/download';
+export const GITHUB_RELEASES_DOWNLOAD_PAGE_URL = 'https://github.com/chiaracoetzee/fluxer-subprofiles/releases/latest';
 
 export const MANUAL_DESKTOP_FORMATS = ['setup', 'dmg', 'zip', 'appimage', 'deb', 'rpm', 'tar_gz'] as const;
 

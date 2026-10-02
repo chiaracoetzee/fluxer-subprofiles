@@ -117,6 +117,7 @@ function loadUpdater({
 	arch = 'arm64',
 	velopack,
 	applyAttempt = null,
+	windows = null,
 }) {
 	const events = [];
 	const handlers = new Map();
@@ -146,9 +147,29 @@ function loadUpdater({
 				state.relaunched = true;
 			},
 		},
-		'@electron/main/Window': {setQuitting() {}},
+		'@electron/main/GitHubReleasesUpdate': {
+			fetchLatestDesktopRelease: async () => null,
+			resolveDesktopAsset: () => null,
+			fetchSha256ForAsset: async () => null,
+			downloadAssetToStaging: async () => ({filePath: '', stagingDirectory: '', version: ''}),
+			discardStagedDownload() {},
+			GITHUB_RELEASES_PAGE_URL: 'https://github.com/test/test/releases/latest',
+		},
+		'@electron/main/WindowsUpdateHelper': {
+			applyWindowsNsisUpdate() {},
+			applyWindowsPortableUpdate() {},
+			isWindowsNsisInstalled: () => false,
+		},
+		'@electron/main/Window': {
+			setQuitting() {},
+			saveWindowBounds() {},
+			saveWindowSession() {},
+		},
 		'electron-log': {info() {}, warn() {}, error() {}, debug() {}},
 		electron: {
+			BrowserWindow: {
+				getAllWindows: () => windows ?? [],
+			},
 			app: {
 				isPackaged: true,
 				getVersion: () => version,
@@ -568,4 +589,36 @@ describe('Updater Windows apply failures', () => {
 		assert.deepEqual(updater.applied, []);
 		assert.deepEqual(updater.applyState.recorded, []);
 	});
+
+	test('broadcasts updater events across all open windows', async () => {
+		const install = createInstall();
+		const window1Events = [];
+		const window2Events = [];
+		const win1 = {
+			isDestroyed: () => false,
+			webContents: {
+				isDestroyed: () => false,
+				send: (_channel, event) => window1Events.push(event),
+			},
+		};
+		const win2 = {
+			isDestroyed: () => false,
+			webContents: {
+				isDestroyed: () => false,
+				send: (_channel, event) => window2Events.push(event),
+			},
+		};
+		const updater = loadUpdater({
+			appImagePath: install.installedPath,
+			appDir: install.mount,
+			windows: [win1, win2],
+		});
+
+		await updater.check();
+
+		assert.ok(window1Events.length > 0);
+		assert.ok(window2Events.length > 0);
+		assert.deepEqual(window1Events, window2Events);
+	});
 });
+
