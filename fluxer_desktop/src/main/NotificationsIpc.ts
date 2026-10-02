@@ -10,7 +10,7 @@ import {t} from '@electron/main/MainI18n';
 import {resolveNotificationIcon} from '@electron/main/NotificationIcon';
 import {shouldPlayNotificationSound} from '@electron/main/NotificationState';
 import {requirePrivilegedRendererDocumentSender} from '@electron/main/PrivilegedRendererDocuments';
-import {type BrowserWindow, ipcMain, Notification, nativeImage} from 'electron';
+import {BrowserWindow, ipcMain, Notification, nativeImage} from 'electron';
 
 const logger = createChildLogger('Notifications');
 const requireModule = createRequire(import.meta.url);
@@ -163,6 +163,26 @@ interface LinuxNotificationHandle {
 type ActiveNotificationHandle = NotificationHandle | LinuxNotificationHandle;
 
 const activeNotifications = new Map<string, ActiveNotificationHandle>();
+
+const CLAIM_CACHE_MAX = 500;
+const claimedNotificationIds = new Map<string, number>();
+
+function pruneClaimCache(): void {
+	if (claimedNotificationIds.size <= CLAIM_CACHE_MAX) return;
+	const excess = claimedNotificationIds.size - CLAIM_CACHE_MAX;
+	const iter = claimedNotificationIds.keys();
+	for (let i = 0; i < excess; i++) {
+		const key = iter.next().value;
+		if (key !== undefined) claimedNotificationIds.delete(key);
+	}
+}
+
+let activeFocusedChannel: {senderId: number; channelId: string | null} | null = null;
+
+export function resetNotificationClaimsForTesting(): void {
+	claimedNotificationIds.clear();
+	activeFocusedChannel = null;
+}
 
 let notificationIdCounter = 0;
 let linuxNativeClient: NativeNotificationClient | null = null;
@@ -318,6 +338,43 @@ async function showLinuxNativeNotification(
 }
 
 export function registerNotificationIpcHandlers(getMainWindow: () => BrowserWindow | null): void {
+	ipcMain.on('set-focused-channel', (event, channelId: string | null) => {
+		if (channelId) {
+			activeFocusedChannel = {senderId: event.sender.id, channelId};
+		} else if (activeFocusedChannel?.senderId === event.sender.id) {
+			activeFocusedChannel = null;
+		}
+	});
+
+	ipcMain.handle(
+		'claim-notification-for-sound',
+		(
+			event,
+			messageId: string,
+			channelId?: string,
+		): boolean => {
+			requirePrivilegedRendererDocumentSender(event, 'claim-notification-for-sound');
+
+			const focusedWin = typeof BrowserWindow.getFocusedWindow === 'function' ? BrowserWindow.getFocusedWindow() : null;
+			if (
+				channelId &&
+				focusedWin &&
+				focusedWin.webContents?.id !== event.sender.id &&
+				activeFocusedChannel?.senderId === focusedWin.webContents?.id &&
+				activeFocusedChannel.channelId === channelId
+			) {
+				return false;
+			}
+
+			if (claimedNotificationIds.has(messageId)) {
+				return false;
+			}
+			claimedNotificationIds.set(messageId, Date.now());
+			pruneClaimCache();
+			return true;
+		},
+	);
+
 	ipcMain.handle('notification-sound-allowed', async (): Promise<boolean> => shouldPlayNotificationSound());
 	ipcMain.handle(
 		'show-notification',
