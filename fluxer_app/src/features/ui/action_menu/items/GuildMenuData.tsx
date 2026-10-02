@@ -24,6 +24,7 @@ import {
 	MARK_AS_READ_DESCRIPTOR,
 	MUTE_COMMUNITY_DESCRIPTOR,
 	NOTIFICATION_SETTINGS_DESCRIPTOR,
+	OPEN_IN_NEW_WINDOW_DESCRIPTOR,
 	PRIVACY_SETTINGS_DESCRIPTOR,
 	RESET_MATURE_CONTENT_AGREE_STATE_DESCRIPTOR,
 	UNMUTE_COMMUNITY_DESCRIPTOR,
@@ -48,6 +49,7 @@ import {
 	MarkAsReadIcon,
 	MuteIcon,
 	NotificationSettingsIcon,
+	OpenLinkIcon,
 	PrivacySettingsIcon,
 	ReportUserIcon,
 	SettingsIcon,
@@ -101,6 +103,7 @@ interface UseGuildMenuDataOptions {
 }
 
 export interface GuildMenuHandlers {
+	handleOpenInNewWindow: () => void;
 	handleMarkAsRead: () => void;
 	handleInviteMembers: () => void;
 	handleCommunitySettings: () => void;
@@ -180,6 +183,15 @@ export function useGuildMenuData(guild: Guild, options: UseGuildMenuDataOptions)
 		: channels.some((channel) => ReadStates.hasUnread(channel.id));
 	const handlers = useMemo(
 		() => ({
+			handleOpenInNewWindow: () => {
+				const targetUrl = Routes.guildChannel(guild.id);
+				if (window.electron?.openAppWindow) {
+					void window.electron.openAppWindow(targetUrl);
+				} else {
+					window.open(targetUrl, '_blank');
+				}
+				onClose();
+			},
 			handleMarkAsRead: () => {
 				const channelIds = channels
 					.filter((channel) => ReadStates.isUnreadOrMentioned(channel.id))
@@ -336,6 +348,11 @@ export function useGuildMenuData(guild: Guild, options: UseGuildMenuDataOptions)
 	const groups = useMemo(() => {
 		const menuGroups: Array<MenuGroupType> = [];
 		const quickActions: Array<MenuItemType | MenuSubmenuItemType> = [];
+		quickActions.push({
+			icon: <OpenLinkIcon size={20} data-flx="ui.action-menu.items.guild-menu-data.groups.open-in-new-window-icon" />,
+			label: i18n._(OPEN_IN_NEW_WINDOW_DESCRIPTOR),
+			onClick: handlers.handleOpenInNewWindow,
+		});
 		if (hasGuildUnread) {
 			quickActions.push({
 				icon: <MarkAsReadIcon size={20} data-flx="ui.action-menu.items.guild-menu-data.groups.mark-as-read-icon" />,

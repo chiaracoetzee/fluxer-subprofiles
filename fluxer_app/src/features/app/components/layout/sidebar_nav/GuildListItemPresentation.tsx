@@ -263,6 +263,7 @@ export interface GuildListItemPresentationProps {
 	readonly surfaceRef: React.RefCallback<HTMLElement>;
 	readonly dragAndDrop: GuildListItemDragAndDrop | null;
 	readonly onClick: () => void;
+	readonly onAuxClick?: (event: React.MouseEvent) => void;
 	readonly onContextMenu: (event: React.MouseEvent) => void;
 	readonly onKeyDown: (event: React.KeyboardEvent) => void;
 	readonly onLongPress: () => void;
@@ -270,7 +271,7 @@ export interface GuildListItemPresentationProps {
 
 type GuildListItemPresentationDomProps = Omit<
 	React.HTMLAttributes<HTMLElement>,
-	'onClick' | 'onContextMenu' | 'onKeyDown'
+	'onClick' | 'onAuxClick' | 'onContextMenu' | 'onKeyDown'
 >;
 
 export const GuildListItemPresentation = forwardRef<
@@ -291,6 +292,7 @@ export const GuildListItemPresentation = forwardRef<
 		isSelected,
 		isSortingList,
 		mentionCount,
+		onAuxClick,
 		onClick,
 		onContextMenu,
 		onKeyDown,
@@ -327,6 +329,7 @@ export const GuildListItemPresentation = forwardRef<
 			)}
 			aria-label={guildARIALabel}
 			onClick={onClick}
+			onAuxClick={onAuxClick}
 			onContextMenu={onContextMenu}
 			onKeyDown={onKeyDown}
 			ref={rootRef}
