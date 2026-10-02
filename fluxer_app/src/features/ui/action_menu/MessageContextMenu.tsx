@@ -616,6 +616,7 @@ export const MessageContextMenu: React.FC<MessageContextMenuProps> = observer(
 					{showViewReactions && viewReactionsItem && renderDataMenuItem(viewReactionsItem, 'view-reactions')}
 				</MenuGroup>
 			);
+		};
 		const renderInteractionGroup = () => {
 			if (!editItem && !changePersonaItem && !replyItem && !forwardItem && !createThreadItem && !crosspostItem) return null;
 			return (
