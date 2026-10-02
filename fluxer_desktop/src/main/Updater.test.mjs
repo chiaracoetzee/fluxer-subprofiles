@@ -159,7 +159,11 @@ function loadUpdater({
 			applyWindowsPortableUpdate() {},
 			isWindowsNsisInstalled: () => false,
 		},
-		'@electron/main/Window': {setQuitting() {}},
+		'@electron/main/Window': {
+			setQuitting() {},
+			saveWindowBounds() {},
+			saveWindowSession() {},
+		},
 		'electron-log': {info() {}, warn() {}, error() {}, debug() {}},
 		electron: {
 			app: {

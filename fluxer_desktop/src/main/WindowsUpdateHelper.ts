@@ -4,53 +4,166 @@ import {spawn} from 'node:child_process';
 import {existsSync, writeFileSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {dirname, join} from 'node:path';
+import {app} from 'electron';
 import log from 'electron-log';
 
 /**
- * Applies a Windows NSIS update by spawning a detached cmd.exe process that:
- * 1. Waits for the current Electron process to exit
- * 2. Runs the Setup.exe with /S (silent install)
- * 3. Cleans up the staging directory
- *
- * NSIS /S handles killing any remaining processes, replacing files, and relaunching.
+ * Returns paths where update helper logs should be written.
+ * - tempLogPath: in %TEMP%\fluxer-update.log (always writable)
+ * - appLogPath: in the user's AppData\Roaming\fluxer\logs\update-helper.log (next to main.log)
  */
-export function applyWindowsNsisUpdate(setupExePath: string, stagingDirectory: string): void {
-	const pid = process.pid;
+export function getUpdateLogPaths(): {tempLogPath: string; appLogPath: string} {
+	const tempLogPath = join(tmpdir(), 'fluxer-update.log');
+	let appLogPath = '';
+	try {
+		appLogPath = join(app.getPath('userData'), 'logs', 'update-helper.log');
+	} catch {
+		if (process.env.APPDATA) {
+			appLogPath = join(process.env.APPDATA, 'fluxer', 'logs', 'update-helper.log');
+		}
+	}
+	return {tempLogPath, appLogPath};
+}
 
-	// Write a batch script to temp so we can run it detached
-	const scriptPath = join(tmpdir(), `fluxer-update-${Date.now()}.cmd`);
+/**
+ * Applies a Windows NSIS update by spawning a detached PowerShell process that:
+ * 1. Waits for the current Electron process to exit
+ * 2. Runs Setup.exe silently with /S and waits for completion
+ * 3. Relaunches the updated application
+ * 4. Cleans up staging directory and the script
+ *
+ * Comprehensive progress, exit codes, and errors are written to both temp and app log files.
+ */
+export function applyWindowsNsisUpdate(
+	setupExePath: string,
+	stagingDirectory: string,
+	currentExePath: string = process.execPath,
+): void {
+	const targetPid = process.pid;
+	const {tempLogPath, appLogPath} = getUpdateLogPaths();
+
+	// Write a PowerShell script to temp so we can run it completely detached and hidden
+	const scriptPath = join(tmpdir(), `fluxer-update-${Date.now()}.ps1`);
 	const script = [
-		'@echo off',
-		// Wait for the Electron process to exit (up to 30 seconds)
-		`:wait`,
-		`tasklist /FI "PID eq ${pid}" 2>NUL | find /I "${pid}" >NUL`,
-		`if %ERRORLEVEL% EQU 0 (`,
-		`    timeout /T 1 /NOBREAK >NUL`,
-		`    goto wait`,
-		`)`,
-		// Small grace period after process exit
-		`timeout /T 2 /NOBREAK >NUL`,
-		// Run NSIS installer silently
-		`"${setupExePath}" /S`,
-		// Clean up staging directory and this script
-		`rmdir /S /Q "${stagingDirectory}" 2>NUL`,
-		`del /F /Q "${scriptPath}" 2>NUL`,
+		'$ErrorActionPreference = "Continue"',
+		`$targetPid = ${targetPid}`,
+		`$setupExe = "${setupExePath.replace(/\\/g, '\\\\')}"`,
+		`$currentExe = "${currentExePath.replace(/\\/g, '\\\\')}"`,
+		`$staging = "${stagingDirectory.replace(/\\/g, '\\\\')}"`,
+		`$script = "${scriptPath.replace(/\\/g, '\\\\')}"`,
+		`$tempLogPath = "${tempLogPath.replace(/\\/g, '\\\\')}"`,
+		`$appLogPath = "${appLogPath.replace(/\\/g, '\\\\')}"`,
+		'',
+		'function Write-UpdateLog([string]$msg) {',
+		'    $ts = (Get-Date).ToString("yyyy-MM-dd HH:mm:ss.fff")',
+		'    $line = "[$ts] $msg"',
+		'    if ($tempLogPath) {',
+		'        Add-Content -LiteralPath $tempLogPath -Value $line -ErrorAction SilentlyContinue',
+		'    }',
+		'    if ($appLogPath) {',
+		'        Add-Content -LiteralPath $appLogPath -Value $line -ErrorAction SilentlyContinue',
+		'    }',
+		'}',
+		'',
+		'try {',
+		'    # Ensure log directories exist',
+		'    $tempDir = Split-Path -Parent $tempLogPath',
+		'    if ($tempDir -and (-not (Test-Path -LiteralPath $tempDir))) {',
+		'        New-Item -ItemType Directory -LiteralPath $tempDir -Force -ErrorAction SilentlyContinue | Out-Null',
+		'    }',
+		'    if ($appLogPath) {',
+		'        $appDir = Split-Path -Parent $appLogPath',
+		'        if ($appDir -and (-not (Test-Path -LiteralPath $appDir))) {',
+		'            New-Item -ItemType Directory -LiteralPath $appDir -Force -ErrorAction SilentlyContinue | Out-Null',
+		'        }',
+		'    }',
+		'',
+		'    Write-UpdateLog "=========================================="',
+		'    Write-UpdateLog "Fluxer Windows NSIS Update Helper started"',
+		'    Write-UpdateLog "Target PID: $targetPid"',
+		'    Write-UpdateLog "Setup Executable: $setupExe"',
+		'    Write-UpdateLog "Current Executable: $currentExe"',
+		'    Write-UpdateLog "Staging Directory: $staging"',
+		'    Write-UpdateLog "Script Path: $script"',
+		'    Write-UpdateLog "PowerShell Version: $($PSVersionTable.PSVersion)"',
+		'',
+		'    # Verify Setup Exe exists before proceeding',
+		'    if (-not (Test-Path -LiteralPath $setupExe)) {',
+		'        Write-UpdateLog "ERROR: Setup executable not found at $setupExe"',
+		'        exit 1',
+		'    }',
+		'    $setupItem = Get-Item -LiteralPath $setupExe -ErrorAction SilentlyContinue',
+		'    Write-UpdateLog "Setup executable verified on disk ($($setupItem.Length) bytes)"',
+		'',
+		'    # Wait for the Electron process to exit (up to 60 seconds)',
+		'    Write-UpdateLog "Waiting for parent process $targetPid to exit (timeout: 60s)..."',
+		'    Wait-Process -Id $targetPid -Timeout 60 -ErrorAction SilentlyContinue',
+		'',
+		'    $proc = Get-Process -Id $targetPid -ErrorAction SilentlyContinue',
+		'    if ($proc) {',
+		'        Write-UpdateLog "WARNING: Process $targetPid did not exit within 60s; terminating it..."',
+		'        Stop-Process -Id $targetPid -Force -ErrorAction SilentlyContinue',
+		'        Start-Sleep -Seconds 1',
+		'    } else {',
+		'        Write-UpdateLog "Parent process $targetPid exited cleanly."',
+		'    }',
+		'',
+		'    # Grace period for file locks to release',
+		'    Start-Sleep -Seconds 1',
+		'',
+		'    # Run NSIS installer silently and wait for it to complete',
+		'    Write-UpdateLog "Launching NSIS installer silently: $setupExe /S"',
+		'    $installerProc = Start-Process -FilePath $setupExe -ArgumentList "/S" -Wait -PassThru',
+		'    Write-UpdateLog "NSIS installer completed with ExitCode: $($installerProc.ExitCode)"',
+		'    if ($installerProc.ExitCode -ne 0) {',
+		'        Write-UpdateLog "WARNING: NSIS installer returned non-zero ExitCode $($installerProc.ExitCode)"',
+		'    }',
+		'',
+		'    # Grace period after installer finishes',
+		'    Start-Sleep -Seconds 1',
+		'',
+		'    # Relaunch the application',
+		'    Write-UpdateLog "Checking application executable at: $currentExe"',
+		'    if (Test-Path -LiteralPath $currentExe) {',
+		'        Write-UpdateLog "Relaunching application: $currentExe"',
+		'        $relaunched = Start-Process -FilePath $currentExe -PassThru',
+		'        Write-UpdateLog "Application successfully relaunched with PID: $($relaunched.Id)"',
+		'    } else {',
+		'        Write-UpdateLog "ERROR: Application executable not found at: $currentExe"',
+		'    }',
+		'',
+		'    # Clean up staging directory',
+		'    Write-UpdateLog "Cleaning up staging directory: $staging"',
+		'    Remove-Item -LiteralPath $staging -Recurse -Force -ErrorAction SilentlyContinue',
+		'    Write-UpdateLog "Fluxer update helper completed successfully."',
+		'} catch {',
+		'    Write-UpdateLog "CRITICAL ERROR in update helper script: $($_.Exception.ToString())"',
+		'} finally {',
+		'    Remove-Item -LiteralPath $script -Force -ErrorAction SilentlyContinue',
+		'}',
 	].join('\r\n');
 
 	writeFileSync(scriptPath, script, 'utf8');
 
-	const child = spawn('cmd.exe', ['/c', scriptPath], {
-		detached: true,
-		stdio: 'ignore',
-		windowsHide: true,
-	});
+	const child = spawn(
+		'powershell.exe',
+		['-NoProfile', '-ExecutionPolicy', 'Bypass', '-WindowStyle', 'Hidden', '-File', scriptPath],
+		{
+			detached: true,
+			stdio: 'ignore',
+			windowsHide: true,
+		},
+	);
 	child.unref();
 
 	log.info('Windows NSIS update helper launched', {
 		setupExePath,
+		currentExePath,
 		scriptPath,
+		tempLogPath,
+		appLogPath,
 		helperPid: child.pid,
-		parentPid: pid,
+		parentPid: targetPid,
 	});
 }
 
@@ -61,56 +174,132 @@ export function applyWindowsNsisUpdate(setupExePath: string, stagingDirectory: s
  * 3. Moves the new exe into place
  * 4. Relaunches the app
  * 5. Cleans up the .old file and staging directory
+ *
+ * Comprehensive progress, exit codes, and errors are written to both temp and app log files.
  */
 export function applyWindowsPortableUpdate(
 	newExePath: string,
 	currentExePath: string,
 	stagingDirectory: string,
 ): void {
-	const pid = process.pid;
+	const targetPid = process.pid;
+	const oldExePath = currentExePath.replace(/\.exe$/i, '.old.exe');
+	const {tempLogPath, appLogPath} = getUpdateLogPaths();
 
 	// PowerShell script embedded as a string, written to temp
 	const scriptPath = join(tmpdir(), `fluxer-update-${Date.now()}.ps1`);
 	const script = [
-		'$ErrorActionPreference = "Stop"',
-		`$pid = ${pid}`,
+		'$ErrorActionPreference = "Continue"',
+		`$targetPid = ${targetPid}`,
 		`$newExe = "${newExePath.replace(/\\/g, '\\\\')}"`,
 		`$currentExe = "${currentExePath.replace(/\\/g, '\\\\')}"`,
-		`$oldExe = "${currentExePath.replace(/\\/g, '\\\\')}".Replace(".exe", ".old.exe")`,
+		`$oldExe = "${oldExePath.replace(/\\/g, '\\\\')}"`,
 		`$staging = "${stagingDirectory.replace(/\\/g, '\\\\')}"`,
 		`$script = "${scriptPath.replace(/\\/g, '\\\\')}"`,
+		`$tempLogPath = "${tempLogPath.replace(/\\/g, '\\\\')}"`,
+		`$appLogPath = "${appLogPath.replace(/\\/g, '\\\\')}"`,
 		'',
-		'# Wait for Electron process to exit (up to 60 seconds)',
-		'$waited = 0',
-		'while ($waited -lt 300) {',
+		'function Write-UpdateLog([string]$msg) {',
+		'    $ts = (Get-Date).ToString("yyyy-MM-dd HH:mm:ss.fff")',
+		'    $line = "[$ts] $msg"',
+		'    if ($tempLogPath) {',
+		'        Add-Content -LiteralPath $tempLogPath -Value $line -ErrorAction SilentlyContinue',
+		'    }',
+		'    if ($appLogPath) {',
+		'        Add-Content -LiteralPath $appLogPath -Value $line -ErrorAction SilentlyContinue',
+		'    }',
+		'}',
+		'',
+		'try {',
+		'    # Ensure log directories exist',
+		'    $tempDir = Split-Path -Parent $tempLogPath',
+		'    if ($tempDir -and (-not (Test-Path -LiteralPath $tempDir))) {',
+		'        New-Item -ItemType Directory -LiteralPath $tempDir -Force -ErrorAction SilentlyContinue | Out-Null',
+		'    }',
+		'    if ($appLogPath) {',
+		'        $appDir = Split-Path -Parent $appLogPath',
+		'        if ($appDir -and (-not (Test-Path -LiteralPath $appDir))) {',
+		'            New-Item -ItemType Directory -LiteralPath $appDir -Force -ErrorAction SilentlyContinue | Out-Null',
+		'        }',
+		'    }',
+		'',
+		'    Write-UpdateLog "=========================================="',
+		'    Write-UpdateLog "Fluxer Windows Portable Update Helper started"',
+		'    Write-UpdateLog "Target PID: $targetPid"',
+		'    Write-UpdateLog "New Exe: $newExe"',
+		'    Write-UpdateLog "Current Exe: $currentExe"',
+		'    Write-UpdateLog "Backup Exe: $oldExe"',
+		'    Write-UpdateLog "Staging Dir: $staging"',
+		'    Write-UpdateLog "Script Path: $script"',
+		'    Write-UpdateLog "PowerShell Version: $($PSVersionTable.PSVersion)"',
+		'',
+		'    # Verify new executable exists',
+		'    if (-not (Test-Path -LiteralPath $newExe)) {',
+		'        Write-UpdateLog "ERROR: New executable not found at: $newExe"',
+		'        exit 1',
+		'    }',
+		'    $newExeItem = Get-Item -LiteralPath $newExe -ErrorAction SilentlyContinue',
+		'    Write-UpdateLog "New executable verified on disk ($($newExeItem.Length) bytes)"',
+		'',
+		'    # Wait for the Electron process to exit (up to 60 seconds)',
+		'    Write-UpdateLog "Waiting for parent process $targetPid to exit (timeout: 60s)..."',
+		'    Wait-Process -Id $targetPid -Timeout 60 -ErrorAction SilentlyContinue',
+		'',
+		'    $proc = Get-Process -Id $targetPid -ErrorAction SilentlyContinue',
+		'    if ($proc) {',
+		'        Write-UpdateLog "WARNING: Process $targetPid did not exit within 60s; terminating it..."',
+		'        Stop-Process -Id $targetPid -Force -ErrorAction SilentlyContinue',
+		'        Start-Sleep -Seconds 1',
+		'    } else {',
+		'        Write-UpdateLog "Parent process $targetPid exited cleanly."',
+		'    }',
+		'',
+		'    # Grace period for file locks to release',
+		'    Start-Sleep -Seconds 1',
+		'',
+		'    # Rename current exe to .old for rollback safety',
+		'    if (Test-Path -LiteralPath $currentExe) {',
+		'        if (Test-Path -LiteralPath $oldExe) {',
+		'            Write-UpdateLog "Removing previous backup at: $oldExe"',
+		'            Remove-Item -LiteralPath $oldExe -Force -ErrorAction SilentlyContinue',
+		'        }',
+		'        Write-UpdateLog "Backing up current executable: $currentExe -> $oldExe"',
+		'        Rename-Item -LiteralPath $currentExe -NewName ([System.IO.Path]::GetFileName($oldExe)) -Force',
+		'    }',
+		'',
+		'    # Move new exe into place with fallback to old exe if it fails',
 		'    try {',
-		'        $proc = Get-Process -Id $pid -ErrorAction SilentlyContinue',
-		'        if ($null -eq $proc) { break }',
-		'    } catch { break }',
-		'    Start-Sleep -Milliseconds 200',
-		'    $waited++',
+		'        Write-UpdateLog "Moving new executable into place: $newExe -> $currentExe"',
+		'        Move-Item -LiteralPath $newExe -Destination $currentExe -Force',
+		'        Write-UpdateLog "New executable successfully moved into place."',
+		'    } catch {',
+		'        Write-UpdateLog "ERROR: Failed to move new executable: $($_.Exception.Message)"',
+		'        if (Test-Path -LiteralPath $oldExe) {',
+		'            Write-UpdateLog "Attempting rollback from backup $oldExe..."',
+		'            Rename-Item -LiteralPath $oldExe -NewName ([System.IO.Path]::GetFileName($currentExe)) -Force',
+		'        }',
+		'    }',
+		'',
+		'    # Relaunch the application',
+		'    if (Test-Path -LiteralPath $currentExe) {',
+		'        Write-UpdateLog "Relaunching application: $currentExe"',
+		'        $relaunched = Start-Process -FilePath $currentExe -PassThru',
+		'        Write-UpdateLog "Application successfully relaunched with PID: $($relaunched.Id)"',
+		'    } else {',
+		'        Write-UpdateLog "ERROR: Application executable not found at: $currentExe"',
+		'    }',
+		'',
+		'    # Clean up staging and old executable',
+		'    Start-Sleep -Seconds 2',
+		'    Write-UpdateLog "Cleaning up staging directory: $staging"',
+		'    Remove-Item -LiteralPath $staging -Recurse -Force -ErrorAction SilentlyContinue',
+		'    Remove-Item -LiteralPath $oldExe -Force -ErrorAction SilentlyContinue',
+		'    Write-UpdateLog "Fluxer portable update helper completed successfully."',
+		'} catch {',
+		'    Write-UpdateLog "CRITICAL ERROR in update helper script: $($_.Exception.ToString())"',
+		'} finally {',
+		'    Remove-Item -LiteralPath $script -Force -ErrorAction SilentlyContinue',
 		'}',
-		'',
-		'# Grace period',
-		'Start-Sleep -Seconds 1',
-		'',
-		'# Rename current exe to .old for rollback safety',
-		'if (Test-Path $currentExe) {',
-		'    if (Test-Path $oldExe) { Remove-Item -Force $oldExe }',
-		'    Rename-Item -Path $currentExe -NewName ([System.IO.Path]::GetFileName($oldExe)) -Force',
-		'}',
-		'',
-		'# Move new exe into place',
-		'Move-Item -Path $newExe -Destination $currentExe -Force',
-		'',
-		'# Relaunch',
-		'Start-Process $currentExe',
-		'',
-		'# Clean up',
-		'Start-Sleep -Seconds 2',
-		'Remove-Item -Recurse -Force $staging -ErrorAction SilentlyContinue',
-		'Remove-Item -Force $oldExe -ErrorAction SilentlyContinue',
-		'Remove-Item -Force $script -ErrorAction SilentlyContinue',
 	].join('\r\n');
 
 	writeFileSync(scriptPath, script, 'utf8');
@@ -130,8 +319,10 @@ export function applyWindowsPortableUpdate(
 		newExePath,
 		currentExePath,
 		scriptPath,
+		tempLogPath,
+		appLogPath,
 		helperPid: child.pid,
-		parentPid: pid,
+		parentPid: targetPid,
 	});
 }
 

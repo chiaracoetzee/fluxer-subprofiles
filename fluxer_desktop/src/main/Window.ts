@@ -295,7 +295,7 @@ function loadWindowBounds(): Partial<WindowBounds> | null {
 	return null;
 }
 
-function saveWindowBounds(): void {
+export function saveWindowBounds(): void {
 	if (!mainWindow) return;
 	if (!getDesktopWindowBehaviorSettings().rememberWindowState) return;
 	if (windowsHtmlFullscreenStates.has(mainWindow)) return;
@@ -345,12 +345,26 @@ function getWindowSessionFile(): string {
 	return path.join(app.getPath('userData'), 'window-session.json');
 }
 
+let lastKnownMainWindowUrl = '';
+let saveSessionTimeout: NodeJS.Timeout | null = null;
+
+export function scheduleSaveWindowSession(): void {
+	if (saveSessionTimeout) clearTimeout(saveSessionTimeout);
+	saveSessionTimeout = setTimeout(() => {
+		saveWindowSession();
+	}, 500);
+}
+
 function getWindowUrl(window: BrowserWindow): string {
 	try {
-		return window.webContents.getURL();
+		const url = window.webContents.getURL();
+		if (url && url !== 'about:blank') {
+			return url;
+		}
 	} catch {
-		return '';
+		// Ignore error
 	}
+	return '';
 }
 
 export function saveWindowSession(): void {
@@ -362,15 +376,18 @@ export function saveWindowSession(): void {
 		if (mainWindow && isAliveWindow(mainWindow)) {
 			const bounds = mainWindow.getNormalBounds();
 			const isMaximized = mainWindow.isMinimized() ? lastRestorableMainWindowMaximized : mainWindow.isMaximized();
-			sessions.push({
-				url: getWindowUrl(mainWindow),
-				x: bounds.x,
-				y: bounds.y,
-				width: bounds.width,
-				height: bounds.height,
-				isMaximized,
-				isMainWindow: true,
-			});
+			const currentUrl = getWindowUrl(mainWindow) || lastKnownMainWindowUrl;
+			if (currentUrl) {
+				sessions.push({
+					url: currentUrl,
+					x: bounds.x,
+					y: bounds.y,
+					width: bounds.width,
+					height: bounds.height,
+					isMaximized,
+					isMainWindow: true,
+				});
+			}
 		}
 
 		// Save secondary windows
@@ -378,7 +395,7 @@ export function saveWindowSession(): void {
 			if (!isAliveWindow(win)) continue;
 			const bounds = win.getNormalBounds();
 			const url = getWindowUrl(win);
-			if (!url || url.length === 0) continue;
+			if (!url) continue;
 			sessions.push({
 				url,
 				x: bounds.x,
@@ -413,6 +430,38 @@ function loadWindowSession(): Array<WindowSession> | null {
 		log.error('Failed to load window session:', error);
 		return null;
 	}
+}
+
+export function getInitialMainWindowUrl(): string {
+	const defaultAppUrl = getAppUrl();
+	if (!getDesktopWindowBehaviorSettings().rememberWindowState) return defaultAppUrl;
+	if (shouldIgnoreWindowStateForLaunch(process.argv)) return defaultAppUrl;
+
+	const sessions = loadWindowSession();
+	if (!sessions) return defaultAppUrl;
+	const mainSession = sessions.find((s) => s.isMainWindow);
+	if (!mainSession?.url) return defaultAppUrl;
+
+	try {
+		const parsed = new URL(mainSession.url);
+		if (
+			parsed.pathname &&
+			(parsed.pathname.startsWith('/channels/') || parsed.pathname.startsWith('/guilds/'))
+		) {
+			const savedRelative = `${parsed.pathname}${parsed.search}${parsed.hash}`;
+			const resolvedUrl = new URL(savedRelative, defaultAppUrl).toString();
+			if (isTrustedOrigin(resolvedUrl)) {
+				log.info('Restoring initial main window route from saved session:', {
+					savedUrl: mainSession.url,
+					resolvedUrl,
+				});
+				return resolvedUrl;
+			}
+		}
+	} catch (error) {
+		log.warn('Failed to parse saved session URL:', error);
+	}
+	return defaultAppUrl;
 }
 
 export function restoreWindowSession(): void {
@@ -927,6 +976,7 @@ export function createWindow(options: CreateWindowOptions = {}): BrowserWindow {
 		if (saveTimeout) clearTimeout(saveTimeout);
 		saveTimeout = setTimeout(() => {
 			saveWindowBounds();
+			saveWindowSession();
 		}, 500);
 	};
 	mainWindow.on('resize', debouncedSave);
@@ -934,6 +984,7 @@ export function createWindow(options: CreateWindowOptions = {}): BrowserWindow {
 	mainWindow.on('maximize', () => {
 		lastRestorableMainWindowMaximized = true;
 		saveWindowBounds();
+		saveWindowSession();
 		mainWindow?.webContents.send('window-maximize-change', true);
 	});
 	mainWindow.on('unmaximize', () => {
@@ -945,6 +996,7 @@ export function createWindow(options: CreateWindowOptions = {}): BrowserWindow {
 				lastRestorableMainWindowMaximized = false;
 			}
 			saveWindowBounds();
+			saveWindowSession();
 		}, 0);
 		mainWindow?.webContents.send('window-maximize-change', false);
 	});
@@ -1120,9 +1172,10 @@ export function createWindow(options: CreateWindowOptions = {}): BrowserWindow {
 		appLoadFailurePrompt?.abort();
 		appLoadFailurePrompt = null;
 	};
+	const initialAppUrl = getInitialMainWindowUrl();
 	const appLoadRetry = createAppLoadRetry({
 		webContents,
-		appUrl: getAppUrl(),
+		appUrl: initialAppUrl,
 		logger,
 		isTrustedUrl: isTrustedOrigin,
 		getFallbackUrl: getAppUrlFallback,
@@ -1165,6 +1218,18 @@ export function createWindow(options: CreateWindowOptions = {}): BrowserWindow {
 			setTimeout(() => {
 				restoreWindowSession();
 			}, 1500);
+		}
+	});
+	webContents.on('did-navigate-in-page', (_event, navUrl) => {
+		if (navUrl && isTrustedOrigin(navUrl) && navUrl !== 'about:blank') {
+			lastKnownMainWindowUrl = navUrl;
+			scheduleSaveWindowSession();
+		}
+	});
+	webContents.on('did-navigate', (_event, navUrl) => {
+		if (navUrl && isTrustedOrigin(navUrl) && navUrl !== 'about:blank') {
+			lastKnownMainWindowUrl = navUrl;
+			scheduleSaveWindowSession();
 		}
 	});
 	void clearStartupRenderingCaches(session).then(() => {
@@ -1344,18 +1409,27 @@ export function createSecondaryAppWindow(
 		}
 	}, 5000);
 
+	secondaryWin.on('resize', scheduleSaveWindowSession);
+	secondaryWin.on('move', scheduleSaveWindowSession);
+	secondaryWin.on('maximize', scheduleSaveWindowSession);
+	secondaryWin.on('unmaximize', scheduleSaveWindowSession);
 	secondaryWin.on('closed', () => {
 		secondaryAppWindows.delete(secondaryWin);
+		scheduleSaveWindowSession();
 	});
 
 	registerSpellcheck(secondaryWin.webContents);
 	registerDisplayMediaRequestHandler(secondaryWin.webContents.session, secondaryWin.webContents);
 
+	secondaryWin.webContents.on('did-navigate-in-page', scheduleSaveWindowSession);
+	secondaryWin.webContents.on('did-navigate', scheduleSaveWindowSession);
 	secondaryWin.webContents.on('will-navigate', (event, navUrl) => {
 		if (!isTrustedOrigin(navUrl)) {
 			event.preventDefault();
 		}
 	});
+
+	scheduleSaveWindowSession();
 
 	secondaryWin.webContents.setWindowOpenHandler(({url, frameName}) => {
 		if (isVoicePopoutWindowName(frameName) && url === 'about:blank') {

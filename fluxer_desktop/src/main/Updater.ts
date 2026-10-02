@@ -53,7 +53,7 @@ import {
 	applyWindowsPortableUpdate,
 	isWindowsNsisInstalled,
 } from '@electron/main/WindowsUpdateHelper';
-import {setQuitting} from '@electron/main/Window';
+import {saveWindowBounds, saveWindowSession, setQuitting} from '@electron/main/Window';
 import {app, autoUpdater, type BrowserWindow, ipcMain} from 'electron';
 import log from 'electron-log';
 import type {UpdateInfo, VelopackAsset} from 'velopack';
@@ -967,14 +967,23 @@ function installGitHubUpdate(mode: DesktopUpdateMode): void {
 		mode,
 		version: staged.version,
 		filePath: staged.filePath,
+		stagingDirectory: staged.stagingDirectory,
+		execPath: process.execPath,
+		pid: process.pid,
 	});
 	gitHubInstallStarted = true;
 	setQuitting(true);
 	destroyDesktopTray();
+	try {
+		saveWindowBounds();
+		saveWindowSession();
+	} catch (error) {
+		log.warn('Failed to save window state/session before update:', error);
+	}
 
 	if (process.platform === 'win32') {
 		if (mode === 'nsis') {
-			applyWindowsNsisUpdate(staged.filePath, staged.stagingDirectory);
+			applyWindowsNsisUpdate(staged.filePath, staged.stagingDirectory, process.execPath);
 		} else {
 			applyWindowsPortableUpdate(staged.filePath, process.execPath, staged.stagingDirectory);
 		}
