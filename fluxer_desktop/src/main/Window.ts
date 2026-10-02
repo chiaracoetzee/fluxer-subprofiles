@@ -421,24 +421,6 @@ export function restoreWindowSession(): void {
 
 	const displays = screen.getAllDisplays();
 
-	// Find the main window session entry to get the saved URL
-	const mainSession = sessions.find((s) => s.isMainWindow);
-	if (mainSession && mainWindow && isAliveWindow(mainWindow)) {
-		// Navigate main window to saved URL (if it's a valid app route)
-		const appUrl = getAppUrl();
-		const savedPath = getSanitizedPath(mainSession.url);
-		if (savedPath && savedPath.startsWith('/channels/') && mainSession.url !== appUrl) {
-			try {
-				const resolvedUrl = new URL(savedPath, appUrl).toString();
-				if (isTrustedOrigin(resolvedUrl)) {
-					void mainWindow.loadURL(resolvedUrl).catch((error) => {
-						log.warn('Failed to restore main window URL:', error);
-					});
-				}
-			} catch {}
-		}
-	}
-
 	// Restore secondary windows
 	const secondarySessions = sessions.filter((s) => !s.isMainWindow);
 	for (const session of secondarySessions) {
@@ -464,7 +446,6 @@ export function restoreWindowSession(): void {
 	}
 
 	log.info('Restored window session:', {
-		mainWindowRestored: !!mainSession,
 		secondaryWindowsRestored: secondarySessions.length,
 	});
 }

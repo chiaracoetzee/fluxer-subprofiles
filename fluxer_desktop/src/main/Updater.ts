@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+import {chmodSync, renameSync} from 'node:fs';
 import {createRequire} from 'node:module';
 import {getAppUrl} from '@electron/common/DesktopConfig';
 import {isPortableMode} from '@electron/common/UserDataPath';
@@ -50,6 +51,7 @@ import {
 import {
 	applyWindowsNsisUpdate,
 	applyWindowsPortableUpdate,
+	isWindowsNsisInstalled,
 } from '@electron/main/WindowsUpdateHelper';
 import {setQuitting} from '@electron/main/Window';
 import {app, autoUpdater, type BrowserWindow, ipcMain} from 'electron';
@@ -805,22 +807,32 @@ async function checkGitHubForUpdates(
 		return gitHubCheckPromise;
 	}
 	gitHubCheckPromise = (async () => {
+		const current = app.getVersion();
+		log.info('Checking GitHub Releases for desktop updates...', {currentVersion: current, context, mode});
 		send(getMainWindow(), {type: 'checking', context});
 		try {
 			const release = await fetchLatestDesktopRelease(context === 'user');
 			if (!release) {
+				log.info('No GitHub desktop releases found.');
 				send(getMainWindow(), {type: 'not-available', context});
 				return;
 			}
 
-			const current = app.getVersion();
+			log.info('GitHub Releases check result:', {
+				latestVersion: release.version,
+				currentVersion: current,
+				isNewer: compareVersions(release.version, current) > 0,
+			});
+
 			if (compareVersions(release.version, current) <= 0) {
+				log.info('Desktop app is already up to date.');
 				send(getMainWindow(), {type: 'not-available', context});
 				return;
 			}
 
 			// Check if we already have this version downloaded
 			if (pendingGitHubDownload && pendingGitHubDownload.version === release.version) {
+				log.info('Update already downloaded and ready to install:', release.version);
 				send(getMainWindow(), {type: 'downloaded', context, version: release.version});
 				return;
 			}
@@ -839,13 +851,20 @@ async function checkGitHubForUpdates(
 				return;
 			}
 
+			log.info('Update available; starting download:', {
+				version: release.version,
+				assetName: asset.name,
+				sizeBytes: asset.size,
+			});
+
 			send(getMainWindow(), {
 				type: 'available',
 				context,
 				version: release.version,
 				downloadSize: asset.size,
-				downloadStarted: false,
+				downloadStarted: true,
 			});
+			await downloadGitHubUpdate(context, getMainWindow, mode);
 		} catch (error) {
 			log.warn('GitHub Releases update check failed', error);
 			send(getMainWindow(), {type: 'error', context, phase: 'check', message: getErrorMessage(error)});
@@ -907,6 +926,10 @@ async function downloadGitHubUpdate(
 				}
 				pendingGitHubDownload = staged;
 
+				log.info('GitHub update download complete and verified successfully:', {
+					version: release.version,
+					stagedPath: staged.filePath,
+				});
 				send(getMainWindow(), {type: 'downloaded', context, version: release.version});
 				return;
 			} catch (error) {
@@ -940,6 +963,11 @@ function installGitHubUpdate(mode: DesktopUpdateMode): void {
 	if (!staged) {
 		throw new Error('No update is ready to install.');
 	}
+	log.info('Applying GitHub update...', {
+		mode,
+		version: staged.version,
+		filePath: staged.filePath,
+	});
 	gitHubInstallStarted = true;
 	setQuitting(true);
 	destroyDesktopTray();
@@ -957,9 +985,8 @@ function installGitHubUpdate(mode: DesktopUpdateMode): void {
 	if (process.platform === 'linux' && mode === 'appimage') {
 		const appImagePath = process.env.APPIMAGE;
 		if (appImagePath) {
-			const fs = require('node:fs') as typeof import('node:fs');
-			fs.renameSync(staged.filePath, appImagePath);
-			fs.chmodSync(appImagePath, 0o755);
+			renameSync(staged.filePath, appImagePath);
+			chmodSync(appImagePath, 0o755);
 			discardStagedDownload(staged);
 			pendingGitHubDownload = null;
 			relaunchAndExit();
@@ -1054,7 +1081,6 @@ export function registerUpdater(getMainWindow: () => BrowserWindow | null) {
 	if (!isOfficialFluxerInstance()) {
 		log.info('Running against self-hosted homeserver; using GitHub Releases updater.');
 		if (process.platform === 'win32') {
-			const {isWindowsNsisInstalled} = require('@electron/main/WindowsUpdateHelper') as typeof import('@electron/main/WindowsUpdateHelper');
 			const mode: DesktopUpdateMode = isPortableMode() ? 'portable' : (isWindowsNsisInstalled() ? 'nsis' : 'portable');
 			registerGitHubReleasesUpdater(getMainWindow, mode);
 			return;

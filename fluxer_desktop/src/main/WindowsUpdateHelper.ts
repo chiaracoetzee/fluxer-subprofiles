@@ -3,7 +3,7 @@
 import {spawn} from 'node:child_process';
 import {existsSync, writeFileSync} from 'node:fs';
 import {tmpdir} from 'node:os';
-import {join} from 'node:path';
+import {dirname, join} from 'node:path';
 import log from 'electron-log';
 
 /**
@@ -147,7 +147,7 @@ export function isWindowsNsisInstalled(): boolean {
 	if (process.env.PORTABLE_EXECUTABLE_DIR) return false;
 
 	// Check for .portable marker next to the exe
-	const exeDir = require('node:path').dirname(process.execPath);
+	const exeDir = dirname(process.execPath);
 	if (existsSync(join(exeDir, '.portable'))) return false;
 
 	// Check if running from a typical NSIS install location (%LocalAppData%)
