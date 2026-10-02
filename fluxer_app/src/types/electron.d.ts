@@ -508,6 +508,8 @@ export interface ElectronAPI {
 	onTextareaContextMenu(callback: (params: TextareaContextMenuParams) => void): () => void;
 	onNotificationClick(callback: (id: string, url?: string) => void): () => void;
 	showNotification(payload: NotificationPayload): Promise<{id: string}>;
+	claimNotificationForSound?(messageId: string, channelId?: string): Promise<boolean>;
+	setFocusedChannel?(channelId: string | null): void;
 	shouldPlayNotificationSound?(): Promise<boolean>;
 	closeNotification(id: string): void;
 	closeNotifications(ids: Array<string>): void;
