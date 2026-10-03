@@ -15,7 +15,6 @@ import {
 import {DEFAULT_STOCK_LIMITS} from '@fluxer/limits/src/LimitDefaults';
 import type {MessageSubprofileResponse} from '@fluxer/schema/src/domains/persona/PersonaSchemas';
 import type {
-	RequiredAction,
 	UserPartial,
 	UserPrivate,
 	User as WireUser,
