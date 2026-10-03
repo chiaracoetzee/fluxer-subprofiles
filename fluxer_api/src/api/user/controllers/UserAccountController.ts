@@ -381,7 +381,7 @@ export function UserAccountController(app: HonoApp) {
 	app.post(
 		'/users/@me/personas/avatar',
 		RateLimitMiddleware(RateLimitConfigs.USER_UPDATE_SELF),
-		LoginRequiredAllowSuspicious,
+		LoginRequired,
 		DefaultUserOnly,
 		Validator('json', PersonaAvatarUploadRequest),
 		OpenAPI({
@@ -398,7 +398,7 @@ export function UserAccountController(app: HonoApp) {
 	app.post(
 		'/users/@me/subprofiles/avatar',
 		RateLimitMiddleware(RateLimitConfigs.USER_UPDATE_SELF),
-		LoginRequiredAllowSuspicious,
+		LoginRequired,
 		DefaultUserOnly,
 		Validator('json', SubprofileAvatarUploadRequest),
 		OpenAPI({
@@ -416,7 +416,7 @@ export function UserAccountController(app: HonoApp) {
 	app.post(
 		'/users/@me/personas/banner',
 		RateLimitMiddleware(RateLimitConfigs.USER_UPDATE_SELF),
-		LoginRequiredAllowSuspicious,
+		LoginRequired,
 		DefaultUserOnly,
 		Validator('json', PersonaBannerUploadRequest),
 		OpenAPI({
@@ -433,7 +433,7 @@ export function UserAccountController(app: HonoApp) {
 	app.post(
 		'/users/@me/subprofiles/banner',
 		RateLimitMiddleware(RateLimitConfigs.USER_UPDATE_SELF),
-		LoginRequiredAllowSuspicious,
+		LoginRequired,
 		DefaultUserOnly,
 		Validator('json', SubprofileBannerUploadRequest),
 		OpenAPI({
@@ -451,7 +451,7 @@ export function UserAccountController(app: HonoApp) {
 	app.post(
 		'/users/@me/personas/import-avatar',
 		RateLimitMiddleware(RateLimitConfigs.USER_UPDATE_SELF),
-		LoginRequiredAllowSuspicious,
+		LoginRequired,
 		DefaultUserOnly,
 		Validator('json', PersonaAvatarImportRequest),
 		OpenAPI({
@@ -468,7 +468,7 @@ export function UserAccountController(app: HonoApp) {
 	app.post(
 		'/users/@me/subprofiles/import-avatar',
 		RateLimitMiddleware(RateLimitConfigs.USER_UPDATE_SELF),
-		LoginRequiredAllowSuspicious,
+		LoginRequired,
 		DefaultUserOnly,
 		Validator('json', SubprofileAvatarImportRequest),
 		OpenAPI({
@@ -485,7 +485,7 @@ export function UserAccountController(app: HonoApp) {
 	app.post(
 		'/users/@me/personas/import-batch-avatars',
 		RateLimitMiddleware(RateLimitConfigs.USER_PERSONA_BATCH_AVATAR_IMPORT),
-		LoginRequiredAllowSuspicious,
+		LoginRequired,
 		DefaultUserOnly,
 		Validator('json', PersonaBatchAvatarImportRequest),
 		OpenAPI({
@@ -503,7 +503,7 @@ export function UserAccountController(app: HonoApp) {
 	app.post(
 		'/users/@me/subprofiles/import-batch-avatars',
 		RateLimitMiddleware(RateLimitConfigs.USER_PERSONA_BATCH_AVATAR_IMPORT),
-		LoginRequiredAllowSuspicious,
+		LoginRequired,
 		DefaultUserOnly,
 		Validator('json', SubprofileBatchAvatarImportRequest),
 		OpenAPI({
