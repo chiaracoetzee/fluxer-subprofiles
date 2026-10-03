@@ -251,6 +251,7 @@ const MyProfileTabComponent = observer(function MyProfileTabComponent({
 	const flashTrigger = unsavedChangesState.flashTriggers[MY_PROFILE_TAB_ID] || 0;
 	const [lastFlashTrigger, setLastFlashTrigger] = useState(0);
 	const [ariaAnnouncement, setAriaAnnouncement] = useState('');
+	const isClaimed = user?.isClaimed() ?? false;
 	const isProfileEmailLocked = isClaimed && user?.verified === false;
 	const isProfileAccountLimited = user?.accountLimited === true;
 	const isProfileCustomizationLocked = isProfileEmailLocked || isProfileAccountLimited;

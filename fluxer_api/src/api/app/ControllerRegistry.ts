@@ -69,7 +69,6 @@ export function registerControllers(routes: HonoApp, config: APIConfig): void {
 	}
 	UserController(routes);
 	PersonaController(routes);
-	installSmsWebhookForwarder(routes, getActivityJetStream);
 	StoreBillingController(routes);
 	WebhookController(routes);
 	OAuth2Controller(routes);
