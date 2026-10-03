@@ -13,14 +13,17 @@ import {
 	UserPremiumTypes,
 } from '@fluxer/constants/src/UserConstants';
 import {DEFAULT_STOCK_LIMITS} from '@fluxer/limits/src/LimitDefaults';
-import type {UserPartial, UserPrivate, User as WireUser} from '@fluxer/schema/src/domains/user/UserResponseSchemas';
+import type {
+	UserPartial,
+	UserPrivate,
+	User as WireUser,
+} from '@fluxer/schema/src/domains/user/UserResponseSchemas';
 import * as SnowflakeUtils from '@fluxer/snowflake/src/SnowflakeUtils';
 
 // Fork imports.
 
 import {DELETED_USER_USERNAME} from '@fluxer/constants/src/UserConstants';
 import type {MessageSubprofileResponse} from '@fluxer/schema/src/domains/persona/PersonaSchemas';
-import type {RequiredAction} from '@fluxer/schema/src/domains/user/UserResponseSchemas';
 
 interface UserRecordOptions {
 	instanceId?: string;
