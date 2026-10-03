@@ -39,11 +39,9 @@ import {useCallback, useEffect, useRef, useState} from 'react';
 
 // Fork imports.
 
-import {useMatureMedia} from '@app/features/messaging/hooks/useMatureMedia';
 import Drafts from '@app/features/messaging/state/MessagingDrafts';
 import {hasPersonaReacted} from '@app/features/messaging/utils/ReactionUtils';
 import {PersonaStore} from '@app/features/persona/state/PersonaStore';
-import matureStyles from '@app/features/theme/styles/MatureBlur.module.css';
 
 const PRESS_TO_REMOVE_REACTION_DESCRIPTOR = msg({
 	message: 'press to remove reaction',
