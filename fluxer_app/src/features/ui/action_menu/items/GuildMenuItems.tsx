@@ -347,7 +347,7 @@ export const HideMutedChannelsMenuItem: React.FC<GuildMenuItemProps> = observer(
 export const CommunitySettingsMenuItem: React.FC<GuildMenuItemProps> = observer(({guild, onClose}) => {
 	const {i18n} = useLingui();
 	const accessibleTabs = useMemo(() => {
-		const guildTabs = getGuildSettingsTabs(i18n);
+		const guildTabs = getGuildSettingsTabs(i18n, guild.id);
 		return guildTabs.filter((tab) => {
 			if (tab.permission) {
 				const perms = Array.isArray(tab.permission) ? tab.permission : [tab.permission];
