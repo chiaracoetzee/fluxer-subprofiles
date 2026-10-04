@@ -41311,7 +41311,7 @@ msgstr "Збільшити масштаб"
 msgid "Zoom out"
 msgstr "Зменшити масштаб"
 
-#. Tooltip on a lit signal icon. {label} is the signal name such as Reading, {names} is a comma-separated list of the people who turned it on.
+#. Accessible label on a lit signal icon. {label} is the signal name such as Reading, {names} is a comma-separated list of the people who turned it on.
 #: src/features/signal_bar/components/SignalBar.tsx
 msgid "{label}: {names}"
 msgstr "{label}: {names}"
