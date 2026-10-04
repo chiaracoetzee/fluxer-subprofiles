@@ -41382,3 +41382,26 @@ msgstr "สัญญาณคือไอคอนเหนือกล่อง
 #: src/features/signal_bar/components/SignalContextMenu.tsx
 msgid "Turn off {name}"
 msgstr "ปิด {name}"
+
+#: src/features/signal_bar/components/GuildSignalBarTab.tsx
+msgid "Where the signal bar appears"
+msgstr "ตำแหน่งที่แสดงแถบสัญญาณ"
+
+#: src/features/signal_bar/components/GuildSignalBarTab.tsx
+msgid "The signal bar is off until you tick a channel here. Ticking a category or the whole community also covers channels created there later."
+msgstr "แถบสัญญาณจะปิดอยู่จนกว่าคุณจะติ๊กช่องที่นี่ การติ๊กหมวดหมู่หรือทั้งคอมมูนิตี้จะรวมถึงช่องที่สร้างขึ้นที่นั่นในภายหลังด้วย"
+
+#. Error toast in the community Message Tools settings tab when saving the channel checkboxes fails.
+#: src/features/signal_bar/components/SignalBarChannelTree.tsx
+msgid "Failed to save where the signal bar appears. Try again."
+msgstr "บันทึกตำแหน่งที่แสดงแถบสัญญาณไม่สำเร็จ ลองอีกครั้ง"
+
+#. Direct message right-click menu action that shows the signal bar above the message box in this DM.
+#: src/features/signal_bar/components/SignalBarDMMenuItem.tsx
+msgid "Turn on signal bar"
+msgstr "เปิดแถบสัญญาณ"
+
+#. Direct message right-click menu action that hides the signal bar in this DM and clears its signals.
+#: src/features/signal_bar/components/SignalBarDMMenuItem.tsx
+msgid "Turn off signal bar"
+msgstr "ปิดแถบสัญญาณ"

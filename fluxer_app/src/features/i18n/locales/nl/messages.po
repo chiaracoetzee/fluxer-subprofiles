@@ -41382,3 +41382,26 @@ msgstr "Signalen zijn pictogrammen boven het berichtvak die iedereen aan en uit 
 #: src/features/signal_bar/components/SignalContextMenu.tsx
 msgid "Turn off {name}"
 msgstr "{name} uitzetten"
+
+#: src/features/signal_bar/components/GuildSignalBarTab.tsx
+msgid "Where the signal bar appears"
+msgstr "Waar de signaalbalk verschijnt"
+
+#: src/features/signal_bar/components/GuildSignalBarTab.tsx
+msgid "The signal bar is off until you tick a channel here. Ticking a category or the whole community also covers channels created there later."
+msgstr "De signaalbalk staat uit totdat je hier een kanaal aanvinkt. Als je een categorie of de hele community aanvinkt, geldt dat ook voor kanalen die daar later worden gemaakt."
+
+#. Error toast in the community Message Tools settings tab when saving the channel checkboxes fails.
+#: src/features/signal_bar/components/SignalBarChannelTree.tsx
+msgid "Failed to save where the signal bar appears. Try again."
+msgstr "Kon niet opslaan waar de signaalbalk verschijnt. Probeer het opnieuw."
+
+#. Direct message right-click menu action that shows the signal bar above the message box in this DM.
+#: src/features/signal_bar/components/SignalBarDMMenuItem.tsx
+msgid "Turn on signal bar"
+msgstr "Signaalbalk aanzetten"
+
+#. Direct message right-click menu action that hides the signal bar in this DM and clears its signals.
+#: src/features/signal_bar/components/SignalBarDMMenuItem.tsx
+msgid "Turn off signal bar"
+msgstr "Signaalbalk uitzetten"

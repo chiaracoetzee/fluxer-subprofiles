@@ -41382,3 +41382,26 @@ msgstr "Signaler er ikoner over meldingsfeltet som alle kan slå av og på, og a
 #: src/features/signal_bar/components/SignalContextMenu.tsx
 msgid "Turn off {name}"
 msgstr "Slå av {name}"
+
+#: src/features/signal_bar/components/GuildSignalBarTab.tsx
+msgid "Where the signal bar appears"
+msgstr "Hvor signallinjen vises"
+
+#: src/features/signal_bar/components/GuildSignalBarTab.tsx
+msgid "The signal bar is off until you tick a channel here. Ticking a category or the whole community also covers channels created there later."
+msgstr "Signallinjen er av til du krysser av for en kanal her. Krysser du av for en kategori eller hele fellesskapet, gjelder det også kanaler som opprettes der senere."
+
+#. Error toast in the community Message Tools settings tab when saving the channel checkboxes fails.
+#: src/features/signal_bar/components/SignalBarChannelTree.tsx
+msgid "Failed to save where the signal bar appears. Try again."
+msgstr "Kunne ikke lagre hvor signallinjen vises. Prøv igjen."
+
+#. Direct message right-click menu action that shows the signal bar above the message box in this DM.
+#: src/features/signal_bar/components/SignalBarDMMenuItem.tsx
+msgid "Turn on signal bar"
+msgstr "Slå på signallinje"
+
+#. Direct message right-click menu action that hides the signal bar in this DM and clears its signals.
+#: src/features/signal_bar/components/SignalBarDMMenuItem.tsx
+msgid "Turn off signal bar"
+msgstr "Slå av signallinje"
