@@ -63,7 +63,11 @@ import {handlePresenceUpdateBulk} from '@app/features/presence/events/PresenceUp
 import {handleRelationshipAdd} from '@app/features/relationship/events/RelationshipAdd';
 import {handleRelationshipRemove} from '@app/features/relationship/events/RelationshipRemove';
 import {handleRelationshipUpdate} from '@app/features/relationship/events/RelationshipUpdate';
-import {handleChannelSignalUpdate, handleSignalBarUpdate} from '@app/features/signal_bar/events/SignalBarEvents';
+import {
+	handleChannelSignalBarUpdate,
+	handleChannelSignalUpdate,
+	handleSignalBarUpdate,
+} from '@app/features/signal_bar/events/SignalBarEvents';
 import {handleForumUnreads} from '@app/features/threads/events/ForumUnreads';
 import {handleThreadCreate} from '@app/features/threads/events/ThreadCreate';
 import {handleThreadDelete} from '@app/features/threads/events/ThreadDelete';
@@ -174,6 +178,7 @@ export function createHandlerRegistry(): GatewayHandlerRegistry {
 	registry.set('TYPING_START', handleTypingStart as GatewayEventHandler);
 	registry.set('CHANNEL_SIGNAL_UPDATE', handleChannelSignalUpdate as GatewayEventHandler);
 	registry.set('SIGNAL_BAR_UPDATE', handleSignalBarUpdate as GatewayEventHandler);
+	registry.set('CHANNEL_SIGNAL_BAR_UPDATE', handleChannelSignalBarUpdate as GatewayEventHandler);
 	registry.set('RECENT_MENTION_DELETE', handleRecentMentionDelete as GatewayEventHandler);
 	registry.set('SAVED_MESSAGE_CREATE', handleSavedMessageCreate as GatewayEventHandler);
 	registry.set('SAVED_MESSAGE_DELETE', handleSavedMessageDelete as GatewayEventHandler);
