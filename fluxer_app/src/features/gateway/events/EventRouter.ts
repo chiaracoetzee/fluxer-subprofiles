@@ -54,8 +54,8 @@ import {
 	handleGuildPersonasDirty,
 	handleUserPersonaCreate,
 	handleUserPersonaDelete,
-	handleUserPersonasUpdate,
 	handleUserPersonaSettingsUpdate,
+	handleUserPersonasUpdate,
 	handleUserPersonaUpdate,
 } from '@app/features/persona/events/PersonaEvents';
 import {handlePresenceUpdate} from '@app/features/presence/events/PresenceUpdate';
@@ -63,6 +63,7 @@ import {handlePresenceUpdateBulk} from '@app/features/presence/events/PresenceUp
 import {handleRelationshipAdd} from '@app/features/relationship/events/RelationshipAdd';
 import {handleRelationshipRemove} from '@app/features/relationship/events/RelationshipRemove';
 import {handleRelationshipUpdate} from '@app/features/relationship/events/RelationshipUpdate';
+import {handleChannelSignalUpdate, handleSignalBarUpdate} from '@app/features/signal_bar/events/SignalBarEvents';
 import {handleAuthSessionChange} from '@app/features/user/events/AuthSessionChange';
 import {handleUserConnectionsUpdate} from '@app/features/user/events/UserConnectionsUpdate';
 import {handleUserGuildSettingsUpdate} from '@app/features/user/events/UserGuildSettingsUpdate';
@@ -153,6 +154,8 @@ export function createHandlerRegistry(): GatewayHandlerRegistry {
 	registry.set('MESSAGE_REACTION_REMOVE_ALL', handleMessageReactionRemoveAll as GatewayEventHandler);
 	registry.set('MESSAGE_REACTION_REMOVE_EMOJI', handleMessageReactionRemoveEmoji as GatewayEventHandler);
 	registry.set('TYPING_START', handleTypingStart as GatewayEventHandler);
+	registry.set('CHANNEL_SIGNAL_UPDATE', handleChannelSignalUpdate as GatewayEventHandler);
+	registry.set('SIGNAL_BAR_UPDATE', handleSignalBarUpdate as GatewayEventHandler);
 	registry.set('RECENT_MENTION_DELETE', handleRecentMentionDelete as GatewayEventHandler);
 	registry.set('SAVED_MESSAGE_CREATE', handleSavedMessageCreate as GatewayEventHandler);
 	registry.set('SAVED_MESSAGE_DELETE', handleSavedMessageDelete as GatewayEventHandler);

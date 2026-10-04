@@ -5,9 +5,6 @@ import type {ApiContext} from '@app/api/ApiContext';
 import {AdminService} from '@app/api/admin/AdminService';
 import {AuthRequestService} from '@app/api/auth/AuthRequestService';
 import {DesktopHandoffService} from '@app/api/auth/services/DesktopHandoffService';
-import {PersonaService} from '@app/api/persona/PersonaService';
-import {UserGuildRepository} from '@app/api/user/repositories/account/UserGuildRepository';
-import {UserChannelRepository} from '@app/api/user/repositories/UserChannelRepository';
 import {SsoService} from '@app/api/auth/services/SsoService';
 import type {IBlueskyOAuthService} from '@app/api/bluesky/IBlueskyOAuthService';
 import {Config} from '@app/api/Config';
@@ -120,16 +117,20 @@ import {ApplicationService} from '@app/api/oauth/ApplicationService';
 import {OAuth2ApplicationsRequestService} from '@app/api/oauth/OAuth2ApplicationsRequestService';
 import {OAuth2RequestService} from '@app/api/oauth/OAuth2RequestService';
 import {OAuth2Service} from '@app/api/oauth/OAuth2Service';
+import {PersonaService} from '@app/api/persona/PersonaService';
 import {ReportRequestService} from '@app/api/report/ReportRequestService';
 import {ReportService} from '@app/api/report/ReportService';
 import {RpcService} from '@app/api/rpc/RpcService';
 import {getReportSearchService} from '@app/api/SearchFactory';
 import {SearchService} from '@app/api/search/SearchService';
+import {SignalBarService} from '@app/api/signal_bar/SignalBarService';
 import type {StoreEntitlementService} from '@app/api/store_billing/StoreEntitlementService';
 import {createStoreEntitlementService} from '@app/api/store_billing/StoreEntitlementServiceFactory';
 import {StripeService} from '@app/api/stripe/StripeService';
 import {AgeVerificationService} from '@app/api/stripe/services/AgeVerificationService';
 import type {HonoEnv} from '@app/api/types/HonoEnv';
+import {UserGuildRepository} from '@app/api/user/repositories/account/UserGuildRepository';
+import {UserChannelRepository} from '@app/api/user/repositories/UserChannelRepository';
 import {EmailChangeService} from '@app/api/user/services/EmailChangeService';
 import {MfaBackupCodesChallengeService} from '@app/api/user/services/MfaBackupCodesChallengeService';
 import {PasswordChangeService} from '@app/api/user/services/PasswordChangeService';
@@ -224,6 +225,7 @@ class RequestServices implements RequestScopedServices {
 	private cachedFavoriteMemeService: FavoriteMemeService | undefined;
 	private cachedFavoriteMemeRequestService: FavoriteMemeRequestService | undefined;
 	private cachedPersonaService: PersonaService | undefined;
+	private cachedSignalBarService: SignalBarService | undefined;
 	private cachedSingleCommunityService: SingleCommunityService | undefined;
 	private cachedEmailChangeService: EmailChangeService | undefined;
 	private cachedMfaBackupCodesChallengeService: MfaBackupCodesChallengeService | undefined;
@@ -657,6 +659,19 @@ class RequestServices implements RequestScopedServices {
 			userChannelRepository: new UserChannelRepository(),
 		});
 		return this.cachedPersonaService;
+	}
+
+	get signalBarService(): SignalBarService {
+		this.cachedSignalBarService ??= new SignalBarService({
+			instanceConfigRepository: getInstanceConfigRepository(),
+			cacheService: getCacheService(),
+			gatewayService: this.gatewayService,
+			guildRepository: this.requestGuildRepository,
+			personaRepository: getPersonaRepository(),
+			findUser: (userId) => getUserRepository().findUnique(userId),
+			findChannel: (channelId) => this.channelRepository.findUnique(channelId),
+		});
+		return this.cachedSignalBarService;
 	}
 
 	get emailChangeService(): EmailChangeService {
