@@ -476,6 +476,10 @@ channel_signal_update_is_channel_scoped_and_passive_filtered_test() ->
     SessionData = #{user_id => 1, active_guilds => sets:new(), bot => false},
     State = #{member_count => 300},
     ?assertEqual(true, guild_dispatch_filter:is_channel_scoped_event(channel_signal_update)),
+    ?assertEqual(true, guild_dispatch_filter:is_channel_scoped_event(channel_signal_bar_update)),
+    ?assertEqual(
+        channel_signal_bar_update, event_atoms:normalize(<<"CHANNEL_SIGNAL_BAR_UPDATE">>)
+    ),
     ?assertEqual(false, guild_dispatch_filter:is_channel_scoped_event(signal_bar_update)),
     ?assertEqual(
         false,
