@@ -19,7 +19,7 @@ import {makeSyncedField} from '@app/features/user/state/SyncedField';
 import type {GuildEmoji as WireGuildEmoji} from '@fluxer/schema/src/domains/guild/GuildEmojiSchemas';
 import type {Guild as WireGuild} from '@fluxer/schema/src/domains/guild/GuildResponseSchemas';
 import {EmojiStateSchema} from '@fluxer/schema/src/gen/fluxer/user/preferences/v1/pickers_pb';
-import {sortBySnowflakeDesc} from '@fluxer/snowflake/src/SnowflakeUtils';
+import {compareEmojisByName} from '@app/features/emoji/utils/EmojiSortingUtils';
 import {i18n} from '@lingui/core';
 import {makeAutoObservable} from 'mobx';
 
@@ -162,7 +162,7 @@ class EmojiGuildRegistry {
 			return;
 		}
 		const emojiRecords = guildEmojis.map((emoji) => new GuildEmoji(guildId, emoji));
-		const sortedEmojis = sortBySnowflakeDesc(emojiRecords);
+		const sortedEmojis = emojiRecords.slice().sort(compareEmojisByName);
 		const frozenEmojis = Object.freeze(sortedEmojis);
 		this.guilds.set(guildId, {
 			emojis: frozenEmojis,
