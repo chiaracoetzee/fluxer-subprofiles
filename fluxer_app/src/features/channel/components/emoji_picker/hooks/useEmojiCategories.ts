@@ -10,6 +10,7 @@ import {useMemo, useRef} from 'react';
 
 // Fork imports.
 
+import {compareEmojisByName} from '@app/features/emoji/utils/EmojiSortingUtils';
 import Drafts from '@app/features/messaging/state/MessagingDrafts';
 import {PersonaStore} from '@app/features/persona/state/PersonaStore';
 
@@ -50,7 +51,9 @@ export function useEmojiCategories(
 		const sortedGuildEmojisByGuildId = new Map<string, Array<FlatEmoji>>();
 		for (const guildId of sortedGuildIds) {
 			if (guildEmojisByGuildId.has(guildId)) {
-				sortedGuildEmojisByGuildId.set(guildId, guildEmojisByGuildId.get(guildId)!);
+				const guildList = guildEmojisByGuildId.get(guildId)!;
+				guildList.sort(compareEmojisByName);
+				sortedGuildEmojisByGuildId.set(guildId, guildList);
 			}
 		}
 		return sortedGuildEmojisByGuildId;
