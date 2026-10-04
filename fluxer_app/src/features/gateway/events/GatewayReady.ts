@@ -41,6 +41,7 @@ import Presence from '@app/features/presence/state/Presence';
 import ReadStates, {type GatewayReadState} from '@app/features/read_state/state/ReadStates';
 import type {RelationshipWire} from '@app/features/relationship/models/Relationship';
 import Relationships from '@app/features/relationship/state/Relationships';
+import SignalBarStore from '@app/features/signal_bar/state/SignalBarStore';
 import UserGuildSettings, {type GatewayGuildSettings} from '@app/features/user/state/UserGuildSettings';
 import UserNote from '@app/features/user/state/UserNote';
 import UserPinnedDM from '@app/features/user/state/UserPinnedDM';
@@ -97,6 +98,7 @@ function handleReadyInternal(data: ReadyPayload, context: GatewayHandlerContext)
 		PersonaCommands.resetFetchPersonasCooldown();
 	}
 	context.setPreviousSessionId(currentSessionId);
+	SignalBarStore.invalidate();
 	const guilds = data.guilds;
 	const channels: Array<WireChannel> = [];
 	if (data.private_channels) {
