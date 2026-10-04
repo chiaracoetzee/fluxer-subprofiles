@@ -29,6 +29,7 @@ import {ReadStateController} from '@app/api/read_state/ReadStateController';
 import {ReportController} from '@app/api/report/ReportController';
 import {InternalRpcController} from '@app/api/rpc/InternalRpcController';
 import {SearchController} from '@app/api/search/controllers/SearchController';
+import {SignalBarController} from '@app/api/signal_bar/SignalBarController';
 import {StoreBillingController} from '@app/api/store_billing/StoreBillingController';
 import {StripeController} from '@app/api/stripe/StripeController';
 import {TestHarnessController} from '@app/api/test/TestHarnessController';
@@ -69,6 +70,7 @@ export function registerControllers(routes: HonoApp, config: APIConfig): void {
 	}
 	UserController(routes);
 	PersonaController(routes);
+	SignalBarController(routes);
 	StoreBillingController(routes);
 	WebhookController(routes);
 	OAuth2Controller(routes);
