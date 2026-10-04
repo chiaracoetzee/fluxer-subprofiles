@@ -41,3 +41,7 @@ export function togglePinned(emoji: FlatEmoji, personaId?: string | null): void 
 export function toggleCategory(category: string): void {
 	dispatchEmojiPickerIntent({kind: 'category', category});
 }
+
+export function reorderFavorite(sourceKey: string, targetKey: string, position: 'before' | 'after'): void {
+	EmojiPicker.reorderFavorite(sourceKey, targetKey, position);
+}

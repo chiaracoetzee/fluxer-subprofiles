@@ -3,6 +3,7 @@
 import EmojiPicker from '@app/features/emoji/state/EmojiPicker';
 import type {UsageRanking} from '@app/features/emoji/state/UsageFrecency';
 import type {FlatEmoji, UnicodeEmoji} from '@app/features/emoji/types/EmojiTypes';
+import {compareEmojisByName} from '@app/features/emoji/utils/EmojiSortingUtils';
 import UnicodeEmojis from '@app/features/expressions/utils/UnicodeEmojis';
 import GuildList from '@app/features/guild/state/GuildList';
 import Drafts from '@app/features/messaging/state/MessagingDrafts';
@@ -47,7 +48,9 @@ export function useEmojiCategories(
 		const sortedGuildEmojisByGuildId = new Map<string, Array<FlatEmoji>>();
 		for (const guildId of sortedGuildIds) {
 			if (guildEmojisByGuildId.has(guildId)) {
-				sortedGuildEmojisByGuildId.set(guildId, guildEmojisByGuildId.get(guildId)!);
+				const guildList = guildEmojisByGuildId.get(guildId)!;
+				guildList.sort(compareEmojisByName);
+				sortedGuildEmojisByGuildId.set(guildId, guildList);
 			}
 		}
 		return sortedGuildEmojisByGuildId;
