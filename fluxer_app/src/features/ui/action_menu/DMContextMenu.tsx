@@ -5,6 +5,7 @@ import {
 	MUTE_CONVERSATION_DESCRIPTOR,
 	UNMUTE_CONVERSATION_DESCRIPTOR,
 } from '@app/features/channel/utils/ChannelMessageDescriptors';
+import {SignalBarDMMenuItem} from '@app/features/signal_bar/components/SignalBarDMMenuItem';
 import {DataMenuRenderer} from '@app/features/ui/action_menu/DataMenuRenderer';
 import {useDMMenuData} from '@app/features/ui/action_menu/items/DMMenuData';
 import {MuteDMMenuItem} from '@app/features/ui/action_menu/items/DMMenuItems';
@@ -43,6 +44,11 @@ export const DMContextMenu: React.FC<DMContextMenuProps> = observer(({channel, r
 					channel={channel}
 					onClose={onClose}
 					data-flx="ui.action-menu.dm-context-menu.mute-dm-menu-item"
+				/>
+				<SignalBarDMMenuItem
+					channel={channel}
+					onClose={onClose}
+					data-flx="ui.action-menu.dm-context-menu.signal-bar-dm-menu-item"
 				/>
 			</MenuGroup>
 		</>
