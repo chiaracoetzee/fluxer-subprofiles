@@ -6,6 +6,7 @@ import type {
 	GuildSticker,
 	GuildStickerWithUser,
 } from '@fluxer/schema/src/domains/guild/GuildEmojiSchemas';
+import {compareEmojisByName} from '@app/features/emoji/utils/EmojiSortingUtils';
 import {sortBySnowflakeDesc} from '@fluxer/snowflake/src/SnowflakeUtils';
 
 type EmojiUpdateListener = (emojis: ReadonlyArray<GuildEmojiWithUser>) => void;
@@ -36,6 +37,10 @@ function notifyListeners<T>(
 	}
 }
 
+function sortEmojisByName<T extends {name: string; id: string}>(items: ReadonlyArray<T>): Array<T> {
+	return [...items].sort(compareEmojisByName);
+}
+
 function setCache<
 	T extends {
 		id: string;
@@ -47,8 +52,9 @@ function setCache<
 	guildId: string,
 	value: ReadonlyArray<T>,
 	shouldNotify: boolean,
+	sortFn: (items: ReadonlyArray<T>) => ReadonlyArray<T> = sortBySnowflakeDesc,
 ) {
-	const frozen = freezeList(sortBySnowflakeDesc(value));
+	const frozen = freezeList(sortFn(value));
 	cache.set(guildId, frozen);
 	accessSequence.delete(guildId);
 	accessSequence.add(guildId);
@@ -75,11 +81,11 @@ function evictCacheIfNeeded<T>(cache: Map<string, T>, accessSequence: Set<string
 }
 
 export function seedGuildEmojiCache(guildId: string, emojis: ReadonlyArray<GuildEmojiWithUser>): void {
-	setCache(emojiCache, emojiAccessSequence, emojiListeners, guildId, emojis, false);
+	setCache(emojiCache, emojiAccessSequence, emojiListeners, guildId, emojis, false, sortEmojisByName);
 }
 
 export function seedGuildStickerCache(guildId: string, stickers: ReadonlyArray<GuildStickerWithUser>): void {
-	setCache(stickerCache, stickerAccessSequence, stickerListeners, guildId, stickers, false);
+	setCache(stickerCache, stickerAccessSequence, stickerListeners, guildId, stickers, false, sortBySnowflakeDesc);
 }
 
 export function subscribeToGuildEmojiUpdates(guildId: string, listener: EmojiUpdateListener): () => void {
@@ -127,7 +133,7 @@ export function patchGuildEmojiCacheFromGateway(guildId: string, updates: Readon
 			};
 		})
 		.filter((entry): entry is GuildEmojiWithUser => Boolean(entry));
-	setCache(emojiCache, emojiAccessSequence, emojiListeners, guildId, next, true);
+	setCache(emojiCache, emojiAccessSequence, emojiListeners, guildId, next, true, sortEmojisByName);
 }
 
 export function patchGuildStickerCacheFromGateway(guildId: string, updates: ReadonlyArray<GuildSticker>) {
@@ -145,5 +151,5 @@ export function patchGuildStickerCacheFromGateway(guildId: string, updates: Read
 			};
 		})
 		.filter((entry): entry is GuildStickerWithUser => Boolean(entry));
-	setCache(stickerCache, stickerAccessSequence, stickerListeners, guildId, next, true);
+	setCache(stickerCache, stickerAccessSequence, stickerListeners, guildId, next, true, sortBySnowflakeDesc);
 }
