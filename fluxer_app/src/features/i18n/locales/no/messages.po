@@ -41310,3 +41310,75 @@ msgstr "Zoom inn"
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:86
 msgid "Zoom out"
 msgstr "Zoom ut"
+
+#. Tooltip on a lit signal icon. {label} is the signal name such as Reading, {names} is a comma-separated list of the people who turned it on.
+#: src/features/signal_bar/components/SignalBar.tsx
+msgid "{label}: {names}"
+msgstr "{label}: {names}"
+
+#: src/features/signal_bar/components/GuildSignalBarTab.tsx
+msgid "Add signal"
+msgstr "Legg til signal"
+
+#. Error toast in the community Message Tools settings tab when saving the signal bar fails.
+#: src/features/signal_bar/components/GuildSignalBarTab.tsx
+msgid "Failed to save the signal bar. Try again."
+msgstr "Kunne ikke lagre signallinjen. Prøv igjen."
+
+#. Tooltip for the small arrow button that collapses the signal bar above the message box.
+#: src/features/signal_bar/components/SignalBar.tsx
+msgid "Hide signal bar"
+msgstr "Skjul signallinje"
+
+#. Community settings sidebar category grouping tools that sit around the message box, such as the signal bar.
+#: src/features/user/components/settings_utils/GuildSettingsConstants.ts
+msgid "Message Tools"
+msgstr "Meldingsverktøy"
+
+#: src/features/signal_bar/components/GuildSignalBarTab.tsx
+msgid "No signals yet. The bar stays hidden until you add one."
+msgstr "Ingen signaler ennå. Linjen forblir skjult til du legger til et."
+
+#. Disabled menu entry in the signal bar right-click menu when no one has turned the signal on.
+#: src/features/signal_bar/components/SignalContextMenu.tsx
+msgid "Nobody has this signal on"
+msgstr "Ingen har dette signalet på"
+
+#. Destructive signal bar right-click menu action for moderators that turns the signal off for everyone.
+#: src/features/signal_bar/components/SignalContextMenu.tsx
+msgid "Reset signal for everyone"
+msgstr "Tilbakestill signalet for alle"
+
+#. Tooltip for the small arrow button that expands the collapsed signal bar above the message box.
+#: src/features/signal_bar/components/SignalBar.tsx
+msgid "Show signal bar"
+msgstr "Vis signallinje"
+
+#. Accessible label for the row of toggleable signal icons above the message box.
+#: src/features/signal_bar/components/SignalBar.tsx
+msgid "Signal bar"
+msgstr "Signallinje"
+
+#: src/features/signal_bar/components/GuildSignalBarTab.tsx
+msgid "Signal Bar"
+msgstr "Signallinje"
+
+#. Community settings tab for choosing the toggleable signal icons shown above the message box.
+#: src/features/user/components/settings_utils/GuildSettingsConstants.ts
+msgctxt "community-settings-tab"
+msgid "Signal Bar"
+msgstr "Signallinje"
+
+#. Accessible label for the text field that names a signal in the Message Tools settings tab.
+#: src/features/signal_bar/components/GuildSignalBarTab.tsx
+msgid "Signal label"
+msgstr "Signaletikett"
+
+#: src/features/signal_bar/components/GuildSignalBarTab.tsx
+msgid "Signals are icons above the message box that anyone can switch on and off, and everyone in the conversation sees who has them on. This bar is shared by every community and direct message on this instance. Drag to reorder."
+msgstr "Signaler er ikoner over meldingsfeltet som alle kan slå av og på, og alle i samtalen ser hvem som har dem på. Denne linjen deles av alle fellesskap og direktemeldinger på denne instansen. Dra for å endre rekkefølgen."
+
+#. Signal bar right-click menu action that turns the signal off for one of your own personas or your account. {name} is that display name.
+#: src/features/signal_bar/components/SignalContextMenu.tsx
+msgid "Turn off {name}"
+msgstr "Slå av {name}"
