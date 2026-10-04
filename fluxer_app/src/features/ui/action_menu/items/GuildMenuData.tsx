@@ -325,7 +325,7 @@ export function useGuildMenuData(guild: Guild, options: UseGuildMenuDataOptions)
 		[canManageGuild, canManageChannels, canInvite, canAccessGuildSettings, isOwner, hasGuildUnread, developerMode],
 	);
 	const availableSettingsTabs = useMemo(() => {
-		const allTabs = getGuildSettingsTabs(i18n);
+		const allTabs = getGuildSettingsTabs(i18n, guild.id);
 		return allTabs.filter((tab) => {
 			if (tab.permission) {
 				const perms = Array.isArray(tab.permission) ? tab.permission : [tab.permission];

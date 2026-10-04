@@ -16,7 +16,6 @@ import {
 import {EditBar} from '@app/features/channel/components/ChannelEditBar';
 import {ReplyBar} from '@app/features/channel/components/ChannelReplyBar';
 import {ChannelStickersArea} from '@app/features/channel/components/ChannelStickersArea';
-import {openTimestampModal} from '@app/features/channel/components/modals/TimestampModal';
 import {
 	CHANNEL_DESCRIPTOR,
 	MESSAGE_CHANNEL_DESCRIPTOR,
@@ -32,6 +31,7 @@ import {
 	MentionEveryonePopout,
 } from '@app/features/channel/components/MentionEveryonePopout';
 import {MessageCharacterCounter} from '@app/features/channel/components/MessageCharacterCounter';
+import {openTimestampModal} from '@app/features/channel/components/modals/TimestampModal';
 import {SlashCommandParamBar} from '@app/features/channel/components/SlashCommandParamBar';
 import {SlowmodeIndicator} from '@app/features/channel/components/SlowmodeIndicator';
 import {TypingAnnouncer, TypingUsers, usePresentableTypingUsers} from '@app/features/channel/components/TypingUsers';
@@ -107,6 +107,7 @@ import {
 } from '@app/features/messaging/utils/TypedEmojiShortcodeUtils';
 import {PersonaComposerPill} from '@app/features/persona/components/PersonaComposerPill';
 import {ComponentBus} from '@app/features/platform/utils/ComponentBus';
+import {SignalBar} from '@app/features/signal_bar/components/SignalBar';
 import {useSlowmode} from '@app/features/slowmode/hooks/useSlowmode';
 import {openCreateThread} from '@app/features/threads/commands/ThreadNavigation';
 import ActiveComposer from '@app/features/threads/state/ActiveComposer';
@@ -1368,6 +1369,7 @@ export const LexicalChannelTextareaContent = observer(
 							)}
 						</flx-channel-textarea-status-rail>
 					)}
+					<SignalBar channel={channel} attached={true} data-flx="channel.lexical-channel-textarea-content.signal-bar" />
 					{hasLeadingStatusContent && (
 						<div className={wrapperStyles.composerActionStack} data-flx="channel.textarea.composer-action-stack">
 							{topBarContent !== null && (

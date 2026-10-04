@@ -37,6 +37,7 @@ import {useMemberListVisible} from '@app/features/member/hooks/useMemberListVisi
 import Permission from '@app/features/permissions/state/Permission';
 import {ComponentBus} from '@app/features/platform/utils/ComponentBus';
 import ReadStates from '@app/features/read_state/state/ReadStates';
+import {SignalBar} from '@app/features/signal_bar/components/SignalBar';
 import {ThreadComposerArea} from '@app/features/threads/components/ThreadComposerArea';
 import {ThreadMembersPanel} from '@app/features/threads/components/ThreadMembersPanel';
 import {ThreadSplitView, useThreadPanelState} from '@app/features/threads/components/ThreadSidePanel';
@@ -379,6 +380,14 @@ export const GuildChannelView = observer(({channelId, guildId}: GuildChannelView
 			/>
 		);
 	};
+	const withSignalBar = (chatArea: React.ReactElement) => (
+		<>
+			{chatArea.type !== ChannelTextarea && (
+				<SignalBar channel={channel} data-flx="channel.channel-view.guild-channel-view.signal-bar" />
+			)}
+			{chatArea}
+		</>
+	);
 	const renderChatArea = (inputSuppressed = false) => {
 		if (DeveloperOptions.mockVerificationBarrier !== 'none' && !channel.isPrivate()) {
 			switch (DeveloperOptions.mockVerificationBarrier) {
@@ -440,7 +449,8 @@ export const GuildChannelView = observer(({channelId, guildId}: GuildChannelView
 	if (isVoiceChannel) {
 		const isVoiceTextSplitView = isPwaVoiceTextSplitLayout && !isVoiceTextCallExpanded;
 		const shouldRenderMemberList = isMemberListVisible && !isMobileLayout && !isSearchActive;
-		const isMemberListPeeking = !isMemberListVisible && !isMobileLayout && !isSearchActive && LayoutState.isRightHoverPeeking;
+		const isMemberListPeeking =
+			!isMemberListVisible && !isMobileLayout && !isSearchActive && LayoutState.isRightHoverPeeking;
 		const compactVoiceCallHeaderSupplement = isConnectedToThisChannel ? (
 			<CompactVoiceCallStreamHeaderInfo
 				channel={channel}
@@ -524,7 +534,7 @@ export const GuildChannelView = observer(({channelId, guildId}: GuildChannelView
 								data-flx="channel.channel-view.guild-channel-view.messages"
 							/>
 						}
-						textarea={renderChatArea(isVoiceTextCallExpanded)}
+						textarea={withSignalBar(renderChatArea(isVoiceTextCallExpanded))}
 						data-flx="channel.channel-view.guild-channel-view.channel-chat-layout"
 					/>
 				}
@@ -600,7 +610,7 @@ export const GuildChannelView = observer(({channelId, guildId}: GuildChannelView
 								data-flx="channel.channel-view.guild-channel-view.thread-composer-area"
 							/>
 						) : (
-							renderChatArea()
+							withSignalBar(renderChatArea())
 						)
 					}
 					data-flx="channel.channel-view.guild-channel-view.channel-chat-layout--2"
