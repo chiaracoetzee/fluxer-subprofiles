@@ -126,6 +126,7 @@ import {RpcService} from '@app/api/rpc/RpcService';
 import {getReportSearchService} from '@app/api/SearchFactory';
 import {SearchService} from '@app/api/search/SearchService';
 import {SignalBarService} from '@app/api/signal_bar/SignalBarService';
+import {SignalBarSettingsRepository} from '@app/api/signal_bar/SignalBarSettingsRepository';
 import type {StoreEntitlementService} from '@app/api/store_billing/StoreEntitlementService';
 import {createStoreEntitlementService} from '@app/api/store_billing/StoreEntitlementServiceFactory';
 import {StripeService} from '@app/api/stripe/StripeService';
@@ -701,6 +702,8 @@ class RequestServices implements RequestScopedServices {
 			personaRepository: getPersonaRepository(),
 			findUser: (userId) => getUserRepository().findUnique(userId),
 			findChannel: (channelId) => this.channelRepository.findUnique(channelId),
+			settingsRepository: new SignalBarSettingsRepository(),
+			listGuildChannels: (guildId) => this.channelRepository.listGuildChannels(guildId),
 		});
 		return this.cachedSignalBarService;
 	}
