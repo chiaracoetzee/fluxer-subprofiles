@@ -54,6 +54,7 @@ export function useVirtualRows(
 					for (let i = 0; i < favoriteEmojis.length; i += emojisPerRow) {
 						rows.push({
 							type: 'emoji-row',
+							category: 'favorites',
 							emojis: favoriteEmojis.slice(i, i + emojisPerRow),
 							index: currentIndex++,
 						});
