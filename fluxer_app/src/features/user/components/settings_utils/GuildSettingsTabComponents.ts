@@ -11,6 +11,7 @@ import GuildStickersTab from '@app/features/guild/components/modals/guild_tabs/G
 import GuildVanityURLTab from '@app/features/guild/components/modals/guild_tabs/GuildVanityURLTab';
 import GuildWebhooksTab from '@app/features/guild/components/modals/guild_tabs/GuildWebhooksTab';
 import GuildOverviewTab from '@app/features/guild/components/modals/guild_tabs/guild_overview_tab';
+import {GuildSignalBarTab} from '@app/features/signal_bar/components/GuildSignalBarTab';
 import type {GuildSettingsTabType} from '@app/features/user/components/settings_utils/GuildSettingsConstants';
 import type React from 'react';
 
@@ -31,6 +32,7 @@ const GUILD_SETTINGS_TAB_COMPONENTS: Record<GuildSettingsTabType, GuildSettingsT
 	members: EmptyGuildSettingsTab,
 	invites: GuildInvitesTab,
 	bans: GuildBansTab,
+	signal_bar: GuildSignalBarTab,
 };
 
 export function getGuildSettingsTabComponent(tabType: GuildSettingsTabType): GuildSettingsTabComponent {

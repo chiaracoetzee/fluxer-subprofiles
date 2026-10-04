@@ -207,6 +207,7 @@ interface LimitConfigInputs {
 export interface InstancePolicyConfig {
 	single_community_enabled: boolean;
 	single_community_guild_id: string | null;
+	signal_bar_guild_id: string | null;
 	community_creation_staff_only: boolean;
 	direct_messages_disabled: boolean;
 	direct_messages_locked: boolean;
@@ -751,8 +752,7 @@ function buildAppPublicConfig(config: z.infer<typeof StoredInstanceAppPublicSche
 			premium_product_name:
 				normalizeOptionalString(branding.premium_product_name) ?? defaults.branding.premium_product_name,
 			premium_info_url: normalizeOptionalPublicString(branding.premium_info_url, defaults.branding.premium_info_url),
-			desktop_app_prompt_enabled:
-				branding.desktop_app_prompt_enabled ?? defaults.branding.desktop_app_prompt_enabled,
+			desktop_app_prompt_enabled: branding.desktop_app_prompt_enabled ?? defaults.branding.desktop_app_prompt_enabled,
 		},
 		setup: {
 			configured: setup.configured ?? defaults.setup.configured,
@@ -776,6 +776,7 @@ const StoredSnowflakeStringSchema = z
 const StoredInstancePolicySchema = z.object({
 	single_community_enabled: InstancePolicyUpdateSchema.shape.single_community_enabled.default(false),
 	single_community_guild_id: StoredSnowflakeStringSchema.nullable().default(null),
+	signal_bar_guild_id: StoredSnowflakeStringSchema.nullable().default(null),
 	community_creation_staff_only: InstancePolicyUpdateSchema.shape.community_creation_staff_only.default(false),
 	direct_messages_disabled: InstancePolicyUpdateSchema.shape.direct_messages_disabled.default(false),
 	direct_messages_locked: z.boolean().default(false),
@@ -2134,6 +2135,7 @@ export class InstanceConfigRepository {
 			guild_create_access: policy.guild_create_access,
 			community_creation_staff_only: policy.community_creation_staff_only,
 			server_list_buttons: policy.server_list_buttons,
+			signal_bar_guild_id: policy.signal_bar_guild_id,
 		};
 	}
 
