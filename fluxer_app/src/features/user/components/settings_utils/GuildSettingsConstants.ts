@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-import RuntimeConfig from '@app/features/app/state/RuntimeConfig';
 import GuildAuditLogTab from '@app/features/guild/components/modals/guild_tabs/GuildAuditLogTab';
 import GuildBansTab from '@app/features/guild/components/modals/guild_tabs/GuildBansTab';
 import GuildDiscoveryTab from '@app/features/guild/components/modals/guild_tabs/GuildDiscoveryTab';
@@ -312,10 +311,8 @@ export function formatGuildSettingsPath(i18n: I18n, tabType: GuildSettingsTabTyp
 	return [i18n._(GUILD_SETTINGS_LABEL_DESCRIPTOR), getGuildSettingsTabLabel(i18n, tabType)].filter(Boolean).join(' > ');
 }
 
-export const getGuildSettingsTabs = (i18n: I18n, guildId?: string): Array<GuildSettingsTab> => {
-	return GUILD_SETTINGS_TABS_DESCRIPTORS.filter(
-		(tab) => tab.type !== 'signal_bar' || (guildId != null && guildId === RuntimeConfig.signalBarGuildId),
-	).map((tab) => ({
+export const getGuildSettingsTabs = (i18n: I18n, _guildId?: string): Array<GuildSettingsTab> => {
+	return GUILD_SETTINGS_TABS_DESCRIPTORS.map((tab) => ({
 		...tab,
 		label: getGuildSettingsTabLabel(i18n, tab.type),
 	}));
