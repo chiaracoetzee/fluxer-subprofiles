@@ -60,7 +60,7 @@ vi.mock('@app/features/ui/components/form/FormInput', () => ({
 
 import Authentication from '@app/features/auth/state/Authentication';
 import {http} from '@app/features/platform/transport/RestTransport';
-import {GuildSignalBarTab} from '@app/features/signal_bar/components/GuildSignalBarTab';
+import {SignalBarEditor} from '@app/features/signal_bar/components/SignalBarEditor';
 import {SignalContextMenu} from '@app/features/signal_bar/components/SignalContextMenu';
 import SignalBarStore from '@app/features/signal_bar/state/SignalBarStore';
 import type {ChannelSignalEntry, SignalBarSignal} from '@fluxer/schema/src/domains/signal_bar/SignalBarSchemas';
@@ -119,24 +119,23 @@ describe('signal bar menus', () => {
 	});
 
 	const loadEntries = async (entries: Array<ChannelSignalEntry>) => {
-		getMock.mockResolvedValueOnce({ok: true, body: {bar_version: 1, entries}} as never);
+		getMock.mockResolvedValueOnce({ok: true, body: {enabled: true, bar_version: 1, entries}} as never);
 		await SignalBarStore.fetchChannel('c');
 	};
 
-	it('lists who is on, offers turn-off only for your own entry, and reset only to moderators', async () => {
+	it("turns off your own signal or someone else's from the manager menu", async () => {
 		await loadEntries([entry('2', 'bob'), entry(ME, 'me', 'Kitsune')]);
 		const onClose = vi.fn();
 		await act(async () => {
 			root.render(
-				<SignalContextMenu channelId="c" guildId={null} signal={READING} canReset={false} onClose={onClose} />,
+				<SignalContextMenu channelId="c" guildId={null} signal={READING} canReset={true} onClose={onClose} />,
 			);
 		});
-		expect(labelled('bob')?.disabled).toBe(true);
-		expect(labelled('Reset signal for everyone')).toBeUndefined();
-
+		await act(async () => labelled('Turn off bob')?.click());
+		expect(deleteMock).toHaveBeenLastCalledWith('/channels/c/signals/reading/users/2');
 		await act(async () => labelled('Turn off Kitsune')?.click());
-		expect(onClose).toHaveBeenCalled();
-		expect(deleteMock).toHaveBeenCalledWith('/channels/c/signals/reading/@me');
+		expect(deleteMock).toHaveBeenLastCalledWith('/channels/c/signals/reading/@me');
+		expect(onClose).toHaveBeenCalledTimes(2);
 	});
 
 	it('resets the signal for everyone when a moderator chooses reset', async () => {
@@ -161,7 +160,7 @@ describe('signal bar menus', () => {
 
 	it('saves the remaining signals when one is removed in settings', async () => {
 		await act(async () => {
-			root.render(<GuildSignalBarTab guildId="g" />);
+			root.render(<SignalBarEditor />);
 		});
 		const removeButtons = buttons().filter((node) => node.textContent === 'Remove');
 		expect(removeButtons).toHaveLength(2);
