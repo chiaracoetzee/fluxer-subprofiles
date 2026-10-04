@@ -47,6 +47,7 @@ import refreshStorePurchase from '@app/api/worker/tasks/RefreshStorePurchase';
 import removeChannelFollowers from '@app/api/worker/tasks/RemoveChannelFollowers';
 import seedThreadPermissions from '@app/api/worker/tasks/SeedThreadPermissions';
 import {sendSystemDm} from '@app/api/worker/tasks/SendSystemDm';
+import sweepSignalBar from '@app/api/worker/tasks/SweepSignalBar';
 import syncCrosspostCopies from '@app/api/worker/tasks/SyncCrosspostCopies';
 import syncCrosspostedMessage from '@app/api/worker/tasks/SyncCrosspostedMessage';
 import syncDiscoveryIndex from '@app/api/worker/tasks/SyncDiscoveryIndex';
@@ -125,6 +126,7 @@ export const workerTasks: Record<WorkerTaskName, WorkerTaskHandler> = {
 	syncCrosspostCopies,
 	syncCrosspostedMessage,
 	flushUserActivityBuffer,
+	sweepSignalBar,
 	userProcessPendingDeletion,
 	userProcessPendingDeletions,
 };

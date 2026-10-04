@@ -1,6 +1,7 @@
 import * as DraftCommands from '@app/features/messaging/commands/DraftCommands';
 import type {MentionSegment, TextareaSegmentManager} from '@app/features/messaging/utils/TextareaSegmentManager';
 import {normalizeSubprofile, PersonaStore} from '@app/features/persona/state/PersonaStore';
+import SignalBarStore from '@app/features/signal_bar/state/SignalBarStore';
 import {onBeforeAppStorageScopeChange} from '@app/features/platform/state/PersistentStorage';
 import {flushPendingPersistWrites} from '@app/features/platform/utils/MobXPersistence';
 import {TypingUtils} from '@app/features/typing/utils/TypingUtils';
@@ -170,6 +171,9 @@ export const useTextareaDraftAndTyping = ({
 			flushDraftRef.current();
 		};
 	}, [channelId, isEditingMessageInComposer]);
+	useEffect(() => {
+		return () => SignalBarStore.clearComposerPersona(channelId);
+	}, [channelId]);
 	const activePersonaId = PersonaStore.activePersonaId;
 	const isPersonaLatched = PersonaStore.isPersonaLatched;
 	useEffect(() => {
@@ -199,6 +203,9 @@ export const useTextareaDraftAndTyping = ({
 					display_tag_icon: PersonaStore.displayTagIcon || null,
 				})
 			: null;
+		if (!isEditingMessageInComposerRef.current) {
+			SignalBarStore.setComposerPersona(channelId, subprofile);
+		}
 
 		TypingUtils.handleComposerChange({
 			channelId,
