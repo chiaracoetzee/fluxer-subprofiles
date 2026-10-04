@@ -16,6 +16,7 @@ import {GroupOwnershipTransferFailedModal} from '@app/features/guild/components/
 import {TRANSFER_OWNERSHIP_DESCRIPTOR} from '@app/features/i18n/utils/CommonMessageDescriptors';
 import {Logger} from '@app/features/platform/utils/AppLogger';
 import Relationships from '@app/features/relationship/state/Relationships';
+import {SignalBarDMMenuItem} from '@app/features/signal_bar/components/SignalBarDMMenuItem';
 import {
 	ChangeNicknameIcon,
 	EditIcon,
@@ -127,6 +128,11 @@ export const GroupDMContextMenu: React.FC<GroupDMContextMenuProps> = observer(({
 					channel={channel}
 					onClose={onClose}
 					data-flx="ui.action-menu.group-dm-context-menu.mute-dm-menu-item"
+				/>
+				<SignalBarDMMenuItem
+					channel={channel}
+					onClose={onClose}
+					data-flx="ui.action-menu.group-dm-context-menu.signal-bar-dm-menu-item"
 				/>
 			</MenuGroup>
 		</>
