@@ -91,6 +91,7 @@ import type {ZodType} from 'zod';
 // Fork imports.
 
 import type {PersonaService} from '@app/api/persona/PersonaService';
+import type {SignalBarService} from '@app/api/signal_bar/SignalBarService';
 
 export interface HonoEnv {
 	Variables: {
@@ -163,6 +164,7 @@ export interface HonoEnv {
 		reportService: ReportService;
 		reportRequestService: ReportRequestService;
 		personaService: PersonaService;
+		signalBarService: SignalBarService;
 		contactChangeLogService: UserContactChangeLogService;
 		requestCache: RequestCache;
 		rpcService: RpcService;
