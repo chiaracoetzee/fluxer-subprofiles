@@ -58,6 +58,7 @@ import type {ReportRequestService} from '@app/api/report/ReportRequestService';
 import type {ReportService} from '@app/api/report/ReportService';
 import type {RpcService} from '@app/api/rpc/RpcService';
 import type {SearchService} from '@app/api/search/SearchService';
+import type {SignalBarService} from '@app/api/signal_bar/SignalBarService';
 import type {StoreEntitlementService} from '@app/api/store_billing/StoreEntitlementService';
 import type {StripeService} from '@app/api/stripe/StripeService';
 import type {AgeVerificationService} from '@app/api/stripe/services/AgeVerificationService';
@@ -88,7 +89,6 @@ import type {IRateLimitService} from '@pkgs/rate_limit/src/IRateLimitService';
 import type {IWorkerService} from '@pkgs/worker/src/contracts/IWorkerService';
 import type {Hono} from 'hono';
 import type {ZodType} from 'zod';
-
 
 export interface HonoEnv {
 	Variables: {
@@ -159,6 +159,7 @@ export interface HonoEnv {
 		reportService: ReportService;
 		reportRequestService: ReportRequestService;
 		personaService: PersonaService;
+		signalBarService: SignalBarService;
 		contactChangeLogService: UserContactChangeLogService;
 		ncmecSubmissionService: NcmecSubmissionService;
 		requestCache: RequestCache;

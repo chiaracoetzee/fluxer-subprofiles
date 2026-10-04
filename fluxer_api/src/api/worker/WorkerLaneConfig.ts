@@ -89,6 +89,7 @@ const LANE_CONFIG = {
 			'syncUrlBlocklists',
 			'syncFileShaBlocklists',
 			'flushUserActivityBuffer',
+			'sweepSignalBar',
 		] as const,
 		retiredTasks: [],
 		concurrency: 12,

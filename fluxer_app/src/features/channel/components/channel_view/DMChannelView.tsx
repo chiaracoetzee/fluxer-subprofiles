@@ -43,6 +43,7 @@ import {useMemberListVisible} from '@app/features/member/hooks/useMemberListVisi
 import {ComponentBus} from '@app/features/platform/utils/ComponentBus';
 import ReadStates from '@app/features/read_state/state/ReadStates';
 import Relationships from '@app/features/relationship/state/Relationships';
+import {SignalBar} from '@app/features/signal_bar/components/SignalBar';
 import {remFromPx} from '@app/features/theme/layout/RemFromPx';
 import {Button} from '@app/features/ui/button/Button';
 import LayoutState from '@app/features/ui/state/LayoutState';
@@ -85,6 +86,11 @@ export const DMChannelView = observer(({channelId}: DMChannelViewProps) => {
 	const isDM = channel?.type === ChannelTypes.DM;
 	const isGroupDM = channel?.type === ChannelTypes.GROUP_DM;
 	const isPersonalNotes = channel?.type === ChannelTypes.DM_PERSONAL_NOTES;
+	const showsSignalBarAboveBarrier =
+		!isSystemDm &&
+		((isDM && isRecipientBlocked && recipient != null) ||
+			(isCurrentUserLimited && !isPersonalNotes) ||
+			(isCurrentUserUnclaimed && isDM && !isPersonalNotes && !isGroupDM));
 	const currentChannelId = channel?.id ?? null;
 	const mediaConnected = MediaEngine.connected;
 	const mediaChannelId = MediaEngine.channelId;
@@ -222,11 +228,7 @@ export const DMChannelView = observer(({channelId}: DMChannelViewProps) => {
 	}, [currentChannelId]);
 	const shouldRenderMemberList = Boolean(isGroupDM && isMemberListVisible && !isSearchActive);
 	const isMemberListPeeking = Boolean(
-		isGroupDM &&
-			!isMemberListVisible &&
-			!isMobileLayout &&
-			!isSearchActive &&
-			LayoutState.isRightHoverPeeking,
+		isGroupDM && !isMemberListVisible && !isMobileLayout && !isSearchActive && LayoutState.isRightHoverPeeking,
 	);
 	const callStatusLabel = useMemo(() => {
 		switch (controlsVariant) {
@@ -498,25 +500,30 @@ export const DMChannelView = observer(({channelId}: DMChannelViewProps) => {
 							/>
 						}
 						textarea={
-							isSystemDm ? (
-								<SystemDmBarrier data-flx="channel.channel-view.dm-channel-view.system-dm-barrier" />
-							) : isDM && isRecipientBlocked && recipient ? (
-								<BlockedUserBarrier
-									userId={recipient.id}
-									username={NicknameUtils.getNickname(recipient, null)}
-									data-flx="channel.channel-view.dm-channel-view.blocked-user-barrier"
-								/>
-							) : isCurrentUserLimited && !isPersonalNotes ? (
-								<AccountLimitedBarrier data-flx="channel.channel-view.dm-channel-view.account-limited-barrier" />
-							) : isCurrentUserUnclaimed && isDM && !isPersonalNotes && !isGroupDM ? (
-								<UnclaimedDMBarrier data-flx="channel.channel-view.dm-channel-view.unclaimed-dm-barrier" />
-							) : (
-								<ChannelTextarea
-									channel={channel}
-									inputSuppressed={isCompactCallChatSuppressed}
-									data-flx="channel.channel-view.dm-channel-view.channel-textarea"
-								/>
-							)
+							<>
+								{showsSignalBarAboveBarrier && (
+									<SignalBar channel={channel} data-flx="channel.channel-view.dm-channel-view.signal-bar" />
+								)}
+								{isSystemDm ? (
+									<SystemDmBarrier data-flx="channel.channel-view.dm-channel-view.system-dm-barrier" />
+								) : isDM && isRecipientBlocked && recipient ? (
+									<BlockedUserBarrier
+										userId={recipient.id}
+										username={NicknameUtils.getNickname(recipient, null)}
+										data-flx="channel.channel-view.dm-channel-view.blocked-user-barrier"
+									/>
+								) : isCurrentUserLimited && !isPersonalNotes ? (
+									<AccountLimitedBarrier data-flx="channel.channel-view.dm-channel-view.account-limited-barrier" />
+								) : isCurrentUserUnclaimed && isDM && !isPersonalNotes && !isGroupDM ? (
+									<UnclaimedDMBarrier data-flx="channel.channel-view.dm-channel-view.unclaimed-dm-barrier" />
+								) : (
+									<ChannelTextarea
+										channel={channel}
+										inputSuppressed={isCompactCallChatSuppressed}
+										data-flx="channel.channel-view.dm-channel-view.channel-textarea"
+									/>
+								)}
+							</>
 						}
 						data-flx="channel.channel-view.dm-channel-view.channel-chat-layout"
 					/>
