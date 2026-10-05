@@ -42,6 +42,10 @@ export interface UpdatePersonaParams {
 	last_used_at_ms?: bigint | null;
 }
 
+export function personaLookupKey(userId: UserID | string, personaId: PersonaID | string): string {
+	return `${userId.toString()}:${personaId.toString()}`;
+}
+
 export abstract class IPersonaRepository {
 	abstract findById(userId: UserID, personaId: PersonaID, options?: {includeDeleted?: boolean}): Promise<Persona | null>;
 	abstract findByUserId(userId: UserID, options?: {includeDeleted?: boolean}): Promise<Array<Persona>>;
