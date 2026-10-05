@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+import {withForkMessages} from '@app/app/ForkI18n';
 import {messages as messagesEnUS} from '@app/features/i18n/locales/en-US/messages.mjs';
 import AppStorage from '@app/features/platform/state/PersistentStorage';
 import {getNativeLocaleIdentifier} from '@app/features/platform/types/Platform';
@@ -217,7 +218,7 @@ export async function loadLocaleCatalog(localeCode: string): Promise<LocaleCode>
 	}
 	let loadPromise = inFlightLoads.get(normalized);
 	if (!loadPromise) {
-		loadPromise = loadLazyModule(loaders[normalized])
+		loadPromise = loadLazyModule(withForkMessages(normalized, loaders[normalized]))
 			.then(({messages}) => messages)
 			.finally(() => {
 				inFlightLoads.delete(normalized);
