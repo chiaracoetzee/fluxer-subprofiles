@@ -1,6 +1,13 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-import {type ChannelID, createGuildID, createUserID, type MessageID, type UserID} from '@app/api/BrandedTypes';
+import {
+	type ChannelID,
+	createGuildID,
+	createUserID,
+	type MessageID,
+	type PersonaID,
+	type UserID,
+} from '@app/api/BrandedTypes';
 import type {MessageUpdateRequest} from '@app/api/channel/MessageTypes';
 import type {IChannelRepositoryAggregate} from '@app/api/channel/repositories/IChannelRepositoryAggregate';
 import type {AuthenticatedChannel} from '@app/api/channel/services/AuthenticatedChannel';
@@ -20,7 +27,10 @@ import {assertThreadInteractionAllowed} from '@app/api/channel/services/thread/T
 import type {ThreadViewer} from '@app/api/experiment/ChannelThreadsGate';
 import {Logger} from '@app/api/Logger';
 import type {RequestCache} from '@app/api/middleware/RequestCacheMiddleware';
+import {getPersonaRepository} from '@app/api/middleware/ServiceSingletons';
 import type {Message} from '@app/api/models/Message';
+import type {IPersonaRepository} from '@app/api/persona/IPersonaRepository';
+import {resolveOwnedPersonaId} from '@app/api/persona/PersonaOwnership';
 import {assertAccountNotLimited} from '@app/api/user/AccountLimit';
 import type {IUserRepository} from '@app/api/user/IUserRepository';
 import {assertMayStartConversation, oneToOneDmRecipient} from '@app/api/user/NewConversationLimit';
@@ -52,6 +62,7 @@ interface MessageEditServiceDeps {
 	mentionService: MessageMentionService;
 	messageWriteLock: MessageWriteLock;
 	crosspostPropagation: CrosspostPropagation;
+	personaRepository?: IPersonaRepository;
 }
 
 export class MessageEditService {
@@ -176,6 +187,20 @@ export class MessageEditService {
 			});
 		}
 		const isBugHunterBot = !!user?.isBot && (user.flags & UserFlags.BUG_HUNTER) !== 0n;
+		let personaId: PersonaID | null | undefined;
+		if (data.subprofile === null) {
+			personaId = null;
+		} else if (data.subprofile !== undefined) {
+			// Re-sending the persona the message already has is not a change, so it stays editable after that persona is deleted.
+			personaId =
+				message.personaId != null && data.subprofile.id === message.personaId.toString()
+					? message.personaId
+					: await resolveOwnedPersonaId(
+							this.deps.personaRepository ?? getPersonaRepository(),
+							userId,
+							data.subprofile.id,
+						);
+		}
 		const updateResult = await this.deps.messageWriteLock.withFreshMessage(channelId, messageId, async (fresh) => {
 			if (!fresh) throw new UnknownMessageError();
 			return this.deps.crosspostPropagation.withPublishedEditBudget({fresh, actor: 'author'}, () =>
@@ -191,6 +216,7 @@ export class MessageEditService {
 					isBot: user?.isBot,
 					isBugHunterBot,
 					locale: user?.locale,
+					personaId,
 				}),
 			);
 		});
