@@ -126,7 +126,11 @@ export const DEFAULT_SERVER_LIST_BUTTONS: ServerListButtons = {
 	help: true,
 };
 
-export const DEFAULT_INSTANCE_COMMUNITY: InstanceCommunity = {
+// The fork's community fields are optional on the wire (an instance may not send
+// them); the normalised form held in state always has them.
+export type NormalizedInstanceCommunity = Required<InstanceCommunity>;
+
+export const DEFAULT_INSTANCE_COMMUNITY: NormalizedInstanceCommunity = {
 	single_community: false,
 	single_community_guild_id: null,
 	signal_bar_guild_id: null,
@@ -136,7 +140,7 @@ export const DEFAULT_INSTANCE_COMMUNITY: InstanceCommunity = {
 	server_list_buttons: DEFAULT_SERVER_LIST_BUTTONS,
 };
 
-export function normalizeInstanceCommunity(community?: InstanceCommunity | null): InstanceCommunity {
+export function normalizeInstanceCommunity(community?: InstanceCommunity | null): NormalizedInstanceCommunity {
 	return {
 		...DEFAULT_INSTANCE_COMMUNITY,
 		...(community ?? {}),
@@ -352,7 +356,7 @@ class RuntimeConfig {
 	features: InstanceFeatures = {...DEFAULT_INSTANCE_FEATURES};
 	sso: InstanceSsoConfig | null = null;
 	registration: InstanceRegistration = {...DEFAULT_INSTANCE_REGISTRATION};
-	community: InstanceCommunity = {...DEFAULT_INSTANCE_COMMUNITY};
+	community: NormalizedInstanceCommunity = {...DEFAULT_INSTANCE_COMMUNITY};
 	services: InstanceServices = {...DEFAULT_INSTANCE_SERVICES};
 	publicPushVapidKey: string | null = null;
 	limits: LimitConfigSnapshot = this.createEmptyLimitConfig();
