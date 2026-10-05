@@ -17,7 +17,7 @@ import type {MessageReaction} from '@app/api/models/MessageReaction';
 import type {User} from '@app/api/models/User';
 import {assertAccountNotLimited} from '@app/api/user/AccountLimit';
 import type {UserRepository} from '@app/api/user/repositories/UserRepository';
-import type {IPersonaRepository} from '@app/api/persona/IPersonaRepository';
+import {type IPersonaRepository, personaLookupKey} from '@app/api/persona/IPersonaRepository';
 import {PersonaNotFoundError} from '@app/api/persona/errors/PersonaErrors';
 import {mapUserToPartialResponse} from '@app/api/user/UserMappers';
 import {assertGuildMemberCanCommunicate} from '@app/api/utils/GuildCommunicationUtils';
@@ -162,7 +162,7 @@ export class MessageReactionService extends MessageInteractionBase {
 			const base = mapUserToPartialResponse(user);
 			let subprofile: MessageSubprofileResponse | null = null;
 			if (reaction.personaId) {
-				const persona = personasByKey.get(reaction.personaId.toString());
+				const persona = personasByKey.get(personaLookupKey(reaction.userId, reaction.personaId));
 				if (persona) {
 					const settings = userSettingsByUserId.get(reaction.userId.toString());
 					subprofile = persona.toSubprofileResponse(settings);
