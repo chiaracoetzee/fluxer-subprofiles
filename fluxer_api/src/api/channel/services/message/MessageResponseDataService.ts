@@ -19,7 +19,7 @@ import {createPersonaID, type PersonaID} from '@app/api/BrandedTypes';
 import type {UserPersonaSettingsRow} from '@app/api/database/types/PersonaTypes';
 import {getPersonaRepository} from '@app/api/middleware/ServiceSingletons';
 import type {Persona} from '@app/api/models/Persona';
-import type {IPersonaRepository} from '@app/api/persona/IPersonaRepository';
+import {type IPersonaRepository, personaLookupKey} from '@app/api/persona/IPersonaRepository';
 import {DELETED_USER_USERNAME, UserFlags} from '@fluxer/constants/src/UserConstants';
 
 const textEncoder = new TextEncoder();
@@ -211,7 +211,7 @@ export class MessageResponseDataService {
 		}
 
 		const repo = lookupPairs.length > 0 ? this.getPersonaRepository() : null;
-		const [personasById, settingsByUserId] = repo
+		const [personasByKey, settingsByUserId] = repo
 			? await Promise.all([
 					repo.findByUserAndPersonaIds(lookupPairs),
 					repo.findSettingsByUserIds(authorUserIds),
@@ -230,8 +230,8 @@ export class MessageResponseDataService {
 						: null;
 			if (!personaIdStr) continue;
 
-			const persona = personasById.get(personaIdStr);
 			const authorIdStr = msg.author?.id;
+			const persona = authorIdStr ? personasByKey.get(personaLookupKey(authorIdStr, personaIdStr)) : undefined;
 			const userSettings = authorIdStr ? settingsByUserId.get(authorIdStr) : undefined;
 			if (persona) {
 				msg.subprofile = persona.toSubprofileResponse(userSettings);

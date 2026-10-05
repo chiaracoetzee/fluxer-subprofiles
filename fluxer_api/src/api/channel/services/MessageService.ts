@@ -162,6 +162,7 @@ export class MessageService {
 			mentionService: this.mention,
 			messageWriteLock: this.writeLock,
 			crosspostPropagation: this.crosspostPropagation,
+			personaRepository,
 		});
 		this.deletion = new MessageDeleteService({
 			channelRepository,

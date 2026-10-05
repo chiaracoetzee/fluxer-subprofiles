@@ -83,9 +83,10 @@ import type {IRateLimitService} from '@pkgs/rate_limit/src/IRateLimitService';
 
 // Fork imports.
 
-import {createPersonaID} from '@app/api/BrandedTypes';
-import {normalizeMessageSubprofile} from '@app/api/channel/services/message/MessageHelpers';
+import type {PersonaID} from '@app/api/BrandedTypes';
+import {getPersonaRepository} from '@app/api/middleware/ServiceSingletons';
 import type {IPersonaRepository} from '@app/api/persona/IPersonaRepository';
+import {resolveOwnedPersonaId} from '@app/api/persona/PersonaOwnership';
 
 interface MessageSendServiceDeps {
 	threadActivity: ThreadMessageActivity;
@@ -374,6 +375,11 @@ export class MessageSendService {
 			});
 		}
 		return isForwardMessage;
+	}
+
+	private async resolveMessagePersonaId({user, data}: {user: User; data: MessageRequest}): Promise<PersonaID | null> {
+		if (!data.subprofile) return null;
+		return resolveOwnedPersonaId(this.deps.personaRepository ?? getPersonaRepository(), user.id, data.subprofile.id);
 	}
 
 	private assertNotThreadStarterReference(
@@ -674,8 +680,17 @@ export class MessageSendService {
 		if (!user.isBot && user.id !== SYSTEM_USER_ID && !(user.flags & UserFlags.HAS_SESSION_STARTED)) {
 			throw InputValidationError.fromCode('content', ValidationErrorCodes.MUST_START_SESSION_BEFORE_SENDING);
 		}
+		const personaId = await this.resolveMessagePersonaId({user, data});
 		if (isPersonalNotesChannel({userId: user.id, channelId})) {
-			const message = await this.sendPersonalNoteMessage({authChannel, user, viewer, channelId, data, requestCache});
+			const message = await this.sendPersonalNoteMessage({
+				authChannel,
+				user,
+				viewer,
+				channelId,
+				data,
+				requestCache,
+				personaId,
+			});
 			return {message, authChannel};
 		}
 		assertAccountNotLimited(user);
@@ -875,7 +890,7 @@ export class MessageSendService {
 			allowEmbeds: canEmbedLinks,
 			dmNsfwContext,
 			threadInsert: authChannel.thread !== undefined,
-			subprofile: normalizeMessageSubprofile(data.subprofile),
+			personaId,
 		});
 		this.cacheMentionChannels({
 			requestCache,
@@ -965,11 +980,7 @@ export class MessageSendService {
 		if (searchIndexOptions && !suppressDmRecipientDelivery) {
 			void this.deps.searchService.indexMessage(message, user.isBot, searchIndexOptions);
 		}
-		const targetPersonaId =
-			message.personaId ??
-			(data.subprofile?.id && /^\d+$/.test(data.subprofile.id)
-				? createPersonaID(BigInt(data.subprofile.id))
-				: null);
+		const targetPersonaId = message.personaId;
 		if (targetPersonaId && this.deps.personaRepository) {
 			try {
 				void this.deps.personaRepository.recordUsage(user.id, targetPersonaId).catch((error) => {
@@ -1245,6 +1256,7 @@ export class MessageSendService {
 		channelId,
 		data,
 		requestCache,
+		personaId,
 	}: {
 		authChannel: AuthenticatedChannel;
 		user: User;
@@ -1252,6 +1264,7 @@ export class MessageSendService {
 		channelId: ChannelID;
 		data: MessageRequest;
 		requestCache: RequestCache;
+		personaId: PersonaID | null;
 	}): Promise<Message> {
 		const {channel} = authChannel;
 		const isForwardMessage = this.ensureMessageRequestIsValid({user, data, guildFeatures: null});
@@ -1311,7 +1324,7 @@ export class MessageSendService {
 			messageSnapshots,
 			guildId: null,
 			channel,
-			subprofile: normalizeMessageSubprofile(data.subprofile),
+			personaId,
 		});
 		await this.deps.dispatchService.dispatchMessageCreate({
 			channel,
@@ -1331,11 +1344,7 @@ export class MessageSendService {
 		if (searchIndexOptions) {
 			void this.deps.searchService.indexMessage(message, user.isBot, searchIndexOptions);
 		}
-		const targetPersonaId =
-			message.personaId ??
-			(data.subprofile?.id && /^\d+$/.test(data.subprofile.id)
-				? createPersonaID(BigInt(data.subprofile.id))
-				: null);
+		const targetPersonaId = message.personaId;
 		if (targetPersonaId && this.deps.personaRepository) {
 			try {
 				void this.deps.personaRepository.recordUsage(user.id, targetPersonaId).catch((error) => {
