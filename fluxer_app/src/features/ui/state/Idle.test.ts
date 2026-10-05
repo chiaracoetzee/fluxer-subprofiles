@@ -102,7 +102,8 @@ describe('Idle dynamic inactivity timer', () => {
 		Idle.recordActivity();
 		expect(Idle.isIdle()).toBe(false);
 		expect(Idle.getIdleSince()).toBe(0);
-	});
+		// The first import of ./Idle loads its whole module graph in real time, which can exceed 5s in a full run.
+	}, 30_000);
 
 	it('markBackground sets positive idleSince satisfying idle duration', async () => {
 		const {default: Idle} = await import('./Idle');
