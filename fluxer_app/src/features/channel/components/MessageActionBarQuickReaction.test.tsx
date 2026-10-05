@@ -2,6 +2,8 @@
 // @vitest-environment happy-dom
 
 import React, {act} from 'react';
+import {DndProvider} from 'react-dnd';
+import {HTML5Backend} from 'react-dnd-html5-backend';
 import {createRoot, type Root} from 'react-dom/client';
 import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
 import {runInAction} from 'mobx';
@@ -247,14 +249,16 @@ describe('EmojiRenderer Pinning', () => {
 
 		await act(async () => {
 			root.render(
-				<EmojiRenderer
-					emoji={testEmoji}
-					handleHover={vi.fn()}
-					handleSelect={vi.fn()}
-					skinTone=""
-					channel={null}
-					shouldAnimate={false}
-				/>,
+				<DndProvider backend={HTML5Backend}>
+					<EmojiRenderer
+						emoji={testEmoji}
+						handleHover={vi.fn()}
+						handleSelect={vi.fn()}
+						skinTone=""
+						channel={null}
+						shouldAnimate={false}
+					/>
+				</DndProvider>,
 			);
 		});
 
@@ -265,14 +269,16 @@ describe('EmojiRenderer Pinning', () => {
 		EmojiPicker.unpinEmoji('unicode:heart');
 		await act(async () => {
 			root.render(
-				<EmojiRenderer
-					emoji={testEmoji}
-					handleHover={vi.fn()}
-					handleSelect={vi.fn()}
-					skinTone=""
-					channel={null}
-					shouldAnimate={false}
-				/>,
+				<DndProvider backend={HTML5Backend}>
+					<EmojiRenderer
+						emoji={testEmoji}
+						handleHover={vi.fn()}
+						handleSelect={vi.fn()}
+						skinTone=""
+						channel={null}
+						shouldAnimate={false}
+					/>
+				</DndProvider>,
 			);
 		});
 		expect(container.querySelector('[data-flx="channel.emoji-picker.emoji-renderer.pinned-badge"]')).toBeNull();
