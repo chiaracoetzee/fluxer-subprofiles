@@ -4,7 +4,9 @@ mod failure;
 mod input;
 
 pub(in crate::server) use failure::MediaFailure;
-pub(in crate::server) use input::{MediaInput, MediaInputLimit, load_media_input};
+pub(in crate::server) use input::{
+    MediaInput, MediaInputLimit, external_input_limit, load_media_input,
+};
 
 use crate::{
     constants::AssetExtension,
