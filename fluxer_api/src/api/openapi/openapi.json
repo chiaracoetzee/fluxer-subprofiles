@@ -25737,11 +25737,11 @@
 					"name": {"description": "Persona display name", "type": "string"},
 					"avatar_hash": {
 						"description": "Avatar asset hash",
-						"anyOf": [{"type": "string", "maxLength": 64}, {"type": "null"}]
+						"anyOf": [{"type": "string", "pattern": "^(a_)?[0-9a-f]{8}$"}, {"type": "null"}]
 					},
 					"banner_hash": {
 						"description": "Banner asset hash",
-						"anyOf": [{"type": "string", "maxLength": 64}, {"type": "null"}]
+						"anyOf": [{"type": "string", "pattern": "^(a_)?[0-9a-f]{8}$"}, {"type": "null"}]
 					},
 					"pronouns": {
 						"description": "Optional pronouns",
@@ -25902,11 +25902,11 @@
 					"name": {"description": "Persona display name", "type": "string"},
 					"avatar_hash": {
 						"description": "Avatar asset hash",
-						"anyOf": [{"type": "string", "maxLength": 64}, {"type": "null"}]
+						"anyOf": [{"type": "string", "pattern": "^(a_)?[0-9a-f]{8}$"}, {"type": "null"}]
 					},
 					"banner_hash": {
 						"description": "Banner asset hash",
-						"anyOf": [{"type": "string", "maxLength": 64}, {"type": "null"}]
+						"anyOf": [{"type": "string", "pattern": "^(a_)?[0-9a-f]{8}$"}, {"type": "null"}]
 					},
 					"pronouns": {
 						"description": "Optional pronouns",
