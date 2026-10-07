@@ -29669,7 +29669,7 @@
 				"type": "object",
 				"properties": {
 					"signals": {
-						"maxItems": 12,
+						"maxItems": 50,
 						"type": "array",
 						"items": {
 							"type": "object",
@@ -29712,7 +29712,7 @@
 						"maximum": 9007199254740991,
 						"description": "Incremented on every change to the bar"
 					},
-					"signals": {"maxItems": 12, "type": "array", "items": {"$ref": "#/components/schemas/SignalBarSignalSchema"}},
+					"signals": {"maxItems": 50, "type": "array", "items": {"$ref": "#/components/schemas/SignalBarSignalSchema"}},
 					"guild_id": {
 						"anyOf": [{"$ref": "#/components/schemas/SnowflakeStringType"}, {"type": "null"}],
 						"description": "The home community that owns the bar"
