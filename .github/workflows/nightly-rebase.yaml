@@ -136,7 +136,7 @@ jobs:
           if [ "${{ inputs.skip_baseline_e2e }}" = "true" ]; then
             FLAGS="$FLAGS --skip-baseline-e2e"
           fi
-          python /tmp/rebase_tools/rebase/rebase_orchestrator.py --profile subprofiles $FLAGS
+          python /tmp/rebase_tools/rebase/rebase_orchestrator.py --profile subprofiles --time-budget-minutes 225 $FLAGS
 
       - name: Upload E2E Test Report & Artifacts
         if: always()
