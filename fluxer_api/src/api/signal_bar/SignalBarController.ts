@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 import {createChannelID, createGuildID, createUserID} from '@app/api/BrandedTypes';
+import {viewerFromCtx} from '@app/api/experiment/ChannelThreadsGate';
 import {DefaultUserOnly, LoginRequired} from '@app/api/middleware/AuthMiddleware';
 import {RateLimitMiddleware} from '@app/api/middleware/RateLimitMiddleware';
 import {OpenAPI} from '@app/api/middleware/ResponseTypeMiddleware';
@@ -79,7 +80,7 @@ export function SignalBarController(app: HonoApp) {
 			const channelId = createChannelID(ctx.req.valid('param').channel_id);
 			const authChannel = await ctx
 				.get('channelService')
-				.interactions.authService.getChannelAuthenticated({userId, channelId});
+				.interactions.authService.getChannelAuthenticated({userId, channelId, viewer: viewerFromCtx(ctx)});
 			return ctx.json(await ctx.get('signalBarService').getChannelSignals(authChannel));
 		},
 	);
@@ -105,7 +106,7 @@ export function SignalBarController(app: HonoApp) {
 			const {channel_id, signal_id} = ctx.req.valid('param');
 			const authChannel = await ctx
 				.get('channelService')
-				.interactions.authService.getChannelAuthenticated({userId, channelId: createChannelID(channel_id)});
+				.interactions.authService.getChannelAuthenticated({userId, channelId: createChannelID(channel_id), viewer: viewerFromCtx(ctx)});
 			await ctx.get('signalBarService').activate({
 				authChannel,
 				userId,
@@ -135,7 +136,7 @@ export function SignalBarController(app: HonoApp) {
 			const {channel_id, signal_id} = ctx.req.valid('param');
 			const authChannel = await ctx
 				.get('channelService')
-				.interactions.authService.getChannelAuthenticated({userId, channelId: createChannelID(channel_id)});
+				.interactions.authService.getChannelAuthenticated({userId, channelId: createChannelID(channel_id), viewer: viewerFromCtx(ctx)});
 			await ctx.get('signalBarService').deactivate({authChannel, userId, signalId: signal_id});
 			return ctx.body(null, 204);
 		},
@@ -161,7 +162,7 @@ export function SignalBarController(app: HonoApp) {
 			const {channel_id, signal_id} = ctx.req.valid('param');
 			const authChannel = await ctx
 				.get('channelService')
-				.interactions.authService.getChannelAuthenticated({userId, channelId: createChannelID(channel_id)});
+				.interactions.authService.getChannelAuthenticated({userId, channelId: createChannelID(channel_id), viewer: viewerFromCtx(ctx)});
 			await ctx.get('signalBarService').reset({authChannel, userId, signalId: signal_id});
 			return ctx.body(null, 204);
 		},
@@ -187,7 +188,7 @@ export function SignalBarController(app: HonoApp) {
 			const {channel_id, signal_id, user_id} = ctx.req.valid('param');
 			const authChannel = await ctx
 				.get('channelService')
-				.interactions.authService.getChannelAuthenticated({userId, channelId: createChannelID(channel_id)});
+				.interactions.authService.getChannelAuthenticated({userId, channelId: createChannelID(channel_id), viewer: viewerFromCtx(ctx)});
 			await ctx.get('signalBarService').removeUserSignal({
 				authChannel,
 				userId,
@@ -219,7 +220,7 @@ export function SignalBarController(app: HonoApp) {
 			const channelId = createChannelID(ctx.req.valid('param').channel_id);
 			const authChannel = await ctx
 				.get('channelService')
-				.interactions.authService.getChannelAuthenticated({userId, channelId});
+				.interactions.authService.getChannelAuthenticated({userId, channelId, viewer: viewerFromCtx(ctx)});
 			await ctx.get('signalBarService').setDmEnabled(authChannel, userId, ctx.req.valid('json').enabled);
 			return ctx.body(null, 204);
 		},
