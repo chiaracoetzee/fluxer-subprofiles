@@ -63,3 +63,80 @@ export function isLinuxManualDesktopFormat(format: ManualDesktopFormat): format 
 export function buildManualLatestDownloadUrl(format: ManualDesktopFormat): string {
 	return `${getUpdateBaseUrl()}/latest/${format}`;
 }
+
+// Fork: desktop builds of this fork are published as GitHub releases, not on the package origin
+// above. Everything below is the whole mapping from what the updater asks for to where a release
+// keeps it, so the updater itself stays upstream's. It is switched on by FLUXER_FORK_RELEASES
+// ("owner/repository"), which scripts/build.mjs compiles into every build; without it each
+// function returns null and its caller falls back to the URLs above.
+//
+// A release is tagged desktop-v<version> and carries, per platform and architecture:
+//   - on Windows, the Velopack feed and package (releases.<channel>.json, *-full.nupkg),
+//   - latest-<platform>-<arch>.json, the document the package origin serves at <base>/latest,
+//   - the installers named by forkReleaseAssetName.
+// scripts/fork-release-assets.mjs produces those files under the same names.
+
+const FORK_RELEASE_REPOSITORY_PATTERN = /^[\w.-]+\/[\w.-]+$/u;
+const FORK_RELEASE_TAG_PREFIX = 'desktop-v';
+
+export function forkReleaseRepository(): string | null {
+	const repository = typeof process.env === 'object' ? process.env.FLUXER_FORK_RELEASES?.trim() : undefined;
+	if (repository == null || !FORK_RELEASE_REPOSITORY_PATTERN.test(repository)) {
+		return null;
+	}
+	return repository;
+}
+
+function forkReleasesUrl(): string | null {
+	const repository = forkReleaseRepository();
+	return repository === null ? null : `https://github.com/${repository}/releases`;
+}
+
+export function forkReleasesPageUrl(): string | null {
+	const releases = forkReleasesUrl();
+	return releases === null ? null : `${releases}/latest`;
+}
+
+export function forkLatestAssetBaseUrl(): string | null {
+	const releases = forkReleasesUrl();
+	return releases === null ? null : `${releases}/latest/download`;
+}
+
+export function forkLatestInfoUrl(
+	platform: NodeJS.Platform = process.platform,
+	arch: DesktopDownloadArch = getDesktopDownloadArch(process.arch),
+): string | null {
+	const base = forkLatestAssetBaseUrl();
+	return base === null ? null : `${base}/latest-${platform}-${arch}.json`;
+}
+
+export function forkReleaseAssetName(
+	productName: string,
+	version: string,
+	format: ManualDesktopFormat,
+	arch: DesktopDownloadArch = getDesktopDownloadArch(process.arch),
+): string {
+	if (isLinuxManualDesktopFormat(format)) {
+		const archToken = LINUX_MANUAL_ARCH_TOKENS[format][arch];
+		return `${productName}-${version}-linux-${archToken}${LINUX_MANUAL_FORMAT_EXTENSIONS[format]}`;
+	}
+	if (format === 'setup') {
+		return `${productName}-Setup-${version}-win-${arch}.exe`;
+	}
+	return `${productName}-${version}-mac-${arch}.${format}`;
+}
+
+export function forkVersionDownloadUrl(
+	productName: string,
+	version: string,
+	format: ManualDesktopFormat,
+	arch: DesktopDownloadArch = getDesktopDownloadArch(process.arch),
+): string | null {
+	const releases = forkReleasesUrl();
+	if (releases === null) {
+		return null;
+	}
+	const tag = encodeURIComponent(`${FORK_RELEASE_TAG_PREFIX}${version}`);
+	const asset = encodeURIComponent(forkReleaseAssetName(productName, version, format, arch));
+	return `${releases}/download/${tag}/${asset}`;
+}

@@ -48,6 +48,23 @@ const WINDOWS_TOAST_ACTIVATOR_CLSIDS: Record<BuildChannel, string> = {
 	development: '{B277AB5D-371C-4098-A76D-1DAE00AC0863}',
 };
 
+// Fork: builds of this fork install as "Fluxer Temple", with their own IDs, so they can sit next
+// to an official Fluxer install. scripts/build.mjs compiles FLUXER_FORK_IDENTITY into every build;
+// electron-builder.config.cjs and the release workflow carry the matching packaging names. The
+// fluxer:// link scheme is deliberately shared with the official app.
+export const IS_FORK_IDENTITY = typeof process.env === 'object' && process.env.FLUXER_FORK_IDENTITY === '1';
+if (IS_FORK_IDENTITY) {
+	DESKTOP_APP_NAMES.stable = 'Fluxer Temple';
+	DESKTOP_ARTIFACT_PRODUCT_NAMES.stable = 'Fluxer-Temple';
+	MACOS_BUNDLE_IDS.stable = 'app.fluxer.temple';
+	LINUX_DESKTOP_ENTRY_IDS.stable = 'app.fluxer.FluxerDesktopTemple';
+	LEGACY_LINUX_DESKTOP_ENTRY_IDS.stable = 'fluxer-temple';
+	LINUX_PORTAL_SESSION_TOKENS.stable = 'fluxer_temple_global_shortcuts';
+	WINDOWS_VELOPACK_IDS.stable = 'fluxer_desktop_temple';
+	WINDOWS_APP_USER_MODEL_IDS.stable = 'Fluxer.Fluxer.Temple';
+	WINDOWS_TOAST_ACTIVATOR_CLSIDS.stable = '{E95456AA-13E2-4043-8835-18EF84FB8A2C}';
+}
+
 export const DESKTOP_APP_NAME = DESKTOP_APP_NAMES[BUILD_CHANNEL];
 export const DESKTOP_ARTIFACT_PRODUCT_NAME = DESKTOP_ARTIFACT_PRODUCT_NAMES[BUILD_CHANNEL];
 export const MACOS_BUNDLE_ID = MACOS_BUNDLE_IDS[BUILD_CHANNEL];
