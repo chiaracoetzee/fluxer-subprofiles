@@ -15,6 +15,7 @@ import FavoriteMemes from '@app/features/expressions/state/FavoriteMemes';
 import ForumPosts from '@app/features/forum/state/ForumPosts';
 import ForumReadState from '@app/features/forum/state/ForumReadState';
 import {scheduleAccountReadyWork} from '@app/features/gateway/events/AccountReadyWork';
+import {scheduleForkAccountReadyWork} from '@app/features/gateway/events/ForkAccountReadyWork';
 import type {GatewayHandlerContext} from '@app/features/gateway/events/EventRouter';
 import type {GuildReadyData} from '@app/features/gateway/types/GatewayGuildTypes';
 import type {PresenceRecord} from '@app/features/gateway/types/GatewayPresenceTypes';
@@ -158,12 +159,7 @@ function handleReadyInternal(data: ReadyPayload, context: GatewayHandlerContext,
 	Users.handleGatewayReady(accountKey, data.user);
 	Users.cacheUsers(data.users ?? []);
 	syncAccountUserData(accountKey, data.user);
-	void PersonaCommands.fetchPersonas(true).catch((error) => {
-		logger.warn('Failed to fetch personas after READY', error);
-	});
-	void PersonaCommands.fetchPersonaSettings().catch((error) => {
-		logger.warn('Failed to fetch persona settings after READY', error);
-	});
+	scheduleForkAccountReadyWork();
 	Authentication.handleGatewayReady({user: data.user});
 	Guilds.handleGatewayReady({guilds});
 	UserSettings.handleGatewayReady(data.user_settings);
