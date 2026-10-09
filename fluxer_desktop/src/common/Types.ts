@@ -16,6 +16,10 @@ import type {
 	RegistrationResponseJSON,
 } from '@simplewebauthn/browser';
 
+// Fork imports.
+
+import type {ForkAppWindowAPI} from '@fluxer/desktop_ipc/src/ForkAppWindowContract';
+
 export interface LinuxAppearanceSnapshot {
 	colorScheme: 'no-preference' | 'prefer-dark' | 'prefer-light';
 	contrast: 'no-preference' | 'high';
@@ -453,6 +457,7 @@ export type TrayActionPayload =
 export interface ElectronAPI {
 	platform: NodeJS.Platform;
 	buildChannel: BuildChannel;
+	appWindows: ForkAppWindowAPI;
 	localDevelopmentInstanceUrl: string | null;
 	offlineBuild?: boolean;
 	getDesktopInfo: () => Promise<DesktopInfo>;

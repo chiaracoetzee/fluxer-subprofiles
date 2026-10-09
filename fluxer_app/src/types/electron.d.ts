@@ -13,6 +13,10 @@ import type {DesktopStorageAPI} from '@fluxer/desktop_ipc/src/StorageContract';
 import type {VoiceEngineV2BridgeHardwareEncoderApi} from '@fluxer/voice_engine_v2/bridge';
 import type {AuthenticationResponseJSON, RegistrationResponseJSON} from '@simplewebauthn/browser';
 
+// Fork imports.
+
+import type {ForkAppWindowAPI} from '@fluxer/desktop_ipc/src/ForkAppWindowContract';
+
 export type InputMonitoringPermissionStatus = 'granted' | 'denied' | 'not-determined' | 'unsupported';
 export interface DesktopSource {
 	id: string;
@@ -626,6 +630,7 @@ export interface ElectronAPI {
 	desktopModules?: DesktopModuleAPI;
 	desktopUpdate?: DesktopUpdateAPI;
 	reportLastRoute?: (routePath: string) => void;
+	appWindows?: ForkAppWindowAPI;
 	notifyFirstContentPainted?: () => void;
 	localAppUpload?: DesktopLocalAppUploadAPI;
 	localApp?: DesktopLocalAppInfo;
