@@ -5,6 +5,7 @@ import {resolveGuildListIndicatorBarTarget} from '@app/features/app/components/l
 import styles from '@app/features/app/components/skeleton/GuildRailSkeleton.module.css';
 import {SkeletonBlock} from '@app/features/app/components/skeleton/SkeletonBlock';
 import {SkeletonCircle} from '@app/features/app/components/skeleton/SkeletonCircle';
+import RuntimeConfig from '@app/features/app/state/RuntimeConfig';
 import {
 	getRememberedSkeletonGuildRailLayout,
 	type RememberedSkeletonGuildRailItem,
