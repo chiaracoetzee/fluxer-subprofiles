@@ -45,8 +45,6 @@ import {
 } from '@app/features/gateway/transport/GatewaySocket';
 import {selectGuildActivationTarget} from '@app/features/gateway/transport/GuildActivationTarget';
 import MemberSearch from '@app/features/member/state/MemberSearch';
-import {resetFetchPersonasCooldown} from '@app/features/persona/commands/PersonaCommands';
-import {PersonaStore} from '@app/features/persona/state/PersonaStore';
 import AttachmentUrlRefresher from '@app/features/messaging/state/AttachmentUrlRefresher';
 import Messages from '@app/features/messaging/state/MessagingMessages';
 import ReportFlows from '@app/features/moderation/state/ReportFlows';
@@ -961,8 +959,6 @@ export class PooledGatewayConnection {
 		AttachmentUrlRefresher.reset();
 		ChannelFrecency.handleLogout();
 		MemberSearch.handleLogout();
-		PersonaStore.reset();
-		resetFetchPersonasCooldown();
 		ReportFlows.reset();
 		ThreadPanel.closeCreate();
 		ThreadGuilds.reset();
