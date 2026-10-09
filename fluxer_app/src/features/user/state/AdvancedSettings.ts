@@ -49,8 +49,8 @@ class AdvancedSettings {
 			{key: EXPRESSION_CLONE_SHORTCUTS_STORAGE_KEY, source: 'external'},
 		);
 		AppStorage.subscribe(
-			(event) => {
-				this.doubleClickToEdit = event.newValue === null ? false : readStoredBoolean(event.key ?? '');
+			() => {
+				this.doubleClickToEdit = readStoredBoolean(DOUBLE_CLICK_TO_EDIT_STORAGE_KEY);
 			},
 			{key: DOUBLE_CLICK_TO_EDIT_STORAGE_KEY, source: 'external'},
 		);
