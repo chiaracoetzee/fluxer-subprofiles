@@ -39,6 +39,11 @@ on:
         required: false
         default: false
         type: boolean
+      smoke:
+        description: 'Smoke run: skip the baseline gates, rebase and regenerate, then stop before the test gates. Never pushes.'
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: write
@@ -135,6 +140,9 @@ jobs:
           fi
           if [ "${{ inputs.skip_baseline_e2e }}" = "true" ]; then
             FLAGS="$FLAGS --skip-baseline-e2e"
+          fi
+          if [ "${{ inputs.smoke }}" = "true" ]; then
+            FLAGS="$FLAGS --skip-baseline --stop-after-codegen"
           fi
           python /tmp/rebase_tools/rebase/rebase_orchestrator.py --profile subprofiles --time-budget-minutes 225 $FLAGS
 
