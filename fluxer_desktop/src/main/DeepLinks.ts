@@ -5,7 +5,13 @@ import {updateFromCommandLine} from '@electron/main/DesktopUpdatePrompt';
 import {parseJumpListTaskFromArgv} from '@electron/main/JumpList';
 import {isDesktopUpdateRequested} from '@electron/main/LaunchOptions';
 import {recordRecentDeepLink} from '@electron/main/RecentDocuments';
-import {getMainWindow, isMainWindowTakenOver, onMainWindowTakeoverEnded, showWindow} from '@electron/main/Window';
+import {
+	getMainWindow,
+	isMainWindowTakenOver,
+	onMainWindowTakeoverEnded,
+	openAppWindowLike,
+	showWindow,
+} from '@electron/main/Window';
 import {app, ipcMain} from 'electron';
 import log from 'electron-log';
 
@@ -232,6 +238,11 @@ export function handleSecondInstance(argv: Array<string>): void {
 		return;
 	}
 	if (argv.some(isSquirrelOrSyntheticArg)) {
+		return;
+	}
+	// Fork: a second launch with --new-window opens another app window in the running app.
+	if (argv.includes('--new-window')) {
+		openAppWindowLike(null);
 		return;
 	}
 	showWindow();

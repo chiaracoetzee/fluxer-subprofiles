@@ -51,6 +51,7 @@ import {
 	PrivacySettingsIcon,
 	SettingsIcon,
 } from '@app/features/ui/action_menu/ContextMenuIcons';
+import {buildOpenInNewWindowMenuItem} from '@app/features/ui/action_menu/items/ForkOpenInNewWindowMenuItem';
 import * as ModalCommands from '@app/features/ui/commands/ModalCommands';
 import {modal} from '@app/features/ui/commands/ModalCommands';
 import * as TextCopyCommands from '@app/features/ui/commands/TextCopyCommands';
@@ -341,7 +342,9 @@ export function useGuildMenuData(guild: Guild, options: UseGuildMenuDataOptions)
 	}, [guild.features, guild.id, i18n.locale]);
 	const groups = useMemo(() => {
 		const menuGroups: Array<MenuGroupType> = [];
-		const quickActions: Array<MenuItemType | MenuSubmenuItemType> = [];
+		const quickActions: Array<MenuItemType | MenuSubmenuItemType> = [
+			buildOpenInNewWindowMenuItem(i18n, Routes.guildChannel(guild.id), onClose),
+		];
 		if (hasGuildUnread) {
 			quickActions.push({
 				icon: <MarkAsReadIcon size={20} data-flx="ui.action-menu.items.guild-menu-data.groups.mark-as-read-icon" />,
