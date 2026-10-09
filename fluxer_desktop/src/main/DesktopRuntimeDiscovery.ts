@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+import {DEFAULT_HOMESERVER_URL} from '@electron/common/Constants';
 import {getLaunchInstanceEndpointOverride} from '@electron/common/DesktopConfig';
 import {createChildLogger} from '@electron/common/Logger';
 import {getDesktopAppStorage} from '@electron/main/DesktopAppStorage';
@@ -140,7 +141,7 @@ export async function restoreRememberedRuntimePlan(instanceKey: string): Promise
 }
 
 export function desktopRuntimeInitialInput(): string | null {
-	return getLaunchInstanceEndpointOverride();
+	return getLaunchInstanceEndpointOverride() ?? DEFAULT_HOMESERVER_URL;
 }
 
 async function fetchRuntimePlan(
