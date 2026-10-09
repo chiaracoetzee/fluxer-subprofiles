@@ -109,6 +109,11 @@ jobs:
           node-version: 24
           cache: pnpm
 
+      # On a night with nothing to rebase nothing is installed, so the pnpm store does not
+      # exist, and the cache step of "Set up Node.js" then fails the whole job at cleanup.
+      - name: Make sure the pnpm store exists
+        run: mkdir -p "$(pnpm store path --silent)"
+
       - name: Free Disk Space for Docker Images
         run: |
           echo "Freeing disk space on runner for Docker builds & Playwright..."
