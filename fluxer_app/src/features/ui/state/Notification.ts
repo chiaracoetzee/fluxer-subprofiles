@@ -23,6 +23,8 @@ import * as NotificationUtils from '@app/features/notification/utils/Notificatio
 import * as PushSubscriptionService from '@app/features/platform/push/PushSubscriptionService';
 import {IS_DEV} from '@app/features/platform/types/Env';
 import {Logger} from '@app/features/platform/utils/AppLogger';
+import {startForkAppWindowBridge} from '@app/features/platform/utils/ForkAppWindowBridge';
+import {claimNotificationAcrossWindows} from '@app/features/platform/utils/ForkAppWindows';
 import {makePersistent, stopPersistent} from '@app/features/platform/utils/MobXPersistence';
 import {initializeStore} from '@app/features/platform/utils/StoreInitialization';
 import LocalPresence from '@app/features/presence/state/LocalPresence';
@@ -157,6 +159,13 @@ class NotificationState {
 		});
 		queueMicrotask(() => {
 			NotificationUtils.ensureDesktopNotificationClickHandler();
+		});
+		// Fork: with several desktop app windows open, tell the main process what this one shows.
+		queueMicrotask(() => {
+			startForkAppWindowBridge({
+				isFocused: () => this.focused,
+				getViewedChannelId: () => this.getVisibleChannelId(),
+			});
 		});
 		queueMicrotask(() => {
 			this.accountReactionDisposer = reaction(
@@ -310,6 +319,10 @@ class NotificationState {
 		}
 		const i18n = this.i18n;
 		const {message, messageRecord, user, channel} = data;
+		// Fork: every open desktop app window gets this message. Only one of them announces it.
+		if (!(await claimNotificationAcrossWindows(message.id, message.channel_id))) {
+			return;
+		}
 		if (channel.isPrivate()) {
 			NotificationUtils.playDirectMessageNotificationSoundIfEnabled();
 		} else {
@@ -421,6 +434,8 @@ class NotificationState {
 			this.isViewingChannel(message.channel_id) &&
 			this.isFocusedForNotifications();
 		if (isFocusedViewingChannel && !Modal.hasModalOpen()) {
+			// Fork: this window has the message in view, so no other window should announce it.
+			void claimNotificationAcrossWindows(message.id, message.channel_id);
 			NotificationUtils.playSameChannelNotificationSoundIfEnabled();
 			this.markNotified(message.id);
 			return true;
@@ -437,6 +452,7 @@ class NotificationState {
 			return false;
 		}
 		if (isFocusedViewingChannel && Modal.hasModalOpen()) {
+			void claimNotificationAcrossWindows(message.id, message.channel_id);
 			this.playForegroundObscuredNotificationSound(channel);
 			return true;
 		}
@@ -552,16 +568,22 @@ class NotificationState {
 			this.markNotified(cacheKey);
 			return;
 		}
-		void NotificationUtils.showNotification({
-			id: cacheKey,
-			title,
-			body,
-			icon: getNotificationIconURL(user),
-			url: Routes.ME,
-			accountKey: Accounts.currentAccountKey,
-		}).catch((error) => {
-			logger.error('Failed to show relationship notification', {cacheKey}, error);
-		});
+		// Fork: every open desktop app window gets this event. Only one of them announces it.
+		void claimNotificationAcrossWindows(cacheKey)
+			.then((claimed) => {
+				if (!claimed) return;
+				return NotificationUtils.showNotification({
+					id: cacheKey,
+					title,
+					body,
+					icon: getNotificationIconURL(user),
+					url: Routes.ME,
+					accountKey: Accounts.currentAccountKey,
+				});
+			})
+			.catch((error) => {
+				logger.error('Failed to show relationship notification', {cacheKey}, error);
+			});
 		this.markNotified(cacheKey);
 	}
 }

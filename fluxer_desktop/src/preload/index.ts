@@ -72,6 +72,7 @@ import type {
 import {createBrowserHandoffPreloadAPI} from '@electron/preload/BrowserHandoffPreload';
 import {createDesktopStoragePreloadAPI} from '@electron/preload/DesktopStoragePreload';
 import {createFirstContentPaintSignal} from '@electron/preload/FirstContentPaint';
+import {createForkAppWindowPreloadAPI} from '@electron/preload/ForkAppWindowPreload';
 import {applyLegacyRawLocalStorage} from '@electron/preload/LegacyRawStorageSeed';
 import {createLocalAppPreloadAPI} from '@electron/preload/LocalAppPreload';
 import {createNativeGatewayPreloadAPI} from '@electron/preload/NativeGatewayPreload';
@@ -419,6 +420,7 @@ const api: ElectronAPI = {
 	...createLocalAppPreloadAPI(ipcRenderer),
 	...createBrowserHandoffPreloadAPI(ipcRenderer),
 	...createNativeGatewayPreloadAPI(ipcRenderer),
+	...createForkAppWindowPreloadAPI(ipcRenderer),
 	reportLastRoute: (routePath: string): void => {
 		ipcRenderer.send(DESKTOP_LAST_ROUTE_CHANNEL, routePath);
 	},
