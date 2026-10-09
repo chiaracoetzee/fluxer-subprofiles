@@ -7,7 +7,6 @@ import {Platform} from '@app/features/platform/types/Platform';
 import {remFromPx} from '@app/features/theme/layout/RemFromPx';
 import {Button} from '@app/features/ui/button/Button';
 import {buildAppProtocolUrl} from '@app/features/ui/utils/AppProtocol';
-import RuntimeConfig from '@app/features/app/state/RuntimeConfig';
 import {isDesktop, openExternalUrl} from '@app/features/ui/utils/NativeUtils';
 import {msg} from '@lingui/core/macro';
 import {Trans, useLingui} from '@lingui/react/macro';
