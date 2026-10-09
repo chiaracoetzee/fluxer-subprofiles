@@ -91,6 +91,13 @@ import {useLingui} from '@lingui/react/macro';
 import {MegaphoneSimpleIcon} from '@phosphor-icons/react';
 import {useMemo} from 'react';
 
+// Fork imports.
+
+import {
+	buildOpenInNewWindowMenuItem,
+	channelWindowRoute,
+} from '@app/features/ui/action_menu/items/ForkOpenInNewWindowMenuItem';
+
 const CHANNEL_LINK_COPIED_DESCRIPTOR = msg({
 	message: 'Channel link copied',
 	comment: 'Toast confirming the channel link was copied to the clipboard.',
@@ -429,6 +436,8 @@ export function useChannelMenuData(
 	const groups = ((): Array<MenuGroupType> => {
 		const menuGroups: Array<MenuGroupType> = [];
 
+				buildOpenInNewWindowMenuItem(i18n, channelWindowRoute(channel), onClose),
+				buildOpenInNewWindowMenuItem(i18n, channelWindowRoute(channel), onClose),
 		if (guild && (state.isTextChannel || state.isVoiceChannel || state.isLinkChannel || channel.isThreadOnly())) {
 			const voiceItems: Array<MenuItemType> = [];
 			if (state.isVoiceChannel && !Accessibility.voiceChannelJoinRequiresDoubleClick) {
@@ -475,6 +484,9 @@ export function useChannelMenuData(
 				menuGroups.push({items: metaItems});
 			}
 			const inviteItems: Array<MenuItemType> = [];
+			if (!state.isLinkChannel && !channel.isThread()) {
+				inviteItems.push(buildOpenInNewWindowMenuItem(i18n, channelWindowRoute(channel), onClose));
+			}
 			if (state.canInvite && !channel.isThreadOnly()) {
 				inviteItems.push({
 					icon: <InviteIcon size={20} data-flx="ui.action-menu.items.channel-menu-data.groups.invite-icon" />,
