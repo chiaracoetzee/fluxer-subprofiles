@@ -4,6 +4,7 @@ import type {BuildChannel} from '@electron/common/BuildChannel';
 import type {DesktopAccountStorageAPI} from '@fluxer/desktop_ipc/src/AccountContract';
 import type {DesktopHandoffAPI} from '@fluxer/desktop_ipc/src/BrowserHandoffContract';
 import type {DesktopCapabilityManifest} from '@fluxer/desktop_ipc/src/CapabilityManifest';
+import type {ForkAppWindowAPI} from '@fluxer/desktop_ipc/src/ForkAppWindowContract';
 import type {NativeGatewayTransportAPI} from '@fluxer/desktop_ipc/src/GatewayTransportContract';
 import type {DesktopKnownInstanceStorageAPI} from '@fluxer/desktop_ipc/src/KnownInstanceContract';
 import type {DesktopModuleAPI, DesktopUpdateAPI} from '@fluxer/desktop_ipc/src/ModuleContract';
@@ -623,6 +624,7 @@ export type TrayActionPayload =
 export interface ElectronAPI {
 	platform: NodeJS.Platform;
 	buildChannel: BuildChannel;
+	appWindows: ForkAppWindowAPI;
 	localDevelopmentInstanceUrl: string | null;
 	offlineBuild?: boolean;
 	getDesktopInfo: () => Promise<DesktopInfo>;

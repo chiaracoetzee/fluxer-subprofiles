@@ -104,6 +104,7 @@ import {
 	getMainWindow,
 	hideWindow,
 	isMainWindowTakenOver,
+	recordAppWindowRoute,
 	setQuitting,
 	showWindow,
 } from '@electron/main/Window';
@@ -350,7 +351,9 @@ if (launchConfigurationError) {
 	ipcMain.on(DESKTOP_CAPABILITY_MANIFEST_CHANNEL, (event) => {
 		event.returnValue = desktopCapabilityManifest;
 	});
-	ipcMain.on(DESKTOP_LAST_ROUTE_CHANNEL, (_event, routePath: unknown) => {
+	ipcMain.on(DESKTOP_LAST_ROUTE_CHANNEL, (event, routePath: unknown) => {
+		// Fork: an extra app window's route belongs to the saved window layout, not to the main window.
+		if (!recordAppWindowRoute(event.sender, routePath)) return;
 		recordDesktopLastRoute(app.getPath('userData'), routePath);
 	});
 	if (process.platform === 'win32') {

@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+import {Routes} from '@app/app/Routes';
 import {DirectSelectionSurface, peekDirectSelection} from '@app/features/app/components/layout/DirectSelectionOrigin';
 import {resolveGuildListIndicatorBarTarget} from '@app/features/app/components/layout/sidebar_nav/GuildListIndicator';
 import {GuildListItemPresentation} from '@app/features/app/components/layout/sidebar_nav/GuildListItemPresentation';
@@ -10,6 +11,7 @@ import {useGuildListItemInteraction} from '@app/features/app/components/layout/s
 import {useGuildListItemState} from '@app/features/app/components/layout/sidebar_nav/UseGuildListItemState';
 import {useMergeRefs} from '@app/features/app/hooks/useMergeRefs';
 import {GuildHeaderBottomSheet} from '@app/features/guild/components/bottomsheets/GuildHeaderBottomSheet';
+import {openRouteInNewWindowOnMiddleClick} from '@app/features/platform/utils/ForkAppWindows';
 import FocusRing from '@app/features/ui/focus_ring/FocusRing';
 import {Tooltip} from '@app/features/ui/tooltip/Tooltip';
 import {useLingui} from '@lingui/react/macro';
@@ -134,6 +136,7 @@ export const GuildListItemContent = observer((props: GuildListItemContentProps) 
 						surfaceRef={surfaceRef}
 						dragAndDrop={props.dragAndDrop}
 						onClick={interaction.handleSelect}
+						onAuxClick={(event) => openRouteInNewWindowOnMiddleClick(event, Routes.guildChannel(props.guild.id))}
 						onContextMenu={interaction.handleContextMenu}
 						onKeyDown={interaction.handleKeyDown}
 						onLongPress={interaction.handleLongPress}

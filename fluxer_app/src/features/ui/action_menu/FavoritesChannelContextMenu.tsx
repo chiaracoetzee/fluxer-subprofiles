@@ -36,6 +36,10 @@ import {
 	MuteChannelMenuItem,
 } from '@app/features/ui/action_menu/items/ChannelMenuItems';
 import {DebugChannelMenuItem} from '@app/features/ui/action_menu/items/DebugMenuItems';
+import {
+	channelWindowRoute,
+	OpenInNewWindowContextMenuItem,
+} from '@app/features/ui/action_menu/items/ForkOpenInNewWindowMenuItem';
 import {MenuGroup} from '@app/features/ui/action_menu/MenuGroup';
 import {MenuItem} from '@app/features/ui/action_menu/MenuItem';
 import {MenuItemSubmenu} from '@app/features/ui/action_menu/MenuItemSubmenu';
@@ -165,6 +169,7 @@ export const FavoritesChannelContextMenu: React.FC<FavoritesChannelContextMenuPr
 					>
 						{i18n._(CHANGE_NICKNAME_DESCRIPTOR)}
 					</MenuItem>
+					<OpenInNewWindowContextMenuItem route={channelWindowRoute(channel)} onClose={onClose} />
 					{channel.guildId && (
 						<MenuItem
 							icon={
