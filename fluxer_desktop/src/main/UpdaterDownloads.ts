@@ -15,7 +15,7 @@ import {
 
 // Fork imports.
 
-import {forkLatestAssetBaseUrl, forkReleasesPageUrl, forkVersionDownloadUrl} from '@electron/main/ShellDownloadFormats';
+import {forkReleasesPageUrl, forkVersionDownloadUrl} from '@electron/main/ShellDownloadFormats';
 
 export type UpdaterDownloadOption = {
 	format: ManualDesktopFormat;
@@ -25,7 +25,7 @@ export type UpdaterDownloadOption = {
 	sha256?: string | null;
 };
 
-export const UPDATE_BASE_URL = forkLatestAssetBaseUrl() ?? getUpdateBaseUrl();
+export const UPDATE_BASE_URL = getUpdateBaseUrl();
 export const DOWNLOAD_PAGE_URL = forkReleasesPageUrl() ?? DOWNLOAD_PAGE_URLS[BUILD_CHANNEL];
 
 export type ManualLatestFile = {url: string; sha256: string | null};
