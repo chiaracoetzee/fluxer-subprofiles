@@ -5,7 +5,6 @@ import {DOWNLOAD_PAGE_URLS} from '@electron/common/Constants';
 import {DESKTOP_ARTIFACT_PRODUCT_NAME} from '@electron/common/DesktopIdentity';
 import {
 	DESKTOP_DOWNLOAD_ARCH,
-	forkLatestAssetBaseUrl,
 	forkReleasesPageUrl,
 	forkVersionDownloadUrl,
 	getUpdateBaseUrl,
@@ -24,7 +23,7 @@ export type UpdaterDownloadOption = {
 	sha256?: string | null;
 };
 
-export const UPDATE_BASE_URL = forkLatestAssetBaseUrl() ?? getUpdateBaseUrl();
+export const UPDATE_BASE_URL = getUpdateBaseUrl();
 export const DOWNLOAD_PAGE_URL = forkReleasesPageUrl() ?? DOWNLOAD_PAGE_URLS[BUILD_CHANNEL];
 
 export type ManualLatestFile = {url: string; sha256: string | null};
