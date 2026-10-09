@@ -5,6 +5,9 @@ import {DOWNLOAD_PAGE_URLS} from '@electron/common/Constants';
 import {DESKTOP_ARTIFACT_PRODUCT_NAME} from '@electron/common/DesktopIdentity';
 import {
 	DESKTOP_DOWNLOAD_ARCH,
+	forkLatestAssetBaseUrl,
+	forkReleasesPageUrl,
+	forkVersionDownloadUrl,
 	getUpdateBaseUrl,
 	isLinuxManualDesktopFormat,
 	LINUX_MANUAL_ARCH_TOKENS,
@@ -21,8 +24,8 @@ export type UpdaterDownloadOption = {
 	sha256?: string | null;
 };
 
-export const UPDATE_BASE_URL = getUpdateBaseUrl();
-export const DOWNLOAD_PAGE_URL = DOWNLOAD_PAGE_URLS[BUILD_CHANNEL];
+export const UPDATE_BASE_URL = forkLatestAssetBaseUrl() ?? getUpdateBaseUrl();
+export const DOWNLOAD_PAGE_URL = forkReleasesPageUrl() ?? DOWNLOAD_PAGE_URLS[BUILD_CHANNEL];
 
 export type ManualLatestFile = {url: string; sha256: string | null};
 
@@ -53,7 +56,9 @@ const LINUX_MANUAL_FORMAT_LABELS: Record<LinuxManualDesktopFormat, string> = {
 };
 
 export function buildManualVersionDownloadUrl(version: string, format: ManualDesktopFormat): string {
-	return `${UPDATE_BASE_URL}/${version}/${format}`;
+	return (
+		forkVersionDownloadUrl(DESKTOP_ARTIFACT_PRODUCT_NAME, version, format) ?? `${UPDATE_BASE_URL}/${version}/${format}`
+	);
 }
 
 function getArtifactProductName(): string {
