@@ -116,7 +116,7 @@ export const useMessageSubmission = ({
 			const cmdResult = PersonaStore.handleInChatCommand(content);
 			if (cmdResult.handled) {
 				TypingUtils.clear(channel.id);
-				DraftCommands.deleteDraft(channel.id);
+				DraftCommands.deleteDraft(accountKey, channel.id);
 				return true;
 			}
 
@@ -128,7 +128,7 @@ export const useMessageSubmission = ({
 			const finalContent = matchResult.matched || matchResult.wasEscaped ? matchResult.strippedContent : content;
 			if (finalContent.length === 0 && !hasNonTextMedia) {
 				TypingUtils.clear(channel.id);
-				DraftCommands.deleteDraft(channel.id);
+				DraftCommands.deleteDraft(accountKey, channel.id);
 				return true;
 			}
 			const displayTagText = PersonaStore.displayTagText;
@@ -238,7 +238,7 @@ export const useMessageSubmission = ({
 				}
 			}
 
-			DraftCommands.deleteDraft(channel.id);
+			DraftCommands.deleteDraft(accountKey, channel.id);
 
 			const displayTagText = PersonaStore.displayTagText;
 			const displayTagIcon = PersonaStore.displayTagIcon;
