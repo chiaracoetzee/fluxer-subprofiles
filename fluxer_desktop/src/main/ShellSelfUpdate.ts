@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 import {createRequire} from 'node:module';
+import {DESKTOP_ARTIFACT_PRODUCT_NAME} from '@electron/common/DesktopIdentity';
 import {createChildLogger} from '@electron/common/Logger';
 import {
 	type AppImageTarget,
@@ -11,7 +12,7 @@ import {
 import {relaunchStableLaunchPath} from '@electron/main/LinuxLaunchPath';
 import {moduleNetworkFetch} from '@electron/main/ModuleNetworkFetch';
 import {compareModuleVersions, parseModuleVersion} from '@electron/main/ModuleVersion';
-import {getUpdateBaseUrl} from '@electron/main/ShellDownloadFormats';
+import {forkLatestInfoUrl, forkVersionDownloadUrl, getUpdateBaseUrl} from '@electron/main/ShellDownloadFormats';
 import type {ShellUpdateCapability, ShellUpdatePlan} from '@electron/main/ShellUpdateCapability';
 import {
 	clearVelopackApplyAttempt,
@@ -189,7 +190,7 @@ async function runVelopackSelfUpdate(control: SelfUpdateControl, hooks: ShellSel
 }
 
 async function fetchPublishedAppImage(): Promise<{version: string; sha256: string | null}> {
-	const response = await net.fetch(`${getUpdateBaseUrl()}/latest`, {
+	const response = await net.fetch(forkLatestInfoUrl() ?? `${getUpdateBaseUrl()}/latest`, {
 		cache: 'no-store',
 		headers: {Accept: 'application/json', 'Cache-Control': 'no-cache'},
 	});
@@ -220,7 +221,9 @@ async function stageAppImageUpdateOnce(
 		const observers = new Set<(percent: number) => void>();
 		const staged = stageAppImageUpdate({
 			target,
-			url: `${getUpdateBaseUrl()}/${version}/appimage`,
+			url:
+				forkVersionDownloadUrl(DESKTOP_ARTIFACT_PRODUCT_NAME, version, 'appimage') ??
+				`${getUpdateBaseUrl()}/${version}/appimage`,
 			expectedSha256,
 			fetchImpl: moduleNetworkFetch,
 			onProgress: ({transferred, total}) => {
