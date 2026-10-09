@@ -13,6 +13,10 @@ import {
 	type ManualDesktopFormat,
 } from '@electron/main/ShellDownloadFormats';
 
+// Fork imports.
+
+import {forkLatestAssetBaseUrl, forkReleasesPageUrl, forkVersionDownloadUrl} from '@electron/main/ShellDownloadFormats';
+
 export type UpdaterDownloadOption = {
 	format: ManualDesktopFormat;
 	label: string;
@@ -21,8 +25,8 @@ export type UpdaterDownloadOption = {
 	sha256?: string | null;
 };
 
-export const UPDATE_BASE_URL = getUpdateBaseUrl();
-export const DOWNLOAD_PAGE_URL = DOWNLOAD_PAGE_URLS[BUILD_CHANNEL];
+export const UPDATE_BASE_URL = forkLatestAssetBaseUrl() ?? getUpdateBaseUrl();
+export const DOWNLOAD_PAGE_URL = forkReleasesPageUrl() ?? DOWNLOAD_PAGE_URLS[BUILD_CHANNEL];
 
 export type ManualLatestFile = {url: string; sha256: string | null};
 
@@ -53,7 +57,9 @@ const LINUX_MANUAL_FORMAT_LABELS: Record<LinuxManualDesktopFormat, string> = {
 };
 
 export function buildManualVersionDownloadUrl(version: string, format: ManualDesktopFormat): string {
-	return `${UPDATE_BASE_URL}/${version}/${format}`;
+	return (
+		forkVersionDownloadUrl(DESKTOP_ARTIFACT_PRODUCT_NAME, version, format) ?? `${UPDATE_BASE_URL}/${version}/${format}`
+	);
 }
 
 function getArtifactProductName(): string {
