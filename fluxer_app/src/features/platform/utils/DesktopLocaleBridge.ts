@@ -9,6 +9,7 @@ import {
 } from '@app/features/i18n/utils/CommonMessageDescriptors';
 import {onLocaleChange} from '@app/features/i18n/utils/LocaleChangeListener';
 import {Logger} from '@app/features/platform/utils/AppLogger';
+import {NEW_WINDOW_DESCRIPTOR} from '@app/features/platform/utils/ForkAppWindowMessageDescriptors';
 import {getElectronAPI} from '@app/features/ui/utils/NativeUtils';
 import {VOICE_DEAFEN_DESCRIPTOR, VOICE_UNDEAFEN_DESCRIPTOR} from '@app/features/voice/utils/VoiceMessageDescriptors';
 import {i18n, type MessageDescriptor} from '@lingui/core';
@@ -449,6 +450,7 @@ const NATIVE_MESSAGES: Record<string, NativeMessage> = {
 	'desktop.appMenu.quit': QUIT_DESCRIPTOR,
 	'desktop.appMenu.exit': EXIT_DESCRIPTOR,
 	'desktop.appMenu.file': FILE_DESCRIPTOR,
+	'desktop.appMenu.newWindow': NEW_WINDOW_DESCRIPTOR,
 	'desktop.appMenu.edit': EDIT_DESCRIPTOR,
 	'desktop.appMenu.undo': UNDO_DESCRIPTOR,
 	'desktop.appMenu.redo': REDO_DESCRIPTOR,

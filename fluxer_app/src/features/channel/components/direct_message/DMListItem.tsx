@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+import {Routes} from '@app/app/Routes';
 import Accessibility, {DMMessagePreviewMode} from '@app/features/accessibility/state/Accessibility';
 import {LongPressable} from '@app/features/app/components/LongPressable';
 import {getChannelUnreadState} from '@app/features/app/components/layout/utils/ChannelUnreadState';
@@ -26,6 +27,7 @@ import {SafeMarkdown} from '@app/features/messaging/components/markdown';
 import {MarkdownContext} from '@app/features/messaging/components/markdown/renderers/RendererTypes';
 import Messages from '@app/features/messaging/state/MessagingMessages';
 import {SystemMessageUtils} from '@app/features/messaging/utils/SystemMessageUtils';
+import {openRouteInNewWindowOnMiddleClick} from '@app/features/platform/utils/ForkAppWindows';
 import ReadStates from '@app/features/read_state/state/ReadStates';
 import Relationships from '@app/features/relationship/state/Relationships';
 import TypingIndicator from '@app/features/typing/state/TypingIndicator';
@@ -506,6 +508,7 @@ const ResolvedDMListItem = observer(function ResolvedDMListItem({
 						contextMenuOpen && styles.contextMenuActive,
 					)}
 					onClick={handleNavigate}
+					onAuxClick={(event) => openRouteInNewWindowOnMiddleClick(event, Routes.dmChannel(channel.id))}
 					onContextMenu={handleContextMenu}
 					onMouseEnter={scheduleChannelPreload}
 					onMouseLeave={cancelChannelPreload}

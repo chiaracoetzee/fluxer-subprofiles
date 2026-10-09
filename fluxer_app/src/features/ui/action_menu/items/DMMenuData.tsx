@@ -109,6 +109,10 @@ import {
 	USER_ID_COPIED_DESCRIPTOR,
 } from '@app/features/ui/action_menu/items/dm_menu_data/shared';
 import {
+	buildOpenInNewWindowMenuItem,
+	channelWindowRoute,
+} from '@app/features/ui/action_menu/items/ForkOpenInNewWindowMenuItem';
+import {
 	beginInviteToCommunityGuard,
 	getInviteToCommunityGuardKey,
 	scheduleInviteToCommunityGuardRelease,
@@ -653,7 +657,9 @@ export function useDMMenuData(
 				],
 			});
 		}
-		const groupActionsItems: Array<MenuItemType> = [];
+		const groupActionsItems: Array<MenuItemType> = [
+			buildOpenInNewWindowMenuItem(i18n, channelWindowRoute(channel), onClose),
+		];
 		if (isGroupDM) {
 			groupActionsItems.push({
 				icon: <EditGroupIcon size={20} data-flx="ui.action-menu.items.dm-menu-data.groups.edit-group-icon" />,
@@ -855,6 +861,9 @@ export function useDMMenuData(
 		handleDebugChannel,
 		handleCopyUserId,
 		handleCopyChannelId,
+		channel,
+		i18n,
+		onClose,
 	]);
 	return {
 		groups,

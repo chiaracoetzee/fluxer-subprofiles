@@ -88,6 +88,10 @@ import {
 	SettingsIcon,
 	VoiceCallIcon,
 } from '@app/features/ui/action_menu/ContextMenuIcons';
+import {
+	buildOpenInNewWindowMenuItem,
+	channelWindowRoute,
+} from '@app/features/ui/action_menu/items/ForkOpenInNewWindowMenuItem';
 import * as ModalCommands from '@app/features/ui/commands/ModalCommands';
 import {modal} from '@app/features/ui/commands/ModalCommands';
 import * as TextCopyCommands from '@app/features/ui/commands/TextCopyCommands';
@@ -582,6 +586,7 @@ export function useChannelMenuData(
 		const menuGroups: Array<MenuGroupType> = [];
 		if (state.isGroupDM) {
 			const primaryItems: Array<MenuItemType> = [
+				buildOpenInNewWindowMenuItem(i18n, channelWindowRoute(channel), onClose),
 				{
 					icon: <EditGroupIcon size={20} data-flx="ui.action-menu.items.channel-menu-data.groups.edit-group-icon" />,
 					label: i18n._(EDIT_GROUP_DESCRIPTOR),
@@ -642,6 +647,7 @@ export function useChannelMenuData(
 		}
 		if (state.isDM) {
 			const items: Array<MenuItemType> = [
+				buildOpenInNewWindowMenuItem(i18n, channelWindowRoute(channel), onClose),
 				state.isPinned
 					? {
 							icon: <PinIcon size={20} data-flx="ui.action-menu.items.channel-menu-data.groups.pin-icon--3" />,
@@ -732,6 +738,9 @@ export function useChannelMenuData(
 				menuGroups.push({items: metaItems});
 			}
 			const inviteItems: Array<MenuItemType> = [];
+			if (!state.isLinkChannel && !channel.isThread()) {
+				inviteItems.push(buildOpenInNewWindowMenuItem(i18n, channelWindowRoute(channel), onClose));
+			}
 			if (state.canInvite && !channel.isThreadOnly()) {
 				inviteItems.push({
 					icon: <InviteIcon size={20} data-flx="ui.action-menu.items.channel-menu-data.groups.invite-icon" />,

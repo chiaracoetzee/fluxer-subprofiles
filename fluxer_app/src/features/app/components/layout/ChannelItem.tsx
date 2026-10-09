@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+import {Routes} from '@app/app/Routes';
 import Accessibility, {ChannelTypingIndicatorMode} from '@app/features/accessibility/state/Accessibility';
 import {ChannelSettingsModal} from '@app/features/app/components/dialogs/LoadableSettingsModals';
 import styles from '@app/features/app/components/layout/ChannelItem.module.css';
@@ -48,6 +49,7 @@ import * as GuildMemberCommands from '@app/features/member/commands/GuildMemberC
 import * as NavigationCommands from '@app/features/navigation/commands/NavigationCommands';
 import Permission from '@app/features/permissions/state/Permission';
 import * as PermissionUtils from '@app/features/permissions/utils/PermissionUtils';
+import {openRouteInNewWindowOnMiddleClick} from '@app/features/platform/utils/ForkAppWindows';
 import ReadStates from '@app/features/read_state/state/ReadStates';
 import Autocomplete from '@app/features/search/state/Autocomplete';
 import {CategoryContextMenu} from '@app/features/ui/action_menu/CategoryContextMenu';
@@ -432,6 +434,14 @@ export const ChannelItem = observer(
 			if (!Permission.can(Permissions.CONNECT, channel)) return;
 			startVoiceConnection({skipConfirm: true});
 		}, [channelIsVoice, isVoiceSelected, channel, startVoiceConnection]);
+		// Fork: a middle click opens the channel in another window.
+		const handleAuxClick = useCallback(
+			(event: React.MouseEvent) => {
+				if (channelIsCategory) return;
+				openRouteInNewWindowOnMiddleClick(event, Routes.guildChannel(guild.id, channel.id));
+			},
+			[channelIsCategory, guild.id, channel.id],
+		);
 		const handleContextMenu = useCallback(
 			(event: React.MouseEvent) => {
 				event.preventDefault();
@@ -783,6 +793,7 @@ export const ChannelItem = observer(
 				aria-expanded={channelIsCategory ? !isCollapsed : undefined}
 				className={channelItemClassName}
 				onClick={handleSelect}
+				onAuxClick={handleAuxClick}
 				onDoubleClick={handleDoubleClick}
 				onContextMenu={handleContextMenu}
 				onKeyDown={handleKeyDown}
