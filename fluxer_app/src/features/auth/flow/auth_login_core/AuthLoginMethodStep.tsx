@@ -4,6 +4,7 @@ import {
 	SIGN_IN_WITH_A_PASSKEY_DESCRIPTOR,
 	SIGN_IN_WITH_BROWSER_DESCRIPTOR,
 } from '@app/features/auth/AuthMessageDescriptors';
+import {AuthInstanceHint} from '@app/features/auth/flow/AuthInstanceHint';
 import loginStyles from '@app/features/auth/components/pages/LoginPage.module.css';
 import {
 	type AuthLoginMethodAction,
@@ -190,6 +191,7 @@ export function AuthLoginMethodStep({
 					{title}
 				</h1>
 			) : null}
+			<AuthInstanceHint />
 			{renderSwitchError()}
 			{leadingAction}
 			<AuthLoginMethodPicker

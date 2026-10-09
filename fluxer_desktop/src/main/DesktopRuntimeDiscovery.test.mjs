@@ -5,8 +5,16 @@ import {describe, test} from 'node:test';
 import {installElectronStub} from './LocalAppTestSupport.test.mjs';
 
 installElectronStub();
-const {runtimePlanFromServedDiscovery} = await import('@electron/main/DesktopRuntimeDiscovery');
+const {desktopRuntimeInitialInput, runtimePlanFromServedDiscovery} = await import(
+	'@electron/main/DesktopRuntimeDiscovery'
+);
 const {DEPLOYED_OFFICIAL_DOCUMENT} = await import('@fluxer/instance_bootstrap/src/__tests__/DiscoveryFixtures');
+
+describe('the instance the sign-in flow starts on', () => {
+	test('a launch without an instance override starts on the fork homeserver', () => {
+		assert.equal(desktopRuntimeInitialInput(), 'https://temple.hypersystem.xyz');
+	});
+});
 
 describe('runtime plans from a served discovery document', () => {
 	test('a document served by its own API origin builds a plan keyed on that origin', () => {
