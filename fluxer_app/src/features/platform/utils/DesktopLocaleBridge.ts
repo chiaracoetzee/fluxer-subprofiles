@@ -9,7 +9,11 @@ import {
 } from '@app/features/i18n/utils/CommonMessageDescriptors';
 import {onLocaleChange} from '@app/features/i18n/utils/LocaleChangeListener';
 import {Logger} from '@app/features/platform/utils/AppLogger';
-import {NEW_WINDOW_DESCRIPTOR} from '@app/features/platform/utils/ForkAppWindowMessageDescriptors';
+import {
+	NEW_WINDOW_DESCRIPTOR,
+	UPDATE_READY_MESSAGE_DESCRIPTOR,
+	UPDATE_RESTART_NOW_DESCRIPTOR,
+} from '@app/features/platform/utils/ForkAppWindowMessageDescriptors';
 import {getElectronAPI} from '@app/features/ui/utils/NativeUtils';
 import {VOICE_DEAFEN_DESCRIPTOR, VOICE_UNDEAFEN_DESCRIPTOR} from '@app/features/voice/utils/VoiceMessageDescriptors';
 import {i18n, type MessageDescriptor} from '@lingui/core';
@@ -522,6 +526,8 @@ const NATIVE_MESSAGES: Record<string, NativeMessage> = {
 	'desktop.update.failedMessage': UPDATE_FAILED_MESSAGE_DESCRIPTOR,
 	'desktop.update.failedDetail': UPDATE_FAILED_DETAIL_DESCRIPTOR,
 	'desktop.update.stillDownloadingDetail': UPDATE_STILL_DOWNLOADING_DETAIL_DESCRIPTOR,
+	'desktop.update.readyMessage': UPDATE_READY_MESSAGE_DESCRIPTOR,
+	'desktop.update.restartNow': UPDATE_RESTART_NOW_DESCRIPTOR,
 	'desktop.tray.copyBuildInfo': COPY_BUILD_INFO_DESCRIPTOR,
 	'desktop.tray.restart': RESTART_DESCRIPTOR,
 	'desktop.tray.quit': QUIT_DESCRIPTOR,
