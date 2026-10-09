@@ -1,7 +1,11 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 import {BUILD_CHANNEL} from '@electron/common/BuildChannel';
-import {DESKTOP_PREBOOT_THEME_CHANNEL, LOCAL_DEVELOPMENT_INSTANCE_URL} from '@electron/common/Constants';
+import {
+	DEFAULT_HOMESERVER_URL,
+	DESKTOP_PREBOOT_THEME_CHANNEL,
+	LOCAL_DEVELOPMENT_INSTANCE_URL,
+} from '@electron/common/Constants';
 import {IS_OFFLINE_BUILD} from '@electron/common/OfflineBuild';
 import {readExactPlainRecord} from '@electron/common/PlainRecord';
 import type {
@@ -406,7 +410,9 @@ applyStartupAccessibilitySettings();
 const api: ElectronAPI = {
 	platform: process.platform,
 	buildChannel: BUILD_CHANNEL,
-	localDevelopmentInstanceUrl: LOCAL_DEVELOPMENT_INSTANCE_URL,
+	// Fork: the instance picker pins this URL as its own row. Outside development builds, pin the
+	// default homeserver so it can always be chosen again after switching away.
+	localDevelopmentInstanceUrl: LOCAL_DEVELOPMENT_INSTANCE_URL ?? DEFAULT_HOMESERVER_URL,
 	capabilities: readDesktopCapabilityManifest(),
 	offlineBuild: IS_OFFLINE_BUILD,
 	...createDesktopStoragePreloadAPI(ipcRenderer),
