@@ -12,7 +12,12 @@ import {
 import {relaunchStableLaunchPath} from '@electron/main/LinuxLaunchPath';
 import {moduleNetworkFetch} from '@electron/main/ModuleNetworkFetch';
 import {compareModuleVersions, parseModuleVersion} from '@electron/main/ModuleVersion';
-import {forkLatestInfoUrl, forkVersionDownloadUrl, getUpdateBaseUrl} from '@electron/main/ShellDownloadFormats';
+import {
+	forkLatestInfoUrl,
+	forkVelopackSourceUrl,
+	forkVersionDownloadUrl,
+	getUpdateBaseUrl,
+} from '@electron/main/ShellDownloadFormats';
 import type {ShellUpdateCapability, ShellUpdatePlan} from '@electron/main/ShellUpdateCapability';
 import {
 	clearVelopackApplyAttempt,
@@ -131,7 +136,7 @@ function downloadVelopackUpdateOnce(
 
 async function runVelopackSelfUpdate(control: SelfUpdateControl, hooks: ShellSelfUpdateHooks): Promise<void> {
 	const {UpdateManager} = requireModule('velopack') as typeof import('velopack');
-	const manager = new UpdateManager(getUpdateBaseUrl());
+	const manager = new UpdateManager(forkVelopackSourceUrl() ?? getUpdateBaseUrl());
 	const unlanded = classifyUnlandedVelopackApply(manager);
 	if (unlanded === 'recent') {
 		control.settle({reason: 'install-failed', detail: 'the last downloaded update was never installed'});
