@@ -42,6 +42,13 @@ import {clsx} from 'clsx';
 import {observer} from 'mobx-react-lite';
 import {useCallback, useEffect, useRef, useState} from 'react';
 
+// Fork: personas.
+
+import Accessibility from '@app/features/accessibility/state/Accessibility';
+import {PersonaComposerPill} from '@app/features/persona/components/PersonaComposerPill';
+import {PersonaStore} from '@app/features/persona/state/PersonaStore';
+import {consumePersonaCommand, resolveOutgoingPersona} from '@app/features/persona/utils/OutgoingPersona';
+
 function useCooldownSeconds(until: number): number {
 	const [now, setNow] = useState(() => Date.now());
 	useEffect(() => {
@@ -80,7 +87,7 @@ export const ForumPostComposer = observer(({forum, initialTitle, onClose}: Forum
 	const [title, setTitle] = useState(initialTitle.slice(0, THREAD_NAME_MAX_LENGTH));
 	const [tags, setTags] = useState<Array<string>>([]);
 	const [error, setError] = useState<string | undefined>(undefined);
-	const [body, setBody] = useState('');
+	const [typedBody, setBody] = useState('');
 	const [preview, setPreview] = useState(false);
 	const controlsRef = useRef<ChannelTextareaControls | null>(null);
 	const titleRef = useRef<HTMLInputElement>(null);
@@ -93,10 +100,19 @@ export const ForumPostComposer = observer(({forum, initialTitle, onClose}: Forum
 	const accountKey = Users.viewAccountKey;
 	const media = isMediaChannel(forum);
 	const attachments = useTextareaAttachments(draftKey);
+	// Fork: `body` is the message without its persona tag, which is what gets posted and previewed.
+	const [wireBody, setWireBody] = useState('');
+	const body = PersonaStore.previewOutgoingContent(typedBody, attachments.length > 0, {
+		allowEmptyContent: attachments.length > 0,
+	});
 	const bypassesSlowmode = Permission.can(Permissions.BYPASS_SLOWMODE, forum);
 	const cooldownSeconds = useCooldownSeconds(bypassesSlowmode ? 0 : ThreadPanel.getCreateCooldownUntil(forum.id));
 	const handleSubmit: SendMessageFunction = useCallback(
-		(content, _hasAttachments, stickersOrTts, favoriteMemeIdOrStickers, maybeFavoriteMemeId) => {
+		(typedContent, _hasAttachments, stickersOrTts, favoriteMemeIdOrStickers, maybeFavoriteMemeId) => {
+			if (consumePersonaCommand(typedContent)) {
+				DraftCommands.deleteDraft(accountKey, draftKey);
+				return true;
+			}
 			const {stickers, favoriteMemeId} = resolvePostArgs(stickersOrTts, favoriteMemeIdOrStickers, maybeFavoriteMemeId);
 			if (favoriteMemeId) {
 				setError(i18n._(D.POST_FAVORITE_MEDIA_UNSUPPORTED_DESCRIPTOR));
@@ -116,6 +132,15 @@ export const ForumPostComposer = observer(({forum, initialTitle, onClose}: Forum
 				setError(i18n._(D.POST_MEDIA_REQUIRED_DESCRIPTOR));
 				return false;
 			}
+			// Fork: the post goes out as the persona the pill shows, as a normal send does.
+			const hasOtherContent = hasAttachments || stickers.length > 0;
+			const {content, subprofile} = resolveOutgoingPersona(typedContent, hasAttachments, {
+				allowEmptyContent: hasOtherContent,
+			});
+			if (content.length === 0 && !hasOtherContent) {
+				DraftCommands.deleteDraft(accountKey, draftKey);
+				return true;
+			}
 			const nonce = SnowflakeUtils.fromTimestamp(Date.now());
 			const claimed = hasAttachments ? MessageSubmitUtils.claimMessageAttachments(draftKey, nonce, content) : [];
 			void ForumCommands.createForumPost(forum, {
@@ -125,6 +150,7 @@ export const ForumPostComposer = observer(({forum, initialTitle, onClose}: Forum
 				nonce,
 				hasAttachments: claimed.length > 0,
 				stickerIds: stickers.map((sticker) => sticker.id),
+				subprofile,
 			})
 				.then((post) => {
 					if (!post) return;
@@ -133,12 +159,14 @@ export const ForumPostComposer = observer(({forum, initialTitle, onClose}: Forum
 					openThread(post);
 				})
 				.catch((failure) => {
-					if (content && !Drafts.getDraft(draftKey)) DraftCommands.createDraft(accountKey, draftKey, content);
+					if (typedContent && !Drafts.getDraft(draftKey)) {
+						DraftCommands.createDraft(accountKey, draftKey, typedContent);
+					}
 					reportForumError(i18n, failure, D.POST_CREATE_FAILED_DESCRIPTOR);
 				});
 			return true;
 		},
-		[forum, i18n, media, onClose, draftKey],
+		[accountKey, forum, i18n, media, onClose, draftKey],
 	);
 	const ready =
 		title.trim().length > 0 &&
@@ -200,6 +228,7 @@ export const ForumPostComposer = observer(({forum, initialTitle, onClose}: Forum
 					bare
 					controlsRef={controlsRef}
 					onValueChange={setBody}
+					onWireValueChange={setWireBody}
 					data-flx="forum.forum-post-composer.lexical-channel-textarea-content.submit"
 				/>
 			</div>
@@ -233,6 +262,9 @@ export const ForumPostComposer = observer(({forum, initialTitle, onClose}: Forum
 			)}
 			<div className={styles.composerBar} data-flx="forum.forum-post-composer.composer-bar">
 				<div className={styles.composerBarStart} data-flx="forum.forum-post-composer.composer-bar-start">
+					{Accessibility.showPersonasButton && (
+						<PersonaComposerPill text={wireBody} hasAttachments={attachments.length > 0} inButtonRow />
+					)}
 					<Tooltip text={i18n._(D.ATTACH_MEDIA_DESCRIPTOR)} data-flx="forum.forum-post-composer.attach-tooltip">
 						<FocusRing offset={-2} data-flx="forum.forum-post-composer.attach.focus-ring">
 							<button
