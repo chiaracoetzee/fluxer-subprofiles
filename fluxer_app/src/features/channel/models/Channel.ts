@@ -71,6 +71,7 @@ export interface ThreadChannelFields {
 	readonly default_sort_order?: number | null;
 	readonly default_forum_layout?: number;
 	readonly default_tag_setting?: 'match_some' | 'match_all';
+	readonly owner_persona_id?: string | null;
 }
 
 export interface ChannelWire extends WireChannel, ThreadChannelFields {
@@ -92,6 +93,7 @@ const THREAD_FIELD_KEYS: ReadonlyArray<keyof ThreadChannelFields> = [
 	'default_sort_order',
 	'default_forum_layout',
 	'default_tag_setting',
+	'owner_persona_id',
 ];
 
 function pickThreadFields(source: ThreadChannelFields, base?: ThreadChannelFields | null): ThreadChannelFields | null {
@@ -297,6 +299,11 @@ export class Channel {
 
 	get appliedTags(): ReadonlyArray<string> {
 		return this.threadFields?.applied_tags ?? [];
+	}
+
+	/** Fork: the persona the owner started this thread as, if any. */
+	get ownerPersonaId(): string | null {
+		return this.threadFields?.owner_persona_id ?? null;
 	}
 
 	get availableTags(): ReadonlyArray<ForumTagResponse> {

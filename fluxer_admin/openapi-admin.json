@@ -14822,6 +14822,11 @@
 						"description": "The thread member object for the current user",
 						"allOf": [{"$ref": "#/components/schemas/ThreadMemberResponse"}]
 					},
+					"owner_persona_id": {
+						"description": "The ID of the persona the owner started the thread as, absent when it was started as the account",
+						"nullable": true,
+						"allOf": [{"$ref": "#/components/schemas/SnowflakeStringType"}]
+					},
 					"default_auto_archive_duration": {
 						"description": "Default auto archive duration for new threads",
 						"nullable": true,

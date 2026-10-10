@@ -29410,6 +29410,10 @@
 						"description": "The thread member object for the current user",
 						"$ref": "#/components/schemas/ThreadMemberResponse"
 					},
+					"owner_persona_id": {
+						"description": "The ID of the persona the owner started the thread as, absent when it was started as the account",
+						"anyOf": [{"$ref": "#/components/schemas/SnowflakeStringType"}, {"type": "null"}]
+					},
 					"default_auto_archive_duration": {
 						"description": "Default auto archive duration for new threads",
 						"anyOf": [{"$ref": "#/components/schemas/Int32Type"}, {"type": "null"}]
@@ -33323,6 +33327,10 @@
 						"description": "The thread member object for the current user",
 						"$ref": "#/components/schemas/ThreadMemberResponse"
 					},
+					"owner_persona_id": {
+						"description": "The ID of the persona the owner started the thread as, absent when it was started as the account",
+						"anyOf": [{"$ref": "#/components/schemas/SnowflakeStringType"}, {"type": "null"}]
+					},
 					"default_auto_archive_duration": {
 						"description": "Default auto archive duration for new threads",
 						"anyOf": [{"$ref": "#/components/schemas/Int32Type"}, {"type": "null"}]
@@ -33572,7 +33580,11 @@
 						"description": "Seconds a user has to wait before sending another message (0-21600)",
 						"$ref": "#/components/schemas/Int32Type"
 					},
-					"location": {"description": "Accepted and ignored", "type": "string", "maxLength": 100}
+					"location": {"description": "Accepted and ignored", "type": "string", "maxLength": 100},
+					"persona_id": {
+						"description": "ID of one of your personas to start the thread as",
+						"anyOf": [{"$ref": "#/components/schemas/SnowflakeType"}, {"type": "null"}]
+					}
 				},
 				"required": ["name"]
 			},
@@ -33701,6 +33713,10 @@
 					"member": {
 						"description": "The thread member object for the current user",
 						"$ref": "#/components/schemas/ThreadMemberResponse"
+					},
+					"owner_persona_id": {
+						"description": "The ID of the persona the owner started the thread as, absent when it was started as the account",
+						"anyOf": [{"$ref": "#/components/schemas/SnowflakeStringType"}, {"type": "null"}]
 					},
 					"default_auto_archive_duration": {
 						"description": "Default auto archive duration for new threads",
@@ -38573,7 +38589,11 @@
 						"description": "Whether non-moderators can add other non-moderators (private threads)",
 						"type": "boolean"
 					},
-					"location": {"description": "Accepted and ignored", "type": "string", "maxLength": 100}
+					"location": {"description": "Accepted and ignored", "type": "string", "maxLength": 100},
+					"persona_id": {
+						"description": "ID of one of your personas to start the thread as",
+						"anyOf": [{"$ref": "#/components/schemas/SnowflakeType"}, {"type": "null"}]
+					}
 				},
 				"required": ["name", "type"]
 			},
