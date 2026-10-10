@@ -6,6 +6,10 @@ import * as MessageSubmitUtils from '@app/features/messaging/utils/MessageSubmit
 import Users from '@app/features/user/state/Users';
 import type {MessageAttachment, MessageStickerItem} from '@fluxer/schema/src/domains/message/MessageResponseSchemas';
 
+// Fork: personas.
+
+import type {MessageSubprofileRequest} from '@fluxer/schema/src/domains/persona/PersonaSchemas';
+
 export interface ThreadStarterPayload {
 	content: string;
 	nonce: string;
@@ -13,6 +17,7 @@ export interface ThreadStarterPayload {
 	hasAttachments: boolean;
 	stickers: Array<MessageStickerItem>;
 	favoriteMemeId?: string;
+	subprofile?: MessageSubprofileRequest;
 }
 
 export function sendThreadStarter(thread: Channel, payload: ThreadStarterPayload): void {
@@ -26,6 +31,7 @@ export function sendThreadStarter(thread: Channel, payload: ThreadStarterPayload
 			currentUser,
 			stickers: payload.stickers,
 			favoriteMemeId: payload.favoriteMemeId,
+			subprofile: payload.subprofile,
 		},
 		payload.attachments,
 	);
@@ -38,5 +44,6 @@ export function sendThreadStarter(thread: Channel, payload: ThreadStarterPayload
 		flags: message.flags,
 		stickers: payload.stickers,
 		favoriteMemeId: payload.favoriteMemeId,
+		subprofile: payload.subprofile,
 	});
 }
