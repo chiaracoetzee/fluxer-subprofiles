@@ -77,7 +77,11 @@ describe('SignalBarStore', () => {
 		const active = observable.box<string | null>(null);
 		const persona = vi
 			.spyOn(PersonaStore, 'getEffectivePersonaForText')
-			.mockImplementation(() => ({persona: active.get() ? ({id: active.get()} as never) : null, isFromTag: false}));
+			.mockImplementation(() => ({
+				persona: active.get() ? ({id: active.get()} as never) : null,
+				isFromTag: false,
+				isTagUnfinished: false,
+			}));
 		const putMock = vi.spyOn(http, 'put').mockResolvedValue({ok: true} as never);
 		getMock.mockResolvedValue({
 			ok: true,
