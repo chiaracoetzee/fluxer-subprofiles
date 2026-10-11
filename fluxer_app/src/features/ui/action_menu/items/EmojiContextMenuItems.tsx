@@ -26,7 +26,6 @@ import {useCallback} from 'react';
 import {EmojiPickerReactionContext} from '@app/features/channel/components/EmojiPicker';
 import ExpressionPicker from '@app/features/emoji/state/ExpressionPicker';
 import Drafts from '@app/features/messaging/state/MessagingDrafts';
-import Messages from '@app/features/messaging/state/MessagingMessages';
 import {createDownloadHandler} from '@app/features/messaging/utils/FileDownloadUtils';
 import {PersonaReactAsModal, REACT_AS_DESCRIPTOR} from '@app/features/persona/components/PersonaReactAsModal';
 import {type ClientPersona, PersonaStore} from '@app/features/persona/state/PersonaStore';
@@ -211,30 +210,29 @@ export const EmojiContextMenuItems = observer(
 		const {i18n} = useLingui();
 		const reactionContext = useContext(EmojiPickerReactionContext);
 		const resolvedChannelId = propChannelId ?? reactionContext?.channelId ?? ExpressionPicker.channelId ?? undefined;
-		const resolvedMessageId =
-			propMessageId ??
-			reactionContext?.messageId ??
-			(resolvedChannelId ? Messages.getMessages(resolvedChannelId).toArray().slice(-1)[0]?.id : undefined);
+		// "React as..." needs an explicit target; the picker's channel only selects the persona shown for pinning.
+		const reactChannelId = propChannelId ?? reactionContext?.channelId;
+		const reactMessageId = propMessageId ?? reactionContext?.messageId;
 
 		const hasPersonas = PersonaStore.personas.length > 0;
-		const canReactAs = hasPersonas && Boolean(resolvedChannelId && resolvedMessageId);
+		const canReactAs = hasPersonas && Boolean(reactChannelId && reactMessageId);
 		const draft = resolvedChannelId ? Drafts.getDraft(resolvedChannelId) : undefined;
 		const activePersona = PersonaStore.getEffectiveReactionPersona(resolvedChannelId ?? null, null, draft);
 
 		const handleReactAs = useCallback(() => {
-			if (!resolvedChannelId || !resolvedMessageId) return;
+			if (!reactChannelId || !reactMessageId) return;
 			onClose();
 			ModalCommands.push(
 				modal(() => (
 					<PersonaReactAsModal
 						emoji={emoji}
-						channelId={resolvedChannelId}
-						messageId={resolvedMessageId}
+						channelId={reactChannelId}
+						messageId={reactMessageId}
 						onClose={() => ModalCommands.pop()}
 					/>
 				)),
 			);
-		}, [emoji, resolvedChannelId, resolvedMessageId, onClose]);
+		}, [emoji, reactChannelId, reactMessageId, onClose]);
 
 		const {
 			canFavorite,
@@ -405,34 +403,14 @@ export const EmojiContextMenuItems = observer(
 EmojiContextMenuItems.displayName = 'EmojiContextMenuItems';
 
 export const EmojiInlineMenuItems = observer(
-	({emoji, onClose, channelId: propChannelId, messageId: propMessageId}: EmojiContextMenuItemsProps) => {
+	({emoji, onClose, channelId: propChannelId}: Omit<EmojiContextMenuItemsProps, 'messageId'>) => {
 		const {i18n} = useLingui();
 		const reactionContext = useContext(EmojiPickerReactionContext);
 		const resolvedChannelId = propChannelId ?? reactionContext?.channelId ?? ExpressionPicker.channelId ?? undefined;
-		const resolvedMessageId =
-			propMessageId ??
-			reactionContext?.messageId ??
-			(resolvedChannelId ? Messages.getMessages(resolvedChannelId).toArray().slice(-1)[0]?.id : undefined);
 
 		const hasPersonas = PersonaStore.personas.length > 0;
-		const canReactAs = hasPersonas && Boolean(resolvedChannelId && resolvedMessageId);
 		const draft = resolvedChannelId ? Drafts.getDraft(resolvedChannelId) : undefined;
 		const activePersona = PersonaStore.getEffectiveReactionPersona(resolvedChannelId ?? null, null, draft);
-
-		const handleReactAs = useCallback(() => {
-			if (!resolvedChannelId || !resolvedMessageId) return;
-			onClose();
-			ModalCommands.push(
-				modal(() => (
-					<PersonaReactAsModal
-						emoji={emoji}
-						channelId={resolvedChannelId}
-						messageId={resolvedMessageId}
-						onClose={() => ModalCommands.pop()}
-					/>
-				)),
-			);
-		}, [emoji, resolvedChannelId, resolvedMessageId, onClose]);
 
 		const {
 			canFavorite,
@@ -458,14 +436,6 @@ export const EmojiInlineMenuItems = observer(
 
 		return (
 			<MenuGroup data-flx="ui.action-menu.items.emoji-context-menu-items.emoji-inline-menu-items.menu-group">
-				{canReactAs && (
-					<MenuItem
-						onClick={handleReactAs}
-						data-flx="ui.action-menu.items.emoji-context-menu-items.emoji-inline-menu-items.menu-item.react-as"
-					>
-						{i18n._(REACT_AS_DESCRIPTOR)}
-					</MenuItem>
-				)}
 			{originalUrl && (
 				<MenuItem
 					onClick={handleCopyImage}
