@@ -36,11 +36,6 @@ import {snowflakeToDate} from '@fluxer/snowflake/src/Snowflake';
 import {getContentTypeFromFilename, isSupportedMediaContentType} from '@pkgs/mime_utils/src/ContentTypeUtils';
 import {seconds} from 'itty-time';
 
-// Fork imports.
-
-import type {MessageSubprofileRow} from '@app/api/database/types/MessageTypes';
-import type {MessageSubprofileRequest} from '@fluxer/schema/src/domains/persona/PersonaSchemas';
-
 export const MESSAGE_NONCE_TTL = seconds('5 minutes');
 
 export interface ForwardMediaSelection {
@@ -98,24 +93,6 @@ export function isMediaFile(contentType: string): boolean {
 
 export function isPersonalNotesChannel({userId, channelId}: {userId: UserID; channelId: ChannelID}): boolean {
 	return userIdToChannelId(userId) === channelId;
-}
-
-export function normalizeMessageSubprofile(
-	subprofile?: MessageSubprofileRequest | MessageSubprofileRow | null,
-): MessageSubprofileRow | null {
-	if (!subprofile) return null;
-	return {
-		id: subprofile.id,
-		name: subprofile.name,
-		avatar: subprofile.avatar ?? null,
-		avatar_color: subprofile.avatar_color ?? null,
-		banner: (subprofile as any).banner ?? null,
-		display_tag_text: subprofile.display_tag_text ?? null,
-		display_tag_icon: subprofile.display_tag_icon ?? null,
-		pronouns: subprofile.pronouns ?? null,
-		color: subprofile.color ?? null,
-		bio: subprofile.bio ?? null,
-	};
 }
 
 export function getContentType(filename: string): string {
