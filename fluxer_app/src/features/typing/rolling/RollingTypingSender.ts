@@ -13,14 +13,14 @@ import {
 
 // Fork imports.
 
-import type {MessageSubprofileRequest} from '@fluxer/schema/src/domains/persona/PersonaSchemas';
+import type {MessageSubprofileResponse} from '@fluxer/schema/src/domains/persona/PersonaSchemas';
 
 const logger = new Logger('Typing');
 
 class RollingTypingSender {
-	private slot: (TypingSendSlot & {subprofile?: MessageSubprofileRequest | null}) | null = null;
+	private slot: (TypingSendSlot & {subprofile?: MessageSubprofileResponse | null}) | null = null;
 
-	startTyping(channelId: string, subprofile?: MessageSubprofileRequest | null): void {
+	startTyping(channelId: string, subprofile?: MessageSubprofileResponse | null): void {
 		const userId = Authentication.currentUserId;
 		if (userId == null) {
 			return;
@@ -34,7 +34,7 @@ class RollingTypingSender {
 		if (plan.action === 'throttled') {
 			return;
 		}
-		const slot: TypingSendSlot & {subprofile?: MessageSubprofileRequest | null} = {
+		const slot: TypingSendSlot & {subprofile?: MessageSubprofileResponse | null} = {
 			channelId,
 			userId,
 			personaId,
@@ -76,7 +76,7 @@ class RollingTypingSender {
 		this.slot = null;
 	}
 
-	private fire(captured: TypingSendSlot & {subprofile?: MessageSubprofileRequest | null}): void {
+	private fire(captured: TypingSendSlot & {subprofile?: MessageSubprofileResponse | null}): void {
 		const slot = this.slot;
 		if (slot !== captured || Authentication.currentUserId !== captured.userId || captured.timeout === null) {
 			return;
@@ -88,11 +88,11 @@ class RollingTypingSender {
 		void this.postTyping(captured.channelId, captured.subprofile);
 	}
 
-	private async postTyping(channelId: string, subprofile?: MessageSubprofileRequest | null): Promise<void> {
+	private async postTyping(channelId: string, subprofile?: MessageSubprofileResponse | null): Promise<void> {
 		try {
 			if (subprofile) {
 				await http.post(Endpoints.CHANNEL_TYPING(channelId), {
-					body: {subprofile},
+					body: {persona_id: subprofile.id},
 				});
 			} else {
 				await http.post(Endpoints.CHANNEL_TYPING(channelId));

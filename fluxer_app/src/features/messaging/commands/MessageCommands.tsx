@@ -91,7 +91,7 @@ import {observer} from 'mobx-react-lite';
 
 import MessageChangePersona from '../state/MessageChangePersona';
 import SignalBarStore from '@app/features/signal_bar/state/SignalBarStore';
-import type {MessageSubprofileRequest} from '@fluxer/schema/src/domains/persona/PersonaSchemas';
+import type {MessageSubprofileResponse} from '@fluxer/schema/src/domains/persona/PersonaSchemas';
 
 const ARE_YOU_SURE_YOU_WANT_TO_DELETE_THIS_DESCRIPTOR = msg({
 	message: "Delete this message? Can't be undone.",
@@ -363,7 +363,7 @@ interface SendMessageParams {
 	favoriteMemeId?: string;
 	stickers?: Array<MessageStickerItem>;
 	tts?: boolean;
-	subprofile?: MessageSubprofileRequest | null;
+	subprofile?: MessageSubprofileResponse | null;
 }
 
 export function jumpToLiveEdge(channelId: string, limit = MAX_MESSAGES_PER_CHANNEL): void {
@@ -768,7 +768,7 @@ export async function edit(
 	flags?: number,
 	allowedMentions?: AllowedMentions,
 	attachments?: Array<ApiMessageEditAttachmentMetadata>,
-	subprofile?: MessageSubprofileRequest | null,
+	subprofile?: MessageSubprofileResponse | null,
 ): Promise<WireMessage | null> {
 	logger.debug(`Editing message ${messageId} in channel ${channelId}`);
 	const isPublished = Messages.getMessage(channelId, messageId)?.isCrossposted === true;

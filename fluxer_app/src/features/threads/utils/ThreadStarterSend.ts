@@ -8,7 +8,7 @@ import type {MessageAttachment, MessageStickerItem} from '@fluxer/schema/src/dom
 
 // Fork: personas.
 
-import type {MessageSubprofileRequest} from '@fluxer/schema/src/domains/persona/PersonaSchemas';
+import type {MessageSubprofileResponse} from '@fluxer/schema/src/domains/persona/PersonaSchemas';
 
 export interface ThreadStarterPayload {
 	content: string;
@@ -17,7 +17,7 @@ export interface ThreadStarterPayload {
 	hasAttachments: boolean;
 	stickers: Array<MessageStickerItem>;
 	favoriteMemeId?: string;
-	subprofile?: MessageSubprofileRequest;
+	subprofile?: MessageSubprofileResponse;
 }
 
 export function sendThreadStarter(thread: Channel, payload: ThreadStarterPayload): void {
