@@ -33448,9 +33448,13 @@
 			"IndicateTypingRequestSchema": {
 				"type": "object",
 				"properties": {
+					"persona_id": {
+						"description": "ID of one of your personas to show as typing",
+						"anyOf": [{"$ref": "#/components/schemas/SnowflakeType"}, {"type": "null"}]
+					},
 					"subprofile": {
-						"description": "Optional subprofile persona information",
-						"anyOf": [{"$ref": "#/components/schemas/MessagePersonaRequestSchema"}, {"type": "null"}]
+						"description": "Deprecated, use persona_id. Only its id is read, and persona_id wins when both are sent",
+						"anyOf": [{"$ref": "#/components/schemas/LegacyMessageSubprofileRequestSchema"}, {"type": "null"}]
 					}
 				}
 			},
@@ -34194,9 +34198,13 @@
 						"description": "Controls which mentions trigger notifications",
 						"anyOf": [{"$ref": "#/components/schemas/AllowedMentionsRequest"}, {"type": "null"}]
 					},
+					"persona_id": {
+						"description": "ID of one of your personas to send the message as",
+						"anyOf": [{"$ref": "#/components/schemas/SnowflakeType"}, {"type": "null"}]
+					},
 					"subprofile": {
-						"description": "Optional subprofile persona information",
-						"anyOf": [{"$ref": "#/components/schemas/MessagePersonaRequestSchema"}, {"type": "null"}]
+						"description": "Deprecated, use persona_id. Only its id is read, and persona_id wins when both are sent",
+						"anyOf": [{"$ref": "#/components/schemas/LegacyMessageSubprofileRequestSchema"}, {"type": "null"}]
 					},
 					"flags": {"$ref": "#/components/schemas/MessageFlags", "description": "Message flags bitfield"},
 					"attachments": {
@@ -34323,9 +34331,13 @@
 						]
 					},
 					"tts": {"description": "Whether this is a text-to-speech message", "type": "boolean"},
+					"persona_id": {
+						"description": "ID of one of your personas to send the message as",
+						"anyOf": [{"$ref": "#/components/schemas/SnowflakeType"}, {"type": "null"}]
+					},
 					"subprofile": {
-						"description": "Optional subprofile persona information",
-						"anyOf": [{"$ref": "#/components/schemas/MessagePersonaRequestSchema"}, {"type": "null"}]
+						"description": "Deprecated, use persona_id. Only its id is read, and persona_id wins when both are sent",
+						"anyOf": [{"$ref": "#/components/schemas/LegacyMessageSubprofileRequestSchema"}, {"type": "null"}]
 					}
 				}
 			},
@@ -37501,46 +37513,10 @@
 					"Personal notes DM channel"
 				]
 			},
-			"MessagePersonaRequestSchema": {
+			"LegacyMessageSubprofileRequestSchema": {
 				"type": "object",
-				"properties": {
-					"id": {"type": "string", "minLength": 1, "maxLength": 64},
-					"name": {"description": "Persona display name", "type": "string"},
-					"avatar": {
-						"description": "Avatar asset URL or hash",
-						"anyOf": [{"type": "string", "maxLength": 256}, {"type": "null"}]
-					},
-					"avatar_color": {
-						"description": "Avatar accent color",
-						"anyOf": [{"type": "integer", "minimum": -9007199254740991, "maximum": 9007199254740991}, {"type": "null"}]
-					},
-					"banner": {
-						"description": "Banner asset URL or hash",
-						"anyOf": [{"type": "string", "maxLength": 256}, {"type": "null"}]
-					},
-					"display_tag_text": {
-						"description": "Display tag text",
-						"anyOf": [{"type": "string", "maxLength": 100}, {"type": "null"}]
-					},
-					"display_tag_icon": {
-						"description": "Display tag icon URL or hash",
-						"anyOf": [{"type": "string", "maxLength": 256}, {"type": "null"}]
-					},
-					"pronouns": {"description": "Pronouns", "anyOf": [{"type": "string", "maxLength": 100}, {"type": "null"}]},
-					"color": {
-						"description": "Custom color integer",
-						"anyOf": [{"type": "integer", "minimum": -9007199254740991, "maximum": 9007199254740991}, {"type": "null"}]
-					},
-					"bio": {
-						"description": "Persona bio (deprecated on message)",
-						"anyOf": [{"type": "string", "maxLength": 4096}, {"type": "null"}]
-					},
-					"visibility": {
-						"description": "Persona visibility setting",
-						"anyOf": [{"$ref": "#/components/schemas/PersonaVisibilitySchema"}, {"type": "null"}]
-					}
-				},
-				"required": ["id", "name"]
+				"properties": {"id": {"type": "string", "minLength": 1, "maxLength": 64}},
+				"required": ["id"]
 			},
 			"MessageNonceRequest": {
 				"description": "Client-generated identifier for the message",
@@ -37849,7 +37825,6 @@
 				"x-enumDescriptions": ["Default reference (reply)", "Forwarded message reference"],
 				"enum": [0, 1]
 			},
-			"PersonaVisibilitySchema": {"default": "unlisted", "type": "string", "enum": ["unlisted", "public", "private"]},
 			"ChannelPinResponse": {
 				"type": "object",
 				"properties": {
@@ -38505,6 +38480,7 @@
 					{"name": "IS_ANIMATED", "value": "32", "description": "Embed media is animated"}
 				]
 			},
+			"PersonaVisibilitySchema": {"default": "unlisted", "type": "string", "enum": ["unlisted", "public", "private"]},
 			"ClientAttachmentReferenceRequest": {
 				"type": "object",
 				"properties": {
@@ -38910,9 +38886,13 @@
 									{"type": "null"}
 								]
 							},
+							"persona_id": {
+								"description": "ID of one of your personas to send the message as",
+								"anyOf": [{"$ref": "#/components/schemas/SnowflakeType"}, {"type": "null"}]
+							},
 							"subprofile": {
-								"description": "Optional subprofile persona information",
-								"anyOf": [{"$ref": "#/components/schemas/MessagePersonaRequestSchema"}, {"type": "null"}]
+								"description": "Deprecated, use persona_id. Only its id is read, and persona_id wins when both are sent",
+								"anyOf": [{"$ref": "#/components/schemas/LegacyMessageSubprofileRequestSchema"}, {"type": "null"}]
 							}
 						},
 						"description": "The first message of the post",
@@ -38985,9 +38965,13 @@
 							{"type": "null"}
 						]
 					},
+					"persona_id": {
+						"description": "ID of one of your personas to send the message as",
+						"anyOf": [{"$ref": "#/components/schemas/SnowflakeType"}, {"type": "null"}]
+					},
 					"subprofile": {
-						"description": "Optional subprofile persona information",
-						"anyOf": [{"$ref": "#/components/schemas/MessagePersonaRequestSchema"}, {"type": "null"}]
+						"description": "Deprecated, use persona_id. Only its id is read, and persona_id wins when both are sent",
+						"anyOf": [{"$ref": "#/components/schemas/LegacyMessageSubprofileRequestSchema"}, {"type": "null"}]
 					}
 				},
 				"x-fluxer-experiment": "channel_threads"
