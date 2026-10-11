@@ -81,7 +81,7 @@ export const PersonaComposerPill: React.FC<PersonaComposerPillProps> = observer(
 		};
 
 		const avatarHash = effectivePersona
-			? (effectivePersona.avatar_hash ?? effectivePersona.avatarHash ?? undefined)
+			? (effectivePersona.avatar_hash ?? undefined)
 			: undefined;
 		const modeLabel =
 			mode === 'last'
