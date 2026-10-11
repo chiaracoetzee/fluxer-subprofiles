@@ -69,7 +69,7 @@ export const PersonaReactAsModal: React.FC<PersonaReactAsModalProps> = observer(
 				if (p.name.toLowerCase().includes(trimmed)) return true;
 				if (PersonaStore.displayTagText?.toLowerCase().includes(trimmed)) return true;
 				if (p.pronouns?.toLowerCase().includes(trimmed)) return true;
-				return (p.personaTags ?? []).some(
+				return (p.persona_tags ?? []).some(
 					(tag) => tag.prefix?.toLowerCase().includes(trimmed) || tag.suffix?.toLowerCase().includes(trimmed),
 				);
 			});
@@ -268,7 +268,7 @@ export const PersonaReactAsModal: React.FC<PersonaReactAsModalProps> = observer(
 										tabIndex={0}
 										data-flx="persona.persona-react-as-modal.persona-item"
 									>
-										{currentUser && <Avatar user={currentUser} avatarUrl={p.avatar_hash ?? p.avatarHash} size={32} />}
+										{currentUser && <Avatar user={currentUser} avatarUrl={p.avatar_hash} size={32} />}
 										<div className={styles.personaDetails}>
 											<div className={styles.personaPrimaryRow}>
 												<span className={styles.personaName}>{p.name}</span>

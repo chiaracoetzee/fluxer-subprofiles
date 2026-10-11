@@ -294,7 +294,7 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 			? personas.filter((p) => {
 					const nameMatch = p.name.toLowerCase().includes(query);
 					const pronounsMatch = (p.pronouns ?? '').toLowerCase().includes(query);
-					const tags = p.persona_tags ?? p.personaTags ?? [];
+					const tags = p.persona_tags ?? [];
 					const tagMatch = tags.some(
 						(t) => (t.prefix ?? '').toLowerCase().includes(query) || (t.suffix ?? '').toLowerCase().includes(query),
 					);
@@ -660,9 +660,7 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 											className={clsx(styles.compactPersonaCard, isThisActive && styles.activeCard)}
 											onClick={() => handleStartEdit(persona)}
 										>
-											{currentUser && (
-												<Avatar user={currentUser} avatarUrl={persona.avatar_hash ?? persona.avatarHash} size={36} />
-											)}
+											{currentUser && <Avatar user={currentUser} avatarUrl={persona.avatar_hash} size={36} />}
 											<div className={styles.cardDetails}>
 												<div className={styles.cardPrimaryRow}>
 													<span className={styles.cardName}>{persona.name}</span>
@@ -705,7 +703,7 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 													)}
 												</div>
 												<div className={styles.cardSecondaryRow}>
-													{(persona.personaTags ?? []).map((t, idx) => (
+													{(persona.persona_tags ?? []).map((t, idx) => (
 														<span key={idx} className={styles.tagPill}>
 															{t.prefix ?? ''}text{t.suffix ?? ''}
 														</span>
