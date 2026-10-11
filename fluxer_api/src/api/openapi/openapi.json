@@ -21482,6 +21482,129 @@
 				}
 			}
 		},
+		"/users/@me/personas/channel-states": {
+			"get": {
+				"operationId": "list_my_persona_channel_states",
+				"summary": "List the personas selected per channel",
+				"tags": ["Personas"],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {
+							"application/json": {"schema": {"$ref": "#/components/schemas/PersonaChannelStatesResponseSchema"}}
+						}
+					},
+					"400": {
+						"description": "Bad Request - The request was malformed or contained invalid data",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
+					},
+					"401": {
+						"description": "Unauthorized - Authentication is required or the token is invalid",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
+					},
+					"403": {
+						"description": "Forbidden - You do not have permission to perform this action",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
+					},
+					"429": {
+						"description": "Too Many Requests - You are being rate limited",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/ThrottledError"}}},
+						"headers": {
+							"Retry-After": {
+								"description": "Number of seconds to wait before retrying (only on 429)",
+								"schema": {"type": "integer"}
+							},
+							"X-RateLimit-Limit": {
+								"description": "The number of requests that can be made in the current window",
+								"schema": {"type": "integer"}
+							},
+							"X-RateLimit-Remaining": {
+								"description": "The number of remaining requests that can be made",
+								"schema": {"type": "integer"}
+							},
+							"X-RateLimit-Reset": {
+								"description": "Unix timestamp when the rate limit resets",
+								"schema": {"type": "integer"}
+							}
+						}
+					},
+					"500": {
+						"description": "Internal Server Error - An unexpected error occurred",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
+					}
+				},
+				"description": "Lists every channel the authenticated user has a persona selected in. Used when their persona is remembered per channel; a channel that is not listed is used as the account itself.",
+				"security": [{"oauth2Token": ["personas.read"]}, {"sessionToken": []}]
+			}
+		},
+		"/users/@me/personas/channel-states/{channel_id}": {
+			"put": {
+				"operationId": "set_my_persona_channel_state",
+				"summary": "Select a persona in a channel",
+				"tags": ["Personas"],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/PersonaChannelStateSchema"}}}
+					},
+					"400": {
+						"description": "Bad Request - The request was malformed or contained invalid data",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
+					},
+					"401": {
+						"description": "Unauthorized - Authentication is required or the token is invalid",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
+					},
+					"403": {
+						"description": "Forbidden - You do not have permission to perform this action",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
+					},
+					"429": {
+						"description": "Too Many Requests - You are being rate limited",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/ThrottledError"}}},
+						"headers": {
+							"Retry-After": {
+								"description": "Number of seconds to wait before retrying (only on 429)",
+								"schema": {"type": "integer"}
+							},
+							"X-RateLimit-Limit": {
+								"description": "The number of requests that can be made in the current window",
+								"schema": {"type": "integer"}
+							},
+							"X-RateLimit-Remaining": {
+								"description": "The number of remaining requests that can be made",
+								"schema": {"type": "integer"}
+							},
+							"X-RateLimit-Reset": {
+								"description": "Unix timestamp when the rate limit resets",
+								"schema": {"type": "integer"}
+							}
+						}
+					},
+					"500": {
+						"description": "Internal Server Error - An unexpected error occurred",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
+					}
+				},
+				"description": "Selects one of the authenticated user's personas in a channel they can see, or the account itself with a null persona. Only their own sessions are told.",
+				"security": [{"oauth2Token": ["personas.write"]}, {"sessionToken": []}],
+				"parameters": [
+					{
+						"name": "channel_id",
+						"in": "path",
+						"required": true,
+						"schema": {"description": "The ID of the channel", "$ref": "#/components/schemas/SnowflakeType"},
+						"description": "The ID of the channel"
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {"schema": {"$ref": "#/components/schemas/PersonaChannelStateUpdateRequestSchema"}}
+					}
+				}
+			}
+		},
 		"/users/@me/personas/import": {
 			"post": {
 				"operationId": "import_personas",
@@ -27683,6 +27806,7 @@
 				"type": "object",
 				"properties": {
 					"active_persona_mode": {"$ref": "#/components/schemas/ActivePersonaModeSchema"},
+					"active_persona_scope": {"$ref": "#/components/schemas/ActivePersonaScopeSchema"},
 					"active_persona_id": {"anyOf": [{"$ref": "#/components/schemas/SnowflakeStringType"}, {"type": "null"}]},
 					"is_latched": {"type": "boolean"},
 					"display_tag_text": {"anyOf": [{"type": "string", "maxLength": 100}, {"type": "null"}]},
@@ -27694,13 +27818,18 @@
 				"properties": {
 					"user_id": {"description": "User Snowflake ID", "$ref": "#/components/schemas/SnowflakeStringType"},
 					"active_persona_mode": {"default": "manual", "$ref": "#/components/schemas/ActivePersonaModeSchema"},
+					"active_persona_scope": {
+						"default": "global",
+						"description": "Whether the selected persona is one for every channel or remembered per channel",
+						"$ref": "#/components/schemas/ActivePersonaScopeSchema"
+					},
 					"active_persona_id": {"anyOf": [{"$ref": "#/components/schemas/SnowflakeStringType"}, {"type": "null"}]},
 					"is_latched": {"default": false, "type": "boolean"},
 					"display_tag_text": {"anyOf": [{"type": "string", "maxLength": 100}, {"type": "null"}]},
 					"display_tag_icon": {"anyOf": [{"type": "string", "maxLength": 256}, {"type": "null"}]},
 					"updated_at": {"type": "string"}
 				},
-				"required": ["user_id", "active_persona_mode", "is_latched"],
+				"required": ["user_id", "active_persona_mode", "active_persona_scope", "is_latched"],
 				"additionalProperties": false
 			},
 			"PersonaBulkImportRequestSchema": {
@@ -27709,6 +27838,43 @@
 				"items": {"$ref": "#/components/schemas/PersonaCreateRequestSchema"}
 			},
 			"PersonaListResponseSchema": {"type": "array", "items": {"$ref": "#/components/schemas/PersonaResponseSchema"}},
+			"PersonaChannelStateUpdateRequestSchema": {
+				"type": "object",
+				"properties": {
+					"persona_id": {
+						"anyOf": [{"$ref": "#/components/schemas/SnowflakeStringType"}, {"type": "null"}],
+						"description": "The persona to select in the channel, or null for the account"
+					}
+				},
+				"required": ["persona_id"]
+			},
+			"PersonaChannelStateSchema": {
+				"type": "object",
+				"properties": {
+					"channel_id": {
+						"description": "The channel this selection belongs to",
+						"$ref": "#/components/schemas/SnowflakeStringType"
+					},
+					"persona_id": {
+						"anyOf": [{"$ref": "#/components/schemas/SnowflakeStringType"}, {"type": "null"}],
+						"description": "The persona selected in the channel, or null when the channel is used as the account itself"
+					}
+				},
+				"required": ["channel_id", "persona_id"],
+				"additionalProperties": false
+			},
+			"PersonaChannelStatesResponseSchema": {
+				"type": "object",
+				"properties": {
+					"states": {
+						"type": "array",
+						"items": {"$ref": "#/components/schemas/PersonaChannelStateSchema"},
+						"description": "Every channel that has a persona selected"
+					}
+				},
+				"required": ["states"],
+				"additionalProperties": false
+			},
 			"PersonaCreateRequestSchema": {
 				"type": "object",
 				"properties": {
@@ -41983,6 +42149,7 @@
 					"suffix": {"type": "string", "minLength": 1, "maxLength": 32}
 				}
 			},
+			"ActivePersonaScopeSchema": {"type": "string", "enum": ["global", "channel"]},
 			"ActivePersonaModeSchema": {"type": "string", "enum": ["manual", "last"]},
 			"SignatureEmojiSchema": {
 				"type": "object",

@@ -401,7 +401,7 @@ describe('PersonaService', () => {
 
 			vi.mocked(mockRepo.findByUserIds).mockResolvedValueOnce([personaByOwnerNick, personaByTag]);
 			vi.mocked(mockRepo.findSettingsByUserIds).mockResolvedValueOnce(
-				new Map([[otherUserId.toString(), {user_id: otherUserId, active_persona_id: null, active_persona_mode: 'manual', is_latched: false, display_tag_text: 'BobbySystem', display_tag_icon: null, version: 1, updated_at: new Date()}]]),
+				new Map([[otherUserId.toString(), {user_id: otherUserId, active_persona_id: null, active_persona_mode: 'manual', active_persona_scope: 'global', is_latched: false, display_tag_text: 'BobbySystem', display_tag_icon: null, version: 1, updated_at: new Date()}]]),
 			);
 
 			const results = await service.getChannelPersonaMentions({
@@ -547,6 +547,7 @@ describe('PersonaService', () => {
 			vi.mocked(mockRepo.findSettings).mockResolvedValueOnce({
 				user_id: userId,
 				active_persona_mode: 'manual',
+				active_persona_scope: 'global',
 				active_persona_id: null,
 				is_latched: false,
 				display_tag_text: 'System Tag',
@@ -559,6 +560,7 @@ describe('PersonaService', () => {
 				active_persona_id: defaultPersonaId.toString(),
 				is_latched: true,
 				active_persona_mode: 'manual',
+				active_persona_scope: 'global',
 			});
 
 			// Dispatches to user for sync across own tabs/devices
@@ -584,6 +586,7 @@ describe('PersonaService', () => {
 			vi.mocked(mockRepo.findSettings).mockResolvedValueOnce({
 				user_id: userId,
 				active_persona_mode: 'manual',
+				active_persona_scope: 'global',
 				active_persona_id: defaultPersonaId.toString(),
 				is_latched: true,
 				display_tag_text: 'Old Tag',
@@ -687,6 +690,7 @@ describe('PersonaService', () => {
 				user_id: userId,
 				active_persona_id: defaultPersonaId.toString(),
 				active_persona_mode: 'manual',
+				active_persona_scope: 'global',
 				is_latched: true,
 				display_tag_text: 'TAG',
 				display_tag_icon: null,
@@ -726,6 +730,7 @@ describe('PersonaService', () => {
 				user_id: userId,
 				active_persona_id: otherPersonaId.toString(),
 				active_persona_mode: 'manual',
+				active_persona_scope: 'global',
 				is_latched: true,
 				display_tag_text: 'TAG',
 				display_tag_icon: null,
@@ -743,6 +748,7 @@ describe('PersonaService', () => {
 				user_id: userId,
 				active_persona_id: defaultPersonaId.toString(),
 				active_persona_mode: 'manual',
+				active_persona_scope: 'global',
 				is_latched: true,
 				display_tag_text: 'TAG',
 				display_tag_icon: null,
@@ -765,6 +771,7 @@ describe('PersonaService', () => {
 				user_id: userId,
 				active_persona_id: defaultPersonaId.toString(),
 				active_persona_mode: 'manual',
+				active_persona_scope: 'global',
 				is_latched: true,
 				display_tag_text: 'TAG',
 				display_tag_icon: null,
@@ -784,6 +791,7 @@ describe('PersonaService', () => {
 				user_id: userId,
 				active_persona_id: defaultPersonaId.toString(),
 				active_persona_mode: 'manual',
+				active_persona_scope: 'global',
 				is_latched: true,
 				display_tag_text: 'TAG',
 				display_tag_icon: null,
