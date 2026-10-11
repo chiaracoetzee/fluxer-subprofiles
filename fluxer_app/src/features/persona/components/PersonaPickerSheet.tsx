@@ -74,7 +74,7 @@ export const PersonaPickerSheet: React.FC<PersonaPickerSheetProps> = observer(
 				if (p.name.toLowerCase().includes(trimmed)) return true;
 				if (PersonaStore.displayTagText?.toLowerCase().includes(trimmed)) return true;
 				if (p.pronouns?.toLowerCase().includes(trimmed)) return true;
-				return (p.personaTags ?? []).some(
+				return (p.persona_tags ?? []).some(
 					(tag) => tag.prefix?.toLowerCase().includes(trimmed) || tag.suffix?.toLowerCase().includes(trimmed),
 				);
 			});
@@ -186,7 +186,7 @@ export const PersonaPickerSheet: React.FC<PersonaPickerSheetProps> = observer(
 										role="button"
 										tabIndex={0}
 									>
-										{currentUser && <Avatar user={currentUser} avatarUrl={p.avatar_hash ?? p.avatarHash} size={18} />}
+										{currentUser && <Avatar user={currentUser} avatarUrl={p.avatar_hash} size={18} />}
 										<span>{p.name}</span>
 									</div>
 								))}
@@ -210,7 +210,7 @@ export const PersonaPickerSheet: React.FC<PersonaPickerSheetProps> = observer(
 					) : (
 						filteredPersonas.map((p) => {
 							const isThisActive = isLatched && activePersonaId === p.id;
-							const primaryTag = p.personaTags?.[0];
+							const primaryTag = p.persona_tags?.[0];
 							const tagString = primaryTag ? `${primaryTag.prefix ?? ''}text${primaryTag.suffix ?? ''}` : undefined;
 
 							return (
@@ -227,7 +227,7 @@ export const PersonaPickerSheet: React.FC<PersonaPickerSheetProps> = observer(
 									role="button"
 									tabIndex={0}
 								>
-									{currentUser && <Avatar user={currentUser} avatarUrl={p.avatar_hash ?? p.avatarHash} size={28} />}
+									{currentUser && <Avatar user={currentUser} avatarUrl={p.avatar_hash} size={28} />}
 									<div className={styles.personaDetails}>
 										<div className={styles.personaPrimaryRow}>
 											<span className={styles.personaName}>{p.name}</span>
