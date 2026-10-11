@@ -12,6 +12,7 @@ import {
 	mapToReactions,
 	sameEmoji,
 	trackReactor,
+	transitionReactionMap,
 	untrackReactor,
 } from '@app/features/messaging/state/ReactionStateMachine';
 import type {ReactionEmoji} from '@app/features/messaging/utils/ReactionUtils';
@@ -511,46 +512,42 @@ describe('ReactionStateMachine: persona reactions', () => {
 		]);
 	});
 
-	it('transitions through reaction machine snapshot with personaId', () => {
-		let snapshot = createReactionMachineSnapshot(emptyMap(), ME);
-		snapshot = transitionReactionSnapshot(snapshot, {
+	it('transitions the reaction map through events that carry a personaId', () => {
+		let m = transitionReactionMap(emptyMap(), {
 			type: 'reaction.add',
 			emoji: FIRE,
 			userId: ME,
 			isCurrentUser: true,
 			personaId: 'persona-a',
 		});
-		expect(getReactionStateValue(snapshot)).toBe('active');
-		expect(getRecord(snapshot.context.map, FIRE)!.count).toBe(1);
+		expect(getRecord(m, FIRE)!.count).toBe(1);
 
-		snapshot = transitionReactionSnapshot(snapshot, {
+		m = transitionReactionMap(m, {
 			type: 'reaction.add',
 			emoji: FIRE,
 			userId: ME,
 			isCurrentUser: true,
 			personaId: 'persona-b',
 		});
-		expect(getRecord(snapshot.context.map, FIRE)!.count).toBe(2);
+		expect(getRecord(m, FIRE)!.count).toBe(2);
 
-		snapshot = transitionReactionSnapshot(snapshot, {
+		m = transitionReactionMap(m, {
 			type: 'reaction.remove',
 			emoji: FIRE,
 			userId: ME,
 			isCurrentUser: true,
 			personaId: 'persona-a',
 		});
-		expect(getRecord(snapshot.context.map, FIRE)!.count).toBe(1);
-		expect(getReactionStateValue(snapshot)).toBe('active');
+		expect(getRecord(m, FIRE)!.count).toBe(1);
 
-		snapshot = transitionReactionSnapshot(snapshot, {
+		m = transitionReactionMap(m, {
 			type: 'reaction.remove',
 			emoji: FIRE,
 			userId: ME,
 			isCurrentUser: true,
 			personaId: 'persona-b',
 		});
-		expect(getRecord(snapshot.context.map, FIRE)).toBeUndefined();
-		expect(getReactionStateValue(snapshot)).toBe('empty');
+		expect(getRecord(m, FIRE)).toBeUndefined();
 	});
 });
 
