@@ -28,7 +28,8 @@ import * as ToastCommands from '@app/features/ui/commands/ToastCommands';
 import * as UnsavedChangesCommands from '@app/features/ui/commands/UnsavedChangesCommands';
 import {Avatar} from '@app/features/ui/components/Avatar';
 import {Input} from '@app/features/ui/components/form/FormInput';
-import {type SegmentedTab, SegmentedTabs} from '@app/features/ui/segmented_tabs/SegmentedTabs';
+import {RadioGroup, type RadioOption} from '@app/features/ui/radio_group/RadioGroup';
+import type {SegmentedTab} from '@app/features/ui/segmented_tabs/SegmentedTabs';
 import {Tooltip} from '@app/features/ui/tooltip/Tooltip';
 import Users from '@app/features/user/state/Users';
 import * as AvatarUtils from '@app/features/user/utils/AvatarUtils';
@@ -38,7 +39,6 @@ import {Trans, useLingui} from '@lingui/react/macro';
 import {
 	CaretRight,
 	GlobeSimple,
-	Info,
 	LockSimple,
 	LockSimpleOpen,
 	MagnifyingGlass,
@@ -51,6 +51,7 @@ import {observer} from 'mobx-react-lite';
 import type React from 'react';
 import {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import {type ActivePersonaMode, type Persona, PersonaStore} from '../../state/PersonaStore';
+import type {ActivePersonaScope} from '@fluxer/schema/src/domains/persona/PersonaApiSchemas';
 import {openPersonaEditModal} from '../modals/PersonaEditModal';
 import {openPluralKitImportModal} from '../modals/PluralKitImportModal';
 import {SEARCH_PERSONAS_PLACEHOLDER_DESCRIPTOR} from '../PersonaPickerSheet';
@@ -62,27 +63,40 @@ const MODE_MANUAL_DESCRIPTOR = msg({
 	comment: 'Active persona mode manual',
 });
 const MODE_LAST_DESCRIPTOR = msg({
-	message: 'Last Used',
+	message: 'Last used',
 	comment: 'Active persona mode last used',
 });
 
 const ACTIVE_PERSONA_MODE_MANUAL_DESC = msg({
-	message: 'Untagged messages send as your chosen persona. Typing another persona’s tags will only send that single message and won’t switch who is active.',
+	message: 'Untagged messages send as the persona you picked. A tag applies to that message only.',
 	comment: 'Helper description for Manual persona mode',
 });
 const ACTIVE_PERSONA_MODE_LAST_DESC = msg({
-	message: 'Untagged messages send as the persona that spoke most recently. Whenever anyone uses a persona tag, they automatically become the active persona.',
+	message: 'Untagged messages send as whoever spoke last. Using a tag switches to that persona.',
 	comment: 'Helper description for Last Used persona mode',
 });
 
-const PERSONAS_SECTION_TITLE_DESCRIPTOR = msg({
-	message: 'Personas',
-	comment: 'Title of personas settings section',
+const SCOPE_GLOBAL_DESCRIPTOR = msg({
+	message: 'Everywhere',
+	comment: 'Option for where the selected persona applies: one persona for every channel',
 });
-const PERSONAS_SECTION_DESC_DESCRIPTOR = msg({
-	message: 'Send messages with distinct names and avatars. Personas can represent plural system members, roleplay characters, or any other identity.',
-	comment: 'Description of personas settings section',
+const SCOPE_CHANNEL_DESCRIPTOR = msg({
+	message: 'In each channel',
+	comment: 'Option for where the selected persona applies: each channel remembers its own persona',
 });
+const SCOPE_GLOBAL_DESC = msg({
+	message: 'One persona for all channels.',
+	comment: 'Helper description for the Everywhere option of the persona scope setting',
+});
+const SCOPE_CHANNEL_DESC = msg({
+	message: 'Each channel keeps its own persona. New channels start as your account.',
+	comment: 'Helper description for the In Each Channel option of the persona scope setting',
+});
+const SCOPE_ARIA_DESCRIPTOR = msg({
+	message: 'Where your persona is remembered',
+	comment: 'Aria label for the tabs that choose whether the selected persona applies everywhere or per channel',
+});
+
 const ACTIVE_PERSONA_MODE_ARIA_DESCRIPTOR = msg({
 	message: 'Active persona mode',
 	comment: 'Aria label for active persona mode tabs',
@@ -141,6 +155,7 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 	const activePersonaId = PersonaStore.activePersonaId;
 	const isLatched = PersonaStore.isPersonaLatched;
 	const activePersonaMode = PersonaStore.activePersonaMode;
+	const activePersonaScope = PersonaStore.activePersonaScope;
 	const currentUser = Users.currentUser;
 
 	const [searchQuery, setSearchQuery] = useState('');
@@ -261,6 +276,17 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 
 	const activePersonaTabs = useMemo(() => getActivePersonaTabs(i18n), [i18n]);
 	const activePersonaDescriptions = useMemo(() => getActivePersonaDescriptions(i18n), [i18n]);
+	const modeOptions = useMemo<Array<RadioOption<ActivePersonaMode>>>(
+		() => activePersonaTabs.map((tab) => ({value: tab.id, name: tab.label, desc: activePersonaDescriptions[tab.id]})),
+		[activePersonaTabs, activePersonaDescriptions],
+	);
+	const scopeOptions = useMemo<Array<RadioOption<ActivePersonaScope>>>(
+		() => [
+			{value: 'global', name: i18n._(SCOPE_GLOBAL_DESCRIPTOR), desc: i18n._(SCOPE_GLOBAL_DESC)},
+			{value: 'channel', name: i18n._(SCOPE_CHANNEL_DESCRIPTOR), desc: i18n._(SCOPE_CHANNEL_DESC)},
+		],
+		[i18n],
+	);
 
 	const query = searchQuery.trim().toLowerCase();
 	const filteredPersonaIds = (query
@@ -412,53 +438,54 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 		<SettingsTabContainer data-flx="user.personas-settings-tab.container">
 			<SettingsTabContent data-flx="user.personas-settings-tab.content">
 				<div className={styles.container}>
-					{/* Header section: Active Persona Mode */}
+					{/* One section per setting, as on the other settings pages. */}
 					<SettingsSection
-						id="personas_general"
-						title={i18n._(PERSONAS_SECTION_TITLE_DESCRIPTOR)}
-						description={i18n._(PERSONAS_SECTION_DESC_DESCRIPTOR)}
+						id="personas_mode"
+						title={<Trans comment="Title of the setting for how the active persona is chosen">Active persona mode</Trans>}
 						linkable={false}
 					>
-						<div className={styles.sectionHeader}>
-							<div>
-								<h4 className={styles.sectionTitle}>
-									<Trans>Active Persona Mode</Trans>
-								</h4>
-								<p className={styles.sectionDescription}>
-									<Trans>Choose how untagged messages and persona tags interact with your active persona.</Trans>
-								</p>
-							</div>
-						</div>
-						<div className={styles.modeControlWrapper}>
-							<SegmentedTabs<ActivePersonaMode>
-								tabs={activePersonaTabs}
-								selectedTab={activePersonaMode}
-								onTabChange={(mode) => {
-									void handleModeChange(mode);
-								}}
-								ariaLabel={i18n._(ACTIVE_PERSONA_MODE_ARIA_DESCRIPTOR)}
-							/>
-							<div className={styles.modeHelperText}>
-								<Info size={16} weight="bold" className={styles.modeHelperIcon} />
-								<span>{activePersonaDescriptions[activePersonaMode]}</span>
-							</div>
-						</div>
+						<RadioGroup
+							options={modeOptions}
+							value={activePersonaMode}
+							onChange={(mode) => {
+								void handleModeChange(mode);
+							}}
+							aria-label={i18n._(ACTIVE_PERSONA_MODE_ARIA_DESCRIPTOR)}
+							data-flx="user.personas-settings-tab.mode.radio-group"
+						/>
+					</SettingsSection>
 
-						{/* Display Tag section */}
-						<div className={styles.sectionHeader} style={{marginTop: 24}}>
-							<div>
-								<h4 className={styles.sectionTitle}>
-									<Trans>Display Tag</Trans>
-								</h4>
-								<p className={styles.sectionDescription}>
-									<Trans>
-										Display tag will appear next to all persona names in messages. If no display tag is set, your
-										account profile picture will be shown.
-									</Trans>
-								</p>
-							</div>
-						</div>
+					<SettingsSection
+						id="personas_scope"
+						title={
+							<Trans comment="Title of the setting that chooses whether the selected persona applies in every channel or is remembered per channel. Shown under the Active persona mode setting.">
+								Persona applies to
+							</Trans>
+						}
+						linkable={false}
+					>
+						<RadioGroup
+							options={scopeOptions}
+							value={activePersonaScope}
+							onChange={(scope) => {
+								void PersonaStore.setActivePersonaScope(scope);
+							}}
+							aria-label={i18n._(SCOPE_ARIA_DESCRIPTOR)}
+							data-flx="user.personas-settings-tab.scope.radio-group"
+						/>
+					</SettingsSection>
 
+					<SettingsSection
+						id="personas_display_tag"
+						title={<Trans comment="Title of the display tag setting on the personas settings page">Display tag</Trans>}
+						description={
+							<Trans>
+								Display tag will appear next to all persona names in messages. If no display tag is set, your
+								account profile picture will be shown.
+							</Trans>
+						}
+						linkable={false}
+					>
 						<div className={styles.displayTagControlWrapper}>
 							<div className={styles.displayTagInputs}>
 								<div className={styles.displayTagTextField}>
@@ -615,7 +642,9 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 								{filteredPersonaIds.map((personaId) => {
 									const persona = PersonaStore.getPersona(personaId);
 									if (!persona) return null;
-									const isThisActive = activePersonaId === persona.id && isLatched;
+									// With a persona per channel there is no single active one to show or set from here.
+									const isThisActive =
+										activePersonaScope === 'global' && activePersonaId === persona.id && isLatched;
 									return (
 										<div
 											key={persona.id}
@@ -680,6 +709,7 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 												</div>
 											</div>
 											<div className={styles.cardActions} onClick={(e) => e.stopPropagation()}>
+												{activePersonaScope === 'global' && (
 												<Button
 													variant="secondary"
 													small={true}
@@ -699,6 +729,7 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 												>
 													{isThisActive ? <Trans>Active</Trans> : <Trans>Set Active</Trans>}
 												</Button>
+												)}
 												<button
 													type="button"
 													className={styles.chevronButton}
