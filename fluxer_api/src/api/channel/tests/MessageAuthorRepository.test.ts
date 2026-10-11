@@ -23,7 +23,7 @@ describe('MessageAuthorRepository', () => {
 		const mockDataRepo = {
 			getMessage: vi.fn().mockResolvedValue(null),
 		};
-		const repo = new MessageAuthorRepository(mockDataRepo as any, {} as any);
+		const repo = new MessageAuthorRepository(mockDataRepo as any);
 
 		await repo.anonymizeMessage(channelId, messageId, newAuthorId);
 		expect(cassandra.upsertOne).not.toHaveBeenCalled();
@@ -36,7 +36,7 @@ describe('MessageAuthorRepository', () => {
 				personaId,
 			}),
 		};
-		const repo = new MessageAuthorRepository(mockDataRepo as any, {} as any);
+		const repo = new MessageAuthorRepository(mockDataRepo as any);
 		const mapping = new Map<string, PersonaID>([
 			[personaId.toString(), mappedPersonaId],
 		]);
@@ -53,7 +53,7 @@ describe('MessageAuthorRepository', () => {
 				personaId,
 			}),
 		};
-		const repo = new MessageAuthorRepository(mockDataRepo as any, {} as any);
+		const repo = new MessageAuthorRepository(mockDataRepo as any);
 		const mapping = new Map<string, PersonaID>([
 			['other_id', mappedPersonaId],
 		]);
@@ -68,7 +68,7 @@ describe('MessageAuthorRepository', () => {
 				personaId: null,
 			}),
 		};
-		const repoNoPersona = new MessageAuthorRepository(mockDataRepoNoPersona as any, {} as any);
+		const repoNoPersona = new MessageAuthorRepository(mockDataRepoNoPersona as any);
 		await repoNoPersona.anonymizeMessage(channelId, messageId, newAuthorId, mapping);
 		expect(upsertSpy).toHaveBeenCalledTimes(4);
 	});
