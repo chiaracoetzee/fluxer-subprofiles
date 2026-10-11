@@ -733,7 +733,6 @@ class Messages {
 				name: persona.name,
 				avatar: persona.avatar !== undefined ? persona.avatar : (current.avatar ?? null),
 				avatar_color: persona.avatar_color !== undefined ? persona.avatar_color : (current.avatar_color ?? null),
-				banner: persona.banner !== undefined ? persona.banner : (current.banner ?? null),
 				display_tag_text:
 					persona.display_tag_text !== undefined
 						? persona.display_tag_text
@@ -750,10 +749,6 @@ class Messages {
 					persona.color !== undefined
 						? persona.color
 						: (current.color ?? null),
-				bio:
-					persona.bio !== undefined
-						? persona.bio
-						: (current.bio ?? null),
 				visibility:
 					persona.visibility !== undefined
 						? persona.visibility

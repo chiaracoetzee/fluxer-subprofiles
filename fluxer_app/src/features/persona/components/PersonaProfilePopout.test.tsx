@@ -37,7 +37,7 @@ vi.mock('@app/features/user/state/Users', () => ({
 }));
 
 vi.mock('@app/features/persona/commands/PersonaCommands', () => ({
-	fetchPublicPersona: vi.fn(),
+	fetchPersonaProfile: vi.fn(),
 }));
 
 vi.mock('@app/features/user/commands/UserProfileCommands', () => ({
@@ -170,19 +170,21 @@ describe('PersonaProfilePopout Component', () => {
 			name: 'Bobs Persona',
 			avatar: null,
 			pronouns: 'he/him',
-			bio: null,
 		};
 
-		vi.mocked(PersonaCommands.fetchPublicPersona).mockResolvedValue({
-			id: subprofile.id,
-			name: subprofile.name,
-			avatar_hash: null,
-			banner_hash: null,
-			pronouns: 'he/they',
-			color: null,
-			avatar_color: null,
-			bio: 'Public bio from remote API',
-			visibility: 'public',
+		vi.mocked(PersonaCommands.fetchPersonaProfile).mockResolvedValue({
+			status: 'ready',
+			profile: {
+				id: subprofile.id,
+				name: subprofile.name,
+				avatar_hash: null,
+				banner_hash: null,
+				pronouns: 'he/they',
+				color: null,
+				avatar_color: null,
+				bio: 'Public bio from remote API',
+				visibility: 'public',
+			},
 		});
 
 		const onClose = vi.fn();
@@ -191,7 +193,7 @@ describe('PersonaProfilePopout Component', () => {
 			root.render(<PersonaProfilePopout user={otherUser} subprofile={subprofile} onClose={onClose} />);
 		});
 
-		expect(PersonaCommands.fetchPublicPersona).toHaveBeenCalledWith(otherUser.id, subprofile.id);
+		expect(PersonaCommands.fetchPersonaProfile).toHaveBeenCalledWith(otherUser.id, subprofile.id);
 		expect(container.textContent).toContain('Bobs Persona');
 		expect(container.textContent).toContain('he/they');
 		expect(container.textContent).toContain('Public bio from remote API');
@@ -209,6 +211,49 @@ describe('PersonaProfilePopout Component', () => {
 		expect(onClose).toHaveBeenCalledTimes(1);
 	});
 
+	it('says the profile is private when the server refuses it as private, and shows no bio', async () => {
+		// A message cached before the server stopped sending a bio with it could still carry one.
+		const subprofile = {
+			id: '100000000000000099',
+			name: 'Bobs Persona',
+			avatar: null,
+			pronouns: 'he/him',
+			bio: 'Bio left on an old message',
+			banner: 'old_banner_hash',
+		};
+		vi.mocked(PersonaCommands.fetchPersonaProfile).mockResolvedValue({status: 'private'});
+
+		await act(async () => {
+			root.render(<PersonaProfilePopout user={otherUser} subprofile={subprofile} />);
+		});
+
+		expect(container.querySelector('[data-flx="persona.persona-profile-popout.private-notice"]')?.textContent).toBe(
+			'This persona’s profile is private.',
+		);
+		expect(container.textContent).not.toContain('Bio left on an old message');
+		expect(container.innerHTML).not.toContain('old_banner_hash');
+		expect(container.textContent).toContain('Bobs Persona');
+		expect(container.textContent).toContain('he/him');
+	});
+
+	it('shows neither a bio nor the private notice when the profile could not be fetched', async () => {
+		const subprofile = {
+			id: '100000000000000099',
+			name: 'Bobs Persona',
+			avatar: null,
+			bio: 'Bio left on an old message',
+		};
+		vi.mocked(PersonaCommands.fetchPersonaProfile).mockResolvedValue({status: 'unavailable'});
+
+		await act(async () => {
+			root.render(<PersonaProfilePopout user={otherUser} subprofile={subprofile} />);
+		});
+
+		expect(container.querySelector('[data-flx="persona.persona-profile-popout.private-notice"]')).toBeNull();
+		expect(container.querySelector('[data-flx="persona.persona-profile-popout.bio-container"]')).toBeNull();
+		expect(container.textContent).not.toContain('Bio left on an old message');
+	});
+
 	it('opens root user profile when clicking main account button', async () => {
 		const subprofile = {
 			id: '100000000000000099',
@@ -216,16 +261,19 @@ describe('PersonaProfilePopout Component', () => {
 			avatar: null,
 		};
 
-		vi.mocked(PersonaCommands.fetchPublicPersona).mockResolvedValue({
-			id: subprofile.id,
-			name: subprofile.name,
-			avatar_hash: null,
-			banner_hash: null,
-			pronouns: null,
-			color: null,
-			avatar_color: null,
-			bio: null,
-			visibility: 'public',
+		vi.mocked(PersonaCommands.fetchPersonaProfile).mockResolvedValue({
+			status: 'ready',
+			profile: {
+				id: subprofile.id,
+				name: subprofile.name,
+				avatar_hash: null,
+				banner_hash: null,
+				pronouns: null,
+				color: null,
+				avatar_color: null,
+				bio: null,
+				visibility: 'public',
+			},
 		});
 
 		const onClose = vi.fn();
