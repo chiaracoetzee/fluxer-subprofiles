@@ -59,6 +59,7 @@ import {
 
 // Fork imports.
 
+import {useForkSearchFirstResultSelection} from '@app/features/channel/components/emoji_picker/hooks/useForkSearchFirstResultSelection';
 import Drafts from '@app/features/messaging/state/MessagingDrafts';
 import {toReactionEmoji} from '@app/features/messaging/utils/ReactionUtils';
 import {PersonaStore} from '@app/features/persona/state/PersonaStore';
@@ -331,6 +332,16 @@ export const EmojiPicker = observer(
 				handleSelectionChange(0, 0, false);
 			}
 		}, [renderedEmojis, selectedRow, selectedColumn, hoveredEmoji, handleSelectionChange]);
+		useForkSearchFirstResultSelection({
+			searchTerm: normalizedSearchTerm,
+			hasResults: renderedEmojis.length > 0,
+			selectFirst: () => handleSelectionChange(0, 0, true),
+			clearSelection: () => {
+				setSelectedRow(-1);
+				setSelectedColumn(-1);
+				setHoveredEmoji(null);
+			},
+		});
 		useEffect(() => {
 			if (!shouldScrollOnSelection || selectedRow < 0) {
 				return;
