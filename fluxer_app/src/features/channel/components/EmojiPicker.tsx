@@ -57,6 +57,7 @@ import {useCallback, useContext, useEffect, useMemo, useRef, useState, useSyncEx
 
 // Fork imports.
 
+import {useForkSearchFirstResultSelection} from '@app/features/channel/components/emoji_picker/hooks/useForkSearchFirstResultSelection';
 import Drafts from '@app/features/messaging/state/MessagingDrafts';
 import {toReactionEmoji} from '@app/features/messaging/utils/ReactionUtils';
 import {PersonaStore} from '@app/features/persona/state/PersonaStore';
@@ -211,6 +212,10 @@ export const EmojiPicker = observer(
 			handleHover,
 			handleCategoryClick,
 			selectAt,
+			// Fork: the search box clears the selection (see useForkSearchFirstResultSelection below).
+			setSelectedRow,
+			setSelectedColumn,
+			setHovered: setHoveredEmoji,
 		} = useVirtualPickerGrid({
 			rows: pickerRows,
 			getItems: getPickerRowItems,
@@ -239,6 +244,16 @@ export const EmojiPicker = observer(
 			[channel, channelId, handleSelect, i18n],
 		);
 
+		useForkSearchFirstResultSelection({
+			searchTerm: normalizedSearchTerm,
+			hasResults: renderedEmojis.length > 0,
+			selectFirst: () => handleSelectionChange(0, 0, true),
+			clearSelection: () => {
+				setSelectedRow(-1);
+				setSelectedColumn(-1);
+				setHoveredEmoji(null);
+			},
+		});
 		const handleSelectEmoji = useCallback(
 			(row: number | null, column: number | null, event?: React.KeyboardEvent) => {
 				const item = selectAt(row, column);
