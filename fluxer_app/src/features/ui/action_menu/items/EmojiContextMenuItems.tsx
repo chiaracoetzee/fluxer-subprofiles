@@ -219,7 +219,7 @@ export const EmojiContextMenuItems = observer(
 		const hasPersonas = PersonaStore.personas.length > 0;
 		const canReactAs = hasPersonas && Boolean(resolvedChannelId && resolvedMessageId);
 		const draft = resolvedChannelId ? Drafts.getDraft(resolvedChannelId) : undefined;
-		const activePersona = PersonaStore.getEffectiveReactionPersona(null, draft);
+		const activePersona = PersonaStore.getEffectiveReactionPersona(resolvedChannelId ?? null, null, draft);
 
 		const handleReactAs = useCallback(() => {
 			if (!resolvedChannelId || !resolvedMessageId) return;
@@ -417,7 +417,7 @@ export const EmojiInlineMenuItems = observer(
 		const hasPersonas = PersonaStore.personas.length > 0;
 		const canReactAs = hasPersonas && Boolean(resolvedChannelId && resolvedMessageId);
 		const draft = resolvedChannelId ? Drafts.getDraft(resolvedChannelId) : undefined;
-		const activePersona = PersonaStore.getEffectiveReactionPersona(null, draft);
+		const activePersona = PersonaStore.getEffectiveReactionPersona(resolvedChannelId ?? null, null, draft);
 
 		const handleReactAs = useCallback(() => {
 			if (!resolvedChannelId || !resolvedMessageId) return;
