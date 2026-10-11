@@ -5,7 +5,7 @@ import RollingTypingSender from '@app/features/typing/rolling/RollingTypingSende
 
 // Fork imports.
 
-import type {MessageSubprofileRequest} from '@fluxer/schema/src/domains/persona/PersonaSchemas';
+import type {MessageSubprofileResponse} from '@fluxer/schema/src/domains/persona/PersonaSchemas';
 
 interface ComposerTypingInput {
 	channelId: string;
@@ -14,7 +14,7 @@ interface ComposerTypingInput {
 	enabled: boolean;
 	typingEnabled: boolean;
 	isEditingMessageInComposer: boolean;
-	subprofile?: MessageSubprofileRequest | null;
+	subprofile?: MessageSubprofileResponse | null;
 }
 
 class TypingManager {
