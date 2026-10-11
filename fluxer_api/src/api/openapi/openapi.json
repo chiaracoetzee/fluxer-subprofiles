@@ -38027,7 +38027,6 @@
 						"description": "Avatar accent color",
 						"anyOf": [{"type": "integer", "minimum": -9007199254740991, "maximum": 9007199254740991}, {"type": "null"}]
 					},
-					"banner": {"description": "Banner asset URL or hash", "type": ["string", "null"]},
 					"display_tag_text": {"description": "Display tag text", "type": ["string", "null"]},
 					"display_tag_icon": {"description": "Display tag icon URL or hash", "type": ["string", "null"]},
 					"pronouns": {"description": "Pronouns", "type": ["string", "null"]},
@@ -38035,7 +38034,6 @@
 						"description": "Custom color integer",
 						"anyOf": [{"type": "integer", "minimum": -9007199254740991, "maximum": 9007199254740991}, {"type": "null"}]
 					},
-					"bio": {"description": "Persona bio (deprecated on message)", "type": ["string", "null"]},
 					"visibility": {
 						"description": "Persona visibility setting",
 						"anyOf": [{"$ref": "#/components/schemas/PersonaVisibilitySchema"}, {"type": "null"}]
@@ -42814,6 +42812,7 @@
 					"UNKNOWN_PASSKEY_MIGRATION",
 					"UNKNOWN_PERSONA",
 					"PERSONA_NOT_FOUND",
+					"PRIVATE_PERSONA",
 					"PERSONA_LIMIT_REACHED",
 					"DUPLICATE_PERSONA_TAG",
 					"PERSONA_TAG_LIMIT_REACHED",
@@ -43117,6 +43116,7 @@
 					"There is no passkey to update right now.",
 					"User wasn't found.",
 					"User wasn't found.",
+					"You don't have access to this resource or feature.",
 					"You've reached the maximum number of connections ({limit}).",
 					"This tag is already taken.",
 					"You've reached the maximum number of connections ({limit}).",

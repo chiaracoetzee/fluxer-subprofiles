@@ -14630,7 +14630,6 @@
 						"minimum": -9007199254740991,
 						"maximum": 9007199254740991
 					},
-					"banner": {"description": "Banner asset URL or hash", "nullable": true, "type": "string"},
 					"display_tag_text": {"description": "Display tag text", "nullable": true, "type": "string"},
 					"display_tag_icon": {"description": "Display tag icon URL or hash", "nullable": true, "type": "string"},
 					"pronouns": {"description": "Pronouns", "nullable": true, "type": "string"},
@@ -14641,7 +14640,6 @@
 						"minimum": -9007199254740991,
 						"maximum": 9007199254740991
 					},
-					"bio": {"description": "Persona bio (deprecated on message)", "nullable": true, "type": "string"},
 					"visibility": {
 						"description": "Persona visibility setting",
 						"nullable": true,
@@ -17608,6 +17606,7 @@
 					"UNKNOWN_PASSKEY_MIGRATION",
 					"UNKNOWN_PERSONA",
 					"PERSONA_NOT_FOUND",
+					"PRIVATE_PERSONA",
 					"PERSONA_LIMIT_REACHED",
 					"DUPLICATE_PERSONA_TAG",
 					"PERSONA_TAG_LIMIT_REACHED",
@@ -17911,6 +17910,7 @@
 					"There is no passkey to update right now.",
 					"User wasn't found.",
 					"User wasn't found.",
+					"You don't have access to this resource or feature.",
 					"You've reached the maximum number of connections ({limit}).",
 					"This tag is already taken.",
 					"You've reached the maximum number of connections ({limit}).",
