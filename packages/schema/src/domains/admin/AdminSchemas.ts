@@ -70,7 +70,6 @@ import {z} from 'zod';
 
 // Fork imports.
 
-import {LIMIT_KEY_METADATA, type LimitKey} from '@fluxer/constants/src/LimitConfigMetadata';
 import {ServerListButtonsSchema} from '@fluxer/schema/src/domains/instance/InstanceSchemas';
 
 const ReportStatusSchema = withOpenApiType(
