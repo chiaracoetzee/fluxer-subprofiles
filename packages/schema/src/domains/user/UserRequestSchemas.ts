@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-import {MAX_BIO_LENGTH, MAX_GROUP_DM_OTHER_RECIPIENTS, MAX_GUILDS_PREMIUM} from '@fluxer/constants/src/LimitConstants';
+import {MAX_GROUP_DM_OTHER_RECIPIENTS, MAX_GUILDS_PREMIUM} from '@fluxer/constants/src/LimitConstants';
 import {StatusTypes} from '@fluxer/constants/src/StatusConstants';
 import {
 	DEFAULT_GUILD_FOLDER_ICON,

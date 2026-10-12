@@ -8,7 +8,6 @@ import {
 	SystemChannelFlagsDescriptions,
 } from '@fluxer/constants/src/GuildConstants';
 import {
-	MAX_BIO_LENGTH,
 	MAX_GUILD_ROLES,
 	MAX_GUILD_STICKER_TAGS,
 	MAX_TEMP_BAN_DURATION_SECONDS,
