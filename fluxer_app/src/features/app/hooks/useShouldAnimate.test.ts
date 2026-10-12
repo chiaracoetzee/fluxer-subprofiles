@@ -368,7 +368,6 @@ describe('useShouldAnimate hook', () => {
 				await act(async () => {
 					document.documentElement.classList.add('unfocused-fully-interactive');
 					window.dispatchEvent(new Event('fluxer-window-hover-controls-change'));
-					await new Promise((resolve) => setTimeout(resolve, 10));
 				});
 				expect(result.getValue()).toBe(true);
 
@@ -376,7 +375,6 @@ describe('useShouldAnimate hook', () => {
 				await act(async () => {
 					document.documentElement.classList.remove('unfocused-fully-interactive');
 					window.dispatchEvent(new Event('fluxer-window-hover-controls-change'));
-					await new Promise((resolve) => setTimeout(resolve, 10));
 				});
 				expect(result.getValue()).toBe(false);
 			} finally {

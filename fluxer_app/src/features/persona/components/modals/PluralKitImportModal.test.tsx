@@ -16,6 +16,15 @@ import {runInAction} from 'mobx';
 
 (globalThis as any).IS_REACT_ACT_ENVIRONMENT = true;
 
+// Waits for work the modal does in the background (reading the file, running the import)
+// by checking for its result, however long the machine takes. A fixed pause is too short
+// on a slow one.
+async function settled(check: () => void): Promise<void> {
+	await act(async () => {
+		await vi.waitFor(check, {timeout: 10_000, interval: 5});
+	});
+}
+
 if (typeof window !== 'undefined' && (window as any).Animation) {
 	(window as any).Animation.prototype.cancel = () => {};
 }
@@ -137,8 +146,8 @@ describe('PluralKitImportModal Component', () => {
 			await act(async () => {
 				Object.defineProperty(fileInput, 'files', {value: [file]});
 				fileInput.dispatchEvent(new Event('change', {bubbles: true}));
-				await new Promise((r) => setTimeout(r, 10));
 			});
+			await settled(() => expect(document.body.textContent).toContain('No "members" array found in this export file.'));
 
 			expect(document.body.textContent).toContain('No "members" array found in this export file.');
 		} finally {
@@ -194,8 +203,8 @@ describe('PluralKitImportModal Component', () => {
 			await act(async () => {
 				Object.defineProperty(fileInput, 'files', {value: [file]});
 				fileInput.dispatchEvent(new Event('change', {bubbles: true}));
-				await new Promise((r) => setTimeout(r, 10));
 			});
+			await settled(() => expect(document.body.textContent).toContain('Total Members2'));
 
 			// Should show file details and parsed members
 			expect(document.body.textContent).toContain('pluralkit_export.json');
@@ -210,8 +219,8 @@ describe('PluralKitImportModal Component', () => {
 
 			await act(async () => {
 				importBtn?.click();
-				await new Promise((r) => setTimeout(r, 20));
 			});
+			await settled(() => expect(document.body.textContent).toContain('Import Complete!'));
 
 			expect(PersonaCommands.importPersonas).toHaveBeenCalledWith(
 				expect.arrayContaining([
@@ -280,8 +289,8 @@ describe('PluralKitImportModal Component', () => {
 			await act(async () => {
 				Object.defineProperty(fileInput, 'files', {value: [file]});
 				fileInput.dispatchEvent(new Event('change', {bubbles: true}));
-				await new Promise((r) => setTimeout(r, 10));
 			});
+			await settled(() => expect(document.body.querySelectorAll('input[type="radio"]').length).toBe(2));
 
 			// Select "Replace existing personas" radio (the second radio option)
 			const radios = document.body.querySelectorAll('input[type="radio"]');
