@@ -21,8 +21,11 @@ import {
 import {DOWNLOAD_PAGE_URL} from '@electron/main/UpdaterDownloads';
 import {app} from 'electron';
 
-export const SPLASH_MANUAL_UPDATE_MESSAGE = 'A new version of Fluxer is ready to install.';
-const SPLASH_REQUIRED_SECURITY_UPDATE_MESSAGE = 'A required security update must be installed before Fluxer can start.';
+// Fork imports.
+
+import {DESKTOP_APP_NAME} from '@electron/common/DesktopIdentity';
+export const SPLASH_MANUAL_UPDATE_MESSAGE = `A new version of ${DESKTOP_APP_NAME} is ready to install.`;
+const SPLASH_REQUIRED_SECURITY_UPDATE_MESSAGE = `A required security update must be installed before ${DESKTOP_APP_NAME} can start.`;
 const SPLASH_DECLINE_OPTION_VALUE = 'nope';
 const SPLASH_DECLINE_OPTION_LABEL = "I'll figure it out";
 const SPLASH_DOWNLOAD_BUTTON_LABEL = 'Download';
