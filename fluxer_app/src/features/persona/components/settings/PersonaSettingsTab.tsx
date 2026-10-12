@@ -6,9 +6,9 @@ import {SettingsSection} from '@app/features/app/components/dialogs/shared/Setti
 import {SettingsTabContainer, SettingsTabContent} from '@app/features/app/components/dialogs/shared/SettingsTabLayout';
 import {
 	AVATAR_RECOMMENDED_SIZE_LABEL,
-	IMAGE_MAX_SIZE_BYTES,
 	STATIC_IMAGE_FORMATS,
 } from '@app/features/app/config/I18nDisplayConstants';
+import {GlobalLimits} from '@app/features/app/utils/GlobalLimits';
 import {Endpoints} from '@app/features/app/constants/Endpoints';
 import {AssetCropModal, AssetType} from '@app/features/expressions/components/modals/AssetCropModal';
 import {openAssetSourceModal} from '@app/features/expressions/components/modals/AssetSourceModal';
@@ -382,7 +382,7 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 			title: 'Tag Icon',
 			uploadHint: formatImageUploadRecommendedHint(i18n, {
 				formats: STATIC_IMAGE_FORMATS,
-				maxSize: formatFileSize(i18n.locale, IMAGE_MAX_SIZE_BYTES),
+				maxSize: formatFileSize(i18n.locale, GlobalLimits.getAvatarMaxSize()),
 				recommendedSize: AVATAR_RECOMMENDED_SIZE_LABEL,
 			}),
 			onPickUpload: async () => {
