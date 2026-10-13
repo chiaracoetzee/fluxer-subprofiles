@@ -21,7 +21,6 @@ const isIPadOS =
 	navigator.maxTouchPoints > 1;
 
 const isIOSDevice = /iPad|iPhone|iPod/i.test(userAgent) || isIPadOS;
-const isAndroidDevice = /Android/i.test(userAgent);
 const isElectron =
 	typeof window !== 'undefined' &&
 	(

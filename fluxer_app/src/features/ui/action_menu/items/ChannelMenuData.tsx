@@ -435,9 +435,6 @@ export function useChannelMenuData(
 	);
 	const groups = ((): Array<MenuGroupType> => {
 		const menuGroups: Array<MenuGroupType> = [];
-
-				buildOpenInNewWindowMenuItem(i18n, channelWindowRoute(channel), onClose),
-				buildOpenInNewWindowMenuItem(i18n, channelWindowRoute(channel), onClose),
 		if (guild && (state.isTextChannel || state.isVoiceChannel || state.isLinkChannel || channel.isThreadOnly())) {
 			const voiceItems: Array<MenuItemType> = [];
 			if (state.isVoiceChannel && !Accessibility.voiceChannelJoinRequiresDoubleClick) {

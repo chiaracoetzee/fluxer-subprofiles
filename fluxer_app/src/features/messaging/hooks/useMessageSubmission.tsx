@@ -116,7 +116,7 @@ export const useMessageSubmission = ({
 
 			const cmdResult = PersonaStore.handleInChatCommand(channel.id, content);
 			if (cmdResult.handled) {
-				TypingUtils.clear(channel.id);
+				RollingTypingSender.stopTyping(channel.id);
 				DraftCommands.deleteDraft(accountKey, channel.id);
 				return true;
 			}
@@ -127,7 +127,7 @@ export const useMessageSubmission = ({
 				allowEmptyContent: hasNonTextMedia,
 			});
 			if (finalContent.length === 0 && !hasNonTextMedia) {
-				TypingUtils.clear(channel.id);
+				RollingTypingSender.stopTyping(channel.id);
 				DraftCommands.deleteDraft(accountKey, channel.id);
 				return true;
 			}

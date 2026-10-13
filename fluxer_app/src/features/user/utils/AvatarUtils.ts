@@ -548,7 +548,7 @@ export function getEmojiURL({id, animated, isAnimatable}: {id: string; animated?
 const EMOJI_ORIGINAL_URL_CACHE = new Map<string, string>();
 
 export function getEmojiOriginalURL({id, animated}: {id: string; animated?: boolean}): string {
-	if (!id || DeveloperOptions.forceRenderPlaceholders) {
+	if (!id) {
 		return '';
 	}
 	const animatedFlag = animated === true;

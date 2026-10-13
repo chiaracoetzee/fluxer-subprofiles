@@ -74,7 +74,6 @@ import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 // Fork imports.
 
 import {getEffectiveContent} from '@app/features/channel/components/MessageActionUtils';
-import EmojiPicker from '@app/features/emoji/state/EmojiPicker';
 import {COPY_TEXT_DESCRIPTOR} from '@app/features/i18n/utils/CommonMessageDescriptors';
 import Drafts from '@app/features/messaging/state/MessagingDrafts';
 import {PersonaStore} from '@app/features/persona/state/PersonaStore';

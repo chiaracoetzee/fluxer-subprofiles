@@ -212,6 +212,10 @@ export const EmojiPicker = observer(
 			handleHover,
 			handleCategoryClick,
 			selectAt,
+			// Fork: the search box clears the selection (see useForkSearchFirstResultSelection below).
+			setSelectedRow,
+			setSelectedColumn,
+			setHovered: setHoveredEmoji,
 		} = useVirtualPickerGrid({
 			rows: pickerRows,
 			getItems: getPickerRowItems,

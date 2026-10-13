@@ -52,10 +52,6 @@ vi.mock('@app/features/ui/commands/ContextMenuCommands', () => ({
 	openFromEvent: vi.fn(),
 }));
 
-vi.mock('@app/features/emoji/commands/EmojiPickerCommands', () => ({
-	trackEmojiUsage: vi.fn(),
-}));
-
 vi.mock('@app/features/ui/tooltip/Tooltip', () => ({
 	Tooltip: ({children, text}: {children: React.ReactNode; text?: any}) => (
 		<>
@@ -70,7 +66,6 @@ import {EmojiRenderer} from './emoji_picker/EmojiRenderer';
 import EmojiPicker from '@app/features/emoji/state/EmojiPicker';
 import {PersonaStore} from '@app/features/persona/state/PersonaStore';
 import * as ContextMenuCommands from '@app/features/ui/commands/ContextMenuCommands';
-import * as EmojiPickerCommands from '@app/features/emoji/commands/EmojiPickerCommands';
 import type {FlatEmoji} from '@app/features/emoji/types/EmojiTypes';
 
 (globalThis as any).IS_REACT_ACT_ENVIRONMENT = true;
@@ -128,13 +123,14 @@ describe('QuickReactionButton', () => {
 
 		const button = container.querySelector('button')!;
 		expect(button).toBeTruthy();
+		const scoreBefore = EmojiPicker.getFrecencyScoreForEmoji(testEmoji);
 
 		await act(async () => {
 			button.click();
 		});
 
 		expect(mockOnReact).toHaveBeenCalledWith(testEmoji);
-		expect(EmojiPickerCommands.trackEmojiUsage).toHaveBeenCalledWith(testEmoji, undefined);
+		expect(EmojiPicker.getFrecencyScoreForEmoji(testEmoji)).toBeGreaterThan(scoreBefore);
 	});
 
 	it('opens context menu with channelId and messageId on right-click (contextmenu event)', async () => {
