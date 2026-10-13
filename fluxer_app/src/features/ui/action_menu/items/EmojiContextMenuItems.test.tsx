@@ -73,8 +73,11 @@ vi.mock('@app/features/gateway/transport/GatewayConnection', () => ({
 	default: {isReady: false, isConnected: false, connectionEpoch: 1},
 }));
 
-vi.mock('@app/features/ui/action_menu/MenuItemSubmenu', () => ({
-	MenuItemSubmenu: ({label, render}: any) => (
+vi.mock('@app/features/ui/action_menu/ContextMenu', async () => ({
+	...(await vi.importActual<typeof import('@app/features/ui/action_menu/ContextMenu')>(
+		'@app/features/ui/action_menu/ContextMenu',
+	)),
+	SubMenu: ({label, render}: any) => (
 		<div>
 			{label}
 			{render?.()}
@@ -88,10 +91,6 @@ vi.mock('@app/features/ui/commands/ModalCommands', () => ({
 	modal: (renderer: () => React.ReactNode) => renderer,
 }));
 
-vi.mock('@app/features/emoji/commands/EmojiPickerCommands', () => ({
-	toggleFavorite: vi.fn(),
-}));
-
 vi.mock('@app/features/ui/commands/TextCopyCommands', () => ({
 	copy: vi.fn(),
 }));
@@ -100,7 +99,7 @@ vi.mock('@app/features/ui/commands/ToastCommands', () => ({
 	createToast: vi.fn(),
 }));
 
-import * as EmojiPickerCommands from '@app/features/emoji/commands/EmojiPickerCommands';
+import EmojiPicker, {getEmojiUsageKey} from '@app/features/emoji/state/EmojiPicker';
 import ExpressionPicker from '@app/features/emoji/state/ExpressionPicker';
 import type {FlatEmoji} from '@app/features/emoji/types/EmojiTypes';
 import Messages from '@app/features/messaging/state/MessagingMessages';
@@ -285,10 +284,12 @@ describe('EmojiContextMenuItems', () => {
 		) as HTMLElement;
 
 		if (favItem) {
+			const wasFavorite = EmojiPicker.isFavorite(unicodeEmoji);
 			await act(async () => {
 				favItem.click();
 			});
-			expect(EmojiPickerCommands.toggleFavorite).toHaveBeenCalledWith(unicodeEmoji);
+			expect(EmojiPicker.isFavorite(unicodeEmoji)).toBe(!wasFavorite);
+			EmojiPicker.toggleFavorite(getEmojiUsageKey(unicodeEmoji));
 		}
 	});
 

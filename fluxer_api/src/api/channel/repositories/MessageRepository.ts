@@ -14,7 +14,6 @@ import {AttachmentLookup} from '@app/api/Tables';
 
 import type {PersonaID} from '@app/api/BrandedTypes';
 
-
 export interface UpsertMessageOptions {
 	isInsert?: boolean;
 	skipParentLastMessageId?: boolean;

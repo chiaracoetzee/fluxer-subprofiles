@@ -58,7 +58,7 @@ vi.mock('@app/features/ui/components/form/FormInput', () => ({
 	Input: (props: React.InputHTMLAttributes<HTMLInputElement>) => <input {...props} />,
 }));
 
-import Authentication from '@app/features/auth/state/Authentication';
+import SessionManager from '@app/features/platform/state/AuthSession';
 import {http} from '@app/features/platform/transport/RestTransport';
 import {SignalBarEditor} from '@app/features/signal_bar/components/SignalBarEditor';
 import {SignalContextMenu} from '@app/features/signal_bar/components/SignalContextMenu';
@@ -103,7 +103,7 @@ describe('signal bar menus', () => {
 		container = document.createElement('div');
 		document.body.appendChild(container);
 		root = createRoot(container);
-		Authentication.setUserId(ME);
+		SessionManager.setUserId(ME);
 		getMock.mockReset().mockResolvedValue({ok: false} as never);
 		putMock.mockReset().mockResolvedValue({ok: false} as never);
 		deleteMock.mockReset().mockResolvedValue({ok: true} as never);
