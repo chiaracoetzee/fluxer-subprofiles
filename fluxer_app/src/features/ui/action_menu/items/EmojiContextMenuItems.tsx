@@ -1,16 +1,16 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-import * as EmojiPickerCommands from '@app/features/emoji/commands/EmojiPickerCommands';
-import EmojiPicker from '@app/features/emoji/state/EmojiPicker';
+import EmojiPicker, {getEmojiUsageKey} from '@app/features/emoji/state/EmojiPicker';
 import type {FlatEmoji} from '@app/features/emoji/types/EmojiTypes';
 import Guilds from '@app/features/guild/state/Guilds';
 import {LINK_COPIED_TO_CLIPBOARD_DESCRIPTOR} from '@app/features/i18n/utils/CommonMessageDescriptors';
-import {CloneEmojiMenuItem} from '@app/features/ui/action_menu/items/CloneEmojiMenuItem';
+import {SubMenu as MenuItemSubmenu} from '@app/features/ui/action_menu/ContextMenu';
+import {CloneExpressionMenuItem} from '@app/features/ui/action_menu/items/CloneExpressionMenuItem';
+import {EMOJI_MENU_CONFIG} from '@app/features/ui/action_menu/items/ExpressionMenuConfig';
 import styles from '@app/features/ui/action_menu/items/MenuItems.module.css';
 import {ReverseImageSearchMenuItems} from '@app/features/ui/action_menu/items/ReverseImageSearchMenuItems';
 import {MenuGroup} from '@app/features/ui/action_menu/MenuGroup';
 import {MenuItem} from '@app/features/ui/action_menu/MenuItem';
-import {MenuItemSubmenu} from '@app/features/ui/action_menu/MenuItemSubmenu';
 import * as TextCopyCommands from '@app/features/ui/commands/TextCopyCommands';
 import * as ToastCommands from '@app/features/ui/commands/ToastCommands';
 import {openExternalUrl} from '@app/features/ui/utils/NativeUtils';
@@ -129,16 +129,16 @@ const useEmojiHandlers = (emoji: FlatEmoji, onClose: () => void, activePersona?:
 	const openLinkLabel = emoji.animated ? i18n._(OPEN_GIF_LINK_DESCRIPTOR) : i18n._(OPEN_IMAGE_LINK_DESCRIPTOR);
 
 	const handleToggleFavorite = useCallback(() => {
-		EmojiPickerCommands.toggleFavorite(emoji);
+		EmojiPicker.toggleFavorite(getEmojiUsageKey(emoji));
 	}, [emoji]);
 
 	const handleToggleGlobalPin = useCallback(() => {
-		EmojiPickerCommands.togglePinned(emoji);
+		EmojiPicker.togglePin(emoji);
 	}, [emoji]);
 
 	const handleTogglePersonaPin = useCallback(() => {
 		if (!activePersona) return;
-		EmojiPickerCommands.togglePinned(emoji, activePersona.id);
+		EmojiPicker.togglePin(emoji, activePersona.id);
 	}, [emoji, activePersona]);
 
 	const handleCopyId = useCallback(() => {
@@ -379,8 +379,9 @@ export const EmojiContextMenuItems = observer(
 						</MenuItem>
 					)}
 					{emoji.id && (
-						<CloneEmojiMenuItem
-							emoji={emoji}
+						<CloneExpressionMenuItem
+							item={emoji}
+							config={EMOJI_MENU_CONFIG.clone}
 							onClose={onClose}
 							data-flx="ui.action-menu.items.emoji-context-menu-items.clone-emoji-menu-item"
 						/>
@@ -404,7 +405,6 @@ export const EmojiContextMenuItems = observer(
 					<ReverseImageSearchMenuItems
 						imageUrl={originalUrl}
 						onClose={onClose}
-						wrapInGroup
 						includeCopyAndOpen={false}
 						data-flx="ui.action-menu.items.emoji-context-menu-items.reverse-image-search-menu-items"
 					/>
@@ -526,8 +526,9 @@ export const EmojiInlineMenuItems = observer(
 									</MenuGroup>
 								)}
 								{emoji.id && (
-									<CloneEmojiMenuItem
-										emoji={emoji}
+									<CloneExpressionMenuItem
+										item={emoji}
+										config={EMOJI_MENU_CONFIG.clone}
 										onClose={onClose}
 										data-flx="ui.action-menu.items.emoji-context-menu-items.emoji-inline-menu-items.clone-emoji-menu-item"
 									/>
@@ -536,7 +537,6 @@ export const EmojiInlineMenuItems = observer(
 									<ReverseImageSearchMenuItems
 										imageUrl={originalUrl}
 										onClose={onClose}
-										wrapInGroup
 										includeCopyAndOpen={false}
 										data-flx="ui.action-menu.items.emoji-context-menu-items.emoji-inline-menu-items.reverse-image-search-menu-items"
 									/>
