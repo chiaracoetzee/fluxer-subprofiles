@@ -23,6 +23,10 @@ import {
 } from '@fluxer/constants/src/MediaProxyAssetSizes';
 import type {MediaProxyImageSize} from '@fluxer/constants/src/MediaProxyImageSizes';
 
+// Fork imports.
+
+import {isAvatarMediaHash} from '@app/features/persona/utils/AvatarSource';
+
 const DEFAULT_AVATAR_PRIMARY_COLORS = [0x4641d9, 0xf0b100, 0x00bba7, 0x2b7fff, 0xad46ff, 0x6a7282];
 const DEFAULT_AVATAR_COUNT = BigInt(DEFAULT_AVATAR_PRIMARY_COLORS.length);
 export const normalizeEndpoint = (endpoint: string): string => endpoint.replace(/\/$/, '');
@@ -284,7 +288,7 @@ export function getPersonaAvatarURL(
 	if (!avatar) {
 		return '';
 	}
-	if (avatar.startsWith('http://') || avatar.startsWith('https://') || avatar.startsWith('data:')) {
+	if (!isAvatarMediaHash(avatar)) {
 		return avatar;
 	}
 	return getUserAvatarURL({id: userId, avatar}, animated, size);
@@ -298,7 +302,7 @@ export function getPersonaBannerURL(
 	if (!banner) {
 		return '';
 	}
-	if (banner.startsWith('http://') || banner.startsWith('https://') || banner.startsWith('data:')) {
+	if (!isAvatarMediaHash(banner)) {
 		return banner;
 	}
 	return getUserBannerURL({id: userId, banner}, animated, size);
@@ -555,9 +559,7 @@ export function getEmojiOriginalURL({id, animated}: {id: string; animated?: bool
 	const key = `${RuntimeConfig.mediaEndpoint}:${animatedFlag ? 'a' : 's'}:${id}`;
 	const cached = EMOJI_ORIGINAL_URL_CACHE.get(key);
 	if (cached !== undefined) return cached;
-	const result = animatedFlag
-		? mediaUrl(`emojis/${id}.gif`, {animated: true})
-		: mediaUrl(`emojis/${id}.png`);
+	const result = animatedFlag ? mediaUrl(`emojis/${id}.gif`, {animated: true}) : mediaUrl(`emojis/${id}.png`);
 	if (EMOJI_ORIGINAL_URL_CACHE.size >= EMOJI_URL_CACHE_LIMIT) EMOJI_ORIGINAL_URL_CACHE.clear();
 	EMOJI_ORIGINAL_URL_CACHE.set(key, result);
 	return result;

@@ -1,5 +1,8 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+import {useHover} from '@app/features/app/hooks/useHover';
+import {useMergeRefs} from '@app/features/app/hooks/useMergeRefs';
+import {useShouldAnimate} from '@app/features/app/hooks/useShouldAnimate';
 import {useMaybeMessageViewContext} from '@app/features/channel/components/MessageViewContext';
 import {PreloadableUserPopout} from '@app/features/channel/components/PreloadableUserPopout';
 import type {Guild} from '@app/features/guild/models/Guild';
@@ -12,15 +15,16 @@ import {Avatar} from '@app/features/ui/components/Avatar';
 import FocusRing from '@app/features/ui/focus_ring/FocusRing';
 import KeyboardMode from '@app/features/ui/state/KeyboardMode';
 import type {User} from '@app/features/user/models/User';
-import {useHover} from '@app/features/app/hooks/useHover';
-import {useMergeRefs} from '@app/features/app/hooks/useMergeRefs';
-import {useShouldAnimate} from '@app/features/app/hooks/useShouldAnimate';
 import * as AvatarUtils from '@app/features/user/utils/AvatarUtils';
 import * as NicknameUtils from '@app/features/user/utils/NicknameUtils';
 import {clsx} from 'clsx';
 import {observer} from 'mobx-react-lite';
 import type React from 'react';
 import {useCallback, useRef} from 'react';
+
+// Fork imports.
+
+import {isAvatarMediaHash} from '@app/features/persona/utils/AvatarSource';
 
 export const MessagePersonaAccount = observer(
 	({
@@ -62,13 +66,13 @@ export const MessagePersonaAccount = observer(
 		const keyboardModeEnabled = KeyboardMode.keyboardModeEnabled;
 
 		const staticIconUrl = customIconUrl
-			? customIconUrl.startsWith('http://') || customIconUrl.startsWith('https://') || customIconUrl.startsWith('data:')
+			? !isAvatarMediaHash(customIconUrl)
 				? customIconUrl
 				: AvatarUtils.getUserAvatarURL({id: user.id, avatar: customIconUrl}, false, 32)
 			: null;
 
 		const hoverIconUrl = customIconUrl
-			? customIconUrl.startsWith('http://') || customIconUrl.startsWith('https://') || customIconUrl.startsWith('data:')
+			? !isAvatarMediaHash(customIconUrl)
 				? customIconUrl
 				: AvatarUtils.getUserAvatarURL({id: user.id, avatar: customIconUrl}, true, 32)
 			: null;
