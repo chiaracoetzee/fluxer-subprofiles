@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+import {PersonaAvatar} from '@app/features/persona/components/PersonaAvatar';
 import SignalBarStore from '@app/features/signal_bar/state/SignalBarStore';
-import {Avatar} from '@app/features/ui/components/Avatar';
 import FocusRing from '@app/features/ui/focus_ring/FocusRing';
 import {Popout} from '@app/features/ui/popover/PopoverPopout';
 import Users from '@app/features/user/state/Users';
@@ -84,7 +84,6 @@ export const PersonaComposerPill: React.FC<PersonaComposerPillProps> = observer(
 			);
 		};
 
-		const avatarHash = effectivePersona ? (effectivePersona.avatar_hash ?? undefined) : undefined;
 		const modeLabel = mode === 'last' ? i18n._(MODE_LAST_DESCRIPTOR) : i18n._(MODE_MANUAL_DESCRIPTOR);
 
 		let tooltipText: string;
@@ -133,7 +132,11 @@ export const PersonaComposerPill: React.FC<PersonaComposerPillProps> = observer(
 							)}
 							aria-label={tooltipText}
 						>
-							<Avatar user={currentUser} avatarUrl={avatarHash} size={24} />
+							<PersonaAvatar
+								user={currentUser}
+								persona={effectivePersona ? PersonaStore.getKnownPersona(effectivePersona.id) : null}
+								size={24}
+							/>
 							{isLatched && !isFromTag && (
 								<div className={styles.latchBadge}>
 									<LockSimple size={8} weight="bold" />

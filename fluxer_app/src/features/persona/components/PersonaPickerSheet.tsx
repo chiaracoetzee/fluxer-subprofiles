@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+import {PersonaAvatar} from '@app/features/persona/components/PersonaAvatar';
 import * as ModalCommands from '@app/features/ui/commands/ModalCommands';
 import {modal} from '@app/features/ui/commands/ModalCommands';
 import {Avatar} from '@app/features/ui/components/Avatar';
@@ -186,7 +187,9 @@ export const PersonaPickerSheet: React.FC<PersonaPickerSheetProps> = observer(
 										role="button"
 										tabIndex={0}
 									>
-										{currentUser && <Avatar user={currentUser} avatarUrl={p.avatar_hash} size={18} />}
+										{currentUser && (
+											<PersonaAvatar user={currentUser} persona={PersonaStore.getKnownPersona(p.id)} size={18} />
+										)}
 										<span>{p.name}</span>
 									</div>
 								))}
@@ -227,7 +230,9 @@ export const PersonaPickerSheet: React.FC<PersonaPickerSheetProps> = observer(
 									role="button"
 									tabIndex={0}
 								>
-									{currentUser && <Avatar user={currentUser} avatarUrl={p.avatar_hash} size={28} />}
+									{currentUser && (
+										<PersonaAvatar user={currentUser} persona={PersonaStore.getKnownPersona(p.id)} size={28} />
+									)}
 									<div className={styles.personaDetails}>
 										<div className={styles.personaPrimaryRow}>
 											<span className={styles.personaName}>{p.name}</span>
