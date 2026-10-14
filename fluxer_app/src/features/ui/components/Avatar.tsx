@@ -17,10 +17,6 @@ import {useLingui} from '@lingui/react/macro';
 import {observer} from 'mobx-react-lite';
 import React, {type CSSProperties, useCallback, useEffect, useMemo, useState} from 'react';
 
-// Fork imports.
-
-import {isAvatarMediaHash} from '@app/features/persona/utils/AvatarSource';
-
 interface AvatarProps {
 	user: User;
 	size: number;
@@ -76,7 +72,11 @@ const AvatarComponent = React.forwardRef<HTMLDivElement, AvatarProps>(
 		const avatarUrl = useMemo(() => {
 			if (customAvatarUrl !== undefined) {
 				if (!customAvatarUrl) return customAvatarUrl;
-				if (!isAvatarMediaHash(customAvatarUrl)) {
+				if (
+					customAvatarUrl.startsWith('http://') ||
+					customAvatarUrl.startsWith('https://') ||
+					customAvatarUrl.startsWith('data:')
+				) {
 					return customAvatarUrl;
 				}
 				return AvatarUtils.getUserAvatarURL({id: userId, avatar: customAvatarUrl}, false, mediaSize);
@@ -107,14 +107,22 @@ const AvatarComponent = React.forwardRef<HTMLDivElement, AvatarProps>(
 		const hoverAvatarUrl = useMemo(() => {
 			if (customHoverAvatarUrl !== undefined) {
 				if (!customHoverAvatarUrl) return customHoverAvatarUrl;
-				if (!isAvatarMediaHash(customHoverAvatarUrl)) {
+				if (
+					customHoverAvatarUrl.startsWith('http://') ||
+					customHoverAvatarUrl.startsWith('https://') ||
+					customHoverAvatarUrl.startsWith('data:')
+				) {
 					return customHoverAvatarUrl;
 				}
 				return AvatarUtils.getUserAvatarURL({id: userId, avatar: customHoverAvatarUrl}, true, mediaSize);
 			}
 			if (customAvatarUrl !== undefined) {
 				if (!customAvatarUrl) return customAvatarUrl;
-				if (!isAvatarMediaHash(customAvatarUrl)) {
+				if (
+					customAvatarUrl.startsWith('http://') ||
+					customAvatarUrl.startsWith('https://') ||
+					customAvatarUrl.startsWith('data:')
+				) {
 					return customAvatarUrl;
 				}
 				return AvatarUtils.getUserAvatarURL({id: userId, avatar: customAvatarUrl}, true, mediaSize);
