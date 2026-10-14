@@ -39,6 +39,7 @@ import {msg} from '@lingui/core/macro';
 import {Trans, useLingui} from '@lingui/react/macro';
 import {
 	CaretRight,
+	DownloadSimple,
 	GlobeSimple,
 	LockSimple,
 	LockSimpleOpen,
@@ -56,6 +57,8 @@ import {getAcceptString} from '@fluxer/constants/src/AssetFormatPolicy';
 import type {ActivePersonaScope} from '@fluxer/schema/src/domains/persona/PersonaApiSchemas';
 import {openPersonaEditModal} from '../modals/PersonaEditModal';
 import {openPluralKitImportModal} from '../modals/PluralKitImportModal';
+import * as PersonaCommands from '../../commands/PersonaCommands';
+import {downloadBlob} from '@app/features/platform/utils/DownloadFile';
 import {SEARCH_PERSONAS_PLACEHOLDER_DESCRIPTOR} from '../PersonaPickerSheet';
 import {PersonaTag} from '../PersonaTag';
 import styles from './PersonaSettingsTab.module.css';
@@ -104,6 +107,10 @@ const ACTIVE_PERSONA_MODE_ARIA_DESCRIPTOR = msg({
 	comment: 'Aria label for active persona mode tabs',
 });
 
+const EXPORT_FAILED_DESCRIPTOR = msg({
+	message: 'Could not export your personas.',
+	comment: 'Toast when downloading the persona export fails',
+});
 const FAILED_TO_UPLOAD_ICON_DESCRIPTOR = msg({
 	message: 'Failed to upload icon to server',
 	comment: 'Toast when icon upload fails',
@@ -428,6 +435,19 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 		}
 	};
 
+	const [isExporting, setIsExporting] = useState(false);
+	const handleExport = async () => {
+		setIsExporting(true);
+		try {
+			const {blob, fileName} = await PersonaCommands.exportPersonas();
+			downloadBlob(blob, fileName);
+		} catch {
+			ToastCommands.createToast({type: 'error', children: i18n._(EXPORT_FAILED_DESCRIPTOR)});
+		} finally {
+			setIsExporting(false);
+		}
+	};
+
 	const handleStartAdd = () => {
 		openPersonaEditModal();
 	};
@@ -598,6 +618,14 @@ export const PersonaSettingsTab: React.FC<PersonaSettingsTabProps> = observer(({
 							<div style={{display: 'flex', gap: 8}}>
 								<Button variant="secondary" leftIcon={<UploadSimple size={16} />} onClick={openPluralKitImportModal}>
 									<Trans>Import from PluralKit</Trans>
+								</Button>
+								<Button
+									variant="secondary"
+									leftIcon={<DownloadSimple size={16} />}
+									onClick={() => void handleExport()}
+									submitting={isExporting}
+								>
+									<Trans>Export</Trans>
 								</Button>
 								<Button variant="primary" leftIcon={<Plus size={16} />} onClick={handleStartAdd}>
 									<Trans>Add Persona</Trans>
