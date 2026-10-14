@@ -21605,6 +21605,59 @@
 				}
 			}
 		},
+		"/users/@me/personas/export": {
+			"get": {
+				"operationId": "export_my_personas",
+				"summary": "Export own personas",
+				"tags": ["Personas"],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {"application/zip": {"schema": {"$ref": "#/components/schemas/PersonaExportResponse"}}}
+					},
+					"400": {
+						"description": "Bad Request - The request was malformed or contained invalid data",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
+					},
+					"401": {
+						"description": "Unauthorized - Authentication is required or the token is invalid",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
+					},
+					"403": {
+						"description": "Forbidden - You do not have permission to perform this action",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
+					},
+					"429": {
+						"description": "Too Many Requests - You are being rate limited",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/ThrottledError"}}},
+						"headers": {
+							"Retry-After": {
+								"description": "Number of seconds to wait before retrying (only on 429)",
+								"schema": {"type": "integer"}
+							},
+							"X-RateLimit-Limit": {
+								"description": "The number of requests that can be made in the current window",
+								"schema": {"type": "integer"}
+							},
+							"X-RateLimit-Remaining": {
+								"description": "The number of remaining requests that can be made",
+								"schema": {"type": "integer"}
+							},
+							"X-RateLimit-Reset": {
+								"description": "Unix timestamp when the rate limit resets",
+								"schema": {"type": "integer"}
+							}
+						}
+					},
+					"500": {
+						"description": "Internal Server Error - An unexpected error occurred",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
+					}
+				},
+				"description": "Exports all personas of the authenticated user as a ZIP file: a PluralKit export file (pluralkit.json), each persona's avatar and banner and the tag icon, tyne.json listing which image belongs to which persona, and a README. Importing the ZIP gives the personas back.",
+				"security": [{"oauth2Token": ["personas.read"]}, {"sessionToken": []}]
+			}
+		},
 		"/users/@me/personas/import": {
 			"post": {
 				"operationId": "import_personas",
@@ -21773,6 +21826,63 @@
 				"requestBody": {
 					"required": true,
 					"content": {"application/json": {"schema": {"$ref": "#/components/schemas/PersonaBatchAvatarImportRequest"}}}
+				}
+			}
+		},
+		"/users/@me/personas/import-image": {
+			"post": {
+				"operationId": "import_persona_image",
+				"summary": "Store an image from a persona export being imported",
+				"tags": ["Personas"],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/PersonaImportImageResponse"}}}
+					},
+					"400": {
+						"description": "Bad Request - The request was malformed or contained invalid data",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
+					},
+					"401": {
+						"description": "Unauthorized - Authentication is required or the token is invalid",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
+					},
+					"403": {
+						"description": "Forbidden - You do not have permission to perform this action",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
+					},
+					"429": {
+						"description": "Too Many Requests - You are being rate limited",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/ThrottledError"}}},
+						"headers": {
+							"Retry-After": {
+								"description": "Number of seconds to wait before retrying (only on 429)",
+								"schema": {"type": "integer"}
+							},
+							"X-RateLimit-Limit": {
+								"description": "The number of requests that can be made in the current window",
+								"schema": {"type": "integer"}
+							},
+							"X-RateLimit-Remaining": {
+								"description": "The number of remaining requests that can be made",
+								"schema": {"type": "integer"}
+							},
+							"X-RateLimit-Reset": {
+								"description": "Unix timestamp when the rate limit resets",
+								"schema": {"type": "integer"}
+							}
+						}
+					},
+					"500": {
+						"description": "Internal Server Error - An unexpected error occurred",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
+					}
+				},
+				"description": "Stores one avatar or banner image read from a persona export ZIP that the user is importing, and returns its hash for use in the import. Counts against the persona image import quota.",
+				"security": [{"oauth2Token": ["personas.write"]}, {"sessionToken": []}],
+				"requestBody": {
+					"required": true,
+					"content": {"application/json": {"schema": {"$ref": "#/components/schemas/PersonaImportImageRequest"}}}
 				}
 			}
 		},
@@ -26969,6 +27079,10 @@
 						"type": "array",
 						"items": {"type": "string", "maxLength": 2048, "format": "uri"},
 						"description": "List of remote avatar URLs to import"
+					},
+					"kind": {
+						"description": "Whether the links are avatars or banners; avatars when absent",
+						"$ref": "#/components/schemas/PersonaImportImageKindSchema"
 					}
 				},
 				"required": ["urls"]
@@ -27832,12 +27946,41 @@
 				"required": ["user_id", "active_persona_mode", "active_persona_scope", "is_latched"],
 				"additionalProperties": false
 			},
+			"PersonaImportImageRequest": {
+				"type": "object",
+				"properties": {
+					"kind": {
+						"description": "Whether the image is an avatar or a banner",
+						"$ref": "#/components/schemas/PersonaImportImageKindSchema"
+					},
+					"image": {"type": "string", "description": "Base64 data URI of the image"}
+				},
+				"required": ["kind", "image"]
+			},
+			"PersonaImportImageResponse": {
+				"type": "object",
+				"properties": {
+					"hash": {"type": "string", "description": "Hash of the stored image"},
+					"avatar_color": {
+						"description": "Dominant colour, for an avatar",
+						"anyOf": [{"type": "integer", "minimum": -9007199254740991, "maximum": 9007199254740991}, {"type": "null"}]
+					}
+				},
+				"required": ["hash"],
+				"additionalProperties": false
+			},
 			"PersonaBulkImportRequestSchema": {
 				"maxItems": 250,
 				"type": "array",
-				"items": {"$ref": "#/components/schemas/PersonaCreateRequestSchema"}
+				"items": {"$ref": "#/components/schemas/PersonaImportItemSchema"}
 			},
 			"PersonaListResponseSchema": {"type": "array", "items": {"$ref": "#/components/schemas/PersonaResponseSchema"}},
+			"PersonaExportResponse": {
+				"type": "string",
+				"format": "binary",
+				"contentEncoding": "binary",
+				"description": "A ZIP file with the personas as a PluralKit export (pluralkit.json), their images, tyne.json and a README"
+			},
 			"PersonaChannelStateUpdateRequestSchema": {
 				"type": "object",
 				"properties": {
@@ -42143,6 +42286,106 @@
 					"suffix": {"type": "string", "minLength": 1, "maxLength": 32}
 				}
 			},
+			"PersonaImportItemSchema": {
+				"type": "object",
+				"properties": {
+					"name": {"description": "Persona display name", "type": "string"},
+					"avatar_hash": {
+						"description": "Avatar asset hash",
+						"anyOf": [{"type": "string", "pattern": "^(a_)?[0-9a-f]{8}$"}, {"type": "null"}]
+					},
+					"banner_hash": {
+						"description": "Banner asset hash",
+						"anyOf": [{"type": "string", "pattern": "^(a_)?[0-9a-f]{8}$"}, {"type": "null"}]
+					},
+					"pronouns": {
+						"description": "Optional pronouns",
+						"anyOf": [{"type": "string", "maxLength": 100}, {"type": "null"}]
+					},
+					"color": {
+						"description": "Optional color integer",
+						"anyOf": [{"type": "integer", "minimum": -9007199254740991, "maximum": 9007199254740991}, {"type": "null"}]
+					},
+					"avatar_color": {
+						"description": "Optional avatar accent color",
+						"anyOf": [{"type": "integer", "minimum": -9007199254740991, "maximum": 9007199254740991}, {"type": "null"}]
+					},
+					"bio": {
+						"description": "Optional persona bio",
+						"anyOf": [{"type": "string", "maxLength": 4096}, {"type": "null"}]
+					},
+					"auto_tag_disabled": {"description": "Whether auto-tagging is disabled", "type": "boolean"},
+					"persona_tags": {
+						"description": "Persona prefix/suffix tags",
+						"maxItems": 5,
+						"type": "array",
+						"items": {"$ref": "#/components/schemas/PersonaTagSchemaInput"}
+					},
+					"signature_emojis": {
+						"description": "Signature emojis for this persona",
+						"maxItems": 10000,
+						"type": "array",
+						"items": {"$ref": "#/components/schemas/SignatureEmojiSchemaInput"}
+					},
+					"visibility": {
+						"description": "Visibility: unlisted (default), public, or private",
+						"$ref": "#/components/schemas/PersonaVisibilitySchema"
+					},
+					"external_uuid": {
+						"description": "Optional external UUID (e.g. PluralKit)",
+						"anyOf": [{"type": "string", "maxLength": 64}, {"type": "null"}]
+					},
+					"image_sources": {
+						"description": "Where the persona's images were imported from; null when the file gave it none",
+						"anyOf": [{"$ref": "#/components/schemas/PersonaImportImageSourcesSchema"}, {"type": "null"}]
+					}
+				},
+				"required": ["name"]
+			},
+			"PersonaImportImageSourcesSchema": {
+				"type": "object",
+				"properties": {
+					"avatar": {
+						"anyOf": [
+							{
+								"type": "object",
+								"properties": {
+									"url": {
+										"description": "The link the avatar was imported from",
+										"anyOf": [{"type": "string", "maxLength": 2048}, {"type": "null"}]
+									},
+									"field": {
+										"type": "string",
+										"enum": ["avatar_url", "webhook_avatar_url"],
+										"description": "The PluralKit field it came from"
+									},
+									"main_avatar_empty": {
+										"description": "Whether the member's avatar_url was empty, when the avatar came from webhook_avatar_url",
+										"type": "boolean"
+									}
+								},
+								"required": ["field"]
+							},
+							{"type": "null"}
+						]
+					},
+					"banner": {
+						"anyOf": [
+							{
+								"type": "object",
+								"properties": {
+									"url": {
+										"description": "The link the banner was imported from",
+										"anyOf": [{"type": "string", "maxLength": 2048}, {"type": "null"}]
+									}
+								}
+							},
+							{"type": "null"}
+						]
+					}
+				}
+			},
+			"PersonaImportImageKindSchema": {"type": "string", "enum": ["avatar", "banner"]},
 			"ActivePersonaScopeSchema": {"type": "string", "enum": ["global", "channel"]},
 			"ActivePersonaModeSchema": {"type": "string", "enum": ["manual", "last"]},
 			"SignatureEmojiSchema": {
