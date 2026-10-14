@@ -56,17 +56,17 @@ jobs:
     timeout-minutes: 160
 
     steps:
-      - name: Checkout features/subprofiles
+      - name: Checkout tyne
         uses: actions/checkout@v4
         with:
-          ref: features/subprofiles
+          ref: tyne
           fetch-depth: 0
           token: ${{ secrets.WORKFLOW_TOKEN || secrets.GH_PAT || secrets.GITHUB_TOKEN }}
 
       - name: Checkout shared rebase tools
         uses: actions/checkout@v4
         with:
-          repository: chiaracoetzee/fluxer-mobile-tools
+          repository: tyne-chat/tyne-tools
           ref: main
           token: ${{ secrets.WORKFLOW_TOKEN || secrets.GH_PAT || secrets.GITHUB_TOKEN }}
           path: .shared_tools
