@@ -14,6 +14,7 @@ import {
 	isSpecialMention,
 } from '@app/features/channel/components/AutocompleteTypes';
 import Guilds from '@app/features/guild/state/Guilds';
+import {personaAvatarUrls} from '@app/features/persona/utils/PersonaAvatarUrls';
 import {useParams} from '@app/features/platform/components/router/RouterReact';
 import * as ColorUtils from '@app/features/theme/utils/ColorUtils';
 import {openRoleContextMenu} from '@app/features/ui/action_menu/RoleContextMenu';
@@ -167,7 +168,7 @@ export const AutocompleteMention = observer(function AutocompleteMention({
 						<Avatar
 							user={user}
 							size={24}
-							avatarUrl={option.persona.avatar_hash}
+							{...personaAvatarUrls(user.id, {avatar: option.persona.avatar_hash})}
 							showOffline={false}
 							disableStatusTooltip={true}
 							data-flx="channel.autocomplete-mention.persona-avatar"
