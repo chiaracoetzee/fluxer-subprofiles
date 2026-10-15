@@ -30773,6 +30773,30 @@
 						"type": "array",
 						"items": {"$ref": "#/components/schemas/SnowflakeType"}
 					},
+					"persona_id": {
+						"description": "Persona IDs to filter by; a message matches if it is from any author_id or any persona_id given",
+						"maxItems": 100,
+						"type": "array",
+						"items": {"$ref": "#/components/schemas/SnowflakeType"}
+					},
+					"exclude_persona_id": {
+						"description": "Persona IDs whose messages to exclude",
+						"maxItems": 100,
+						"type": "array",
+						"items": {"$ref": "#/components/schemas/SnowflakeType"}
+					},
+					"persona_mentions": {
+						"description": "Persona IDs that must be mentioned",
+						"maxItems": 100,
+						"type": "array",
+						"items": {"$ref": "#/components/schemas/SnowflakeType"}
+					},
+					"exclude_persona_mentions": {
+						"description": "Persona IDs that must not be mentioned",
+						"maxItems": 100,
+						"type": "array",
+						"items": {"$ref": "#/components/schemas/SnowflakeType"}
+					},
 					"mention_everyone": {"description": "Filter by whether message mentions everyone", "type": "boolean"},
 					"pinned": {"description": "Filter by pinned status", "type": "boolean"},
 					"has": {
