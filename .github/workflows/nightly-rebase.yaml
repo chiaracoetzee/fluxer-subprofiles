@@ -107,7 +107,8 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          # Upstream's CI (tests.yaml) runs on Node 26.
+          node-version: 26
           cache: pnpm
 
       # On a night with nothing to rebase nothing is installed, so the pnpm store does not
