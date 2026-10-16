@@ -21780,7 +21780,9 @@
 				"responses": {
 					"200": {
 						"description": "Success",
-						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/SuccessResponse"}}}
+						"content": {
+							"application/x-ndjson": {"schema": {"$ref": "#/components/schemas/PersonaBatchAvatarImportStream"}}
+						}
 					},
 					"400": {
 						"description": "Bad Request - The request was malformed or contained invalid data",
@@ -23576,7 +23578,9 @@
 				"responses": {
 					"200": {
 						"description": "Success",
-						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/SuccessResponse"}}}
+						"content": {
+							"application/x-ndjson": {"schema": {"$ref": "#/components/schemas/PersonaBatchAvatarImportStream"}}
+						}
 					},
 					"400": {
 						"description": "Bad Request - The request was malformed or contained invalid data",
@@ -27250,11 +27254,9 @@
 				},
 				"required": ["urls"]
 			},
-			"SuccessResponse": {
-				"type": "object",
-				"properties": {"success": {"type": "boolean", "const": true, "description": "Whether the operation succeeded"}},
-				"required": ["success"],
-				"additionalProperties": false
+			"PersonaBatchAvatarImportStream": {
+				"type": "string",
+				"description": "Newline-delimited JSON: a start line with the total, a progress line as each URL finishes, and a complete line with every result"
 			},
 			"PersonaAvatarImportRequest": {
 				"type": "object",
@@ -27853,6 +27855,12 @@
 					}
 				},
 				"required": ["has_recovery_kit", "created_at"],
+				"additionalProperties": false
+			},
+			"SuccessResponse": {
+				"type": "object",
+				"properties": {"success": {"type": "boolean", "const": true, "description": "Whether the operation succeeded"}},
+				"required": ["success"],
 				"additionalProperties": false
 			},
 			"PushSubscriptionsListResponse": {
