@@ -11965,8 +11965,7 @@
 									"status_page_url",
 									"status_page_incident_history_url",
 									"premium_product_name",
-									"premium_info_url",
-									"desktop_app_prompt_enabled"
+									"premium_info_url"
 								],
 								"additionalProperties": false
 							},
@@ -12001,7 +12000,7 @@
 						"properties": {
 							"single_community_enabled": {"type": "boolean"},
 							"single_community_guild_id": {"nullable": true, "type": "string"},
-							"signal_bar_guild_id": {"default": null, "nullable": true, "type": "string"},
+							"signal_bar_guild_id": {"nullable": true, "type": "string"},
 							"community_creation_staff_only": {"type": "boolean"},
 							"direct_messages_disabled": {"type": "boolean"},
 							"direct_messages_locked": {"type": "boolean"},
@@ -12037,24 +12036,18 @@
 								"required": ["gif", "youtube", "bluesky"],
 								"additionalProperties": false
 							},
-							"server_list_buttons": {
-								"default": {"favorites": true, "explore": true, "create_join": true, "download": true, "help": true},
-								"allOf": [{"$ref": "#/components/schemas/ServerListButtonsSchema"}]
-							}
+							"server_list_buttons": {"allOf": [{"$ref": "#/components/schemas/ServerListButtonsSchema"}]}
 						},
 						"required": [
 							"single_community_enabled",
 							"single_community_guild_id",
-							"signal_bar_guild_id",
-							"community_creation_staff_only",
 							"direct_messages_disabled",
 							"direct_messages_locked",
 							"guild_create_access",
 							"premium_mode",
 							"services",
 							"services_resolved",
-							"services_available",
-							"server_list_buttons"
+							"services_available"
 						],
 						"additionalProperties": false
 					},
