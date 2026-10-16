@@ -113,6 +113,11 @@ jobs:
             fluxer_gateway/native/push_markdown_plaintext_nif -> target
           save-if: true
 
+      # The cargo-deny version upstream's rust job installs. The cargo cache keeps the binary, so
+      # this is quick after the first run.
+      - name: Install cargo-deny
+        run: cargo install cargo-deny --version 0.20.2 --locked
+
       # Erlang/OTP and rebar3 as upstream's gateway job pins them, for the gateway's erlfmt,
       # compile, Dialyzer and eunit steps in the gate.
       - name: Set up Erlang
