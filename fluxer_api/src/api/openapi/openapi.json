@@ -25592,7 +25592,7 @@
 						"anyOf": [{"$ref": "#/components/schemas/MessageSubprofileResponseSchema"}, {"type": "null"}]
 					},
 					"mention_personas": {
-						"description": "The personas the message mentions, shown as a message sent as them would show them; absent when there are none",
+						"description": "The personas mentioned in the message, its embeds or what it forwards, shown as a message sent as them would show them; absent when there are none",
 						"anyOf": [
 							{"type": "array", "items": {"$ref": "#/components/schemas/MessageSubprofileResponseSchema"}},
 							{"type": "null"}
@@ -25773,7 +25773,7 @@
 										"anyOf": [{"$ref": "#/components/schemas/MessageSubprofileResponseSchema"}, {"type": "null"}]
 									},
 									"mention_personas": {
-										"description": "The personas the message mentions, shown as a message sent as them would show them; absent when there are none",
+										"description": "The personas mentioned in the message, its embeds or what it forwards, shown as a message sent as them would show them; absent when there are none",
 										"anyOf": [
 											{"type": "array", "items": {"$ref": "#/components/schemas/MessageSubprofileResponseSchema"}},
 											{"type": "null"}
@@ -38354,7 +38354,7 @@
 								"anyOf": [{"$ref": "#/components/schemas/MessageSubprofileResponseSchema"}, {"type": "null"}]
 							},
 							"mention_personas": {
-								"description": "The personas the message mentions, shown as a message sent as them would show them; absent when there are none",
+								"description": "The personas mentioned in the message, its embeds or what it forwards, shown as a message sent as them would show them; absent when there are none",
 								"anyOf": [
 									{"type": "array", "items": {"$ref": "#/components/schemas/MessageSubprofileResponseSchema"}},
 									{"type": "null"}
@@ -42070,7 +42070,7 @@
 									"anyOf": [{"$ref": "#/components/schemas/MessageSubprofileResponseSchema"}, {"type": "null"}]
 								},
 								"mention_personas": {
-									"description": "The personas the message mentions, shown as a message sent as them would show them; absent when there are none",
+									"description": "The personas mentioned in the message, its embeds or what it forwards, shown as a message sent as them would show them; absent when there are none",
 									"anyOf": [
 										{"type": "array", "items": {"$ref": "#/components/schemas/MessageSubprofileResponseSchema"}},
 										{"type": "null"}
