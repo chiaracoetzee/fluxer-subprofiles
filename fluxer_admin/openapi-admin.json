@@ -15396,6 +15396,12 @@
 						"nullable": true,
 						"allOf": [{"$ref": "#/components/schemas/MessageSubprofileResponseSchema"}]
 					},
+					"mention_personas": {
+						"description": "The personas mentioned in the message, as they are now. Private and deleted personas are left out; absent when there are none",
+						"nullable": true,
+						"type": "array",
+						"items": {"$ref": "#/components/schemas/MessageSubprofileResponseSchema"}
+					},
 					"referenced_message": {
 						"description": "The reply target. Present and populated when the target resolved, present and null when the target is gone, absent when this message has no default reference. Clients must tell null apart from absent by key presence.",
 						"nullable": true,
@@ -15550,6 +15556,12 @@
 								"description": "Optional subprofile persona information",
 								"nullable": true,
 								"allOf": [{"$ref": "#/components/schemas/MessageSubprofileResponseSchema"}]
+							},
+							"mention_personas": {
+								"description": "The personas mentioned in the message, as they are now. Private and deleted personas are left out; absent when there are none",
+								"nullable": true,
+								"type": "array",
+								"items": {"$ref": "#/components/schemas/MessageSubprofileResponseSchema"}
 							}
 						},
 						"required": [

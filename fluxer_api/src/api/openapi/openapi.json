@@ -25591,6 +25591,13 @@
 						"description": "Optional subprofile persona information",
 						"anyOf": [{"$ref": "#/components/schemas/MessageSubprofileResponseSchema"}, {"type": "null"}]
 					},
+					"mention_personas": {
+						"description": "The personas mentioned in the message, as they are now. Private and deleted personas are left out; absent when there are none",
+						"anyOf": [
+							{"type": "array", "items": {"$ref": "#/components/schemas/MessageSubprofileResponseSchema"}},
+							{"type": "null"}
+						]
+					},
 					"referenced_message": {
 						"description": "The reply target. Present and populated when the target resolved, present and null when the target is gone, absent when this message has no default reference. Clients must tell null apart from absent by key presence.",
 						"anyOf": [
@@ -25764,6 +25771,13 @@
 									"subprofile": {
 										"description": "Optional subprofile persona information",
 										"anyOf": [{"$ref": "#/components/schemas/MessageSubprofileResponseSchema"}, {"type": "null"}]
+									},
+									"mention_personas": {
+										"description": "The personas mentioned in the message, as they are now. Private and deleted personas are left out; absent when there are none",
+										"anyOf": [
+											{"type": "array", "items": {"$ref": "#/components/schemas/MessageSubprofileResponseSchema"}},
+											{"type": "null"}
+										]
 									}
 								},
 								"required": [
@@ -38338,6 +38352,13 @@
 							"subprofile": {
 								"description": "Optional subprofile persona information",
 								"anyOf": [{"$ref": "#/components/schemas/MessageSubprofileResponseSchema"}, {"type": "null"}]
+							},
+							"mention_personas": {
+								"description": "The personas mentioned in the message, as they are now. Private and deleted personas are left out; absent when there are none",
+								"anyOf": [
+									{"type": "array", "items": {"$ref": "#/components/schemas/MessageSubprofileResponseSchema"}},
+									{"type": "null"}
+								]
 							}
 						},
 						"required": [
@@ -42047,6 +42068,13 @@
 								"subprofile": {
 									"description": "Optional subprofile persona information",
 									"anyOf": [{"$ref": "#/components/schemas/MessageSubprofileResponseSchema"}, {"type": "null"}]
+								},
+								"mention_personas": {
+									"description": "The personas mentioned in the message, as they are now. Private and deleted personas are left out; absent when there are none",
+									"anyOf": [
+										{"type": "array", "items": {"$ref": "#/components/schemas/MessageSubprofileResponseSchema"}},
+										{"type": "null"}
+									]
 								}
 							},
 							"required": [
